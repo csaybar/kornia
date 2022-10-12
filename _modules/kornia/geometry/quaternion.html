@@ -638,8 +638,8 @@
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.random(batch_size=2)</span>
 <span class="sd">            &gt;&gt;&gt; q.norm()</span>
-<span class="sd">            tensor([[1.0000],</span>
-<span class="sd">                    [1.0000]], grad_fn=&lt;NormBackward1&gt;)</span>
+<span class="sd">            tensor([[1.],</span>
+<span class="sd">                    [1.]], grad_fn=&lt;NormBackward1&gt;)</span>
 <span class="sd">        """</span>
         <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
         <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">())</span>
