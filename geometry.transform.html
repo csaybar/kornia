@@ -1093,7 +1093,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.build_pyramid">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">build_pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#build_pyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.build_pyramid" title="Permalink to this definition">#</a></dt>
-<dd><p>Construct the Gaussian pyramid for an image.</p>
+<dd><p>Construct the Gaussian pyramid for a tensor image.</p>
 <img alt="_images/build_pyramid.png" src="_images/build_pyramid.png"/>
 <p>The function constructs a vector of images and builds the Gaussian pyramid
 by recursively applying pyrDown to the previously built pyramid layers.</p>
@@ -1122,6 +1122,36 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.geometry.transform.build_laplacian_pyramid">
+<span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">build_laplacian_pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#build_laplacian_pyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.build_laplacian_pyramid" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct the Laplacian pyramid for a tensor image.</p>
+<p>The function constructs a vector of images and builds the Laplacian pyramid
+by recursively computing the difference after applying
+pyrUp to the adjacent layer in it’s Gaussian pyramid.</p>
+<p>See <span id="id2">[<a class="reference internal" href="community/bibliography.html#id32" title="Peter J Burt and Edward H Adelson. The laplacian pyramid as a compact image code. In Readings in computer vision, pages 671–679. Elsevier, 1987.">BA87</a>]</span> for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the tensor to be used to construct the pyramid with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
+<li><p><strong>max_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – 0-based index of the last (the smallest) pyramid layer.
+It must be non-negative.</p></li>
+<li><p><strong>border_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – the padding mode to be applied before convolving.
+The expected modes are: <code class="docutils literal notranslate"><span class="pre">'constant'</span></code>, <code class="docutils literal notranslate"><span class="pre">'reflect'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'replicate'</span></code> or <code class="docutils literal notranslate"><span class="pre">'circular'</span></code>.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'reflect'</span></code></p></li>
+<li><p><strong>align_corners</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – interpolation flag.
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><span class="math notranslate nohighlight">\([(B, C, H, W), (B, C, H/2, W/2), ...]\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Output</p>
 </dd>
 </dl>
 </dd></dl>

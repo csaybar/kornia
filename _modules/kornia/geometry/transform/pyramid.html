@@ -318,12 +318,14 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
 <span class="kn">from</span> <span class="nn">kornia.filters</span> <span class="kn">import</span> <span class="n">filter2d</span><span class="p">,</span> <span class="n">gaussian_blur2d</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PyrDown"</span><span class="p">,</span> <span class="s2">"PyrUp"</span><span class="p">,</span> <span class="s2">"ScalePyramid"</span><span class="p">,</span> <span class="s2">"pyrdown"</span><span class="p">,</span> <span class="s2">"pyrup"</span><span class="p">,</span> <span class="s2">"build_pyramid"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PyrDown"</span><span class="p">,</span> <span class="s2">"PyrUp"</span><span class="p">,</span> <span class="s2">"ScalePyramid"</span><span class="p">,</span> <span class="s2">"pyrdown"</span><span class="p">,</span> <span class="s2">"pyrup"</span><span class="p">,</span> <span class="s2">"build_pyramid"</span><span class="p">,</span> <span class="s2">"build_laplacian_pyramid"</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">_get_pyramid_gaussian_kernel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_get_pyramid_gaussian_kernel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sd">"""Utility function that return a pre-computed gaussian kernel."""</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
@@ -369,7 +371,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">align_corners</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">factor</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pyrdown</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">border_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_corners</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">factor</span><span class="p">)</span></div>
 
 
@@ -399,7 +401,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">border_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">align_corners</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pyrup</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">border_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_corners</span><span class="p">)</span></div>
 
 
@@ -497,7 +499,7 @@
             <span class="n">cur_level</span> <span class="o">=</span> <span class="n">x</span>
         <span class="k">return</span> <span class="n">cur_level</span><span class="p">,</span> <span class="n">cur_sigma</span><span class="p">,</span> <span class="n">pixel_distance</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">List</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">List</span><span class="p">]:</span>  <span class="c1"># type: ignore</span>
         <span class="n">bs</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
         <span class="n">cur_level</span><span class="p">,</span> <span class="n">cur_sigma</span><span class="p">,</span> <span class="n">pixel_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_first_level</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
@@ -540,9 +542,7 @@
         <span class="k">return</span> <span class="n">pyr</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">,</span> <span class="n">pixel_dists</span></div>
 
 
-<div class="viewcode-block" id="pyrdown"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrdown">[docs]</a><span class="k">def</span> <span class="nf">pyrdown</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="pyrdown"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrdown">[docs]</a><span class="k">def</span> <span class="nf">pyrdown</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">"""Blur a tensor and downsamples it.</span>
 
 <span class="sd">    .. image:: _static/img/pyrdown.png</span>
@@ -564,16 +564,16 @@
 <span class="sd">        tensor([[[[ 3.7500,  5.2500],</span>
 <span class="sd">                  [ 9.7500, 11.2500]]]])</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_get_pyramid_gaussian_kernel</span><span class="p">()</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+
+    <span class="n">kernel</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">_get_pyramid_gaussian_kernel</span><span class="p">()</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
     <span class="c1"># blur image</span>
-    <span class="n">x_blur</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
+    <span class="n">x_blur</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
 
     <span class="c1"># TODO: use kornia.geometry.resize/rescale</span>
     <span class="c1"># downsample.</span>
-    <span class="n">out</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
+    <span class="n">out</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
         <span class="n">x_blur</span><span class="p">,</span>
         <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="n">factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="o">//</span> <span class="n">factor</span><span class="p">)),</span>
         <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">,</span>
@@ -582,7 +582,7 @@
     <span class="k">return</span> <span class="n">out</span></div>
 
 
-<div class="viewcode-block" id="pyrup"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrup">[docs]</a><span class="k">def</span> <span class="nf">pyrup</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="pyrup"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrup">[docs]</a><span class="k">def</span> <span class="nf">pyrup</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">"""Upsample a tensor and then blurs it.</span>
 
 <span class="sd">    .. image:: _static/img/pyrup.png</span>
@@ -604,25 +604,23 @@
 <span class="sd">                  [1.5000, 1.6250, 1.8750, 2.0000],</span>
 <span class="sd">                  [1.7500, 1.8750, 2.1250, 2.2500]]]])</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_get_pyramid_gaussian_kernel</span><span class="p">()</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+
+    <span class="n">kernel</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">_get_pyramid_gaussian_kernel</span><span class="p">()</span>
     <span class="c1"># upsample tensor</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
     <span class="c1"># TODO: use kornia.geometry.resize/rescale</span>
-    <span class="n">x_up</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
-        <span class="nb">input</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span>
-    <span class="p">)</span>
+    <span class="n">x_up</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">height</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">)</span>
 
     <span class="c1"># blurs upsampled tensor</span>
-    <span class="n">x_blur</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">x_up</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
+    <span class="n">x_blur</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">x_up</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x_blur</span></div>
 
 
 <div class="viewcode-block" id="build_pyramid"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.build_pyramid">[docs]</a><span class="k">def</span> <span class="nf">build_pyramid</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">max_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Construct the Gaussian pyramid for an image.</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="sa">r</span><span class="sd">"""Construct the Gaussian pyramid for a tensor image.</span>
 
 <span class="sd">    .. image:: _static/img/build_pyramid.png</span>
 
@@ -642,27 +640,88 @@
 <span class="sd">        - Input: :math:`(B, C, H, W)`</span>
 <span class="sd">        - Output :math:`[(B, C, H, W), (B, C, H/2, W/2), ...]`</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_level</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">max_level</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid max_level, it must be a positive integer. Got: </span><span class="si">{</span><span class="n">max_level</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_level</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">max_level</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"Invalid max_level, it must be a positive integer. Got: </span><span class="si">{</span><span class="n">max_level</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># create empty list and append the original image</span>
-    <span class="n">pyramid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pyramid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="c1"># iterate and downsample</span>
-
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">img_curr</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">pyramid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">img_down</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">pyrdown</span><span class="p">(</span><span class="n">img_curr</span><span class="p">,</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span>
+        <span class="n">img_curr</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">pyramid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">img_down</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">pyrdown</span><span class="p">(</span><span class="n">img_curr</span><span class="p">,</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span>
         <span class="n">pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_down</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">pyramid</span></div>
+
+
+<span class="k">def</span> <span class="nf">is_powerof_two</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># check if number x is a power of two</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">find_next_powerof_two</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># return the nearest power of 2</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+
+
+<div class="viewcode-block" id="build_laplacian_pyramid"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.build_laplacian_pyramid">[docs]</a><span class="k">def</span> <span class="nf">build_laplacian_pyramid</span><span class="p">(</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="sa">r</span><span class="sd">"""Construct the Laplacian pyramid for a tensor image.</span>
+
+<span class="sd">    The function constructs a vector of images and builds the Laplacian pyramid</span>
+<span class="sd">    by recursively computing the difference after applying</span>
+<span class="sd">    pyrUp to the adjacent layer in it's Gaussian pyramid.</span>
+
+<span class="sd">    See :cite:`burt1987laplacian` for more details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input : the tensor to be used to construct the pyramid with shape :math:`(B, C, H, W)`.</span>
+<span class="sd">        max_level: 0-based index of the last (the smallest) pyramid layer.</span>
+<span class="sd">          It must be non-negative.</span>
+<span class="sd">        border_type: the padding mode to be applied before convolving.</span>
+<span class="sd">          The expected modes are: ``'constant'``, ``'reflect'``,</span>
+<span class="sd">          ``'replicate'`` or ``'circular'``.</span>
+<span class="sd">        align_corners: interpolation flag.</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        Output: :math:`[(B, C, H, W), (B, C, H/2, W/2), ...]`</span>
+<span class="sd">    """</span>
+
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_level</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">max_level</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">"Invalid max_level, it must be a positive integer. Got: </span><span class="si">{</span><span class="n">max_level</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">require_padding</span> <span class="o">=</span> <span class="ow">not</span> <span class="p">(</span><span class="n">is_powerof_two</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_powerof_two</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">require_padding</span><span class="p">:</span>
+        <span class="c1"># in case of arbitrary shape tensor image need to be padded.</span>
+        <span class="c1"># Reference: https://stackoverflow.com/a/29967555</span>
+        <span class="n">pad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">find_next_powerof_two</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">-</span> <span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">find_next_powerof_two</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="s2">"reflect"</span><span class="p">)</span>
+
+    <span class="c1"># create gaussian pyramid</span>
+    <span class="n">gaussian_pyramid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">build_pyramid</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">max_level</span><span class="p">,</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span>
+    <span class="c1"># create empty list</span>
+    <span class="n">laplacian_pyramid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># iterate and compute difference of adjacent layers in a gaussian pyramid</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">img_expand</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">pyrup</span><span class="p">(</span><span class="n">gaussian_pyramid</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span>
+        <span class="n">laplacian</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">gaussian_pyramid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">img_expand</span>
+        <span class="n">laplacian_pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">laplacian</span><span class="p">)</span>
+    <span class="n">laplacian_pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gaussian_pyramid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">laplacian_pyramid</span></div>
 </pre></div>
         </article>
       </div>
