@@ -217,6 +217,7 @@
 <li class="toctree-l1"><a class="reference internal" href="models/hardnet.html">Hardnet (descriptor)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/affnet.html">Affnet (detection)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/sold2.html">SOLD2 (Line detection and matching)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/dexined.html">Dexined (edge detection)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API REFERENCE</span></p>
 <ul class="current">
@@ -513,7 +514,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOLD2_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2_detector.html#SOLD2_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2_detector" title="Permalink to this definition">#</a></dt>
 <dd><p>Module, which detects line segments in an image.</p>
 <p>This is based on the original code from the paper “SOLD²: Self-supervised
-Occlusion-aware Line Detector and Descriptor”. See <span id="id3">[<a class="reference internal" href="community/bibliography.html#id24" title="Rémi Pautrat*, Juan-Ting Lin*, Viktor Larsson, Martin R. Oswald, and Marc Pollefeys. Sold2: self-supervised occlusion-aware line description and detection. In Computer Vision and Pattern Recognition (CVPR). 2021.">PautratLinL+21</a>]</span> for more details.</p>
+Occlusion-aware Line Detector and Descriptor”. See <span id="id3">[<a class="reference internal" href="community/bibliography.html#id25" title="Rémi Pautrat*, Juan-Ting Lin*, Viktor Larsson, Martin R. Oswald, and Marc Pollefeys. Sold2: self-supervised occlusion-aware line description and detection. In Computer Vision and Pattern Recognition (CVPR). 2021.">PautratLinL+21</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -891,7 +892,7 @@ detect function. Then affine shape and orientation.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOLD2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2.html#SOLD2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2" title="Permalink to this definition">#</a></dt>
 <dd><p>Module, which detects and describe line segments in an image.</p>
 <p>This is based on the original code from the paper “SOLD²: Self-supervised
-Occlusion-aware Line Detector and Descriptor”. See <span id="id9">[<a class="reference internal" href="community/bibliography.html#id24" title="Rémi Pautrat*, Juan-Ting Lin*, Viktor Larsson, Martin R. Oswald, and Marc Pollefeys. Sold2: self-supervised occlusion-aware line description and detection. In Computer Vision and Pattern Recognition (CVPR). 2021.">PautratLinL+21</a>]</span> for more details.</p>
+Occlusion-aware Line Detector and Descriptor”. See <span id="id9">[<a class="reference internal" href="community/bibliography.html#id25" title="Rémi Pautrat*, Juan-Ting Lin*, Viktor Larsson, Martin R. Oswald, and Marc Pollefeys. Sold2: self-supervised occlusion-aware line description and detection. In Computer Vision and Pattern Recognition (CVPR). 2021.">PautratLinL+21</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1091,7 +1092,7 @@ shape of <span class="math notranslate nohighlight">\((B3, 2)\)</span> where 0 &
 <dd><p>Function, which finds nearest neighbors in desc2 for each vector in desc1.</p>
 <p>The method satisfies first to second nearest neighbor distance &lt;= th,
 and assures 2nd nearest neighbor is geometrically inconsistent with the 1st one
-(see <span id="id10">[<a class="reference internal" href="community/bibliography.html#id30" title="Dmytro Mishkin, Jiri Matas, and Michal Perdoch. Mods: fast and robust method for two-view matching. Computer Vision and Image Understanding, 141:81 - 93, 2015.">MMP15</a>]</span> for more details)</p>
+(see <span id="id10">[<a class="reference internal" href="community/bibliography.html#id31" title="Dmytro Mishkin, Jiri Matas, and Michal Perdoch. Mods: fast and robust method for two-view matching. Computer Vision and Image Understanding, 141:81 - 93, 2015.">MMP15</a>]</span> for more details)</p>
 <p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
