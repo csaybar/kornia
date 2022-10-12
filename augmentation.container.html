@@ -466,6 +466,110 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 </dd></dl>
 </dd></dl>
 </section>
+<section id="augmentation-dispatchers">
+<h2>Augmentation Dispatchers<a class="headerlink" href="#augmentation-dispatchers" title="Permalink to this headline">#</a></h2>
+<p>Kornia supports two types of augmentation dispatching, namely many-to-many and many-to-one. The former wraps
+different augmentations into one group and allows user to input multiple inputs in align with the number of
+augmentations. The latter aims at performing different augmentations for one input that to obtain a list of
+various transformed data.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.augmentation.container.ManyToManyAugmentationDispather">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.container.</span></span><span class="sig-name descname"><span class="pre">ManyToManyAugmentationDispather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">augmentations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/dispatcher.html#ManyToManyAugmentationDispather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.ManyToManyAugmentationDispather" title="Permalink to this definition">#</a></dt>
+<dd><p>Dispatches different augmentations to different inputs element-wisely.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>augmentations</strong> (<a class="reference internal" href="#kornia.augmentation.container.AugmentationSequential" title="kornia.augmentation.container.augment.AugmentationSequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">AugmentationSequential</span></code></a>) – <a href="#id1"><span class="problematic" id="id2">*</span></a>args: a list of kornia AugmentationSequential modules.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask_1</span><span class="p">,</span> <span class="n">mask_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_list</span> <span class="o">=</span> <span class="n">ManyToManyAugmentationDispather</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">((</span><span class="n">input_1</span><span class="p">,</span> <span class="n">mask_1</span><span class="p">),</span> <span class="p">(</span><span class="n">input_2</span><span class="p">,</span> <span class="n">mask_2</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.container.ManyToManyAugmentationDispather.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/dispatcher.html#ManyToManyAugmentationDispather.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.ManyToManyAugmentationDispather.forward" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.augmentation.container.ManyToOneAugmentationDispather">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.container.</span></span><span class="sig-name descname"><span class="pre">ManyToOneAugmentationDispather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">augmentations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/dispatcher.html#ManyToOneAugmentationDispather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.ManyToOneAugmentationDispather" title="Permalink to this definition">#</a></dt>
+<dd><p>Dispatches different augmentations to a single input and returns a list.</p>
+<p>Same <cite>datakeys</cite> must be applied across different augmentations. By default, with input
+(image, mask), the augmentations must not mess it as (mask, image) to avoid unexpected
+errors. This check can be cancelled with <cite>strict=False</cite> if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>augmentations</strong> (<a class="reference internal" href="#kornia.augmentation.container.AugmentationSequential" title="kornia.augmentation.container.augment.AugmentationSequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">AugmentationSequential</span></code></a>) – <a href="#id3"><span class="problematic" id="id4">*</span></a>args: a list of kornia AugmentationSequential modules.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug_list</span> <span class="o">=</span> <span class="n">ManyToManyAugmentationDispather</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">((</span><span class="nb">input</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.container.ManyToOneAugmentationDispather.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/dispatcher.html#ManyToOneAugmentationDispather.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.ManyToOneAugmentationDispather.forward" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+</dd></dl>
+</section>
 <section id="imagesequential">
 <h2>ImageSequential<a class="headerlink" href="#imagesequential" title="Permalink to this headline">#</a></h2>
 <p>Kornia augmentations provides simple on-device augmentation framework with the support of various syntax sugars
@@ -576,7 +680,7 @@ registered hooks while the latter silently ignores them.</p>
 <p>PatchSequential breaks input images into patches by a given grid size, which will be resembled back
 afterwards.</p>
 <p>Different image processing and augmentation methods will be performed on each patch region as
-in <span id="id1">[<a class="reference internal" href="community/bibliography.html#id18" title="Shiqi Lin, Tao Yu, Ruoyu Feng, and Zhibo Chen. Patch autoaugment. 2021. arXiv:2103.11099.">LYFC21</a>]</span>.</p>
+in <span id="id5">[<a class="reference internal" href="community/bibliography.html#id18" title="Shiqi Lin, Tao Yu, Ruoyu Feng, and Zhibo Chen. Patch autoaugment. 2021. arXiv:2103.11099.">LYFC21</a>]</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -855,6 +959,7 @@ True</p>
             <ul>
 <li><a class="reference internal" href="#">Augmentation Containers</a><ul>
 <li><a class="reference internal" href="#augmentation-sequential">Augmentation Sequential</a></li>
+<li><a class="reference internal" href="#augmentation-dispatchers">Augmentation Dispatchers</a></li>
 <li><a class="reference internal" href="#imagesequential">ImageSequential</a></li>
 <li><a class="reference internal" href="#patchsequential">PatchSequential</a></li>
 <li><a class="reference internal" href="#video-data-augmentation">Video Data Augmentation</a></li>

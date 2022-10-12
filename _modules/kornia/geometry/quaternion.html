@@ -621,7 +621,8 @@
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.random(batch_size=2)</span>
 <span class="sd">            &gt;&gt;&gt; q.norm()</span>
-<span class="sd">            tensor([1.0000, 1.0000], grad_fn=&lt;NormBackward1&gt;)</span>
+<span class="sd">            tensor([[1.0000],</span>
+<span class="sd">                    [1.0000]], grad_fn=&lt;NormBackward1&gt;)</span>
 <span class="sd">        """</span>
         <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
         <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">())</span>
@@ -631,7 +632,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">stack</span><span class="p">((</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">q3</span><span class="p">,</span> <span class="n">q4</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></div>
 
     <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Quaternion'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">normalize_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
