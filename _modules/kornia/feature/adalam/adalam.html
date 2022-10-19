@@ -322,7 +322,6 @@
 
 <span class="kn">from</span> <span class="nn">kornia.feature.laf</span> <span class="kn">import</span> <span class="n">get_laf_center</span><span class="p">,</span> <span class="n">get_laf_orientation</span><span class="p">,</span> <span class="n">get_laf_scale</span>
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_LAF</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
-<span class="kn">from</span> <span class="nn">kornia.utils.helpers</span> <span class="kn">import</span> <span class="n">get_cuda_device_if_available</span>
 
 <span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">_no_match</span><span class="p">,</span> <span class="n">adalam_core</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">dist_matrix</span>
@@ -341,7 +340,7 @@
         <span class="s1">'refit'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to perform refitting at the end of the RANSACs. Generally improves accuracy at the cost of runtime.   # noqa: E501</span>
         <span class="s1">'force_seed_mnn'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to consider only MNN for the purpose of selecting seeds. Generally improves accuracy at the cost of runtime.    # noqa: E501</span>
         <span class="c1"># You can provide a MNN mask in input to skip MNN computation and still get the improvement.</span>
-        <span class="s1">'device'</span><span class="p">:</span> <span class="n">get_cuda_device_if_available</span><span class="p">(),</span>  <span class="c1"># Device to be used for running AdaLAM. Use GPU if available.   # noqa: E501</span>
+        <span class="s1">'device'</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">),</span>  <span class="c1"># Device to be used for running AdaLAM. Use GPU if available.</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">DEFAULT_CONFIG</span>
 
