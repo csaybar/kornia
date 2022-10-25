@@ -2016,6 +2016,76 @@ for simplicity reasons</p>
 </div>
 </dd></dl>
 </section>
+<section id="sepia">
+<h2>Sepia<a class="headerlink" href="#sepia" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.color.Sepia">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">Sepia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rescale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/sepia.html#Sepia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.Sepia" title="Permalink to this definition">#</a></dt>
+<dd><p>Module that apply the sepia filter to tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – the input tensor with shape of <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p></li>
+<li><p><strong>rescale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If True, the output tensor will be rescaled (max values be 1. or 255).
+Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – scalar to enforce numerical stability.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1e-06</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The sepia tensor of same size and numbers of channels
+as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Sepia</span><span class="p">(</span><span class="n">rescale</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">tensor([[[1.3510]],</span>
+
+<span class="go">        [[1.2030]],</span>
+
+<span class="go">        [[0.9370]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.color.sepia">
+<span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">sepia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.color.sepia" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply to a tensor the sepia filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input tensor with shape of <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p></li>
+<li><p><strong>rescale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – If True, the output tensor will be rescaled (max values be 1. or 255).
+Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – scalar to enforce numerical stability.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1e-06</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The sepia tensor of same size and numbers of channels
+as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sepia_from_rgb</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">tensor([[[1.3510]],</span>
+
+<span class="go">        [[1.2030]],</span>
+
+<span class="go">        [[0.9370]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
 </section>
 
         </article>
@@ -2089,6 +2159,7 @@ for simplicity reasons</p>
 <li><a class="reference internal" href="#yuv422">YUV422</a></li>
 <li><a class="reference internal" href="#xyz">XYZ</a></li>
 <li><a class="reference internal" href="#bayer-raw">Bayer RAW</a></li>
+<li><a class="reference internal" href="#sepia">Sepia</a></li>
 </ul>
 </li>
 </ul>
