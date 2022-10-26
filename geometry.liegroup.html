@@ -353,6 +353,19 @@ See more: <a class="reference external" href="https://en.wikipedia.org/wiki/3D_r
 </div>
 </dd></dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.__mul__" title="Permalink to this definition">#</a></dt>
+<dd><p>Compose two So3 transformations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>right</strong> – the other So3 transformation.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting So3 transformation.</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.__repr__">
 <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.__repr__" title="Permalink to this definition">#</a></dt>
 <dd><p>Return repr(self).</p>
@@ -490,7 +503,7 @@ See more: <a class="reference external" href="https://en.wikipedia.org/wiki/3D_r
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">So3</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
 <span class="go">tensor([[0., 0., 0.],</span>
-<span class="go">        [0., 0., 0.]], grad_fn=&lt;SWhereBackward0&gt;)</span>
+<span class="go">        [0., 0., 0.]], grad_fn=&lt;WhereBackward0&gt;)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -568,12 +581,14 @@ c &amp; 0 &amp; -a \\
 space <span class="math notranslate nohighlight">\(R^3\)</span> under the operation of composition.
 See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/papers/jlblanco2010geometry3D_techrep.pdf">https://ingmec.ual.es/~jlblanco/papers/jlblanco2010geometry3D_techrep.pdf</a></p>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">kornia.geometry.quaternion</span> <span class="kn">import</span> <span class="n">Quaternion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="p">(</span><span class="n">So3</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
-<span class="go">rotation: real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">r</span>
+<span class="go">real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="go">vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">translation: tensor([[1., 1., 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">t</span>
+<span class="go">tensor([[1., 1., 1.]])</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -590,14 +605,32 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">kornia.geometry.quaternion</span> <span class="kn">import</span> <span class="n">Quaternion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="p">(</span><span class="n">So3</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
-<span class="go">rotation: real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">r</span>
+<span class="go">real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="go">vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">translation: tensor([[1., 1., 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">t</span>
+<span class="go">tensor([[1., 1., 1.]])</span>
 </pre></div>
 </div>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.__mul__">
+<span class="sig-name descname"><span class="pre">__mul__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3.__mul__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3.__mul__" title="Permalink to this definition">#</a></dt>
+<dd><p>Compose two Se3 transformations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>right</strong> (<a class="reference internal" href="#kornia.geometry.liegroup.Se3" title="kornia.geometry.liegroup.se3.Se3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se3</span></code></a>) – the other Se3 transformation.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se3" title="kornia.geometry.liegroup.se3.Se3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se3</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The resulting Se3 transformation.</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.__repr__">
@@ -626,10 +659,11 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
-<span class="go">rotation: real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">r</span>
+<span class="go">real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="go">vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">translation: tensor([[0., 0., 0.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">t</span>
+<span class="go">tensor([[0., 0., 0.]])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -673,14 +707,12 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
-<span class="go">rotation: real: tensor([[1.],</span>
-<span class="go">        [1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">vec: tensor([[0., 0., 0.],</span>
-<span class="go">        [0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">translation: tensor([[0., 0., 0.],</span>
-<span class="go">        [0., 0., 0.]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">r</span>
+<span class="go">real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="go">vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">t</span>
+<span class="go">tensor([[0., 0., 0.]])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -695,10 +727,12 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 <dd><p>Returns the inverse transformation.</p>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="p">(</span><span class="n">So3</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
-<span class="go">rotation: real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s_inv</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s_inv</span><span class="o">.</span><span class="n">r</span>
+<span class="go">real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="go">vec: tensor([[-0., -0., -0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="go">translation: tensor([[-1., -1., -1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s_inv</span><span class="o">.</span><span class="n">t</span>
+<span class="go">tensor([[-1., -1., -1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -712,7 +746,8 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 <span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3.log" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts elements of lie group  to elements of lie algebra.</p>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">kornia.geometry.quaternion</span> <span class="kn">import</span> <span class="n">Quaternion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Se3</span><span class="p">(</span><span class="n">So3</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
 <span class="go">tensor([[0., 0., 0., 0., 0., 0.]], grad_fn=&lt;CatBackward0&gt;)</span>
 </pre></div>
@@ -733,7 +768,7 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 <span class="go">tensor([[[1., 0., 0., 1.],</span>
 <span class="go">         [0., 1., 0., 1.],</span>
 <span class="go">         [0., 0., 1., 1.],</span>
-<span class="go">         [0., 0., 0., 1.]]], grad_fn=&lt;CatBackward0&gt;)</span>
+<span class="go">         [0., 0., 0., 1.]]], grad_fn=&lt;CopySlices&gt;)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
