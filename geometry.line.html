@@ -375,6 +375,26 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 </dd>
 </dl>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.line.ParametrizedLine.intersect">
+<span class="sig-name descname"><span class="pre">intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plane</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/line.html#ParametrizedLine.intersect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.line.ParametrizedLine.intersect" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the intersection point between the line and a given plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>plane</strong> (<a class="reference internal" href="#kornia.geometry.line.Hyperplane" title="kornia.geometry.plane.Hyperplane"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperplane</span></code></a>) – the plane to compute the intersection point.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>the lambda value used to compute the look at point.</p></li>
+<li><p>the intersected point.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.line.ParametrizedLine.origin">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">origin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.line.ParametrizedLine.origin" title="Permalink to this definition">#</a></dt>
@@ -491,9 +511,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.line.Hyperplane">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.line.</span></span><span class="sig-name descname"><span class="pre">Hyperplane</span></span><a class="reference internal" href="_modules/kornia/geometry/line.html#Hyperplane"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.line.Hyperplane" title="Permalink to this definition">#</a></dt>
-<dd><p>Not implemented yet: <a class="reference external" href="https://gitlab.com/libeigen/eigen/-/blob/master/Eigen/src/Geometry/Hyperplane.h">https://gitlab.com/libeigen/eigen/-/blob/master/Eigen/src/Geometry/Hyperplane.h</a>.</p>
-</dd></dl>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.line.</span></span><span class="sig-name descname"><span class="pre">Hyperplane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/plane.html#Hyperplane"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.line.Hyperplane" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 <section id="interactive-demo">
 <h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h2>
 <gradio-app space="kornia/line-segment-matching"></gradio-app></section>
