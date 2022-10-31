@@ -334,17 +334,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
 <li><p><strong>grads_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – can be <code class="docutils literal notranslate"><span class="pre">'sobel'</span></code> for standalone use or <code class="docutils literal notranslate"><span class="pre">'diff'</span></code> for use on Gaussian pyramid.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'sobel'</span></code></p></li>
-<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
+<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
 It is necessary for performing non-maxima-suppression across different scale pyramid levels.
 See <a class="reference external" href="https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874">vlfeat</a>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the response map per channel with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
@@ -391,12 +391,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
-<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – the Harris detector free parameter.
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – the Harris detector free parameter.
 Default:  <code class="code docutils literal notranslate"><span class="pre">0.04</span></code></p></li>
 <li><p><strong>grads_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – can be <code class="docutils literal notranslate"><span class="pre">'sobel'</span></code> for standalone use or <code class="docutils literal notranslate"><span class="pre">'diff'</span></code> for use on Gaussian pyramid.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'sobel'</span></code></p></li>
-<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – <p>coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
+<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – <p>coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
 It is necessary for performing non-maxima-suppression across different scale pyramid levels.
 See <a class="reference external" href="https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874">vlfeat</a>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -404,7 +404,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the response map per channel with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
@@ -449,10 +449,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – input image with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
 <li><p><strong>grads_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – can be <code class="docutils literal notranslate"><span class="pre">'sobel'</span></code> for standalone use or <code class="docutils literal notranslate"><span class="pre">'diff'</span></code> for use on Gaussian pyramid.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'sobel'</span></code></p></li>
-<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – <p>coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
+<li><p><strong>sigmas</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – <p>coefficients to be multiplied by multichannel response. Should be shape of <span class="math notranslate nohighlight">\((B)\)</span>
 It is necessary for performing non-maxima-suppression across different scale pyramid levels.
 See <a class="reference external" href="https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874">vlfeat</a>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p>
@@ -460,7 +460,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the response map per channel with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
@@ -501,10 +501,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><p>Compute the Difference-of-Gaussian response.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – a given the gaussian 5d tensor <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p>
+<dd class="field-odd"><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – a given the gaussian 5d tensor <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the response map per channel with shape <span class="math notranslate nohighlight">\((B, C, D-1, H, W)\)</span>.</p>
@@ -542,7 +542,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2_detector.html#SOLD2_detector.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2_detector.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – batched images with shape <span class="math notranslate nohighlight">\((B, 1, H, W)\)</span>.</p>
+<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – batched images with shape <span class="math notranslate nohighlight">\((B, 1, H, W)\)</span>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>list of N line segments in each of the B images <span class="math notranslate nohighlight">\(List[(N, 2, 2)]\)</span>.
@@ -588,7 +588,7 @@ padding: default 0</p>
 <dd class="field-odd"><p>DenseSIFT descriptor of the image</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl>
@@ -700,7 +700,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd class="field-even"><p>HardNet descriptor of the patches.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl class="simple">
@@ -732,7 +732,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd class="field-even"><p>HardNet8 descriptor of the patches.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl class="simple">
@@ -807,7 +807,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd class="field-even"><p>TFeat descriptor of the patches.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl class="simple">
@@ -858,7 +858,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>patch_descriptor_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>], <em>optional</em>) – patch descriptor module, e.g. <a class="reference internal" href="#kornia.feature.SIFTDescriptor" title="kornia.feature.SIFTDescriptor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIFTDescriptor</span></code></a>
+<li><p><strong>patch_descriptor_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – patch descriptor module, e.g. <a class="reference internal" href="#kornia.feature.SIFTDescriptor" title="kornia.feature.SIFTDescriptor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIFTDescriptor</span></code></a>
 or <a class="reference internal" href="#kornia.feature.HardNet" title="kornia.feature.HardNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">HardNet</span></code></a>. Default: <a class="reference internal" href="#kornia.feature.HardNet" title="kornia.feature.HardNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">HardNet</span></code></a>.</p></li>
 <li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – patch size in pixels, which descriptor expects.
 Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
@@ -876,12 +876,12 @@ detect function. Then affine shape and orientation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>lafs</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frames <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>lafs</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frames <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Local descriptors of shape <span class="math notranslate nohighlight">\((B,N,D)\)</span> where <span class="math notranslate nohighlight">\(D\)</span> is descriptor size.</p>
@@ -926,7 +926,7 @@ as well as the list of detected line segments (ij coordinates convention).</p>
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2.html#SOLD2.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – batched images with shape <span class="math notranslate nohighlight">\((B, 1, H, W)\)</span>.</p>
+<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – batched images with shape <span class="math notranslate nohighlight">\((B, 1, H, W)\)</span>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>list of N line segments in each of the B images <span class="math notranslate nohighlight">\(List[(N, 2, 2)]\)</span>.
@@ -950,9 +950,9 @@ as well as the list of detected line segments (ij coordinates convention).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>lafs</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frames <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p></li>
-<li><p><strong>patch_descriptor</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>) – patch descriptor module, e.g. <a class="reference internal" href="#kornia.feature.SIFTDescriptor" title="kornia.feature.SIFTDescriptor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIFTDescriptor</span></code></a>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>lafs</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frames <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p></li>
+<li><p><strong>patch_descriptor</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – patch descriptor module, e.g. <a class="reference internal" href="#kornia.feature.SIFTDescriptor" title="kornia.feature.SIFTDescriptor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIFTDescriptor</span></code></a>
 or <a class="reference internal" href="#kornia.feature.HardNet" title="kornia.feature.HardNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">HardNet</span></code></a>.</p></li>
 <li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – patch size in pixels, which descriptor expects.
 Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
@@ -961,7 +961,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Local descriptors of shape <span class="math notranslate nohighlight">\((B,N,D)\)</span> where <span class="math notranslate nohighlight">\(D\)</span> is descriptor size.</p>
@@ -975,19 +975,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dt class="sig sig-object py" id="kornia.feature.match_nn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_nn" title="Permalink to this definition">#</a></dt>
 <dd><p>Function, which finds nearest neighbors in desc2 for each vector in desc1.</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1002,19 +1002,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.feature.match_mnn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_mnn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_mnn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_mnn" title="Permalink to this definition">#</a></dt>
 <dd><p>Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1031,21 +1031,21 @@ where 0 &lt;= B3 &lt;= min(B1, B2)</p></li>
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_snn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_snn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_snn" title="Permalink to this definition">#</a></dt>
 <dd><p>Function, which finds nearest neighbors in desc2 for each vector in desc1.</p>
 <p>The method satisfies first to second nearest neighbor distance &lt;= th.</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
 <li><p><strong>th</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – distance ratio threshold.
 Default:  <code class="code docutils literal notranslate"><span class="pre">0.8</span></code></p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1062,21 +1062,21 @@ where 0 &lt;= B3 &lt;= B1.</p></li>
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_smnn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_smnn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_smnn" title="Permalink to this definition">#</a></dt>
 <dd><p>Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</p>
 <p>the method satisfies first to second nearest neighbor distance &lt;= th.</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
 <li><p><strong>th</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – distance ratio threshold.
 Default:  <code class="code docutils literal notranslate"><span class="pre">0.95</span></code></p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1095,27 +1095,27 @@ shape of <span class="math notranslate nohighlight">\((B3, 2)\)</span> where 0 &
 <p>The method satisfies first to second nearest neighbor distance &lt;= th,
 and assures 2nd nearest neighbor is geometrically inconsistent with the 1st one
 (see <span id="id10">[<a class="reference internal" href="community/bibliography.html#id31" title="Dmytro Mishkin, Jiri Matas, and Michal Perdoch. Mods: fast and robust method for two-view matching. Computer Vision and Image Understanding, 141:81 - 93, 2015.">MMP15</a>]</span> for more details)</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
-<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
-<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
 <li><p><strong>th</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – distance ratio threshold.
 Default:  <code class="code docutils literal notranslate"><span class="pre">0.8</span></code></p></li>
 <li><p><strong>spatial_th</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – minimal distance in pixels to 2nd nearest neighbor.
 Default:  <code class="code docutils literal notranslate"><span class="pre">10.0</span></code></p></li>
 <li><p><strong>mutual</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – also perform mutual nearest neighbor check
 Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1132,23 +1132,23 @@ where 0 &lt;= B3 &lt;= B1.</p></li>
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_adalam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/adalam/adalam.html#match_adalam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_adalam" title="Permalink to this definition">#</a></dt>
 <dd><p>Function, which performs descriptor matching, followed by AdaLAM filtering (see <span id="id11">[]</span> for more
 details)</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
-<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
-<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
 <li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>], <em>optional</em>) – dict with AdaLAM config
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
+<li><p><strong>dm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Tensor containing the distances from each descriptor in desc1
 to each descriptor in desc2, shape of <span class="math notranslate nohighlight">\((B1, B2)\)</span>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1184,14 +1184,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0.8<
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
 <li><p><strong>lafs1</strong> – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
 <li><p><strong>lafs2</strong> – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1230,14 +1230,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'fgi
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
-<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
-<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
-<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>desc1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B1, D)\)</span>.</p></li>
+<li><p><strong>desc2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Batch of descriptors of a shape <span class="math notranslate nohighlight">\((B2, D)\)</span>.</p></li>
+<li><p><strong>lafs1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
+<li><p><strong>lafs2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – LAFs of a shape <span class="math notranslate nohighlight">\((1, B1, 2, 3)\)</span>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1260,7 +1260,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'fgi
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>detector</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>) – the detection module.</p></li>
+<li><p><strong>detector</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – the detection module.</p></li>
 <li><p><strong>descriptor</strong> (<a class="reference internal" href="#kornia.feature.LAFDescriptor" title="kornia.feature.integrated.LAFDescriptor"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFDescriptor</span></code></a>) – the descriptor module.</p></li>
 <li><p><strong>scaling_coef</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – multiplier for change default detector scale (e.g. it is too small for KeyNet by default)
 Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
@@ -1273,14 +1273,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1.0<
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
 The shape must be the same as the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1304,14 +1304,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
 The shape must be the same as the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1334,14 +1334,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
 The shape must be the same as the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1364,14 +1364,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
 The shape must be the same as the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1394,14 +1394,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
 The shape must be the same as the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
@@ -1421,15 +1421,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>local_feature</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>) – Local feature detector. See <a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet" title="kornia.feature.GFTTAffNetHardNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">GFTTAffNetHardNet</span></code></a>.</p></li>
-<li><p><strong>matcher</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>) – Descriptor matcher, see <a class="reference internal" href="#kornia.feature.DescriptorMatcher" title="kornia.feature.DescriptorMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">DescriptorMatcher</span></code></a>.</p></li>
+<li><p><strong>local_feature</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – Local feature detector. See <a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet" title="kornia.feature.GFTTAffNetHardNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">GFTTAffNetHardNet</span></code></a>.</p></li>
+<li><p><strong>matcher</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – Descriptor matcher, see <a class="reference internal" href="#kornia.feature.DescriptorMatcher" title="kornia.feature.DescriptorMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">DescriptorMatcher</span></code></a>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Dictionary with image correspondences and confidence scores.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a>]</p>
+<dd class="field-odd"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a>]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1447,7 +1447,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#LocalFeatureMatcher.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LocalFeatureMatcher.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – dictionary containing the input data in the following format:</p>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – dictionary containing the input data in the following format:</p>
 </dd>
 <dt class="field-even">Keyword Arguments</dt>
 <dd class="field-even"><ul class="simple">
@@ -1458,7 +1458,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </ul>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1480,7 +1480,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><p>Module, which finds correspondences between two images.</p>
 <p>This is based on the original code from paper “LoFTR: Detector-Free Local
 Feature Matching with Transformers”. See <span id="id12">[<a class="reference internal" href="community/bibliography.html#id19" title="Jiaming Sun, Zehong Shen, Yuang Wang, Hujun Bao, and Xiaowei Zhou. LoFTR: detector-free local feature matching with transformers. In CVPR. 2021.">SSW+21</a>]</span> for more details.</p>
-<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
+<p>If the distance matrix dm is not provided, <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cdist.html#torch.cdist" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cdist()</span></code></a> is used.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1520,7 +1520,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'out
 </ul>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1545,7 +1545,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'out
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
 <li><p><strong>images</strong> – images, LAFs are detected in.</p></li>
 <li><p><strong>PS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – patch size.
 Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
@@ -1554,7 +1554,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>patches with shape <span class="math notranslate nohighlight">\((B, N, CH, PS,PS)\)</span>.</p>
@@ -1569,8 +1569,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, LAFs are detected in.</p></li>
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, LAFs are detected in.</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
 <li><p><strong>PS</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – patch size.
 Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
 <li><p><strong>normalize_lafs_before_extraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True, lafs are normalized to image size.
@@ -1578,7 +1578,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>patches with shape <span class="math notranslate nohighlight">\((B, N, CH, PS,PS)\)</span>.</p>
@@ -1601,8 +1601,8 @@ becomes:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor).</p></li>
-<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) images, LAFs are detected in</p></li>
+<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor).</p></li>
+<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) images, LAFs are detected in</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1636,12 +1636,12 @@ becomes
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
-<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, LAFs are detected in.</p></li>
+<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
+<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, LAFs are detected in.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>the denormalized lafs.</p>
@@ -1663,13 +1663,13 @@ becomes
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
+<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – </p></li>
 <li><p><strong>n_pts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – number of points to output.
 Default:  <code class="code docutils literal notranslate"><span class="pre">50</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor of boundary points.</p>
@@ -1692,10 +1692,10 @@ by inverse matrix square root: A = invsqrt([a b; b c]).</p>
 <p>See also <a class="reference external" href="https://github.com/vlfeat/vlfeat/blob/master/toolbox/sift/vl_frame2oell.m">https://github.com/vlfeat/vlfeat/blob/master/toolbox/sift/vl_frame2oell.m</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ells</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of ellipses in Oxford format [x y a b c].</p>
+<dd class="field-odd"><p><strong>ells</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of ellipses in Oxford format [x y a b c].</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor of ellipses in LAF format.</p>
@@ -1721,13 +1721,13 @@ by inverse matrix square root: A = invsqrt([a b; b c]).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of LAFs.</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of LAFs.</p></li>
 <li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – for safe division.
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-09</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor of same shape.</p>
@@ -1754,12 +1754,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3] or [BxNx2x2].</p></li>
-<li><p><strong>scale_coef</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – broadcastable tensor or float.</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3] or [BxNx2x2].</p></li>
+<li><p><strong>scale_coef</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – broadcastable tensor or float.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor BxNx2x3.</p>
@@ -1786,10 +1786,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Return a scale of the LAFs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3] or [BxNx2x2].</p>
+<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3] or [BxNx2x2].</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor  BxNx1x1.</p>
@@ -1814,10 +1814,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Return a center (keypoint) of the LAFs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3].</p>
+<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2x3].</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor  BxNx2.</p>
@@ -1842,13 +1842,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Return orientation of the LAFs, in degrees.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor): tensor [BxNx2x3].</p>
+<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor): tensor [BxNx2x3].</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>tensor  BxNx1 .</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl class="simple">
@@ -1871,15 +1871,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xy</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2].</p></li>
-<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – tensor [BxNx1x1]. If not provided, scale = 1 is assumed
+<li><p><strong>xy</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor [BxNx2].</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – tensor [BxNx1x1]. If not provided, scale = 1 is assumed
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><strong>ori</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – tensor [BxNx1]. If not provided orientation = 0 is assumed
+<li><p><strong>ori</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – tensor [BxNx1]. If not provided orientation = 0 is assumed
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor BxNx2x3.</p>
@@ -1894,14 +1894,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p></li>
-<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, lafs are detected in <span class="math notranslate nohighlight">\((B, CH, H, W)\)</span>.</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p></li>
+<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – images, lafs are detected in <span class="math notranslate nohighlight">\((B, CH, H, W)\)</span>.</p></li>
 <li><p><strong>border</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – additional border.
 Default:  <code class="code docutils literal notranslate"><span class="pre">0</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>mask with shape <span class="math notranslate nohighlight">\((B, N)\)</span>.</p>
@@ -1915,7 +1915,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 LAF-y unit vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
+<dd class="field-odd"><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>threepts <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
@@ -1929,7 +1929,7 @@ LAF-y unit vector.</p>
 <p>Order is (0,0), (0, 1), (1, 0).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>threepts</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
+<dd class="field-odd"><p><strong>threepts</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>laf <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
@@ -1942,7 +1942,7 @@ LAF-y unit vector.</p>
 <dd><p>Check whether a Local Affine Frame (laf) has a valid shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frame tensor to evaluate.</p>
+<dd class="field-odd"><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – local affine frame tensor to evaluate.</p>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><strong>Exception</strong></a> – if the input laf does not have a shape <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p>
@@ -1966,12 +1966,12 @@ LAF-y unit vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>trans_01</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor for perspective transformations of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p></li>
-<li><p><strong>lafs_1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of lafs of shape <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p></li>
+<li><p><strong>trans_01</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor for perspective transformations of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p></li>
+<li><p><strong>lafs_1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor of lafs of shape <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>tensor of N-dimensional points of shape <span class="math notranslate nohighlight">\((B, N, 2, 3)\)</span>.</p>
@@ -2092,7 +2092,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd class="field-even"><p>Normalized features</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 <dl class="simple">
@@ -2144,17 +2144,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">500<
 <li><p><strong>mr_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – multiplier for local feature scale compared to the detection scale.
 6.0 is matching OpenCV 12.0 convention for SIFT.
 Default:  <code class="code docutils literal notranslate"><span class="pre">6.0</span></code></p></li>
-<li><p><strong>scale_pyr_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – generates scale pyramid. See <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalePyramid</span></code> for details.
+<li><p><strong>scale_pyr_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – generates scale pyramid. See <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalePyramid</span></code> for details.
 Default: ScalePyramid(3, 1.6, 10).</p></li>
-<li><p><strong>resp_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – calculates <code class="docutils literal notranslate"><span class="pre">'cornerness'</span></code> of the pixel.
+<li><p><strong>resp_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – calculates <code class="docutils literal notranslate"><span class="pre">'cornerness'</span></code> of the pixel.
 Default:  <code class="code docutils literal notranslate"><span class="pre">BlobHessian()</span></code></p></li>
-<li><p><strong>nms_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – outputs per-patch coordinates of the response maxima.
+<li><p><strong>nms_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – outputs per-patch coordinates of the response maxima.
 See <code class="xref py py-class docutils literal notranslate"><span class="pre">ConvSoftArgmax3d</span></code> for details.
 Default:  <code class="code docutils literal notranslate"><span class="pre">ConvSoftArgmax3d((3,</span> <span class="pre">3,</span> <span class="pre">3),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">normalized_coordinates=False,</span> <span class="pre">output_value=True)</span></code></p></li>
-<li><p><strong>ori_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – for local feature orientation estimation. Default:class:<cite>~kornia.feature.PassLAF</cite>,
+<li><p><strong>ori_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature orientation estimation. Default:class:<cite>~kornia.feature.PassLAF</cite>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFOrienter" title="kornia.feature.LAFOrienter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFOrienter</span></code></a> for details.
 Default:  <code class="code docutils literal notranslate"><span class="pre">PassLAF()</span></code></p></li>
-<li><p><strong>aff_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+<li><p><strong>aff_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator" title="kornia.feature.LAFAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator</span></code></a> for details.</p></li>
 <li><p><strong>minima_are_also_good</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True, then both response function minima and maxima are detected
 Useful for symmetric response functions like DoG or Hessian. Default is False
@@ -2170,8 +2170,8 @@ detect function. Then affine shape and orientation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape [BxCxHxW]</p></li>
-<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function. The shape must be the same as
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape [BxCxHxW]</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function. The shape must be the same as
 the input image.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
@@ -2202,9 +2202,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 Default:  <code class="code docutils literal notranslate"><span class="pre">2048</span></code></p></li>
 <li><p><strong>keynet_conf</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>, <em>optional</em>) – Dict with initiliazation parameters. Do not pass it, unless you know what you are doing`.
 Default:  <code class="code docutils literal notranslate"><span class="pre">keynet_config['KeyNet_default_config']</span></code></p></li>
-<li><p><strong>ori_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – for local feature orientation estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+<li><p><strong>ori_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature orientation estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFOrienter" title="kornia.feature.LAFOrienter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFOrienter</span></code></a> for details.</p></li>
-<li><p><strong>aff_module</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>, <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+<li><p><strong>aff_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator" title="kornia.feature.LAFAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator</span></code></a> for details.</p></li>
 </ul>
 </dd>
@@ -2216,7 +2216,7 @@ which does nothing. See <a class="reference internal" href="#kornia.feature.LAFA
 detect function. Then affine shape and orientation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape [1xCxHxW]. KeyNetDetector does not support batch processing,</p>
+<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape [1xCxHxW]. KeyNetDetector does not support batch processing,</p>
 </dd>
 </dl>
 <dl class="simple">
@@ -2247,15 +2247,15 @@ responses: shape [1xNx1]. Response function values for corresponding lafs</p>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – 4d tensor.</p></li>
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input image tensor.</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – 4d tensor.</p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input image tensor.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>unchanged laf from the input.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2280,13 +2280,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/affine_shape.html#PatchAffineShapeEstimator.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PatchAffineShapeEstimator.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p>
+<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>ellipse_shape shape [Bx1x3]</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2303,7 +2303,7 @@ so it is recommended to first run LAFAffineShapeEstimator and then LAFOrienter,<
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – the input image patch size.
 Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
-<li><p><strong>affine_shape_detector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>], <em>optional</em>) – Patch affine shape estimator, <a class="reference internal" href="#kornia.feature.PatchAffineShapeEstimator" title="kornia.feature.PatchAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatchAffineShapeEstimator</span></code></a>.
+<li><p><strong>affine_shape_detector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – Patch affine shape estimator, <a class="reference internal" href="#kornia.feature.PatchAffineShapeEstimator" title="kornia.feature.PatchAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatchAffineShapeEstimator</span></code></a>.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><strong>preserve_orientation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True, the original orientation is preserved.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
@@ -2316,15 +2316,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [BxNx2x3]</p></li>
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [BxNx2x3]</p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>laf_out shape [BxNx2x3]</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2340,7 +2340,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Default:  <code class="code docutils literal notranslate"><span class="pre">32</span></code></p></li>
 <li><p><strong>num_angular_bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Default:  <code class="code docutils literal notranslate"><span class="pre">36</span></code></p></li>
-<li><p><strong>angle_detector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code>], <em>optional</em>) – Patch orientation estimator, e.g. <a class="reference internal" href="#kornia.feature.PatchDominantGradientOrientation" title="kornia.feature.PatchDominantGradientOrientation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatchDominantGradientOrientation</span></code></a>
+<li><p><strong>angle_detector</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – Patch orientation estimator, e.g. <a class="reference internal" href="#kornia.feature.PatchDominantGradientOrientation" title="kornia.feature.PatchDominantGradientOrientation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatchDominantGradientOrientation</span></code></a>
 or OriNet.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
@@ -2352,12 +2352,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [BxNx2x3]</p></li>
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [BxNx2x3]</p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>laf_out, shape [BxNx2x3]</p>
@@ -2387,13 +2387,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/orientation.html#PatchDominantGradientOrientation.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PatchDominantGradientOrientation.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p>
+<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>angle shape [B]</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2436,7 +2436,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/orientation.html#OriNet.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.OriNet.forward" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p>
+<dd class="field-odd"><p><strong>patch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) shape [Bx1xHxW]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>(torch.Tensor) shape [B]</p>
@@ -2468,12 +2468,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [BxNx2x3]</p></li>
-<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p></li>
+<li><p><strong>laf</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [BxNx2x3]</p></li>
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – shape [Bx1xHxW]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>laf_out shape [BxNx2x3]</p>
@@ -2525,7 +2525,7 @@ registered hooks while the latter silently ignores them.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

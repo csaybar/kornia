@@ -415,15 +415,15 @@ distortion models are considered in this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p></li>
-<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
+<li><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
 <span class="math notranslate nohighlight">\((k_1,k_2,p_1,p_2[,k_3[,k_4,k_5,k_6[,s_1,s_2,s_3,s_4[,\tau_x,\tau_y]]]])\)</span>. This is
 a vector with 4, 5, 8, 12 or 14 elements with shape <span class="math notranslate nohighlight">\((*, n)\)</span>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Undistorted image with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
@@ -449,18 +449,18 @@ distortion models are considered in this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p></li>
-<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
+<li><p><strong>points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
 <span class="math notranslate nohighlight">\((k_1,k_2,p_1,p_2[,k_3[,k_4,k_5,k_6[,s_1,s_2,s_3,s_4[,\tau_x,\tau_y]]]])\)</span>. This is
 a vector with 4, 5, 8, 12 or 14 elements with shape <span class="math notranslate nohighlight">\((*, n)\)</span>.</p></li>
-<li><p><strong>new_K</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Intrinsic camera matrix of the distorted image. By default, it is the same as K but you may additionally
+<li><p><strong>new_K</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Intrinsic camera matrix of the distorted image. By default, it is the same as K but you may additionally
 scale and shift the result by using a different matrix. Shape: <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Default: None.</p></li>
 <li><p><strong>num_iters</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Number of undistortion iterations. Default: 5.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Undistorted 2D points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p>
@@ -489,17 +489,17 @@ distortion models are considered in this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p></li>
-<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
-<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
+<li><p><strong>points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Input image points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Intrinsic camera matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
+<li><p><strong>dist</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Distortion coefficients
 <span class="math notranslate nohighlight">\((k_1,k_2,p_1,p_2[,k_3[,k_4,k_5,k_6[,s_1,s_2,s_3,s_4[,\tau_x,\tau_y]]]])\)</span>. This is
 a vector with 4, 5, 8, 12 or 14 elements with shape <span class="math notranslate nohighlight">\((*, n)\)</span>.</p></li>
-<li><p><strong>new_K</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Intrinsic camera matrix of the distorted image. By default, it is the same as K but you may additionally
+<li><p><strong>new_K</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – Intrinsic camera matrix of the distorted image. By default, it is the same as K but you may additionally
 scale and shift the result by using a different matrix. Shape: <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Default: None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Undistorted 2D points with shape <span class="math notranslate nohighlight">\((*, N, 2)\)</span>.</p>
@@ -520,8 +520,8 @@ scale and shift the result by using a different matrix. Shape: <span class="math
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>taux</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Rotation angle in radians around the <span class="math notranslate nohighlight">\(x\)</span>-axis with shape <span class="math notranslate nohighlight">\((*, 1)\)</span>.</p></li>
-<li><p><strong>tauy</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Rotation angle in radians around the <span class="math notranslate nohighlight">\(y\)</span>-axis with shape <span class="math notranslate nohighlight">\((*, 1)\)</span>.</p></li>
+<li><p><strong>taux</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Rotation angle in radians around the <span class="math notranslate nohighlight">\(x\)</span>-axis with shape <span class="math notranslate nohighlight">\((*, 1)\)</span>.</p></li>
+<li><p><strong>tauy</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Rotation angle in radians around the <span class="math notranslate nohighlight">\(y\)</span>-axis with shape <span class="math notranslate nohighlight">\((*, 1)\)</span>.</p></li>
 <li><p><strong>return_inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – False to obtain the the tilt projection matrix. True for the inverse matrix.
 Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
@@ -530,7 +530,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dd class="field-even"><p>Inverse tilt projection matrix with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -558,13 +558,13 @@ twisted cubic. However, this function does not check for this condition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>world_points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, N, 3)\)</span> representing
+<li><p><strong>world_points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, N, 3)\)</span> representing
 the points in the world space.</p></li>
-<li><p><strong>img_points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, N, 2)\)</span> representing
+<li><p><strong>img_points</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, N, 2)\)</span> representing
 the points in the image space.</p></li>
-<li><p><strong>intrinsics</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span> representing
+<li><p><strong>intrinsics</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – A tensor with shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span> representing
 the intrinsic matrices.</p></li>
-<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – This parameter is not used currently and is just a
+<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – This parameter is not used currently and is just a
 placeholder for API consistency.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><strong>svd_eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – A small float value to avoid numerical precision issues.
@@ -572,7 +572,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0.00
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>A tensor with shape <span class="math notranslate nohighlight">\((B, 3, 4)\)</span> representing the estimated world to
