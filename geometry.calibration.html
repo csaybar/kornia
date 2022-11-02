@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.camera" href="geometry.camera.html" /><link rel="prev" title="kornia.geometry.boxes" href="geometry.boxes.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.calibration.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.calibration - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,10 +316,11 @@
         </div>
         <article role="main">
           <section id="kornia-geometry-calibration">
-<h1>kornia.geometry.calibration<a class="headerlink" href="#kornia-geometry-calibration" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry.calibration<a class="headerlink" href="#kornia-geometry-calibration" title="Permalink to this heading">#</a></h1>
 <p>Module with useful functionalities for camera calibration.</p>
 <p>The pinhole model is an ideal projection model that not considers lens distortion for the projection of a 3D point <span class="math notranslate nohighlight">\((X, Y, Z)\)</span> onto the image plane. To model the distortion of a projected 2D pixel point <span class="math notranslate nohighlight">\((u,v)\)</span> with the linear pinhole model, we need first to estimate the normalized 2D points coordinates <span class="math notranslate nohighlight">\((\bar{u}, \bar{v})\)</span>. For that, we can use the calibration matrix <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> with the following expression</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \begin{bmatrix}
 \bar{u}\\
@@ -328,15 +331,19 @@ u \\
 v \\
 1
 \end{bmatrix} \enspace,
-\end{align}\end{split}\]</div></div>
+\end{align}\end{split}\]</div>
+</div>
 <p>which is equivalent to directly using the internal parameters: focals <span class="math notranslate nohighlight">\(f_u, f_v\)</span> and principal point <span class="math notranslate nohighlight">\((u_0, v_0)\)</span> to estimated the normalized coordinates</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
 \bar{u} = (u - u_0)/f_u \enspace, \\
 \bar{v} = (v - v_0)/f_v \enspace.
-\end{equation}\end{split}\]</div></div>
+\end{equation}\end{split}\]</div>
+</div>
 <p>The normalized distorted point <span class="math notranslate nohighlight">\((\bar{u}_d, \bar{v}_d)\)</span> is given by</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \begin{bmatrix}
 \bar{u}_d\\
@@ -349,9 +356,11 @@ v \\
 2p_1\bar{u}\bar{v} + p_2(r^2 + 2\bar{u}^2) + s_1r^2 + s_2r^4\\
 2p_2\bar{u}\bar{v} + p_1(r^2 + 2\bar{v}^2) + s_3r^2 + s_4r^4
 \end{bmatrix} \enspace,
-\end{align}\end{split}\]</div></div>
+\end{align}\end{split}\]</div>
+</div>
 <p>where <span class="math notranslate nohighlight">\(r = \bar{u}^2 + \bar{v}^2\)</span>. With this model we consider radial <span class="math notranslate nohighlight">\((k_1, k_2, k_3, k_4, k_4, k_6)\)</span>, tangential <span class="math notranslate nohighlight">\((p_1, p_2)\)</span>, and thin prism <span class="math notranslate nohighlight">\((s_1, s_2, s_3, s_4)\)</span> distortion. If we want to consider tilt distortion <span class="math notranslate nohighlight">\((\tau_x, \tau_y)\)</span>, we need an additional step where we estimate a point <span class="math notranslate nohighlight">\((\bar{u}'_d, \bar{v}'_d)\)</span></p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \begin{bmatrix}
 \bar{u}'_d\\
@@ -367,9 +376,11 @@ v \\
 \bar{v}_d \\
 1
 \end{bmatrix} \enspace,
-\end{align}\end{split}\]</div></div>
+\end{align}\end{split}\]</div>
+</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{R}(\tau_x, \tau_y)\)</span> is a 3D rotation matrix defined by an <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> rotation given by the angles <span class="math notranslate nohighlight">\(\tau_x\)</span> and <span class="math notranslate nohighlight">\(\tau_y\)</span>. Furthermore, <span class="math notranslate nohighlight">\(\mathbf{R}_{ij}(\tau_x, \tau_y)\)</span> represent the <span class="math notranslate nohighlight">\(i\)</span>-th row and <span class="math notranslate nohighlight">\(j\)</span>-th column from <span class="math notranslate nohighlight">\(\mathbf{R}(\tau_x, \tau_y)\)</span> matrix.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \mathbf{R}(\tau_x, \tau_y) =
 \begin{bmatrix}
@@ -382,9 +393,11 @@ v \\
 0 &amp; \cos \tau_x &amp; \sin \tau_x \\
 0 &amp; -\sin \tau_x &amp; \cos \tau_x
 \end{bmatrix}  \enspace.
-\end{align}\end{split}\]</div></div>
+\end{align}\end{split}\]</div>
+</div>
 <p>Finally, we just need to come back to the original (unnormalized) pixel space. For that we can use the intrinsic matrix</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 \begin{bmatrix}
 u_d\\
@@ -395,15 +408,18 @@ v_d\\
 \bar{v}'_d\\
 1
 \end{bmatrix} \enspace,
-\end{align}\end{split}\]</div></div>
+\end{align}\end{split}\]</div>
+</div>
 <p>which is equivalent to</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{equation}
 u_d = f_u \bar{u}'_d + u_0 \enspace, \\
 v_d = f_v \bar{v}'_d + v_0 \enspace.
-\end{equation}\end{split}\]</div></div>
+\end{equation}\end{split}\]</div>
+</div>
 <section id="undistortion">
-<h2>Undistortion<a class="headerlink" href="#undistortion" title="Permalink to this headline">#</a></h2>
+<h2>Undistortion<a class="headerlink" href="#undistortion" title="Permalink to this heading">#</a></h2>
 <p>To compensate for lens distortion a set of 2D points, i.e., to estimate the undistorted coordinates for a given set of distorted points, we need to inverse the previously explained distortion model. For the case of undistorting an image, instead of estimating the undistorted location for each pixel, we distort each pixel in the destination image (final undistorted image) to match them with the input image. We finally interpolate the intensity values at each pixel.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.calibration.undistort_image">
@@ -439,6 +455,7 @@ a vector with 4, 5, 8, 12 or 14 elements with shape <span class="math notranslat
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.calibration.undistort_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.calibration.</span></span><span class="sig-name descname"><span class="pre">undistort_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/calibration/undistort.html#undistort_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.calibration.undistort_points" title="Permalink to this definition">#</a></dt>
@@ -479,6 +496,7 @@ scale and shift the result by using a different matrix. Shape: <span class="math
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.calibration.distort_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.calibration.</span></span><span class="sig-name descname"><span class="pre">distort_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/calibration/distort.html#distort_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.calibration.distort_points" title="Permalink to this definition">#</a></dt>
@@ -513,6 +531,7 @@ scale and shift the result by using a different matrix. Shape: <span class="math
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.calibration.tilt_projection">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.calibration.</span></span><span class="sig-name descname"><span class="pre">tilt_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">taux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/calibration/distort.html#tilt_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.calibration.tilt_projection" title="Permalink to this definition">#</a></dt>
@@ -534,9 +553,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="perspective-n-point-pnp">
-<h2>Perspective-n-Point (PnP)<a class="headerlink" href="#perspective-n-point-pnp" title="Permalink to this headline">#</a></h2>
+<h2>Perspective-n-Point (PnP)<a class="headerlink" href="#perspective-n-point-pnp" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.calibration.solve_pnp_dlt">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.calibration.</span></span><span class="sig-name descname"><span class="pre">solve_pnp_dlt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intrinsics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svd_eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/calibration/pnp.html#solve_pnp_dlt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.calibration.solve_pnp_dlt" title="Permalink to this definition">#</a></dt>
@@ -613,6 +633,7 @@ camera transformation matrices (also known as the extrinsic matrices).</p>
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 
@@ -628,10 +649,10 @@ camera transformation matrices (also known as the extrinsic matrices).</p>
                 </div>
                 <div class="title">kornia.geometry.camera</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.boxes.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -667,15 +688,24 @@ camera transformation matrices (also known as the extrinsic matrices).</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.geometry.calibration</a><ul>
-<li><a class="reference internal" href="#undistortion">Undistortion</a></li>
-<li><a class="reference internal" href="#perspective-n-point-pnp">Perspective-n-Point (PnP)</a></li>
+<li><a class="reference internal" href="#undistortion">Undistortion</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.calibration.undistort_image"><code class="docutils literal notranslate"><span class="pre">undistort_image()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.calibration.undistort_points"><code class="docutils literal notranslate"><span class="pre">undistort_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.calibration.distort_points"><code class="docutils literal notranslate"><span class="pre">distort_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.calibration.tilt_projection"><code class="docutils literal notranslate"><span class="pre">tilt_projection()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#perspective-n-point-pnp">Perspective-n-Point (PnP)</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.calibration.solve_pnp_dlt"><code class="docutils literal notranslate"><span class="pre">solve_pnp_dlt()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -691,7 +721,9 @@ camera transformation matrices (also known as the extrinsic matrices).</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

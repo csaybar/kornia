@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/container/video.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation.container.video - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -326,11 +327,11 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.image</span> <span class="kn">import</span> <span class="n">ImageSequential</span><span class="p">,</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">_get_new_batch_shape</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.utils</span> <span class="kn">import</span> <span class="n">InputApplyInverse</span><span class="p">,</span> <span class="n">MaskApplyInverse</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"VideoSequential"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;VideoSequential&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="VideoSequential"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.VideoSequential">[docs]</a><span class="k">class</span> <span class="nc">VideoSequential</span><span class="p">(</span><span class="n">ImageSequential</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""VideoSequential for processing 5-dim video data like (B, T, C, H, W) and (B, C, T, H, W).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;VideoSequential for processing 5-dim video data like (B, T, C, H, W) and (B, C, T, H, W).</span>
 
 <span class="sd">    `VideoSequential` is used to replace `nn.Sequential` for processing video data augmentations.</span>
 <span class="sd">    By default, `VideoSequential` enabled `same_on_frame` to make sure the same augmentations happen</span>
@@ -362,7 +363,7 @@
 <span class="sd">        ...     kornia.color.BgrToRgb(),</span>
 <span class="sd">        ...     kornia.augmentation.RandomAffine(360, p=1.0),</span>
 <span class="sd">        ...     random_apply=10,</span>
-<span class="sd">        ...     data_format="BCTHW",</span>
+<span class="sd">        ...     data_format=&quot;BCTHW&quot;,</span>
 <span class="sd">        ...     same_on_frame=True)</span>
 <span class="sd">        &gt;&gt;&gt; output = aug_list(input)</span>
 <span class="sd">        &gt;&gt;&gt; (output[0, :, 0] == output[0, :, 1]).all()</span>
@@ -378,7 +379,7 @@
 <span class="sd">        ...     kornia.augmentation.ColorJiggle(0.1, 0.1, 0.1, 0.1, p=1.0),</span>
 <span class="sd">        ...     kornia.augmentation.RandomAffine(360, p=1.0),</span>
 <span class="sd">        ...     kornia.augmentation.RandomMixUp(p=1.0),</span>
-<span class="sd">        ... data_format="BCTHW",</span>
+<span class="sd">        ... data_format=&quot;BCTHW&quot;,</span>
 <span class="sd">        ... same_on_frame=False)</span>
 <span class="sd">        &gt;&gt;&gt; output, lab = aug_list(input)</span>
 <span class="sd">        &gt;&gt;&gt; output.shape, lab.shape</span>
@@ -399,7 +400,7 @@
 <span class="sd">        ...     kornia.augmentation.ColorJiggle(0.1, 0.1, 0.1, 0.1, p=1.0),</span>
 <span class="sd">        ...     kornia.augmentation.RandomAffine(360, p=1.0),</span>
 <span class="sd">        ...     kornia.augmentation.RandomMixUp(p=1.0),</span>
-<span class="sd">        ... data_format="BCTHW",</span>
+<span class="sd">        ... data_format=&quot;BCTHW&quot;,</span>
 <span class="sd">        ... same_on_frame=False,</span>
 <span class="sd">        ... random_apply=1,</span>
 <span class="sd">        ... random_apply_weights=[0.5, 0.3, 0.8]</span>
@@ -407,12 +408,12 @@
 <span class="sd">        &gt;&gt;&gt; out= aug_list(input, label)</span>
 <span class="sd">        &gt;&gt;&gt; out[0].shape</span>
 <span class="sd">        torch.Size([2, 3, 4, 5, 6])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
-        <span class="n">data_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"BTCHW"</span><span class="p">,</span>
+        <span class="n">data_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;BTCHW&quot;</span><span class="p">,</span>
         <span class="n">same_on_frame</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">random_apply_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -426,27 +427,27 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">same_on_frame</span> <span class="o">=</span> <span class="n">same_on_frame</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">=</span> <span class="n">data_format</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"BCTHW"</span><span class="p">,</span> <span class="s2">"BTCHW"</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Only `BCTHW` and `BTCHW` are supported. Got `</span><span class="si">{</span><span class="n">data_format</span><span class="si">}</span><span class="s2">`."</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span> <span class="s2">&quot;BTCHW&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only `BCTHW` and `BTCHW` are supported. Got `</span><span class="si">{</span><span class="n">data_format</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_temporal_channel</span><span class="p">:</span> <span class="nb">int</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BCTHW"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BCTHW&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_temporal_channel</span> <span class="o">=</span> <span class="mi">2</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BTCHW"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BTCHW&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_temporal_channel</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">__infer_channel_exclusive_batch_shape__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">,</span> <span class="n">chennel_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">:</span>
-        <span class="c1"># Fix mypy complains: error: Incompatible return value type (got "Tuple[int, ...]", expected "Size")</span>
+        <span class="c1"># Fix mypy complains: error: Incompatible return value type (got &quot;Tuple[int, ...]&quot;, expected &quot;Size&quot;)</span>
         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">[:</span><span class="n">chennel_index</span><span class="p">]</span> <span class="o">+</span> <span class="n">batch_shape</span><span class="p">[</span><span class="n">chennel_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span>
 
     <span class="k">def</span> <span class="nf">__repeat_param_across_channels__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Repeat parameters across channels.</span>
+        <span class="sd">&quot;&quot;&quot;Repeat parameters across channels.</span>
 
 <span class="sd">        The input is shaped as (B, ...), while to output (B * same_on_frame, ...), which</span>
 <span class="sd">        to guarantee that the same transformation would happen for each frame.</span>
 
 <span class="sd">        (B1, B2, ..., Bn) =&gt; (B1, ... B1, B2, ..., B2, ..., Bn, ..., Bn)</span>
 <span class="sd">                              | ch_size | | ch_size |  ..., | ch_size |</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">repeated</span> <span class="o">=</span> <span class="n">param</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">,</span> <span class="o">*</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
         <span class="k">return</span> <span class="n">repeated</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>  <span class="c1"># type: ignore</span>
 
@@ -454,10 +455,10 @@
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
         <span class="c1"># Convert any shape to (B, T, C, H, W)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BCTHW"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BCTHW&quot;</span><span class="p">:</span>
             <span class="c1"># Convert (B, C, T, H, W) to (B, T, C, H, W)</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BTCHW"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BTCHW&quot;</span><span class="p">:</span>
             <span class="k">pass</span>
 
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -470,7 +471,7 @@
                 <span class="c1"># Skip the conversion if label is provided as (B * T,)</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid label shape of </span><span class="si">{</span><span class="n">label</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid label shape of </span><span class="si">{</span><span class="n">label</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
         <span class="k">return</span> <span class="nb">input</span><span class="p">,</span> <span class="n">label</span>
 
@@ -478,9 +479,9 @@
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
         <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">,</span> <span class="o">*</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BCTHW"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BCTHW&quot;</span><span class="p">:</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">"BTCHW"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_format</span> <span class="o">==</span> <span class="s2">&quot;BTCHW&quot;</span><span class="p">:</span>
             <span class="k">pass</span>
 
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -502,25 +503,25 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">RandomCrop</span><span class="p">):</span>
                 <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters_precrop</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_on_frame</span><span class="p">:</span>
-                    <span class="n">mod_param</span><span class="p">[</span><span class="s2">"src"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod_param</span><span class="p">[</span><span class="s2">"src"</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">frame_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                    <span class="n">mod_param</span><span class="p">[</span><span class="s2">"dst"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod_param</span><span class="p">[</span><span class="s2">"dst"</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">frame_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">mod_param</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod_param</span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">frame_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">mod_param</span><span class="p">[</span><span class="s2">&quot;dst&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod_param</span><span class="p">[</span><span class="s2">&quot;dst&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">frame_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mod_param</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">SequentialBase</span><span class="p">,)):</span>
                 <span class="n">seq_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_on_frame</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Sequential is currently unsupported for ``same_on_frame``."</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sequential is currently unsupported for ``same_on_frame``.&quot;</span><span class="p">)</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">seq_param</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">)):</span>
                 <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_on_frame</span><span class="p">:</span>
                     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mod_param</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                         <span class="c1"># TODO: revise ColorJiggle and ColorJitter order param in the future to align the standard.</span>
-                        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">"order"</span> <span class="ow">and</span> <span class="p">(</span>
+                        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;order&quot;</span> <span class="ow">and</span> <span class="p">(</span>
                             <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">)</span>
                             <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJitter</span><span class="p">)</span>
                         <span class="p">):</span>
                             <span class="k">continue</span>
-                        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">"forward_input_shape"</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;forward_input_shape&quot;</span><span class="p">:</span>
                             <span class="n">mod_param</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">})</span>
                             <span class="k">continue</span>
                         <span class="n">mod_param</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__repeat_param_across_channels__</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">)})</span>
@@ -534,11 +535,11 @@
     <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Inverse transformation.</span>
+        <span class="sd">&quot;&quot;&quot;Inverse transformation.</span>
 
 <span class="sd">        Used to inverse a tensor according to the performed transformation by a forward pass, or with respect to</span>
 <span class="sd">        provided parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span> <span class="ow">in</span> <span class="p">(</span><span class="n">InputApplyInverse</span><span class="p">,</span> <span class="n">MaskApplyInverse</span><span class="p">):</span>
             <span class="n">frame_num</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temporal_channel</span><span class="p">)</span>
             <span class="nb">input</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_shape_convert_in</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">)</span>
@@ -561,9 +562,9 @@
         <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="sd">"""Define the video computation performed."""</span>
+        <span class="sd">&quot;&quot;&quot;Define the video computation performed.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a 5-dim tensor. Got </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a 5-dim tensor. Got </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -574,7 +575,7 @@
             <span class="nb">input</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_shape_convert_in</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
 
@@ -590,14 +591,14 @@
                 <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span> <span class="ow">in</span> <span class="p">(</span><span class="n">InputApplyInverse</span><span class="p">,</span> <span class="n">MaskApplyInverse</span><span class="p">):</span>
                 <span class="n">output</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_shape_convert_back</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">frame_num</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid label value. Got </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__packup_output__</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div></div>
@@ -639,7 +640,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

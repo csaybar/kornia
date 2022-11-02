@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/conversions.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.conversions - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -326,54 +327,54 @@
 <span class="kn">from</span> <span class="nn">kornia.utils.helpers</span> <span class="kn">import</span> <span class="n">_torch_inverse_cast</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"rad2deg"</span><span class="p">,</span>
-    <span class="s2">"deg2rad"</span><span class="p">,</span>
-    <span class="s2">"pol2cart"</span><span class="p">,</span>
-    <span class="s2">"cart2pol"</span><span class="p">,</span>
-    <span class="s2">"convert_points_from_homogeneous"</span><span class="p">,</span>
-    <span class="s2">"convert_points_to_homogeneous"</span><span class="p">,</span>
-    <span class="s2">"convert_affinematrix_to_homography"</span><span class="p">,</span>
-    <span class="s2">"convert_affinematrix_to_homography3d"</span><span class="p">,</span>
-    <span class="s2">"angle_axis_to_rotation_matrix"</span><span class="p">,</span>
-    <span class="s2">"angle_axis_to_quaternion"</span><span class="p">,</span>
-    <span class="s2">"rotation_matrix_to_angle_axis"</span><span class="p">,</span>
-    <span class="s2">"rotation_matrix_to_quaternion"</span><span class="p">,</span>
-    <span class="s2">"quaternion_to_angle_axis"</span><span class="p">,</span>
-    <span class="s2">"quaternion_to_rotation_matrix"</span><span class="p">,</span>
-    <span class="s2">"quaternion_log_to_exp"</span><span class="p">,</span>
-    <span class="s2">"quaternion_exp_to_log"</span><span class="p">,</span>
-    <span class="s2">"denormalize_pixel_coordinates"</span><span class="p">,</span>
-    <span class="s2">"normalize_pixel_coordinates"</span><span class="p">,</span>
-    <span class="s2">"normalize_quaternion"</span><span class="p">,</span>
-    <span class="s2">"denormalize_pixel_coordinates3d"</span><span class="p">,</span>
-    <span class="s2">"normalize_pixel_coordinates3d"</span><span class="p">,</span>
-    <span class="s2">"angle_to_rotation_matrix"</span><span class="p">,</span>
-    <span class="s2">"normalize_homography"</span><span class="p">,</span>
-    <span class="s2">"denormalize_homography"</span><span class="p">,</span>
-    <span class="s2">"normalize_homography3d"</span><span class="p">,</span>
-    <span class="s2">"normal_transform_pixel"</span><span class="p">,</span>
-    <span class="s2">"normal_transform_pixel3d"</span><span class="p">,</span>
-    <span class="s2">"normalize_points_with_intrinsics"</span><span class="p">,</span>
-    <span class="s2">"denormalize_points_with_intrinsics"</span><span class="p">,</span>
-    <span class="s2">"worldtocam_to_camtoworld_Rt"</span><span class="p">,</span>
-    <span class="s2">"camtoworld_to_worldtocam_Rt"</span><span class="p">,</span>
-    <span class="s2">"Rt_to_matrix4x4"</span><span class="p">,</span>
-    <span class="s2">"matrix4x4_to_Rt"</span><span class="p">,</span>
-    <span class="s2">"camtoworld_graphics_to_vision_4x4"</span><span class="p">,</span>
-    <span class="s2">"camtoworld_vision_to_graphics_4x4"</span><span class="p">,</span>
-    <span class="s2">"camtoworld_graphics_to_vision_Rt"</span><span class="p">,</span>
-    <span class="s2">"camtoworld_vision_to_graphics_Rt"</span><span class="p">,</span>
-    <span class="s2">"ARKitQTVecs_to_ColmapQTVecs"</span><span class="p">,</span>
+    <span class="s2">&quot;rad2deg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;deg2rad&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pol2cart&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cart2pol&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;convert_points_from_homogeneous&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;convert_points_to_homogeneous&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;convert_affinematrix_to_homography&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;convert_affinematrix_to_homography3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle_axis_to_rotation_matrix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle_axis_to_quaternion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rotation_matrix_to_angle_axis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rotation_matrix_to_quaternion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;quaternion_to_angle_axis&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;quaternion_to_rotation_matrix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;quaternion_log_to_exp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;quaternion_exp_to_log&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;denormalize_pixel_coordinates&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_pixel_coordinates&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_quaternion&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;denormalize_pixel_coordinates3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_pixel_coordinates3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;angle_to_rotation_matrix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_homography&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;denormalize_homography&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_homography3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normal_transform_pixel&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normal_transform_pixel3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;normalize_points_with_intrinsics&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;denormalize_points_with_intrinsics&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;worldtocam_to_camtoworld_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;camtoworld_to_worldtocam_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Rt_to_matrix4x4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matrix4x4_to_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;camtoworld_graphics_to_vision_4x4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;camtoworld_vision_to_graphics_4x4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;camtoworld_graphics_to_vision_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;camtoworld_vision_to_graphics_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ARKitQTVecs_to_ColmapQTVecs&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">QuaternionCoeffOrder</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="n">XYZW</span> <span class="o">=</span> <span class="s1">'xyzw'</span>
-    <span class="n">WXYZ</span> <span class="o">=</span> <span class="s1">'wxyz'</span>
+    <span class="n">XYZW</span> <span class="o">=</span> <span class="s1">&#39;xyzw&#39;</span>
+    <span class="n">WXYZ</span> <span class="o">=</span> <span class="s1">&#39;wxyz&#39;</span>
 
 
 <div class="viewcode-block" id="rad2deg"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.rad2deg">[docs]</a><span class="k">def</span> <span class="nf">rad2deg</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts angles from radians to degrees.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts angles from radians to degrees.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor: Tensor of arbitrary shape.</span>
@@ -385,15 +386,15 @@
 <span class="sd">        &gt;&gt;&gt; input = tensor(3.1415926535)</span>
 <span class="sd">        &gt;&gt;&gt; rad2deg(input)</span>
 <span class="sd">        tensor(180.)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="mf">180.0</span> <span class="o">*</span> <span class="n">tensor</span> <span class="o">/</span> <span class="n">pi</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="deg2rad"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.deg2rad">[docs]</a><span class="k">def</span> <span class="nf">deg2rad</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts angles from degrees to radians.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts angles from degrees to radians.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor: Tensor of arbitrary shape.</span>
@@ -405,15 +406,15 @@
 <span class="sd">        &gt;&gt;&gt; input = tensor(180.)</span>
 <span class="sd">        &gt;&gt;&gt; deg2rad(input)</span>
 <span class="sd">        tensor(3.1416)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">tensor</span> <span class="o">*</span> <span class="n">pi</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="mf">180.0</span></div>
 
 
 <div class="viewcode-block" id="pol2cart"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.pol2cart">[docs]</a><span class="k">def</span> <span class="nf">pol2cart</span><span class="p">(</span><span class="n">rho</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts polar coordinates to cartesian coordinates.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts polar coordinates to cartesian coordinates.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        rho: Tensor of arbitrary shape.</span>
@@ -427,9 +428,9 @@
 <span class="sd">        &gt;&gt;&gt; rho = torch.rand(1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; phi = torch.rand(1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; x, y = pol2cart(rho, phi)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
@@ -437,7 +438,7 @@
 
 
 <div class="viewcode-block" id="cart2pol"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.cart2pol">[docs]</a><span class="k">def</span> <span class="nf">cart2pol</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function that converts cartesian coordinates to polar coordinates.</span>
+    <span class="sd">&quot;&quot;&quot;Function that converts cartesian coordinates to polar coordinates.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: Tensor of arbitrary shape.</span>
@@ -452,9 +453,9 @@
 <span class="sd">        &gt;&gt;&gt; x = torch.rand(1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; y = torch.rand(1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; rho, phi = cart2pol(x, y)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">rho</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
     <span class="n">phi</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -462,7 +463,7 @@
 
 
 <div class="viewcode-block" id="convert_points_from_homogeneous"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.convert_points_from_homogeneous">[docs]</a><span class="k">def</span> <span class="nf">convert_points_from_homogeneous</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts points from homogeneous to Euclidean space.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts points from homogeneous to Euclidean space.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        points: the points to be transformed of shape :math:`(B, N, D)`.</span>
@@ -475,12 +476,12 @@
 <span class="sd">        &gt;&gt;&gt; input = tensor([[0., 0., 1.]])</span>
 <span class="sd">        &gt;&gt;&gt; convert_points_from_homogeneous(input)</span>
 <span class="sd">        tensor([[0., 0.]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be at least a 2D tensor. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be at least a 2D tensor. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># we check for points at max_val</span>
     <span class="n">z_vec</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
@@ -495,7 +496,7 @@
 
 
 <div class="viewcode-block" id="convert_points_to_homogeneous"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.convert_points_to_homogeneous">[docs]</a><span class="k">def</span> <span class="nf">convert_points_to_homogeneous</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts points from Euclidean to homogeneous space.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts points from Euclidean to homogeneous space.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        points: the points to be transformed with shape :math:`(*, N, D)`.</span>
@@ -507,23 +508,23 @@
 <span class="sd">        &gt;&gt;&gt; input = tensor([[0., 0.]])</span>
 <span class="sd">        &gt;&gt;&gt; convert_points_to_homogeneous(input)</span>
 <span class="sd">        tensor([[0., 0., 1.]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be at least a 2D tensor. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be at least a 2D tensor. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">"constant"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_convert_affinematrix_to_homography_impl</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">"constant"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
     <span class="n">H</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
     <span class="k">return</span> <span class="n">H</span>
 
 
 <div class="viewcode-block" id="convert_affinematrix_to_homography"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.convert_affinematrix_to_homography">[docs]</a><span class="k">def</span> <span class="nf">convert_affinematrix_to_homography</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts batch of affine matrices.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts batch of affine matrices.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        A: the affine matrix with shape :math:`(B,2,3)`.</span>
@@ -538,18 +539,18 @@
 <span class="sd">        tensor([[[1., 0., 0.],</span>
 <span class="sd">                 [0., 1., 0.],</span>
 <span class="sd">                 [0., 0., 1.]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input matrix must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input matrix must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_convert_affinematrix_to_homography_impl</span><span class="p">(</span><span class="n">A</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">convert_affinematrix_to_homography3d</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that converts batch of 3d affine matrices.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that converts batch of 3d affine matrices.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        A: the affine matrix with shape :math:`(B,3,4)`.</span>
@@ -566,18 +567,18 @@
 <span class="sd">                 [0., 1., 0., 0.],</span>
 <span class="sd">                 [0., 0., 1., 0.],</span>
 <span class="sd">                 [0., 0., 0., 1.]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input matrix must be a Bx3x4 tensor. Got </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input matrix must be a Bx3x4 tensor. Got </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_convert_affinematrix_to_homography_impl</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="angle_axis_to_rotation_matrix"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.angle_axis_to_rotation_matrix">[docs]</a><span class="k">def</span> <span class="nf">angle_axis_to_rotation_matrix</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert 3d vector of axis-angle rotation to 3x3 rotation matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert 3d vector of axis-angle rotation to 3x3 rotation matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        angle_axis: tensor of 3d vector of axis-angle rotations in radians with shape :math:`(N, 3)`.</span>
@@ -597,12 +598,12 @@
 <span class="sd">        tensor([[[ 1.0000e+00,  0.0000e+00,  0.0000e+00],</span>
 <span class="sd">                 [ 0.0000e+00, -3.6200e-06, -1.0000e+00],</span>
 <span class="sd">                 [ 0.0000e+00,  1.0000e+00, -3.6200e-06]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must be a (*, 3) tensor. Got </span><span class="si">{</span><span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must be a (*, 3) tensor. Got </span><span class="si">{</span><span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_compute_rotation_matrix</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
         <span class="c1"># We want to be careful to only evaluate the square root if the</span>
@@ -659,7 +660,7 @@
 
 
 <div class="viewcode-block" id="rotation_matrix_to_angle_axis"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.rotation_matrix_to_angle_axis">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix_to_angle_axis</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert 3x3 rotation matrix to Rodrigues vector in radians.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert 3x3 rotation matrix to Rodrigues vector in radians.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        rotation_matrix: rotation matrix of shape :math:`(N, 3, 3)`.</span>
@@ -679,12 +680,12 @@
 <span class="sd">        ...                       [0., 1., 0.]])</span>
 <span class="sd">        &gt;&gt;&gt; rotation_matrix_to_angle_axis(input)</span>
 <span class="sd">        tensor([1.5708, 0.0000, 0.0000])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must be a (*, 3, 3) tensor. Got </span><span class="si">{</span><span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must be a (*, 3, 3) tensor. Got </span><span class="si">{</span><span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">rotation_matrix_to_quaternion</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">WXYZ</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">quaternion_to_angle_axis</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">WXYZ</span><span class="p">)</span></div>
 
@@ -692,7 +693,7 @@
 <div class="viewcode-block" id="rotation_matrix_to_quaternion"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.rotation_matrix_to_quaternion">[docs]</a><span class="k">def</span> <span class="nf">rotation_matrix_to_quaternion</span><span class="p">(</span>
     <span class="n">rotation_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert 3x3 rotation matrix to 4d quaternion vector.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert 3x3 rotation matrix to 4d quaternion vector.</span>
 
 <span class="sd">    The quaternion vector has components in (w, x, y, z) or (x, y, z, w) format.</span>
 
@@ -702,7 +703,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        rotation_matrix: the rotation matrix to convert with shape :math:`(*, 3, 3)`.</span>
 <span class="sd">        eps: small value to avoid zero division.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        the rotation in quaternion with shape :math:`(*, 4)`.</span>
@@ -714,22 +715,22 @@
 <span class="sd">        &gt;&gt;&gt; rotation_matrix_to_quaternion(input, eps=torch.finfo(input.dtype).eps,</span>
 <span class="sd">        ...                               order=QuaternionCoeffOrder.WXYZ)</span>
 <span class="sd">        tensor([1., 0., 0., 0.])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must be a (*, 3, 3) tensor. Got </span><span class="si">{</span><span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must be a (*, 3, 3) tensor. Got </span><span class="si">{</span><span class="n">rotation_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">safe_zero_division</span><span class="p">(</span><span class="n">numerator</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">denominator</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -790,7 +791,7 @@
 
 
 <div class="viewcode-block" id="normalize_quaternion"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_quaternion">[docs]</a><span class="k">def</span> <span class="nf">normalize_quaternion</span><span class="p">(</span><span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Normalize a quaternion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalize a quaternion.</span>
 
 <span class="sd">    The quaternion should be in (x, y, z, w) or (w, x, y, z) format.</span>
 
@@ -806,12 +807,12 @@
 <span class="sd">        &gt;&gt;&gt; quaternion = tensor((1., 0., 1., 0.))</span>
 <span class="sd">        &gt;&gt;&gt; normalize_quaternion(quaternion)</span>
 <span class="sd">        tensor([0.7071, 0.0000, 0.7071, 0.0000])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">)</span></div>
 
 
@@ -823,14 +824,14 @@
 <div class="viewcode-block" id="quaternion_to_rotation_matrix"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.quaternion_to_rotation_matrix">[docs]</a><span class="k">def</span> <span class="nf">quaternion_to_rotation_matrix</span><span class="p">(</span>
     <span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert a quaternion to a rotation matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a quaternion to a rotation matrix.</span>
 
 <span class="sd">    The quaternion should be in (x, y, z, w) or (w, x, y, z) format.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        quaternion: a tensor containing a quaternion to be converted.</span>
 <span class="sd">          The tensor can be of shape :math:`(*, 4)`.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        the rotation matrix of shape :math:`(*, 3, 3)`.</span>
@@ -841,22 +842,22 @@
 <span class="sd">        tensor([[-1.,  0.,  0.],</span>
 <span class="sd">                [ 0., -1.,  0.],</span>
 <span class="sd">                [ 0.,  0.,  1.]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># normalize the input quaternion</span>
@@ -904,7 +905,7 @@
 
 
 <div class="viewcode-block" id="quaternion_to_angle_axis"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.quaternion_to_angle_axis">[docs]</a><span class="k">def</span> <span class="nf">quaternion_to_angle_axis</span><span class="p">(</span><span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Convert quaternion vector to angle axis of rotation in radians.</span>
+    <span class="sd">&quot;&quot;&quot;Convert quaternion vector to angle axis of rotation in radians.</span>
 
 <span class="sd">    The quaternion should be in (x, y, z, w) or (w, x, y, z) format.</span>
 
@@ -912,7 +913,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        quaternion: tensor with quaternions.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        tensor with angle axis of rotation.</span>
@@ -925,22 +926,22 @@
 <span class="sd">        &gt;&gt;&gt; quaternion = tensor((1., 0., 0., 0.))</span>
 <span class="sd">        &gt;&gt;&gt; quaternion_to_angle_axis(quaternion)</span>
 <span class="sd">        tensor([3.1416, 0.0000, 0.0000])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">quaternion</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape Nx4 or 4. Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape Nx4 or 4. Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
     <span class="c1"># unpack input and compute conversion</span>
     <span class="n">q1</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([])</span>
@@ -980,7 +981,7 @@
 <div class="viewcode-block" id="quaternion_log_to_exp"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.quaternion_log_to_exp">[docs]</a><span class="k">def</span> <span class="nf">quaternion_log_to_exp</span><span class="p">(</span>
     <span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply exponential map to log quaternion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply exponential map to log quaternion.</span>
 
 <span class="sd">    The quaternion should be in (x, y, z, w) or (w, x, y, z) format.</span>
 
@@ -988,7 +989,7 @@
 <span class="sd">        quaternion: a tensor containing a quaternion to be converted.</span>
 <span class="sd">          The tensor can be of shape :math:`(*, 3)`.</span>
 <span class="sd">        eps: a small number for clamping.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        the quaternion exponential map of shape :math:`(*, 4)`.</span>
@@ -998,22 +999,22 @@
 <span class="sd">        &gt;&gt;&gt; quaternion_log_to_exp(quaternion, eps=torch.finfo(quaternion.dtype).eps,</span>
 <span class="sd">        ...                       order=QuaternionCoeffOrder.WXYZ)</span>
 <span class="sd">        tensor([1., 0., 0., 0.])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape (*, 3). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape (*, 3). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># compute quaternion norm</span>
@@ -1036,7 +1037,7 @@
 <div class="viewcode-block" id="quaternion_exp_to_log"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.quaternion_exp_to_log">[docs]</a><span class="k">def</span> <span class="nf">quaternion_exp_to_log</span><span class="p">(</span>
     <span class="n">quaternion</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0e-8</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply the log map to a quaternion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the log map to a quaternion.</span>
 
 <span class="sd">    The quaternion should be in (x, y, z, w) format.</span>
 
@@ -1044,7 +1045,7 @@
 <span class="sd">        quaternion: a tensor containing a quaternion to be converted.</span>
 <span class="sd">          The tensor can be of shape :math:`(*, 4)`.</span>
 <span class="sd">        eps: a small number for clamping.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        the quaternion log map of shape :math:`(*, 3)`.</span>
@@ -1054,22 +1055,22 @@
 <span class="sd">        &gt;&gt;&gt; quaternion_exp_to_log(quaternion, eps=torch.finfo(quaternion.dtype).eps,</span>
 <span class="sd">        ...                       order=QuaternionCoeffOrder.WXYZ)</span>
 <span class="sd">        tensor([0., 0., 0.])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">quaternion</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">quaternion</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape (*, 4). Got </span><span class="si">{</span><span class="n">quaternion</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># unpack quaternion vector and scalar</span>
@@ -1097,7 +1098,7 @@
 
 
 <div class="viewcode-block" id="angle_axis_to_quaternion"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.angle_axis_to_quaternion">[docs]</a><span class="k">def</span> <span class="nf">angle_axis_to_quaternion</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">QuaternionCoeffOrder</span> <span class="o">=</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert an angle axis to a quaternion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert an angle axis to a quaternion.</span>
 
 <span class="sd">    The quaternion vector has components in (x, y, z, w) or (w, x, y, z) format.</span>
 
@@ -1105,7 +1106,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        angle_axis: tensor with angle axis in radians.</span>
-<span class="sd">        order: quaternion coefficient order. Note: 'xyzw' will be deprecated in favor of 'wxyz'.</span>
+<span class="sd">        order: quaternion coefficient order. Note: &#39;xyzw&#39; will be deprecated in favor of &#39;wxyz&#39;.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        tensor with quaternion.</span>
@@ -1118,22 +1119,22 @@
 <span class="sd">        &gt;&gt;&gt; angle_axis = tensor((0., 1., 0.))</span>
 <span class="sd">        &gt;&gt;&gt; angle_axis_to_quaternion(angle_axis, order=QuaternionCoeffOrder.WXYZ)</span>
 <span class="sd">        tensor([0.8776, 0.0000, 0.4794, 0.0000])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle_axis</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input must be a tensor of shape Nx3 or 3. Got </span><span class="si">{</span><span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input must be a tensor of shape Nx3 or 3. Got </span><span class="si">{</span><span class="n">angle_axis</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">order</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;order must be one of </span><span class="si">{</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">__members__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">XYZW</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`XYZW` quaternion coefficient order is deprecated and"</span>
-            <span class="s2">" will be removed after &gt; 0.6. "</span>
-            <span class="s2">"Please use `QuaternionCoeffOrder.WXYZ` instead."</span>
+            <span class="s2">&quot;`XYZW` quaternion coefficient order is deprecated and&quot;</span>
+            <span class="s2">&quot; will be removed after &gt; 0.6. &quot;</span>
+            <span class="s2">&quot;Please use `QuaternionCoeffOrder.WXYZ` instead.&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># unpack input and compute conversion</span>
@@ -1172,7 +1173,7 @@
 
 
 <div class="viewcode-block" id="normalize_pixel_coordinates"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_pixel_coordinates">[docs]</a><span class="k">def</span> <span class="nf">normalize_pixel_coordinates</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Normalize pixel coordinates between -1 and 1.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalize pixel coordinates between -1 and 1.</span>
 
 <span class="sd">    Normalized, -1 if on extreme left, 1 if on extreme right (x = w-1).</span>
 
@@ -1189,9 +1190,9 @@
 <span class="sd">        &gt;&gt;&gt; coords = tensor([[50., 100.]])</span>
 <span class="sd">        &gt;&gt;&gt; normalize_pixel_coordinates(coords, 100, 50)</span>
 <span class="sd">        tensor([[1.0408, 1.0202]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input pixel_coordinates must be of shape (*, 2). "</span> <span class="s2">"Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input pixel_coordinates must be of shape (*, 2). &quot;</span> <span class="s2">&quot;Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
     <span class="c1"># compute normalization factor</span>
     <span class="n">hw</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">stack</span><span class="p">(</span>
@@ -1207,7 +1208,7 @@
 
 
 <div class="viewcode-block" id="denormalize_pixel_coordinates"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.denormalize_pixel_coordinates">[docs]</a><span class="k">def</span> <span class="nf">denormalize_pixel_coordinates</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Denormalize pixel coordinates.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Denormalize pixel coordinates.</span>
 
 <span class="sd">    The input is assumed to be -1 if on extreme left, 1 if on extreme right (x = w-1).</span>
 
@@ -1224,9 +1225,9 @@
 <span class="sd">        &gt;&gt;&gt; coords = tensor([[-1., -1.]])</span>
 <span class="sd">        &gt;&gt;&gt; denormalize_pixel_coordinates(coords, 100, 50)</span>
 <span class="sd">        tensor([[0., 0.]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input pixel_coordinates must be of shape (*, 2). "</span> <span class="s2">"Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input pixel_coordinates must be of shape (*, 2). &quot;</span> <span class="s2">&quot;Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="c1"># compute normalization factor</span>
     <span class="n">hw</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">stack</span><span class="p">([</span><span class="n">tensor</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="n">height</span><span class="p">)])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
@@ -1238,7 +1239,7 @@
 <div class="viewcode-block" id="normalize_pixel_coordinates3d"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_pixel_coordinates3d">[docs]</a><span class="k">def</span> <span class="nf">normalize_pixel_coordinates3d</span><span class="p">(</span>
     <span class="n">pixel_coordinates</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Normalize pixel coordinates between -1 and 1.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalize pixel coordinates between -1 and 1.</span>
 
 <span class="sd">    Normalized, -1 if on extreme left, 1 if on extreme right (x = w-1).</span>
 
@@ -1251,9 +1252,9 @@
 
 <span class="sd">    Return:</span>
 <span class="sd">        the normalized pixel coordinates.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input pixel_coordinates must be of shape (*, 3). "</span> <span class="s2">"Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input pixel_coordinates must be of shape (*, 3). &quot;</span> <span class="s2">&quot;Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="c1"># compute normalization factor</span>
     <span class="n">dhw</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">stack</span><span class="p">([</span><span class="n">tensor</span><span class="p">(</span><span class="n">depth</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="n">height</span><span class="p">)])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
@@ -1267,7 +1268,7 @@
 <div class="viewcode-block" id="denormalize_pixel_coordinates3d"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.denormalize_pixel_coordinates3d">[docs]</a><span class="k">def</span> <span class="nf">denormalize_pixel_coordinates3d</span><span class="p">(</span>
     <span class="n">pixel_coordinates</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Denormalize pixel coordinates.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Denormalize pixel coordinates.</span>
 
 <span class="sd">    The input is assumed to be -1 if on extreme left, 1 if on extreme right (x = w-1).</span>
 
@@ -1280,9 +1281,9 @@
 
 <span class="sd">    Return:</span>
 <span class="sd">        the denormalized pixel coordinates.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input pixel_coordinates must be of shape (*, 3). "</span> <span class="s2">"Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input pixel_coordinates must be of shape (*, 3). &quot;</span> <span class="s2">&quot;Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="c1"># compute normalization factor</span>
     <span class="n">dhw</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">stack</span><span class="p">([</span><span class="n">tensor</span><span class="p">(</span><span class="n">depth</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="n">tensor</span><span class="p">(</span><span class="n">height</span><span class="p">)])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">pixel_coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
@@ -1294,7 +1295,7 @@
 
 
 <div class="viewcode-block" id="angle_to_rotation_matrix"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.angle_to_rotation_matrix">[docs]</a><span class="k">def</span> <span class="nf">angle_to_rotation_matrix</span><span class="p">(</span><span class="n">angle</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Create a rotation matrix out of angles in degrees.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create a rotation matrix out of angles in degrees.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        angle: tensor of angles in degrees, any shape :math:`(*)`.</span>
@@ -1305,7 +1306,7 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(1, 3)  # Nx3</span>
 <span class="sd">        &gt;&gt;&gt; output = angle_to_rotation_matrix(input)  # Nx3x2x2</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ang_rad</span> <span class="o">=</span> <span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
     <span class="n">cos_a</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang_rad</span><span class="p">)</span>
     <span class="n">sin_a</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang_rad</span><span class="p">)</span>
@@ -1315,7 +1316,7 @@
 <div class="viewcode-block" id="normalize_homography"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_homography">[docs]</a><span class="k">def</span> <span class="nf">normalize_homography</span><span class="p">(</span>
     <span class="n">dst_pix_trans_src_pix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dsize_src</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">dsize_dst</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Normalize a given homography in pixels to [-1, 1].</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalize a given homography in pixels to [-1, 1].</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        dst_pix_trans_src_pix: homography/ies from source to destination to be</span>
@@ -1325,12 +1326,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the normalized homography of shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># source and destination sizes</span>
     <span class="n">src_h</span><span class="p">,</span> <span class="n">src_w</span> <span class="o">=</span> <span class="n">dsize_src</span>
@@ -1354,7 +1355,7 @@
     <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the normalization matrix from image size in pixels to [-1, 1].</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the normalization matrix from image size in pixels to [-1, 1].</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        height image height.</span>
@@ -1363,7 +1364,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        normalized transform with shape :math:`(1, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tr_mat</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># 3x3</span>
 
     <span class="c1"># prevent divide by zero bugs</span>
@@ -1384,7 +1385,7 @@
     <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the normalization matrix from image size in pixels to [-1, 1].</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the normalization matrix from image size in pixels to [-1, 1].</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        depth: image depth.</span>
@@ -1394,7 +1395,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        normalized transform with shape :math:`(1, 4, 4)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tr_mat</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
         <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span>
         <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
@@ -1416,7 +1417,7 @@
 <div class="viewcode-block" id="denormalize_homography"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.denormalize_homography">[docs]</a><span class="k">def</span> <span class="nf">denormalize_homography</span><span class="p">(</span>
     <span class="n">dst_pix_trans_src_pix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dsize_src</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">dsize_dst</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""De-normalize a given homography in pixels from [-1, 1] to actual height and width.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;De-normalize a given homography in pixels from [-1, 1] to actual height and width.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        dst_pix_trans_src_pix: homography/ies from source to destination to be</span>
@@ -1426,12 +1427,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the denormalized homography of shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># source and destination sizes</span>
     <span class="n">src_h</span><span class="p">,</span> <span class="n">src_w</span> <span class="o">=</span> <span class="n">dsize_src</span>
@@ -1450,7 +1451,7 @@
 <div class="viewcode-block" id="normalize_homography3d"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_homography3d">[docs]</a><span class="k">def</span> <span class="nf">normalize_homography3d</span><span class="p">(</span>
     <span class="n">dst_pix_trans_src_pix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dsize_src</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">dsize_dst</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Normalize a given homography in pixels to [-1, 1].</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalize a given homography in pixels to [-1, 1].</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        dst_pix_trans_src_pix: homography/ies from source to destination to be</span>
@@ -1463,12 +1464,12 @@
 
 <span class="sd">    Shape:</span>
 <span class="sd">        Output: :math:`(B, 4, 4)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input dst_pix_trans_src_pix must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">dst_pix_trans_src_pix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># source and destination sizes</span>
     <span class="n">src_d</span><span class="p">,</span> <span class="n">src_h</span><span class="p">,</span> <span class="n">src_w</span> <span class="o">=</span> <span class="n">dsize_src</span>
@@ -1484,7 +1485,7 @@
 
 
 <div class="viewcode-block" id="normalize_points_with_intrinsics"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_points_with_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">normalize_points_with_intrinsics</span><span class="p">(</span><span class="n">point_2d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point_2d: tensor containing the 2d points in the image pixel coordinates.</span>
@@ -1501,10 +1502,10 @@
 <span class="sd">        &gt;&gt;&gt; K = torch.eye(3)[None]</span>
 <span class="sd">        &gt;&gt;&gt; normalize_points_with_intrinsics(X, K)</span>
 <span class="sd">        tensor([[0.4963, 0.7682]])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">point_2d</span><span class="p">,</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">camera_matrix</span><span class="p">,</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="c1"># projection eq. K_inv * [u v 1]'</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">point_2d</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">camera_matrix</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="c1"># projection eq. K_inv * [u v 1]&#39;</span>
     <span class="c1"># x = (u - cx) * Z / fx</span>
     <span class="c1"># y = (v - cy) * Z / fy</span>
 
@@ -1527,7 +1528,7 @@
 
 
 <div class="viewcode-block" id="denormalize_points_with_intrinsics"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.denormalize_points_with_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">denormalize_points_with_intrinsics</span><span class="p">(</span><span class="n">point_2d_norm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        point_2d_norm: tensor containing the 2d points in the image pixel coordinates.</span>
@@ -1544,10 +1545,10 @@
 <span class="sd">        &gt;&gt;&gt; K = torch.eye(3)[None]</span>
 <span class="sd">        &gt;&gt;&gt; denormalize_points_with_intrinsics(X, K)</span>
 <span class="sd">        tensor([[0.4963, 0.7682]])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">point_2d_norm</span><span class="p">,</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">camera_matrix</span><span class="p">,</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="c1"># projection eq. [u, v, w]' = K * [x y z 1]'</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">point_2d_norm</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">camera_matrix</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="c1"># projection eq. [u, v, w]&#39; = K * [x y z 1]&#39;</span>
     <span class="c1"># u = fx * X + cx</span>
     <span class="c1"># v = fy * Y + cy</span>
 
@@ -1569,7 +1570,7 @@
 
 
 <div class="viewcode-block" id="Rt_to_matrix4x4"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.Rt_to_matrix4x4">[docs]</a><span class="k">def</span> <span class="nf">Rt_to_matrix4x4</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Combines 3x3 rotation matrix R and 1x3 translation vector t into 4x4 extrinsics.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Combines 3x3 rotation matrix R and 1x3 translation vector t into 4x4 extrinsics.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        R: Rotation matrix, :math:`(B, 3, 3).`</span>
@@ -1585,15 +1586,15 @@
 <span class="sd">                 [0., 1., 0., 1.],</span>
 <span class="sd">                 [0., 0., 1., 1.],</span>
 <span class="sd">                 [0., 0., 0., 1.]]])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">])</span>
     <span class="n">Rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">([</span><span class="n">R</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">convert_affinematrix_to_homography3d</span><span class="p">(</span><span class="n">Rt</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="matrix4x4_to_Rt"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.matrix4x4_to_Rt">[docs]</a><span class="k">def</span> <span class="nf">matrix4x4_to_Rt</span><span class="p">(</span><span class="n">extrinsics</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts 4x4 extrinsics into 3x3 rotation matrix R and 1x3 translation vector ts.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts 4x4 extrinsics into 3x3 rotation matrix R and 1x3 translation vector ts.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        extrinsics: pose matrix :math:`(B, 4, 4)`.</span>
@@ -1610,14 +1611,14 @@
 <span class="sd">                 [0., 0., 1.]]]), tensor([[[0.],</span>
 <span class="sd">                 [0.],</span>
 <span class="sd">                 [0.]]]))</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
     <span class="n">R</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">extrinsics</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">extrinsics</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
     <span class="k">return</span> <span class="n">R</span><span class="p">,</span> <span class="n">t</span></div>
 
 
 <div class="viewcode-block" id="camtoworld_graphics_to_vision_4x4"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.camtoworld_graphics_to_vision_4x4">[docs]</a><span class="k">def</span> <span class="nf">camtoworld_graphics_to_vision_4x4</span><span class="p">(</span><span class="n">extrinsics_graphics</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
 <span class="sd">    and z axis. Graphics convention: [+x, +y, +z] == [right, up, backwards]. Vision convention: [+x, +y, +z] ==</span>
 
 <span class="sd">    [right, down, forwards]</span>
@@ -1635,8 +1636,8 @@
 <span class="sd">                 [ 0., -1.,  0.,  0.],</span>
 <span class="sd">                 [ 0.,  0., -1.,  0.],</span>
 <span class="sd">                 [ 0.,  0.,  0.,  1.]]])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics_graphics</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics_graphics</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
     <span class="n">invert_yz</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
         <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]],</span>
         <span class="n">dtype</span><span class="o">=</span><span class="n">extrinsics_graphics</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
@@ -1646,7 +1647,7 @@
 
 
 <div class="viewcode-block" id="camtoworld_graphics_to_vision_Rt"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.camtoworld_graphics_to_vision_Rt">[docs]</a><span class="k">def</span> <span class="nf">camtoworld_graphics_to_vision_Rt</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
 <span class="sd">    and z axis. Graphics convention: [+x, +y, +z] == [right, up, backwards]. Vision convention: [+x, +y, +z] ==</span>
 
 <span class="sd">    [right, down, forwards]</span>
@@ -1667,15 +1668,15 @@
 <span class="sd">                 [ 0.,  0., -1.]]]), tensor([[[1.],</span>
 <span class="sd">                 [1.],</span>
 <span class="sd">                 [1.]]]))</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">])</span>
     <span class="n">mat4x4</span> <span class="o">=</span> <span class="n">camtoworld_graphics_to_vision_4x4</span><span class="p">(</span><span class="n">Rt_to_matrix4x4</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">matrix4x4_to_Rt</span><span class="p">(</span><span class="n">mat4x4</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="camtoworld_vision_to_graphics_4x4"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.camtoworld_vision_to_graphics_4x4">[docs]</a><span class="k">def</span> <span class="nf">camtoworld_vision_to_graphics_4x4</span><span class="p">(</span><span class="n">extrinsics_vision</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Converts vision coordinate frame (e.g. OpenCV) to graphics coordinate frame (e.g. OpenGK.), i.e. flips y and</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts vision coordinate frame (e.g. OpenCV) to graphics coordinate frame (e.g. OpenGK.), i.e. flips y and</span>
 <span class="sd">    z axis Graphics convention: [+x, +y, +z] == [right, up, backwards]. Vision convention: [+x, +y, +z] == [right,</span>
 <span class="sd">    down, forwards]</span>
 
@@ -1692,8 +1693,8 @@
 <span class="sd">                 [ 0., -1.,  0.,  0.],</span>
 <span class="sd">                 [ 0.,  0., -1.,  0.],</span>
 <span class="sd">                 [ 0.,  0.,  0.,  1.]]])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics_vision</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">extrinsics_vision</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
     <span class="n">invert_yz</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
         <span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]],</span>
         <span class="n">dtype</span><span class="o">=</span><span class="n">extrinsics_vision</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
@@ -1703,7 +1704,7 @@
 
 
 <div class="viewcode-block" id="camtoworld_vision_to_graphics_Rt"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.camtoworld_vision_to_graphics_Rt">[docs]</a><span class="k">def</span> <span class="nf">camtoworld_vision_to_graphics_Rt</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts graphics coordinate frame (e.g. OpenGL) to vision coordinate frame (e.g. OpenCV.), , i.e. flips y</span>
 <span class="sd">    and z axis. Graphics convention: [+x, +y, +z] == [right, up, backwards]. Vision convention: [+x, +y, +z] ==</span>
 
 <span class="sd">    [right, down, forwards]</span>
@@ -1724,15 +1725,15 @@
 <span class="sd">                 [ 0.,  0., -1.]]]), tensor([[[1.],</span>
 <span class="sd">                 [1.],</span>
 <span class="sd">                 [1.]]]))</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">])</span>
     <span class="n">mat4x4</span> <span class="o">=</span> <span class="n">camtoworld_vision_to_graphics_4x4</span><span class="p">(</span><span class="n">Rt_to_matrix4x4</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">matrix4x4_to_Rt</span><span class="p">(</span><span class="n">mat4x4</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="camtoworld_to_worldtocam_Rt"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.camtoworld_to_worldtocam_Rt">[docs]</a><span class="k">def</span> <span class="nf">camtoworld_to_worldtocam_Rt</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts camtoworld, i.e. projection from camera coordinate system to world coordinate system, to worldtocam</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts camtoworld, i.e. projection from camera coordinate system to world coordinate system, to worldtocam</span>
 <span class="sd">    frame i.e. projection from world to the camera coordinate system (used in Colmap).</span>
 <span class="sd">    See</span>
 <span class="sd">    long-url: https://colmap.github.io/format.html#output-format</span>
@@ -1753,9 +1754,9 @@
 <span class="sd">                 [0., 0., 1.]]]), tensor([[[-1.],</span>
 <span class="sd">                 [-1.],</span>
 <span class="sd">                 [-1.]]]))</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">])</span>
 
     <span class="n">R_inv</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">new_t</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="o">-</span><span class="n">R_inv</span> <span class="o">@</span> <span class="n">t</span>
@@ -1764,7 +1765,7 @@
 
 
 <div class="viewcode-block" id="worldtocam_to_camtoworld_Rt"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.worldtocam_to_camtoworld_Rt">[docs]</a><span class="k">def</span> <span class="nf">worldtocam_to_camtoworld_Rt</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts worldtocam frame i.e. projection from world to the camera coordinate system (used in Colmap) to</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts worldtocam frame i.e. projection from world to the camera coordinate system (used in Colmap) to</span>
 <span class="sd">    camtoworld, i.e. projection from camera coordinate system to world coordinate system.</span>
 
 <span class="sd">    Args:</span>
@@ -1783,9 +1784,9 @@
 <span class="sd">                 [0., 0., 1.]]]), tensor([[[-1.],</span>
 <span class="sd">                 [-1.],</span>
 <span class="sd">                 [-1.]]]))</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">])</span>
 
     <span class="n">R_inv</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">new_t</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="o">-</span><span class="n">R_inv</span> <span class="o">@</span> <span class="n">t</span>
@@ -1794,7 +1795,7 @@
 
 
 <div class="viewcode-block" id="ARKitQTVecs_to_ColmapQTVecs"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.ARKitQTVecs_to_ColmapQTVecs">[docs]</a><span class="k">def</span> <span class="nf">ARKitQTVecs_to_ColmapQTVecs</span><span class="p">(</span><span class="n">qvec</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">tvec</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Converts output of Apple ARKit screen pose (in quaternion representation) to the camera-to-world</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts output of Apple ARKit screen pose (in quaternion representation) to the camera-to-world</span>
 <span class="sd">    transformation, expected by Colmap, also in quaternion representation.</span>
 
 <span class="sd">    Args:</span>
@@ -1811,7 +1812,7 @@
 <span class="sd">        (tensor([[0.7071, 0.0000, 0.7071, 0.0000]]), tensor([[[-1.0000],</span>
 <span class="sd">                 [-1.0000],</span>
 <span class="sd">                 [ 1.0000]]]))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># ToDo:  integrate QuaterniaonAPI</span>
 
     <span class="n">Rcg</span> <span class="o">=</span> <span class="n">quaternion_to_rotation_matrix</span><span class="p">(</span><span class="n">qvec</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">WXYZ</span><span class="p">)</span>
@@ -1858,7 +1859,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

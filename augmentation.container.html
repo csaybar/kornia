@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Image Augmentations" href="augmentation.module.html" /><link rel="prev" title="Base Classes" href="augmentation.base.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/augmentation.container.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Augmentation Containers - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,10 +316,10 @@
         </div>
         <article role="main">
           <section id="augmentation-containers">
-<h1>Augmentation Containers<a class="headerlink" href="#augmentation-containers" title="Permalink to this headline">#</a></h1>
+<h1>Augmentation Containers<a class="headerlink" href="#augmentation-containers" title="Permalink to this heading">#</a></h1>
 <p>The classes in this section are containers for augmenting different data formats (e.g. images, videos).</p>
 <section id="augmentation-sequential">
-<h2>Augmentation Sequential<a class="headerlink" href="#augmentation-sequential" title="Permalink to this headline">#</a></h2>
+<h2>Augmentation Sequential<a class="headerlink" href="#augmentation-sequential" title="Permalink to this heading">#</a></h2>
 <p>Kornia augmentations provides simple on-device augmentation framework with the support of various syntax sugars
 (e.g. return transformation matrix, inverse geometric transform). Therefore, we provide advanced augmentation
 container to ease the pain of building augmenation pipelines. This API would also provide predefined routines
@@ -326,12 +328,12 @@ for automating the processing of masks, bounding boxes, and keypoints.</p>
 <dt class="sig sig-object py" id="kornia.augmentation.container.AugmentationSequential">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.container.</span></span><span class="sig-name descname"><span class="pre">AugmentationSequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_apply_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{DataKey.MASK:</span> <span class="pre">dict(resample=Resample.NEAREST,</span> <span class="pre">align_corners=True)}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/augment.html#AugmentationSequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.AugmentationSequential" title="Permalink to this definition">#</a></dt>
 <dd><p>AugmentationSequential for handling multiple input types like inputs, masks, keypoints at once.</p>
-<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png" style="width: 49%;"/></a>
-<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png" style="width: 49%;"/></a>
+<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png" style="width: 49%;" /></a>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – a list of kornia augmentation modules.</p></li>
+<li><p><strong>*args</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">_AugmentationBase</span></code>, <a class="reference internal" href="#kornia.augmentation.container.ImageSequential" title="kornia.augmentation.container.image.ImageSequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageSequential</span></code></a>]) – a list of kornia augmentation modules.</p></li>
 <li><p><strong>data_keys</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DataKey</span></code>]], <em>optional</em>) – the input type sequential for applying augmentations.
 Accepts “input”, “mask”, “bbox”, “bbox_xyxy”, “bbox_xywh”, “keypoints”.
 Default:  <code class="code docutils literal notranslate"><span class="pre">[DataKey.INPUT]</span></code></p></li>
@@ -341,7 +343,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>], <em>optional</em>) – whether to keep the output shape the same as input (True) or broadcast it
 to the batch form (False). If None, it will not overwrite the function-wise settings.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
+<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
 apply transformation.
 If int, a fixed number of transformations will be selected.
 If (a,), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.
@@ -378,7 +380,7 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug_list</span> <span class="o">=</span> <span class="n">AugmentationSequential</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,</span> <span class="s2">"bbox"</span><span class="p">,</span> <span class="s2">"keypoints"</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">same_on_batch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">random_apply</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -411,7 +413,7 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="p">),</span>
-<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,</span> <span class="s2">"bbox"</span><span class="p">,</span> <span class="s2">"keypoints"</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">out</span><span class="p">]</span>
@@ -436,7 +438,7 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 <span class="gp">... </span>    <span class="n">VideoSequential</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="p">),</span>
-<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,</span> <span class="s2">"bbox"</span><span class="p">,</span> <span class="s2">"keypoints"</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">random_apply</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">random_apply_weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -455,6 +457,7 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.augmentation.container.AugmentationSequential.inverse">
 <span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/augment.html#AugmentationSequential.inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.AugmentationSequential.inverse" title="Permalink to this definition">#</a></dt>
@@ -467,10 +470,12 @@ It is not clear how to deal with the conversions of masks, bounding boxes and ke
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="augmentation-dispatchers">
-<h2>Augmentation Dispatchers<a class="headerlink" href="#augmentation-dispatchers" title="Permalink to this headline">#</a></h2>
+<h2>Augmentation Dispatchers<a class="headerlink" href="#augmentation-dispatchers" title="Permalink to this heading">#</a></h2>
 <p>Kornia supports two types of augmentation dispatching, namely many-to-many and many-to-one. The former wraps
 different augmentations into one group and allows user to input multiple inputs in align with the number of
 augmentations. The latter aims at performing different augmentations for one input that to obtain a list of
@@ -492,12 +497,12 @@ various transformed data.</p>
 <span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="p">),</span>
 <span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">((</span><span class="n">input_1</span><span class="p">,</span> <span class="n">mask_1</span><span class="p">),</span> <span class="p">(</span><span class="n">input_2</span><span class="p">,</span> <span class="n">mask_2</span><span class="p">))</span>
@@ -521,7 +526,9 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.container.ManyToOneAugmentationDispather">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.container.</span></span><span class="sig-name descname"><span class="pre">ManyToOneAugmentationDispather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">augmentations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/dispatcher.html#ManyToOneAugmentationDispather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.ManyToOneAugmentationDispather" title="Permalink to this definition">#</a></dt>
@@ -542,12 +549,12 @@ errors. This check can be cancelled with <cite>strict=False</cite> if needed.</p
 <span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="p">),</span>
 <span class="gp">... </span>    <span class="n">AugmentationSequential</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>        <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">,],</span>
+<span class="gp">... </span>        <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,],</span>
 <span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">((</span><span class="nb">input</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span>
@@ -571,10 +578,12 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="imagesequential">
-<h2>ImageSequential<a class="headerlink" href="#imagesequential" title="Permalink to this headline">#</a></h2>
+<h2>ImageSequential<a class="headerlink" href="#imagesequential" title="Permalink to this heading">#</a></h2>
 <p>Kornia augmentations provides simple on-device augmentation framework with the support of various syntax sugars
 (e.g. return transformation matrix, inverse geometric transform). Additionally, ImageSequential supports the
 mix usage of both image processing and augmentation modules.</p>
@@ -585,14 +594,14 @@ mix usage of both image processing and augmentation modules.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – a list of kornia augmentation and image operation modules.</p></li>
+<li><p><strong>*args</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – a list of kornia augmentation and image operation modules.</p></li>
 <li><p><strong>same_on_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>], <em>optional</em>) – apply the same transformation across the batch.
 If None, it will not overwrite the function-wise settings.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 <li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>], <em>optional</em>) – whether to keep the output shape the same as input (True) or broadcast it
 to the batch form (False). If None, it will not overwrite the function-wise settings.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
-<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
+<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
 apply transformation. The selection probability aligns to the <code class="docutils literal notranslate"><span class="pre">random_apply_weights</span></code>.
 If int, a fixed number of transformations will be selected.
 If (a,), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.
@@ -671,15 +680,17 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="patchsequential">
-<h2>PatchSequential<a class="headerlink" href="#patchsequential" title="Permalink to this headline">#</a></h2>
+<h2>PatchSequential<a class="headerlink" href="#patchsequential" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.container.PatchSequential">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.container.</span></span><span class="sig-name descname"><span class="pre">PatchSequential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(4,</span> <span class="pre">4)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patchwise_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_apply_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/container/patch.html#PatchSequential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.container.PatchSequential" title="Permalink to this definition">#</a></dt>
 <dd><p>Container for performing patch-level image data augmentation.</p>
-<img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_patch_sequential_7_0.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_patch_sequential_7_0.png"/>
+<img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_patch_sequential_7_0.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/data_patch_sequential_7_0.png" />
 <p>PatchSequential breaks input images into patches by a given grid size, which will be resembled back
 afterwards.</p>
 <p>Different image processing and augmentation methods will be performed on each patch region as
@@ -687,7 +698,7 @@ in <span id="id5">[<a class="reference internal" href="community/bibliography.ht
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – a list of processing modules.</p></li>
+<li><p><strong>*args</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – a list of processing modules.</p></li>
 <li><p><strong>grid_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <em>optional</em>) – controls the grid board separation.
 Default:  <code class="code docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">4)</span></code></p></li>
 <li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – same or valid padding. If same padding, it will pad to include all pixels if the input
@@ -703,7 +714,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 if <code class="docutils literal notranslate"><span class="pre">True</span></code>, the number of args must be equal to grid number.
 if <code class="docutils literal notranslate"><span class="pre">False</span></code>, the image processing args will be applied as a sequence to all patches.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
+<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
 apply transformation.
 If <code class="docutils literal notranslate"><span class="pre">int</span></code> (batchwise mode only), a fixed number of transformations will be selected.
 If <code class="docutils literal notranslate"><span class="pre">(a,)</span></code> (batchwise mode only), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.
@@ -785,10 +796,12 @@ Those transformations in <code class="docutils literal notranslate"><span class=
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="video-data-augmentation">
-<h2>Video Data Augmentation<a class="headerlink" href="#video-data-augmentation" title="Permalink to this headline">#</a></h2>
+<h2>Video Data Augmentation<a class="headerlink" href="#video-data-augmentation" title="Permalink to this heading">#</a></h2>
 <p>Video data is a special case of 3D volumetric data that contains both spatial and temporal information, which can be referred as 2.5D than 3D.
 In most applications, augmenting video data requires a static temporal dimension to have the same augmentations are performed for each frame.
 Thus, <cite>VideoSequential</cite> can be used to do such trick as same as <cite>nn.Sequential</cite>.
@@ -798,7 +811,7 @@ Currently, <cite>VideoSequential</cite> supports data format like <span class="m
 <span class="n">transform</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">VideoSequential</span><span class="p">(</span>
    <span class="n">K</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">),</span>
    <span class="n">K</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
-   <span class="n">data_format</span><span class="o">=</span><span class="s2">"BCTHW"</span><span class="p">,</span>
+   <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span>
    <span class="n">same_on_frame</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
@@ -814,12 +827,12 @@ settings on <cite>same_on_batch</cite>, etc.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*args</strong> – a list of augmentation module.</p></li>
+<li><p><strong>*args</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – a list of augmentation module.</p></li>
 <li><p><strong>data_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – only BCTHW and BTCHW are supported.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'BTCHW'</span></code></p></li>
 <li><p><strong>same_on_frame</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – apply the same transformation across the channel per frame.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
-<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
+<li><p><strong>random_apply</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]], <em>optional</em>) – randomly select a sublist (order agnostic) of args to
 apply transformation.
 If int, a fixed number of transformations will be selected.
 If (a,), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.
@@ -843,7 +856,7 @@ timeframe.</p>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">BgrToRgb</span><span class="p">(),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">random_apply</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">data_format</span><span class="o">=</span><span class="s2">"BCTHW"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">same_on_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -859,7 +872,7 @@ timeframe.</p>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomMixUp</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span><span class="n">data_format</span><span class="o">=</span><span class="s2">"BCTHW"</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="n">same_on_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">,</span> <span class="n">lab</span> <span class="o">=</span> <span class="n">aug_list</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">shape</span>
@@ -879,7 +892,7 @@ True</p>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">kornia</span><span class="o">.</span><span class="n">augmentation</span><span class="o">.</span><span class="n">RandomMixUp</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-<span class="gp">... </span><span class="n">data_format</span><span class="o">=</span><span class="s2">"BCTHW"</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span>
 <span class="gp">... </span><span class="n">same_on_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="gp">... </span><span class="n">random_apply</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span><span class="n">random_apply_weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
@@ -899,7 +912,9 @@ True</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 </section>
 
@@ -915,10 +930,10 @@ True</p>
                 </div>
                 <div class="title">Image Augmentations</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="augmentation.base.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -954,18 +969,53 @@ True</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Augmentation Containers</a><ul>
-<li><a class="reference internal" href="#augmentation-sequential">Augmentation Sequential</a></li>
-<li><a class="reference internal" href="#augmentation-dispatchers">Augmentation Dispatchers</a></li>
-<li><a class="reference internal" href="#imagesequential">ImageSequential</a></li>
-<li><a class="reference internal" href="#patchsequential">PatchSequential</a></li>
-<li><a class="reference internal" href="#video-data-augmentation">Video Data Augmentation</a></li>
+<li><a class="reference internal" href="#augmentation-sequential">Augmentation Sequential</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.AugmentationSequential"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.AugmentationSequential.forward"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential.forward()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.container.AugmentationSequential.inverse"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential.inverse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#augmentation-dispatchers">Augmentation Dispatchers</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.ManyToManyAugmentationDispather"><code class="docutils literal notranslate"><span class="pre">ManyToManyAugmentationDispather</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.ManyToManyAugmentationDispather.forward"><code class="docutils literal notranslate"><span class="pre">ManyToManyAugmentationDispather.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.augmentation.container.ManyToOneAugmentationDispather"><code class="docutils literal notranslate"><span class="pre">ManyToOneAugmentationDispather</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.ManyToOneAugmentationDispather.forward"><code class="docutils literal notranslate"><span class="pre">ManyToOneAugmentationDispather.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#imagesequential">ImageSequential</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.ImageSequential"><code class="docutils literal notranslate"><span class="pre">ImageSequential</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.ImageSequential.forward"><code class="docutils literal notranslate"><span class="pre">ImageSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#patchsequential">PatchSequential</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.PatchSequential"><code class="docutils literal notranslate"><span class="pre">PatchSequential</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.PatchSequential.forward"><code class="docutils literal notranslate"><span class="pre">PatchSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#video-data-augmentation">Video Data Augmentation</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.VideoSequential"><code class="docutils literal notranslate"><span class="pre">VideoSequential</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.container.VideoSequential.forward"><code class="docutils literal notranslate"><span class="pre">VideoSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -981,7 +1031,9 @@ True</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

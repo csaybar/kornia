@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.morphology" href="morphology.html" /><link rel="prev" title="kornia.losses" href="losses.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/metrics.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.metrics - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,10 +316,10 @@
         </div>
         <article role="main">
           <section id="kornia-metrics">
-<h1>kornia.metrics<a class="headerlink" href="#kornia-metrics" title="Permalink to this headline">#</a></h1>
+<h1>kornia.metrics<a class="headerlink" href="#kornia-metrics" title="Permalink to this heading">#</a></h1>
 <p>Module containing metrics for training networks</p>
 <section id="classification">
-<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h2>
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.accuracy">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/accuracy.html#accuracy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.accuracy" title="Permalink to this definition">#</a></dt>
@@ -345,9 +347,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">(1,)
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="segmentation">
-<h2>Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this headline">#</a></h2>
+<h2>Segmentation<a class="headerlink" href="#segmentation" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.confusion_matrix">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/confusion_matrix.html#confusion_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.confusion_matrix" title="Permalink to this definition">#</a></dt>
@@ -385,6 +388,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.mean_iou">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">mean_iou</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/mean_iou.html#mean_iou"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.mean_iou" title="Permalink to this definition">#</a></dt>
@@ -419,9 +423,10 @@ with shape <span class="math notranslate nohighlight">\((B, K)\)</span> where K 
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="detection">
-<h2>Detection<a class="headerlink" href="#detection" title="Permalink to this headline">#</a></h2>
+<h2>Detection<a class="headerlink" href="#detection" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.mean_average_precision">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">mean_average_precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred_boxes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gt_boxes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gt_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/mean_average_precision.html#mean_average_precision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.mean_average_precision" title="Permalink to this definition">#</a></dt>
@@ -456,6 +461,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0.5<
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.mean_iou_bbox">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">mean_iou_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boxes_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boxes_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/mean_iou.html#mean_iou_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.mean_iou_bbox" title="Permalink to this definition">#</a></dt>
@@ -485,20 +491,25 @@ intersection of each of the boxes in set 1 with respect to each of the boxes in 
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="image-quality">
-<h2>Image Quality<a class="headerlink" href="#image-quality" title="Permalink to this headline">#</a></h2>
+<h2>Image Quality<a class="headerlink" href="#image-quality" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.psnr">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">psnr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/psnr.html#psnr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.psnr" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a function that calculates the PSNR between 2 images.</p>
 <p>PSNR is Peek Signal to Noise Ratio, which is similar to mean squared error.
 Given an m x n image, the PSNR is:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{PSNR} = 10 \log_{10} \bigg(\frac{\text{MAX}_I^2}{MSE(I,T)}\bigg)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{PSNR} = 10 \log_{10} \bigg(\frac{\text{MAX}_I^2}{MSE(I,T)}\bigg)\]</div>
+</div>
 <p>where</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{MSE}(I,T) = \frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1} [I(i,j) - T(i,j)]^2\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{MSE}(I,T) = \frac{1}{mn}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1} [I(i,j) - T(i,j)]^2\]</div>
+</div>
 <p>and <span class="math notranslate nohighlight">\(\text{MAX}_I\)</span> is the maximum possible input value
 (e.g for floating point images <span class="math notranslate nohighlight">\(\text{MAX}_I=1\)</span>).</p>
 <dl class="field-list simple">
@@ -527,15 +538,18 @@ Given an m x n image, the PSNR is:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.metrics.ssim">
 <span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">ssim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/ssim.html#ssim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.ssim" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes the Structural Similarity (SSIM) index map between two images.</p>
 <p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
 <p>The index can be described as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
-{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div></div>
+{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c_1=(k_1 L)^2\)</span> and <span class="math notranslate nohighlight">\(c_2=(k_2 L)^2\)</span> are two variables to
@@ -574,15 +588,18 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.metrics.SSIM">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">SSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/ssim.html#SSIM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.SSIM" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a module that computes the Structural Similarity (SSIM) index between two images.</p>
 <p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
 <p>The index can be described as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
-{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div></div>
+{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c_1=(k_1 L)^2\)</span> and <span class="math notranslate nohighlight">\(c_2=(k_2 L)^2\)</span> are two variables to
@@ -622,9 +639,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="monitoring">
-<h2>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">#</a></h2>
+<h2>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.metrics.AverageMeter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">AverageMeter</span></span><a class="reference internal" href="_modules/kornia/metrics/average_meter.html#AverageMeter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.AverageMeter" title="Permalink to this definition">#</a></dt>
@@ -638,6 +656,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 
@@ -653,10 +672,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
                 </div>
                 <div class="title">kornia.morphology</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="losses.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -692,18 +711,37 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.metrics</a><ul>
-<li><a class="reference internal" href="#classification">Classification</a></li>
-<li><a class="reference internal" href="#segmentation">Segmentation</a></li>
-<li><a class="reference internal" href="#detection">Detection</a></li>
-<li><a class="reference internal" href="#image-quality">Image Quality</a></li>
-<li><a class="reference internal" href="#monitoring">Monitoring</a></li>
+<li><a class="reference internal" href="#classification">Classification</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.accuracy"><code class="docutils literal notranslate"><span class="pre">accuracy()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#segmentation">Segmentation</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.confusion_matrix"><code class="docutils literal notranslate"><span class="pre">confusion_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.mean_iou"><code class="docutils literal notranslate"><span class="pre">mean_iou()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detection">Detection</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.mean_average_precision"><code class="docutils literal notranslate"><span class="pre">mean_average_precision()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.mean_iou_bbox"><code class="docutils literal notranslate"><span class="pre">mean_iou_bbox()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-quality">Image Quality</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.psnr"><code class="docutils literal notranslate"><span class="pre">psnr()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.ssim"><code class="docutils literal notranslate"><span class="pre">ssim()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.SSIM"><code class="docutils literal notranslate"><span class="pre">SSIM</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring">Monitoring</a><ul>
+<li><a class="reference internal" href="#kornia.metrics.AverageMeter"><code class="docutils literal notranslate"><span class="pre">AverageMeter</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -719,7 +757,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

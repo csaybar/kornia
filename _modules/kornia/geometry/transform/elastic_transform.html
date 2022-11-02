@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/transform/elastic_transform.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.transform.elastic_transform - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -321,7 +322,7 @@
 <span class="kn">from</span> <span class="nn">kornia.filters</span> <span class="kn">import</span> <span class="n">filter2d</span><span class="p">,</span> <span class="n">get_gaussian_kernel2d</span>
 <span class="kn">from</span> <span class="nn">kornia.utils</span> <span class="kn">import</span> <span class="n">create_meshgrid</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"elastic_transform2d"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;elastic_transform2d&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="elastic_transform2d"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.elastic_transform2d">[docs]</a><span class="k">def</span> <span class="nf">elastic_transform2d</span><span class="p">(</span>
@@ -331,10 +332,10 @@
     <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">),</span>
     <span class="n">alpha</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply elastic transform of images as described in :cite:`Simard2003BestPF`.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply elastic transform of images as described in :cite:`Simard2003BestPF`.</span>
 
 <span class="sd">    .. image:: _static/img/elastic_transform2d.png</span>
 
@@ -349,8 +350,8 @@
 <span class="sd">        alpha : The scaling factor that controls the intensity of the deformation</span>
 <span class="sd">          in the y and x directions, respectively.</span>
 <span class="sd">        align_corners: Interpolation flag used by ```grid_sample```.</span>
-<span class="sd">        mode: Interpolation mode used by ```grid_sample```. Either ``'bilinear'`` or ``'nearest'``.</span>
-<span class="sd">        padding_mode: The padding used by ```grid_sample```. Either ``'zeros'``, ``'border'`` or ``'refection'``.</span>
+<span class="sd">        mode: Interpolation mode used by ```grid_sample```. Either ``&#39;bilinear&#39;`` or ``&#39;nearest&#39;``.</span>
+<span class="sd">        padding_mode: The padding used by ```grid_sample```. Either ``&#39;zeros&#39;``, ``&#39;border&#39;`` or ``&#39;refection&#39;``.</span>
 
 <span class="sd">    .. note:</span>
 <span class="sd">        ```sigma``` and ```alpha``` can also be a ``torch.Tensor``. However, you could not torchscript</span>
@@ -376,29 +377,29 @@
 <span class="sd">        &gt;&gt;&gt; alpha = torch.tensor([16., 32.], requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; image_hat = elastic_transform2d(image, noise, (3, 3), alpha=alpha)</span>
 <span class="sd">        &gt;&gt;&gt; image_hat.mean().backward()</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input image is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input image is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input noise is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input noise is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid image shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid image shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid noise shape, we expect Bx2xHxW. Got: </span><span class="si">{</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid noise shape, we expect Bx2xHxW. Got: </span><span class="si">{</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Get Gaussian kernel for 'y' and 'x' displacement</span>
+    <span class="c1"># Get Gaussian kernel for &#39;y&#39; and &#39;x&#39; displacement</span>
     <span class="n">kernel_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]))[</span><span class="kc">None</span><span class="p">]</span>
     <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="p">(</span><span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">]))[</span><span class="kc">None</span><span class="p">]</span>
 
-    <span class="c1"># Convolve over a random displacement matrix and scale them with 'alpha'</span>
+    <span class="c1"># Convolve over a random displacement matrix and scale them with &#39;alpha&#39;</span>
     <span class="n">disp_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">noise</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">disp_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">noise</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
 
-    <span class="n">disp_x</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">disp_x</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kernel_y</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="s1">'constant'</span><span class="p">)</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">disp_y</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">disp_y</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kernel_x</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="s1">'constant'</span><span class="p">)</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">disp_x</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">disp_x</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kernel_y</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">disp_y</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">disp_y</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kernel_x</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># stack and normalize displacement</span>
     <span class="n">disp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">disp_x</span><span class="p">,</span> <span class="n">disp_y</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -449,7 +450,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

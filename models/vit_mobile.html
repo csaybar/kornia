@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="LoFTR (matching)" href="loftr.html" /><link rel="prev" title="Vision Transformer (ViT)" href="vit.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/models/vit_mobile.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>MobileViT - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,7 +316,7 @@
         </div>
         <article role="main">
           <section id="mobilevit">
-<span id="kornia-vit-mobile"></span><h1>MobileViT<a class="headerlink" href="#mobilevit" title="Permalink to this headline">#</a></h1>
+<span id="kornia-vit-mobile"></span><h1>MobileViT<a class="headerlink" href="#mobilevit" title="Permalink to this heading">#</a></h1>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><strong>MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer</strong></p>
@@ -328,24 +330,24 @@
 <p class="sd-card-text"><strong>Authors:</strong>  Sachin Mehta, Mohammad Rastegari</p>
 </div>
 <a class="sd-stretched-link reference external" href="https://arxiv.org/abs/2110.02178"></a></div>
-<img alt="https://user-images.githubusercontent.com/67839539/136470152-2573529e-1a24-4494-821d-70eb4647a51d.png" class="align-center" src="https://user-images.githubusercontent.com/67839539/136470152-2573529e-1a24-4494-821d-70eb4647a51d.png"/>
+<img alt="https://user-images.githubusercontent.com/67839539/136470152-2573529e-1a24-4494-821d-70eb4647a51d.png" class="align-center" src="https://user-images.githubusercontent.com/67839539/136470152-2573529e-1a24-4494-821d-70eb4647a51d.png" />
 <section id="kornia-mobilevit">
-<h2>Kornia-MobileViT<a class="headerlink" href="#kornia-mobilevit" title="Permalink to this headline">#</a></h2>
+<h2>Kornia-MobileViT<a class="headerlink" href="#kornia-mobilevit" title="Permalink to this heading">#</a></h2>
 <p>We provide <a class="reference internal" href="../contrib.html#kornia.contrib.MobileViT" title="kornia.contrib.MobileViT"><code class="xref py py-class docutils literal notranslate"><span class="pre">MobileViT</span></code></a> which can be used for many downstream tasks, e.g., classification, object detection and semantic segmentation.
 One can use the <em>MobileViT</em> in Kornia as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
-<span class="n">mvit</span> <span class="o">=</span> <span class="n">MobileViT</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'xxs'</span><span class="p">)</span>
+<span class="n">mvit</span> <span class="o">=</span> <span class="n">MobileViT</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;xxs&#39;</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">mvit</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
 <p>Similar to <code class="docutils literal notranslate"><span class="pre">Kornia-ViT</span></code>, <code class="docutils literal notranslate"><span class="pre">Kornia-MobileViT</span></code> does not include any classification head. But you can add it simply by doing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">kornia.contrib</span> <span class="k">as</span> <span class="nn">K</span>
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
-    <span class="n">K</span><span class="o">.</span><span class="n">MobileViT</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'xxs'</span><span class="p">),</span>
+    <span class="n">K</span><span class="o">.</span><span class="n">MobileViT</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;xxs&#39;</span><span class="p">),</span>
     <span class="n">nn</span><span class="o">.</span><span class="n">AvgPool2d</span><span class="p">(</span><span class="mi">256</span> <span class="o">//</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
     <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
     <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
@@ -371,10 +373,10 @@ One can use the <em>MobileViT</em> in Kornia as follows:</p>
                 </div>
                 <div class="title">LoFTR (matching)</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="vit.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -410,7 +412,7 @@ One can use the <em>MobileViT</em> in Kornia as follows:</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -436,7 +438,9 @@ One can use the <em>MobileViT</em> in Kornia as follows:</p>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="MobileViT" href="vit_mobile.html" /><link rel="prev" title="YuNet" href="yunet.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/models/vit.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Vision Transformer (ViT) - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,7 +316,7 @@
         </div>
         <article role="main">
           <section id="vision-transformer-vit">
-<span id="kornia-vit"></span><h1>Vision Transformer (ViT)<a class="headerlink" href="#vision-transformer-vit" title="Permalink to this headline">#</a></h1>
+<span id="kornia-vit"></span><h1>Vision Transformer (ViT)<a class="headerlink" href="#vision-transformer-vit" title="Permalink to this heading">#</a></h1>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><strong>ViT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</strong></p>
@@ -330,9 +332,9 @@
 <p class="sd-card-text"><strong>Authors:</strong>  Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, Jakob Uszkoreit, Neil Houlsby</p>
 </div>
 <a class="sd-stretched-link reference external" href="https://paperswithcode.com/paper/an-image-is-worth-16x16-words-transformers-1"></a></div>
-<img alt="https://github.com/google-research/vision_transformer/raw/main/vit_figure.png" class="align-center" src="https://github.com/google-research/vision_transformer/raw/main/vit_figure.png"/>
+<img alt="https://github.com/google-research/vision_transformer/raw/main/vit_figure.png" class="align-center" src="https://github.com/google-research/vision_transformer/raw/main/vit_figure.png" />
 <section id="id1">
-<h2>Kornia-ViT<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Kornia-ViT<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>We provide the operator <a class="reference internal" href="../contrib.html#kornia.contrib.VisionTransformer" title="kornia.contrib.VisionTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisionTransformer</span></code></a> that is meant to be used across tasks.
 One can use the <em>ViT</em> in Kornia as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
@@ -341,7 +343,7 @@ One can use the <em>ViT</em> in Kornia as follows:</p>
 </pre></div>
 </div>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">kornia-vit</span></code> does not include any classification head.
 For this reason, we provide an <a class="reference internal" href="../contrib.html#kornia.contrib.ClassificationHead" title="kornia.contrib.ClassificationHead"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationHead</span></code></a> which can be easily combined
 with a <cite>nn.Sequential</cite> in order to easily build a custom image classification pipeline.</p>
@@ -372,8 +374,8 @@ class with two different classification heads:</p>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">"head1"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">head1</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
-            <span class="s2">"head2"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">head2</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
+            <span class="s2">&quot;head1&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">head1</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
+            <span class="s2">&quot;head2&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">head2</span><span class="p">(</span><span class="n">out</span><span class="p">),</span>
         <span class="p">}</span>
 </pre></div>
 </div>
@@ -397,10 +399,10 @@ class with two different classification heads:</p>
                 </div>
                 <div class="title">MobileViT</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="yunet.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -436,7 +438,7 @@ class with two different classification heads:</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -462,7 +464,9 @@ class with two different classification heads:</p>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

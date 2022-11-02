@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/bbox.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.bbox - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -321,43 +322,43 @@
 <span class="kn">from</span> <span class="nn">.linalg</span> <span class="kn">import</span> <span class="n">transform_points</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"validate_bbox"</span><span class="p">,</span>
-    <span class="s2">"validate_bbox3d"</span><span class="p">,</span>
-    <span class="s2">"infer_bbox_shape"</span><span class="p">,</span>
-    <span class="s2">"infer_bbox_shape3d"</span><span class="p">,</span>
-    <span class="s2">"bbox_to_mask"</span><span class="p">,</span>
-    <span class="s2">"bbox_to_mask3d"</span><span class="p">,</span>
-    <span class="s2">"bbox_generator"</span><span class="p">,</span>
-    <span class="s2">"bbox_generator3d"</span><span class="p">,</span>
-    <span class="s2">"transform_bbox"</span><span class="p">,</span>
-    <span class="s2">"nms"</span><span class="p">,</span>
+    <span class="s2">&quot;validate_bbox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;validate_bbox3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;infer_bbox_shape&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;infer_bbox_shape3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bbox_to_mask&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bbox_to_mask3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bbox_generator&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bbox_generator3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;transform_bbox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nms&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <div class="viewcode-block" id="validate_bbox"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.validate_bbox">[docs]</a><span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">ignore</span>
 <span class="k">def</span> <span class="nf">validate_bbox</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">"""Validate if a 2D bounding box usable or not. This function checks if the boxes are rectangular or not.</span>
+    <span class="sd">&quot;&quot;&quot;Validate if a 2D bounding box usable or not. This function checks if the boxes are rectangular or not.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
 <span class="sd">            of Bx4x2, where each box is defined in the following ``clockwise`` order: top-left, top-right, bottom-right,</span>
 <span class="sd">            bottom-left. The coordinates must be in the x, y order.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Box shape must be (B, 4, 2) or (B, N, 4, 2). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Box shape must be (B, 4, 2) or (B, N, 4, 2). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
         <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">"Boxes must have be rectangular, while get widths </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">"</span>
+            <span class="s2">&quot;Boxes must have be rectangular, while get widths </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span>
             <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">((</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">"Boxes must have be rectangular, while get heights </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">"</span>
+            <span class="s2">&quot;Boxes must have be rectangular, while get heights </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span>
             <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">boxes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
         <span class="p">)</span>
 
@@ -366,16 +367,16 @@
 
 <div class="viewcode-block" id="validate_bbox3d"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.validate_bbox3d">[docs]</a><span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">ignore</span>
 <span class="k">def</span> <span class="nf">validate_bbox3d</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">"""Validate if a 3D bounding box usable or not. This function checks if the boxes are cube or not.</span>
+    <span class="sd">&quot;&quot;&quot;Validate if a 3D bounding box usable or not. This function checks if the boxes are cube or not.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
 <span class="sd">            of Bx8x3, where each box is defined in the following ``clockwise`` order: front-top-left, front-top-right,</span>
 <span class="sd">            front-bottom-right, front-bottom-left, back-top-left, back-top-right, back-bottom-right, back-bottom-left.</span>
 <span class="sd">            The coordinates must be in the x, y, z order.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">])):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Box shape must be (B, 8, 3) or (B, N, 8, 3). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Box shape must be (B, 8, 3) or (B, N, 8, 3). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
         <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -384,23 +385,23 @@
     <span class="n">right</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">widths</span> <span class="o">=</span> <span class="n">left</span> <span class="o">-</span> <span class="n">right</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">widths</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">widths</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes must have be cube, while get different widths </span><span class="si">{</span><span class="n">widths</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes must have be cube, while get different widths </span><span class="si">{</span><span class="n">widths</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="n">bot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">upper</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">heights</span> <span class="o">=</span> <span class="n">bot</span> <span class="o">-</span> <span class="n">upper</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">heights</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">heights</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes must have be cube, while get different heights </span><span class="si">{</span><span class="n">heights</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes must have be cube, while get different heights </span><span class="si">{</span><span class="n">heights</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="n">depths</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">depths</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">depths</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes must have be cube, while get different depths </span><span class="si">{</span><span class="n">depths</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes must have be cube, while get different depths </span><span class="si">{</span><span class="n">depths</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
 <div class="viewcode-block" id="infer_bbox_shape"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.infer_bbox_shape">[docs]</a><span class="k">def</span> <span class="nf">infer_bbox_shape</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Auto-infer the output sizes for the given 2D bounding boxes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Auto-infer the output sizes for the given 2D bounding boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
@@ -425,7 +426,7 @@
 <span class="sd">        ... ]])  # 2x4x2</span>
 <span class="sd">        &gt;&gt;&gt; infer_bbox_shape(boxes)</span>
 <span class="sd">        (tensor([2., 2.]), tensor([2., 3.]))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">validate_bbox</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span>
     <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -433,7 +434,7 @@
 
 
 <div class="viewcode-block" id="infer_bbox_shape3d"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.infer_bbox_shape3d">[docs]</a><span class="k">def</span> <span class="nf">infer_bbox_shape3d</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Auto-infer the output sizes for the given 3D bounding boxes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Auto-infer the output sizes for the given 3D bounding boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
@@ -465,7 +466,7 @@
 <span class="sd">        ...         [ 3, 54, 65]]]) # 2x8x3</span>
 <span class="sd">        &gt;&gt;&gt; infer_bbox_shape3d(boxes)</span>
 <span class="sd">        (tensor([31, 61]), tensor([21, 51]), tensor([11, 41]))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">validate_bbox3d</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span>
 
     <span class="n">left</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">))[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -481,7 +482,7 @@
 
 
 <div class="viewcode-block" id="bbox_to_mask"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.bbox_to_mask">[docs]</a><span class="k">def</span> <span class="nf">bbox_to_mask</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Convert 2D bounding boxes to masks. Covered area is 1. and the remaining is 0.</span>
+    <span class="sd">&quot;&quot;&quot;Convert 2D bounding boxes to masks. Covered area is 1. and the remaining is 0.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
@@ -509,7 +510,7 @@
 <span class="sd">                 [0., 1., 1., 1., 0.],</span>
 <span class="sd">                 [0., 0., 0., 0., 0.],</span>
 <span class="sd">                 [0., 0., 0., 0., 0.]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">validate_bbox</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span>
     <span class="c1"># zero padding the surroudings</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="p">),</span> <span class="n">height</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
@@ -523,7 +524,7 @@
 
 
 <div class="viewcode-block" id="bbox_to_mask3d"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.bbox_to_mask3d">[docs]</a><span class="k">def</span> <span class="nf">bbox_to_mask3d</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Convert 3D bounding boxes to masks. Covered area is 1. and the remaining is 0.</span>
+    <span class="sd">&quot;&quot;&quot;Convert 3D bounding boxes to masks. Covered area is 1. and the remaining is 0.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: a tensor containing the coordinates of the bounding boxes to be extracted. The tensor must have the shape</span>
@@ -570,7 +571,7 @@
 <span class="sd">                   [0., 0., 0., 0., 0.],</span>
 <span class="sd">                   [0., 0., 0., 0., 0.],</span>
 <span class="sd">                   [0., 0., 0., 0., 0.]]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">validate_bbox3d</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="p">),</span> <span class="o">*</span><span class="n">size</span><span class="p">))</span>
 
@@ -605,7 +606,7 @@
 <div class="viewcode-block" id="bbox_generator"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.bbox_generator">[docs]</a><span class="k">def</span> <span class="nf">bbox_generator</span><span class="p">(</span>
     <span class="n">x_start</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">y_start</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Generate 2D bounding boxes according to the provided start coords, width and height.</span>
+    <span class="sd">&quot;&quot;&quot;Generate 2D bounding boxes according to the provided start coords, width and height.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x_start: a tensor containing the x coordinates of the bounding boxes to be extracted. Shape must be a scalar</span>
@@ -633,21 +634,21 @@
 <span class="sd">                 [3, 0],</span>
 <span class="sd">                 [3, 3],</span>
 <span class="sd">                 [1, 3]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">x_start</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">x_start</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`x_start` and `y_start` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">x_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_start</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`x_start` and `y_start` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">x_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_start</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">width</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`width` and `height` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`width` and `height` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="s2">"All tensors must be in the same dtype. Got "</span>
-            <span class="sa">f</span><span class="s2">"`x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="s2">&quot;All tensors must be in the same dtype. Got &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;`x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">).&quot;</span>
         <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">x_start</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="s2">"All tensors must be in the same device. Got "</span>
-            <span class="sa">f</span><span class="s2">"`x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), "</span>
-            <span class="sa">f</span><span class="s2">"`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="s2">&quot;All tensors must be in the same device. Got &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;`x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">).&quot;</span>
         <span class="p">)</span>
 
     <span class="n">bbox</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">device</span><span class="o">=</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
@@ -672,7 +673,7 @@
     <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">depth</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Generate 3D bounding boxes according to the provided start coords, width, height and depth.</span>
+    <span class="sd">&quot;&quot;&quot;Generate 3D bounding boxes according to the provided start coords, width, height and depth.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x_start: a tensor containing the x coordinates of the bounding boxes to be extracted. Shape must be a scalar</span>
@@ -713,24 +714,24 @@
 <span class="sd">                 [43,  4, 65],</span>
 <span class="sd">                 [43, 54, 65],</span>
 <span class="sd">                 [ 3, 54, 65]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">x_start</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">z_start</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">x_start</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"`x_start`, `y_start` and `z_start` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">x_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">z_start</span><span class="si">}</span><span class="s2">."</span>
+            <span class="sa">f</span><span class="s2">&quot;`x_start`, `y_start` and `z_start` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">x_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y_start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">z_start</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">depth</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">width</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`width`, `height` and `depth` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">depth</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`width`, `height` and `depth` must be a scalar or (B,). Got </span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">depth</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">z_start</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">depth</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="s2">"All tensors must be in the same dtype. "</span>
-            <span class="sa">f</span><span class="s2">"Got `x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `z_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), "</span>
-            <span class="sa">f</span><span class="s2">"`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">) and `depth`(</span><span class="si">{</span><span class="n">depth</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="s2">&quot;All tensors must be in the same dtype. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Got `x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `z_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">) and `depth`(</span><span class="si">{</span><span class="n">depth</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">).&quot;</span>
         <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">x_start</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">y_start</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">z_start</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">depth</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="s2">"All tensors must be in the same device. "</span>
-            <span class="sa">f</span><span class="s2">"Got `x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `z_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), "</span>
-            <span class="sa">f</span><span class="s2">"`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">) and `depth`(</span><span class="si">{</span><span class="n">depth</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="s2">&quot;All tensors must be in the same device. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Got `x_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `y_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `z_start`(</span><span class="si">{</span><span class="n">x_start</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;`width`(</span><span class="si">{</span><span class="n">width</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">), `height`(</span><span class="si">{</span><span class="n">height</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">) and `depth`(</span><span class="si">{</span><span class="n">depth</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">).&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># front</span>
@@ -755,42 +756,42 @@
 
 
 <div class="viewcode-block" id="transform_bbox"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.transform_bbox">[docs]</a><span class="k">def</span> <span class="nf">transform_bbox</span><span class="p">(</span>
-    <span class="n">trans_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyxy"</span><span class="p">,</span> <span class="n">restore_coordinates</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">trans_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">restore_coordinates</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply a transformation matrix to a box or batch of boxes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to a box or batch of boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        trans_mat: The transformation matrix to be applied with a shape of :math:`(3, 3)`</span>
 <span class="sd">            or batched as :math:`(B, 3, 3)`.</span>
 <span class="sd">        boxes: The boxes to be transformed with a common shape of :math:`(N, 4)` or batched as :math:`(B, N, 4)`, the</span>
 <span class="sd">            polygon shape of :math:`(B, N, 4, 2)` is also supported.</span>
-<span class="sd">        mode: The format in which the boxes are provided. If set to 'xyxy' the boxes are assumed to be in the format</span>
-<span class="sd">            ``xmin, ymin, xmax, ymax``. If set to 'xywh' the boxes are assumed to be in the format</span>
+<span class="sd">        mode: The format in which the boxes are provided. If set to &#39;xyxy&#39; the boxes are assumed to be in the format</span>
+<span class="sd">            ``xmin, ymin, xmax, ymax``. If set to &#39;xywh&#39; the boxes are assumed to be in the format</span>
 <span class="sd">            ``xmin, ymin, width, height``</span>
 <span class="sd">        restore_coordinates: In case the boxes are flipped, adding a post processing step to restore the</span>
 <span class="sd">            coordinates to a valid bounding box.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The set of transformed points in the specified mode</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode must be a string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode must be a string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyxy"</span><span class="p">,</span> <span class="s2">"xywh"</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode must be one of 'xyxy', 'xywh'. Got </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="s2">&quot;xywh&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode must be one of &#39;xyxy&#39;, &#39;xywh&#39;. Got </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># (B, N, 4, 2) shaped polygon boxes do not need to be restored.</span>
     <span class="k">if</span> <span class="n">restore_coordinates</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])):</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"Previous behaviour produces incorrect box coordinates if a flip transformation performed on boxes."</span>
-            <span class="s2">"The previous wrong behaviour has been corrected and will be removed in the future versions."</span>
-            <span class="s2">"If you wish to keep the previous behaviour, please set `restore_coordinates=False`."</span>
-            <span class="s2">"Otherwise, set `restore_coordinates=True` as an acknowledgement."</span>
+            <span class="s2">&quot;Previous behaviour produces incorrect box coordinates if a flip transformation performed on boxes.&quot;</span>
+            <span class="s2">&quot;The previous wrong behaviour has been corrected and will be removed in the future versions.&quot;</span>
+            <span class="s2">&quot;If you wish to keep the previous behaviour, please set `restore_coordinates=False`.&quot;</span>
+            <span class="s2">&quot;Otherwise, set `restore_coordinates=True` as an acknowledgement.&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># convert boxes to format xyxy</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xywh"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xywh&quot;</span><span class="p">:</span>
         <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># x + w</span>
         <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># y + h</span>
 
@@ -806,7 +807,7 @@
         <span class="n">restored_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">transformed_boxes</span> <span class="o">=</span> <span class="n">restored_boxes</span>
 
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'xywh'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;xywh&#39;</span><span class="p">:</span>
         <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">transformed_boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
@@ -814,7 +815,7 @@
 
 
 <div class="viewcode-block" id="nms"><a class="viewcode-back" href="../../../geometry.bbox.html#kornia.geometry.bbox.nms">[docs]</a><span class="k">def</span> <span class="nf">nms</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">iou_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Perform non-maxima suppression (NMS) on a given tensor of bounding boxes according to the intersection-over-</span>
+    <span class="sd">&quot;&quot;&quot;Perform non-maxima suppression (NMS) on a given tensor of bounding boxes according to the intersection-over-</span>
 <span class="sd">    union (IoU).</span>
 
 <span class="sd">    Args:</span>
@@ -834,15 +835,15 @@
 <span class="sd">        &gt;&gt;&gt; scores = torch.tensor([0.9, 0.8, 0.7, 0.9])</span>
 <span class="sd">        &gt;&gt;&gt; nms(boxes, scores, iou_threshold=0.8)</span>
 <span class="sd">        tensor([0, 3, 1])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"boxes expected as Nx4. Got: </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boxes expected as Nx4. Got: </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"scores expected as N. Got: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;scores expected as N. Got: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"boxes and scores mus have same shape. Got: </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boxes and scores mus have same shape. Got: </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">unbind</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">areas</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span>
@@ -907,7 +908,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

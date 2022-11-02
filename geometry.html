@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.bbox" href="geometry.bbox.html" /><link rel="prev" title="kornia.filters" href="filters.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,7 +316,7 @@
         </div>
         <article role="main">
           <section id="kornia-geometry">
-<h1>kornia.geometry<a class="headerlink" href="#kornia-geometry" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry<a class="headerlink" href="#kornia-geometry" title="Permalink to this heading">#</a></h1>
 <p>Geometric image transformations is another key ingredient in computer vision to manipulate images.
 Since geometry operations are typically performed in 2D or 3D, we provide several algorithms to work
 with both cases. This module, the original core of the library, consists of the following submodules:
@@ -344,7 +346,7 @@ calibrated cameras; compute surface normals per pixel and warp tensor frames giv
 <p>align_corners is a switch that widely offered in PyTorch geometric transform functions.
 Here is a simple illustration showing how a 4x4 image is upsampled to 8x8, made by
 <a class="reference external" href="https://discuss.pytorch.org/t/what-we-should-use-align-corners-false/22663/9?u=ducha-aiki">bkkm16</a>.</p>
-<img alt="https://user-images.githubusercontent.com/4803565/110627988-df8a4d00-81a2-11eb-8e13-06d3f7b09ef1.png" src="https://user-images.githubusercontent.com/4803565/110627988-df8a4d00-81a2-11eb-8e13-06d3f7b09ef1.png"/>
+<img alt="https://user-images.githubusercontent.com/4803565/110627988-df8a4d00-81a2-11eb-8e13-06d3f7b09ef1.png" src="https://user-images.githubusercontent.com/4803565/110627988-df8a4d00-81a2-11eb-8e13-06d3f7b09ef1.png" />
 <ul class="simple">
 <li><p><cite>align_corners=True</cite>, pixels are arranged as a grid of points. Points at the corners are aligned.</p></li>
 <li><p><cite>align_corners=False</cite>, pixels are arranged as 1x1 areas. Area boundaries, rather than their centers, are aligned.</p></li>
@@ -353,68 +355,414 @@ Here is a simple illustration showing how a 4x4 image is upsampled to 8x8, made 
 </dl>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="geometry.bbox.html">kornia.geometry.bbox</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.boxes.html">kornia.geometry.boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.bbox.html">kornia.geometry.bbox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.bbox_generator"><code class="docutils literal notranslate"><span class="pre">bbox_generator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.bbox_generator3d"><code class="docutils literal notranslate"><span class="pre">bbox_generator3d()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.bbox_to_mask"><code class="docutils literal notranslate"><span class="pre">bbox_to_mask()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.bbox_to_mask3d"><code class="docutils literal notranslate"><span class="pre">bbox_to_mask3d()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.infer_bbox_shape"><code class="docutils literal notranslate"><span class="pre">infer_bbox_shape()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.infer_bbox_shape3d"><code class="docutils literal notranslate"><span class="pre">infer_bbox_shape3d()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.nms"><code class="docutils literal notranslate"><span class="pre">nms()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.transform_bbox"><code class="docutils literal notranslate"><span class="pre">transform_bbox()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.validate_bbox"><code class="docutils literal notranslate"><span class="pre">validate_bbox()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.bbox.html#kornia.geometry.bbox.validate_bbox3d"><code class="docutils literal notranslate"><span class="pre">validate_bbox3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.boxes.html">kornia.geometry.boxes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes"><code class="docutils literal notranslate"><span class="pre">Boxes</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.compute_area"><code class="docutils literal notranslate"><span class="pre">Boxes.compute_area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.device"><code class="docutils literal notranslate"><span class="pre">Boxes.device</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.dtype"><code class="docutils literal notranslate"><span class="pre">Boxes.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.from_tensor"><code class="docutils literal notranslate"><span class="pre">Boxes.from_tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.get_boxes_shape"><code class="docutils literal notranslate"><span class="pre">Boxes.get_boxes_shape()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.merge"><code class="docutils literal notranslate"><span class="pre">Boxes.merge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.to"><code class="docutils literal notranslate"><span class="pre">Boxes.to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.to_mask"><code class="docutils literal notranslate"><span class="pre">Boxes.to_mask()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.to_tensor"><code class="docutils literal notranslate"><span class="pre">Boxes.to_tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes"><code class="docutils literal notranslate"><span class="pre">Boxes.transform_boxes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes_"><code class="docutils literal notranslate"><span class="pre">Boxes.transform_boxes_()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.translate"><code class="docutils literal notranslate"><span class="pre">Boxes.translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes.trim"><code class="docutils literal notranslate"><span class="pre">Boxes.trim()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D"><code class="docutils literal notranslate"><span class="pre">Boxes3D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.device"><code class="docutils literal notranslate"><span class="pre">Boxes3D.device</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.dtype"><code class="docutils literal notranslate"><span class="pre">Boxes3D.dtype</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.from_tensor"><code class="docutils literal notranslate"><span class="pre">Boxes3D.from_tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.get_boxes_shape"><code class="docutils literal notranslate"><span class="pre">Boxes3D.get_boxes_shape()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to"><code class="docutils literal notranslate"><span class="pre">Boxes3D.to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_mask"><code class="docutils literal notranslate"><span class="pre">Boxes3D.to_mask()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_tensor"><code class="docutils literal notranslate"><span class="pre">Boxes3D.to_tensor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes"><code class="docutils literal notranslate"><span class="pre">Boxes3D.transform_boxes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes_"><code class="docutils literal notranslate"><span class="pre">Boxes3D.transform_boxes_()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.calibration.html">kornia.geometry.calibration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.calibration.html#undistortion">Undistortion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.calibration.html#perspective-n-point-pnp">Perspective-n-Point (PnP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.calibration.html#undistortion">Undistortion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.calibration.html#kornia.geometry.calibration.undistort_image"><code class="docutils literal notranslate"><span class="pre">undistort_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.calibration.html#kornia.geometry.calibration.undistort_points"><code class="docutils literal notranslate"><span class="pre">undistort_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.calibration.html#kornia.geometry.calibration.distort_points"><code class="docutils literal notranslate"><span class="pre">distort_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.calibration.html#kornia.geometry.calibration.tilt_projection"><code class="docutils literal notranslate"><span class="pre">tilt_projection()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.calibration.html#perspective-n-point-pnp">Perspective-n-Point (PnP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.calibration.html#kornia.geometry.calibration.solve_pnp_dlt"><code class="docutils literal notranslate"><span class="pre">solve_pnp_dlt()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.camera.html">kornia.geometry.camera</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.camera.pinhole.html">Pinhole Camera</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.camera.perspective.html">Perspective Camera</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.camera.stereo.html">Stereo Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.camera.pinhole.html">Pinhole Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera"><code class="docutils literal notranslate"><span class="pre">PinholeCamera</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.cam2pixel"><code class="docutils literal notranslate"><span class="pre">cam2pixel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.pixel2cam"><code class="docutils literal notranslate"><span class="pre">pixel2cam()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.camera.perspective.html">Perspective Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.perspective.html#kornia.geometry.camera.perspective.project_points"><code class="docutils literal notranslate"><span class="pre">project_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.perspective.html#kornia.geometry.camera.perspective.unproject_points"><code class="docutils literal notranslate"><span class="pre">unproject_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.camera.stereo.html">Stereo Camera</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera"><code class="docutils literal notranslate"><span class="pre">StereoCamera</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.camera.stereo.html#kornia.geometry.camera.stereo.reproject_disparity_to_3D"><code class="docutils literal notranslate"><span class="pre">reproject_disparity_to_3D()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.conversions.html">kornia.geometry.conversions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#angles">Angles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#coordinates">Coordinates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#homography">Homography</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#quaternion">Quaternion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#rotation-matrix">Rotation Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#angle-axis">Angle Axis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#pose">Pose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#angles">Angles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.rad2deg"><code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.deg2rad"><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.pol2cart"><code class="docutils literal notranslate"><span class="pre">pol2cart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.cart2pol"><code class="docutils literal notranslate"><span class="pre">cart2pol()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.angle_to_rotation_matrix"><code class="docutils literal notranslate"><span class="pre">angle_to_rotation_matrix()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.depth.html">kornia.geometry.depth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#coordinates">Coordinates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.convert_points_from_homogeneous"><code class="docutils literal notranslate"><span class="pre">convert_points_from_homogeneous()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.convert_points_to_homogeneous"><code class="docutils literal notranslate"><span class="pre">convert_points_to_homogeneous()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.convert_affinematrix_to_homography"><code class="docutils literal notranslate"><span class="pre">convert_affinematrix_to_homography()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.denormalize_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">denormalize_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">normalize_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.denormalize_pixel_coordinates3d"><code class="docutils literal notranslate"><span class="pre">denormalize_pixel_coordinates3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_pixel_coordinates3d"><code class="docutils literal notranslate"><span class="pre">normalize_pixel_coordinates3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_points_with_intrinsics"><code class="docutils literal notranslate"><span class="pre">normalize_points_with_intrinsics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.denormalize_points_with_intrinsics"><code class="docutils literal notranslate"><span class="pre">denormalize_points_with_intrinsics()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#homography">Homography</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_homography"><code class="docutils literal notranslate"><span class="pre">normalize_homography()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.denormalize_homography"><code class="docutils literal notranslate"><span class="pre">denormalize_homography()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_homography3d"><code class="docutils literal notranslate"><span class="pre">normalize_homography3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#quaternion">Quaternion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.quaternion_to_angle_axis"><code class="docutils literal notranslate"><span class="pre">quaternion_to_angle_axis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.quaternion_to_rotation_matrix"><code class="docutils literal notranslate"><span class="pre">quaternion_to_rotation_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.quaternion_log_to_exp"><code class="docutils literal notranslate"><span class="pre">quaternion_log_to_exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.quaternion_exp_to_log"><code class="docutils literal notranslate"><span class="pre">quaternion_exp_to_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.normalize_quaternion"><code class="docutils literal notranslate"><span class="pre">normalize_quaternion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#rotation-matrix">Rotation Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.rotation_matrix_to_angle_axis"><code class="docutils literal notranslate"><span class="pre">rotation_matrix_to_angle_axis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.rotation_matrix_to_quaternion"><code class="docutils literal notranslate"><span class="pre">rotation_matrix_to_quaternion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#angle-axis">Angle Axis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.angle_axis_to_quaternion"><code class="docutils literal notranslate"><span class="pre">angle_axis_to_quaternion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.angle_axis_to_rotation_matrix"><code class="docutils literal notranslate"><span class="pre">angle_axis_to_rotation_matrix()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.conversions.html#pose">Pose</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.Rt_to_matrix4x4"><code class="docutils literal notranslate"><span class="pre">Rt_to_matrix4x4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.matrix4x4_to_Rt"><code class="docutils literal notranslate"><span class="pre">matrix4x4_to_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.worldtocam_to_camtoworld_Rt"><code class="docutils literal notranslate"><span class="pre">worldtocam_to_camtoworld_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.camtoworld_to_worldtocam_Rt"><code class="docutils literal notranslate"><span class="pre">camtoworld_to_worldtocam_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.camtoworld_graphics_to_vision_4x4"><code class="docutils literal notranslate"><span class="pre">camtoworld_graphics_to_vision_4x4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.camtoworld_vision_to_graphics_4x4"><code class="docutils literal notranslate"><span class="pre">camtoworld_vision_to_graphics_4x4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.camtoworld_graphics_to_vision_Rt"><code class="docutils literal notranslate"><span class="pre">camtoworld_graphics_to_vision_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.camtoworld_vision_to_graphics_Rt"><code class="docutils literal notranslate"><span class="pre">camtoworld_vision_to_graphics_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.conversions.html#kornia.geometry.conversions.ARKitQTVecs_to_ColmapQTVecs"><code class="docutils literal notranslate"><span class="pre">ARKitQTVecs_to_ColmapQTVecs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.depth.html">kornia.geometry.depth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.depth.html#kornia.geometry.depth.depth_to_3d"><code class="docutils literal notranslate"><span class="pre">depth_to_3d()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.depth.html#kornia.geometry.depth.depth_to_normals"><code class="docutils literal notranslate"><span class="pre">depth_to_normals()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.depth.html#kornia.geometry.depth.warp_frame_depth"><code class="docutils literal notranslate"><span class="pre">warp_frame_depth()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.epipolar.html">kornia.geometry.epipolar</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#essential">Essential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#fundamental">Fundamental</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#metrics">Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#projection">Projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#numeric">Numeric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#triangulation">Triangulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#essential">Essential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.essential_from_fundamental"><code class="docutils literal notranslate"><span class="pre">essential_from_fundamental()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.essential_from_Rt"><code class="docutils literal notranslate"><span class="pre">essential_from_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.decompose_essential_matrix"><code class="docutils literal notranslate"><span class="pre">decompose_essential_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.motion_from_essential"><code class="docutils literal notranslate"><span class="pre">motion_from_essential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.motion_from_essential_choose_solution"><code class="docutils literal notranslate"><span class="pre">motion_from_essential_choose_solution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.relative_camera_motion"><code class="docutils literal notranslate"><span class="pre">relative_camera_motion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#fundamental">Fundamental</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.find_fundamental"><code class="docutils literal notranslate"><span class="pre">find_fundamental()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.fundamental_from_essential"><code class="docutils literal notranslate"><span class="pre">fundamental_from_essential()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.fundamental_from_projections"><code class="docutils literal notranslate"><span class="pre">fundamental_from_projections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.compute_correspond_epilines"><code class="docutils literal notranslate"><span class="pre">compute_correspond_epilines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.normalize_points"><code class="docutils literal notranslate"><span class="pre">normalize_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.normalize_transformation"><code class="docutils literal notranslate"><span class="pre">normalize_transformation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.get_perpendicular"><code class="docutils literal notranslate"><span class="pre">get_perpendicular()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.get_closest_point_on_epipolar_line"><code class="docutils literal notranslate"><span class="pre">get_closest_point_on_epipolar_line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.sampson_epipolar_distance"><code class="docutils literal notranslate"><span class="pre">sampson_epipolar_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.symmetrical_epipolar_distance"><code class="docutils literal notranslate"><span class="pre">symmetrical_epipolar_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.left_to_right_epipolar_distance"><code class="docutils literal notranslate"><span class="pre">left_to_right_epipolar_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.right_to_left_epipolar_distance"><code class="docutils literal notranslate"><span class="pre">right_to_left_epipolar_distance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#projection">Projection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.projection_from_KRt"><code class="docutils literal notranslate"><span class="pre">projection_from_KRt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.projections_from_fundamental"><code class="docutils literal notranslate"><span class="pre">projections_from_fundamental()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.intrinsics_like"><code class="docutils literal notranslate"><span class="pre">intrinsics_like()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.scale_intrinsics"><code class="docutils literal notranslate"><span class="pre">scale_intrinsics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.random_intrinsics"><code class="docutils literal notranslate"><span class="pre">random_intrinsics()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#numeric">Numeric</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.cross_product_matrix"><code class="docutils literal notranslate"><span class="pre">cross_product_matrix()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.epipolar.html#triangulation">Triangulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.epipolar.html#kornia.geometry.epipolar.triangulate_points"><code class="docutils literal notranslate"><span class="pre">triangulate_points()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.homography.html">kornia.geometry.homography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.find_homography_dlt"><code class="docutils literal notranslate"><span class="pre">find_homography_dlt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.find_homography_dlt_iterated"><code class="docutils literal notranslate"><span class="pre">find_homography_dlt_iterated()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.find_homography_lines_dlt"><code class="docutils literal notranslate"><span class="pre">find_homography_lines_dlt()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.find_homography_lines_dlt_iterated"><code class="docutils literal notranslate"><span class="pre">find_homography_lines_dlt_iterated()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.line_segment_transfer_error_one_way"><code class="docutils literal notranslate"><span class="pre">line_segment_transfer_error_one_way()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.oneway_transfer_error"><code class="docutils literal notranslate"><span class="pre">oneway_transfer_error()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.sample_is_valid_for_homography"><code class="docutils literal notranslate"><span class="pre">sample_is_valid_for_homography()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#kornia.geometry.homography.symmetric_transfer_error"><code class="docutils literal notranslate"><span class="pre">symmetric_transfer_error()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="geometry.homography.html#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.liegroup.html">kornia.geometry.liegroup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.linalg.html">kornia.geometry.linalg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.liegroup.html">kornia.geometry.liegroup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3"><code class="docutils literal notranslate"><span class="pre">So3</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.__init__"><code class="docutils literal notranslate"><span class="pre">So3.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.__mul__"><code class="docutils literal notranslate"><span class="pre">So3.__mul__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.__repr__"><code class="docutils literal notranslate"><span class="pre">So3.__repr__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.__weakref__"><code class="docutils literal notranslate"><span class="pre">So3.__weakref__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.exp"><code class="docutils literal notranslate"><span class="pre">So3.exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.from_matrix"><code class="docutils literal notranslate"><span class="pre">So3.from_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.hat"><code class="docutils literal notranslate"><span class="pre">So3.hat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.identity"><code class="docutils literal notranslate"><span class="pre">So3.identity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.inverse"><code class="docutils literal notranslate"><span class="pre">So3.inverse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.log"><code class="docutils literal notranslate"><span class="pre">So3.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.matrix"><code class="docutils literal notranslate"><span class="pre">So3.matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.q"><code class="docutils literal notranslate"><span class="pre">So3.q</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.So3.vee"><code class="docutils literal notranslate"><span class="pre">So3.vee()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3"><code class="docutils literal notranslate"><span class="pre">Se3</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.__init__"><code class="docutils literal notranslate"><span class="pre">Se3.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.__mul__"><code class="docutils literal notranslate"><span class="pre">Se3.__mul__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.__repr__"><code class="docutils literal notranslate"><span class="pre">Se3.__repr__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.__weakref__"><code class="docutils literal notranslate"><span class="pre">Se3.__weakref__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.exp"><code class="docutils literal notranslate"><span class="pre">Se3.exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.hat"><code class="docutils literal notranslate"><span class="pre">Se3.hat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.identity"><code class="docutils literal notranslate"><span class="pre">Se3.identity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.inverse"><code class="docutils literal notranslate"><span class="pre">Se3.inverse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.log"><code class="docutils literal notranslate"><span class="pre">Se3.log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.matrix"><code class="docutils literal notranslate"><span class="pre">Se3.matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.r"><code class="docutils literal notranslate"><span class="pre">Se3.r</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.t"><code class="docutils literal notranslate"><span class="pre">Se3.t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.liegroup.html#kornia.geometry.liegroup.Se3.vee"><code class="docutils literal notranslate"><span class="pre">Se3.vee()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.linalg.html">kornia.geometry.linalg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.relative_transformation"><code class="docutils literal notranslate"><span class="pre">relative_transformation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.compose_transformations"><code class="docutils literal notranslate"><span class="pre">compose_transformations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.inverse_transformation"><code class="docutils literal notranslate"><span class="pre">inverse_transformation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.transform_points"><code class="docutils literal notranslate"><span class="pre">transform_points()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.point_line_distance"><code class="docutils literal notranslate"><span class="pre">point_line_distance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.squared_norm"><code class="docutils literal notranslate"><span class="pre">squared_norm()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.linalg.html#kornia.geometry.linalg.batched_dot_product"><code class="docutils literal notranslate"><span class="pre">batched_dot_product()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.line.html">kornia.geometry.line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.__init__"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.dim"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.dim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.direction"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.direction</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.distance"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.intersect"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.intersect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.origin"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.origin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.point_at"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.point_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.projection"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.projection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.squared_distance"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.squared_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.ParametrizedLine.through"><code class="docutils literal notranslate"><span class="pre">ParametrizedLine.through()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.fit_line"><code class="docutils literal notranslate"><span class="pre">fit_line()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.line.html#kornia.geometry.line.Hyperplane"><code class="docutils literal notranslate"><span class="pre">Hyperplane</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="geometry.line.html#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.quaternion.html">kornia.geometry.quaternion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.quaternion.html">kornia.geometry.quaternion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion"><code class="docutils literal notranslate"><span class="pre">Quaternion</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__add__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__add__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__init__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__neg__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__neg__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__pow__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__pow__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__repr__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__repr__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__sub__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__sub__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.coeffs"><code class="docutils literal notranslate"><span class="pre">Quaternion.coeffs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.data"><code class="docutils literal notranslate"><span class="pre">Quaternion.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.from_axis_angle"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_axis_angle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.from_coeffs"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_coeffs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.from_matrix"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.identity"><code class="docutils literal notranslate"><span class="pre">Quaternion.identity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.matrix"><code class="docutils literal notranslate"><span class="pre">Quaternion.matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.polar_angle"><code class="docutils literal notranslate"><span class="pre">Quaternion.polar_angle</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.q"><code class="docutils literal notranslate"><span class="pre">Quaternion.q</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.random"><code class="docutils literal notranslate"><span class="pre">Quaternion.random()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.real"><code class="docutils literal notranslate"><span class="pre">Quaternion.real</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.scalar"><code class="docutils literal notranslate"><span class="pre">Quaternion.scalar</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.shape"><code class="docutils literal notranslate"><span class="pre">Quaternion.shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.slerp"><code class="docutils literal notranslate"><span class="pre">Quaternion.slerp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.vec"><code class="docutils literal notranslate"><span class="pre">Quaternion.vec</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.w"><code class="docutils literal notranslate"><span class="pre">Quaternion.w</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.x"><code class="docutils literal notranslate"><span class="pre">Quaternion.x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.y"><code class="docutils literal notranslate"><span class="pre">Quaternion.y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.z"><code class="docutils literal notranslate"><span class="pre">Quaternion.z</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.subpix.html">kornia.geometry.subpix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#convolutional">Convolutional</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#spatial">Spatial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#non-maxima-suppression">Non Maxima Suppression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#module">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#convolutional">Convolutional</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.conv_soft_argmax2d"><code class="docutils literal notranslate"><span class="pre">conv_soft_argmax2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.conv_soft_argmax3d"><code class="docutils literal notranslate"><span class="pre">conv_soft_argmax3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.conv_quad_interp3d"><code class="docutils literal notranslate"><span class="pre">conv_quad_interp3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#spatial">Spatial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.spatial_softmax2d"><code class="docutils literal notranslate"><span class="pre">spatial_softmax2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.spatial_expectation2d"><code class="docutils literal notranslate"><span class="pre">spatial_expectation2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.spatial_soft_argmax2d"><code class="docutils literal notranslate"><span class="pre">spatial_soft_argmax2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.render_gaussian2d"><code class="docutils literal notranslate"><span class="pre">render_gaussian2d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#non-maxima-suppression">Non Maxima Suppression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.nms2d"><code class="docutils literal notranslate"><span class="pre">nms2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.nms3d"><code class="docutils literal notranslate"><span class="pre">nms3d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.subpix.html#module">Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.SpatialSoftArgmax2d"><code class="docutils literal notranslate"><span class="pre">SpatialSoftArgmax2d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.ConvSoftArgmax2d"><code class="docutils literal notranslate"><span class="pre">ConvSoftArgmax2d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.ConvSoftArgmax3d"><code class="docutils literal notranslate"><span class="pre">ConvSoftArgmax3d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.ConvQuadInterp3d"><code class="docutils literal notranslate"><span class="pre">ConvQuadInterp3d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.NonMaximaSuppression2d"><code class="docutils literal notranslate"><span class="pre">NonMaximaSuppression2d</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.subpix.html#kornia.geometry.subpix.NonMaximaSuppression3d"><code class="docutils literal notranslate"><span class="pre">NonMaximaSuppression3d</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="geometry.transform.html">kornia.geometry.transform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#warp-operators">Warp operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#image-2d-transforms">Image 2d transforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#matrix-transformations">Matrix transformations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#crop-operators">Crop operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#module">Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#image-registration">Image registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#warp-operators">Warp operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_perspective"><code class="docutils literal notranslate"><span class="pre">warp_perspective()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_perspective3d"><code class="docutils literal notranslate"><span class="pre">warp_perspective3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_affine"><code class="docutils literal notranslate"><span class="pre">warp_affine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_affine3d"><code class="docutils literal notranslate"><span class="pre">warp_affine3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_image_tps"><code class="docutils literal notranslate"><span class="pre">warp_image_tps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.warp_points_tps"><code class="docutils literal notranslate"><span class="pre">warp_points_tps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.remap"><code class="docutils literal notranslate"><span class="pre">remap()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#image-2d-transforms">Image 2d transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.affine"><code class="docutils literal notranslate"><span class="pre">affine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.shear"><code class="docutils literal notranslate"><span class="pre">shear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.hflip"><code class="docutils literal notranslate"><span class="pre">hflip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.vflip"><code class="docutils literal notranslate"><span class="pre">vflip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.rot180"><code class="docutils literal notranslate"><span class="pre">rot180()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.rescale"><code class="docutils literal notranslate"><span class="pre">rescale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.elastic_transform2d"><code class="docutils literal notranslate"><span class="pre">elastic_transform2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.pyrdown"><code class="docutils literal notranslate"><span class="pre">pyrdown()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.pyrup"><code class="docutils literal notranslate"><span class="pre">pyrup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.build_pyramid"><code class="docutils literal notranslate"><span class="pre">build_pyramid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.build_laplacian_pyramid"><code class="docutils literal notranslate"><span class="pre">build_laplacian_pyramid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#matrix-transformations">Matrix transformations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_perspective_transform"><code class="docutils literal notranslate"><span class="pre">get_perspective_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_perspective_transform3d"><code class="docutils literal notranslate"><span class="pre">get_perspective_transform3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_projective_transform"><code class="docutils literal notranslate"><span class="pre">get_projective_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_rotation_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_rotation_matrix2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_shear_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_shear_matrix2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_shear_matrix3d"><code class="docutils literal notranslate"><span class="pre">get_shear_matrix3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_affine_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_affine_matrix2d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_affine_matrix3d"><code class="docutils literal notranslate"><span class="pre">get_affine_matrix3d()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.invert_affine_transform"><code class="docutils literal notranslate"><span class="pre">invert_affine_transform()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.projection_from_Rt"><code class="docutils literal notranslate"><span class="pre">projection_from_Rt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.get_tps_transform"><code class="docutils literal notranslate"><span class="pre">get_tps_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#crop-operators">Crop operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.crop_by_indices"><code class="docutils literal notranslate"><span class="pre">crop_by_indices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.crop_by_boxes"><code class="docutils literal notranslate"><span class="pre">crop_by_boxes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.center_crop"><code class="docutils literal notranslate"><span class="pre">center_crop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.crop_and_resize"><code class="docutils literal notranslate"><span class="pre">crop_and_resize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#module">Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Rotate"><code class="docutils literal notranslate"><span class="pre">Rotate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Translate"><code class="docutils literal notranslate"><span class="pre">Translate</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Scale"><code class="docutils literal notranslate"><span class="pre">Scale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Shear"><code class="docutils literal notranslate"><span class="pre">Shear</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.PyrDown"><code class="docutils literal notranslate"><span class="pre">PyrDown</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.PyrUp"><code class="docutils literal notranslate"><span class="pre">PyrUp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.ScalePyramid"><code class="docutils literal notranslate"><span class="pre">ScalePyramid</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Hflip"><code class="docutils literal notranslate"><span class="pre">Hflip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Vflip"><code class="docutils literal notranslate"><span class="pre">Vflip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Rot180"><code class="docutils literal notranslate"><span class="pre">Rot180</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Resize"><code class="docutils literal notranslate"><span class="pre">Resize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Rescale"><code class="docutils literal notranslate"><span class="pre">Rescale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.Affine"><code class="docutils literal notranslate"><span class="pre">Affine</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.HomographyWarper"><code class="docutils literal notranslate"><span class="pre">HomographyWarper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#image-registration">Image registration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.image_registrator.Homography"><code class="docutils literal notranslate"><span class="pre">Homography</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.image_registrator.ImageRegistrator"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.transform.html#kornia.geometry.transform.image_registrator.Similarity"><code class="docutils literal notranslate"><span class="pre">Similarity</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="geometry.transform.html#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="geometry.ransac.html">kornia.geometry.ransac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry.ransac.html">kornia.geometry.ransac</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry.ransac.html#kornia.geometry.ransac.RANSAC"><code class="docutils literal notranslate"><span class="pre">RANSAC</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="geometry.ransac.html#kornia.geometry.ransac.RANSAC.forward"><code class="docutils literal notranslate"><span class="pre">RANSAC.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -431,10 +779,10 @@ Here is a simple illustration showing how a 4x4 image is upsampled to 8x8, made 
                 </div>
                 <div class="title">kornia.geometry.bbox</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="filters.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -474,7 +822,9 @@ Here is a simple illustration showing how a 4x4 image is upsampled to 8x8, made 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

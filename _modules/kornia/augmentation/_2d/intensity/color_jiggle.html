@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/intensity/color_jiggle.html" />
 
-    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation._2d.intensity.color_jiggle - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -324,7 +325,7 @@
 
 
 <div class="viewcode-block" id="ColorJiggle"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.ColorJiggle">[docs]</a><span class="k">class</span> <span class="nc">ColorJiggle</span><span class="p">(</span><span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Apply a random transformation to the brightness, contrast, saturation and hue of a tensor image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a random transformation to the brightness, contrast, saturation and hue of a tensor image.</span>
 
 <span class="sd">    .. image:: _static/img/ColorJiggle.png</span>
 
@@ -368,7 +369,7 @@
 <span class="sd">        &gt;&gt;&gt; aug = ColorJiggle(0.1, 0.1, 0.1, 0.1, p=1.)</span>
 <span class="sd">        &gt;&gt;&gt; (aug(input) == aug(input, params=aug._params)).all()</span>
 <span class="sd">        tensor(True)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -395,14 +396,14 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 
         <span class="n">transforms</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_brightness</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"brightness_factor"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
-            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_contrast</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"contrast_factor"</span><span class="p">]),</span>
-            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_saturation</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"saturation_factor"</span><span class="p">]),</span>
-            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_hue</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">"hue_factor"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">),</span>
+            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_brightness</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;brightness_factor&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_contrast</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;contrast_factor&quot;</span><span class="p">]),</span>
+            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_saturation</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;saturation_factor&quot;</span><span class="p">]),</span>
+            <span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">adjust_hue</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;hue_factor&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">),</span>
         <span class="p">]</span>
 
         <span class="n">jittered</span> <span class="o">=</span> <span class="nb">input</span>
-        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="s2">"order"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;order&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
             <span class="n">t</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
             <span class="n">jittered</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">jittered</span><span class="p">)</span>
 
@@ -445,7 +446,9 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../../_static/scripts/furo.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>

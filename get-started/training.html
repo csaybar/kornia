@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Computer Vision Algorithms" href="../applications/intro.html" /><link rel="prev" title="About" href="about.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/get-started/training.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Training API (experimental) - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,13 +316,13 @@
         </div>
         <article role="main">
           <section id="training-api-experimental">
-<span id="training-api"></span><h1>Training API (experimental)<a class="headerlink" href="#training-api-experimental" title="Permalink to this headline">#</a></h1>
+<span id="training-api"></span><h1>Training API (experimental)<a class="headerlink" href="#training-api-experimental" title="Permalink to this heading">#</a></h1>
 <p>Kornia provides a Training API with the specific purpose to train and fine-tune the
 supported deep learning algorithms within the library.</p>
 <aside class="sidebar">
 <p class="sidebar-title"><strong>Deep Alchemy</strong></p>
 <blockquote>
-<div><a class="reference internal image-reference" href="https://github.com/kornia/data/raw/main/pixie_alchemist.png"><img alt="https://github.com/kornia/data/raw/main/pixie_alchemist.png" class="align-center" src="https://github.com/kornia/data/raw/main/pixie_alchemist.png" style="width: 100%;"/></a>
+<div><a class="reference internal image-reference" href="https://github.com/kornia/data/raw/main/pixie_alchemist.png"><img alt="https://github.com/kornia/data/raw/main/pixie_alchemist.png" class="align-center" src="https://github.com/kornia/data/raw/main/pixie_alchemist.png" style="width: 100%;" /></a>
 </div></blockquote>
 <p>A seemingly magical process of transformation, creation, or combination of data to usable deep learning models.</p>
 </aside>
@@ -329,7 +331,7 @@ supported deep learning algorithms within the library.</p>
 <p>In order to use our Training API you must: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">kornia[x]</span></code></p>
 </div>
 <section id="why-a-training-api">
-<h2>Why a Training API ?<a class="headerlink" href="#why-a-training-api" title="Permalink to this headline">#</a></h2>
+<h2>Why a Training API ?<a class="headerlink" href="#why-a-training-api" title="Permalink to this heading">#</a></h2>
 <p>Kornia includes deep learning models that eventually need to be updated through fine-tuning.
 Our aim is to have an API flexible enough to be used across our vision models and enable us to
 override methods or dynamically pass callbacks to ease the process of debugging and experimentations.</p>
@@ -340,7 +342,7 @@ experiment with the training of our models.</p>
 </div>
 </section>
 <section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this headline">#</a></h2>
+<h2>Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><cite>kornia</cite> golden rule is to not have heavy dependencies.</p></li>
 <li><p>Our models are simple enough so that a light training API can fulfill our needs.</p></li>
@@ -351,7 +353,7 @@ experiment with the training of our models.</p>
 </ul>
 </section>
 <section id="trainer-usage">
-<h2>Trainer Usage<a class="headerlink" href="#trainer-usage" title="Permalink to this headline">#</a></h2>
+<h2>Trainer Usage<a class="headerlink" href="#trainer-usage" title="Permalink to this heading">#</a></h2>
 <p>The entry point to start traning with Kornia is through the <a class="reference internal" href="../x.html#kornia.x.Trainer" title="kornia.x.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a> class.</p>
 <p>The main API is a self contained module that heavily relies on <a class="reference external" href="https://github.com/huggingface/accelerate/">accelerate</a>
 to easily scale the training over multi-GPUs/TPU/fp16 <a class="reference external" href="https://github.com/huggingface/accelerate#supported-integrations/">(see more)</a>
@@ -408,7 +410,7 @@ for you.</p>
 </div>
 </section>
 <section id="customize-callbacks">
-<h2>Customize [callbacks]<a class="headerlink" href="#customize-callbacks" title="Permalink to this headline">#</a></h2>
+<h2>Customize [callbacks]<a class="headerlink" href="#customize-callbacks" title="Permalink to this heading">#</a></h2>
 <p>At this point you might think - <em>Is this API generic enough ?</em></p>
 <blockquote>
 <div><p>Of course not ! What is next ? Let’s have fun and <strong>customize</strong>.</p>
@@ -439,7 +441,7 @@ according to your needs. We provide predefined classes for generic problems such
     <span class="n">acc1</span><span class="p">,</span> <span class="n">acc5</span> <span class="o">=</span> <span class="n">accuracy</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="n">target</span><span class="p">,</span> <span class="n">topk</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># create the trainer and pass the evaluate method as follows</span>
-<span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">"evaluate"</span><span class="p">,</span> <span class="n">my_evaluate</span><span class="p">})</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="n">my_evaluate</span><span class="p">})</span>
 </pre></div>
 </div>
 <p><strong>Still not convinced ?</strong></p>
@@ -463,7 +465,7 @@ the data to the device and the rest of the story is just PyTorch :)</p>
       <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>  <span class="c1"># do whatever you want with validation</span>
 
 <span class="c1"># create the trainer and pass the evaluate method as follows</span>
-<span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">"fit"</span><span class="p">,</span> <span class="n">my_fit</span><span class="p">})</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="n">my_fit</span><span class="p">})</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -473,7 +475,7 @@ the data to the device and the rest of the story is just PyTorch :)</p>
 </div>
 </section>
 <section id="preprocess-and-augmentations">
-<h2>Preprocess and augmentations<a class="headerlink" href="#preprocess-and-augmentations" title="Permalink to this headline">#</a></h2>
+<h2>Preprocess and augmentations<a class="headerlink" href="#preprocess-and-augmentations" title="Permalink to this heading">#</a></h2>
 <p>Taking a pre-trained model from an external source and assume that fine-tuning with your
 data by just changing few things in your model is usually a bad assumption in practice.</p>
 <p>Fine-tuning a model need a lot tricks which usually means designing a good augmentation
@@ -496,28 +498,28 @@ the debugging and experimentation experience.</p>
 
 <span class="c1"># create the trainer and pass the augmentation or preprocess</span>
 <span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">ImageClassifierTrainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-  <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">"preprocess"</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">,</span> <span class="s2">"augmentations"</span><span class="p">:</span> <span class="n">augmentations</span><span class="p">})</span>
+  <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;preprocess&quot;</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">,</span> <span class="s2">&quot;augmentations&quot;</span><span class="p">:</span> <span class="n">augmentations</span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
 <section id="callbacks-utilities">
-<h2>Callbacks utilities<a class="headerlink" href="#callbacks-utilities" title="Permalink to this headline">#</a></h2>
+<h2>Callbacks utilities<a class="headerlink" href="#callbacks-utilities" title="Permalink to this heading">#</a></h2>
 <p>We also provide utilities to save checkpoints of the model or early stop the training. You can use
 as follows passing as <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> the classes <a class="reference internal" href="../x.html#kornia.x.ModelCheckpoint" title="kornia.x.ModelCheckpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelCheckpoint</span></code></a> and
 <a class="reference internal" href="../x.html#kornia.x.EarlyStopping" title="kornia.x.EarlyStopping"><code class="xref py py-class docutils literal notranslate"><span class="pre">EarlyStopping</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_checkpoint</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span>
-  <span class="n">filepath</span><span class="o">=</span><span class="s2">"./outputs"</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s2">"top5"</span><span class="p">,</span>
+  <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;./outputs&quot;</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;top5&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">early_stop</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">"top5"</span><span class="p">)</span>
+<span class="n">early_stop</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&quot;top5&quot;</span><span class="p">)</span>
 
 <span class="n">trainer</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">ImageClassifierTrainer</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-  <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">"on_checkpoint"</span><span class="p">,</span> <span class="n">model_checkpoint</span><span class="p">,</span> <span class="s2">"on_epoch_end"</span><span class="p">:</span> <span class="n">early_stop</span><span class="p">})</span>
+  <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;on_checkpoint&quot;</span><span class="p">,</span> <span class="n">model_checkpoint</span><span class="p">,</span> <span class="s2">&quot;on_epoch_end&quot;</span><span class="p">:</span> <span class="n">early_stop</span><span class="p">})</span>
 </pre></div>
 </div>
 </section>
 <section id="hyperparameter-sweeps">
-<h2>Hyperparameter sweeps<a class="headerlink" href="#hyperparameter-sweeps" title="Permalink to this headline">#</a></h2>
+<h2>Hyperparameter sweeps<a class="headerlink" href="#hyperparameter-sweeps" title="Permalink to this heading">#</a></h2>
 <p>Use <a class="reference external" href="https://hydra.cc">hydra</a> to implement an easy search strategy for your hyper-parameters as follows:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -531,7 +533,7 @@ as follows passing as <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="distributed-training">
-<h2>Distributed Training<a class="headerlink" href="#distributed-training" title="Permalink to this headline">#</a></h2>
+<h2>Distributed Training<a class="headerlink" href="#distributed-training" title="Permalink to this heading">#</a></h2>
 <p>Kornia <a class="reference internal" href="../x.html#kornia.x.Trainer" title="kornia.x.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a> heavily relies on <a class="reference external" href="https://github.com/huggingface/accelerate/">accelerate</a> to
 decouple the process of running your training scripts in a distributed environment.</p>
 <div class="admonition note">
@@ -647,10 +649,10 @@ Add an <cite>xmp.spawn</cite> line in your script as you usually do.</p></li>
                 </div>
                 <div class="title">Computer Vision Algorithms</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="about.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -686,7 +688,7 @@ Add an <cite>xmp.spawn</cite> line in your script as you usually do.</p></li>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -716,7 +718,9 @@ Add an <cite>xmp.spawn</cite> line in your script as you usually do.</p></li>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

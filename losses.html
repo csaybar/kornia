@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.metrics" href="metrics.html" /><link rel="prev" title="kornia.io" href="io.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/losses.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,16 +316,18 @@
         </div>
         <article role="main">
           <section id="kornia-losses">
-<h1>kornia.losses<a class="headerlink" href="#kornia-losses" title="Permalink to this headline">#</a></h1>
+<h1>kornia.losses<a class="headerlink" href="#kornia-losses" title="Permalink to this heading">#</a></h1>
 <section id="reconstruction">
-<h2>Reconstruction<a class="headerlink" href="#reconstruction" title="Permalink to this headline">#</a></h2>
+<h2>Reconstruction<a class="headerlink" href="#reconstruction" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.ssim_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">ssim_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/ssim.html#ssim_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.ssim_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes a loss based on the SSIM measurement.</p>
 <p>The loss, or the Structural dissimilarity (DSSIM) is described as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, y) = \frac{1 - \text{SSIM}(x, y)}{2}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, y) = \frac{1 - \text{SSIM}(x, y)}{2}\]</div>
+</div>
 <p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">ssim()</span></code> for details about SSIM.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -359,14 +363,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.psnr_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">psnr_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/psnr.html#psnr_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.psnr_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes the PSNR loss.</p>
 <p>The loss is computed as follows:</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss} = -\text{psnr(x, y)}\]</div></div>
+<div><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss} = -\text{psnr(x, y)}\]</div>
+</div>
 </div></blockquote>
 <p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">psnr()</span></code> for details abut PSNR.</p>
 <dl class="field-list simple">
@@ -391,6 +398,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.total_variation">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">total_variation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/total_variation.html#total_variation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.total_variation" title="Permalink to this definition">#</a></dt>
@@ -430,14 +438,17 @@ Thus, <cite>reduction=’mean’</cite> was added as an optional reduction metho
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.inverse_depth_smoothness_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">inverse_depth_smoothness_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idepth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/depth_smooth.html#inverse_depth_smoothness_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.inverse_depth_smoothness_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes image-aware inverse depth smoothness loss.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{loss} = \left | \partial_x d_{ij} \right | e^{-\left \|
 \partial_x I_{ij} \right \|} + \left |
-\partial_y d_{ij} \right | e^{-\left \| \partial_y I_{ij} \right \|}\]</div></div>
+\partial_y d_{ij} \right | e^{-\left \| \partial_y I_{ij} \right \|}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -459,13 +470,16 @@ Thus, <cite>reduction=’mean’</cite> was added as an optional reduction metho
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.SSIMLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">SSIMLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/ssim.html#SSIMLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.SSIMLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a criterion that computes a loss based on the SSIM measurement.</p>
 <p>The loss, or the Structural dissimilarity (DSSIM) is described as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, y) = \frac{1 - \text{SSIM}(x, y)}{2}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, y) = \frac{1 - \text{SSIM}(x, y)}{2}\]</div>
+</div>
 <p>See <a class="reference internal" href="#kornia.losses.ssim_loss" title="kornia.losses.ssim_loss"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ssim_loss()</span></code></a> for details about SSIM.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -497,13 +511,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.MS_SSIMLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">MS_SSIMLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.5,</span> <span class="pre">1.0,</span> <span class="pre">2.0,</span> <span class="pre">4.0,</span> <span class="pre">8.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.01,</span> <span class="pre">0.03)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.025</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compensation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/ms_ssim.html#MS_SSIMLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.MS_SSIMLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a criterion that computes MSSIM + L1 loss.</p>
 <p>According to [1], we compute the MS_SSIM + L1 loss as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, y) = \alpha \cdot \mathcal{L_{MSSIM}}(x,y)+(1 - \alpha) \cdot G_\alpha \cdot \mathcal{L_1}(x,y)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, y) = \alpha \cdot \mathcal{L_{MSSIM}}(x,y)+(1 - \alpha) \cdot G_\alpha \cdot \mathcal{L_1}(x,y)\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the weight parameter.</p></li>
@@ -556,6 +573,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.TotalVariation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">TotalVariation</span></span><a class="reference internal" href="_modules/kornia/losses/total_variation.html#TotalVariation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.TotalVariation" title="Permalink to this definition">#</a></dt>
@@ -581,14 +599,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.PSNRLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">PSNRLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/psnr.html#PSNRLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.PSNRLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Create a criterion that calculates the PSNR loss.</p>
 <p>The loss is computed as follows:</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss} = -\text{psnr(x, y)}\]</div></div>
+<div><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss} = -\text{psnr(x, y)}\]</div>
+</div>
 </div></blockquote>
 <p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">psnr()</span></code> for details abut PSNR.</p>
 <dl class="field-list simple">
@@ -612,14 +633,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.InverseDepthSmoothnessLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">InverseDepthSmoothnessLoss</span></span><a class="reference internal" href="_modules/kornia/losses/depth_smooth.html#InverseDepthSmoothnessLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.InverseDepthSmoothnessLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes image-aware inverse depth smoothness loss.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{loss} = \left | \partial_x d_{ij} \right | e^{-\left \|
 \partial_x I_{ij} \right \|} + \left |
-\partial_y d_{ij} \right | e^{-\left \| \partial_y I_{ij} \right \|}\]</div></div>
+\partial_y d_{ij} \right | e^{-\left \| \partial_y I_{ij} \right \|}\]</div>
+</div>
 <dl class="simple">
 <dt>Shape:</dt><dd><ul class="simple">
 <li><p>Inverse Depth: <span class="math notranslate nohighlight">\((N, 1, H, W)\)</span></p></li>
@@ -636,15 +660,18 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="semantic-segmentation">
-<h2>Semantic Segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">#</a></h2>
+<h2>Semantic Segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.binary_focal_loss_with_logits">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">binary_focal_loss_with_logits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#binary_focal_loss_with_logits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.binary_focal_loss_with_logits" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes Binary Focal loss.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the model’s estimated probability for each class.</p></li>
@@ -682,7 +709,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">"gamma"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"reduction"</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;reduction&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mf">6.325</span><span class="p">]],[[</span><span class="mf">5.26</span><span class="p">]],[[</span><span class="mf">87.49</span><span class="p">]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mf">1.</span><span class="p">]],[[</span><span class="mf">1.</span><span class="p">]],[[</span><span class="mf">0.</span><span class="p">]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">binary_focal_loss_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -690,13 +717,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.focal_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">focal_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#focal_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.focal_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Focal loss.</p>
 <p>According to <span id="id1">[<a class="reference internal" href="community/bibliography.html#id15" title="Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. Focal loss for dense object detection. arXiv ePrint 1708.02002, 2018.">LGG+18</a>]</span>, the Focal loss is computed as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the model’s estimated probability for each class.</p></li>
@@ -732,18 +762,21 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># num_classes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">random_</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">focal_loss</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">focal_loss</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.dice_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">dice_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/dice.html#dice_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.dice_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Sørensen-Dice Coefficient loss.</p>
 <p>According to [1], we compute the Sørensen-Dice Coefficient as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{Dice}(x, class) = \frac{2 |X \cap Y|}{|X| + |Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{Dice}(x, class) = \frac{2 |X \cap Y|}{|X| + |Y|}\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\)</span> expects to be the scores of each class.</p></li>
@@ -752,8 +785,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{Dice}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{Dice}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient">https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient</a></p>
 </dd>
@@ -784,14 +819,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.tversky_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">tversky_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/tversky.html#tversky_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.tversky_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Tversky Coefficient loss.</p>
 <p>According to <span id="id2">[<a class="reference internal" href="community/bibliography.html#id16" title="Seyed Sadegh Mohseni Salehi, Deniz Erdogmus, and Ali Gholipour. Tversky loss function for image segmentation using 3d fully convolutional deep networks. arXiv ePrint 1706.05721, 2017.">SEG17</a>]</span>, we compute the Tversky Coefficient as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{S}(P, G, \alpha; \beta) =
-  \frac{|PG|}{|PG| + \alpha |P \setminus G| + \beta |G \setminus P|}\]</div></div>
+  \frac{|PG|}{|PG| + \alpha |P \setminus G| + \beta |G \setminus P|}\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(G\)</span> are the predicted and ground truth binary
@@ -837,13 +875,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.lovasz_hinge_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">lovasz_hinge_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/lovasz_hinge.html#lovasz_hinge_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.lovasz_hinge_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate binary intersection-over-union (IoU) loss.</p>
 <p>According to [2], we compute the IoU as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
+</div>
 <p>[1] approximates this fomular with a surrogate, which is fully differentable.</p>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
@@ -853,8 +894,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="http://proceedings.mlr.press/v37/yub15.pdf">http://proceedings.mlr.press/v37/yub15.pdf</a>
 [2] <a class="reference external" href="https://arxiv.org/pdf/1705.08790.pdf">https://arxiv.org/pdf/1705.08790.pdf</a></p>
@@ -886,13 +929,16 @@ use the Lovasz-Softmax loss.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.lovasz_softmax_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">lovasz_softmax_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/lovasz_softmax.html#lovasz_softmax_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.lovasz_softmax_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate multi-class intersection-over-union (IoU) loss.</p>
 <p>According to [1], we compute the IoU as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
+</div>
 <p>[1] approximates this fomular with a surrogate, which is fully differentable.</p>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
@@ -902,8 +948,10 @@ use the Lovasz-Softmax loss.</p>
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1705.08790.pdf">https://arxiv.org/pdf/1705.08790.pdf</a></p>
 </dd>
@@ -935,13 +983,16 @@ is <span class="math notranslate nohighlight">\(0 ≤ targets[i] ≤ C−1\)</sp
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.BinaryFocalLossWithLogits">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">BinaryFocalLossWithLogits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#BinaryFocalLossWithLogits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.BinaryFocalLossWithLogits" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Focal loss.</p>
 <p>According to <span id="id3">[<a class="reference internal" href="community/bibliography.html#id15" title="Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. Focal loss for dense object detection. arXiv ePrint 1708.02002, 2018.">LGG+18</a>]</span>, the Focal loss is computed as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the model’s estimated probability for each class.</p></li>
@@ -975,7 +1026,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">"gamma"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"reduction"</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;reduction&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">BinaryFocalLossWithLogits</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">random_</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -984,13 +1035,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.DiceLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">DiceLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/dice.html#DiceLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.DiceLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Sørensen-Dice Coefficient loss.</p>
 <p>According to [1], we compute the Sørensen-Dice Coefficient as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{Dice}(x, class) = \frac{2 |X| \cap |Y|}{|X| + |Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{Dice}(x, class) = \frac{2 |X| \cap |Y|}{|X| + |Y|}\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\)</span> expects to be the scores of each class.</p></li>
@@ -999,8 +1053,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{Dice}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{Dice}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient">https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient</a></p>
 </dd>
@@ -1029,14 +1085,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.TverskyLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">TverskyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/tversky.html#TverskyLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.TverskyLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Tversky Coefficient loss.</p>
 <p>According to <span id="id4">[<a class="reference internal" href="community/bibliography.html#id16" title="Seyed Sadegh Mohseni Salehi, Deniz Erdogmus, and Ali Gholipour. Tversky loss function for image segmentation using 3d fully convolutional deep networks. arXiv ePrint 1706.05721, 2017.">SEG17</a>]</span>, we compute the Tversky Coefficient as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{S}(P, G, \alpha; \beta) =
-  \frac{|PG|}{|PG| + \alpha |P \setminus G| + \beta |G \setminus P|}\]</div></div>
+  \frac{|PG|}{|PG| + \alpha |P \setminus G| + \beta |G \setminus P|}\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(G\)</span> are the predicted and ground truth binary
@@ -1082,13 +1141,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.FocalLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">FocalLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#FocalLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.FocalLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Focal loss.</p>
 <p>According to <span id="id5">[<a class="reference internal" href="community/bibliography.html#id15" title="Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. Focal loss for dense object detection. arXiv ePrint 1708.02002, 2018.">LGG+18</a>]</span>, the Focal loss is computed as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
+</div>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the model’s estimated probability for each class.</p></li>
@@ -1123,7 +1185,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># num_classes</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"alpha"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">"gamma"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"reduction"</span><span class="p">:</span> <span class="s1">'mean'</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">&quot;reduction&quot;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">FocalLoss</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">random_</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -1132,13 +1194,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.LovaszHingeLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">LovaszHingeLoss</span></span><a class="reference internal" href="_modules/kornia/losses/lovasz_hinge.html#LovaszHingeLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.LovaszHingeLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate binary intersection-over-union (IoU) loss.</p>
 <p>According to [2], we compute the IoU as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
+</div>
 <p>[1] approximates this fomular with a surrogate, which is fully differentable.</p>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
@@ -1148,8 +1213,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="http://proceedings.mlr.press/v37/yub15.pdf">http://proceedings.mlr.press/v37/yub15.pdf</a>
 [2] <a class="reference external" href="https://arxiv.org/pdf/1705.08790.pdf">https://arxiv.org/pdf/1705.08790.pdf</a></p>
@@ -1179,13 +1246,16 @@ use the Lovasz-Softmax loss.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.LovaszSoftmaxLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">LovaszSoftmaxLoss</span></span><a class="reference internal" href="_modules/kornia/losses/lovasz_softmax.html#LovaszSoftmaxLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.LovaszSoftmaxLoss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate multi-class intersection-over-union (IoU) loss.</p>
 <p>According to [1], we compute the IoU as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
+</div>
 <p>[1] approximates this fomular with a surrogate, which is fully differentable.</p>
 <dl class="simple">
 <dt>Where:</dt><dd><ul class="simple">
@@ -1195,8 +1265,10 @@ use the Lovasz-Softmax loss.</p>
 </dd>
 </dl>
 <p>the loss, is finally computed as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{loss}(x, class) = 1 - \text{IoU}(x, class)\]</div>
+</div>
 <dl class="simple">
 <dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1705.08790.pdf">https://arxiv.org/pdf/1705.08790.pdf</a></p>
 </dd>
@@ -1226,9 +1298,10 @@ is <span class="math notranslate nohighlight">\(0 ≤ targets[i] ≤ C−1\)</sp
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="distributions">
-<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">#</a></h2>
+<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.js_div_loss_2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">js_div_loss_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/divergence.html#js_div_loss_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.js_div_loss_2d" title="Permalink to this definition">#</a></dt>
@@ -1255,6 +1328,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.losses.kl_div_loss_2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">kl_div_loss_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/divergence.html#kl_div_loss_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.kl_div_loss_2d" title="Permalink to this definition">#</a></dt>
@@ -1281,9 +1355,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="morphology">
-<h2>Morphology<a class="headerlink" href="#morphology" title="Permalink to this headline">#</a></h2>
+<h2>Morphology<a class="headerlink" href="#morphology" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.HausdorffERLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">HausdorffERLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/hausdorff.html#HausdorffERLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.HausdorffERLoss" title="Permalink to this definition">#</a></dt>
@@ -1291,11 +1366,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 <p>Hausdorff Distance loss measures the maximum distance of a predicted segmentation boundary to
 the nearest ground-truth edge pixel. For two segmentation point sets X and Y ,
 the one-sided HD from X to Y is defined as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[hd(X,Y) = \max_{x \in X} \min_{y \in Y}||x - y||_2\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[hd(X,Y) = \max_{x \in X} \min_{y \in Y}||x - y||_2\]</div>
+</div>
 <p>Furthermore, the bidirectional HD is:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[HD(X,Y) = max(hd(X, Y), hd(Y, X))\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[HD(X,Y) = max(hd(X, Y), hd(Y, X))\]</div>
+</div>
 <p>This is an Hausdorff Distance (HD) Loss that based on morphological erosion, which provided
 a differentiable approximation of Hausdorff distance as stated in <span id="id6">[<a class="reference internal" href="community/bibliography.html#id20" title="Davood Karimi and Septimiu E Salcudean. Reducing the hausdorff distance in medical image segmentation with convolutional neural networks. IEEE Transactions on medical imaging, 39(2):499–513, 2019.">KS19</a>]</span>.
 The code is refactored on top of <a class="reference external" href="https://github.com/PatRyg99/HausdorffLoss/blob/master/hausdorff_loss.py">here</a>.</p>
@@ -1321,6 +1400,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.HausdorffERLoss3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">HausdorffERLoss3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/hausdorff.html#HausdorffERLoss3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.HausdorffERLoss3D" title="Permalink to this definition">#</a></dt>
@@ -1328,11 +1408,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 <p>Hausdorff Distance loss measures the maximum distance of a predicted segmentation boundary to
 the nearest ground-truth edge pixel. For two segmentation point sets X and Y ,
 the one-sided HD from X to Y is defined as:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[hd(X,Y) = \max_{x \in X} \min_{y \in Y}||x - y||_2\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[hd(X,Y) = \max_{x \in X} \min_{y \in Y}||x - y||_2\]</div>
+</div>
 <p>Furthermore, the bidirectional HD is:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[HD(X,Y) = max(hd(X, Y), hd(Y, X))\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[HD(X,Y) = max(hd(X, Y), hd(Y, X))\]</div>
+</div>
 <p>This is a 3D Hausdorff Distance (HD) Loss that based on morphological erosion, which provided
 a differentiable approximation of Hausdorff distance as stated in <span id="id7">[<a class="reference internal" href="community/bibliography.html#id20" title="Davood Karimi and Septimiu E Salcudean. Reducing the hausdorff distance in medical image segmentation with convolutional neural networks. IEEE Transactions on medical imaging, 39(2):499–513, 2019.">KS19</a>]</span>.
 The code is refactored on top of <a class="reference external" href="https://github.com/PatRyg99/HausdorffLoss/blob/master/hausdorff_loss.py">here</a>.</p>
@@ -1358,6 +1442,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 
@@ -1373,10 +1458,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
                 </div>
                 <div class="title">kornia.metrics</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="io.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -1412,17 +1497,50 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.losses</a><ul>
-<li><a class="reference internal" href="#reconstruction">Reconstruction</a></li>
-<li><a class="reference internal" href="#semantic-segmentation">Semantic Segmentation</a></li>
-<li><a class="reference internal" href="#distributions">Distributions</a></li>
-<li><a class="reference internal" href="#morphology">Morphology</a></li>
+<li><a class="reference internal" href="#reconstruction">Reconstruction</a><ul>
+<li><a class="reference internal" href="#kornia.losses.ssim_loss"><code class="docutils literal notranslate"><span class="pre">ssim_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.psnr_loss"><code class="docutils literal notranslate"><span class="pre">psnr_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.total_variation"><code class="docutils literal notranslate"><span class="pre">total_variation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.inverse_depth_smoothness_loss"><code class="docutils literal notranslate"><span class="pre">inverse_depth_smoothness_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.SSIMLoss"><code class="docutils literal notranslate"><span class="pre">SSIMLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.MS_SSIMLoss"><code class="docutils literal notranslate"><span class="pre">MS_SSIMLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.TotalVariation"><code class="docutils literal notranslate"><span class="pre">TotalVariation</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.PSNRLoss"><code class="docutils literal notranslate"><span class="pre">PSNRLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.InverseDepthSmoothnessLoss"><code class="docutils literal notranslate"><span class="pre">InverseDepthSmoothnessLoss</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#semantic-segmentation">Semantic Segmentation</a><ul>
+<li><a class="reference internal" href="#kornia.losses.binary_focal_loss_with_logits"><code class="docutils literal notranslate"><span class="pre">binary_focal_loss_with_logits()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.focal_loss"><code class="docutils literal notranslate"><span class="pre">focal_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.dice_loss"><code class="docutils literal notranslate"><span class="pre">dice_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.tversky_loss"><code class="docutils literal notranslate"><span class="pre">tversky_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.lovasz_hinge_loss"><code class="docutils literal notranslate"><span class="pre">lovasz_hinge_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.lovasz_softmax_loss"><code class="docutils literal notranslate"><span class="pre">lovasz_softmax_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.BinaryFocalLossWithLogits"><code class="docutils literal notranslate"><span class="pre">BinaryFocalLossWithLogits</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.DiceLoss"><code class="docutils literal notranslate"><span class="pre">DiceLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.TverskyLoss"><code class="docutils literal notranslate"><span class="pre">TverskyLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.FocalLoss"><code class="docutils literal notranslate"><span class="pre">FocalLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.LovaszHingeLoss"><code class="docutils literal notranslate"><span class="pre">LovaszHingeLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.LovaszSoftmaxLoss"><code class="docutils literal notranslate"><span class="pre">LovaszSoftmaxLoss</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distributions">Distributions</a><ul>
+<li><a class="reference internal" href="#kornia.losses.js_div_loss_2d"><code class="docutils literal notranslate"><span class="pre">js_div_loss_2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.kl_div_loss_2d"><code class="docutils literal notranslate"><span class="pre">kl_div_loss_2d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#morphology">Morphology</a><ul>
+<li><a class="reference internal" href="#kornia.losses.HausdorffERLoss"><code class="docutils literal notranslate"><span class="pre">HausdorffERLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.HausdorffERLoss3D"><code class="docutils literal notranslate"><span class="pre">HausdorffERLoss3D</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1438,7 +1556,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

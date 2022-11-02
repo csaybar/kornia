@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/hynet.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.hynet - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -320,19 +321,19 @@
 
 <span class="n">urls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">urls</span><span class="p">[</span>
-    <span class="s2">"liberty"</span>
-<span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_LIB.pth"</span>  <span class="c1"># pylint: disable</span>
+    <span class="s2">&quot;liberty&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_LIB.pth&quot;</span>  <span class="c1"># pylint: disable</span>
 <span class="n">urls</span><span class="p">[</span>
-    <span class="s2">"notredame"</span>
-<span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_ND.pth"</span>  <span class="c1"># pylint: disable</span>
+    <span class="s2">&quot;notredame&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_ND.pth&quot;</span>  <span class="c1"># pylint: disable</span>
 <span class="n">urls</span><span class="p">[</span>
-    <span class="s2">"yosemite"</span>
-<span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_YOS.pth"</span>  <span class="c1"># pylint: disable</span>
+    <span class="s2">&quot;yosemite&quot;</span>
+<span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/ducha-aiki/Key.Net-Pytorch/raw/main/model/HyNet/weights/HyNet_YOS.pth&quot;</span>  <span class="c1"># pylint: disable</span>
 
 
 <div class="viewcode-block" id="FilterResponseNorm2d"><a class="viewcode-back" href="../../../feature.html#kornia.feature.FilterResponseNorm2d">[docs]</a><span class="k">class</span> <span class="nc">FilterResponseNorm2d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Feature Response Normalization layer from 'Filter Response Normalization Layer: Eliminating Batch Dependence</span>
-<span class="sd">    in the Training of Deep Neural Networks', see :cite:`FRN2019` for more details.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Feature Response Normalization layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence</span>
+<span class="sd">    in the Training of Deep Neural Networks&#39;, see :cite:`FRN2019` for more details.</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        y =  \gamma \times \frac{x}{\sqrt{\mathrm{E}[x^2]} + |\epsilon|} + \beta</span>
@@ -352,7 +353,7 @@
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: :math:`(B, \text{num_features}, H, W)`</span>
 <span class="sd">        - Output: :math:`(B, \text{num_features}, H, W)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -376,7 +377,7 @@
         <span class="k">if</span> <span class="n">is_eps_leanable</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'eps'</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">eps</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">eps</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -386,7 +387,7 @@
             <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_eps</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">'num_features=</span><span class="si">{num_features}</span><span class="s1">, eps=</span><span class="si">{init_eps}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;num_features=</span><span class="si">{num_features}</span><span class="s1">, eps=</span><span class="si">{init_eps}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
         <span class="c1"># Compute the mean norm of activations per channel.</span>
@@ -404,7 +405,7 @@
 
 
 <div class="viewcode-block" id="TLU"><a class="viewcode-back" href="../../../feature.html#kornia.feature.TLU">[docs]</a><span class="k">class</span> <span class="nc">TLU</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""TLU layer from 'Filter Response Normalization Layer: Eliminating Batch Dependence in the Training of Deep</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;TLU layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence in the Training of Deep</span>
 <span class="sd">    Neural Networks, see :cite:`FRN2019` for more details. :math:`{\tau}` is learnable per channel.</span>
 
 <span class="sd">    .. math::</span>
@@ -419,10 +420,10 @@
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: :math:`(B, \text{num_features}, H, W)`</span>
 <span class="sd">        - Output: :math:`(B, \text{num_features}, H, W)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">"""max(y, tau) = max(y - tau, 0) + tau = ReLU(y - tau) + tau"""</span>
+        <span class="sd">&quot;&quot;&quot;max(y, tau) = max(y - tau, 0) + tau = ReLU(y - tau) + tau&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">parameter</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -433,17 +434,17 @@
         <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">'num_features=</span><span class="si">{num_features}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;num_features=</span><span class="si">{num_features}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="HyNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.HyNet">[docs]</a><span class="k">class</span> <span class="nc">HyNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module, which computes HyNet descriptors of given grayscale patches of 32x32.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which computes HyNet descriptors of given grayscale patches of 32x32.</span>
 
 <span class="sd">    This is based on the original code from paper</span>
-<span class="sd">    "HyNet: Learning Local Descriptor with Hybrid Similarity Measure and Triplet Loss".</span>
+<span class="sd">    &quot;HyNet: Learning Local Descriptor with Hybrid Similarity Measure and Triplet Loss&quot;.</span>
 <span class="sd">    See :cite:`hynet2020` for more details.</span>
 
 <span class="sd">    Args:</span>
@@ -465,7 +466,7 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(16, 1, 32, 32)</span>
 <span class="sd">        &gt;&gt;&gt; hynet = HyNet()</span>
 <span class="sd">        &gt;&gt;&gt; descs = hynet(input) # 16x128</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">patch_size</span> <span class="o">=</span> <span class="mi">32</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -528,7 +529,7 @@
         <span class="c1"># use torch.hub to load pretrained model</span>
         <span class="k">if</span> <span class="n">pretrained</span><span class="p">:</span>
             <span class="n">storage_fcn</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
-            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'liberty'</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
+            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;liberty&#39;</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="k">return</span>
@@ -582,7 +583,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

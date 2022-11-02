@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.feature" href="feature.html" /><link rel="prev" title="kornia.contrib" href="contrib.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/enhance.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.enhance - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,18 +316,20 @@
         </div>
         <article role="main">
           <section id="kornia-enhance">
-<h1>kornia.enhance<a class="headerlink" href="#kornia-enhance" title="Permalink to this headline">#</a></h1>
+<h1>kornia.enhance<a class="headerlink" href="#kornia-enhance" title="Permalink to this heading">#</a></h1>
 <p>The functions in this section perform normalisations and intensity transformations.</p>
 <section id="adjustment">
-<h2>Adjustment<a class="headerlink" href="#adjustment" title="Permalink to this headline">#</a></h2>
+<h2>Adjustment<a class="headerlink" href="#adjustment" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.add_weighted">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">add_weighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/core.html#add_weighted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.add_weighted" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate the weighted sum of two Tensors.</p>
-<img alt="_images/add_weighted.png" src="_images/add_weighted.png"/>
+<img alt="_images/add_weighted.png" src="_images/add_weighted.png" />
 <p>The function calculates the weighted sum of two Tensors as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[out = src1 * alpha + src2 * beta + gamma\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[out = src1 * alpha + src2 * beta + gamma\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -354,11 +358,12 @@
 <p class="rubric">Notes</p>
 <p>Tensor alpha/beta/gamma have to be with shape broadcastable to src1 and src2 shapes.</p>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_brightness">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_brightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_brightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_brightness" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust the brightness of an image tensor.</p>
-<img alt="_images/adjust_brightness.png" src="_images/adjust_brightness.png"/>
+<img alt="_images/adjust_brightness.png" src="_images/adjust_brightness.png" />
 <p>This implementation follows Szeliski’s book convention, where brightness is defined as
 an <cite>additive</cite> operation directly to raw pixel and shift its values according the applied
 factor and range of the image values. Beware that other framework might use different
@@ -406,11 +411,12 @@ number modify the brightness.</p></li>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_contrast">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_contrast" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust the contrast of an image tensor.</p>
-<img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png"/>
+<img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png" />
 <p>This implementation follows Szeliski’s book convention, where contrast is defined as
 a <cite>multiplicative</cite> operation directly to raw pixel values. Beware that other frameworks
 might use different conventions which can be difficult to reproduce exact results.</p>
@@ -458,6 +464,7 @@ clip_output: whether to clip the output image with range of [0, 1].</p></li>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_contrast_with_mean_subtraction">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_contrast_with_mean_subtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_contrast_with_mean_subtraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_contrast_with_mean_subtraction" title="Permalink to this definition">#</a></dt>
@@ -499,11 +506,12 @@ brightness by this factor.</p></li>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_gamma">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_gamma" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform gamma correction on an image.</p>
-<img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png"/>
+<img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png" />
 <p>The input image is expected to be in the range of [0, 1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -542,11 +550,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1.0<
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_hue">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_hue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_hue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_hue" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust hue of an image.</p>
-<img alt="_images/adjust_hue.png" src="_images/adjust_hue.png"/>
+<img alt="_images/adjust_hue.png" src="_images/adjust_hue.png" />
 <p>The image is expected to be an RGB image in the range of [0, 1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -582,11 +591,12 @@ image with complementary colors while 0 gives the original image.</p></li>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_saturation">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_saturation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_saturation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_saturation" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust color saturation of an image.</p>
-<img alt="_images/adjust_saturation.png" src="_images/adjust_saturation.png"/>
+<img alt="_images/adjust_saturation.png" src="_images/adjust_saturation.png" />
 <p>The image is expected to be an RGB image in the range of [0, 1].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -621,6 +631,7 @@ and white image, 1 will give the original image while 2 will enhance the saturat
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_sigmoid">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_sigmoid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_sigmoid" title="Permalink to this definition">#</a></dt>
@@ -658,6 +669,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.adjust_log">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_log" title="Permalink to this definition">#</a></dt>
@@ -692,11 +704,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.invert">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">invert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Tensor([1.0])</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#invert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.invert" title="Permalink to this definition">#</a></dt>
 <dd><p>Invert the values of an input image tensor by its maximum value.</p>
-<img alt="_images/invert.png" src="_images/invert.png"/>
+<img alt="_images/invert.png" src="_images/invert.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -729,11 +742,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Tens
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.posterize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">posterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#posterize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.posterize" title="Permalink to this definition">#</a></dt>
 <dd><p>Reduce the number of bits for each color channel.</p>
-<img alt="_images/posterize.png" src="_images/posterize.png"/>
+<img alt="_images/posterize.png" src="_images/posterize.png" />
 <p>Non-differentiable function, <code class="docutils literal notranslate"><span class="pre">torch.uint8</span></code> involved.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -765,11 +779,12 @@ If n-d tensor, input will be posterized element-channel-wisely, bits.shape == in
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.sharpness">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">sharpness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#sharpness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.sharpness" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply sharpness to the input tensor.</p>
-<img alt="_images/sharpness.png" src="_images/sharpness.png"/>
+<img alt="_images/sharpness.png" src="_images/sharpness.png" />
 <p>Implemented Sharpness function from PIL using torch ops. This implementation refers to:
 <a class="reference external" href="https://github.com/tensorflow/tpu/blob/master/models/official/efficientnet/autoaugment.py#L326">https://github.com/tensorflow/tpu/blob/master/models/official/efficientnet/autoaugment.py#L326</a></p>
 <dl class="field-list simple">
@@ -795,11 +810,12 @@ If 1-d tensor, input will be sharpened element-wisely, len(factor) == len(input)
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.solarize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">solarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#solarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.solarize" title="Permalink to this definition">#</a></dt>
 <dd><p>For each pixel in the image less than threshold.</p>
-<img alt="_images/solarize.png" src="_images/solarize.png"/>
+<img alt="_images/solarize.png" src="_images/solarize.png" />
 <p>We add ‘addition’ amount to it and then clip the pixel value to be between 0 and 1.0.
 The value of ‘addition’ is between -0.5 and 0.5.</p>
 <dl class="field-list simple">
@@ -839,18 +855,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <section id="interactive-demo">
-<h3>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h3>
+<h3>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h3>
 <gradio-app space="kornia/kornia-image-enhancement"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/kornia-image-enhancement">Hugging Face Spaces</a>.</p>
 </section>
 </section>
 <section id="equalization">
-<h2>Equalization<a class="headerlink" href="#equalization" title="Permalink to this headline">#</a></h2>
+<h2>Equalization<a class="headerlink" href="#equalization" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.equalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">equalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#equalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.equalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply equalize on the input tensor.</p>
-<img alt="_images/equalize.png" src="_images/equalize.png"/>
+<img alt="_images/equalize.png" src="_images/equalize.png" />
 <p>Implements Equalize function from PIL using PyTorch ops based on uint8 format:
 <a class="reference external" href="https://github.com/tensorflow/tpu/blob/5f71c12a020403f863434e96982a840578fdd127/models/official/efficientnet/autoaugment.py#L355">https://github.com/tensorflow/tpu/blob/5f71c12a020403f863434e96982a840578fdd127/models/official/efficientnet/autoaugment.py#L355</a></p>
 <dl class="field-list simple">
@@ -871,11 +888,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.equalize_clahe">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">equalize_clahe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slow_and_differentiable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/equalization.html#equalize_clahe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.equalize_clahe" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply clahe equalization on the input tensor.</p>
-<img alt="_images/equalize_clahe.png" src="_images/equalize_clahe.png"/>
+<img alt="_images/equalize_clahe.png" src="_images/equalize_clahe.png" />
 <p>NOTE: Lut computation uses the same approach as in OpenCV, in next versions this can change.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -910,6 +928,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.equalize3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">equalize3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#equalize3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.equalize3d" title="Permalink to this definition">#</a></dt>
@@ -928,6 +947,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.histogram">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandwidth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/histogram.html#histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.histogram" title="Permalink to this definition">#</a></dt>
@@ -959,6 +979,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.histogram2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">histogram2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandwidth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/histogram.html#histogram2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.histogram2d" title="Permalink to this definition">#</a></dt>
@@ -991,6 +1012,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.image_histogram2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">image_histogram2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bandwidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_pdf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'triangular'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/histogram.html#image_histogram2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.image_histogram2d" title="Permalink to this definition">#</a></dt>
@@ -1039,15 +1061,18 @@ of the histogram otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="normalizations">
-<h2>Normalizations<a class="headerlink" href="#normalizations" title="Permalink to this headline">#</a></h2>
+<h2>Normalizations<a class="headerlink" href="#normalizations" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.normalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.normalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalize an image/video tensor with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1080,13 +1105,16 @@ of the histogram otherwise.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.normalize_min_max">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">normalize_min_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#normalize_min_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.normalize_min_max" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalise an image/video tensor by MinMax and re-scales the value between a range.</p>
 <p>The data is normalised using the following formulation:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[y_i = (b - a) * \frac{x_i - \text{min}(x)}{\text{max}(x) - \text{min}(x)} + a\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[y_i = (b - a) * \frac{x_i - \text{min}(x)}{\text{max}(x) - \text{min}(x)} + a\]</div>
+</div>
 <p>where <span class="math notranslate nohighlight">\(a\)</span> is <span class="math notranslate nohighlight">\(\text{min_val}\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is <span class="math notranslate nohighlight">\(\text{max_val}\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1117,12 +1145,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.denormalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">denormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#denormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.denormalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Denormalize an image/video tensor with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1155,6 +1186,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.zca_mean">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">zca_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#zca_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.zca_mean" title="Permalink to this definition">#</a></dt>
@@ -1207,6 +1239,7 @@ then it returns the inverse ZCA matrix, otherwise it returns None.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.zca_whiten">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">zca_whiten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#zca_whiten"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.zca_whiten" title="Permalink to this definition">#</a></dt>
@@ -1244,14 +1277,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.enhance.linear_transform">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">linear_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#linear_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.linear_transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Given a transformation matrix and a mean vector, this function will flatten the input tensor along the given
 dimension and subtract the mean vector from it. Then the dot product with the transformation matrix will be
 computed and then the resulting tensor is reshaped to the original input shape.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\mathbf{X}_{T} = (\mathbf{X - \mu})(T)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathbf{X}_{T} = (\mathbf{X - \mu})(T)\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1299,15 +1335,18 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.Normalize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">Normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#Normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.Normalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalize a tensor image with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1340,12 +1379,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.Denormalize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">Denormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#Denormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.Denormalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Denormalize a tensor image with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1378,6 +1420,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.ZCAWhitening">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">ZCAWhitening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detach_transforms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_inv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#ZCAWhitening"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.ZCAWhitening" title="Permalink to this definition">#</a></dt>
@@ -1388,8 +1431,10 @@ the flattened data <span class="math notranslate nohighlight">\(\mathbf{X} \in \
 <span class="math notranslate nohighlight">\(N\)</span> is the sample size and <span class="math notranslate nohighlight">\(D\)</span> is flattened dimensionality
 (e.g. for a tensor with size 5x3x2x2 <span class="math notranslate nohighlight">\(N = 5\)</span> and <span class="math notranslate nohighlight">\(D = 12\)</span>). The ZCA whitening
 transform is given by:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\mathbf{X}_{\text{zca}} = (\mathbf{X - \mu})(US^{-\frac{1}{2}}U^T)^T\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathbf{X}_{\text{zca}} = (\mathbf{X - \mu})(US^{-\frac{1}{2}}U^T)^T\]</div>
+</div>
 <p>where <span class="math notranslate nohighlight">\(U\)</span> are the eigenvectors of <span class="math notranslate nohighlight">\(\Sigma\)</span> and <span class="math notranslate nohighlight">\(S\)</span> contain the corresponding
 eigenvalues of <span class="math notranslate nohighlight">\(\Sigma\)</span>. After the transform is applied, the output is reshaped to same shape.</p>
 <dl class="field-list simple">
@@ -1452,6 +1497,7 @@ more information.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.enhance.ZCAWhitening.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_fit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#ZCAWhitening.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.ZCAWhitening.forward" title="Permalink to this definition">#</a></dt>
@@ -1472,6 +1518,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.enhance.ZCAWhitening.inverse_transform">
 <span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/zca.html#ZCAWhitening.inverse_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.ZCAWhitening.inverse_transform" title="Permalink to this definition">#</a></dt>
@@ -1488,7 +1535,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustBrightness">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustBrightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brightness_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustBrightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustBrightness" title="Permalink to this definition">#</a></dt>
@@ -1524,6 +1573,7 @@ brightness.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustContrast">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustContrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contrast_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustContrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustContrast" title="Permalink to this definition">#</a></dt>
@@ -1560,6 +1610,7 @@ brightness by this factor.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustSaturation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustSaturation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saturation_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustSaturation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustSaturation" title="Permalink to this definition">#</a></dt>
@@ -1605,6 +1656,7 @@ and white image, 1 will give the original image while 2 will enhance the saturat
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustHue">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustHue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hue_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustHue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustHue" title="Permalink to this definition">#</a></dt>
@@ -1650,6 +1702,7 @@ image with complementary colors while 0 gives the original image.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustGamma">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustGamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustGamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustGamma" title="Permalink to this definition">#</a></dt>
@@ -1689,6 +1742,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1.0<
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustSigmoid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustSigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustSigmoid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustSigmoid" title="Permalink to this definition">#</a></dt>
@@ -1720,6 +1774,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AdjustLog">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AdjustLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#AdjustLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AdjustLog" title="Permalink to this definition">#</a></dt>
@@ -1748,13 +1803,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.AddWeighted">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">AddWeighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/core.html#AddWeighted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.AddWeighted" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate the weighted sum of two Tensors.</p>
 <p>The function calculates the weighted sum of two Tensors as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[out = src1 * alpha + src2 * beta + gamma\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[out = src1 * alpha + src2 * beta + gamma\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1783,6 +1841,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <p class="rubric">Notes</p>
 <p>Tensor alpha/beta/gamma have to be with shape broadcastable to src1 and src2 shapes.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.enhance.Invert">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">Invert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#Invert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.Invert" title="Permalink to this definition">#</a></dt>
@@ -1813,6 +1872,7 @@ according to the input tensor shape, or at least has to work with broadcasting. 
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 
@@ -1828,10 +1888,10 @@ according to the input tensor shape, or at least has to work with broadcasting. 
                 </div>
                 <div class="title">kornia.feature</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="contrib.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -1867,7 +1927,7 @@ according to the input tensor shape, or at least has to work with broadcasting. 
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -1875,12 +1935,60 @@ according to the input tensor shape, or at least has to work with broadcasting. 
             <ul>
 <li><a class="reference internal" href="#">kornia.enhance</a><ul>
 <li><a class="reference internal" href="#adjustment">Adjustment</a><ul>
+<li><a class="reference internal" href="#kornia.enhance.add_weighted"><code class="docutils literal notranslate"><span class="pre">add_weighted()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_brightness"><code class="docutils literal notranslate"><span class="pre">adjust_brightness()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_contrast"><code class="docutils literal notranslate"><span class="pre">adjust_contrast()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_contrast_with_mean_subtraction"><code class="docutils literal notranslate"><span class="pre">adjust_contrast_with_mean_subtraction()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_gamma"><code class="docutils literal notranslate"><span class="pre">adjust_gamma()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_hue"><code class="docutils literal notranslate"><span class="pre">adjust_hue()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_saturation"><code class="docutils literal notranslate"><span class="pre">adjust_saturation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_sigmoid"><code class="docutils literal notranslate"><span class="pre">adjust_sigmoid()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.adjust_log"><code class="docutils literal notranslate"><span class="pre">adjust_log()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.invert"><code class="docutils literal notranslate"><span class="pre">invert()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.posterize"><code class="docutils literal notranslate"><span class="pre">posterize()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.sharpness"><code class="docutils literal notranslate"><span class="pre">sharpness()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.solarize"><code class="docutils literal notranslate"><span class="pre">solarize()</span></code></a></li>
 <li><a class="reference internal" href="#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#equalization">Equalization</a></li>
-<li><a class="reference internal" href="#normalizations">Normalizations</a></li>
-<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#equalization">Equalization</a><ul>
+<li><a class="reference internal" href="#kornia.enhance.equalize"><code class="docutils literal notranslate"><span class="pre">equalize()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.equalize_clahe"><code class="docutils literal notranslate"><span class="pre">equalize_clahe()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.equalize3d"><code class="docutils literal notranslate"><span class="pre">equalize3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.histogram2d"><code class="docutils literal notranslate"><span class="pre">histogram2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.image_histogram2d"><code class="docutils literal notranslate"><span class="pre">image_histogram2d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#normalizations">Normalizations</a><ul>
+<li><a class="reference internal" href="#kornia.enhance.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.normalize_min_max"><code class="docutils literal notranslate"><span class="pre">normalize_min_max()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.denormalize"><code class="docutils literal notranslate"><span class="pre">denormalize()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.zca_mean"><code class="docutils literal notranslate"><span class="pre">zca_mean()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.zca_whiten"><code class="docutils literal notranslate"><span class="pre">zca_whiten()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.linear_transform"><code class="docutils literal notranslate"><span class="pre">linear_transform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modules">Modules</a><ul>
+<li><a class="reference internal" href="#kornia.enhance.Normalize"><code class="docutils literal notranslate"><span class="pre">Normalize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.Denormalize"><code class="docutils literal notranslate"><span class="pre">Denormalize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.ZCAWhitening"><code class="docutils literal notranslate"><span class="pre">ZCAWhitening</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.enhance.ZCAWhitening.fit"><code class="docutils literal notranslate"><span class="pre">ZCAWhitening.fit()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.ZCAWhitening.forward"><code class="docutils literal notranslate"><span class="pre">ZCAWhitening.forward()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.ZCAWhitening.inverse_transform"><code class="docutils literal notranslate"><span class="pre">ZCAWhitening.inverse_transform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustBrightness"><code class="docutils literal notranslate"><span class="pre">AdjustBrightness</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustContrast"><code class="docutils literal notranslate"><span class="pre">AdjustContrast</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustSaturation"><code class="docutils literal notranslate"><span class="pre">AdjustSaturation</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustHue"><code class="docutils literal notranslate"><span class="pre">AdjustHue</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustGamma"><code class="docutils literal notranslate"><span class="pre">AdjustGamma</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustSigmoid"><code class="docutils literal notranslate"><span class="pre">AdjustSigmoid</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AdjustLog"><code class="docutils literal notranslate"><span class="pre">AdjustLog</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.AddWeighted"><code class="docutils literal notranslate"><span class="pre">AddWeighted</span></code></a></li>
+<li><a class="reference internal" href="#kornia.enhance.Invert"><code class="docutils literal notranslate"><span class="pre">Invert</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1896,7 +2004,9 @@ according to the input tensor shape, or at least has to work with broadcasting. 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

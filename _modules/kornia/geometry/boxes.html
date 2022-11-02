@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/boxes.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.boxes - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -322,37 +323,37 @@
 <span class="kn">from</span> <span class="nn">kornia.geometry.linalg</span> <span class="kn">import</span> <span class="n">transform_points</span>
 <span class="kn">from</span> <span class="nn">kornia.utils</span> <span class="kn">import</span> <span class="n">eye_like</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Boxes"</span><span class="p">,</span> <span class="s2">"Boxes3D"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Boxes&quot;</span><span class="p">,</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">_is_floating_point_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">dtype</span> <span class="ow">in</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">half</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_merge_box_list</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"pad"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-    <span class="sa">r</span><span class="sd">"""Merge a list of boxes into one tensor."""</span>
+<span class="k">def</span> <span class="nf">_merge_box_list</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pad&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merge a list of boxes into one tensor.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="ow">and</span> <span class="n">box</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input boxes must be a list of (N, 4, 2) shaped. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">]</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes must be a list of (N, 4, 2) shaped. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">"pad"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;pad&quot;</span><span class="p">:</span>
         <span class="n">max_N</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">)</span>
         <span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">max_N</span> <span class="o">-</span> <span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">]</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">rnn</span><span class="o">.</span><span class="n">pad_sequence</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">` is not implemented."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">` is not implemented.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">stats</span>
 
 
 <span class="k">def</span> <span class="nf">_transform_boxes</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Transforms 3D and 2D in kornia format by applying the transformation matrix M. Boxes and the transformation</span>
+    <span class="sd">&quot;&quot;&quot;Transforms 3D and 2D in kornia format by applying the transformation matrix M. Boxes and the transformation</span>
 <span class="sd">    matrix could be batched or not.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 2D quadrilaterals or 3D hexahedrons in kornia format.</span>
 <span class="sd">        M: the transformation matrix of shape :math:`(3, 3)` or :math:`(B, 3, 3)` for 2D and :math:`(4, 4)` or</span>
 <span class="sd">            :math:`(B, 4, 4)` for 3D hexahedron.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">M</span> <span class="k">if</span> <span class="n">M</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">()</span> <span class="k">else</span> <span class="n">M</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
     <span class="c1"># Work with batch as kornia.transform_points only supports a batch of points.</span>
@@ -362,7 +363,7 @@
 
     <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Batch size mismatch. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> for boxes and </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> for the transformation matrix."</span>
+            <span class="sa">f</span><span class="s2">&quot;Batch size mismatch. Got </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> for boxes and </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> for the transformation matrix.&quot;</span>
         <span class="p">)</span>
 
     <span class="n">transformed_boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
@@ -374,7 +375,7 @@
     <span class="n">xmin</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">ymin</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">xmin</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">ymin</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"We expect to create a batch of 2D boxes (quadrilaterals) in vertices format (B, N, 4, 2)"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;We expect to create a batch of 2D boxes (quadrilaterals) in vertices format (B, N, 4, 2)&quot;</span><span class="p">)</span>
 
     <span class="c1"># Create (B,N,4,2) with all points in top left position of boxes</span>
     <span class="n">polygons</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">xmin</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xmin</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">xmin</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">xmin</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
@@ -388,58 +389,58 @@
     <span class="k">return</span> <span class="n">polygons</span>
 
 
-<span class="k">def</span> <span class="nf">_boxes_to_quadrilaterals</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyxy"</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Convert from boxes to quadrilaterals."""</span>
+<span class="k">def</span> <span class="nf">_boxes_to_quadrilaterals</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Convert from boxes to quadrilaterals.&quot;&quot;&quot;</span>
     <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"vertices"</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
         <span class="n">batched</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">4</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes shape must be (N, 4, 2) or (B, N, 4, 2) when </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2"> mode. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"xy"</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes shape must be (N, 4, 2) or (B, N, 4, 2) when </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2"> mode. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;xy&quot;</span><span class="p">):</span>
         <span class="n">batched</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes shape must be (N, 4) or (B, N, 4) when </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2"> mode. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes shape must be (N, 4) or (B, N, 4) when </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2"> mode. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span> <span class="k">if</span> <span class="n">boxes</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">()</span> <span class="k">else</span> <span class="n">boxes</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span> <span class="k">if</span> <span class="n">batched</span> <span class="k">else</span> <span class="n">boxes</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"vertices"</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"vertices"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;vertices&quot;</span><span class="p">:</span>
             <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
             <span class="c1"># Here, vertices are quadrilaterals with width and height defined as `width = xmax - xmin`  and</span>
             <span class="c1"># `height = ymax - ymin`. We need to convert to `width = xmax - xmin + 1` and `height = ymax - ymin + 1` to</span>
             <span class="c1"># match with internal Boxes Kornia representation.</span>
             <span class="n">quadrilaterals</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">quadrilaterals</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="n">quadrilaterals</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">quadrilaterals</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"vertices_plus"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;vertices_plus&quot;</span><span class="p">:</span>
             <span class="c1"># Avoid passing reference</span>
             <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="ow">not</span> <span class="n">validate_boxes</span> <span class="ow">or</span> <span class="n">validate_bbox</span><span class="p">(</span><span class="n">quadrilaterals</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"xy"</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xyxy"</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;xy&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">:</span>
             <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xyxy_plus"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xyxy_plus&quot;</span><span class="p">:</span>
             <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xywh"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xywh&quot;</span><span class="p">:</span>
             <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">validate_boxes</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">width</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Some boxes have negative widths or 0."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some boxes have negative widths or 0.&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Some boxes have negative heights or 0."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some boxes have negative heights or 0.&quot;</span><span class="p">)</span>
 
         <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">_boxes_to_polygons</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">quadrilaterals</span> <span class="k">if</span> <span class="n">batched</span> <span class="k">else</span> <span class="n">quadrilaterals</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -455,7 +456,7 @@
     <span class="n">depth</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">xmin</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">ymin</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">zmin</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">width</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">height</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="n">depth</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"We expect to create a batch of 3D boxes (hexahedrons) in vertices format (B, N, 8, 3)"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;We expect to create a batch of 3D boxes (hexahedrons) in vertices format (B, N, 8, 3)&quot;</span><span class="p">)</span>
 
     <span class="c1"># Front</span>
     <span class="c1"># Create (B,N,4,3) with all points in front top left position of boxes</span>
@@ -480,28 +481,28 @@
 <span class="c1"># NOTE: Cannot jit with Union types with torch &lt;= 0.10</span>
 <span class="c1"># @torch.jit.script</span>
 <div class="viewcode-block" id="Boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes">[docs]</a><span class="k">class</span> <span class="nc">Boxes</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""2D boxes containing N or BxN boxes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;2D boxes containing N or BxN boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 2D boxes, shape of :math:`(N, 4, 2)`, :math:`(B, N, 4, 2)` or a list of :math:`(N, 4, 2)`.</span>
 <span class="sd">            See below for more details.</span>
 <span class="sd">        raise_if_not_floating_point: flag to control floating point casting behaviour when `boxes` is not a floating</span>
-<span class="sd">            point tensor. True to raise an error when `boxes` isn't a floating point tensor, False to cast to float.</span>
+<span class="sd">            point tensor. True to raise an error when `boxes` isn&#39;t a floating point tensor, False to cast to float.</span>
 <span class="sd">        mode: the box format of the input boxes.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        **2D boxes format** is defined as a floating data type tensor of shape ``Nx4x2`` or ``BxNx4x2``</span>
-<span class="sd">        where each box is a `quadrilateral &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ defined by it's 4 vertices</span>
+<span class="sd">        where each box is a `quadrilateral &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ defined by it&#39;s 4 vertices</span>
 <span class="sd">        coordinates (A, B, C, D). Coordinates must be in ``x, y`` order. The height and width of a box is defined as</span>
 <span class="sd">        ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. Examples of</span>
 <span class="sd">        `quadrilaterals &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ are rectangles, rhombus and trapezoids.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span>
         <span class="n">raise_if_not_floating_point</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"vertices_plus"</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;vertices_plus&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_N</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -510,21 +511,21 @@
             <span class="n">boxes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_N</span> <span class="o">=</span> <span class="n">_merge_box_list</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input boxes is not a Tensor. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes is not a Tensor. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">boxes</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">raise_if_not_floating_point</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Coordinates must be in floating point. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinates must be in floating point. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># Use reshape, so we don't end up creating a new tensor that does not depend on</span>
+            <span class="c1"># Use reshape, so we don&#39;t end up creating a new tensor that does not depend on</span>
             <span class="c1"># the inputs (and consequently confuses jit)</span>
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Boxes shape must be (N, 4, 2) or (B, N, 4, 2). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxes shape must be (N, 4, 2) or (B, N, 4, 2). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="kc">True</span>
 
@@ -532,7 +533,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
 
 <div class="viewcode-block" id="Boxes.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">"""Compute boxes heights and widths.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            - Boxes heights, shape of :math:`(N,)` or :math:`(B,N)`.</span>
@@ -543,13 +544,13 @@
 <span class="sd">            &gt;&gt;&gt; boxes = Boxes.from_tensor(boxes_xyxy)</span>
 <span class="sd">            &gt;&gt;&gt; boxes.get_boxes_shape()</span>
 <span class="sd">            (tensor([[1., 1.]]), tensor([[1., 2.]]))</span>
-<span class="sd">        """</span>
-        <span class="n">boxes_xywh</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">"xywh"</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">boxes_xywh</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">&quot;xywh&quot;</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
         <span class="n">widths</span><span class="p">,</span> <span class="n">heights</span> <span class="o">=</span> <span class="n">boxes_xywh</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">boxes_xywh</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">heights</span><span class="p">,</span> <span class="n">widths</span></div>
 
-<div class="viewcode-block" id="Boxes.merge"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="s2">"Boxes"</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">"""Merges boxes.</span>
+<div class="viewcode-block" id="Boxes.merge"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Merges boxes.</span>
 
 <span class="sd">        Say, current instance holds :math:`(B, N, 4, 2)` and the incoming boxes holds :math:`(B, M, 4, 2)`,</span>
 <span class="sd">        the merge results in :math:`(B, N + M, 4, 2)`.</span>
@@ -557,7 +558,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            boxes: 2D boxes.</span>
 <span class="sd">            inplace: do transform in-place and return self.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="n">boxes</span><span class="o">.</span><span class="n">data</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
@@ -569,8 +570,8 @@
         <span class="n">topleft</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">botright</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">""""""</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">topleft</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">botright</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)):</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
@@ -592,8 +593,8 @@
             <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Boxes.trim"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.trim">[docs]</a>    <span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">correspondence_preserve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">"""Trim out zero padded boxes.</span>
+<div class="viewcode-block" id="Boxes.trim"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.trim">[docs]</a>    <span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">correspondence_preserve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Trim out zero padded boxes.</span>
 
 <span class="sd">        Given box arrangements of shape :math:`(4, 4, Box)`:</span>
 <span class="sd">            -- Box -- Box -- Box  -- Box --</span>
@@ -610,12 +611,12 @@
 <span class="sd">        Otherwise, you will get :math:`(4, 2, Box)`:</span>
 <span class="sd">            -- Box -- Box -- Box  -- Box --</span>
 <span class="sd">            --  0  -- Box -- Box  -- Box --</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
     <span class="k">def</span> <span class="nf">filter_boxes_by_area</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">min_area</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_area</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
         <span class="n">area</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_area</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
@@ -630,45 +631,45 @@
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Boxes.compute_area"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.compute_area">[docs]</a>    <span class="k">def</span> <span class="nf">compute_area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Returns :math:`(B, N)`."""</span>
+        <span class="sd">&quot;&quot;&quot;Returns :math:`(B, N)`.&quot;&quot;&quot;</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">w</span> <span class="o">*</span> <span class="n">h</span></div>
 
 <div class="viewcode-block" id="Boxes.from_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.from_tensor">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span>
-        <span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyxy"</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Helper method to easily create :class:`Boxes` from boxes stored in another format.</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes` from boxes stored in another format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            boxes: 2D boxes, shape of :math:`(N, 4)`, :math:`(B, N, 4)`, :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
 <span class="sd">            mode: The format in which the boxes are provided.</span>
 
-<span class="sd">                * 'xyxy': boxes are assumed to be in the format ``xmin, ymin, xmax, ymax`` where ``width = xmax - xmin``</span>
+<span class="sd">                * &#39;xyxy&#39;: boxes are assumed to be in the format ``xmin, ymin, xmax, ymax`` where ``width = xmax - xmin``</span>
 <span class="sd">                  and ``height = ymax - ymin``. With shape :math:`(N, 4)`, :math:`(B, N, 4)`.</span>
-<span class="sd">                * 'xyxy_plus': similar to 'xyxy' mode but where box width and length are defined as</span>
+<span class="sd">                * &#39;xyxy_plus&#39;: similar to &#39;xyxy&#39; mode but where box width and length are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``.</span>
 <span class="sd">                  With shape :math:`(N, 4)`, :math:`(B, N, 4)`.</span>
-<span class="sd">                * 'xywh': boxes are assumed to be in the format ``xmin, ymin, width, height`` where</span>
+<span class="sd">                * &#39;xywh&#39;: boxes are assumed to be in the format ``xmin, ymin, width, height`` where</span>
 <span class="sd">                  ``width = xmax - xmin`` and ``height = ymax - ymin``. With shape :math:`(N, 4)`, :math:`(B, N, 4)`.</span>
-<span class="sd">                * 'vertices': boxes are defined by their vertices points in the following ``clockwise`` order:</span>
+<span class="sd">                * &#39;vertices&#39;: boxes are defined by their vertices points in the following ``clockwise`` order:</span>
 <span class="sd">                  *top-left, top-right, bottom-right, bottom-left*. Vertices coordinates are in (x,y) order. Finally,</span>
 <span class="sd">                  box width and height are defined as ``width = xmax - xmin`` and ``height = ymax - ymin``.</span>
 <span class="sd">                  With shape :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
-<span class="sd">                * 'vertices_plus': similar to 'vertices' mode but where box width and length are defined as</span>
+<span class="sd">                * &#39;vertices_plus&#39;: similar to &#39;vertices&#39; mode but where box width and length are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. ymin + 1``.</span>
 <span class="sd">                  With shape :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
 
 <span class="sd">            validate_boxes: check if boxes are valid rectangles or not. Valid rectangles are those with width</span>
-<span class="sd">                and height &gt;= 1 (&gt;= 2 when mode ends with '_plus' suffix).</span>
+<span class="sd">                and height &gt;= 1 (&gt;= 2 when mode ends with &#39;_plus&#39; suffix).</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            :class:`Boxes` class containing the original `boxes` in the format specified by ``mode``.</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; boxes_xyxy = torch.as_tensor([[0, 3, 1, 4], [5, 1, 8, 4]])</span>
-<span class="sd">            &gt;&gt;&gt; boxes = Boxes.from_tensor(boxes_xyxy, mode='xyxy')</span>
+<span class="sd">            &gt;&gt;&gt; boxes = Boxes.from_tensor(boxes_xyxy, mode=&#39;xyxy&#39;)</span>
 <span class="sd">            &gt;&gt;&gt; boxes.data  # (2, 4, 2)</span>
 <span class="sd">            tensor([[[0., 3.],</span>
 <span class="sd">                     [0., 3.],</span>
@@ -679,7 +680,7 @@
 <span class="sd">                     [7., 1.],</span>
 <span class="sd">                     [7., 3.],</span>
 <span class="sd">                     [5., 3.]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">quadrilaterals</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)):</span>
             <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">_boxes_to_quadrilaterals</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="o">=</span><span class="n">validate_boxes</span><span class="p">)</span>
@@ -693,22 +694,22 @@
 <div class="viewcode-block" id="Boxes.to_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">"""Cast :class:`Boxes` to a tensor. ``mode`` controls which 2D boxes format should be use to represent</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes` to a tensor. ``mode`` controls which 2D boxes format should be use to represent</span>
 <span class="sd">        boxes in the tensor.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            mode: the output box format. It could be:</span>
 
-<span class="sd">                * 'xyxy': boxes are defined as ``xmin, ymin, xmax, ymax`` where ``width = xmax - xmin`` and</span>
+<span class="sd">                * &#39;xyxy&#39;: boxes are defined as ``xmin, ymin, xmax, ymax`` where ``width = xmax - xmin`` and</span>
 <span class="sd">                  ``height = ymax - ymin``.</span>
-<span class="sd">                * 'xyxy_plus': similar to 'xyxy' mode but where box width and length are defined as</span>
+<span class="sd">                * &#39;xyxy_plus&#39;: similar to &#39;xyxy&#39; mode but where box width and length are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``.</span>
-<span class="sd">                * 'xywh': boxes are defined as ``xmin, ymin, width, height`` where ``width = xmax - xmin``</span>
+<span class="sd">                * &#39;xywh&#39;: boxes are defined as ``xmin, ymin, width, height`` where ``width = xmax - xmin``</span>
 <span class="sd">                  and ``height = ymax - ymin``.</span>
-<span class="sd">                * 'vertices': boxes are defined by their vertices points in the following ``clockwise`` order:</span>
+<span class="sd">                * &#39;vertices&#39;: boxes are defined by their vertices points in the following ``clockwise`` order:</span>
 <span class="sd">                  *top-left, top-right, bottom-right, bottom-left*. Vertices coordinates are in (x,y) order. Finally,</span>
 <span class="sd">                  box width and height are defined as ``width = xmax - xmin`` and ``height = ymax - ymin``.</span>
-<span class="sd">                * 'vertices_plus': similar to 'vertices' mode but where box width and length are defined as</span>
+<span class="sd">                * &#39;vertices_plus&#39;: similar to &#39;vertices&#39; mode but where box width and length are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. ymin + 1``.</span>
 <span class="sd">            as_padded_sequence: whether to keep the pads for a list of boxes. This parameter is only valid</span>
 <span class="sd">                if the boxes are from a box list.</span>
@@ -716,14 +717,14 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Boxes tensor in the ``mode`` format. The shape depends with the ``mode`` value:</span>
 
-<span class="sd">                * 'vertices' or 'verticies_plus': :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
+<span class="sd">                * &#39;vertices&#39; or &#39;verticies_plus&#39;: :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
 <span class="sd">                * Any other value: :math:`(N, 4)` or :math:`(B, N, 4)`.</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; boxes_xyxy = torch.as_tensor([[0, 3, 1, 4], [5, 1, 8, 4]])</span>
 <span class="sd">            &gt;&gt;&gt; boxes = Boxes.from_tensor(boxes_xyxy)</span>
-<span class="sd">            &gt;&gt;&gt; assert (boxes_xyxy == boxes.to_tensor(mode='xyxy')).all()</span>
-<span class="sd">        """</span>
+<span class="sd">            &gt;&gt;&gt; assert (boxes_xyxy == boxes.to_tensor(mode=&#39;xyxy&#39;)).all()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">batched_boxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]</span>
@@ -738,20 +739,20 @@
 
         <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyxy"</span><span class="p">,</span> <span class="s2">"xyxy_plus"</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="s2">&quot;xyxy_plus&quot;</span><span class="p">):</span>
             <span class="k">pass</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xywh"</span><span class="p">,</span> <span class="s2">"vertices"</span><span class="p">,</span> <span class="s2">"vertices_plus"</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xywh&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices_plus&quot;</span><span class="p">):</span>
             <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span>
             <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyxy"</span><span class="p">,</span> <span class="s2">"vertices"</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
             <span class="n">offset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span> <span class="o">+</span> <span class="n">offset</span>
 
-        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'vertices'</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;vertices&#39;</span><span class="p">):</span>
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">_boxes_to_polygons</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_N</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">as_padded_sequence</span><span class="p">:</span>
@@ -763,7 +764,7 @@
         <span class="k">return</span> <span class="n">boxes</span></div>
 
 <div class="viewcode-block" id="Boxes.to_mask"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to_mask">[docs]</a>    <span class="k">def</span> <span class="nf">to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Convert 2D boxes to masks. Covered area is 1 and the remaining is 0.</span>
+        <span class="sd">&quot;&quot;&quot;Convert 2D boxes to masks. Covered area is 1 and the remaining is 0.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            height: height of the masked image/images.</span>
@@ -789,10 +790,10 @@
 <span class="sd">                     [0., 1., 1., 1., 1.],</span>
 <span class="sd">                     [0., 1., 1., 1., 1.],</span>
 <span class="sd">                     [0., 0., 0., 0., 0.]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-                <span class="s2">"Boxes.to_tensor isn't differentiable. Please, create boxes from tensors with `requires_grad=False`."</span>
+                <span class="s2">&quot;Boxes.to_tensor isn&#39;t differentiable. Please, create boxes from tensors with `requires_grad=False`.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span><span class="p">:</span>  <span class="c1"># (B, N, 4, 2)</span>
@@ -803,7 +804,7 @@
             <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
         <span class="c1"># Boxes coordinates can be outside the image size after transforms. Clamp values to the image size</span>
-        <span class="n">clipped_boxes_xyxy</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">"xyxy"</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">clipped_boxes_xyxy</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
         <span class="n">clipped_boxes_xyxy</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="n">clipped_boxes_xyxy</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
 
@@ -815,8 +816,8 @@
 
         <span class="k">return</span> <span class="n">mask</span></div>
 
-<div class="viewcode-block" id="Boxes.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Apply a transformation matrix to the 2D boxes.</span>
+<div class="viewcode-block" id="Boxes.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 2D boxes.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            M: The transformation matrix to be applied, shape of :math:`(3, 3)` or :math:`(B, 3, 3)`.</span>
@@ -824,9 +825,9 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The transformed boxes.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The transformation matrix shape must be (3, 3) or (B, 3, 3). Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The transformation matrix shape must be (3, 3) or (B, 3, 3). Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="c1"># Due to some torch.jit.script bug (at least &lt;= 1.9), you need to pass all arguments to __init__ when</span>
         <span class="c1"># constructing the class from inside of a method.</span>
@@ -837,24 +838,24 @@
 
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Boxes.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">"""Inplace version of :func:`Boxes.transform_boxes`"""</span>
+<div class="viewcode-block" id="Boxes.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes.transform_boxes`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_boxes</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Boxes.translate"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"warp"</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">"""Translates boxes by the provided size.</span>
+<div class="viewcode-block" id="Boxes.translate"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;warp&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Translates boxes by the provided size.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: translate size for x, y direction, shape of :math:`(B, 2)`.</span>
-<span class="sd">            method: "warp" or "fast".</span>
+<span class="sd">            method: &quot;warp&quot; or &quot;fast&quot;.</span>
 <span class="sd">            inplace: do transform in-place and return self.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The transformed boxes.</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">"fast"</span><span class="p">:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;fast&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">"warp"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;warp&quot;</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
@@ -873,62 +874,62 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
-        <span class="sd">"""Returns boxes device."""</span>
+        <span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">device</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
-        <span class="sd">"""Returns boxes dtype."""</span>
+        <span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span>
 
-<div class="viewcode-block" id="Boxes.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
-        <span class="sd">"""Like :func:`torch.nn.Module.to()` method."""</span>
+<div class="viewcode-block" id="Boxes.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
         <span class="c1"># In torchscript, dtype is a int and not a class. https://github.com/pytorch/pytorch/issues/51941</span>
         <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_is_floating_point_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Boxes must be in floating point"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boxes must be in floating point&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes"</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="kc">False</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Boxes3D"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D">[docs]</a><span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span>
 <span class="k">class</span> <span class="nc">Boxes3D</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""3D boxes containing N or BxN boxes.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;3D boxes containing N or BxN boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 3D boxes, shape of :math:`(N,8,3)` or :math:`(B,N,8,3)`. See below for more details.</span>
 <span class="sd">        raise_if_not_floating_point: flag to control floating point casting behaviour when `boxes` is not a floating</span>
-<span class="sd">            point tensor. True to raise an error when `boxes` isn't a floating point tensor, False to cast to float.</span>
+<span class="sd">            point tensor. True to raise an error when `boxes` isn&#39;t a floating point tensor, False to cast to float.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        **3D boxes format** is defined as a floating data type tensor of shape ``Nx8x3`` or ``BxNx8x3`` where each box</span>
-<span class="sd">        is a `hexahedron &lt;https://en.wikipedia.org/wiki/Hexahedron&gt;`_ defined by it's 8 vertices coordinates.</span>
+<span class="sd">        is a `hexahedron &lt;https://en.wikipedia.org/wiki/Hexahedron&gt;`_ defined by it&#39;s 8 vertices coordinates.</span>
 <span class="sd">        Coordinates must be in ``x, y, z`` order. The height, width and depth of a box is defined as</span>
 <span class="sd">        ``width = xmax - xmin + 1``, ``height = ymax - ymin + 1`` and ``depth = zmax - zmin + 1``. Examples of</span>
 <span class="sd">        `hexahedrons &lt;https://en.wikipedia.org/wiki/Hexahedron&gt;`_ are cubes and rhombohedrons.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">raise_if_not_floating_point</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyzxyz_plus"</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">raise_if_not_floating_point</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz_plus&quot;</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input boxes is not a Tensor. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes is not a Tensor. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">boxes</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">raise_if_not_floating_point</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Coordinates must be in floating point. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinates must be in floating point. Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="c1"># Use reshape, so we don't end up creating a new tensor that does not depend on</span>
+            <span class="c1"># Use reshape, so we don&#39;t end up creating a new tensor that does not depend on</span>
             <span class="c1"># the inputs (and consequently confuses jit)</span>
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"3D bbox shape must be (N, 8, 3) or (B, N, 8, 3). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3D bbox shape must be (N, 8, 3) or (B, N, 8, 3). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">else</span> <span class="kc">True</span>
 
@@ -936,7 +937,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
 
 <div class="viewcode-block" id="Boxes3D.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">"""Compute boxes heights and widths.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            - Boxes depths, shape of :math:`(N,)` or :math:`(B,N)`.</span>
@@ -948,35 +949,35 @@
 <span class="sd">            &gt;&gt;&gt; boxes3d = Boxes3D.from_tensor(boxes_xyzxyz)</span>
 <span class="sd">            &gt;&gt;&gt; boxes3d.get_boxes_shape()</span>
 <span class="sd">            (tensor([30., 60.]), tensor([20., 50.]), tensor([10., 40.]))</span>
-<span class="sd">        """</span>
-        <span class="n">boxes_xyzwhd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'xyzwhd'</span><span class="p">)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">boxes_xyzwhd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;xyzwhd&#39;</span><span class="p">)</span>
         <span class="n">widths</span><span class="p">,</span> <span class="n">heights</span><span class="p">,</span> <span class="n">depths</span> <span class="o">=</span> <span class="n">boxes_xyzwhd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">boxes_xyzwhd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">boxes_xyzwhd</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">depths</span><span class="p">,</span> <span class="n">heights</span><span class="p">,</span> <span class="n">widths</span></div>
 
 <div class="viewcode-block" id="Boxes3D.from_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.from_tensor">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyzxyz"</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes3D"</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Helper method to easily create :class:`Boxes3D` from 3D boxes stored in another format.</span>
+    <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes3D` from 3D boxes stored in another format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            boxes: 3D boxes, shape of :math:`(N,6)` or :math:`(B,N,6)`.</span>
 <span class="sd">            mode: The format in which the 3D boxes are provided.</span>
 
-<span class="sd">                * 'xyzxyz': boxes are assumed to be in the format ``xmin, ymin, zmin, xmax, ymax, zmax`` where</span>
+<span class="sd">                * &#39;xyzxyz&#39;: boxes are assumed to be in the format ``xmin, ymin, zmin, xmax, ymax, zmax`` where</span>
 <span class="sd">                  ``width = xmax - xmin``, ``height = ymax - ymin`` and ``depth = zmax - zmin``.</span>
-<span class="sd">                * 'xyzxyz_plus': similar to 'xyzxyz' mode but where box width, length and depth are defined as</span>
+<span class="sd">                * &#39;xyzxyz_plus&#39;: similar to &#39;xyzxyz&#39; mode but where box width, length and depth are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1``, ``height = ymax - ymin + 1`` and ``depth = zmax - zmin + 1``.</span>
-<span class="sd">                * 'xyzwhd': boxes are assumed to be in the format ``xmin, ymin, zmin, width, height, depth`` where</span>
+<span class="sd">                * &#39;xyzwhd&#39;: boxes are assumed to be in the format ``xmin, ymin, zmin, width, height, depth`` where</span>
 <span class="sd">                  ``width = xmax - xmin``, ``height = ymax - ymin`` and ``depth = zmax - zmin``.</span>
 
 <span class="sd">            validate_boxes: check if boxes are valid rectangles or not. Valid rectangles are those with width, height</span>
-<span class="sd">                and depth &gt;= 1 (&gt;= 2 when mode ends with '_plus' suffix).</span>
+<span class="sd">                and depth &gt;= 1 (&gt;= 2 when mode ends with &#39;_plus&#39; suffix).</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            :class:`Boxes3D` class containing the original `boxes` in the format specified by ``mode``.</span>
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; boxes_xyzxyz = torch.as_tensor([[0, 3, 6, 1, 4, 8], [5, 1, 3, 8, 4, 9]])</span>
-<span class="sd">            &gt;&gt;&gt; boxes = Boxes3D.from_tensor(boxes_xyzxyz, mode='xyzxyz')</span>
+<span class="sd">            &gt;&gt;&gt; boxes = Boxes3D.from_tensor(boxes_xyzxyz, mode=&#39;xyzxyz&#39;)</span>
 <span class="sd">            &gt;&gt;&gt; boxes.data  # (2, 8, 3)</span>
 <span class="sd">            tensor([[[0., 3., 6.],</span>
 <span class="sd">                     [0., 3., 6.],</span>
@@ -995,9 +996,9 @@
 <span class="sd">                     [7., 1., 8.],</span>
 <span class="sd">                     [7., 3., 8.],</span>
 <span class="sd">                     [5., 3., 8.]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BBox shape must be (N, 6) or (B, N, 6). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BBox shape must be (N, 6) or (B, N, 6). Got </span><span class="si">{</span><span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="n">batched</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span>
         <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span> <span class="k">if</span> <span class="n">batched</span> <span class="k">else</span> <span class="n">boxes</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1005,26 +1006,26 @@
 
         <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">zmin</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xyzxyz"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xyzxyz&quot;</span><span class="p">:</span>
             <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
             <span class="n">height</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
             <span class="n">depth</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xyzxyz_plus"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xyzxyz_plus&quot;</span><span class="p">:</span>
             <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">height</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">depth</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"xyzwhd"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;xyzwhd&quot;</span><span class="p">:</span>
             <span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">validate_boxes</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">width</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Some boxes have negative widths or 0."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some boxes have negative widths or 0.&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Some boxes have negative heights or 0."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some boxes have negative heights or 0.&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">depth</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Some boxes have negative depths or 0."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some boxes have negative depths or 0.&quot;</span><span class="p">)</span>
 
         <span class="n">hexahedrons</span> <span class="o">=</span> <span class="n">_boxes3d_to_polygons3d</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">zmin</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
         <span class="n">hexahedrons</span> <span class="o">=</span> <span class="n">hexahedrons</span> <span class="k">if</span> <span class="n">batched</span> <span class="k">else</span> <span class="n">hexahedrons</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1032,31 +1033,31 @@
         <span class="c1"># constructing the class from inside of a method.</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">hexahedrons</span><span class="p">,</span> <span class="n">raise_if_not_floating_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Boxes3D.to_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"xyzxyz"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Cast :class:`Boxes3D` to a tensor. ``mode`` controls which 3D boxes format should be use to represent</span>
+<div class="viewcode-block" id="Boxes3D.to_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes3D` to a tensor. ``mode`` controls which 3D boxes format should be use to represent</span>
 <span class="sd">        boxes in the tensor.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            mode: The format in which the boxes are provided.</span>
 
-<span class="sd">                * 'xyzxyz': boxes are assumed to be in the format ``xmin, ymin, zmin, xmax, ymax, zmax`` where</span>
+<span class="sd">                * &#39;xyzxyz&#39;: boxes are assumed to be in the format ``xmin, ymin, zmin, xmax, ymax, zmax`` where</span>
 <span class="sd">                  ``width = xmax - xmin``, ``height = ymax - ymin`` and ``depth = zmax - zmin``.</span>
-<span class="sd">                * 'xyzxyz_plus': similar to 'xyzxyz' mode but where box width, length and depth are defined as</span>
+<span class="sd">                * &#39;xyzxyz_plus&#39;: similar to &#39;xyzxyz&#39; mode but where box width, length and depth are defined as</span>
 <span class="sd">                   ``width = xmax - xmin + 1``, ``height = ymax - ymin + 1`` and ``depth = zmax - zmin + 1``.</span>
-<span class="sd">                * 'xyzwhd': boxes are assumed to be in the format ``xmin, ymin, zmin, width, height, depth`` where</span>
+<span class="sd">                * &#39;xyzwhd&#39;: boxes are assumed to be in the format ``xmin, ymin, zmin, width, height, depth`` where</span>
 <span class="sd">                  ``width = xmax - xmin``, ``height = ymax - ymin`` and ``depth = zmax - zmin``.</span>
-<span class="sd">                * 'vertices': boxes are defined by their vertices points in the following ``clockwise`` order:</span>
+<span class="sd">                * &#39;vertices&#39;: boxes are defined by their vertices points in the following ``clockwise`` order:</span>
 <span class="sd">                  *front-top-left, front-top-right, front-bottom-right, front-bottom-left, back-top-left,</span>
 <span class="sd">                  back-top-right, back-bottom-right,  back-bottom-left*. Vertices coordinates are in (x,y, z) order.</span>
 <span class="sd">                  Finally, box width, height and depth are defined as ``width = xmax - xmin``, ``height = ymax - ymin``</span>
 <span class="sd">                  and ``depth = zmax - zmin``.</span>
-<span class="sd">                * 'vertices_plus': similar to 'vertices' mode but where box width, length and depth are defined as</span>
+<span class="sd">                * &#39;vertices_plus&#39;: similar to &#39;vertices&#39; mode but where box width, length and depth are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            3D Boxes tensor in the ``mode`` format. The shape depends with the ``mode`` value:</span>
 
-<span class="sd">                * 'vertices' or 'verticies_plus': :math:`(N, 8, 3)` or :math:`(B, N, 8, 3)`.</span>
+<span class="sd">                * &#39;vertices&#39; or &#39;verticies_plus&#39;: :math:`(N, 8, 3)` or :math:`(B, N, 8, 3)`.</span>
 <span class="sd">                * Any other value: :math:`(N, 6)` or :math:`(B, N, 6)`.</span>
 
 <span class="sd">        Note:</span>
@@ -1065,15 +1066,15 @@
 
 <span class="sd">        Examples:</span>
 <span class="sd">            &gt;&gt;&gt; boxes_xyzxyz = torch.as_tensor([[0, 3, 6, 1, 4, 8], [5, 1, 3, 8, 4, 9]])</span>
-<span class="sd">            &gt;&gt;&gt; boxes = Boxes3D.from_tensor(boxes_xyzxyz, mode='xyzxyz')</span>
-<span class="sd">            &gt;&gt;&gt; assert (boxes.to_tensor(mode='xyzxyz') == boxes_xyzxyz).all()</span>
-<span class="sd">        """</span>
+<span class="sd">            &gt;&gt;&gt; boxes = Boxes3D.from_tensor(boxes_xyzxyz, mode=&#39;xyzxyz&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; assert (boxes.to_tensor(mode=&#39;xyzxyz&#39;) == boxes_xyzxyz).all()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-                <span class="s2">"Boxes3D.to_tensor doesn't support computing gradients since they aren't accurate. "</span>
-                <span class="s2">"Please, create boxes from tensors with `requires_grad=False`. "</span>
-                <span class="s2">"This is a known bug. Help is needed to fix it. For more information, "</span>
-                <span class="s2">"see https://github.com/kornia/kornia/issues/1396."</span>
+                <span class="s2">&quot;Boxes3D.to_tensor doesn&#39;t support computing gradients since they aren&#39;t accurate. &quot;</span>
+                <span class="s2">&quot;Please, create boxes from tensors with `requires_grad=False`. &quot;</span>
+                <span class="s2">&quot;This is a known bug. Help is needed to fix it. For more information, &quot;</span>
+                <span class="s2">&quot;see https://github.com/kornia/kornia/issues/1396.&quot;</span>
             <span class="p">)</span>
 
         <span class="n">batched_boxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1084,9 +1085,9 @@
         <span class="p">)</span>
 
         <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyzxyz"</span><span class="p">,</span> <span class="s2">"xyzxyz_plus"</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyzxyz&quot;</span><span class="p">,</span> <span class="s2">&quot;xyzxyz_plus&quot;</span><span class="p">):</span>
             <span class="k">pass</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyzwhd"</span><span class="p">,</span> <span class="s2">"vertices"</span><span class="p">,</span> <span class="s2">"vertices_plus"</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyzwhd&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices_plus&quot;</span><span class="p">):</span>
             <span class="n">width</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">height</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">depth</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1094,13 +1095,13 @@
             <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">height</span>
             <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"xyzxyz"</span><span class="p">,</span> <span class="s2">"vertices"</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;xyzxyz&quot;</span><span class="p">,</span> <span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
             <span class="n">offset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">boxes</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
             <span class="n">boxes</span> <span class="o">=</span> <span class="n">boxes</span> <span class="o">+</span> <span class="n">offset</span>
 
-        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'vertices'</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;vertices&#39;</span><span class="p">):</span>
             <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">zmin</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
             <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
@@ -1110,7 +1111,7 @@
         <span class="k">return</span> <span class="n">boxes</span></div>
 
 <div class="viewcode-block" id="Boxes3D.to_mask"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_mask">[docs]</a>    <span class="k">def</span> <span class="nf">to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Convert ·D boxes to masks. Covered area is 1 and the remaining is 0.</span>
+        <span class="sd">&quot;&quot;&quot;Convert ·D boxes to masks. Covered area is 1 and the remaining is 0.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            depth: depth of the masked image/images.</span>
@@ -1159,10 +1160,10 @@
 <span class="sd">                      [0., 0., 0., 0., 0.],</span>
 <span class="sd">                      [0., 0., 0., 0., 0.],</span>
 <span class="sd">                      [0., 0., 0., 0., 0.]]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-                <span class="s2">"Boxes.to_tensor isn't differentiable. Please, create boxes from tensors with `requires_grad=False`."</span>
+                <span class="s2">&quot;Boxes.to_tensor isn&#39;t differentiable. Please, create boxes from tensors with `requires_grad=False`.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span><span class="p">:</span>  <span class="c1"># (B, N, 8, 3)</span>
@@ -1177,7 +1178,7 @@
             <span class="p">)</span>
 
         <span class="c1"># Boxes coordinates can be outside the image size after transforms. Clamp values to the image size</span>
-        <span class="n">clipped_boxes_xyzxyz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">"xyzxyz"</span><span class="p">)</span>
+        <span class="n">clipped_boxes_xyzxyz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="s2">&quot;xyzxyz&quot;</span><span class="p">)</span>
         <span class="n">clipped_boxes_xyzxyz</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
         <span class="n">clipped_boxes_xyzxyz</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="n">clipped_boxes_xyzxyz</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">::</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
@@ -1194,8 +1195,8 @@
 
         <span class="k">return</span> <span class="n">mask</span></div>
 
-<div class="viewcode-block" id="Boxes3D.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes3D"</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Apply a transformation matrix to the 3D boxes.</span>
+<div class="viewcode-block" id="Boxes3D.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 3D boxes.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            M: The transformation matrix to be applied, shape of :math:`(4, 4)` or :math:`(B, 4, 4)`.</span>
@@ -1203,9 +1204,9 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The transformed boxes.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The transformation matrix shape must be (4, 4) or (B, 4, 4). Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The transformation matrix shape must be (4, 4) or (B, 4, 4). Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="c1"># Due to some torch.jit.script bug (at least &lt;= 1.9), you need to pass all arguments to __init__ when</span>
         <span class="c1"># constructing the class from inside of a method.</span>
@@ -1214,10 +1215,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">transformed_boxes</span>
             <span class="k">return</span> <span class="bp">self</span>
 
-        <span class="k">return</span> <span class="n">Boxes3D</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"xyzxyz_plus"</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Boxes3D</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;xyzxyz_plus&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Boxes3D.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes3D"</span><span class="p">:</span>
-        <span class="sd">"""Inplace version of :func:`Boxes3D.transform_boxes`"""</span>
+<div class="viewcode-block" id="Boxes3D.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes3D.transform_boxes`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_boxes</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
@@ -1230,19 +1231,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
-        <span class="sd">"""Returns boxes device."""</span>
+        <span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">device</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
-        <span class="sd">"""Returns boxes dtype."""</span>
+        <span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span>
 
-<div class="viewcode-block" id="Boxes3D.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Boxes3D"</span><span class="p">:</span>
-        <span class="sd">"""Like :func:`torch.nn.Module.to()` method."""</span>
+<div class="viewcode-block" id="Boxes3D.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
         <span class="c1"># In torchscript, dtype is a int and not a class. https://github.com/pytorch/pytorch/issues/51941</span>
         <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_is_floating_point_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Boxes must be in floating point"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boxes must be in floating point&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 </pre></div>
@@ -1283,7 +1284,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/container/image.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation.container.image - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -333,11 +334,11 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.utils</span> <span class="kn">import</span> <span class="n">ApplyInverseInterface</span><span class="p">,</span> <span class="n">InputApplyInverse</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.utils</span> <span class="kn">import</span> <span class="n">override_parameters</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ImageSequential"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ImageSequential&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="ImageSequential"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.ImageSequential">[docs]</a><span class="k">class</span> <span class="nc">ImageSequential</span><span class="p">(</span><span class="n">SequentialBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Sequential for creating kornia image processing pipeline.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sequential for creating kornia image processing pipeline.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        *args : a list of kornia augmentation and image operation modules.</span>
@@ -400,7 +401,7 @@
 <span class="sd">        &gt;&gt;&gt; out= aug_list(input)</span>
 <span class="sd">        &gt;&gt;&gt; out.shape</span>
 <span class="sd">        torch.Size([2, 3, 5, 6])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -410,20 +411,20 @@
         <span class="n">keepdim</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">random_apply_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">if_unsupported_ops</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"raise"</span><span class="p">,</span>
+        <span class="n">if_unsupported_ops</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;raise&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">return_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"`return_transform` is deprecated. Please access"</span>
-                <span class="s2">" `.transform_matrix` in `AugmentationSequential` instead."</span>
+                <span class="s2">&quot;`return_transform` is deprecated. Please access&quot;</span>
+                <span class="s2">&quot; `.transform_matrix` in `AugmentationSequential` instead.&quot;</span>
             <span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">return_transform</span><span class="o">=</span><span class="n">return_transform</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_random_apply</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">random_apply_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_apply_weights</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"The length of `random_apply_weights` must be as same as the number of operations."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">random_apply_weights</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span>
+                <span class="s2">&quot;The length of `random_apply_weights` must be as same as the number of operations.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">random_apply_weights</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">random_apply_weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">random_apply_weights</span> <span class="ow">or</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -433,7 +434,7 @@
     <span class="k">def</span> <span class="nf">_read_random_apply</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
-        <span class="sd">"""Process the scenarios for random apply."""</span>
+        <span class="sd">&quot;&quot;&quot;Process the scenarios for random apply.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,))</span> <span class="ow">and</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">random_apply</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,))</span> <span class="ow">and</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -450,22 +451,22 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_apply</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,)):</span>
             <span class="n">random_apply</span> <span class="o">=</span> <span class="p">(</span><span class="n">random_apply</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Non-readable random_apply. Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Non-readable random_apply. Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span>
             <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,))</span>
             <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_apply</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
             <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,))</span>
             <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,))</span>
         <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expect a tuple of (int, int). Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expect a tuple of (int, int). Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">random_apply</span>
 
     <span class="k">def</span> <span class="nf">get_random_forward_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_mix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]:</span>
-        <span class="sd">"""Get a forward sequence when random apply is in need.</span>
+        <span class="sd">&quot;&quot;&quot;Get a forward sequence when random apply is in need.</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">            Mix augmentations (e.g. RandomMixUp) will be only applied once even in a random forward.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">num_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
         <span class="n">multinomial_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_apply_weights</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="c1"># Mix augmentation can only be applied once per forward</span>
@@ -490,10 +491,10 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_children_by_indices</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="n">mix_added</span>
 
     <span class="k">def</span> <span class="nf">get_mix_augmentation_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">named_modules</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">"""Get all the mix augmentations since they are label-involved.</span>
+        <span class="sd">&quot;&quot;&quot;Get all the mix augmentations since they are label-involved.</span>
 
 <span class="sd">        Special operations needed for label-involved augmentations.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">named_modules</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="p">(</span><span class="n">MixAugmentationBase</span><span class="p">,)):</span>  <span class="c1"># NOTE: MixV2 will not be a special op in the future.</span>
@@ -510,8 +511,8 @@
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">"Multiple mix augmentation is prohibited without enabling random_apply."</span>
-                    <span class="sa">f</span><span class="s2">"Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span>
+                    <span class="s2">&quot;Multiple mix augmentation is prohibited without enabling random_apply.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
                 <span class="p">)</span>
 
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">named_children</span><span class="p">()</span>
@@ -549,9 +550,9 @@
         <span class="k">return</span> <span class="n">params</span>
 
     <span class="k">def</span> <span class="nf">contains_label_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""Check if current sequential contains label-involved operations like MixUp."""</span>
+        <span class="sd">&quot;&quot;&quot;Check if current sequential contains label-involved operations like MixUp.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"RandomMixUp_"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"RandomCutMix_"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomMixUp_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomCutMix_&quot;</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -562,7 +563,7 @@
         <span class="k">return</span> <span class="n">output</span>
 
     <span class="k">def</span> <span class="nf">identity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return identity matrix."""</span>
+        <span class="sd">&quot;&quot;&quot;Return identity matrix.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">eye_like</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_transformation_matrix</span><span class="p">(</span>
@@ -572,16 +573,16 @@
         <span class="n">recompute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""Compute the transformation matrix according to the provided parameters.</span>
+        <span class="sd">&quot;&quot;&quot;Compute the transformation matrix according to the provided parameters.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            input: the input tensor.</span>
 <span class="sd">            params: params for the sequence.</span>
 <span class="sd">            recompute: if to recompute the transformation matrix according to the params.</span>
 <span class="sd">                default: False.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"requires params to be provided."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;requires params to be provided.&quot;</span><span class="p">)</span>
         <span class="n">named_modules</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
         <span class="c1"># Define as 1 for broadcasting</span>
@@ -591,7 +592,7 @@
                 <span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">MixAugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">)</span>
             <span class="p">):</span>
                 <span class="n">pdata</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-                <span class="n">to_apply</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s1">'batch_prob'</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+                <span class="n">to_apply</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s1">&#39;batch_prob&#39;</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
                 <span class="n">ori_shape</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="nb">input</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">transform_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -623,7 +624,7 @@
         <span class="k">return</span> <span class="n">res_mat</span>
 
     <span class="k">def</span> <span class="nf">is_intensity_only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">"""Check if all transformations are intensity-based.</span>
+        <span class="sd">&quot;&quot;&quot;Check if all transformations are intensity-based.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            strict: if strict is False, it will allow non-augmentation nn.Modules to be passed.</span>
@@ -631,7 +632,7 @@
 <span class="sd">                if strict is set to True.</span>
 
 <span class="sd">        Note: patch processing would break the continuity of labels (e.g. bbounding boxes, masks).</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">(</span><span class="n">ImageSequential</span><span class="p">,))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">arg</span><span class="o">.</span><span class="n">is_intensity_only</span><span class="p">(</span><span class="n">strict</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">False</span>
@@ -648,16 +649,16 @@
     <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Inverse transformation.</span>
+        <span class="sd">&quot;&quot;&quot;Inverse transformation.</span>
 
 <span class="sd">        Used to inverse a tensor according to the performed transformation by a forward pass, or with respect to</span>
 <span class="sd">        provided parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">"No parameters available for inversing, please run a forward pass first "</span>
-                    <span class="s2">"or passing valid params into this function."</span>
+                    <span class="s2">&quot;No parameters available for inversing, please run a forward pass first &quot;</span>
+                    <span class="s2">&quot;or passing valid params into this function.&quot;</span>
                 <span class="p">)</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span>
 
@@ -677,7 +678,7 @@
                 <span class="nb">input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">pass</span>
-                <span class="c1"># raise NotImplementedError(f"`inverse` is not implemented for {module}.")</span>
+                <span class="c1"># raise NotImplementedError(f&quot;`inverse` is not implemented for {module}.&quot;)</span>
 
         <span class="k">return</span> <span class="nb">input</span>
 
@@ -707,23 +708,23 @@
 
 
 <span class="k">def</span> <span class="nf">_get_new_batch_shape</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">:</span>
-    <span class="sd">"""Get the new batch shape if the augmentation changes the image size.</span>
+    <span class="sd">&quot;&quot;&quot;Get the new batch shape if the augmentation changes the image size.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">       Augmentations that change the image size must provide the parameter `output_size`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">batch_shape</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
             <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">_get_new_batch_shape</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s1">'output_size'</span> <span class="ow">in</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'batch_prob'</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">elif</span> <span class="s1">&#39;output_size&#39;</span> <span class="ow">in</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;batch_prob&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
             <span class="c1"># Augmentations that change the image size must be applied equally to all elements in batch.</span>
             <span class="c1"># If the augmentation is not applied, return the same batch shape.</span>
             <span class="k">return</span> <span class="n">batch_shape</span>
         <span class="n">new_batch_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
-        <span class="n">new_batch_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'output_size'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">new_batch_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;output_size&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">(</span><span class="n">new_batch_shape</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">batch_shape</span>
 </pre></div>
@@ -764,7 +765,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

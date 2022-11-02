@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/container/patch.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation.container.patch - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -326,7 +327,7 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.image</span> <span class="kn">import</span> <span class="n">ImageSequential</span><span class="p">,</span> <span class="n">ParamItem</span>
 <span class="kn">from</span> <span class="nn">kornia.contrib.extract_patches</span> <span class="kn">import</span> <span class="n">extract_tensor_patches</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PatchSequential"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PatchSequential&quot;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">PatchParamItem</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
@@ -335,7 +336,7 @@
 
 
 <div class="viewcode-block" id="PatchSequential"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.PatchSequential">[docs]</a><span class="k">class</span> <span class="nc">PatchSequential</span><span class="p">(</span><span class="n">ImageSequential</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Container for performing patch-level image data augmentation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Container for performing patch-level image data augmentation.</span>
 
 <span class="sd">    .. image:: https://kornia-tutorials.readthedocs.io/en/latest/_images/data_patch_sequential_7_0.png</span>
 
@@ -423,13 +424,13 @@
 <span class="sd">        &gt;&gt;&gt; out = seq(input)</span>
 <span class="sd">        &gt;&gt;&gt; out.shape</span>
 <span class="sd">        torch.Size([2, 3, 224, 224])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
         <span class="n">grid_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-        <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"same"</span><span class="p">,</span>
+        <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;same&quot;</span><span class="p">,</span>
         <span class="n">same_on_batch</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">keepdim</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">patchwise_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -444,13 +445,13 @@
         <span class="k">elif</span> <span class="n">patchwise_apply</span> <span class="ow">and</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="s2">"The number of processing modules must be equal with grid size."</span>
-                    <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">. "</span>
-                    <span class="s2">"Please set random_apply = True or patchwise_apply = False."</span>
+                    <span class="s2">&quot;The number of processing modules must be equal with grid size.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">. &quot;</span>
+                    <span class="s2">&quot;Please set random_apply = True or patchwise_apply = False.&quot;</span>
                 <span class="p">)</span>
             <span class="n">_random_apply</span> <span class="o">=</span> <span class="n">random_apply</span>
         <span class="k">elif</span> <span class="n">patchwise_apply</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Only boolean value allowed when `patchwise_apply` is set to True. Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only boolean value allowed when `patchwise_apply` is set to True. Got </span><span class="si">{</span><span class="n">random_apply</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_random_apply</span> <span class="o">=</span> <span class="n">random_apply</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -460,15 +461,15 @@
             <span class="n">random_apply</span><span class="o">=</span><span class="n">_random_apply</span><span class="p">,</span>
             <span class="n">random_apply_weights</span><span class="o">=</span><span class="n">random_apply_weights</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">padding</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"same"</span><span class="p">,</span> <span class="s2">"valid"</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`padding` must be either `same` or `valid`. Got </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">padding</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`padding` must be either `same` or `valid`. Got </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">=</span> <span class="n">grid_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">patchwise_apply</span> <span class="o">=</span> <span class="n">patchwise_apply</span>
 
     <span class="k">def</span> <span class="nf">contains_label_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PatchParamItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"RandomMixUp"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"RandomCutMix"</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomMixUp&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomCutMix&quot;</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -477,14 +478,14 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">grid_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">grid_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span>
-        <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s2">"valid"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
             <span class="n">ph</span><span class="p">,</span> <span class="n">pw</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">pw</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pw</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">pw</span><span class="p">,</span> <span class="o">-</span><span class="n">ph</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ph</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">ph</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s2">"same"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s2">&quot;same&quot;</span><span class="p">:</span>
             <span class="n">ph</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">pw</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">pw</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pw</span> <span class="o">-</span> <span class="n">pw</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ph</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ph</span> <span class="o">-</span> <span class="n">ph</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expect `padding` as either 'valid' or 'same'. Got </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expect `padding` as either &#39;valid&#39; or &#39;same&#39;. Got </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">extract_patches</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -492,7 +493,7 @@
         <span class="n">grid_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">pad</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Extract patches from tensor.</span>
+        <span class="sd">&quot;&quot;&quot;Extract patches from tensor.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; import kornia.augmentation as K</span>
@@ -523,7 +524,7 @@
 <span class="sd">            &lt;BLANKLINE&gt;</span>
 <span class="sd">            &lt;BLANKLINE&gt;</span>
 <span class="sd">                     [[[31, 32, 33]]]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">pad</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">grid_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -538,7 +539,7 @@
         <span class="n">grid_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
         <span class="n">pad</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Restore input from patches.</span>
+        <span class="sd">&quot;&quot;&quot;Restore input from patches.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; import kornia.augmentation as K</span>
@@ -549,7 +550,7 @@
 <span class="sd">                      [ 4,  5,  6,  7],</span>
 <span class="sd">                      [ 8,  9, 10, 11],</span>
 <span class="sd">                      [12, 13, 14, 15]]]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">grid_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">grid_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span>
         <span class="n">patches_tensor</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">*</span><span class="n">patches</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
@@ -566,25 +567,25 @@
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_parameters</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">*</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]))</span>
             <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="p">[</span><span class="n">out_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PatchParamItem</span><span class="p">(</span><span class="n">indices</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
-            <span class="c1"># "append" of "list" does not return a value</span>
+            <span class="c1"># &quot;append&quot; of &quot;list&quot; does not return a value</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_on_batch</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_parameters</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]))</span>
             <span class="p">[</span><span class="n">out_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PatchParamItem</span><span class="p">([</span><span class="n">i</span><span class="p">],</span> <span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
-            <span class="c1"># "append" of "list" does not return a value</span>
+            <span class="c1"># &quot;append&quot; of &quot;list&quot; does not return a value</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_parameters</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]))</span>
             <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="n">batch_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="p">[</span><span class="n">out_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PatchParamItem</span><span class="p">((</span><span class="n">indices</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
-            <span class="c1"># "append" of "list" does not return a value</span>
+            <span class="c1"># &quot;append&quot; of &quot;list&quot; does not return a value</span>
         <span class="k">return</span> <span class="n">out_param</span>
 
     <span class="k">def</span> <span class="nf">generate_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-        <span class="sd">"""Get multiple forward sequence but maximumly one mix augmentation in between.</span>
+        <span class="sd">&quot;&quot;&quot;Get multiple forward sequence but maximumly one mix augmentation in between.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            batch_shape: 5-dim shape arranged as :math:``(N, B, C, H, W)``, in which N represents</span>
 <span class="sd">                the number of sequence.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">same_on_batch</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_apply</span><span class="p">:</span>
             <span class="c1"># diff_on_batch and random_apply =&gt; patch-wise augmentation</span>
             <span class="n">with_mix</span> <span class="o">=</span> <span class="kc">False</span>
@@ -703,23 +704,23 @@
         <span class="k">return</span> <span class="n">_input</span><span class="p">,</span> <span class="n">label</span>
 
     <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="sd">"""Inverse transformation.</span>
+        <span class="sd">&quot;&quot;&quot;Inverse transformation.</span>
 
 <span class="sd">        Used to inverse a tensor according to the performed transformation by a forward pass, or with respect to</span>
 <span class="sd">        provided parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_intensity_only</span><span class="p">():</span>
             <span class="k">return</span> <span class="nb">input</span>
 
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"PatchSequential inverse cannot be used with geometric transformations."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;PatchSequential inverse cannot be used with geometric transformations.&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PatchSequential.forward"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.PatchSequential.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">PatchParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="sd">"""Input transformation will be returned if input is a tuple."""</span>
+        <span class="sd">&quot;&quot;&quot;Input transformation will be returned if input is a tuple.&quot;&quot;&quot;</span>
         <span class="c1"># BCHW -&gt; B(patch)CHW</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tuple input is not currently supported."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;tuple input is not currently supported.&quot;</span><span class="p">)</span>
         <span class="n">_input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 
         <span class="n">pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_padding</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">)</span>
@@ -773,7 +774,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

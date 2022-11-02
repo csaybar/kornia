@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/losses/hausdorff.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses.hausdorff - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -320,7 +321,7 @@
 
 
 <span class="k">class</span> <span class="nc">_HausdorffERLossBase</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">ScriptModule</span><span class="p">):</span>
-    <span class="sd">"""Base class for binary Hausdorff loss based on morphological erosion.</span>
+    <span class="sd">&quot;&quot;&quot;Base class for binary Hausdorff loss based on morphological erosion.</span>
 
 <span class="sd">    This is an Hausdorff Distance (HD) Loss that based on morphological erosion,which provided</span>
 <span class="sd">    a differentiable approximation of Hausdorff distance as stated in :cite:`karimi2019reducing`.</span>
@@ -330,26 +331,26 @@
 <span class="sd">    Args:</span>
 <span class="sd">        alpha: controls the erosion rate in each iteration.</span>
 <span class="sd">        k: the number of iterations of erosion.</span>
-<span class="sd">        reduction: Specifies the reduction to apply to the output: 'none' | 'mean' | 'sum'.</span>
-<span class="sd">            'none': no reduction will be applied, 'mean': the weighted mean of the output is taken,</span>
-<span class="sd">            'sum': the output will be summed.</span>
+<span class="sd">        reduction: Specifies the reduction to apply to the output: &#39;none&#39; | &#39;mean&#39; | &#39;sum&#39;.</span>
+<span class="sd">            &#39;none&#39;: no reduction will be applied, &#39;mean&#39;: the weighted mean of the output is taken,</span>
+<span class="sd">            &#39;sum&#39;: the output will be summed.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Estimated Hausdorff Loss.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">conv</span><span class="p">:</span> <span class="n">Callable</span>
     <span class="n">max_pool</span><span class="p">:</span> <span class="n">Callable</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">=</span> <span class="n">reduction</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">"kernel"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">&quot;kernel&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">())</span>
 
     <span class="k">def</span> <span class="nf">get_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Get kernel for image morphology convolution."""</span>
+        <span class="sd">&quot;&quot;&quot;Get kernel for image morphology convolution.&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
     <span class="k">def</span> <span class="nf">perform_erosion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
@@ -390,7 +391,7 @@
 
     <span class="c1"># NOTE: we add type ignore because the forward pass does not work well with subclassing</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="sd">"""Compute Hausdorff loss.</span>
+        <span class="sd">&quot;&quot;&quot;Compute Hausdorff loss.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            pred: predicted tensor with a shape of :math:`(B, C, H, W)` or :math:`(B, C, D, H, W)`.</span>
@@ -399,15 +400,15 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Estimated Hausdorff Loss.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">pred</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="ow">and</span> <span class="n">pred</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"Prediction and target need to be of same size, and target should not be one-hot."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span>
+                <span class="s2">&quot;Prediction and target need to be of same size, and target should not be one-hot.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">pred</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid target value."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid target value.&quot;</span><span class="p">)</span>
 
         <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
             <span class="p">[</span>
@@ -423,20 +424,20 @@
             <span class="p">]</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">'mean'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">'sum'</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">'none'</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"reduction `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="si">}</span><span class="s2">` has not been implemented yet."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reduction `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="si">}</span><span class="s2">` has not been implemented yet.&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">out</span>
 
 
 <div class="viewcode-block" id="HausdorffERLoss"><a class="viewcode-back" href="../../../losses.html#kornia.losses.HausdorffERLoss">[docs]</a><span class="k">class</span> <span class="nc">HausdorffERLoss</span><span class="p">(</span><span class="n">_HausdorffERLossBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Binary Hausdorff loss based on morphological erosion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Binary Hausdorff loss based on morphological erosion.</span>
 
 <span class="sd">    Hausdorff Distance loss measures the maximum distance of a predicted segmentation boundary to</span>
 <span class="sd">    the nearest ground-truth edge pixel. For two segmentation point sets X and Y ,</span>
@@ -460,29 +461,29 @@
 <span class="sd">    Args:</span>
 <span class="sd">        alpha: controls the erosion rate in each iteration.</span>
 <span class="sd">        k: the number of iterations of erosion.</span>
-<span class="sd">        reduction: Specifies the reduction to apply to the output: 'none' | 'mean' | 'sum'.</span>
-<span class="sd">            'none': no reduction will be applied, 'mean': the weighted mean of the output is taken,</span>
-<span class="sd">            'sum': the output will be summed.</span>
+<span class="sd">        reduction: Specifies the reduction to apply to the output: &#39;none&#39; | &#39;mean&#39; | &#39;sum&#39;.</span>
+<span class="sd">            &#39;none&#39;: no reduction will be applied, &#39;mean&#39;: the weighted mean of the output is taken,</span>
+<span class="sd">            &#39;sum&#39;: the output will be summed.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; hdloss = HausdorffERLoss()</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(5, 3, 20, 20)</span>
 <span class="sd">        &gt;&gt;&gt; target = (torch.rand(5, 1, 20, 20) * 2).long()</span>
 <span class="sd">        &gt;&gt;&gt; res = hdloss(input, target)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">conv2d</span>
     <span class="n">max_pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveMaxPool2d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Get kernel for image morphology convolution."""</span>
+        <span class="sd">&quot;&quot;&quot;Get kernel for image morphology convolution.&quot;&quot;&quot;</span>
         <span class="n">cross</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
         <span class="n">kernel</span> <span class="o">=</span> <span class="n">cross</span> <span class="o">*</span> <span class="mf">0.2</span>
         <span class="k">return</span> <span class="n">kernel</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
 
     <span class="c1"># NOTE: we add type ignore because the forward pass does not work well with subclassing</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="sd">"""Compute Hausdorff loss.</span>
+        <span class="sd">&quot;&quot;&quot;Compute Hausdorff loss.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            pred: predicted tensor with a shape of :math:`(B, C, H, W)`.</span>
@@ -491,19 +492,19 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Estimated Hausdorff Loss.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Only 2D images supported. Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only 2D images supported. Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">pred</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">target</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">target</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expect long type target value in range (0, </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span> <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">)"</span>
+                <span class="sa">f</span><span class="s2">&quot;Expect long type target value in range (0, </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">).&quot;</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">)&quot;</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="HausdorffERLoss3D"><a class="viewcode-back" href="../../../losses.html#kornia.losses.HausdorffERLoss3D">[docs]</a><span class="k">class</span> <span class="nc">HausdorffERLoss3D</span><span class="p">(</span><span class="n">_HausdorffERLossBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Binary 3D Hausdorff loss based on morphological erosion.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Binary 3D Hausdorff loss based on morphological erosion.</span>
 
 <span class="sd">    Hausdorff Distance loss measures the maximum distance of a predicted segmentation boundary to</span>
 <span class="sd">    the nearest ground-truth edge pixel. For two segmentation point sets X and Y ,</span>
@@ -527,22 +528,22 @@
 <span class="sd">    Args:</span>
 <span class="sd">        alpha: controls the erosion rate in each iteration.</span>
 <span class="sd">        k: the number of iterations of erosion.</span>
-<span class="sd">        reduction: Specifies the reduction to apply to the output: 'none' | 'mean' | 'sum'.</span>
-<span class="sd">            'none': no reduction will be applied, 'mean': the weighted mean of the output is taken,</span>
-<span class="sd">            'sum': the output will be summed.</span>
+<span class="sd">        reduction: Specifies the reduction to apply to the output: &#39;none&#39; | &#39;mean&#39; | &#39;sum&#39;.</span>
+<span class="sd">            &#39;none&#39;: no reduction will be applied, &#39;mean&#39;: the weighted mean of the output is taken,</span>
+<span class="sd">            &#39;sum&#39;: the output will be summed.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; hdloss = HausdorffERLoss3D()</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(5, 3, 20, 20, 20)</span>
 <span class="sd">        &gt;&gt;&gt; target = (torch.rand(5, 1, 20, 20, 20) * 2).long()</span>
 <span class="sd">        &gt;&gt;&gt; res = hdloss(input, target)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">conv3d</span>
     <span class="n">max_pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveMaxPool3d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Get kernel for image morphology convolution."""</span>
+        <span class="sd">&quot;&quot;&quot;Get kernel for image morphology convolution.&quot;&quot;&quot;</span>
         <span class="n">cross</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
         <span class="n">bound</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
         <span class="c1"># NOTE: The original repo claimed it shaped as (3, 1, 3, 3)</span>
@@ -553,7 +554,7 @@
 
     <span class="c1"># NOTE: we add type ignore because the forward pass does not work well with subclassing</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pred</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-        <span class="sd">"""Compute 3D Hausdorff loss.</span>
+        <span class="sd">&quot;&quot;&quot;Compute 3D Hausdorff loss.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            pred: predicted tensor with a shape of :math:`(B, C, D, H, W)`.</span>
@@ -562,9 +563,9 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Estimated Hausdorff Loss.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Only 3D images supported. Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only 3D images supported. Got </span><span class="si">{</span><span class="n">pred</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
 </pre></div>
@@ -605,7 +606,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

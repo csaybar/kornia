@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/intensity/planckian_jitter.html" />
 
-    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation._2d.intensity.planckian_jitter - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -321,7 +322,7 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation._2d.intensity.base</span> <span class="kn">import</span> <span class="n">IntensityAugmentationBase2D</span>
 
 <span class="n">_planckian_coeffs</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'blackbody'</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">(</span>
+    <span class="s1">&#39;blackbody&#39;</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="p">[</span><span class="mf">0.6743</span><span class="p">,</span> <span class="mf">0.4029</span><span class="p">,</span> <span class="mf">0.0013</span><span class="p">],</span>
             <span class="p">[</span><span class="mf">0.6281</span><span class="p">,</span> <span class="mf">0.4241</span><span class="p">,</span> <span class="mf">0.1665</span><span class="p">],</span>
@@ -350,7 +351,7 @@
             <span class="p">[</span><span class="mf">0.3503</span><span class="p">,</span> <span class="mf">0.4653</span><span class="p">,</span> <span class="mf">0.6933</span><span class="p">],</span>
         <span class="p">]</span>
     <span class="p">),</span>
-    <span class="s1">'CIED'</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">(</span>
+    <span class="s1">&#39;CIED&#39;</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="p">[</span><span class="mf">0.5829</span><span class="p">,</span> <span class="mf">0.4421</span><span class="p">,</span> <span class="mf">0.2288</span><span class="p">],</span>
             <span class="p">[</span><span class="mf">0.5510</span><span class="p">,</span> <span class="mf">0.4514</span><span class="p">,</span> <span class="mf">0.2948</span><span class="p">],</span>
@@ -380,17 +381,17 @@
 <span class="p">}</span>
 
 <span class="n">_planckian_coeffs_ratio</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'blackbody'</span><span class="p">:</span> <span class="n">stack</span><span class="p">(</span>
+    <span class="s1">&#39;blackbody&#39;</span><span class="p">:</span> <span class="n">stack</span><span class="p">(</span>
         <span class="p">(</span>
-            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'blackbody'</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'blackbody'</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'blackbody'</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'blackbody'</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;blackbody&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;blackbody&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;blackbody&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;blackbody&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
         <span class="p">),</span>
         <span class="mi">1</span><span class="p">,</span>
     <span class="p">),</span>
-    <span class="s1">'CIED'</span><span class="p">:</span> <span class="n">stack</span><span class="p">(</span>
+    <span class="s1">&#39;CIED&#39;</span><span class="p">:</span> <span class="n">stack</span><span class="p">(</span>
         <span class="p">(</span>
-            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'CIED'</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'CIED'</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'CIED'</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">'CIED'</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;CIED&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;CIED&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;CIED&#39;</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">_planckian_coeffs</span><span class="p">[</span><span class="s1">&#39;CIED&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span>
         <span class="p">),</span>
         <span class="mi">1</span><span class="p">,</span>
     <span class="p">),</span>
@@ -398,7 +399,7 @@
 
 
 <div class="viewcode-block" id="RandomPlanckianJitter"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomPlanckianJitter">[docs]</a><span class="k">class</span> <span class="nc">RandomPlanckianJitter</span><span class="p">(</span><span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Apply planckian jitter transformation to input tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply planckian jitter transformation to input tensor.</span>
 
 <span class="sd">    .. image:: _static/img/RandomPlanckianJitter.png</span>
 
@@ -409,7 +410,7 @@
 <span class="sd">    See :cite:`zini2022planckian` for more details.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        mode: 'blackbody' or 'CIED'.</span>
+<span class="sd">        mode: &#39;blackbody&#39; or &#39;CIED&#39;.</span>
 <span class="sd">        select_from: choose a list of jitters to apply from. `blackbody` range [0-24], `CIED` range [0-22]</span>
 <span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
 <span class="sd">        p: probability that the random erasing operation will be performed.</span>
@@ -429,7 +430,7 @@
 
 <span class="sd">        &gt;&gt;&gt; rng = torch.manual_seed(0)</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(1, 3, 2, 2)</span>
-<span class="sd">        &gt;&gt;&gt; aug = RandomPlanckianJitter(mode='CIED')</span>
+<span class="sd">        &gt;&gt;&gt; aug = RandomPlanckianJitter(mode=&#39;CIED&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; aug(input)</span>
 <span class="sd">        tensor([[[[ 1.0000, -0.2389],</span>
 <span class="sd">                  [-1.7740,  0.4628]],</span>
@@ -444,7 +445,7 @@
 
 <span class="sd">        &gt;&gt;&gt; rng = torch.manual_seed(0)</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(2, 3, 2, 2)</span>
-<span class="sd">        &gt;&gt;&gt; aug = RandomPlanckianJitter(mode='blackbody', select_from=[23, 24, 1, 2])</span>
+<span class="sd">        &gt;&gt;&gt; aug = RandomPlanckianJitter(mode=&#39;blackbody&#39;, select_from=[23, 24, 1, 2])</span>
 <span class="sd">        &gt;&gt;&gt; aug(input)</span>
 <span class="sd">        tensor([[[[-1.1258, -1.1524],</span>
 <span class="sd">                  [-0.2506, -0.4339]],</span>
@@ -464,11 +465,11 @@
 <span class="sd">        &lt;BLANKLINE&gt;</span>
 <span class="sd">                 [[ 0.2426, -0.1621],</span>
 <span class="sd">                  [-0.3302, -0.9093]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"blackbody"</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;blackbody&quot;</span><span class="p">,</span>
         <span class="n">select_from</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">same_on_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
@@ -481,9 +482,9 @@
             <span class="n">select_from</span> <span class="o">=</span> <span class="p">[</span><span class="n">select_from</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">select_from</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'pl'</span><span class="p">,</span> <span class="n">_planckian_coeffs_ratio</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">select_from</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;pl&#39;</span><span class="p">,</span> <span class="n">_planckian_coeffs_ratio</span><span class="p">[</span><span class="n">mode</span><span class="p">][</span><span class="n">select_from</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'pl'</span><span class="p">,</span> <span class="n">_planckian_coeffs_ratio</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;pl&#39;</span><span class="p">,</span> <span class="n">_planckian_coeffs_ratio</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
 
         <span class="c1"># the range of the sampling parameters</span>
         <span class="n">_param_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -495,7 +496,7 @@
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 
-        <span class="n">list_idx</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">'idx'</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">list_idx</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;idx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">coeffs</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pl</span><span class="p">)[</span><span class="n">list_idx</span><span class="p">]</span>
 
         <span class="n">r_w</span> <span class="o">=</span> <span class="n">coeffs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
@@ -546,7 +547,9 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../../_static/scripts/furo.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>

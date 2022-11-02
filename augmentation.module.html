@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.color" href="color.html" /><link rel="prev" title="Augmentation Containers" href="augmentation.container.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/augmentation.module.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Image Augmentations - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,17 +316,17 @@
         </div>
         <article role="main">
           <section id="image-augmentations">
-<h1>Image Augmentations<a class="headerlink" href="#image-augmentations" title="Permalink to this headline">#</a></h1>
+<h1>Image Augmentations<a class="headerlink" href="#image-augmentations" title="Permalink to this heading">#</a></h1>
 <section id="transforms2d">
-<h2>Transforms2D<a class="headerlink" href="#transforms2d" title="Permalink to this headline">#</a></h2>
+<h2>Transforms2D<a class="headerlink" href="#transforms2d" title="Permalink to this heading">#</a></h2>
 <p>Set of operators to perform data augmentation on 2D image tensors.</p>
 <section id="intensity">
-<h3>Intensity<a class="headerlink" href="#intensity" title="Permalink to this headline">#</a></h3>
+<h3>Intensity<a class="headerlink" href="#intensity" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPlanckianJitter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPlanckianJitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blackbody'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/planckian_jitter.html#RandomPlanckianJitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPlanckianJitter" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply planckian jitter transformation to input tensor.</p>
-<img alt="_images/RandomPlanckianJitter.png" src="_images/RandomPlanckianJitter.png"/>
+<img alt="_images/RandomPlanckianJitter.png" src="_images/RandomPlanckianJitter.png" />
 <p>This is physics based color augmentation, that creates realistic
 variations in chromaticity, this can simulate the illumination
 changes in the scene.</p>
@@ -361,7 +363,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>To apply planckian jitter based on mode</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomPlanckianJitter</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'CIED'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomPlanckianJitter</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;CIED&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="go">tensor([[[[ 1.0000, -0.2389],</span>
 <span class="go">          [-1.7740,  0.4628]],</span>
@@ -376,7 +378,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>To apply planckian jitter on image(s) from list of interested jitters</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomPlanckianJitter</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">'blackbody'</span><span class="p">,</span> <span class="n">select_from</span><span class="o">=</span><span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomPlanckianJitter</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;blackbody&#39;</span><span class="p">,</span> <span class="n">select_from</span><span class="o">=</span><span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="go">tensor([[[[-1.1258, -1.1524],</span>
 <span class="go">          [-0.2506, -0.4339]],</span>
@@ -399,11 +401,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPlasmaShadow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPlasmaShadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">1.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/plasma.html#RandomPlasmaShadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPlasmaShadow" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPlasmaShadow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-1.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_quantity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/plasma.html#RandomPlasmaShadow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPlasmaShadow" title="Permalink to this definition">#</a></dt>
 <dd><p>Add gaussian noise to a batch of multi-dimensional images.</p>
-<img alt="_images/RandomPlasmaShadow.png" src="_images/RandomPlasmaShadow.png"/>
+<img alt="_images/RandomPlasmaShadow.png" src="_images/RandomPlasmaShadow.png" />
 <p>This is based on the original paper: TorMentor: Deterministic dynamic-path, data augmentations with fractals.
 See: <span id="id2">[<a class="reference internal" href="community/bibliography.html#id30" title="Anguelos Nicolaou, Vincent Christlein, Edgar Riba, Jian Shi, Georg Vogeler, and Mathias Seuret. Tormentor: deterministic dynamic-path, data augmentations with fractals. 2022. URL: https://arxiv.org/abs/2204.03776, doi:10.48550/ARXIV.2204.03776.">NCR+22</a>]</span> for more details.</p>
 <div class="admonition note">
@@ -416,7 +419,7 @@ See: <span id="id2">[<a class="reference internal" href="community/bibliography.
 <li><p><strong>roughness</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – value to scale during the recursion in the generation of the fractal map.
 Default:  <code class="code docutils literal notranslate"><span class="pre">(0.1,</span> <span class="pre">0.7)</span></code></p></li>
 <li><p><strong>shade_intensity</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – value that scales the intensity values of the generated maps.
-Default:  <code class="code docutils literal notranslate"><span class="pre">(-</span> <span class="pre">1.0,</span> <span class="pre">0.0)</span></code></p></li>
+Default:  <code class="code docutils literal notranslate"><span class="pre">(-1.0,</span> <span class="pre">0.0)</span></code></p></li>
 <li><p><strong>shade_quantity</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – value to select the pixels to mask.
 Default:  <code class="code docutils literal notranslate"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></code></p></li>
 <li><p><strong>same_on_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – apply the same transformation across the batch.
@@ -439,11 +442,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPlasmaBrightness">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPlasmaBrightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/plasma.html#RandomPlasmaBrightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPlasmaBrightness" title="Permalink to this definition">#</a></dt>
 <dd><p>Adds brightness to the image based on a fractal map generated by the diamond square algorithm.</p>
-<img alt="_images/RandomPlasmaBrightness.png" src="_images/RandomPlasmaBrightness.png"/>
+<img alt="_images/RandomPlasmaBrightness.png" src="_images/RandomPlasmaBrightness.png" />
 <p>This is based on the original paper: TorMentor: Deterministic dynamic-path, data augmentations with fractals.
 See: <span id="id3">[<a class="reference internal" href="community/bibliography.html#id30" title="Anguelos Nicolaou, Vincent Christlein, Edgar Riba, Jian Shi, Georg Vogeler, and Mathias Seuret. Tormentor: deterministic dynamic-path, data augmentations with fractals. 2022. URL: https://arxiv.org/abs/2204.03776, doi:10.48550/ARXIV.2204.03776.">NCR+22</a>]</span> for more details.</p>
 <div class="admonition note">
@@ -477,11 +481,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPlasmaContrast">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPlasmaContrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.1,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/plasma.html#RandomPlasmaContrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPlasmaContrast" title="Permalink to this definition">#</a></dt>
 <dd><p>Adds contrast to the image based on a fractal map generated by the diamond square algorithm.</p>
-<img alt="_images/RandomPlasmaContrast.png" src="_images/RandomPlasmaContrast.png"/>
+<img alt="_images/RandomPlasmaContrast.png" src="_images/RandomPlasmaContrast.png" />
 <p>This is based on the original paper: TorMentor: Deterministic dynamic-path, data augmentations with fractals.
 See: <span id="id4">[<a class="reference internal" href="community/bibliography.html#id30" title="Anguelos Nicolaou, Vincent Christlein, Edgar Riba, Jian Shi, Georg Vogeler, and Mathias Seuret. Tormentor: deterministic dynamic-path, data augmentations with fractals. 2022. URL: https://arxiv.org/abs/2204.03776, doi:10.48550/ARXIV.2204.03776.">NCR+22</a>]</span> for more details.</p>
 <div class="admonition note">
@@ -513,11 +518,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.ColorJiggle">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">ColorJiggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/color_jiggle.html#ColorJiggle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.ColorJiggle" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the brightness, contrast, saturation and hue of a tensor image.</p>
-<img alt="_images/ColorJiggle.png" src="_images/ColorJiggle.png"/>
+<img alt="_images/ColorJiggle.png" src="_images/ColorJiggle.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -580,6 +586,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.ColorJitter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">ColorJitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silence_instantiation_warning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/color_jitter.html#ColorJitter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.ColorJitter" title="Permalink to this definition">#</a></dt>
@@ -587,7 +594,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision. However, it does not
 follow the color theory and is not be actively maintained. Prefer using
 <a class="reference internal" href="#kornia.augmentation.ColorJiggle" title="kornia.augmentation.ColorJiggle"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.augmentation.ColorJiggle()</span></code></a></p>
-<img alt="_static/img/ColorJitter.png" src="_static/img/ColorJitter.png"/>
+<img alt="_static/img/ColorJitter.png" src="_static/img/ColorJitter.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -653,11 +660,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomBoxBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomBoxBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/box_blur.html#RandomBoxBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomBoxBlur" title="Permalink to this definition">#</a></dt>
 <dd><p>Add random blur with a box filter to an image tensor.</p>
-<img alt="_images/RandomBoxBlur.png" src="_images/RandomBoxBlur.png"/>
+<img alt="_images/RandomBoxBlur.png" src="_images/RandomBoxBlur.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -699,12 +707,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomBrightness">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomBrightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/brightness.html#RandomBrightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomBrightness" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the brightness of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomBrighness.png" src="_static/img/RandomBrighness.png"/>
+<img alt="_static/img/RandomBrighness.png" src="_static/img/RandomBrighness.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -768,11 +777,12 @@ tensor([[[[0.0505, 0.3225, 0.0000],</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomChannelShuffle">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomChannelShuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/channel_shuffle.html#RandomChannelShuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomChannelShuffle" title="Permalink to this definition">#</a></dt>
 <dd><p>Shuffle the channels of a batch of multi-dimensional images.</p>
-<img alt="_images/RandomChannelShuffle.png" src="_images/RandomChannelShuffle.png"/>
+<img alt="_images/RandomChannelShuffle.png" src="_images/RandomChannelShuffle.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -807,12 +817,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomContrast">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomContrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/contrast.html#RandomContrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomContrast" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the contrast of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomContrast.png" src="_static/img/RandomContrast.png"/>
+<img alt="_static/img/RandomContrast.png" src="_static/img/RandomContrast.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -876,11 +887,12 @@ tensor([[[[0.2750, 0.4258, 0.0490],</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomEqualize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomEqualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/equalize.html#RandomEqualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomEqualize" title="Permalink to this definition">#</a></dt>
 <dd><p>Equalize given tensor image or a batch of tensor images randomly.</p>
-<img alt="_images/RandomEqualize.png" src="_images/RandomEqualize.png"/>
+<img alt="_images/RandomEqualize.png" src="_images/RandomEqualize.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -927,12 +939,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomGamma">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomGamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/gamma.html#RandomGamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomGamma" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the gamma of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomGamma.png" src="_static/img/RandomGamma.png"/>
+<img alt="_static/img/RandomGamma.png" src="_static/img/RandomGamma.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -990,11 +1003,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomGrayscale">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomGrayscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/grayscale.html#RandomGrayscale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomGrayscale" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply random transformation to Grayscale according to a probability p value.</p>
-<img alt="_images/RandomGrayscale.png" src="_images/RandomGrayscale.png"/>
+<img alt="_images/RandomGrayscale.png" src="_images/RandomGrayscale.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1049,11 +1063,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomGaussianBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomGaussianBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/gaussian_blur.html#RandomGaussianBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomGaussianBlur" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply gaussian blur given tensor image or a batch of tensor images randomly.</p>
-<img alt="_images/RandomGaussianBlur.png" src="_images/RandomGaussianBlur.png"/>
+<img alt="_images/RandomGaussianBlur.png" src="_images/RandomGaussianBlur.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1105,11 +1120,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomGaussianNoise">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomGaussianNoise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/gaussian_noise.html#RandomGaussianNoise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomGaussianNoise" title="Permalink to this definition">#</a></dt>
 <dd><p>Add gaussian noise to a batch of multi-dimensional images.</p>
-<img alt="_images/RandomGaussianNoise.png" src="_images/RandomGaussianNoise.png"/>
+<img alt="_images/RandomGaussianNoise.png" src="_images/RandomGaussianNoise.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1145,12 +1161,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomHue">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomHue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/hue.html#RandomHue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomHue" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the hue of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomHue.png" src="_static/img/RandomHue.png"/>
+<img alt="_static/img/RandomHue.png" src="_static/img/RandomHue.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1212,11 +1229,12 @@ tensor([[[[0.3993, 0.2823, 0.6816],</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMotionBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMotionBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BorderType.CONSTANT.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.NEAREST.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/motion_blur.html#RandomMotionBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMotionBlur" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform motion blur on 2D images (4D tensor).</p>
-<img alt="_images/RandomMotionBlur.png" src="_images/RandomMotionBlur.png"/>
+<img alt="_images/RandomMotionBlur.png" src="_images/RandomMotionBlur.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1284,11 +1302,12 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPosterize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPosterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/posterize.html#RandomPosterize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPosterize" title="Permalink to this definition">#</a></dt>
 <dd><p>Posterize given tensor image or a batch of tensor images randomly.</p>
-<img alt="_images/RandomPosterize.png" src="_images/RandomPosterize.png"/>
+<img alt="_images/RandomPosterize.png" src="_images/RandomPosterize.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1339,6 +1358,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomRGBShift">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomRGBShift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_shift_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_shift_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_shift_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/random_rgb_shift.html#RandomRGBShift"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomRGBShift" title="Permalink to this definition">#</a></dt>
@@ -1420,11 +1440,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomSharpness">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomSharpness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sharpness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/sharpness.html#RandomSharpness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomSharpness" title="Permalink to this definition">#</a></dt>
 <dd><p>Sharpen given tensor image or a batch of tensor images randomly.</p>
-<img alt="_images/RandomSharpness.png" src="_images/RandomSharpness.png"/>
+<img alt="_images/RandomSharpness.png" src="_images/RandomSharpness.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1473,11 +1494,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomSolarize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomSolarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresholds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/solarize.html#RandomSolarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomSolarize" title="Permalink to this definition">#</a></dt>
 <dd><p>Solarize given tensor image or a batch of tensor images randomly.</p>
-<img alt="_images/RandomSolarize.png" src="_images/RandomSolarize.png"/>
+<img alt="_images/RandomSolarize.png" src="_images/RandomSolarize.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1530,14 +1552,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="geometric">
-<h3>Geometric<a class="headerlink" href="#geometric" title="Permalink to this headline">#</a></h3>
+<h3>Geometric<a class="headerlink" href="#geometric" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.CenterCrop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">CenterCrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cropping_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slice'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/center_crop.html#CenterCrop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.CenterCrop" title="Permalink to this definition">#</a></dt>
 <dd><p>Crop a given image tensor at the center.</p>
-<img alt="_images/CenterCrop.png" src="_images/CenterCrop.png"/>
+<img alt="_images/CenterCrop.png" src="_images/CenterCrop.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1581,12 +1604,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 <span class="go">          [ 0.8487,  0.6920, -0.3160, -2.1152],</span>
 <span class="go">          [ 0.3223, -1.2633,  0.3500,  0.3081],</span>
 <span class="go">          [ 0.1198,  1.2377,  1.1168, -0.2473]]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">CenterCrop</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">CenterCrop</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[[[ 0.6920, -0.3160],</span>
 <span class="go">          [-1.2633,  0.3500]]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">"border"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;border&quot;</span><span class="p">)</span>
 <span class="go">tensor([[[[ 0.6920,  0.6920, -0.3160, -0.3160],</span>
 <span class="go">          [ 0.6920,  0.6920, -0.3160, -0.3160],</span>
 <span class="go">          [-1.2633, -1.2633,  0.3500,  0.3500],</span>
@@ -1595,7 +1618,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 </div>
 <dl>
 <dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">CenterCrop</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">CenterCrop</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
@@ -1603,11 +1626,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomAffine">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomAffine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SamplePadding.ZEROS.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/affine.html#RandomAffine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomAffine" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random 2D affine transformation to a tensor image.</p>
-<img alt="_images/RandomAffine.png" src="_images/RandomAffine.png"/>
+<img alt="_images/RandomAffine.png" src="_images/RandomAffine.png" />
 <p>The transformation is computed so that the image center is kept invariant.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1689,11 +1713,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomCrop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomCrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_if_needed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cropping_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slice'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/crop.html#RandomCrop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomCrop" title="Permalink to this definition">#</a></dt>
 <dd><p>Crop random patches of a tensor image on a given size.</p>
-<img alt="_images/RandomCrop.png" src="_images/RandomCrop.png"/>
+<img alt="_images/RandomCrop.png" src="_images/RandomCrop.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1751,12 +1776,12 @@ applied transformation will be merged int to the input transformation tensor and
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="mi">1</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mf">3.</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomCrop</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomCrop</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[[[3., 4.],</span>
 <span class="go">          [6., 7.]]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">"replicate"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;replicate&quot;</span><span class="p">)</span>
 <span class="go">tensor([[[[3., 4., 4.],</span>
 <span class="go">          [3., 4., 4.],</span>
 <span class="go">          [6., 7., 7.]]]])</span>
@@ -1764,7 +1789,7 @@ applied transformation will be merged int to the input transformation tensor and
 </div>
 <dl>
 <dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomCrop</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomCrop</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
@@ -1772,11 +1797,12 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomErasing">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomErasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.02,</span> <span class="pre">0.33)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.3,</span> <span class="pre">3.3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/erasing.html#RandomErasing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomErasing" title="Permalink to this definition">#</a></dt>
 <dd><p>Erase a random rectangle of a tensor image according to a probability p value.</p>
-<img alt="_images/RandomErasing.png" src="_images/RandomErasing.png"/>
+<img alt="_images/RandomErasing.png" src="_images/RandomErasing.png" />
 <p>The operator removes image parts and fills them with zero values at a selected rectangle
 for each of the images in the batch.</p>
 <p>The rectangle will have an area equal to the original image area multiplied by a value uniformly
@@ -1834,11 +1860,12 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomElasticTransform">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomElasticTransform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(63,</span> <span class="pre">63)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(32.0,</span> <span class="pre">32.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/elastic_transform.html#RandomElasticTransform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomElasticTransform" title="Permalink to this definition">#</a></dt>
 <dd><p>Add random elastic transformation to a tensor image.</p>
-<img alt="_images/RandomElasticTransform.png" src="_images/RandomElasticTransform.png"/>
+<img alt="_images/RandomElasticTransform.png" src="_images/RandomElasticTransform.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1888,11 +1915,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomFisheye">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomFisheye</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/fisheye.html#RandomFisheye"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomFisheye" title="Permalink to this definition">#</a></dt>
 <dd><p>Add random camera radial distortion.</p>
-<img alt="_images/RandomFisheye.png" src="_images/RandomFisheye.png"/>
+<img alt="_images/RandomFisheye.png" src="_images/RandomFisheye.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1930,11 +1958,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomHorizontalFlip">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomHorizontalFlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/horizontal_flip.html#RandomHorizontalFlip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomHorizontalFlip" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random horizontal flip to a tensor image or a batch of tensor images with a given probability.</p>
-<img alt="_images/RandomHorizontalFlip.png" src="_images/RandomHorizontalFlip.png"/>
+<img alt="_images/RandomHorizontalFlip.png" src="_images/RandomHorizontalFlip.png" />
 <p>Input should be a tensor of shape (C, H, W) or a batch of tensors <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.
 If Input is a tuple it is assumed that the first element contains the aforementioned tensors and the second,
 the corresponding transformation matrix that has been applied to them. In this case the module
@@ -1990,11 +2019,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomInvert">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomInvert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/invert.html#RandomInvert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomInvert" title="Permalink to this definition">#</a></dt>
 <dd><p>Invert the tensor images values randomly.</p>
-<img alt="_images/RandomInvert.png" src="_images/RandomInvert.png"/>
+<img alt="_images/RandomInvert.png" src="_images/RandomInvert.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2037,11 +2067,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomPerspective">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomPerspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distortion_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/perspective.html#RandomPerspective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomPerspective" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random perspective transformation to an image tensor with a given probability.</p>
-<img alt="_images/RandomPerspective.png" src="_images/RandomPerspective.png"/>
+<img alt="_images/RandomPerspective.png" src="_images/RandomPerspective.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2102,11 +2133,12 @@ Preserves area on average. See <a class="reference external" href="https://arxiv
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomResizedCrop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomResizedCrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.08,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3.0</span> <span class="pre">/</span> <span class="pre">4.0,</span> <span class="pre">4.0</span> <span class="pre">/</span> <span class="pre">3.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cropping_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slice'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/resized_crop.html#RandomResizedCrop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomResizedCrop" title="Permalink to this definition">#</a></dt>
 <dd><p>Crop random patches in an image tensor and resizes to a given size.</p>
-<img alt="_images/RandomResizedCrop.png" src="_images/RandomResizedCrop.png"/>
+<img alt="_images/RandomResizedCrop.png" src="_images/RandomResizedCrop.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2155,13 +2187,13 @@ applied transformation will be merged int to the input transformation tensor and
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
 <span class="gp">... </span>                        <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">],</span>
 <span class="gp">... </span>                        <span class="p">[</span><span class="mf">6.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomResizedCrop</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomResizedCrop</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
 <span class="go">tensor([[[[1.0000, 1.5000, 2.0000],</span>
 <span class="go">          [4.0000, 4.5000, 5.0000],</span>
 <span class="go">          [7.0000, 7.5000, 8.0000]]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">"border"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;border&quot;</span><span class="p">)</span>
 <span class="go">tensor([[[[1., 1., 2.],</span>
 <span class="go">          [4., 4., 5.],</span>
 <span class="go">          [7., 7., 8.]]]])</span>
@@ -2169,7 +2201,7 @@ applied transformation will be merged int to the input transformation tensor and
 </div>
 <dl>
 <dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomResizedCrop</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">"resample"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomResizedCrop</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">),</span> <span class="n">ratio</span><span class="o">=</span><span class="p">(</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cropping_mode</span><span class="o">=</span><span class="s2">&quot;resample&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
@@ -2177,11 +2209,12 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomRotation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/rotation.html#RandomRotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomRotation" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random rotation to a tensor image or a batch of tensor images given an amount of degrees.</p>
-<img alt="_images/RandomRotation.png" src="_images/RandomRotation.png"/>
+<img alt="_images/RandomRotation.png" src="_images/RandomRotation.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2241,11 +2274,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomVerticalFlip">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomVerticalFlip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/vertical_flip.html#RandomVerticalFlip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomVerticalFlip" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random vertical flip to a tensor image or a batch of tensor images with a given probability.</p>
-<img alt="_images/RandomVerticalFlip.png" src="_images/RandomVerticalFlip.png"/>
+<img alt="_images/RandomVerticalFlip.png" src="_images/RandomVerticalFlip.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2295,11 +2329,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomThinPlateSpline">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomThinPlateSpline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/thin_plate_spline.html#RandomThinPlateSpline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomThinPlateSpline" title="Permalink to this definition">#</a></dt>
 <dd><p>Add random noise to the Thin Plate Spline algorithm.</p>
-<img alt="_images/RandomThinPlateSpline.png" src="_images/RandomThinPlateSpline.png"/>
+<img alt="_images/RandomThinPlateSpline.png" src="_images/RandomThinPlateSpline.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2339,14 +2374,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="mix">
-<h3>Mix<a class="headerlink" href="#mix" title="Permalink to this headline">#</a></h3>
+<h3>Mix<a class="headerlink" href="#mix" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomCutMixV2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomCutMixV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_mix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/cutmix.html#RandomCutMixV2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomCutMixV2" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply CutMix augmentation to a batch of tensor images.</p>
-<img alt="_images/RandomCutMix.png" src="_images/RandomCutMix.png"/>
+<img alt="_images/RandomCutMix.png" src="_images/RandomCutMix.png" />
 <p>Implementation for <cite>CutMix: Regularization Strategy to Train Strong Classifiers with
 Localizable Features</cite> <span id="id9">[<a class="reference internal" href="community/bibliography.html#id14" title="Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, and Youngjoon Yoo. Cutmix: regularization strategy to train strong classifiers with localizable features. In International Conference on Computer Vision (ICCV). 2019.">YHO+19</a>]</span>.</p>
 <p>The function returns (inputs, labels), in which the inputs is the tensor that contains the mixup images
@@ -2406,7 +2442,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cutmix</span> <span class="o">=</span> <span class="n">RandomCutMixV2</span><span class="p">(</span><span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"class"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cutmix</span> <span class="o">=</span> <span class="n">RandomCutMixV2</span><span class="p">(</span><span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cutmix</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
 <span class="go">[tensor([[[[0.8879, 0.4510, 1.0000],</span>
 <span class="go">          [0.1498, 0.4015, 1.0000],</span>
@@ -2420,11 +2456,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMixUpV2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMixUpV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/mixup.html#RandomMixUpV2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMixUpV2" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply MixUp augmentation to a batch of tensor images.</p>
-<img alt="_images/RandomMixUp.png" src="_images/RandomMixUp.png"/>
+<img alt="_images/RandomMixUp.png" src="_images/RandomMixUp.png" />
 <p>Implementation for <cite>mixup: BEYOND EMPIRICAL RISK MINIMIZATION</cite> <span id="id10">[<a class="reference internal" href="community/bibliography.html#id12" title="Hongyi Zhang, Moustapha Cisse nad Yann N. Dauphin, and David Lopez-Paz. Mixup: beyond empirical risk minimization. International Conference on Learning Representations, 2018. URL: https://openreview.net/forum?id=r1Ddp1-Rb.">ZnYNDLP18</a>]</span>.</p>
 <p>The function returns (inputs, labels), in which the inputs is the tensor that contains the mixup images
 while the labels is a <span class="math notranslate nohighlight">\((B, 3)\)</span> tensor that contains (label_batch, label_permuted_batch, lambda) for
@@ -2434,8 +2471,8 @@ each image.</p>
 <p>The loss and accuracy are computed as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_mixup</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">logits</span><span class="p">):</span>
     <span class="n">criterion</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span>
-    <span class="n">loss_a</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
-    <span class="n">loss_b</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
+    <span class="n">loss_a</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">loss_b</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">loss_a</span> <span class="o">+</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">loss_b</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2488,7 +2525,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mixup</span> <span class="o">=</span> <span class="n">RandomMixUpV2</span><span class="p">(</span><span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"class"</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mixup</span> <span class="o">=</span> <span class="n">RandomMixUpV2</span><span class="p">(</span><span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mixup</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
 <span class="go">[tensor([[[[0.7576, 0.2793, 0.4031],</span>
 <span class="go">          [0.7347, 0.0293, 0.7999],</span>
@@ -2502,11 +2539,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMosaic">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMosaic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mosaic_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(2,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_ratio_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.3,</span> <span class="pre">0.7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_bbox_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cropping_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'slice'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/mosaic.html#RandomMosaic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMosaic" title="Permalink to this definition">#</a></dt>
 <dd><p>Mosaic augmentation.</p>
-<img alt="https://raw.githubusercontent.com/kornia/data/main/random_mosaic.png" src="https://raw.githubusercontent.com/kornia/data/main/random_mosaic.png"/>
+<img alt="https://raw.githubusercontent.com/kornia/data/main/random_mosaic.png" src="https://raw.githubusercontent.com/kornia/data/main/random_mosaic.png" />
 <p>Given a certain number of images, mosaic transform combines them into one output image.
 The output image is composed of the parts from each sub-image. To mess up each image individually,
 referring to <a class="reference internal" href="#kornia.augmentation.RandomJigsaw" title="kornia.augmentation.RandomJigsaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">kornia.augmentation.RandomJigsaw</span></code></a>.</p>
@@ -2552,7 +2590,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mosaic</span> <span class="o">=</span> <span class="n">RandomMosaic</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"bbox_xyxy"</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mosaic</span> <span class="o">=</span> <span class="n">RandomMosaic</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;bbox_xyxy&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">boxes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">220</span><span class="p">],</span>
@@ -2564,11 +2602,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomJigsaw">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomJigsaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(4,</span> <span class="pre">4)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_perm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/jigsaw.html#RandomJigsaw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomJigsaw" title="Permalink to this definition">#</a></dt>
 <dd><p>RandomJigsaw augmentation.</p>
-<img alt="https://raw.githubusercontent.com/kornia/data/main/random_jigsaw.png" src="https://raw.githubusercontent.com/kornia/data/main/random_jigsaw.png"/>
+<img alt="https://raw.githubusercontent.com/kornia/data/main/random_jigsaw.png" src="https://raw.githubusercontent.com/kornia/data/main/random_jigsaw.png" />
 <p>Make Jigsaw puzzles for each image individually. To mix with different images in a
 batch, referring to <code class="xref py py-class docutils literal notranslate"><span class="pre">kornia.augmentation.RandomMosic</span></code>.</p>
 <dl class="field-list simple">
@@ -2602,13 +2641,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 <section id="transforms3d">
-<h2>Transforms3D<a class="headerlink" href="#transforms3d" title="Permalink to this headline">#</a></h2>
+<h2>Transforms3D<a class="headerlink" href="#transforms3d" title="Permalink to this heading">#</a></h2>
 <p>Set of operators to perform data augmentation on 3D volumetric tensors.</p>
 <section id="id11">
-<h3>Geometric<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<h3>Geometric<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomDepthicalFlip3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomDepthicalFlip3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/depthical_flip.html#RandomDepthicalFlip3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomDepthicalFlip3D" title="Permalink to this definition">#</a></dt>
@@ -2675,6 +2715,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomHorizontalFlip3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomHorizontalFlip3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/horizontal_flip.html#RandomHorizontalFlip3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomHorizontalFlip3D" title="Permalink to this definition">#</a></dt>
@@ -2736,6 +2777,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomVerticalFlip3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomVerticalFlip3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/vertical_flip.html#RandomVerticalFlip3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomVerticalFlip3D" title="Permalink to this definition">#</a></dt>
@@ -2802,6 +2844,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomRotation3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomRotation3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/rotation.html#RandomRotation3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomRotation3D" title="Permalink to this definition">#</a></dt>
@@ -2879,6 +2922,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomAffine3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomAffine3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shears</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/affine.html#RandomAffine3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomAffine3D" title="Permalink to this definition">#</a></dt>
@@ -2974,6 +3018,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomCrop3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomCrop3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_if_needed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/crop.html#RandomCrop3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomCrop3D" title="Permalink to this definition">#</a></dt>
@@ -3053,6 +3098,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.CenterCrop3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">CenterCrop3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/center_crop.html#CenterCrop3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.CenterCrop3D" title="Permalink to this definition">#</a></dt>
@@ -3124,9 +3170,10 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="id12">
-<h3>Intensity<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<h3>Intensity<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMotionBlur3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMotionBlur3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BorderType.CONSTANT.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.NEAREST.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/intensity/motion_blur.html#RandomMotionBlur3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMotionBlur3D" title="Permalink to this definition">#</a></dt>
@@ -3210,6 +3257,7 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomEqualize3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomEqualize3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/intensity/equalize.html#RandomEqualize3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomEqualize3D" title="Permalink to this definition">#</a></dt>
@@ -3268,17 +3316,20 @@ applied transformation will be merged int to the input transformation tensor and
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 </section>
 <section id="normalizations">
-<h2>Normalizations<a class="headerlink" href="#normalizations" title="Permalink to this headline">#</a></h2>
+<h2>Normalizations<a class="headerlink" href="#normalizations" title="Permalink to this heading">#</a></h2>
 <p>Normalization operations are shape-agnostic for both 2D and 3D tensors.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.Denormalize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">Denormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/denormalize.html#Denormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.Denormalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Denormalize tensor images with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3310,12 +3361,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.Normalize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">Normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/normalize.html#Normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.Normalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalize tensor images with mean and standard deviation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div>
+</div>
 <p>Where <cite>mean</cite> is <span class="math notranslate nohighlight">\((M_1, ..., M_n)\)</span> and <cite>std</cite> <span class="math notranslate nohighlight">\((S_1, ..., S_n)\)</span> for <cite>n</cite> channels,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3346,9 +3400,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="image-resize">
-<h2>Image Resize<a class="headerlink" href="#image-resize" title="Permalink to this headline">#</a></h2>
+<h2>Image Resize<a class="headerlink" href="#image-resize" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.Resize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">Resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'short'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/resize.html#Resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.Resize" title="Permalink to this definition">#</a></dt>
@@ -3372,6 +3427,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.LongestMaxSize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">LongestMaxSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/resize.html#LongestMaxSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.LongestMaxSize" title="Permalink to this definition">#</a></dt>
@@ -3382,6 +3438,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.SmallestMaxSize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">SmallestMaxSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/resize.html#SmallestMaxSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.SmallestMaxSize" title="Permalink to this definition">#</a></dt>
@@ -3392,6 +3449,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 </section>
 
@@ -3407,10 +3465,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
                 </div>
                 <div class="title">kornia.color</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="augmentation.container.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -3446,7 +3504,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -3454,18 +3512,84 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
             <ul>
 <li><a class="reference internal" href="#">Image Augmentations</a><ul>
 <li><a class="reference internal" href="#transforms2d">Transforms2D</a><ul>
-<li><a class="reference internal" href="#intensity">Intensity</a></li>
-<li><a class="reference internal" href="#geometric">Geometric</a></li>
-<li><a class="reference internal" href="#mix">Mix</a></li>
+<li><a class="reference internal" href="#intensity">Intensity</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPlanckianJitter"><code class="docutils literal notranslate"><span class="pre">RandomPlanckianJitter</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPlasmaShadow"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaShadow</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPlasmaBrightness"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaBrightness</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPlasmaContrast"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaContrast</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.ColorJiggle"><code class="docutils literal notranslate"><span class="pre">ColorJiggle</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.ColorJitter"><code class="docutils literal notranslate"><span class="pre">ColorJitter</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomBoxBlur"><code class="docutils literal notranslate"><span class="pre">RandomBoxBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomBrightness"><code class="docutils literal notranslate"><span class="pre">RandomBrightness</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomChannelShuffle"><code class="docutils literal notranslate"><span class="pre">RandomChannelShuffle</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomContrast"><code class="docutils literal notranslate"><span class="pre">RandomContrast</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomEqualize"><code class="docutils literal notranslate"><span class="pre">RandomEqualize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomGamma"><code class="docutils literal notranslate"><span class="pre">RandomGamma</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomGrayscale"><code class="docutils literal notranslate"><span class="pre">RandomGrayscale</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomGaussianBlur"><code class="docutils literal notranslate"><span class="pre">RandomGaussianBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomGaussianNoise"><code class="docutils literal notranslate"><span class="pre">RandomGaussianNoise</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomHue"><code class="docutils literal notranslate"><span class="pre">RandomHue</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomMotionBlur"><code class="docutils literal notranslate"><span class="pre">RandomMotionBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPosterize"><code class="docutils literal notranslate"><span class="pre">RandomPosterize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomRGBShift"><code class="docutils literal notranslate"><span class="pre">RandomRGBShift</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomSharpness"><code class="docutils literal notranslate"><span class="pre">RandomSharpness</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomSolarize"><code class="docutils literal notranslate"><span class="pre">RandomSolarize</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#geometric">Geometric</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.CenterCrop"><code class="docutils literal notranslate"><span class="pre">CenterCrop</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomAffine"><code class="docutils literal notranslate"><span class="pre">RandomAffine</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomCrop"><code class="docutils literal notranslate"><span class="pre">RandomCrop</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomErasing"><code class="docutils literal notranslate"><span class="pre">RandomErasing</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomElasticTransform"><code class="docutils literal notranslate"><span class="pre">RandomElasticTransform</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomFisheye"><code class="docutils literal notranslate"><span class="pre">RandomFisheye</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomHorizontalFlip"><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomInvert"><code class="docutils literal notranslate"><span class="pre">RandomInvert</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomPerspective"><code class="docutils literal notranslate"><span class="pre">RandomPerspective</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomResizedCrop"><code class="docutils literal notranslate"><span class="pre">RandomResizedCrop</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomRotation"><code class="docutils literal notranslate"><span class="pre">RandomRotation</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomVerticalFlip"><code class="docutils literal notranslate"><span class="pre">RandomVerticalFlip</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomThinPlateSpline"><code class="docutils literal notranslate"><span class="pre">RandomThinPlateSpline</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mix">Mix</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.RandomCutMixV2"><code class="docutils literal notranslate"><span class="pre">RandomCutMixV2</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomMixUpV2"><code class="docutils literal notranslate"><span class="pre">RandomMixUpV2</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomMosaic"><code class="docutils literal notranslate"><span class="pre">RandomMosaic</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomJigsaw"><code class="docutils literal notranslate"><span class="pre">RandomJigsaw</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#transforms3d">Transforms3D</a><ul>
-<li><a class="reference internal" href="#id11">Geometric</a></li>
-<li><a class="reference internal" href="#id12">Intensity</a></li>
+<li><a class="reference internal" href="#id11">Geometric</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.RandomDepthicalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomDepthicalFlip3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomHorizontalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomVerticalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomVerticalFlip3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomRotation3D"><code class="docutils literal notranslate"><span class="pre">RandomRotation3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomAffine3D"><code class="docutils literal notranslate"><span class="pre">RandomAffine3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomCrop3D"><code class="docutils literal notranslate"><span class="pre">RandomCrop3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.CenterCrop3D"><code class="docutils literal notranslate"><span class="pre">CenterCrop3D</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#normalizations">Normalizations</a></li>
-<li><a class="reference internal" href="#image-resize">Image Resize</a></li>
+<li><a class="reference internal" href="#id12">Intensity</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.RandomMotionBlur3D"><code class="docutils literal notranslate"><span class="pre">RandomMotionBlur3D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.RandomEqualize3D"><code class="docutils literal notranslate"><span class="pre">RandomEqualize3D</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#normalizations">Normalizations</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.Denormalize"><code class="docutils literal notranslate"><span class="pre">Denormalize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.Normalize"><code class="docutils literal notranslate"><span class="pre">Normalize</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-resize">Image Resize</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.Resize"><code class="docutils literal notranslate"><span class="pre">Resize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.LongestMaxSize"><code class="docutils literal notranslate"><span class="pre">LongestMaxSize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.SmallestMaxSize"><code class="docutils literal notranslate"><span class="pre">SmallestMaxSize</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3481,7 +3605,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/x/trainer.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.x.trainer - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -333,22 +334,22 @@
 
 <span class="n">callbacks_whitelist</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1"># high level functions</span>
-    <span class="s2">"preprocess"</span><span class="p">,</span>
-    <span class="s2">"augmentations"</span><span class="p">,</span>
-    <span class="s2">"evaluate"</span><span class="p">,</span>
-    <span class="s2">"fit"</span><span class="p">,</span>
-    <span class="s2">"fit_epoch"</span><span class="p">,</span>
+    <span class="s2">&quot;preprocess&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;augmentations&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;evaluate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fit&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fit_epoch&quot;</span><span class="p">,</span>
     <span class="c1"># events (by calling order)</span>
-    <span class="s2">"on_epoch_start"</span><span class="p">,</span>
-    <span class="s2">"on_before_model"</span><span class="p">,</span>
-    <span class="s2">"on_after_model"</span><span class="p">,</span>
-    <span class="s2">"on_checkpoint"</span><span class="p">,</span>
-    <span class="s2">"on_epoch_end"</span><span class="p">,</span>
+    <span class="s2">&quot;on_epoch_start&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;on_before_model&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;on_after_model&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;on_checkpoint&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;on_epoch_end&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <div class="viewcode-block" id="Trainer"><a class="viewcode-back" href="../../../x.html#kornia.x.Trainer">[docs]</a><span class="k">class</span> <span class="nc">Trainer</span><span class="p">:</span>
-    <span class="sd">"""Base class to train the different models in kornia.</span>
+    <span class="sd">&quot;&quot;&quot;Base class to train the different models in kornia.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">        The API is experimental and subject to be modified based on the needs of kornia models.</span>
@@ -372,7 +373,7 @@
 <span class="sd">    .. seealso::</span>
 <span class="sd">        Learn how to use the API in our documentation</span>
 <span class="sd">        `here &lt;https://kornia.readthedocs.io/en/latest/get-started/training.html&gt;`_.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -387,7 +388,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># setup the accelerator</span>
         <span class="k">if</span> <span class="n">Accelerator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">'accelerate library is not installed: pip install "kornia[x]"'</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s1">&#39;accelerate library is not installed: pip install &quot;kornia[x]&quot;&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accelerator</span> <span class="o">=</span> <span class="n">Accelerator</span><span class="p">()</span>
 
         <span class="c1"># setup the data related objects</span>
@@ -402,7 +403,7 @@
         <span class="c1"># configure callbacks</span>
         <span class="k">for</span> <span class="n">fn_name</span><span class="p">,</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">fn_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">callbacks_whitelist</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Not supported: </span><span class="si">{</span><span class="n">fn_name</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not supported: </span><span class="si">{</span><span class="n">fn_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="n">Trainer</span><span class="p">,</span> <span class="n">fn_name</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
 
         <span class="c1"># hyper-params</span>
@@ -410,7 +411,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">TrainerState</span><span class="o">.</span><span class="n">STARTING</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'train'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
@@ -424,7 +425,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
         <span class="n">losses</span> <span class="o">=</span> <span class="n">AverageMeter</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">sample_id</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">):</span>
-            <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"target"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>  <span class="c1"># new dataset api will come like this</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>  <span class="c1"># new dataset api will come like this</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
             <span class="c1"># perform the preprocess and augmentations in batch</span>
             <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
@@ -433,17 +434,17 @@
             <span class="c1"># make the actual inference</span>
             <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on_after_model</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>  <span class="c1"># for debugging purposes</span>
-            <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"target"</span><span class="p">])</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 
-            <span class="n">losses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">"input"</span><span class="p">]))</span>
+            <span class="n">losses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]))</span>
 
             <span class="k">if</span> <span class="n">sample_id</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"Train: </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2">  "</span>
-                    <span class="sa">f</span><span class="s2">"Sample: </span><span class="si">{</span><span class="n">sample_id</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">)</span><span class="si">}</span><span class="s2"> "</span>
-                    <span class="sa">f</span><span class="s2">"Loss: </span><span class="si">{</span><span class="n">losses</span><span class="o">.</span><span class="n">val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">losses</span><span class="o">.</span><span class="n">avg</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="sa">f</span><span class="s2">&quot;Train: </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2">  &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Sample: </span><span class="si">{</span><span class="n">sample_id</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Loss: </span><span class="si">{</span><span class="n">losses</span><span class="o">.</span><span class="n">val</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">losses</span><span class="o">.</span><span class="n">avg</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -478,7 +479,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="n">stats</span> <span class="o">=</span> <span class="n">StatsTracker</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">sample_id</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_dataloader</span><span class="p">):</span>
-            <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"target"</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>  <span class="c1"># new dataset api will come like this</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>  <span class="c1"># new dataset api will come like this</span>
             <span class="c1"># perform the preprocess and augmentations in batch</span>
             <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
             <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_before_model</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
@@ -486,16 +487,16 @@
             <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on_after_model</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
 
-            <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">"input"</span><span class="p">])</span>
+            <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">])</span>
             <span class="c1"># measure accuracy and record loss</span>
             <span class="c1"># Loss computation</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">val_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"target"</span><span class="p">])</span>
-                <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">'losses'</span><span class="p">,</span> <span class="n">val_loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">batch_size</span><span class="p">)</span>
-            <span class="n">stats</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_metrics</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s1">'target'</span><span class="p">]),</span> <span class="n">batch_size</span><span class="p">)</span>
+                <span class="n">val_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+                <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;losses&#39;</span><span class="p">,</span> <span class="n">val_loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">stats</span><span class="o">.</span><span class="n">update_from_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_metrics</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]),</span> <span class="n">batch_size</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">sample_id</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Test: </span><span class="si">{</span><span class="n">sample_id</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_dataloader</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test: </span><span class="si">{</span><span class="n">sample_id</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">valid_dataloader</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()</span>
 
@@ -509,19 +510,19 @@
         <span class="k">return</span> <span class="n">x</span>
 
     <span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-        <span class="sd">"""Compute metrics during the evaluation."""</span>
+        <span class="sd">&quot;&quot;&quot;Compute metrics during the evaluation.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">compute_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"`criterion` should not be None."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;`criterion` should not be None.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_before_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">x</span>
 
     <span class="k">def</span> <span class="nf">on_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">"input"</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">on_after_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="o">...</span>
@@ -569,7 +570,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

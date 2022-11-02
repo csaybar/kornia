@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/utils/memory.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.utils.memory - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -319,7 +320,7 @@
 <div class="viewcode-block" id="batched_forward"><a class="viewcode-back" href="../../../utils.html#kornia.utils.batched_forward">[docs]</a><span class="k">def</span> <span class="nf">batched_forward</span><span class="p">(</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convenience function, which allows to run the forward in micro-batches.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convenience function, which allows to run the forward in micro-batches.</span>
 
 <span class="sd">    When the just model.forward(data) does not fit into device memory, e.g. on laptop GPU.</span>
 <span class="sd">    In the end, it transfers the output to the device of the input data tensor.</span>
@@ -329,7 +330,7 @@
 <span class="sd">        model: Any torch model, which outputs a single tensor as an output.</span>
 <span class="sd">        data: Input data of Bx(Any) shape.</span>
 <span class="sd">        device: which device should we run on.</span>
-<span class="sd">        batch_size: "micro-batch" size.</span>
+<span class="sd">        batch_size: &quot;micro-batch&quot; size.</span>
 <span class="sd">        **kwargs: any other arguments, which accepts model.</span>
 
 <span class="sd">    Returns:</span>
@@ -338,10 +339,10 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; patches = torch.rand(8000, 1, 32, 32)</span>
 <span class="sd">        &gt;&gt;&gt; sift = kornia.feature.SIFTDescriptor(32)</span>
-<span class="sd">        &gt;&gt;&gt; desc_batched = batched_forward(sift, patches, torch.device('cpu'), 128)</span>
+<span class="sd">        &gt;&gt;&gt; desc_batched = batched_forward(sift, patches, torch.device(&#39;cpu&#39;), 128)</span>
 <span class="sd">        &gt;&gt;&gt; desc = sift(patches)</span>
 <span class="sd">        &gt;&gt;&gt; assert torch.allclose(desc, desc_batched)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">model_dev</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
     <span class="n">B</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">bs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">batch_size</span>
@@ -401,7 +402,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

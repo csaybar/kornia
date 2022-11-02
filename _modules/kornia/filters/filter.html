@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/filters/filter.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.filters.filter - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -322,7 +323,7 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_padding</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-    <span class="sd">"""Compute padding tuple."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute padding tuple.&quot;&quot;&quot;</span>
     <span class="c1"># 4 or 6 ints:  (padding_left, padding_right,padding_top,padding_bottom)</span>
     <span class="c1"># https://pytorch.org/docs/stable/nn.html#torch.nn.functional.pad</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -347,11 +348,11 @@
 <div class="viewcode-block" id="filter2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.filter2d">[docs]</a><span class="k">def</span> <span class="nf">filter2d</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span>
+    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span>
     <span class="n">normalized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'same'</span><span class="p">,</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convolve a tensor with a 2d kernel.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convolve a tensor with a 2d kernel.</span>
 
 <span class="sd">    The function applies a given kernel to a tensor. The kernel is applied</span>
 <span class="sd">    independently at each depth channel of the tensor. Before applying the</span>
@@ -364,11 +365,11 @@
 <span class="sd">        kernel: the kernel to be convolved with the input</span>
 <span class="sd">          tensor. The kernel shape must be :math:`(1, kH, kW)` or :math:`(B, kH, kW)`.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
-<span class="sd">          The expected modes are: ``'constant'``, ``'reflect'``,</span>
-<span class="sd">          ``'replicate'`` or ``'circular'``.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``, ``&#39;reflect&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``.</span>
 <span class="sd">        normalized: If True, kernel will be L1 normalized.</span>
 <span class="sd">        padding: This defines the type of padding.</span>
-<span class="sd">          2 modes available ``'same'`` or ``'valid'``.</span>
+<span class="sd">          2 modes available ``&#39;same&#39;`` or ``&#39;valid&#39;``.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        torch.Tensor: the convolved tensor of same size and numbers of channels</span>
@@ -382,39 +383,39 @@
 <span class="sd">        ...    [0., 0., 0., 0., 0.],</span>
 <span class="sd">        ...    [0., 0., 0., 0., 0.],]]])</span>
 <span class="sd">        &gt;&gt;&gt; kernel = torch.ones(1, 3, 3)</span>
-<span class="sd">        &gt;&gt;&gt; filter2d(input, kernel, padding='same')</span>
+<span class="sd">        &gt;&gt;&gt; filter2d(input, kernel, padding=&#39;same&#39;)</span>
 <span class="sd">        tensor([[[[0., 0., 0., 0., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 0., 0., 0., 0.]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input input is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input input is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input kernel is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input kernel is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">border_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input border_type is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">border_type</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input border_type is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">border_type</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">border_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'constant'</span><span class="p">,</span> <span class="s1">'reflect'</span><span class="p">,</span> <span class="s1">'replicate'</span><span class="p">,</span> <span class="s1">'circular'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">border_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="s1">&#39;replicate&#39;</span><span class="p">,</span> <span class="s1">&#39;circular&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Invalid border type, we expect 'constant', </span><span class="se">\</span>
-<span class="s2">        'reflect', 'replicate', 'circular'. Got:</span><span class="si">{</span><span class="n">border_type</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">&quot;Invalid border type, we expect &#39;constant&#39;, </span><span class="se">\</span>
+<span class="s2">        &#39;reflect&#39;, &#39;replicate&#39;, &#39;circular&#39;. Got:</span><span class="si">{</span><span class="n">border_type</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">padding</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input padding is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input padding is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">padding</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'valid'</span><span class="p">,</span> <span class="s1">'same'</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid padding mode, we expect 'valid' or 'same'. Got: </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">padding</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid padding mode, we expect &#39;valid&#39; or &#39;same&#39;. Got: </span><span class="si">{</span><span class="n">padding</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">((</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid kernel shape, we expect 1xHxW or BxHxW. Got: </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid kernel shape, we expect 1xHxW or BxHxW. Got: </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># prepare kernel</span>
     <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
@@ -428,7 +429,7 @@
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">tmp_kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 
     <span class="c1"># pad the input tensor</span>
-    <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s1">'same'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s1">&#39;same&#39;</span><span class="p">:</span>
         <span class="n">padding_shape</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_compute_padding</span><span class="p">([</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">])</span>
         <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">padding_shape</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">border_type</span><span class="p">)</span>
 
@@ -439,7 +440,7 @@
     <span class="c1"># convolve the tensor with the kernel.</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">tmp_kernel</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">tmp_kernel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s1">'same'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">padding</span> <span class="o">==</span> <span class="s1">&#39;same&#39;</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span> <span class="o">-</span> <span class="n">height</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span> <span class="o">-</span> <span class="n">width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -451,11 +452,11 @@
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">kernel_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span>
+    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span>
     <span class="n">normalized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'same'</span><span class="p">,</span>
+    <span class="n">padding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;same&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convolve a tensor with two 1d kernels, in x and y directions.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convolve a tensor with two 1d kernels, in x and y directions.</span>
 
 <span class="sd">    The function applies a given kernel to a tensor. The kernel is applied</span>
 <span class="sd">    independently at each depth channel of the tensor. Before applying the</span>
@@ -470,11 +471,11 @@
 <span class="sd">        kernel_y: the kernel to be convolved with the input</span>
 <span class="sd">          tensor. The kernel shape must be :math:`(1, kH)` or :math:`(B, kH)`.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
-<span class="sd">          The expected modes are: ``'constant'``, ``'reflect'``,</span>
-<span class="sd">          ``'replicate'`` or ``'circular'``.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``, ``&#39;reflect&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``.</span>
 <span class="sd">        normalized: If True, kernel will be L1 normalized.</span>
 <span class="sd">        padding: This defines the type of padding.</span>
-<span class="sd">          2 modes available ``'same'`` or ``'valid'``.</span>
+<span class="sd">          2 modes available ``&#39;same&#39;`` or ``&#39;valid&#39;``.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        torch.Tensor: the convolved tensor of same size and numbers of channels</span>
@@ -489,22 +490,22 @@
 <span class="sd">        ...    [0., 0., 0., 0., 0.],]]])</span>
 <span class="sd">        &gt;&gt;&gt; kernel = torch.ones(1, 3)</span>
 
-<span class="sd">        &gt;&gt;&gt; filter2d_separable(input, kernel, kernel, padding='same')</span>
+<span class="sd">        &gt;&gt;&gt; filter2d_separable(input, kernel, kernel, padding=&#39;same&#39;)</span>
 <span class="sd">        tensor([[[[0., 0., 0., 0., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 5., 5., 5., 0.],</span>
 <span class="sd">                  [0., 0., 0., 0., 0.]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">out_x</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">padding</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="n">out_x</span><span class="p">,</span> <span class="n">kernel_y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">padding</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span></div>
 
 
 <div class="viewcode-block" id="filter3d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.filter3d">[docs]</a><span class="k">def</span> <span class="nf">filter3d</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'replicate'</span><span class="p">,</span> <span class="n">normalized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;replicate&#39;</span><span class="p">,</span> <span class="n">normalized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convolve a tensor with a 3d kernel.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convolve a tensor with a 3d kernel.</span>
 
 <span class="sd">    The function applies a given kernel to a tensor. The kernel is applied</span>
 <span class="sd">    independently at each depth channel of the tensor. Before applying the</span>
@@ -517,8 +518,8 @@
 <span class="sd">        kernel: the kernel to be convolved with the input</span>
 <span class="sd">          tensor. The kernel shape must be :math:`(1, kD, kH, kW)`  or :math:`(B, kD, kH, kW)`.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
-<span class="sd">          The expected modes are: ``'constant'``,</span>
-<span class="sd">          ``'replicate'`` or ``'circular'``.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``.</span>
 <span class="sd">        normalized: If True, kernel will be L1 normalized.</span>
 
 <span class="sd">    Return:</span>
@@ -562,21 +563,21 @@
 <span class="sd">                   [0., 5., 5., 5., 0.],</span>
 <span class="sd">                   [0., 5., 5., 5., 0.],</span>
 <span class="sd">                   [0., 0., 0., 0., 0.]]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input border_type is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input border_type is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input border_type is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input border_type is not torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">border_type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input border_type is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input border_type is not string. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid kernel shape, we expect 1xDxHxW. Got: </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid kernel shape, we expect 1xDxHxW. Got: </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># prepare kernel</span>
     <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
@@ -639,7 +640,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

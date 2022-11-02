@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/camera/stereo.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.camera.stereo - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -321,7 +322,7 @@
 
 <span class="k">class</span> <span class="nc">StereoException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">"""Custom exception for the :module:`~kornia.geometry.camera.stereo` module.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom exception for the :module:`~kornia.geometry.camera.stereo` module.</span>
 
 <span class="sd">        Adds a general helper module redirecting the user to the proper documentation site.</span>
 
@@ -329,27 +330,27 @@
 <span class="sd">            msg: Custom message to add to the general message.</span>
 <span class="sd">            *args:</span>
 <span class="sd">            **kwargs:</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">doc_help</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">"</span><span class="se">\n</span><span class="s2"> Please check documents here: "</span>
-            <span class="s2">"https://kornia.readthedocs.io/en/latest/geometry.camera.stereo.html for further information and examples."</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Please check documents here: &quot;</span>
+            <span class="s2">&quot;https://kornia.readthedocs.io/en/latest/geometry.camera.stereo.html for further information and examples.&quot;</span>
         <span class="p">)</span>
         <span class="n">final_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="n">doc_help</span>
         <span class="c1"># type ignore because of mypy error:</span>
-        <span class="c1"># Too many arguments for "__init__" of "BaseException"</span>
+        <span class="c1"># Too many arguments for &quot;__init__&quot; of &quot;BaseException&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">final_msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
 
 <div class="viewcode-block" id="StereoCamera"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera">[docs]</a><span class="k">class</span> <span class="nc">StereoCamera</span><span class="p">:</span>
 <div class="viewcode-block" id="StereoCamera.__init__"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rectified_left_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">rectified_right_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">"""Class representing a horizontal stereo camera setup.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class representing a horizontal stereo camera setup.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            rectified_left_camera: The rectified left camera projection matrix</span>
 <span class="sd">              of shape :math:`(B, 3, 4)`</span>
 <span class="sd">            rectified_right_camera: The rectified right camera projection matrix</span>
 <span class="sd">              of shape :math:`(B, 3, 4)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_stereo_camera</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="p">,</span> <span class="n">rectified_right_camera</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">rectified_left_camera</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rectified_right_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">rectified_right_camera</span>
@@ -361,141 +362,141 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_stereo_camera</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">rectified_right_camera</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">"""Utility function to ensure user specified correct camera matrices.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure user specified correct camera matrices.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            rectified_left_camera: The rectified left camera projection matrix</span>
 <span class="sd">              of shape :math:`(B, 3, 4)`</span>
 <span class="sd">            rectified_right_camera: The rectified right camera projection matrix</span>
 <span class="sd">              of shape :math:`(B, 3, 4)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Ensure correct shapes</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected 'rectified_left_camera' to have 3 dimensions. "</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_left_camera&#39; to have 3 dimensions. &quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected 'rectified_right_camera' to have 3 dimension. "</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_right_camera&#39; to have 3 dimension. &quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected each 'rectified_left_camera' to be of shape (3, 4)."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_left_camera&#39; to be of shape (3, 4).&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected each 'rectified_right_camera' to be of shape (3, 4)."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected each &#39;rectified_right_camera&#39; to be of shape (3, 4).&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure same devices for cameras.</span>
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">device</span> <span class="o">!=</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected 'rectified_left_camera' and 'rectified_right_camera' "</span>
-                <span class="sa">f</span><span class="s2">"to be on the same devices."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;to be on the same devices.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure same dtypes for cameras.</span>
         <span class="k">if</span> <span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected 'rectified_left_camera' and 'rectified_right_camera' to"</span>
-                <span class="sa">f</span><span class="s2">"have same dtype."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;rectified_left_camera&#39; and &#39;rectified_right_camera&#39; to&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;have same dtype.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure all intrinsics parameters (fx, fy, cx, cy) are the same in both cameras.</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])):</span>
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">"Expected 'left_rectified_camera' and 'rectified_right_camera' to have"</span>
-                <span class="sa">f</span><span class="s2">"same parameters except for the last column."</span>
-                <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">."</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected &#39;left_rectified_camera&#39; and &#39;rectified_right_camera&#39; to have&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;same parameters except for the last column.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure that tx * fx is negative and exists.</span>
         <span class="n">tx_fx</span> <span class="o">=</span> <span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="n">tx_fx</span><span class="p">,</span> <span class="mi">0</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected :math:`T_x * f_x` to be negative."</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">tx_fx</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected :math:`T_x * f_x` to be negative.&quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">tx_fx</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">batch_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the batch size of the storage.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the batch size of the storage.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">           scalar with the batch size</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the focal length in the x-direction.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the focal length in the x-direction.</span>
 
 <span class="sd">        Note that the focal lengths of the rectified left and right</span>
 <span class="sd">        camera are assumed to be equal.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Returns the focal length in the y-direction.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the focal length in the y-direction.</span>
 
 <span class="sd">        Note that the focal lengths of the rectified left and right</span>
 <span class="sd">        camera are assumed to be equal.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cx_left</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the x-coordinate of the principal point for the left camera.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the left camera.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cx_right</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the x-coordinate of the principal point for the right camera.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the right camera.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the y-coordinate of the principal point.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the y-coordinate of the principal point.</span>
 
 <span class="sd">        Note that the y-coordinate of the principal points</span>
 <span class="sd">        is assumed to be equal for the left and right camera.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""The horizontal baseline between the two cameras.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The horizontal baseline between the two cameras.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Tensor of shape :math:`(B)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fx</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""The Q matrix of the horizontal stereo setup.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The Q matrix of the horizontal stereo setup.</span>
 
 <span class="sd">        This matrix is used for reprojecting a disparity tensor to</span>
 <span class="sd">        the corresponding point cloud. Note that this is in a general form that allows different focal</span>
@@ -503,15 +504,15 @@
 
 <span class="sd">        Return:</span>
 <span class="sd">            The Q matrix of shape :math:`(B, 4, 4)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q_matrix</span>
 
     <span class="k">def</span> <span class="nf">_init_Q_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Initialized the Q matrix of the horizontal stereo setup. See the Q property.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialized the Q matrix of the horizontal stereo setup. See the Q property.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The Q matrix of shape :math:`(B, 4, 4)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">Q</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">baseline</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">tx</span>
         <span class="n">Q</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fy</span> <span class="o">*</span> <span class="n">baseline</span>
@@ -524,70 +525,70 @@
         <span class="k">return</span> <span class="n">Q</span>
 
 <div class="viewcode-block" id="StereoCamera.reproject_disparity_to_3D"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera.reproject_disparity_to_3D">[docs]</a>    <span class="k">def</span> <span class="nf">reproject_disparity_to_3D</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Reproject the disparity tensor to a 3D point cloud.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            disparity_tensor: Disparity tensor of shape :math:`(B, 1, H, W)`.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The 3D point cloud of shape :math:`(B, H, W, 3)`</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">reproject_disparity_to_3D</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span></div></div>
 
 
 <span class="k">def</span> <span class="nf">_check_disparity_tensor</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Utility function to ensure correct user provided correct disparity tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure correct user provided correct disparity tensor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        disparity_tensor: The disparity tensor of shape :math:`(B, 1, H, W)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expected 'disparity_tensor' to be an instance of torch.Tensor but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected &#39;disparity_tensor&#39; to be an instance of torch.Tensor but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected 'disparity_tensor' to have 4 dimensions."</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected &#39;disparity_tensor&#39; to have 4 dimensions.&quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expected dimension 1 of 'disparity_tensor' to be 1 for as single channeled disparity map."</span>
-            <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected dimension 1 of &#39;disparity_tensor&#39; to be 1 for as single channeled disparity map.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">disparity_tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expected 'disparity_tensor' to have dtype torch.float16, torch.float32 or torch.float64."</span>
-            <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected &#39;disparity_tensor&#39; to have dtype torch.float16, torch.float32 or torch.float64.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">disparity_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_check_Q_matrix</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Utility function to ensure Q matrix is of correct form.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure Q matrix is of correct form.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        Q_matrix: The Q matrix for reprojecting disparity to a point cloud of shape :math:`(B, 4, 4)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected 'Q_matrix' to be an instance of torch.Tensor but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected &#39;Q_matrix&#39; to be an instance of torch.Tensor but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected 'Q_matrix' to have 3 dimensions."</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected &#39;Q_matrix&#39; to have 3 dimensions.&quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expected last two dimensions of 'Q_matrix' to be of shape (4, 4)."</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected last two dimensions of &#39;Q_matrix&#39; to be of shape (4, 4).&quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">Q_matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expected 'Q_matrix' to be of type torch.float16, torch.float32 or torch.float64."</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span>
+            <span class="sa">f</span><span class="s2">&quot;Expected &#39;Q_matrix&#39; to be of type torch.float16, torch.float32 or torch.float64.&quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">Q_matrix</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
 
 <div class="viewcode-block" id="reproject_disparity_to_3D"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.reproject_disparity_to_3D">[docs]</a><span class="k">def</span> <span class="nf">reproject_disparity_to_3D</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Q_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Reproject the disparity tensor to a 3D point cloud.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        disparity_tensor: Disparity tensor of shape :math:`(B, H, W, 1)`.</span>
@@ -595,7 +596,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The 3D point cloud of shape :math:`(B, H, W, 3)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_check_Q_matrix</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">)</span>
     <span class="n">_check_disparity_tensor</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">)</span>
 
@@ -613,10 +614,10 @@
     <span class="c1"># Final check that everything went well.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Something went wrong in `reproject_disparity_to_3D`. Expected the final output"</span>
-            <span class="sa">f</span><span class="s2">"to be of shape </span><span class="si">{</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span>
-            <span class="sa">f</span><span class="s2">"But the computed point cloud had shape </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">. "</span>
-            <span class="sa">f</span><span class="s2">"Please ensure input are correct. If this is an error, please submit an issue."</span>
+            <span class="sa">f</span><span class="s2">&quot;Something went wrong in `reproject_disparity_to_3D`. Expected the final output&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;to be of shape </span><span class="si">{</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;But the computed point cloud had shape </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Please ensure input are correct. If this is an error, please submit an issue.&quot;</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">points</span></div>
 </pre></div>
@@ -657,7 +658,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

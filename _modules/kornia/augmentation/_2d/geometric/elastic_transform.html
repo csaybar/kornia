@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/geometric/elastic_transform.html" />
 
-    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation._2d.geometric.elastic_transform - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -323,7 +324,7 @@
 
 
 <div class="viewcode-block" id="RandomElasticTransform"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomElasticTransform">[docs]</a><span class="k">class</span> <span class="nc">RandomElasticTransform</span><span class="p">(</span><span class="n">GeometricAugmentationBase2D</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Add random elastic transformation to a tensor image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add random elastic transformation to a tensor image.</span>
 
 <span class="sd">    .. image:: _static/img/RandomElasticTransform.png</span>
 
@@ -334,8 +335,8 @@
 <span class="sd">        alpha: The scaling factor that controls the intensity of the deformation</span>
 <span class="sd">          in the y and x directions, respectively.</span>
 <span class="sd">        align_corners: Interpolation flag used by `grid_sample`.</span>
-<span class="sd">        mode: Interpolation mode used by `grid_sample`. Either 'bilinear' or 'nearest'.</span>
-<span class="sd">        padding_mode: The padding used by ```grid_sample```. Either 'zeros', 'border' or 'refection'.</span>
+<span class="sd">        mode: Interpolation mode used by `grid_sample`. Either &#39;bilinear&#39; or &#39;nearest&#39;.</span>
+<span class="sd">        padding_mode: The padding used by ```grid_sample```. Either &#39;zeros&#39;, &#39;border&#39; or &#39;refection&#39;.</span>
 <span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
 <span class="sd">        p: probability of applying the transformation.</span>
 <span class="sd">        keepdim: whether to keep the output shape the same as input (True) or broadcast it</span>
@@ -356,7 +357,7 @@
 <span class="sd">        &gt;&gt;&gt; aug = RandomElasticTransform(p=1.)</span>
 <span class="sd">        &gt;&gt;&gt; (aug(input) == aug(input, params=aug._params)).all()</span>
 <span class="sd">        tensor(True)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -364,8 +365,8 @@
         <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">32.0</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">),</span>
         <span class="n">alpha</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"bilinear"</span><span class="p">,</span>
-        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"zeros"</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">,</span>
+        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;zeros&quot;</span><span class="p">,</span>
         <span class="n">same_on_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -400,13 +401,13 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">elastic_transform2d</span><span class="p">(</span>
             <span class="nb">input</span><span class="p">,</span>
-            <span class="n">params</span><span class="p">[</span><span class="s2">"noise"</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">),</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"kernel_size"</span><span class="p">],</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"sigma"</span><span class="p">],</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"alpha"</span><span class="p">],</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"align_corners"</span><span class="p">],</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"mode"</span><span class="p">],</span>
-            <span class="n">flags</span><span class="p">[</span><span class="s2">"padding_mode"</span><span class="p">],</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;noise&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">),</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;kernel_size&quot;</span><span class="p">],</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;sigma&quot;</span><span class="p">],</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">],</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;align_corners&quot;</span><span class="p">],</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+            <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;padding_mode&quot;</span><span class="p">],</span>
         <span class="p">)</span></div>
 </pre></div>
         </article>
@@ -446,7 +447,9 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../../_static/scripts/furo.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>

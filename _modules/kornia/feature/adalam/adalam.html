@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/adalam/adalam.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.adalam.adalam - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -331,18 +332,18 @@
 
 <span class="k">def</span> <span class="nf">get_adalam_default_config</span><span class="p">():</span>
     <span class="n">DEFAULT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'area_ratio'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1"># Ratio between seed circle area and image area. Higher values produce more seeds with smaller neighborhoods.    # noqa: E501</span>
-        <span class="s1">'search_expansion'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="c1"># Expansion factor of the seed circle radius for the purpose of collecting neighborhoods. Increases neighborhood radius without changing seed distribution    # noqa: E501</span>
-        <span class="s1">'ransac_iters'</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>  <span class="c1"># Fixed number of inner GPU-RANSAC iterations</span>
-        <span class="s1">'min_inliers'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="c1"># Minimum number of inliers required to accept inliers coming from a neighborhood    # noqa: E501</span>
-        <span class="s1">'min_confidence'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>  <span class="c1"># Threshold used by the confidence-based GPU-RANSAC</span>
-        <span class="s1">'orientation_difference_threshold'</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>  <span class="c1"># Maximum difference in orientations for a point to be accepted in a neighborhood. Set to None to disable the use of keypoint orientations.   # noqa: E501</span>
-        <span class="s1">'scale_rate_threshold'</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>  <span class="c1"># Maximum difference (ratio) in scales for a point to be accepted in a neighborhood. Set to None to disable the use of keypoint scales.   # noqa: E501</span>
-        <span class="s1">'detected_scale_rate_threshold'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># Prior on maximum possible scale change detectable in image couples. Affinities with higher scale changes are regarded as outliers.   # noqa: E501</span>
-        <span class="s1">'refit'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to perform refitting at the end of the RANSACs. Generally improves accuracy at the cost of runtime.   # noqa: E501</span>
-        <span class="s1">'force_seed_mnn'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to consider only MNN for the purpose of selecting seeds. Generally improves accuracy at the cost of runtime.    # noqa: E501</span>
+        <span class="s1">&#39;area_ratio&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>  <span class="c1"># Ratio between seed circle area and image area. Higher values produce more seeds with smaller neighborhoods.    # noqa: E501</span>
+        <span class="s1">&#39;search_expansion&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="c1"># Expansion factor of the seed circle radius for the purpose of collecting neighborhoods. Increases neighborhood radius without changing seed distribution    # noqa: E501</span>
+        <span class="s1">&#39;ransac_iters&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>  <span class="c1"># Fixed number of inner GPU-RANSAC iterations</span>
+        <span class="s1">&#39;min_inliers&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="c1"># Minimum number of inliers required to accept inliers coming from a neighborhood    # noqa: E501</span>
+        <span class="s1">&#39;min_confidence&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>  <span class="c1"># Threshold used by the confidence-based GPU-RANSAC</span>
+        <span class="s1">&#39;orientation_difference_threshold&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>  <span class="c1"># Maximum difference in orientations for a point to be accepted in a neighborhood. Set to None to disable the use of keypoint orientations.   # noqa: E501</span>
+        <span class="s1">&#39;scale_rate_threshold&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>  <span class="c1"># Maximum difference (ratio) in scales for a point to be accepted in a neighborhood. Set to None to disable the use of keypoint scales.   # noqa: E501</span>
+        <span class="s1">&#39;detected_scale_rate_threshold&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># Prior on maximum possible scale change detectable in image couples. Affinities with higher scale changes are regarded as outliers.   # noqa: E501</span>
+        <span class="s1">&#39;refit&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to perform refitting at the end of the RANSACs. Generally improves accuracy at the cost of runtime.   # noqa: E501</span>
+        <span class="s1">&#39;force_seed_mnn&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Whether to consider only MNN for the purpose of selecting seeds. Generally improves accuracy at the cost of runtime.    # noqa: E501</span>
         <span class="c1"># You can provide a MNN mask in input to skip MNN computation and still get the improvement.</span>
-        <span class="s1">'device'</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">),</span>  <span class="c1"># Device to be used for running AdaLAM. Use GPU if available.</span>
+        <span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span>  <span class="c1"># Device to be used for running AdaLAM. Use GPU if available.</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">DEFAULT_CONFIG</span>
 
@@ -357,7 +358,7 @@
     <span class="n">hw2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function, which performs descriptor matching, followed by AdaLAM filtering (see :cite:`AdaLAM2020` for more</span>
+    <span class="sd">&quot;&quot;&quot;Function, which performs descriptor matching, followed by AdaLAM filtering (see :cite:`AdaLAM2020` for more</span>
 <span class="sd">    details)</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
@@ -375,14 +376,14 @@
 <span class="sd">        - Descriptor distance of matching descriptors, shape of :math:`(B3, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2. Shape: :math:`(B3, 2)`,</span>
 <span class="sd">          where 0 &lt;= B3 &lt;= B1.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
     <span class="n">KORNIA_CHECK_LAF</span><span class="p">(</span><span class="n">lafs1</span><span class="p">)</span>
     <span class="n">KORNIA_CHECK_LAF</span><span class="p">(</span><span class="n">lafs2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">config_</span> <span class="o">=</span> <span class="n">get_adalam_default_config</span><span class="p">()</span>
-        <span class="n">config_</span><span class="p">[</span><span class="s1">'device'</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc1</span><span class="o">.</span><span class="n">device</span>
+        <span class="n">config_</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc1</span><span class="o">.</span><span class="n">device</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">config_</span> <span class="o">=</span> <span class="n">config</span>
     <span class="n">adalam_object</span> <span class="o">=</span> <span class="n">AdalamFilter</span><span class="p">(</span><span class="n">config_</span><span class="p">)</span>
@@ -406,20 +407,20 @@
     <span class="n">DEFAULT_CONFIG</span> <span class="o">=</span> <span class="n">get_adalam_default_config</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">"""This class acts as a wrapper to the method AdaLAM for outlier filtering.</span>
+        <span class="sd">&quot;&quot;&quot;This class acts as a wrapper to the method AdaLAM for outlier filtering.</span>
 
 <span class="sd">        init args:</span>
 <span class="sd">            custom_config: dictionary overriding the default configuration. Missing parameters are kept as default.</span>
 <span class="sd">                           See documentation of DEFAULT_CONFIG for specific explanations on the accepted parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">AdalamFilter</span><span class="o">.</span><span class="n">DEFAULT_CONFIG</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">custom_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                     <span class="nb">print</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">"WARNING: custom configuration contains a key which is not recognized (</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">). "</span>
-                        <span class="sa">f</span><span class="s2">"Known configurations are </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">."</span>
+                        <span class="sa">f</span><span class="s2">&quot;WARNING: custom configuration contains a key which is not recognized (</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">). &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Known configurations are </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
                     <span class="p">)</span>
                     <span class="k">continue</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
@@ -439,7 +440,7 @@
         <span class="n">s2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">return_dist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""Call the core functionality of AdaLAM, i.e. just outlier filtering. No sanity check is performed on the</span>
+        <span class="sd">&quot;&quot;&quot;Call the core functionality of AdaLAM, i.e. just outlier filtering. No sanity check is performed on the</span>
 <span class="sd">        inputs.</span>
 
 <span class="sd">        Inputs:</span>
@@ -452,26 +453,26 @@
 <span class="sd">                              so it requires this to be a list of indices a_i such that the source keypoint i is associated to the destination keypoint a_i.</span>
 <span class="sd">                              For now to use AdaLAM on different inputs a workaround on the input format is required.</span>
 <span class="sd">                              Expected a long tensor with shape (num_keypoints_in_source_image,).</span>
-<span class="sd">            scores: Confidence scores on the putative_matches. Usually holds Lowe's ratio scores.</span>
-<span class="sd">            mnn: A mask indicating which putative matches are also mutual nearest neighbors. See documentation on 'force_seed_mnn' in the DEFAULT_CONFIG.</span>
+<span class="sd">            scores: Confidence scores on the putative_matches. Usually holds Lowe&#39;s ratio scores.</span>
+<span class="sd">            mnn: A mask indicating which putative matches are also mutual nearest neighbors. See documentation on &#39;force_seed_mnn&#39; in the DEFAULT_CONFIG.</span>
 <span class="sd">                 If None, it disables the mutual nearest neighbor filtering on seed point selection.</span>
 <span class="sd">                 Expected a bool tensor with shape (num_keypoints_in_source_image,)</span>
 <span class="sd">            im1shape: Shape of the source image. If None, it is inferred from keypoints max and min, at the cost of wasted runtime. So please provide it.</span>
 <span class="sd">                      Expected a tuple with (width, height) or (height, width) of source image</span>
 <span class="sd">            im2shape: Shape of the destination image. If None, it is inferred from keypoints max and min, at the cost of wasted runtime. So please provide it.</span>
 <span class="sd">                      Expected a tuple with (width, height) or (height, width) of destination image</span>
-<span class="sd">            o1/o2: keypoint orientations in degrees. They can be None if 'orientation_difference_threshold' in config is set to None.</span>
-<span class="sd">                   See documentation on 'orientation_difference_threshold' in the DEFAULT_CONFIG.</span>
+<span class="sd">            o1/o2: keypoint orientations in degrees. They can be None if &#39;orientation_difference_threshold&#39; in config is set to None.</span>
+<span class="sd">                   See documentation on &#39;orientation_difference_threshold&#39; in the DEFAULT_CONFIG.</span>
 <span class="sd">                   Expected a float32 tensor with shape (num_keypoints_in_source/destination_image,)</span>
-<span class="sd">            s1/s2: keypoint scales. They can be None if 'scale_rate_threshold' in config is set to None.</span>
-<span class="sd">                   See documentation on 'scale_rate_threshold' in the DEFAULT_CONFIG.</span>
+<span class="sd">            s1/s2: keypoint scales. They can be None if &#39;scale_rate_threshold&#39; in config is set to None.</span>
+<span class="sd">                   See documentation on &#39;scale_rate_threshold&#39; in the DEFAULT_CONFIG.</span>
 <span class="sd">                   Expected a float32 tensor with shape (num_keypoints_in_source/destination_image,)</span>
 <span class="sd">            return_dist: if True, inverse confidence value is also outputted.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Filtered putative matches.</span>
 <span class="sd">            A long tensor with shape (num_filtered_matches, 2) with indices of corresponding keypoints in k1 and k2.</span>
-<span class="sd">        """</span>  <span class="c1"># noqa: E501</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
         <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
             <span class="k">return</span> <span class="n">adalam_core</span><span class="p">(</span>
                 <span class="n">k1</span><span class="p">,</span>
@@ -503,7 +504,7 @@
         <span class="n">s2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">return_dist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">"""Standard matching and filtering with AdaLAM. This function:</span>
+        <span class="sd">&quot;&quot;&quot;Standard matching and filtering with AdaLAM. This function:</span>
 
 <span class="sd">            - performs some elementary sanity check on the inputs;</span>
 <span class="sd">            - wraps input arrays into torch tensors and loads to GPU if necessary;</span>
@@ -524,29 +525,29 @@
 <span class="sd">                      Expected a tuple with (width, height) or (height, width) of source image</span>
 <span class="sd">            im2shape: Shape of the destination image. If None, it is inferred from keypoints max and min, at the cost of wasted runtime. So please provide it.</span>
 <span class="sd">                      Expected a tuple with (width, height) or (height, width) of destination image</span>
-<span class="sd">            o1/o2: keypoint orientations in degrees. They can be None if 'orientation_difference_threshold' in config is set to None.</span>
-<span class="sd">                   See documentation on 'orientation_difference_threshold' in the DEFAULT_CONFIG.</span>
+<span class="sd">            o1/o2: keypoint orientations in degrees. They can be None if &#39;orientation_difference_threshold&#39; in config is set to None.</span>
+<span class="sd">                   See documentation on &#39;orientation_difference_threshold&#39; in the DEFAULT_CONFIG.</span>
 <span class="sd">                   Expected an array with shape (num_keypoints_in_source/destination_image,)</span>
-<span class="sd">            s1/s2: keypoint scales. They can be None if 'scale_rate_threshold' in config is set to None.</span>
-<span class="sd">                   See documentation on 'scale_rate_threshold' in the DEFAULT_CONFIG.</span>
+<span class="sd">            s1/s2: keypoint scales. They can be None if &#39;scale_rate_threshold&#39; in config is set to None.</span>
+<span class="sd">                   See documentation on &#39;scale_rate_threshold&#39; in the DEFAULT_CONFIG.</span>
 <span class="sd">                   Expected an array with shape (num_keypoints_in_source/destination_image,)</span>
 <span class="sd">            return_dist: if True, inverse confidence value is also outputted.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Filtered putative matches.</span>
 <span class="sd">            A long tensor with shape (num_filtered_matches, 2) with indices of corresponding keypoints in k1 and k2.</span>
-<span class="sd">        """</span>  <span class="c1"># noqa: E501</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
         <span class="k">if</span> <span class="n">s1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">s2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'scale_rate_threshold'</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;scale_rate_threshold&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
-                    <span class="s2">"Current configuration considers keypoint scales for filtering, but scales have not been provided.</span><span class="se">\n</span><span class="s2">"</span>  <span class="c1"># noqa: E501</span>
-                    <span class="s2">"Please either provide scales or set 'scale_rate_threshold' to None to disable scale filtering"</span>
+                    <span class="s2">&quot;Current configuration considers keypoint scales for filtering, but scales have not been provided.</span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># noqa: E501</span>
+                    <span class="s2">&quot;Please either provide scales or set &#39;scale_rate_threshold&#39; to None to disable scale filtering&quot;</span>
                 <span class="p">)</span>
         <span class="k">if</span> <span class="n">o1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">o2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'orientation_difference_threshold'</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;orientation_difference_threshold&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
-                    <span class="s2">"Current configuration considers keypoint orientations for filtering, but orientations have not been provided.</span><span class="se">\n</span><span class="s2">"</span>  <span class="c1"># noqa: E501</span>
-                    <span class="s2">"Please either provide orientations or set 'orientation_difference_threshold' to None to disable orientations filtering"</span>  <span class="c1"># noqa: E501</span>
+                    <span class="s2">&quot;Current configuration considers keypoint orientations for filtering, but orientations have not been provided.</span><span class="se">\n</span><span class="s2">&quot;</span>  <span class="c1"># noqa: E501</span>
+                    <span class="s2">&quot;Please either provide orientations or set &#39;orientation_difference_threshold&#39; to None to disable orientations filtering&quot;</span>  <span class="c1"># noqa: E501</span>
                 <span class="p">)</span>
         <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__to_torch</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">o1</span><span class="p">,</span> <span class="n">o2</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">):</span>
@@ -559,9 +560,9 @@
 
         <span class="n">putative_matches</span> <span class="o">=</span> <span class="n">nn12</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="n">dd12</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">dd12</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">clamp_min_</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'force_seed_mnn'</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;force_seed_mnn&#39;</span><span class="p">]:</span>
             <span class="n">dd21</span><span class="p">,</span> <span class="n">nn21</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">distmat</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (n2,)</span>
-            <span class="n">mnn</span> <span class="o">=</span> <span class="n">nn21</span><span class="p">[</span><span class="n">putative_matches</span><span class="p">]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'device'</span><span class="p">])</span>
+            <span class="n">mnn</span> <span class="o">=</span> <span class="n">nn21</span><span class="p">[</span><span class="n">putative_matches</span><span class="p">]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">mnn</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -571,7 +572,7 @@
 
     <span class="k">def</span> <span class="nf">__to_torch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'device'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span>
         <span class="p">)</span>
 </pre></div>
@@ -612,7 +613,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

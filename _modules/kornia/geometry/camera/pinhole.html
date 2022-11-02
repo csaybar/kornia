@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/camera/pinhole.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.camera.pinhole - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -324,7 +325,7 @@
 
 
 <div class="viewcode-block" id="PinholeCamera"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera">[docs]</a><span class="k">class</span> <span class="nc">PinholeCamera</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Class that represents a Pinhole Camera model.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class that represents a Pinhole Camera model.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        intrinsics: tensor with shape :math:`(B, 4, 4)`</span>
@@ -337,17 +338,17 @@
 <span class="sd">    .. note::</span>
 <span class="sd">        We assume that the class attributes are in batch form in order to take</span>
 <span class="sd">        advantage of PyTorch parallelism to boost computing performance.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">intrinsics</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># verify batch size and shapes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid</span><span class="p">([</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="s2">"intrinsics"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="n">extrinsics</span><span class="p">,</span> <span class="s2">"extrinsics"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_shape</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="s2">"height"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_shape</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="s2">"width"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="s2">&quot;intrinsics&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="n">extrinsics</span><span class="p">,</span> <span class="s2">&quot;extrinsics&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_shape</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_shape</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_consistent_device</span><span class="p">([</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">])</span>
         <span class="c1"># set class attributes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">height</span>
@@ -358,15 +359,15 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_valid</span><span class="p">(</span><span class="n">data_iter</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_iter</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Arguments shapes must match"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Arguments shapes must match&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_valid_params</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">data_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># Shouldn't this be an OR logic than AND?</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>  <span class="c1"># Shouldn&#39;t this be an OR logic than AND?</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"Argument </span><span class="si">{}</span><span class="s2"> shape must be in the following shape"</span>
-                <span class="s2">" Bx4x4 or BxNx4x4. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                <span class="s2">&quot;Argument </span><span class="si">{}</span><span class="s2"> shape must be in the following shape&quot;</span>
+                <span class="s2">&quot; Bx4x4 or BxNx4x4. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
 
@@ -374,7 +375,7 @@
     <span class="k">def</span> <span class="nf">_check_valid_shape</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">data_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">"Argument </span><span class="si">{}</span><span class="s2"> shape must be in the following shape"</span> <span class="s2">" B. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                <span class="s2">&quot;Argument </span><span class="si">{}</span><span class="s2"> shape must be in the following shape&quot;</span> <span class="s2">&quot; B. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
 
@@ -385,163 +386,163 @@
             <span class="n">KORNIA_CHECK_SAME_DEVICE</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">first</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PinholeCamera.device"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.device">[docs]</a>    <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Returns the device for camera buffers.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the device for camera buffers.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Device type</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="o">.</span><span class="n">device</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">intrinsics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""The full 4x4 intrinsics matrix.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The full 4x4 intrinsics matrix.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 4, 4)`.</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">,</span> <span class="s2">"intrinsics"</span><span class="p">):</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span><span class="p">,</span> <span class="s2">&quot;intrinsics&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intrinsics</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">extrinsics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""The full 4x4 extrinsics matrix.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The full 4x4 extrinsics matrix.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 4, 4)`.</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extrinsics</span><span class="p">,</span> <span class="s2">"extrinsics"</span><span class="p">):</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_valid_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extrinsics</span><span class="p">,</span> <span class="s2">&quot;extrinsics&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extrinsics</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">batch_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the batch size of the storage.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the batch size of the storage.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            scalar with the batch size.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the focal length in the x-direction.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the focal length in the x-direction.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the focal length in the y-direction.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the focal length in the y-direction.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the x-coordinate of the principal point.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the y-coordinate of the principal point.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the y-coordinate of the principal point.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the x-coordinate of the translation vector.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the translation vector.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@tx</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">tx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Set the x-coordinate of the translation vector with the given value."""</span>
+    <span class="k">def</span> <span class="nf">tx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the x-coordinate of the translation vector with the given value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the y-coordinate of the translation vector.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the y-coordinate of the translation vector.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@ty</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">ty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Set the y-coordinate of the translation vector with the given value."""</span>
+    <span class="k">def</span> <span class="nf">ty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the y-coordinate of the translation vector with the given value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tz</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Returns the z-coordinate of the translation vector.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the z-coordinate of the translation vector.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@tz</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">tz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Set the y-coordinate of the translation vector with the given value."""</span>
+    <span class="k">def</span> <span class="nf">tz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the y-coordinate of the translation vector with the given value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rt_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the 3x4 rotation-translation matrix.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the 3x4 rotation-translation matrix.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 3, 4)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">camera_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the 3x3 camera matrix containing the intrinsics.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the 3x3 camera matrix containing the intrinsics.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 3, 3)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the 3x3 rotation matrix from the extrinsics.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the 3x3 rotation matrix from the extrinsics.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 3, 3)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">translation_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the translation vector from the extrinsics.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the translation vector from the extrinsics.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 3, 1)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
 
-<div class="viewcode-block" id="PinholeCamera.clone"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return a deep copy of the current object instance."""</span>
+<div class="viewcode-block" id="PinholeCamera.clone"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a deep copy of the current object instance.&quot;&quot;&quot;</span>
         <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">intrinsics</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
@@ -549,15 +550,15 @@
         <span class="k">return</span> <span class="n">PinholeCamera</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PinholeCamera.intrinsics_inverse"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics_inverse">[docs]</a>    <span class="k">def</span> <span class="nf">intrinsics_inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the inverse of the 4x4 instrisics matrix.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the inverse of the 4x4 instrisics matrix.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B, 4, 4)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="PinholeCamera.scale"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.scale">[docs]</a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Scale the pinhole model.</span>
+<div class="viewcode-block" id="PinholeCamera.scale"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.scale">[docs]</a>    <span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the pinhole model.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            scale_factor: a tensor with the scale factor. It has</span>
@@ -566,7 +567,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            the camera model with scaled parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># scale the intrinsic parameters</span>
         <span class="n">intrinsics</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale_factor</span>
@@ -578,8 +579,8 @@
         <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">PinholeCamera</span><span class="p">(</span><span class="n">intrinsics</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PinholeCamera.scale_"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.scale_">[docs]</a>    <span class="k">def</span> <span class="nf">scale_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamera'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Scale the pinhole model in-place.</span>
+<div class="viewcode-block" id="PinholeCamera.scale_"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.scale_">[docs]</a>    <span class="k">def</span> <span class="nf">scale_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamera&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the pinhole model in-place.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            scale_factor: a tensor with the scale factor. It has</span>
@@ -588,7 +589,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            the camera model with scaled parameters.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># scale the intrinsic parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale_factor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale_factor</span>
@@ -600,7 +601,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="PinholeCamera.project"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.project">[docs]</a>    <span class="k">def</span> <span class="nf">project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_3d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Project a 3d point in world coordinates onto the 2d camera plane.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Project a 3d point in world coordinates onto the 2d camera plane.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point3d: tensor containing the 3d points to be projected</span>
@@ -619,12 +620,12 @@
 <span class="sd">            &gt;&gt;&gt; pinhole = kornia.geometry.camera.PinholeCamera(K, E, h, w)</span>
 <span class="sd">            &gt;&gt;&gt; pinhole.project(X)</span>
 <span class="sd">            tensor([[5.6088, 8.6827]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span>
         <span class="k">return</span> <span class="n">convert_points_from_homogeneous</span><span class="p">(</span><span class="n">transform_points</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">point_3d</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="PinholeCamera.unproject"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.PinholeCamera.unproject">[docs]</a>    <span class="k">def</span> <span class="nf">unproject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point_2d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">"""Unproject a 2d point in 3d.</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Unproject a 2d point in 3d.</span>
 
 <span class="sd">        Transform coordinates in the pixel frame to the world frame.</span>
 
@@ -651,7 +652,7 @@
 <span class="sd">            &gt;&gt;&gt; pinhole = kornia.geometry.camera.PinholeCamera(K, E, h, w)</span>
 <span class="sd">            &gt;&gt;&gt; pinhole.unproject(x, depth)</span>
 <span class="sd">            tensor([[0.4963, 0.7682, 1.0000]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrinsics</span>
         <span class="n">P_inv</span> <span class="o">=</span> <span class="n">_torch_inverse_cast</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">P_inv</span><span class="p">,</span> <span class="n">convert_points_to_homogeneous</span><span class="p">(</span><span class="n">point_2d</span><span class="p">)</span> <span class="o">*</span> <span class="n">depth</span><span class="p">)</span></div>
@@ -695,33 +696,33 @@
 
 
 <span class="k">class</span> <span class="nc">PinholeCamerasList</span><span class="p">(</span><span class="n">PinholeCamera</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Class that represents a list of pinhole cameras.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class that represents a list of pinhole cameras.</span>
 
 <span class="sd">    The class inherits from :class:`~kornia.PinholeCamera` meaning that</span>
 <span class="sd">    it will keep the same class properties but with an extra dimension.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        The underlying data tensor will be stacked in the first dimension.</span>
-<span class="sd">        That's it, given a list of two camera instances, the intrinsics tensor</span>
+<span class="sd">        That&#39;s it, given a list of two camera instances, the intrinsics tensor</span>
 <span class="sd">        will have a shape :math:`(B, N, 4, 4)` where :math:`B` is the batch</span>
 <span class="sd">        size and :math:`N` is the numbers of cameras (in this case two).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pinholes_list: a python tuple or list containing a set of `PinholeCamera` instances.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pinholes_list</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">PinholeCamera</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_parameters</span><span class="p">(</span><span class="n">pinholes_list</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_initialize_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pinholes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">PinholeCamera</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">'PinholeCamerasList'</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Initialise the class attributes given a cameras list."""</span>
+    <span class="k">def</span> <span class="nf">_initialize_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pinholes</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">PinholeCamera</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;PinholeCamerasList&#39;</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialise the class attributes given a cameras list.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pinholes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"pinhole must of type list or tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">pinholes</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pinhole must of type list or tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">pinholes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
         <span class="n">intrinsics</span><span class="p">,</span> <span class="n">extrinsics</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">pinhole</span> <span class="ow">in</span> <span class="n">pinholes</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pinhole</span><span class="p">,</span> <span class="n">PinholeCamera</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Argument pinhole must be from type "</span> <span class="s2">"PinholeCamera. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">pinhole</span><span class="p">)))</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument pinhole must be from type &quot;</span> <span class="s2">&quot;PinholeCamera. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">pinhole</span><span class="p">)))</span>
             <span class="n">height</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pinhole</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
             <span class="n">width</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pinhole</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
             <span class="n">intrinsics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pinhole</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">)</span>
@@ -735,14 +736,14 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_cameras</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return the number of pinholes cameras per batch."""</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the number of pinholes cameras per batch.&quot;&quot;&quot;</span>
         <span class="n">num_cameras</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">num_cameras</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">num_cameras</span>
 
     <span class="k">def</span> <span class="nf">get_pinhole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PinholeCamera</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">"""Return a PinholeCamera object with parameters such as Bx4x4."""</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a PinholeCamera object with parameters such as Bx4x4.&quot;&quot;&quot;</span>
         <span class="n">height</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span>
         <span class="n">width</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span>
         <span class="n">intrinsics</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsics</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">]</span>
@@ -751,7 +752,7 @@
 
 
 <span class="k">def</span> <span class="nf">pinhole_matrix</span><span class="p">(</span><span class="n">pinholes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that returns the pinhole matrix from a pinhole model.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that returns the pinhole matrix from a pinhole model.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This method is going to be deprecated in version 0.2 in favour of</span>
@@ -775,9 +776,9 @@
 <span class="sd">                 [1.0000e-06, 7.6822e-01, 1.3203e-01, 1.0000e-06],</span>
 <span class="sd">                 [1.0000e-06, 1.0000e-06, 1.0000e+00, 1.0000e-06],</span>
 <span class="sd">                 [1.0000e-06, 1.0000e-06, 1.0000e-06, 1.0000e+00]]])</span>
-<span class="sd">    """</span>
-    <span class="c1"># warnings.warn("pinhole_matrix will be deprecated in version 0.2, "</span>
-    <span class="c1">#              "use PinholeCamera.camera_matrix instead",</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># warnings.warn(&quot;pinhole_matrix will be deprecated in version 0.2, &quot;</span>
+    <span class="c1">#              &quot;use PinholeCamera.camera_matrix instead&quot;,</span>
     <span class="c1">#              PendingDeprecationWarning)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -795,7 +796,7 @@
 
 
 <span class="k">def</span> <span class="nf">inverse_pinhole_matrix</span><span class="p">(</span><span class="n">pinhole</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Return the inverted pinhole matrix from a pinhole model.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the inverted pinhole matrix from a pinhole model.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This method is going to be deprecated in version 0.2 in favour of</span>
@@ -819,9 +820,9 @@
 <span class="sd">                 [ 0.0000,  1.3017, -0.1719,  0.0000],</span>
 <span class="sd">                 [ 0.0000,  0.0000,  1.0000,  0.0000],</span>
 <span class="sd">                 [ 0.0000,  0.0000,  0.0000,  1.0000]]])</span>
-<span class="sd">    """</span>
-    <span class="c1"># warnings.warn("inverse_pinhole_matrix will be deprecated in version 0.2, "</span>
-    <span class="c1">#              "use PinholeCamera.intrinsics_inverse() instead",</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># warnings.warn(&quot;inverse_pinhole_matrix will be deprecated in version 0.2, &quot;</span>
+    <span class="c1">#              &quot;use PinholeCamera.intrinsics_inverse() instead&quot;,</span>
     <span class="c1">#              PendingDeprecationWarning)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pinhole</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">pinhole</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">pinhole</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -839,7 +840,7 @@
 
 
 <span class="k">def</span> <span class="nf">scale_pinhole</span><span class="p">(</span><span class="n">pinholes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Scale the pinhole matrix for each pinhole model.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the pinhole matrix for each pinhole model.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This method is going to be deprecated in version 0.2 in favour of</span>
@@ -863,9 +864,9 @@
 <span class="sd">        &gt;&gt;&gt; scale_pinhole(pinhole_i, scales)  # Nx12</span>
 <span class="sd">        tensor([[0.9925, 1.5364, 0.1770, 0.2641, 0.6148, 1.2682, 0.4901, 0.8964, 0.4556,</span>
 <span class="sd">                 0.6323, 0.3489, 0.4017]])</span>
-<span class="sd">    """</span>
-    <span class="c1"># warnings.warn("scale_pinhole will be deprecated in version 0.2, "</span>
-    <span class="c1">#              "use PinholeCamera.scale() instead",</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># warnings.warn(&quot;scale_pinhole will be deprecated in version 0.2, &quot;</span>
+    <span class="c1">#              &quot;use PinholeCamera.scale() instead&quot;,</span>
     <span class="c1">#              PendingDeprecationWarning)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -877,7 +878,7 @@
 
 
 <span class="k">def</span> <span class="nf">get_optical_pose_base</span><span class="p">(</span><span class="n">pinholes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute extrinsic transformation matrices for pinholes.</span>
+    <span class="sd">&quot;&quot;&quot;Compute extrinsic transformation matrices for pinholes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pinholes: tensor of form [fx fy cx cy h w rx ry rz tx ty tz]</span>
@@ -885,7 +886,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor of extrinsic transformation matrices of size (N, 4, 4).</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">pinholes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="c1"># TODO: where is rtvec_to_pose?</span>
@@ -898,7 +899,7 @@
 
 
 <span class="k">def</span> <span class="nf">homography_i_H_ref</span><span class="p">(</span><span class="n">pinhole_i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">pinhole_ref</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Homography from reference to ith pinhole.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Homography from reference to ith pinhole.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        The pinhole model is represented in a single vector as follows:</span>
@@ -932,7 +933,7 @@
 <span class="sd">        pinhole_i = torch.rand(1, 12)    # Nx12</span>
 <span class="sd">        pinhole_ref = torch.rand(1, 12)  # Nx12</span>
 <span class="sd">        homography_i_H_ref(pinhole_i, pinhole_ref)  # Nx4x4</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Add doctest once having `rtvec_to_pose`.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pinhole_i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">pinhole_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">pinhole_i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -949,7 +950,7 @@
 
 
 <div class="viewcode-block" id="pixel2cam"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.pixel2cam">[docs]</a><span class="k">def</span> <span class="nf">pixel2cam</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">intrinsics_inv</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">pixel_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Transform coordinates in the pixel frame to the camera frame.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Transform coordinates in the pixel frame to the camera frame.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        depth: the source depth maps. Shape must be Bx1xHxW.</span>
@@ -958,13 +959,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor of shape BxHxWx3 with (x, y, z) cam coordinates.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input depth has to be in the shape of "</span> <span class="s2">"Bx1xHxW. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input depth has to be in the shape of &quot;</span> <span class="s2">&quot;Bx1xHxW. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">depth</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input intrinsics_inv has to be in the shape of "</span> <span class="s2">"Bx4x4. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input intrinsics_inv has to be in the shape of &quot;</span> <span class="s2">&quot;Bx4x4. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">pixel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">pixel_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input pixel_coords has to be in the shape of "</span> <span class="s2">"BxHxWx3. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input pixel_coords has to be in the shape of &quot;</span> <span class="s2">&quot;BxHxWx3. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="n">cam_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">intrinsics_inv</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">pixel_coords</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">cam_coords</span> <span class="o">*</span> <span class="n">depth</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 
@@ -974,7 +975,7 @@
 
 
 <div class="viewcode-block" id="cam2pixel"><a class="viewcode-back" href="../../../../geometry.camera.pinhole.html#kornia.geometry.camera.pinhole.cam2pixel">[docs]</a><span class="k">def</span> <span class="nf">cam2pixel</span><span class="p">(</span><span class="n">cam_coords_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dst_proj_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Transform coordinates in the camera frame to the pixel frame.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Transform coordinates in the camera frame to the pixel frame.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        cam_coords: (x, y, z) coordinates defined in the first camera coordinates system. Shape must be BxHxWx3.</span>
@@ -984,13 +985,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor of shape BxHxWx2 with (u, v) pixel coordinates.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">cam_coords_src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">cam_coords_src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">"Input cam_coords_src has to be in the shape of "</span> <span class="s2">"BxHxWx3. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cam_coords_src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="s2">&quot;Input cam_coords_src has to be in the shape of &quot;</span> <span class="s2">&quot;BxHxWx3. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cam_coords_src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">dst_proj_src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">dst_proj_src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Input dst_proj_src has to be in the shape of "</span> <span class="s2">"Bx4x4. Got </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dst_proj_src</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input dst_proj_src has to be in the shape of &quot;</span> <span class="s2">&quot;Bx4x4. Got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dst_proj_src</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
     <span class="c1"># apply projection matrix to points</span>
     <span class="n">point_coords</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">dst_proj_src</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">cam_coords_src</span><span class="p">)</span>
     <span class="n">x_coord</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">point_coords</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1001,14 +1002,14 @@
     <span class="n">u_coord</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">x_coord</span> <span class="o">/</span> <span class="p">(</span><span class="n">z_coord</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
     <span class="n">v_coord</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">y_coord</span> <span class="o">/</span> <span class="p">(</span><span class="n">z_coord</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 
-    <span class="c1"># stack and return the coordinates, that's the actual flow</span>
+    <span class="c1"># stack and return the coordinates, that&#39;s the actual flow</span>
     <span class="n">pixel_coords_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">u_coord</span><span class="p">,</span> <span class="n">v_coord</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pixel_coords_dst</span>  <span class="c1"># BxHxWx2</span></div>
 
 
 <span class="c1"># layer api</span>
-<span class="sd">'''class PinholeMatrix(nn.Module):</span>
-<span class="sd">    r"""Create an object that returns the pinhole matrix from a pinhole model</span>
+<span class="sd">&#39;&#39;&#39;class PinholeMatrix(nn.Module):</span>
+<span class="sd">    r&quot;&quot;&quot;Create an object that returns the pinhole matrix from a pinhole model</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pinholes (Tensor): tensor of pinhole models.</span>
@@ -1024,7 +1025,7 @@
 <span class="sd">        &gt;&gt;&gt; pinhole = torch.rand(1, 12)          # Nx12</span>
 <span class="sd">        &gt;&gt;&gt; transform = PinholeMatrix()</span>
 <span class="sd">        &gt;&gt;&gt; pinhole_matrix = transform(pinhole)  # Nx4x4</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <span class="sd">    def __init__(self):</span>
 <span class="sd">        super(PinholeMatrix, self).__init__()</span>
@@ -1034,7 +1035,7 @@
 
 
 <span class="sd">class InversePinholeMatrix(nn.Module):</span>
-<span class="sd">    r"""Return and object that inverts a pinhole matrix from a pinhole model</span>
+<span class="sd">    r&quot;&quot;&quot;Return and object that inverts a pinhole matrix from a pinhole model</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pinholes (Tensor): tensor with pinhole models.</span>
@@ -1050,13 +1051,13 @@
 <span class="sd">        &gt;&gt;&gt; pinhole = torch.rand(1, 12)              # Nx12</span>
 <span class="sd">        &gt;&gt;&gt; transform = kornia.InversePinholeMatrix()</span>
 <span class="sd">        &gt;&gt;&gt; pinhole_matrix_inv = transform(pinhole)  # Nx4x4</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <span class="sd">    def __init__(self):</span>
 <span class="sd">        super(InversePinholeMatrix, self).__init__()</span>
 
 <span class="sd">    def forward(self, input):</span>
-<span class="sd">        return inverse_pinhole_matrix(input)'''</span>
+<span class="sd">        return inverse_pinhole_matrix(input)&#39;&#39;&#39;</span>
 </pre></div>
         </article>
       </div>
@@ -1095,7 +1096,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

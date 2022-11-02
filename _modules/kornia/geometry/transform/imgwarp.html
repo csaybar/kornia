@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/transform/imgwarp.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.transform.imgwarp - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -336,25 +337,25 @@
 <span class="kn">from</span> <span class="nn">kornia.utils.helpers</span> <span class="kn">import</span> <span class="n">_torch_inverse_cast</span><span class="p">,</span> <span class="n">_torch_solve_cast</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"warp_perspective"</span><span class="p">,</span>
-    <span class="s2">"warp_affine"</span><span class="p">,</span>
-    <span class="s2">"get_perspective_transform"</span><span class="p">,</span>
-    <span class="s2">"get_rotation_matrix2d"</span><span class="p">,</span>
-    <span class="s2">"remap"</span><span class="p">,</span>
-    <span class="s2">"invert_affine_transform"</span><span class="p">,</span>
-    <span class="s2">"get_affine_matrix2d"</span><span class="p">,</span>
-    <span class="s2">"get_affine_matrix3d"</span><span class="p">,</span>
-    <span class="s2">"get_shear_matrix2d"</span><span class="p">,</span>
-    <span class="s2">"get_shear_matrix3d"</span><span class="p">,</span>
-    <span class="s2">"warp_affine3d"</span><span class="p">,</span>
-    <span class="s2">"get_projective_transform"</span><span class="p">,</span>
-    <span class="s2">"projection_from_Rt"</span><span class="p">,</span>
-    <span class="s2">"get_perspective_transform3d"</span><span class="p">,</span>
-    <span class="s2">"warp_perspective3d"</span><span class="p">,</span>
-    <span class="s2">"warp_grid"</span><span class="p">,</span>
-    <span class="s2">"warp_grid3d"</span><span class="p">,</span>
-    <span class="s2">"homography_warp"</span><span class="p">,</span>
-    <span class="s2">"homography_warp3d"</span><span class="p">,</span>
+    <span class="s2">&quot;warp_perspective&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warp_affine&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_perspective_transform&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_rotation_matrix2d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;remap&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;invert_affine_transform&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_affine_matrix2d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_affine_matrix3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_shear_matrix2d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_shear_matrix3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warp_affine3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_projective_transform&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;projection_from_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;get_perspective_transform3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warp_perspective3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warp_grid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;warp_grid3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;homography_warp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;homography_warp3d&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -362,12 +363,12 @@
     <span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">fill_value</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>  <span class="c1"># needed for jit</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply a perspective transformation to an image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a perspective transformation to an image.</span>
 
 <span class="sd">    .. image:: https://kornia-tutorials.readthedocs.io/en/latest/_images/warp_perspective_10_1.png</span>
 
@@ -384,8 +385,8 @@
 <span class="sd">        src: input image with shape :math:`(B, C, H, W)`.</span>
 <span class="sd">        M: transformation matrix with shape :math:`(B, 3, 3)`.</span>
 <span class="sd">        dsize: size of the output image (height, width).</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
-<span class="sd">        padding_mode: padding mode for outside grid values ``'zeros'`` | ``'border'`` | ``'reflection'`` | ``'fill'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
+<span class="sd">        padding_mode: padding mode for outside grid values ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;`` | ``&#39;fill&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 <span class="sd">        fill_value: tensor of shape :math:`(3)` that fills the padding area. Only supported for RGB.</span>
 
@@ -405,23 +406,23 @@
 <span class="sd">    .. note::</span>
 <span class="sd">        See a working example `here &lt;https://kornia-tutorials.readthedocs.io/en/</span>
 <span class="sd">        latest/warp_perspective.html&gt;`_.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src must be a BxCxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src must be a BxCxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M must be a Bx3x3 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="c1"># fill padding is only supported for 3 channels because we can't set fill_value default</span>
+    <span class="c1"># fill padding is only supported for 3 channels because we can&#39;t set fill_value default</span>
     <span class="c1"># to None as this gives jit issues.</span>
-    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">"fill"</span> <span class="ow">and</span> <span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Padding_tensor only supported for 3 channels. Got </span><span class="si">{</span><span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">&quot;fill&quot;</span> <span class="ow">and</span> <span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Padding_tensor only supported for 3 channels. Got </span><span class="si">{</span><span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">B</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
     <span class="n">h_out</span><span class="p">,</span> <span class="n">w_out</span> <span class="o">=</span> <span class="n">dsize</span>
@@ -437,7 +438,7 @@
     <span class="p">)</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">src_norm_trans_dst_norm</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">grid</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">"fill"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_fill_and_warp</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">)</span></div>
 
@@ -446,12 +447,12 @@
     <span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">fill_value</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>  <span class="c1"># needed for jit</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply an affine transformation to a tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply an affine transformation to a tensor.</span>
 
 <span class="sd">    .. image:: _static/img/warp_affine.png</span>
 
@@ -466,8 +467,8 @@
 <span class="sd">        src: input tensor of shape :math:`(B, C, H, W)`.</span>
 <span class="sd">        M: affine transformation of shape :math:`(B, 2, 3)`.</span>
 <span class="sd">        dsize: size of the output image (height, width).</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
-<span class="sd">        padding_mode: padding mode for outside grid values ``'zeros'`` | ``'border'`` | ``'reflection'`` | ``'fill'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
+<span class="sd">        padding_mode: padding mode for outside grid values ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;`` | ``&#39;fill&#39;``.</span>
 <span class="sd">        align_corners : mode for grid_generation.</span>
 <span class="sd">        fill_value: tensor of shape :math:`(3)` that fills the padding area. Only supported for RGB.</span>
 
@@ -488,23 +489,23 @@
 <span class="sd">       &gt;&gt;&gt; out = warp_affine(img, A, (4, 2), align_corners=True)</span>
 <span class="sd">       &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">       torch.Size([1, 4, 4, 2])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src must be a BxCxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src must be a BxCxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="c1"># fill padding is only supported for 3 channels because we can't set fill_value default</span>
+    <span class="c1"># fill padding is only supported for 3 channels because we can&#39;t set fill_value default</span>
     <span class="c1"># to None as this gives jit issues.</span>
-    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">"fill"</span> <span class="ow">and</span> <span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Padding_tensor only supported for 3 channels. Got </span><span class="si">{</span><span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">&quot;fill&quot;</span> <span class="ow">and</span> <span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">3</span><span class="p">]):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Padding_tensor only supported for 3 channels. Got </span><span class="si">{</span><span class="n">fill_value</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
@@ -517,7 +518,7 @@
 
     <span class="n">grid</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">affine_grid</span><span class="p">(</span><span class="n">src_norm_trans_dst_norm</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">dsize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dsize</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">"fill"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">padding_mode</span> <span class="o">==</span> <span class="s2">&quot;fill&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_fill_and_warp</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">)</span></div>
 
@@ -525,27 +526,27 @@
 <span class="k">def</span> <span class="nf">_fill_and_warp</span><span class="p">(</span>
     <span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grid</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Warp a mask of ones, then multiple with fill_value and add to default warp.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Warp a mask of ones, then multiple with fill_value and add to default warp.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        src: input tensor of shape :math:`(B, 3, H, W)`.</span>
 <span class="sd">        grid: grid tensor from `transform_points`.</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 <span class="sd">        fill_value: tensor of shape :math:`(3)` that fills the padding area. Only supported for RGB.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the warped and filled tensor with shape :math:`(B, 3, H, W)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ones_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
     <span class="n">fill_value</span> <span class="o">=</span> <span class="n">fill_value</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">ones_mask</span><span class="p">)[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># cast and add dimensions for broadcasting</span>
-    <span class="n">inv_ones_mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">ones_mask</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">"zeros"</span><span class="p">)</span>
+    <span class="n">inv_ones_mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">ones_mask</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;zeros&quot;</span><span class="p">)</span>
     <span class="n">inv_color_mask</span> <span class="o">=</span> <span class="n">inv_ones_mask</span> <span class="o">*</span> <span class="n">fill_value</span>
-    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">"zeros"</span><span class="p">)</span> <span class="o">+</span> <span class="n">inv_color_mask</span>
+    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;zeros&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">inv_color_mask</span>
 
 
 <span class="k">def</span> <span class="nf">warp_grid</span><span class="p">(</span><span class="n">grid</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the grid to warp the coordinates grid by the homography/ies.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the grid to warp the coordinates grid by the homography/ies.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        grid: Unwrapped grid of the shape :math:`(1, N, W, 2)`.</span>
@@ -555,7 +556,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the transformed grid of shape :math:`(N, H, W, 2)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
     <span class="c1"># expand grid to match the input batch size</span>
@@ -569,7 +570,7 @@
 
 
 <span class="k">def</span> <span class="nf">warp_grid3d</span><span class="p">(</span><span class="n">grid</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the grid to warp the coordinates grid by the homography/ies.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the grid to warp the coordinates grid by the homography/ies.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        grid: Unwrapped grid of the shape :math:`(1, D, H, W, 3)`.</span>
@@ -579,7 +580,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the transformed grid of shape :math:`(N, H, W, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
     <span class="c1"># expand grid to match the input batch size</span>
@@ -600,7 +601,7 @@
 
 
 <div class="viewcode-block" id="get_perspective_transform"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.get_perspective_transform">[docs]</a><span class="k">def</span> <span class="nf">get_perspective_transform</span><span class="p">(</span><span class="n">points_src</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">points_dst</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Calculate a perspective transform from four pairs of the corresponding points.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate a perspective transform from four pairs of the corresponding points.</span>
 
 <span class="sd">    The algorithm is a vanilla implementation of the Direct Linear transform (DLT).</span>
 <span class="sd">    See more: https://www.cs.cmu.edu/~16385/s17/Slides/10.2_2D_Alignment__DLT.pdf</span>
@@ -611,8 +612,8 @@
 <span class="sd">    .. math ::</span>
 
 <span class="sd">        \begin{bmatrix}</span>
-<span class="sd">        x^{'} \\</span>
-<span class="sd">        y^{'} \\</span>
+<span class="sd">        x^{&#39;} \\</span>
+<span class="sd">        y^{&#39;} \\</span>
 <span class="sd">        1 \\</span>
 <span class="sd">        \end{bmatrix}</span>
 <span class="sd">        =</span>
@@ -643,11 +644,11 @@
 <span class="sd">        &gt;&gt;&gt; x1 = torch.tensor([[[0., 0.], [1., 0.], [1., 1.], [0., 1.]]])</span>
 <span class="sd">        &gt;&gt;&gt; x2 = torch.tensor([[[1., 0.], [0., 0.], [0., 1.], [1., 1.]]])</span>
 <span class="sd">        &gt;&gt;&gt; x2_trans_x1 = get_perspective_transform(x1, x2)</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points_src</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points_dst</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">points_dst</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">"Source data shape must match Destination data shape."</span><span class="p">)</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">points_dst</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">"Source data type must match Destination data type."</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points_src</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points_dst</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">points_dst</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;Source data shape must match Destination data shape.&quot;</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">points_dst</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;Source data type must match Destination data type.&quot;</span><span class="p">)</span>
 
     <span class="c1"># we build matrix A by using only 4 point correspondence. The linear</span>
     <span class="c1"># system is solved with the least square method, so here</span>
@@ -685,7 +686,7 @@
 
 <span class="c1"># TODO: move to kornia.geometry.affine</span>
 <div class="viewcode-block" id="get_rotation_matrix2d"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.get_rotation_matrix2d">[docs]</a><span class="k">def</span> <span class="nf">get_rotation_matrix2d</span><span class="p">(</span><span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">angle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Calculate an affine matrix of 2D rotation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate an affine matrix of 2D rotation.</span>
 
 <span class="sd">    The function calculates the following matrix:</span>
 
@@ -726,35 +727,35 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_affine`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input angle type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input angle type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input scale type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input scale type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input center must be a Bx2 tensor. Got </span><span class="si">{</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input center must be a Bx2 tensor. Got </span><span class="si">{</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">angle</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input angle must be a B tensor. Got </span><span class="si">{</span><span class="n">angle</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input angle must be a B tensor. Got </span><span class="si">{</span><span class="n">angle</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input scale must be a Bx2 tensor. Got </span><span class="si">{</span><span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input scale must be a Bx2 tensor. Got </span><span class="si">{</span><span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">angle</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">"Inputs must have same batch size dimension. Got center </span><span class="si">{}</span><span class="s2">, angle </span><span class="si">{}</span><span class="s2"> and scale </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s2">&quot;Inputs must have same batch size dimension. Got center </span><span class="si">{}</span><span class="s2">, angle </span><span class="si">{}</span><span class="s2"> and scale </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">angle</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">shape</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">angle</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">scale</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">angle</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">scale</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">"Inputs must have same device Got center (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">), angle (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">) and scale (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s2">&quot;Inputs must have same device Got center (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">), angle (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">) and scale (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">center</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">center</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">angle</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">angle</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">scale</span><span class="o">.</span><span class="n">dtype</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -780,12 +781,12 @@
     <span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">map_x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">map_y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply a generic geometrical transformation to an image tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a generic geometrical transformation to an image tensor.</span>
 
 <span class="sd">    .. image:: _static/img/remap.png</span>
 
@@ -802,9 +803,9 @@
 <span class="sd">        map_y: the flow in the y-direction in pixel coordinates.</span>
 <span class="sd">          The tensor must be in the shape of (B, H, W).</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: mode for grid_generation.</span>
 <span class="sd">        normalized_coordinates: whether the input coordinates are</span>
 <span class="sd">           normalized in the range of [-1, 1].</span>
@@ -824,10 +825,10 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`kornia.utils.create_meshgrid`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">map_x</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">map_y</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">map_x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">map_y</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
 
     <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
 
@@ -846,7 +847,7 @@
 
 
 <div class="viewcode-block" id="invert_affine_transform"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.invert_affine_transform">[docs]</a><span class="k">def</span> <span class="nf">invert_affine_transform</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Invert an affine transformation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert an affine transformation.</span>
 
 <span class="sd">    The function computes an inverse affine transformation represented by</span>
 <span class="sd">    2×3 matrix:</span>
@@ -868,12 +869,12 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_affine`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input matrix type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input matrix type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input matrix must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input matrix must be a Bx2x3 tensor. Got </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">matrix_tmp</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">convert_affinematrix_to_homography</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="n">matrix_inv</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_torch_inverse_cast</span><span class="p">(</span><span class="n">matrix_tmp</span><span class="p">)</span>
@@ -889,7 +890,7 @@
     <span class="n">sx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">sy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compose affine matrix from the components.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compose affine matrix from the components.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        translations: tensor containing the translation vector with shape :math:`(B, 2)`.</span>
@@ -904,7 +905,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_affine`, :func:`warp_perspective`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">transform</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_rotation_matrix2d</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="o">-</span><span class="n">angle</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
     <span class="n">transform</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">translations</span>  <span class="c1"># tx/ty</span>
 
@@ -919,7 +920,7 @@
 
 
 <div class="viewcode-block" id="get_shear_matrix2d"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.get_shear_matrix2d">[docs]</a><span class="k">def</span> <span class="nf">get_shear_matrix2d</span><span class="p">(</span><span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">sx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compose shear matrix Bx4x4 from the components.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compose shear matrix Bx4x4 from the components.</span>
 
 <span class="sd">    Note: Ordered shearing, shear x-axis then y-axis.</span>
 
@@ -950,7 +951,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_affine`, :func:`warp_perspective`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">sx</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sx</span>
     <span class="n">sy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">sy</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sy</span>
 
@@ -980,7 +981,7 @@
     <span class="n">szx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">szy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compose 3d affine matrix from the components.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compose 3d affine matrix from the components.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        translations: tensor containing the translation vector (dx,dy,dz) with shape :math:`(B, 3)`.</span>
@@ -1001,7 +1002,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_perspective`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">transform</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_projective_transform</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="o">-</span><span class="n">angles</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
     <span class="n">transform</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+=</span> <span class="n">translations</span>  <span class="c1"># tx/ty/tz</span>
 
@@ -1023,7 +1024,7 @@
     <span class="n">szx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">szy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compose shear matrix Bx4x4 from the components.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compose shear matrix Bx4x4 from the components.</span>
 <span class="sd">    Note: Ordered shearing, shear x-axis then y-axis then z-axis.</span>
 
 <span class="sd">    .. math::</span>
@@ -1069,7 +1070,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_perspective3d`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sxy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">sxy</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sxy</span>
     <span class="n">sxz</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">sxz</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">sxz</span>
     <span class="n">syx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">syx</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">syx</span>
@@ -1123,11 +1124,11 @@
     <span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">flags</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply a projective transformation a to 3d tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a projective transformation a to 3d tensor.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">        This API signature it is experimental and might suffer some changes in the future.</span>
@@ -1137,9 +1138,9 @@
 <span class="sd">        M: projective transformation matrix of shape :math:`(B, 3, 4)`.</span>
 <span class="sd">        dsize: size of the output image (depth, height, width).</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners : mode for grid_generation.</span>
 
 <span class="sd">    Returns:</span>
@@ -1147,7 +1148,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`get_perspective_transform3d`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
@@ -1176,7 +1177,7 @@
 
 
 <div class="viewcode-block" id="projection_from_Rt"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.projection_from_Rt">[docs]</a><span class="k">def</span> <span class="nf">projection_from_Rt</span><span class="p">(</span><span class="n">rmat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tvec</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the projection matrix from Rotation and translation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the projection matrix from Rotation and translation.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">        This API signature it is experimental and might suffer some changes in the future.</span>
@@ -1189,7 +1190,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">       the projection matrix with shape :math:`(*, 3, 4)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rmat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">rmat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">rmat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tvec</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">tvec</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
@@ -1199,7 +1200,7 @@
 
 
 <div class="viewcode-block" id="get_projective_transform"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.get_projective_transform">[docs]</a><span class="k">def</span> <span class="nf">get_projective_transform</span><span class="p">(</span><span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">angles</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">scales</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Calculate the projection matrix for a 3D rotation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the projection matrix for a 3D rotation.</span>
 
 <span class="sd">    .. warning::</span>
 <span class="sd">        This API signature it is experimental and might suffer some changes in the future.</span>
@@ -1218,7 +1219,7 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_affine3d`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">center</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">angles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
@@ -1253,16 +1254,16 @@
 
 
 <div class="viewcode-block" id="get_perspective_transform3d"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.get_perspective_transform3d">[docs]</a><span class="k">def</span> <span class="nf">get_perspective_transform3d</span><span class="p">(</span><span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Calculate a 3d perspective transform from four pairs of the corresponding points.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate a 3d perspective transform from four pairs of the corresponding points.</span>
 
 <span class="sd">    The function calculates the matrix of a perspective transform so that:</span>
 
 <span class="sd">    .. math ::</span>
 
 <span class="sd">        \begin{bmatrix}</span>
-<span class="sd">        t_{i}x_{i}^{'} \\</span>
-<span class="sd">        t_{i}y_{i}^{'} \\</span>
-<span class="sd">        t_{i}z_{i}^{'} \\</span>
+<span class="sd">        t_{i}x_{i}^{&#39;} \\</span>
+<span class="sd">        t_{i}y_{i}^{&#39;} \\</span>
+<span class="sd">        t_{i}z_{i}^{&#39;} \\</span>
 <span class="sd">        t_{i} \\</span>
 <span class="sd">        \end{bmatrix}</span>
 <span class="sd">        =</span>
@@ -1277,7 +1278,7 @@
 <span class="sd">    where</span>
 
 <span class="sd">    .. math ::</span>
-<span class="sd">        dst(i) = (x_{i}^{'},y_{i}^{'},z_{i}^{'}), src(i) = (x_{i}, y_{i}, z_{i}), i = 0,1,2,5,7</span>
+<span class="sd">        dst(i) = (x_{i}^{&#39;},y_{i}^{&#39;},z_{i}^{&#39;}), src(i) = (x_{i}, y_{i}, z_{i}), i = 0,1,2,5,7</span>
 
 <span class="sd">    Concrete math is as below:</span>
 
@@ -1320,26 +1321,26 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`warp_perspective3d`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Inputs must be a Bx8x3 tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inputs must be a Bx8x3 tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Inputs must have the same shape. Got </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inputs must have the same shape. Got </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Inputs must have same batch size dimension. Expect </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inputs must have same batch size dimension. Expect </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">dst</span><span class="o">.</span><span class="n">device</span> <span class="ow">and</span> <span class="n">src</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dst</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">"Expect `src` and `dst` to be in the same device (Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">) "</span>
-            <span class="sa">f</span><span class="s2">"with the same dtype (Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="sa">f</span><span class="s2">&quot;Expect `src` and `dst` to be in the same device (Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">) &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;with the same dtype (Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">dst</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">).&quot;</span>
         <span class="p">)</span>
 
     <span class="c1"># we build matrix A by using only 4 point correspondence. The linear</span>
@@ -1349,9 +1350,9 @@
 
     <span class="c1"># 000, 100, 110, 101, 011</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]:</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">'x'</span><span class="p">))</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">'y'</span><span class="p">))</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">'z'</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">&#39;x&#39;</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">&#39;y&#39;</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_build_perspective_param3d</span><span class="p">(</span><span class="n">src</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">dst</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="s1">&#39;z&#39;</span><span class="p">))</span>
 
     <span class="c1"># A is Bx15x15</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1397,7 +1398,7 @@
     <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">p</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">zeros</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">p</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">'x'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">p</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span>
@@ -1419,7 +1420,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">'y'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">zeros</span><span class="p">,</span>
@@ -1441,7 +1442,7 @@
             <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">'z'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
             <span class="p">[</span>
                 <span class="n">zeros</span><span class="p">,</span>
@@ -1463,18 +1464,18 @@
             <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"perspective params for axis `</span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s2">` is not implemented."</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;perspective params for axis `</span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s2">` is not implemented.&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="warp_perspective3d"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.warp_perspective3d">[docs]</a><span class="k">def</span> <span class="nf">warp_perspective3d</span><span class="p">(</span>
     <span class="n">src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">flags</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">border_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">border_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply a perspective transformation to an image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a perspective transformation to an image.</span>
 
 <span class="sd">    The function warp_perspective transforms the source image using</span>
 <span class="sd">    the specified matrix:</span>
@@ -1490,9 +1491,9 @@
 <span class="sd">        M: transformation matrix with shape :math:`(B, 4, 4)`.</span>
 <span class="sd">        dsize: size of the output image (height, width).</span>
 <span class="sd">        flags: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        border_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -1500,18 +1501,18 @@
 
 <span class="sd">    .. note::</span>
 <span class="sd">        This function is often used in conjunction with :func:`get_perspective_transform3d`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">src</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input src must be a BxCxDxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input src must be a BxCxDxHxW tensor. Got </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input M must be a Bx4x4 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input M must be a Bx4x4 tensor. Got </span><span class="si">{</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># launches the warper</span>
     <span class="n">d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
@@ -1522,13 +1523,13 @@
     <span class="n">patch_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">src_homo_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">normalized_homography</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Warp image patches or tensors by normalized 2D homographies.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Warp image patches or tensors by normalized 2D homographies.</span>
 
 <span class="sd">    See :class:`~kornia.geometry.warp.HomographyWarper` for details.</span>
 
@@ -1538,8 +1539,8 @@
 <span class="sd">        dsize:</span>
 <span class="sd">          if homography normalized: The height and width of the image to warp.</span>
 <span class="sd">          if homography not normalized: size of the output image (height, width).</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
-<span class="sd">        padding_mode: padding mode for outside grid values ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
+<span class="sd">        padding_mode: padding mode for outside grid values ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 <span class="sd">        normalized_coordinates: Whether the homography assumes [-1, 1] normalized coordinates or not.</span>
 <span class="sd">        normalized_homography: show is homography normalized.</span>
@@ -1558,11 +1559,11 @@
 <span class="sd">        &gt;&gt;&gt; out = homography_warp(img, H, (4, 2), align_corners=True, normalized_homography=False)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 4, 4, 2])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">patch_src</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-            <span class="s2">"Patch and homography must be on the same device. </span><span class="se">\</span>
-<span class="s2">                         Got patch.device: </span><span class="si">{}</span><span class="s2"> src_H_dst.device: </span><span class="si">{}</span><span class="s2">."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s2">&quot;Patch and homography must be on the same device. </span><span class="se">\</span>
+<span class="s2">                         Got patch.device: </span><span class="si">{}</span><span class="s2"> src_H_dst.device: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">patch_src</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">device</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -1575,7 +1576,7 @@
 
         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">grid_sample</span><span class="p">(</span><span class="n">patch_src</span><span class="p">,</span> <span class="n">warped_grid</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">warp_perspective</span><span class="p">(</span>
-        <span class="n">patch_src</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="p">,</span> <span class="n">dsize</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span>
+        <span class="n">patch_src</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="p">,</span> <span class="n">dsize</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
 
@@ -1588,7 +1589,7 @@
     <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute the transform in normalized coordinates and perform the warping."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute the transform in normalized coordinates and perform the warping.&quot;&quot;&quot;</span>
     <span class="n">dst_norm_trans_src_norm</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">normalize_homography3d</span><span class="p">(</span><span class="n">dst_pix_trans_src_pix</span><span class="p">,</span> <span class="n">dsize_src</span><span class="p">,</span> <span class="n">dsize_dst</span><span class="p">)</span>
 
     <span class="n">src_norm_trans_dst_norm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">dst_norm_trans_src_norm</span><span class="p">)</span>
@@ -1599,20 +1600,20 @@
     <span class="n">patch_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">src_homo_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">dsize</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Warp image patches or tensors by normalized 3D homographies.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Warp image patches or tensors by normalized 3D homographies.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        patch_src: The image or tensor to warp. Should be from source of shape :math:`(N, C, D, H, W)`.</span>
 <span class="sd">        src_homo_dst: The homography or stack of homographies from destination to source of shape</span>
 <span class="sd">          :math:`(N, 4, 4)`.</span>
 <span class="sd">        dsize: The height and width of the image to warp.</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
-<span class="sd">        padding_mode: padding mode for outside grid values ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
+<span class="sd">        padding_mode: padding mode for outside grid values ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 <span class="sd">        normalized_coordinates: Whether the homography assumes [-1, 1] normalized coordinates or not.</span>
 
@@ -1623,11 +1624,11 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(1, 3, 32, 32)</span>
 <span class="sd">        &gt;&gt;&gt; homography = torch.eye(3).view(1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; output = homography_warp(input, homography, (32, 32))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">patch_src</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-            <span class="s2">"Patch and homography must be on the same device. </span><span class="se">\</span>
-<span class="s2">                         Got patch.device: </span><span class="si">{}</span><span class="s2"> src_H_dst.device: </span><span class="si">{}</span><span class="s2">."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="s2">&quot;Patch and homography must be on the same device. </span><span class="se">\</span>
+<span class="s2">                         Got patch.device: </span><span class="si">{}</span><span class="s2"> src_H_dst.device: </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">patch_src</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">src_homo_dst</span><span class="o">.</span><span class="n">device</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -1677,7 +1678,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

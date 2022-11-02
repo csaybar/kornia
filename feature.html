@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.filters" href="filters.html" /><link rel="prev" title="kornia.enhance" href="enhance.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/feature.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,23 +316,27 @@
         </div>
         <article role="main">
           <section id="kornia-feature">
-<h1>kornia.feature<a class="headerlink" href="#kornia-feature" title="Permalink to this headline">#</a></h1>
+<h1>kornia.feature<a class="headerlink" href="#kornia-feature" title="Permalink to this heading">#</a></h1>
 <section id="detectors">
-<h2>Detectors<a class="headerlink" href="#detectors" title="Permalink to this headline">#</a></h2>
+<h2>Detectors<a class="headerlink" href="#detectors" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.gftt_response">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">gftt_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#gftt_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.gftt_response" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the Shi-Tomasi cornerness function.</p>
 <p>Function does not do any normalization or nms. The response map is computed according the following formulation:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[R = min(eig(M))\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[R = min(eig(M))\]</div>
+</div>
 <p>where:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}M = \sum_{(x,y) \in W}
 \begin{bmatrix}
     I^{2}_x &amp; I_x I_y \\
     I_x I_y &amp; I^{2}_y \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -372,20 +378,25 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.harris_response">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">harris_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#harris_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.harris_response" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the Harris cornerness function.</p>
 <p>Function does not do any normalization or nms. The response map is computed according the following formulation:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[R = max(0, det(M) - k \cdot trace(M)^2)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[R = max(0, det(M) - k \cdot trace(M)^2)\]</div>
+</div>
 <p>where:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}M = \sum_{(x,y) \in W}
 \begin{bmatrix}
     I^{2}_x &amp; I_x I_y \\
     I_x I_y &amp; I^{2}_y \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>and <span class="math notranslate nohighlight">\(k\)</span> is an empirically determined constant
 <span class="math notranslate nohighlight">\(k ∈ [ 0.04 , 0.06 ]\)</span></p>
 <dl class="field-list simple">
@@ -432,20 +443,25 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.hessian_response">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">hessian_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#hessian_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.hessian_response" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the absolute of determinant of the Hessian matrix.</p>
 <p>Function does not do any normalization or nms. The response map is computed according the following formulation:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[R = det(H)\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[R = det(H)\]</div>
+</div>
 <p>where:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}M = \sum_{(x,y) \in W}
 \begin{bmatrix}
     I_{xx} &amp; I_{xy} \\
     I_{xy} &amp; I_{yy} \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -495,6 +511,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.dog_response">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">dog_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#dog_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.dog_response" title="Permalink to this definition">#</a></dt>
@@ -511,6 +528,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SOLD2_detector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOLD2_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2_detector.html#SOLD2_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2_detector" title="Permalink to this definition">#</a></dt>
@@ -534,7 +552,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sold2_detector</span> <span class="o">=</span> <span class="n">SOLD2_detector</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">line_segments</span> <span class="o">=</span> <span class="n">sold2_detector</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="s2">"line_segments"</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line_segments</span> <span class="o">=</span> <span class="n">sold2_detector</span><span class="p">(</span><span class="n">img</span><span class="p">)[</span><span class="s2">&quot;line_segments&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -557,10 +575,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="descriptors">
-<h2>Descriptors<a class="headerlink" href="#descriptors" title="Permalink to this headline">#</a></h2>
+<h2>Descriptors<a class="headerlink" href="#descriptors" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.DenseSIFTDescriptor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">DenseSIFTDescriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_ang_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_spatial_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_bin_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/siftdesc.html#DenseSIFTDescriptor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.DenseSIFTDescriptor" title="Permalink to this definition">#</a></dt>
@@ -605,6 +625,7 @@ padding: default 0</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SIFTDescriptor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SIFTDescriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">41</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_ang_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_spatial_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/siftdesc.html#SIFTDescriptor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SIFTDescriptor" title="Permalink to this definition">#</a></dt>
@@ -642,6 +663,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.MKDDescriptor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">MKDDescriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'concat'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whitening</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pcawt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">training_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'liberty'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/mkd.html#MKDDescriptor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.MKDDescriptor" title="Permalink to this definition">#</a></dt>
@@ -677,14 +699,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">128<
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mkd</span> <span class="o">=</span> <span class="n">MKDDescriptor</span><span class="p">(</span><span class="n">patch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
-<span class="gp">... </span>                    <span class="n">kernel_type</span><span class="o">=</span><span class="s1">'concat'</span><span class="p">,</span>
-<span class="gp">... </span>                    <span class="n">whitening</span><span class="o">=</span><span class="s1">'pcawt'</span><span class="p">,</span>
-<span class="gp">... </span>                    <span class="n">training_set</span><span class="o">=</span><span class="s1">'liberty'</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">kernel_type</span><span class="o">=</span><span class="s1">&#39;concat&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">whitening</span><span class="o">=</span><span class="s1">&#39;pcawt&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">training_set</span><span class="o">=</span><span class="s1">&#39;liberty&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                    <span class="n">output_dims</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">desc</span> <span class="o">=</span> <span class="n">mkd</span><span class="p">(</span><span class="n">patches</span><span class="p">)</span> <span class="c1"># 23x128</span>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.HardNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">HardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/hardnet.html#HardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.HardNet" title="Permalink to this definition">#</a></dt>
@@ -717,6 +740,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.HardNet8">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">HardNet8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/hardnet.html#HardNet8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.HardNet8" title="Permalink to this definition">#</a></dt>
@@ -749,6 +773,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.HyNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">HyNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_bias_FRN</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_desc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps_l2_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/hynet.html#HyNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.HyNet" title="Permalink to this definition">#</a></dt>
@@ -791,6 +816,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.TFeat">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">TFeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/tfeat.html#TFeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.TFeat" title="Permalink to this definition">#</a></dt>
@@ -824,6 +850,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SOSNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOSNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sosnet.html#SOSNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOSNet" title="Permalink to this definition">#</a></dt>
@@ -850,6 +877,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LAFDescriptor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LAFDescriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_descriptor_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grayscale_descriptor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#LAFDescriptor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LAFDescriptor" title="Permalink to this definition">#</a></dt>
@@ -888,7 +916,9 @@ detect function. Then affine shape and orientation.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SOLD2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOLD2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2.html#SOLD2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2" title="Permalink to this definition">#</a></dt>
@@ -914,10 +944,10 @@ as well as the list of detected line segments (ij coordinates convention).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">images</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sold2</span> <span class="o">=</span> <span class="n">SOLD2</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">outputs</span> <span class="o">=</span> <span class="n">sold2</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">line_seg1</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">"line_segments"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">line_seg2</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">"line_segments"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">desc1</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">"dense_desc"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">desc2</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">"dense_desc"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line_seg1</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;line_segments&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line_seg2</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;line_segments&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">desc1</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;dense_desc&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">desc2</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;dense_desc&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">matches</span> <span class="o">=</span> <span class="n">sold2</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line_seg1</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">,</span> <span class="n">desc1</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">desc2</span><span class="p">[</span><span class="kc">None</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -942,7 +972,9 @@ as well as the list of detected line segments (ij coordinates convention).</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.get_laf_descriptors">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">get_laf_descriptors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_descriptor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grayscale_descriptor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#get_laf_descriptors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.get_laf_descriptors" title="Permalink to this definition">#</a></dt>
@@ -968,9 +1000,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="matching">
-<h2>Matching<a class="headerlink" href="#matching" title="Permalink to this headline">#</a></h2>
+<h2>Matching<a class="headerlink" href="#matching" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_nn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_nn" title="Permalink to this definition">#</a></dt>
@@ -998,6 +1031,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_mnn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_mnn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_mnn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_mnn" title="Permalink to this definition">#</a></dt>
@@ -1026,6 +1060,7 @@ where 0 &lt;= B3 &lt;= min(B1, B2)</p></li>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_snn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_snn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_snn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_snn" title="Permalink to this definition">#</a></dt>
@@ -1057,6 +1092,7 @@ where 0 &lt;= B3 &lt;= B1.</p></li>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_smnn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_smnn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_smnn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_smnn" title="Permalink to this definition">#</a></dt>
@@ -1088,6 +1124,7 @@ shape of <span class="math notranslate nohighlight">\((B3, 2)\)</span> where 0 &
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_fginn">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_fginn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#match_fginn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_fginn" title="Permalink to this definition">#</a></dt>
@@ -1127,6 +1164,7 @@ where 0 &lt;= B3 &lt;= B1.</p></li>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.match_adalam">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">match_adalam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">desc1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hw2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/adalam/adalam.html#match_adalam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.match_adalam" title="Permalink to this definition">#</a></dt>
@@ -1160,6 +1198,7 @@ where 0 &lt;= B3 &lt;= B1.</p></li>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.DescriptorMatcher">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">DescriptorMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'snn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#DescriptorMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.DescriptorMatcher" title="Permalink to this definition">#</a></dt>
@@ -1206,7 +1245,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0.8<
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.GeometryAwareDescriptorMatcher">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">GeometryAwareDescriptorMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">match_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fginn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/matching.html#GeometryAwareDescriptorMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.GeometryAwareDescriptorMatcher" title="Permalink to this definition">#</a></dt>
@@ -1252,7 +1293,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'fgi
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LocalFeature">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LocalFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descriptor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#LocalFeature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LocalFeature" title="Permalink to this definition">#</a></dt>
@@ -1292,7 +1335,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SIFTFeature">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SIFTFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#SIFTFeature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SIFTFeature" title="Permalink to this definition">#</a></dt>
@@ -1323,7 +1368,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.GFTTAffNetHardNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">GFTTAffNetHardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#GFTTAffNetHardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.GFTTAffNetHardNet" title="Permalink to this definition">#</a></dt>
@@ -1353,7 +1400,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNetAffNetHardNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNetAffNetHardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_laf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#KeyNetAffNetHardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetAffNetHardNet" title="Permalink to this definition">#</a></dt>
@@ -1383,7 +1432,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNetHardNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNetHardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_laf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#KeyNetHardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetHardNet" title="Permalink to this definition">#</a></dt>
@@ -1413,7 +1464,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LocalFeatureMatcher">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LocalFeatureMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_feature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matcher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#LocalFeatureMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LocalFeatureMatcher" title="Permalink to this definition">#</a></dt>
@@ -1435,9 +1488,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"image0"</span><span class="p">:</span> <span class="n">img1</span><span class="p">,</span> <span class="s2">"image1"</span><span class="p">:</span> <span class="n">img2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;image0&quot;</span><span class="p">:</span> <span class="n">img1</span><span class="p">,</span> <span class="s2">&quot;image1&quot;</span><span class="p">:</span> <span class="n">img2</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gftt_hardnet_matcher</span> <span class="o">=</span> <span class="n">LocalFeatureMatcher</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">GFTTAffNetHardNet</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">kornia</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">DescriptorMatcher</span><span class="p">(</span><span class="s1">'snn'</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">GFTTAffNetHardNet</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">kornia</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">DescriptorMatcher</span><span class="p">(</span><span class="s1">&#39;snn&#39;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">gftt_hardnet_matcher</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </pre></div>
@@ -1473,7 +1526,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LoFTR">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LoFTR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'outdoor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">default_cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/loftr/loftr.html#LoFTR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LoFTR" title="Permalink to this definition">#</a></dt>
@@ -1499,8 +1554,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'out
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"image0"</span><span class="p">:</span> <span class="n">img1</span><span class="p">,</span> <span class="s2">"image1"</span><span class="p">:</span> <span class="n">img2</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">loftr</span> <span class="o">=</span> <span class="n">LoFTR</span><span class="p">(</span><span class="s1">'outdoor'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;image0&quot;</span><span class="p">:</span> <span class="n">img1</span><span class="p">,</span> <span class="s2">&quot;image1&quot;</span><span class="p">:</span> <span class="n">img2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loftr</span> <span class="o">=</span> <span class="n">LoFTR</span><span class="p">(</span><span class="s1">&#39;outdoor&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">loftr</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1533,10 +1588,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'out
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="local-affine-frames-laf">
-<h2>Local Affine Frames (LAF)<a class="headerlink" href="#local-affine-frames-laf" title="Permalink to this headline">#</a></h2>
+<h2>Local Affine Frames (LAF)<a class="headerlink" href="#local-affine-frames-laf" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.extract_patches_from_pyramid">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">extract_patches_from_pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_lafs_before_extraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#extract_patches_from_pyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.extract_patches_from_pyramid" title="Permalink to this definition">#</a></dt>
@@ -1561,6 +1618,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.extract_patches_simple">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">extract_patches_simple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_lafs_before_extraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#extract_patches_simple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.extract_patches_simple" title="Permalink to this definition">#</a></dt>
@@ -1585,6 +1643,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.normalize_laf">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">normalize_laf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#normalize_laf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.normalize_laf" title="Permalink to this definition">#</a></dt>
@@ -1620,6 +1679,7 @@ becomes:
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.denormalize_laf">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">denormalize_laf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#denormalize_laf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.denormalize_laf" title="Permalink to this definition">#</a></dt>
@@ -1655,6 +1715,7 @@ becomes
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.laf_to_boundary_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">laf_to_boundary_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_pts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#laf_to_boundary_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.laf_to_boundary_points" title="Permalink to this definition">#</a></dt>
@@ -1683,6 +1744,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">50</
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.ellipse_to_laf">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">ellipse_to_laf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ells</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#ellipse_to_laf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.ellipse_to_laf" title="Permalink to this definition">#</a></dt>
@@ -1714,6 +1776,7 @@ by inverse matrix square root: A = invsqrt([a b; b c]).</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.make_upright">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">make_upright</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#make_upright"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.make_upright" title="Permalink to this definition">#</a></dt>
@@ -1746,6 +1809,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.scale_laf">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">scale_laf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_coef</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#scale_laf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.scale_laf" title="Permalink to this definition">#</a></dt>
@@ -1780,6 +1844,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.get_laf_scale">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">get_laf_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#get_laf_scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.get_laf_scale" title="Permalink to this definition">#</a></dt>
@@ -1808,6 +1873,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.get_laf_center">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">get_laf_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#get_laf_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.get_laf_center" title="Permalink to this definition">#</a></dt>
@@ -1836,6 +1902,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.get_laf_orientation">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">get_laf_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">LAF</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#get_laf_orientation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.get_laf_orientation" title="Permalink to this definition">#</a></dt>
@@ -1864,6 +1931,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.laf_from_center_scale_ori">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">laf_from_center_scale_ori</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#laf_from_center_scale_ori"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.laf_from_center_scale_ori" title="Permalink to this definition">#</a></dt>
@@ -1886,6 +1954,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.laf_is_inside_image">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">laf_is_inside_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#laf_is_inside_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.laf_is_inside_image" title="Permalink to this definition">#</a></dt>
@@ -1908,6 +1977,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.laf_to_three_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">laf_to_three_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#laf_to_three_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.laf_to_three_points" title="Permalink to this definition">#</a></dt>
@@ -1922,6 +1992,7 @@ LAF-y unit vector.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.laf_from_three_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">laf_from_three_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threepts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#laf_from_three_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.laf_from_three_points" title="Permalink to this definition">#</a></dt>
@@ -1936,6 +2007,7 @@ LAF-y unit vector.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.KORNIA_CHECK_LAF">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KORNIA_CHECK_LAF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">laf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/testing.html#KORNIA_CHECK_LAF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KORNIA_CHECK_LAF" title="Permalink to this definition">#</a></dt>
@@ -1959,6 +2031,7 @@ LAF-y unit vector.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.feature.perspective_transform_lafs">
 <span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">perspective_transform_lafs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lafs_1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/laf.html#perspective_transform_lafs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.perspective_transform_lafs" title="Permalink to this definition">#</a></dt>
@@ -2012,33 +2085,38 @@ LAF-y unit vector.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">#</a></h2>
+<h2>Module<a class="headerlink" href="#module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.BlobHessian">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">BlobHessian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#BlobHessian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.BlobHessian" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates Hessian blobs.</p>
 <p>See <a class="reference internal" href="#kornia.feature.hessian_response" title="kornia.feature.hessian_response"><code class="xref py py-func docutils literal notranslate"><span class="pre">hessian_response()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.CornerGFTT">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">CornerGFTT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#CornerGFTT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.CornerGFTT" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates Shi-Tomasi corners.</p>
 <p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">gfft_response()</span></code> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.CornerHarris">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">CornerHarris</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grads_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#CornerHarris"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.CornerHarris" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates Harris corners.</p>
 <p>See <a class="reference internal" href="#kornia.feature.harris_response" title="kornia.feature.harris_response"><code class="xref py py-func docutils literal notranslate"><span class="pre">harris_response()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.BlobDoG">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">BlobDoG</span></span><a class="reference internal" href="_modules/kornia/feature/responses.html#BlobDoG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.BlobDoG" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates Difference-of-Gaussians blobs.</p>
 <p>See <a class="reference internal" href="#kornia.feature.dog_response" title="kornia.feature.dog_response"><code class="xref py py-func docutils literal notranslate"><span class="pre">dog_response()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keynet_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">keynet_config['KeyNet_default_config']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNet" title="Permalink to this definition">#</a></dt>
@@ -2066,13 +2144,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">keyn
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.FilterResponseNorm2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">FilterResponseNorm2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_eps_leanable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/hynet.html#FilterResponseNorm2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.FilterResponseNorm2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Feature Response Normalization layer from ‘Filter Response Normalization Layer: Eliminating Batch Dependence
 in the Training of Deep Neural Networks’, see <span id="id14">[<a class="reference internal" href="community/bibliography.html#id8" title="Saurabh Singh and Shankar Krishnan. Filter response normalization layer: eliminating batch dependence in the training of deep neural networks. In CVPR. 2020.">SK20</a>]</span> for more details.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[y =  \gamma \times \frac{x}{\sqrt{\mathrm{E}[x^2]} + |\epsilon|} + \beta\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[y =  \gamma \times \frac{x}{\sqrt{\mathrm{E}[x^2]} + |\epsilon|} + \beta\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2103,13 +2184,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.TLU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">TLU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/hynet.html#TLU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.TLU" title="Permalink to this definition">#</a></dt>
 <dd><p>TLU layer from ‘Filter Response Normalization Layer: Eliminating Batch Dependence in the Training of Deep
 Neural Networks, see <span id="id15">[<a class="reference internal" href="community/bibliography.html#id8" title="Saurabh Singh and Shankar Krishnan. Filter response normalization layer: eliminating batch dependence in the training of deep neural networks. In CVPR. 2020.">SK20</a>]</span> for more details. <span class="math notranslate nohighlight">\({\tau}\)</span> is learnable per channel.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[y = \max(x, {\tau})\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[y = \max(x, {\tau})\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>num_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – number of channels</p>
@@ -2126,6 +2210,7 @@ Neural Networks, see <span id="id15">[<a class="reference internal" href="commun
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.ScaleSpaceDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">ScaleSpaceDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mr_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_pyr_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ScalePyramid(3,</span> <span class="pre">1.6,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resp_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BlobHessian()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nms_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ConvSoftArgmax3d((3,</span> <span class="pre">3,</span> <span class="pre">3),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">normalized_coordinates=False,</span> <span class="pre">output_value=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minima_are_also_good</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_space_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/scale_space_detector.html#ScaleSpaceDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.ScaleSpaceDetector" title="Permalink to this definition">#</a></dt>
@@ -2185,7 +2270,9 @@ responses: shape [BxNx1]. Response function values for corresponding lafs</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNetDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNetDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keynet_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">keynet_config['KeyNet_default_config']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNetDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetDetector" title="Permalink to this definition">#</a></dt>
@@ -2236,7 +2323,9 @@ responses: shape [1xNx1]. Response function values for corresponding lafs</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.PassLAF">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">PassLAF</span></span><a class="reference internal" href="_modules/kornia/feature/orientation.html#PassLAF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PassLAF" title="Permalink to this definition">#</a></dt>
@@ -2259,7 +2348,9 @@ responses: shape [1xNx1]. Response function values for corresponding lafs</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.PatchAffineShapeEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">PatchAffineShapeEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/affine_shape.html#PatchAffineShapeEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PatchAffineShapeEstimator" title="Permalink to this definition">#</a></dt>
@@ -2290,7 +2381,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LAFAffineShapeEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LAFAffineShapeEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine_shape_detector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/affine_shape.html#LAFAffineShapeEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LAFAffineShapeEstimator" title="Permalink to this definition">#</a></dt>
@@ -2328,7 +2421,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LAFOrienter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LAFOrienter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_angular_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_detector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/orientation.html#LAFOrienter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LAFOrienter" title="Permalink to this definition">#</a></dt>
@@ -2364,7 +2459,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.PatchDominantGradientOrientation">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">PatchDominantGradientOrientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_angular_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/orientation.html#PatchDominantGradientOrientation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PatchDominantGradientOrientation" title="Permalink to this definition">#</a></dt>
@@ -2397,7 +2494,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.OriNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">OriNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/orientation.html#OriNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.OriNet" title="Permalink to this definition">#</a></dt>
@@ -2446,7 +2545,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.LAFAffNetShapeEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">LAFAffNetShapeEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/affine_shape.html#LAFAffNetShapeEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.LAFAffNetShapeEstimator" title="Permalink to this definition">#</a></dt>
@@ -2480,7 +2581,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.DeFMO">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">DeFMO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/defmo.html#DeFMO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.DeFMO" title="Permalink to this definition">#</a></dt>
@@ -2529,7 +2632,9 @@ registered hooks while the latter silently ignores them.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 </section>
 
@@ -2545,10 +2650,10 @@ registered hooks while the latter silently ignores them.</p>
                 </div>
                 <div class="title">kornia.filters</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="enhance.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -2584,18 +2689,159 @@ registered hooks while the latter silently ignores them.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.feature</a><ul>
-<li><a class="reference internal" href="#detectors">Detectors</a></li>
-<li><a class="reference internal" href="#descriptors">Descriptors</a></li>
-<li><a class="reference internal" href="#matching">Matching</a></li>
-<li><a class="reference internal" href="#local-affine-frames-laf">Local Affine Frames (LAF)</a></li>
-<li><a class="reference internal" href="#module">Module</a></li>
+<li><a class="reference internal" href="#detectors">Detectors</a><ul>
+<li><a class="reference internal" href="#kornia.feature.gftt_response"><code class="docutils literal notranslate"><span class="pre">gftt_response()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.harris_response"><code class="docutils literal notranslate"><span class="pre">harris_response()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.hessian_response"><code class="docutils literal notranslate"><span class="pre">hessian_response()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.dog_response"><code class="docutils literal notranslate"><span class="pre">dog_response()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.SOLD2_detector"><code class="docutils literal notranslate"><span class="pre">SOLD2_detector</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.SOLD2_detector.forward"><code class="docutils literal notranslate"><span class="pre">SOLD2_detector.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#descriptors">Descriptors</a><ul>
+<li><a class="reference internal" href="#kornia.feature.DenseSIFTDescriptor"><code class="docutils literal notranslate"><span class="pre">DenseSIFTDescriptor</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.SIFTDescriptor"><code class="docutils literal notranslate"><span class="pre">SIFTDescriptor</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.MKDDescriptor"><code class="docutils literal notranslate"><span class="pre">MKDDescriptor</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.HardNet"><code class="docutils literal notranslate"><span class="pre">HardNet</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.HardNet8"><code class="docutils literal notranslate"><span class="pre">HardNet8</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.HyNet"><code class="docutils literal notranslate"><span class="pre">HyNet</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.TFeat"><code class="docutils literal notranslate"><span class="pre">TFeat</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.SOSNet"><code class="docutils literal notranslate"><span class="pre">SOSNet</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.LAFDescriptor"><code class="docutils literal notranslate"><span class="pre">LAFDescriptor</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LAFDescriptor.forward"><code class="docutils literal notranslate"><span class="pre">LAFDescriptor.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.SOLD2"><code class="docutils literal notranslate"><span class="pre">SOLD2</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.SOLD2.forward"><code class="docutils literal notranslate"><span class="pre">SOLD2.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.get_laf_descriptors"><code class="docutils literal notranslate"><span class="pre">get_laf_descriptors()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#matching">Matching</a><ul>
+<li><a class="reference internal" href="#kornia.feature.match_nn"><code class="docutils literal notranslate"><span class="pre">match_nn()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.match_mnn"><code class="docutils literal notranslate"><span class="pre">match_mnn()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.match_snn"><code class="docutils literal notranslate"><span class="pre">match_snn()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.match_smnn"><code class="docutils literal notranslate"><span class="pre">match_smnn()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.match_fginn"><code class="docutils literal notranslate"><span class="pre">match_fginn()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.match_adalam"><code class="docutils literal notranslate"><span class="pre">match_adalam()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.DescriptorMatcher"><code class="docutils literal notranslate"><span class="pre">DescriptorMatcher</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.DescriptorMatcher.forward"><code class="docutils literal notranslate"><span class="pre">DescriptorMatcher.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.GeometryAwareDescriptorMatcher"><code class="docutils literal notranslate"><span class="pre">GeometryAwareDescriptorMatcher</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.GeometryAwareDescriptorMatcher.forward"><code class="docutils literal notranslate"><span class="pre">GeometryAwareDescriptorMatcher.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LocalFeature"><code class="docutils literal notranslate"><span class="pre">LocalFeature</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LocalFeature.forward"><code class="docutils literal notranslate"><span class="pre">LocalFeature.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.SIFTFeature"><code class="docutils literal notranslate"><span class="pre">SIFTFeature</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.SIFTFeature.forward"><code class="docutils literal notranslate"><span class="pre">SIFTFeature.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet"><code class="docutils literal notranslate"><span class="pre">GFTTAffNetHardNet</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet.forward"><code class="docutils literal notranslate"><span class="pre">GFTTAffNetHardNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.KeyNetAffNetHardNet"><code class="docutils literal notranslate"><span class="pre">KeyNetAffNetHardNet</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.KeyNetAffNetHardNet.forward"><code class="docutils literal notranslate"><span class="pre">KeyNetAffNetHardNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.KeyNetHardNet"><code class="docutils literal notranslate"><span class="pre">KeyNetHardNet</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.KeyNetHardNet.forward"><code class="docutils literal notranslate"><span class="pre">KeyNetHardNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LocalFeatureMatcher"><code class="docutils literal notranslate"><span class="pre">LocalFeatureMatcher</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LocalFeatureMatcher.forward"><code class="docutils literal notranslate"><span class="pre">LocalFeatureMatcher.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LoFTR"><code class="docutils literal notranslate"><span class="pre">LoFTR</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LoFTR.forward"><code class="docutils literal notranslate"><span class="pre">LoFTR.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#local-affine-frames-laf">Local Affine Frames (LAF)</a><ul>
+<li><a class="reference internal" href="#kornia.feature.extract_patches_from_pyramid"><code class="docutils literal notranslate"><span class="pre">extract_patches_from_pyramid()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.extract_patches_simple"><code class="docutils literal notranslate"><span class="pre">extract_patches_simple()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.normalize_laf"><code class="docutils literal notranslate"><span class="pre">normalize_laf()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.denormalize_laf"><code class="docutils literal notranslate"><span class="pre">denormalize_laf()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.laf_to_boundary_points"><code class="docutils literal notranslate"><span class="pre">laf_to_boundary_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.ellipse_to_laf"><code class="docutils literal notranslate"><span class="pre">ellipse_to_laf()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.make_upright"><code class="docutils literal notranslate"><span class="pre">make_upright()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.scale_laf"><code class="docutils literal notranslate"><span class="pre">scale_laf()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.get_laf_scale"><code class="docutils literal notranslate"><span class="pre">get_laf_scale()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.get_laf_center"><code class="docutils literal notranslate"><span class="pre">get_laf_center()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.get_laf_orientation"><code class="docutils literal notranslate"><span class="pre">get_laf_orientation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.laf_from_center_scale_ori"><code class="docutils literal notranslate"><span class="pre">laf_from_center_scale_ori()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.laf_is_inside_image"><code class="docutils literal notranslate"><span class="pre">laf_is_inside_image()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.laf_to_three_points"><code class="docutils literal notranslate"><span class="pre">laf_to_three_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.laf_from_three_points"><code class="docutils literal notranslate"><span class="pre">laf_from_three_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.KORNIA_CHECK_LAF"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_LAF()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.perspective_transform_lafs"><code class="docutils literal notranslate"><span class="pre">perspective_transform_lafs()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module">Module</a><ul>
+<li><a class="reference internal" href="#kornia.feature.BlobHessian"><code class="docutils literal notranslate"><span class="pre">BlobHessian</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.CornerGFTT"><code class="docutils literal notranslate"><span class="pre">CornerGFTT</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.CornerHarris"><code class="docutils literal notranslate"><span class="pre">CornerHarris</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.BlobDoG"><code class="docutils literal notranslate"><span class="pre">BlobDoG</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.KeyNet"><code class="docutils literal notranslate"><span class="pre">KeyNet</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.FilterResponseNorm2d"><code class="docutils literal notranslate"><span class="pre">FilterResponseNorm2d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.TLU"><code class="docutils literal notranslate"><span class="pre">TLU</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.ScaleSpaceDetector"><code class="docutils literal notranslate"><span class="pre">ScaleSpaceDetector</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.ScaleSpaceDetector.forward"><code class="docutils literal notranslate"><span class="pre">ScaleSpaceDetector.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.KeyNetDetector"><code class="docutils literal notranslate"><span class="pre">KeyNetDetector</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.KeyNetDetector.forward"><code class="docutils literal notranslate"><span class="pre">KeyNetDetector.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.PassLAF"><code class="docutils literal notranslate"><span class="pre">PassLAF</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.PassLAF.forward"><code class="docutils literal notranslate"><span class="pre">PassLAF.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.PatchAffineShapeEstimator"><code class="docutils literal notranslate"><span class="pre">PatchAffineShapeEstimator</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.PatchAffineShapeEstimator.forward"><code class="docutils literal notranslate"><span class="pre">PatchAffineShapeEstimator.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator"><code class="docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator.forward"><code class="docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LAFOrienter"><code class="docutils literal notranslate"><span class="pre">LAFOrienter</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LAFOrienter.forward"><code class="docutils literal notranslate"><span class="pre">LAFOrienter.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.PatchDominantGradientOrientation"><code class="docutils literal notranslate"><span class="pre">PatchDominantGradientOrientation</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.PatchDominantGradientOrientation.forward"><code class="docutils literal notranslate"><span class="pre">PatchDominantGradientOrientation.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.OriNet"><code class="docutils literal notranslate"><span class="pre">OriNet</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.OriNet.forward"><code class="docutils literal notranslate"><span class="pre">OriNet.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.LAFAffNetShapeEstimator"><code class="docutils literal notranslate"><span class="pre">LAFAffNetShapeEstimator</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.LAFAffNetShapeEstimator.forward"><code class="docutils literal notranslate"><span class="pre">LAFAffNetShapeEstimator.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.feature.DeFMO"><code class="docutils literal notranslate"><span class="pre">DeFMO</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.DeFMO.forward"><code class="docutils literal notranslate"><span class="pre">DeFMO.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2611,7 +2857,9 @@ registered hooks while the latter silently ignores them.</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry" href="geometry.html" /><link rel="prev" title="kornia.feature" href="feature.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/filters.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.filters - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,15 +316,15 @@
         </div>
         <article role="main">
           <section id="kornia-filters">
-<h1>kornia.filters<a class="headerlink" href="#kornia-filters" title="Permalink to this headline">#</a></h1>
+<h1>kornia.filters<a class="headerlink" href="#kornia-filters" title="Permalink to this heading">#</a></h1>
 <p>The functions in this sections perform various image filtering operations.</p>
 <section id="blurring">
-<h2>Blurring<a class="headerlink" href="#blurring" title="Permalink to this headline">#</a></h2>
+<h2>Blurring<a class="headerlink" href="#blurring" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.blur_pool2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">blur_pool2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#blur_pool2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.blur_pool2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute blurs and downsample a given feature map.</p>
-<img alt="_images/blur_pool2d.png" src="_images/blur_pool2d.png"/>
+<img alt="_images/blur_pool2d.png" src="_images/blur_pool2d.png" />
 <p>See <a class="reference internal" href="#kornia.filters.BlurPool2D" title="kornia.filters.BlurPool2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlurPool2D</span></code></a> for details.</p>
 <p>See <span id="id1">[<a class="reference internal" href="community/bibliography.html#id4" title="Richard Zhang. Making convolutional networks shift-invariant again. In ICML. 2019.">Zha19</a>]</span> for more details.</p>
 <dl class="field-list simple">
@@ -337,12 +339,16 @@
 <dt>Shape:</dt><dd><ul>
 <li><p>Input: <span class="math notranslate nohighlight">\((B, C, H, W)\)</span></p></li>
 <li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>, where</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{kernel\_size//2}[0] -
-  \text{kernel\_size}[0]}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+  \text{kernel\_size}[0]}{\text{stride}[0]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{kernel\_size//2}[1] -
-  \text{kernel\_size}[1]}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
+  \text{kernel\_size}[1]}{\text{stride}[1]} + 1\right\rfloor\]</div>
+</div>
 </li>
 </ul>
 </dd>
@@ -369,20 +375,23 @@
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.box_blur">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">box_blur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur.html#box_blur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.box_blur" title="Permalink to this definition">#</a></dt>
 <dd><p>Blur an image using the box filter.</p>
-<img alt="_images/box_blur.png" src="_images/box_blur.png"/>
+<img alt="_images/box_blur.png" src="_images/box_blur.png" />
 <p>The function smooths an image using the kernel:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}K = \frac{1}{\text{kernel_size}_x * \text{kernel_size}_y}
 \begin{bmatrix}
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -414,11 +423,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.gaussian_blur2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">gaussian_blur2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/gaussian.html#gaussian_blur2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.gaussian_blur2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Create an operator that blurs a tensor using a Gaussian filter.</p>
-<img alt="_images/gaussian_blur2d.png" src="_images/gaussian_blur2d.png"/>
+<img alt="_images/gaussian_blur2d.png" src="_images/gaussian_blur2d.png" />
 <p>The operator smooths the given tensor with a gaussian kernel by convolving
 it to each channel. It supports batched operation.</p>
 <dl class="field-list simple">
@@ -453,11 +463,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.max_blur_pool2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">max_blur_pool2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#max_blur_pool2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.max_blur_pool2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute pools and blurs and downsample a given feature map.</p>
-<img alt="_images/max_blur_pool2d.png" src="_images/max_blur_pool2d.png"/>
+<img alt="_images/max_blur_pool2d.png" src="_images/max_blur_pool2d.png" />
 <p>See <a class="reference internal" href="#kornia.filters.MaxBlurPool2D" title="kornia.filters.MaxBlurPool2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaxBlurPool2D</span></code></a> for details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -493,11 +504,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.median_blur">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">median_blur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/median.html#median_blur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.median_blur" title="Permalink to this definition">#</a></dt>
 <dd><p>Blur an image using the median filter.</p>
-<img alt="_images/median_blur.png" src="_images/median_blur.png"/>
+<img alt="_images/median_blur.png" src="_images/median_blur.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -524,11 +536,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.motion_blur">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">motion_blur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nearest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/motion.html#motion_blur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.motion_blur" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform motion blur on tensor images.</p>
-<img alt="_images/motion_blur.png" src="_images/motion_blur.png"/>
+<img alt="_images/motion_blur.png" src="_images/motion_blur.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -567,11 +580,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'nea
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.unsharp_mask">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">unsharp_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/unsharp.html#unsharp_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.unsharp_mask" title="Permalink to this definition">#</a></dt>
 <dd><p>Create an operator that sharpens a tensor by applying operation out = 2 * image - gaussian_blur2d(image).</p>
-<img alt="_images/unsharp_mask.png" src="_images/unsharp_mask.png"/>
+<img alt="_images/unsharp_mask.png" src="_images/unsharp_mask.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -599,18 +613,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
 </pre></div>
 </div>
 </dd></dl>
+
 <section id="interactive-demo">
-<h3>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h3>
+<h3>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h3>
 <gradio-app space="kornia/kornia-image-filtering"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/kornia-image-filtering">Hugging Face Spaces</a>.</p>
 </section>
 </section>
 <section id="edge-detection">
-<h2>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this headline">#</a></h2>
+<h2>Edge detection<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.canny">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">canny</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5,</span> <span class="pre">5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hysteresis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/canny.html#canny"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.canny" title="Permalink to this definition">#</a></dt>
 <dd><p>Find edges of the input image and filters them using the Canny algorithm.</p>
-<img alt="_images/canny.png" src="_images/canny.png"/>
+<img alt="_images/canny.png" src="_images/canny.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -655,11 +670,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.laplacian">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/laplacian.html#laplacian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.laplacian" title="Permalink to this definition">#</a></dt>
 <dd><p>Create an operator that returns a tensor using a Laplacian filter.</p>
-<img alt="_images/laplacian.png" src="_images/laplacian.png"/>
+<img alt="_images/laplacian.png" src="_images/laplacian.png" />
 <p>The operator smooths the given tensor with a laplacian kernel by convolving
 it to each channel. It supports batched operation.</p>
 <dl class="field-list simple">
@@ -694,11 +710,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.sobel">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">sobel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#sobel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.sobel" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the Sobel operator and returns the magnitude per channel.</p>
-<img alt="_images/sobel.png" src="_images/sobel.png"/>
+<img alt="_images/sobel.png" src="_images/sobel.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -728,11 +745,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.spatial_gradient">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">spatial_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#spatial_gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.spatial_gradient" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the first order image derivative in both x and y using a Sobel operator.</p>
-<img alt="_images/spatial_gradient.png" src="_images/spatial_gradient.png"/>
+<img alt="_images/spatial_gradient.png" src="_images/spatial_gradient.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -764,6 +782,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.spatial_gradient3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">spatial_gradient3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#spatial_gradient3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.spatial_gradient3d" title="Permalink to this definition">#</a></dt>
@@ -794,6 +813,7 @@ or <span class="math notranslate nohighlight">\((B, C, 6, D, H, W)\)</span>.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.Laplacian">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">Laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/laplacian.html#Laplacian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.Laplacian" title="Permalink to this definition">#</a></dt>
@@ -829,6 +849,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.Sobel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">Sobel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#Sobel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.Sobel" title="Permalink to this definition">#</a></dt>
@@ -859,6 +880,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.Canny">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">Canny</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(5,</span> <span class="pre">5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hysteresis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/canny.html#Canny"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.Canny" title="Permalink to this definition">#</a></dt>
@@ -900,6 +922,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.SpatialGradient">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">SpatialGradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sobel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#SpatialGradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.SpatialGradient" title="Permalink to this definition">#</a></dt>
@@ -932,6 +955,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.SpatialGradient3d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">SpatialGradient3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/sobel.html#SpatialGradient3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.SpatialGradient3d" title="Permalink to this definition">#</a></dt>
@@ -964,6 +988,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1</s
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.DexiNed">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">DexiNed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/dexined.html#DexiNed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.DexiNed" title="Permalink to this definition">#</a></dt>
@@ -983,13 +1008,14 @@ is the edges map with shape <span class="math notranslate nohighlight">\((B,1,H,
 </pre></div>
 </div>
 </dd></dl>
+
 <section id="id3">
-<h3>Interactive Demo<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3>Interactive Demo<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <gradio-app space="kornia/edge_detector"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/edge_detector">Hugging Face Spaces</a>.</p>
 </section>
 </section>
 <section id="filtering-api">
-<h2>Filtering API<a class="headerlink" href="#filtering-api" title="Permalink to this headline">#</a></h2>
+<h2>Filtering API<a class="headerlink" href="#filtering-api" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.filter2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">filter2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/filter.html#filter2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.filter2d" title="Permalink to this definition">#</a></dt>
@@ -1032,7 +1058,7 @@ as the input with shape <span class="math notranslate nohighlight">\((B, C, H, W
 <span class="gp">... </span>   <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
 <span class="gp">... </span>   <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
 <span class="go">tensor([[[[0., 0., 0., 0., 0.],</span>
 <span class="go">          [0., 5., 5., 5., 0.],</span>
 <span class="go">          [0., 5., 5., 5., 0.],</span>
@@ -1041,6 +1067,7 @@ as the input with shape <span class="math notranslate nohighlight">\((B, C, H, W
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.filter2d_separable">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">filter2d_separable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/filter.html#filter2d_separable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.filter2d_separable" title="Permalink to this definition">#</a></dt>
@@ -1087,7 +1114,7 @@ as the input with shape <span class="math notranslate nohighlight">\((B, C, H, W
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter2d_separable</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">'same'</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filter2d_separable</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
 <span class="go">tensor([[[[0., 0., 0., 0., 0.],</span>
 <span class="go">          [0., 5., 5., 5., 0.],</span>
 <span class="go">          [0., 5., 5., 5., 0.],</span>
@@ -1096,6 +1123,7 @@ as the input with shape <span class="math notranslate nohighlight">\((B, C, H, W
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.filter3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">filter3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'replicate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/filter.html#filter3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.filter3d" title="Permalink to this definition">#</a></dt>
@@ -1167,9 +1195,10 @@ as the input with shape <span class="math notranslate nohighlight">\((B, C, D, H
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="kernels">
-<h2>Kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">#</a></h2>
+<h2>Kernels<a class="headerlink" href="#kernels" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_gaussian_kernel1d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_gaussian_kernel1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_gaussian_kernel1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_gaussian_kernel1d" title="Permalink to this definition">#</a></dt>
@@ -1206,6 +1235,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_gaussian_erf_kernel1d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_gaussian_erf_kernel1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_gaussian_erf_kernel1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_gaussian_erf_kernel1d" title="Permalink to this definition">#</a></dt>
@@ -1243,6 +1273,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_gaussian_discrete_kernel1d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_gaussian_discrete_kernel1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_gaussian_discrete_kernel1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_gaussian_discrete_kernel1d" title="Permalink to this definition">#</a></dt>
@@ -1280,6 +1311,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_gaussian_kernel2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_gaussian_kernel2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_gaussian_kernel2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_gaussian_kernel2d" title="Permalink to this definition">#</a></dt>
@@ -1320,13 +1352,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_hanning_kernel1d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_hanning_kernel1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_hanning_kernel1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_hanning_kernel1d" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns Hanning (also known as Hann) kernel, used in signal processing and KCF tracker.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}w(n) = 0.5 - 0.5cos\\left(\\frac{2\\pi{n}}{M-1}\\right)
-\\qquad 0 \\leq n \\leq M-1\end{split}\]</div></div>
+\\qquad 0 \\leq n \\leq M-1\end{split}\]</div>
+</div>
 <p>See further in numpy docs <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.hanning.html">https://numpy.org/doc/stable/reference/generated/numpy.hanning.html</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1337,8 +1372,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><dl>
-<dt>1D tensor with Hanning filter coefficients.</dt><dd><div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}w(n) = 0.5 - 0.5cos\\left(\\frac{2\\pi{n}}{M-1}\\right)\end{split}\]</div></div>
+<dt>1D tensor with Hanning filter coefficients.</dt><dd><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}w(n) = 0.5 - 0.5cos\\left(\\frac{2\\pi{n}}{M-1}\\right)\end{split}\]</div>
+</div>
 </dd>
 </dl>
 </p>
@@ -1356,6 +1393,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_hanning_kernel2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_hanning_kernel2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_hanning_kernel2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_hanning_kernel2d" title="Permalink to this definition">#</a></dt>
@@ -1369,8 +1407,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><dl>
-<dt>2D tensor with Hanning filter coefficients.</dt><dd><div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}w(n) = 0.5 - 0.5cos\\left(\\frac{2\\pi{n}}{M-1}\\right)\end{split}\]</div></div>
+<dt>2D tensor with Hanning filter coefficients.</dt><dd><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\begin{split}w(n) = 0.5 - 0.5cos\\left(\\frac{2\\pi{n}}{M-1}\\right)\end{split}\]</div>
+</div>
 </dd>
 </dl>
 </p>
@@ -1383,6 +1423,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_laplacian_kernel1d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_laplacian_kernel1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_laplacian_kernel1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_laplacian_kernel1d" title="Permalink to this definition">#</a></dt>
@@ -1412,6 +1453,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_laplacian_kernel2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_laplacian_kernel2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels.html#get_laplacian_kernel2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_laplacian_kernel2d" title="Permalink to this definition">#</a></dt>
@@ -1447,6 +1489,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.filters.get_motion_kernel2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">get_motion_kernel2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nearest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/kernels_geometry.html#get_motion_kernel2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.get_motion_kernel2d" title="Permalink to this definition">#</a></dt>
@@ -1488,9 +1531,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'nea
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">#</a></h2>
+<h2>Module<a class="headerlink" href="#module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.BlurPool2D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">BlurPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#BlurPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.BlurPool2D" title="Permalink to this definition">#</a></dt>
@@ -1509,12 +1553,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">2</s
 <dt>Shape:</dt><dd><ul>
 <li><p>Input: <span class="math notranslate nohighlight">\((B, C, H, W)\)</span></p></li>
 <li><p>Output: <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>, where</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{kernel\_size//2}[0] -
-  \text{kernel\_size}[0]}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+  \text{kernel\_size}[0]}{\text{stride}[0]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{kernel\_size//2}[1] -
-  \text{kernel\_size}[1]}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
+  \text{kernel\_size}[1]}{\text{stride}[1]} + 1\right\rfloor\]</div>
+</div>
 </li>
 </ul>
 </dd>
@@ -1530,19 +1578,22 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">2</s
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.BoxBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">BoxBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur.html#BoxBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.BoxBlur" title="Permalink to this definition">#</a></dt>
 <dd><p>Blur an image using the box filter.</p>
 <p>The function smooths an image using the kernel:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}K = \frac{1}{\text{kernel_size}_x * \text{kernel_size}_y}
 \begin{bmatrix}
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
     1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 &amp; 1 \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1574,6 +1625,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.MaxBlurPool2D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">MaxBlurPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#MaxBlurPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.MaxBlurPool2D" title="Permalink to this definition">#</a></dt>
@@ -1623,6 +1675,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.MedianBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">MedianBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/median.html#MedianBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.MedianBlur" title="Permalink to this definition">#</a></dt>
@@ -1651,6 +1704,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.GaussianBlur2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">GaussianBlur2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/gaussian.html#GaussianBlur2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.GaussianBlur2d" title="Permalink to this definition">#</a></dt>
@@ -1689,6 +1743,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.MotionBlur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">MotionBlur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/motion.html#MotionBlur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.MotionBlur" title="Permalink to this definition">#</a></dt>
@@ -1725,6 +1780,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'con
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.filters.UnsharpMask">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">UnsharpMask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/unsharp.html#UnsharpMask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.UnsharpMask" title="Permalink to this definition">#</a></dt>
@@ -1764,6 +1820,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 </section>
 
@@ -1779,10 +1836,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
                 </div>
                 <div class="title">kornia.geometry</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="feature.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -1818,7 +1875,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -1826,16 +1883,59 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
             <ul>
 <li><a class="reference internal" href="#">kornia.filters</a><ul>
 <li><a class="reference internal" href="#blurring">Blurring</a><ul>
+<li><a class="reference internal" href="#kornia.filters.blur_pool2d"><code class="docutils literal notranslate"><span class="pre">blur_pool2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.box_blur"><code class="docutils literal notranslate"><span class="pre">box_blur()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.gaussian_blur2d"><code class="docutils literal notranslate"><span class="pre">gaussian_blur2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.max_blur_pool2d"><code class="docutils literal notranslate"><span class="pre">max_blur_pool2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.median_blur"><code class="docutils literal notranslate"><span class="pre">median_blur()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.motion_blur"><code class="docutils literal notranslate"><span class="pre">motion_blur()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.unsharp_mask"><code class="docutils literal notranslate"><span class="pre">unsharp_mask()</span></code></a></li>
 <li><a class="reference internal" href="#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#edge-detection">Edge detection</a><ul>
+<li><a class="reference internal" href="#kornia.filters.canny"><code class="docutils literal notranslate"><span class="pre">canny()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.laplacian"><code class="docutils literal notranslate"><span class="pre">laplacian()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.sobel"><code class="docutils literal notranslate"><span class="pre">sobel()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.spatial_gradient"><code class="docutils literal notranslate"><span class="pre">spatial_gradient()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.spatial_gradient3d"><code class="docutils literal notranslate"><span class="pre">spatial_gradient3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.Laplacian"><code class="docutils literal notranslate"><span class="pre">Laplacian</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.Sobel"><code class="docutils literal notranslate"><span class="pre">Sobel</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.Canny"><code class="docutils literal notranslate"><span class="pre">Canny</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.SpatialGradient"><code class="docutils literal notranslate"><span class="pre">SpatialGradient</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.SpatialGradient3d"><code class="docutils literal notranslate"><span class="pre">SpatialGradient3d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.DexiNed"><code class="docutils literal notranslate"><span class="pre">DexiNed</span></code></a></li>
 <li><a class="reference internal" href="#id3">Interactive Demo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#filtering-api">Filtering API</a></li>
-<li><a class="reference internal" href="#kernels">Kernels</a></li>
-<li><a class="reference internal" href="#module">Module</a></li>
+<li><a class="reference internal" href="#filtering-api">Filtering API</a><ul>
+<li><a class="reference internal" href="#kornia.filters.filter2d"><code class="docutils literal notranslate"><span class="pre">filter2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.filter2d_separable"><code class="docutils literal notranslate"><span class="pre">filter2d_separable()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.filter3d"><code class="docutils literal notranslate"><span class="pre">filter3d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kernels">Kernels</a><ul>
+<li><a class="reference internal" href="#kornia.filters.get_gaussian_kernel1d"><code class="docutils literal notranslate"><span class="pre">get_gaussian_kernel1d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_gaussian_erf_kernel1d"><code class="docutils literal notranslate"><span class="pre">get_gaussian_erf_kernel1d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_gaussian_discrete_kernel1d"><code class="docutils literal notranslate"><span class="pre">get_gaussian_discrete_kernel1d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_gaussian_kernel2d"><code class="docutils literal notranslate"><span class="pre">get_gaussian_kernel2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_hanning_kernel1d"><code class="docutils literal notranslate"><span class="pre">get_hanning_kernel1d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_hanning_kernel2d"><code class="docutils literal notranslate"><span class="pre">get_hanning_kernel2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_laplacian_kernel1d"><code class="docutils literal notranslate"><span class="pre">get_laplacian_kernel1d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_laplacian_kernel2d"><code class="docutils literal notranslate"><span class="pre">get_laplacian_kernel2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.get_motion_kernel2d"><code class="docutils literal notranslate"><span class="pre">get_motion_kernel2d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module">Module</a><ul>
+<li><a class="reference internal" href="#kornia.filters.BlurPool2D"><code class="docutils literal notranslate"><span class="pre">BlurPool2D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.BoxBlur"><code class="docutils literal notranslate"><span class="pre">BoxBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.MaxBlurPool2D"><code class="docutils literal notranslate"><span class="pre">MaxBlurPool2D</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.MedianBlur"><code class="docutils literal notranslate"><span class="pre">MedianBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.GaussianBlur2d"><code class="docutils literal notranslate"><span class="pre">GaussianBlur2d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.MotionBlur"><code class="docutils literal notranslate"><span class="pre">MotionBlur</span></code></a></li>
+<li><a class="reference internal" href="#kornia.filters.UnsharpMask"><code class="docutils literal notranslate"><span class="pre">UnsharpMask</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1851,7 +1951,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

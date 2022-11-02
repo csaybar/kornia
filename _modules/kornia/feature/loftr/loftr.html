@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/loftr/loftr.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.loftr.loftr - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -327,54 +328,54 @@
 <span class="kn">from</span> <span class="nn">.utils.position_encoding</span> <span class="kn">import</span> <span class="n">PositionEncodingSine</span>
 
 <span class="n">urls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"outdoor"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_outdoor.ckpt"</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"indoor_new"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_indoor_ds_new.ckpt"</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"indoor"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_indoor.ckpt"</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;outdoor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_outdoor.ckpt&quot;</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;indoor_new&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_indoor_ds_new.ckpt&quot;</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;indoor&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://cmp.felk.cvut.cz/~mishkdmy/models/loftr_indoor.ckpt&quot;</span>
 
 <span class="c1"># Comments: the config below is the one corresponding to the pretrained models</span>
 <span class="c1"># Some do not change there anything, unless you want to retrain it.</span>
 
 <span class="n">default_cfg</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'backbone_type'</span><span class="p">:</span> <span class="s1">'ResNetFPN'</span><span class="p">,</span>
-    <span class="s1">'resolution'</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-    <span class="s1">'fine_window_size'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">'fine_concat_coarse_feat'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">'resnetfpn'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'initial_dim'</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">'block_dims'</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">256</span><span class="p">]},</span>
-    <span class="s1">'coarse'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'d_model'</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
-        <span class="s1">'d_ffn'</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
-        <span class="s1">'nhead'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="s1">'layer_names'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'self'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">,</span> <span class="s1">'self'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">,</span> <span class="s1">'self'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">,</span> <span class="s1">'self'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">],</span>
-        <span class="s1">'attention'</span><span class="p">:</span> <span class="s1">'linear'</span><span class="p">,</span>
-        <span class="s1">'temp_bug_fix'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;backbone_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ResNetFPN&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;resolution&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s1">&#39;fine_window_size&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;fine_concat_coarse_feat&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;resnetfpn&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;initial_dim&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">&#39;block_dims&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">256</span><span class="p">]},</span>
+    <span class="s1">&#39;coarse&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;d_model&#39;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="s1">&#39;d_ffn&#39;</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+        <span class="s1">&#39;nhead&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;layer_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cross&#39;</span><span class="p">,</span> <span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cross&#39;</span><span class="p">,</span> <span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cross&#39;</span><span class="p">,</span> <span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cross&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;attention&#39;</span><span class="p">:</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;temp_bug_fix&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s1">'match_coarse'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'thr'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-        <span class="s1">'border_rm'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s1">'match_type'</span><span class="p">:</span> <span class="s1">'dual_softmax'</span><span class="p">,</span>
-        <span class="s1">'dsmax_temperature'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="s1">'skh_iters'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s1">'skh_init_bin_score'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
-        <span class="s1">'skh_prefilter'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">'train_coarse_percent'</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
-        <span class="s1">'train_pad_num_gt_min'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s1">&#39;match_coarse&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;thr&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+        <span class="s1">&#39;border_rm&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;match_type&#39;</span><span class="p">:</span> <span class="s1">&#39;dual_softmax&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dsmax_temperature&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s1">&#39;skh_iters&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s1">&#39;skh_init_bin_score&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s1">&#39;skh_prefilter&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;train_coarse_percent&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+        <span class="s1">&#39;train_pad_num_gt_min&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s1">'fine'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'d_model'</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">'d_ffn'</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">'nhead'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'layer_names'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'self'</span><span class="p">,</span> <span class="s1">'cross'</span><span class="p">],</span> <span class="s1">'attention'</span><span class="p">:</span> <span class="s1">'linear'</span><span class="p">},</span>
+    <span class="s1">&#39;fine&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d_model&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">&#39;d_ffn&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span> <span class="s1">&#39;nhead&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;layer_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="s1">&#39;cross&#39;</span><span class="p">],</span> <span class="s1">&#39;attention&#39;</span><span class="p">:</span> <span class="s1">&#39;linear&#39;</span><span class="p">},</span>
 <span class="p">}</span>
 
 
 <div class="viewcode-block" id="LoFTR"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.LoFTR">[docs]</a><span class="k">class</span> <span class="nc">LoFTR</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module, which finds correspondences between two images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which finds correspondences between two images.</span>
 
-<span class="sd">    This is based on the original code from paper "LoFTR: Detector-Free Local</span>
-<span class="sd">    Feature Matching with Transformers". See :cite:`LoFTR2021` for more details.</span>
+<span class="sd">    This is based on the original code from paper &quot;LoFTR: Detector-Free Local</span>
+<span class="sd">    Feature Matching with Transformers&quot;. See :cite:`LoFTR2021` for more details.</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        config: Dict with initiliazation parameters. Do not pass it, unless you know what you are doing`.</span>
-<span class="sd">        pretrained: Download and set pretrained weights to the model. Options: 'outdoor', 'indoor'.</span>
-<span class="sd">                    'outdoor' is trained on the MegaDepth dataset and 'indoor'</span>
+<span class="sd">        pretrained: Download and set pretrained weights to the model. Options: &#39;outdoor&#39;, &#39;indoor&#39;.</span>
+<span class="sd">                    &#39;outdoor&#39; is trained on the MegaDepth dataset and &#39;indoor&#39;</span>
 <span class="sd">                    on the ScanNet.</span>
 
 <span class="sd">    Returns:</span>
@@ -383,79 +384,79 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; img1 = torch.rand(1, 1, 320, 200)</span>
 <span class="sd">        &gt;&gt;&gt; img2 = torch.rand(1, 1, 128, 128)</span>
-<span class="sd">        &gt;&gt;&gt; input = {"image0": img1, "image1": img2}</span>
-<span class="sd">        &gt;&gt;&gt; loftr = LoFTR('outdoor')</span>
+<span class="sd">        &gt;&gt;&gt; input = {&quot;image0&quot;: img1, &quot;image1&quot;: img2}</span>
+<span class="sd">        &gt;&gt;&gt; loftr = LoFTR(&#39;outdoor&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; out = loftr(input)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'outdoor'</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">default_cfg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;outdoor&#39;</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">default_cfg</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># Misc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
-        <span class="k">if</span> <span class="n">pretrained</span> <span class="o">==</span> <span class="s1">'indoor_new'</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">'coarse'</span><span class="p">][</span><span class="s1">'temp_bug_fix'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">pretrained</span> <span class="o">==</span> <span class="s1">&#39;indoor_new&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;coarse&#39;</span><span class="p">][</span><span class="s1">&#39;temp_bug_fix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># Modules</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span> <span class="o">=</span> <span class="n">build_backbone</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span> <span class="o">=</span> <span class="n">PositionEncodingSine</span><span class="p">(</span>
-            <span class="n">config</span><span class="p">[</span><span class="s1">'coarse'</span><span class="p">][</span><span class="s1">'d_model'</span><span class="p">],</span> <span class="n">temp_bug_fix</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">'coarse'</span><span class="p">][</span><span class="s1">'temp_bug_fix'</span><span class="p">]</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;coarse&#39;</span><span class="p">][</span><span class="s1">&#39;d_model&#39;</span><span class="p">],</span> <span class="n">temp_bug_fix</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;coarse&#39;</span><span class="p">][</span><span class="s1">&#39;temp_bug_fix&#39;</span><span class="p">]</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">loftr_coarse</span> <span class="o">=</span> <span class="n">LocalFeatureTransformer</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">'coarse'</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">coarse_matching</span> <span class="o">=</span> <span class="n">CoarseMatching</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">'match_coarse'</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loftr_coarse</span> <span class="o">=</span> <span class="n">LocalFeatureTransformer</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;coarse&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coarse_matching</span> <span class="o">=</span> <span class="n">CoarseMatching</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;match_coarse&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fine_preprocess</span> <span class="o">=</span> <span class="n">FinePreprocess</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">loftr_fine</span> <span class="o">=</span> <span class="n">LocalFeatureTransformer</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">"fine"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loftr_fine</span> <span class="o">=</span> <span class="n">LocalFeatureTransformer</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;fine&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fine_matching</span> <span class="o">=</span> <span class="n">FineMatching</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pretrained</span> <span class="o">=</span> <span class="n">pretrained</span>
         <span class="k">if</span> <span class="n">pretrained</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">pretrained</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">urls</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"pretrained should be None or one of </span><span class="si">{</span><span class="n">urls</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pretrained should be None or one of </span><span class="si">{</span><span class="n">urls</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">storage_fcn</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
             <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="n">pretrained</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">'state_dict'</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">&#39;state_dict&#39;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
 <div class="viewcode-block" id="LoFTR.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.LoFTR.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            data: dictionary containing the input data in the following format:</span>
 
 <span class="sd">        Keyword Args:</span>
 <span class="sd">            image0: left image with shape :math:`(N, 1, H1, W1)`.</span>
 <span class="sd">            image1: right image with shape :math:`(N, 1, H2, W2)`.</span>
-<span class="sd">            mask0 (optional): left image mask. '0' indicates a padded position :math:`(N, H1, W1)`.</span>
-<span class="sd">            mask1 (optional): right image mask. '0' indicates a padded position :math:`(N, H2, W2)`.</span>
+<span class="sd">            mask0 (optional): left image mask. &#39;0&#39; indicates a padded position :math:`(N, H1, W1)`.</span>
+<span class="sd">            mask1 (optional): right image mask. &#39;0&#39; indicates a padded position :math:`(N, H2, W2)`.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            - ``keypoints0``, matching keypoints from image0 :math:`(NC, 2)`.</span>
 <span class="sd">            - ``keypoints1``, matching keypoints from image1 :math:`(NC, 2)`.</span>
 <span class="sd">            - ``confidence``, confidence score [0, 1] :math:`(NC)`.</span>
 <span class="sd">            - ``batch_indexes``, batch indexes for the keypoints and lafs :math:`(NC)`.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># 1. Local Feature CNN</span>
         <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-            <span class="p">{</span><span class="s1">'bs'</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">'image0'</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s1">'hw0_i'</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">'image0'</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="s1">'hw1_i'</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">'image1'</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]}</span>
+            <span class="p">{</span><span class="s1">&#39;bs&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;hw0_i&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image0&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="s1">&#39;hw1_i&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]}</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">'hw0_i'</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">'hw1_i'</span><span class="p">]:</span>  <span class="c1"># faster &amp; better BN convergence</span>
-            <span class="n">feats_c</span><span class="p">,</span> <span class="n">feats_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s1">'image0'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">'image1'</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-            <span class="p">(</span><span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_c1</span><span class="p">),</span> <span class="p">(</span><span class="n">feat_f0</span><span class="p">,</span> <span class="n">feat_f1</span><span class="p">)</span> <span class="o">=</span> <span class="n">feats_c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'bs'</span><span class="p">]),</span> <span class="n">feats_f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'bs'</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;hw0_i&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;hw1_i&#39;</span><span class="p">]:</span>  <span class="c1"># faster &amp; better BN convergence</span>
+            <span class="n">feats_c</span><span class="p">,</span> <span class="n">feats_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;image0&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;image1&#39;</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_c1</span><span class="p">),</span> <span class="p">(</span><span class="n">feat_f0</span><span class="p">,</span> <span class="n">feat_f1</span><span class="p">)</span> <span class="o">=</span> <span class="n">feats_c</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;bs&#39;</span><span class="p">]),</span> <span class="n">feats_f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;bs&#39;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># handle different input shapes</span>
-            <span class="p">(</span><span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_f0</span><span class="p">),</span> <span class="p">(</span><span class="n">feat_c1</span><span class="p">,</span> <span class="n">feat_f1</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'image0'</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'image1'</span><span class="p">])</span>
+            <span class="p">(</span><span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_f0</span><span class="p">),</span> <span class="p">(</span><span class="n">feat_c1</span><span class="p">,</span> <span class="n">feat_f1</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;image0&#39;</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">backbone</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;image1&#39;</span><span class="p">])</span>
 
         <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
             <span class="p">{</span>
-                <span class="s1">'hw0_c'</span><span class="p">:</span> <span class="n">feat_c0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
-                <span class="s1">'hw1_c'</span><span class="p">:</span> <span class="n">feat_c1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
-                <span class="s1">'hw0_f'</span><span class="p">:</span> <span class="n">feat_f0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
-                <span class="s1">'hw1_f'</span><span class="p">:</span> <span class="n">feat_f1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
+                <span class="s1">&#39;hw0_c&#39;</span><span class="p">:</span> <span class="n">feat_c0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
+                <span class="s1">&#39;hw1_c&#39;</span><span class="p">:</span> <span class="n">feat_c1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
+                <span class="s1">&#39;hw0_f&#39;</span><span class="p">:</span> <span class="n">feat_f0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
+                <span class="s1">&#39;hw1_f&#39;</span><span class="p">:</span> <span class="n">feat_f1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span>
             <span class="p">}</span>
         <span class="p">)</span>
 
         <span class="c1"># 2. coarse-level loftr module</span>
         <span class="c1"># add featmap with positional encoding, then flatten it to sequence [N, HW, C]</span>
 
-        <span class="c1"># feat_c0 = rearrange(self.pos_encoding(feat_c0), 'n c h w -&gt; n (h w) c')</span>
-        <span class="c1"># feat_c1 = rearrange(self.pos_encoding(feat_c1), 'n c h w -&gt; n (h w) c')</span>
+        <span class="c1"># feat_c0 = rearrange(self.pos_encoding(feat_c0), &#39;n c h w -&gt; n (h w) c&#39;)</span>
+        <span class="c1"># feat_c1 = rearrange(self.pos_encoding(feat_c1), &#39;n c h w -&gt; n (h w) c&#39;)</span>
         <span class="n">feat_c0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span><span class="p">(</span><span class="n">feat_c0</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">n</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">feat_c0</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">feat_c0</span> <span class="o">=</span> <span class="n">feat_c0</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
@@ -465,10 +466,10 @@
         <span class="n">feat_c1</span> <span class="o">=</span> <span class="n">feat_c1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c1</span><span class="p">)</span>
 
         <span class="n">mask_c0</span> <span class="o">=</span> <span class="n">mask_c1</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># mask is useful in training</span>
-        <span class="k">if</span> <span class="s1">'mask0'</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="n">mask_c0</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'mask0'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">'hw0_c'</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">'mask1'</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="n">mask_c1</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'mask1'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">'hw1_c'</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;mask0&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">mask_c0</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;mask0&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;hw0_c&#39;</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;mask1&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">mask_c1</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;mask1&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;hw1_c&#39;</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_c1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loftr_coarse</span><span class="p">(</span><span class="n">feat_c0</span><span class="p">,</span> <span class="n">feat_c1</span><span class="p">,</span> <span class="n">mask_c0</span><span class="p">,</span> <span class="n">mask_c1</span><span class="p">)</span>
 
         <span class="c1"># 3. match coarse-level</span>
@@ -483,10 +484,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fine_matching</span><span class="p">(</span><span class="n">feat_f0_unfold</span><span class="p">,</span> <span class="n">feat_f1_unfold</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
         <span class="n">rename_keys</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">"mkpts0_f"</span><span class="p">:</span> <span class="s1">'keypoints0'</span><span class="p">,</span>
-            <span class="s2">"mkpts1_f"</span><span class="p">:</span> <span class="s1">'keypoints1'</span><span class="p">,</span>
-            <span class="s2">"mconf"</span><span class="p">:</span> <span class="s1">'confidence'</span><span class="p">,</span>
-            <span class="s2">"b_ids"</span><span class="p">:</span> <span class="s1">'batch_indexes'</span><span class="p">,</span>
+            <span class="s2">&quot;mkpts0_f&quot;</span><span class="p">:</span> <span class="s1">&#39;keypoints0&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;mkpts1_f&quot;</span><span class="p">:</span> <span class="s1">&#39;keypoints1&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;mconf&quot;</span><span class="p">:</span> <span class="s1">&#39;confidence&#39;</span><span class="p">,</span>
+            <span class="s2">&quot;b_ids&quot;</span><span class="p">:</span> <span class="s1">&#39;batch_indexes&#39;</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">rename_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -495,8 +496,8 @@
 
     <span class="k">def</span> <span class="nf">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">state_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'matcher.'</span><span class="p">):</span>
-                <span class="n">state_dict</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'matcher.'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;matcher.&#39;</span><span class="p">):</span>
+                <span class="n">state_dict</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;matcher.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
         </article>
@@ -536,7 +537,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

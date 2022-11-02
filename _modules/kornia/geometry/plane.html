@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/plane.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.plane - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -323,7 +324,7 @@
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 <span class="kn">from</span> <span class="nn">kornia.utils.helpers</span> <span class="kn">import</span> <span class="n">_torch_svd_cast</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Hyperplane"</span><span class="p">,</span> <span class="s2">"fit_plane"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Hyperplane&quot;</span><span class="p">,</span> <span class="s2">&quot;fit_plane&quot;</span><span class="p">]</span>
 
 
 <span class="c1"># NOTE: in the near future the constructor will change</span>
@@ -337,13 +338,13 @@
 <div class="viewcode-block" id="Hyperplane"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.Hyperplane">[docs]</a><span class="k">class</span> <span class="nc">Hyperplane</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">=</span> <span class="n">n</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_d</span> <span class="o">=</span> <span class="n">d</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Normal: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">normal</span><span class="si">}</span><span class="se">\n</span><span class="s2">Offset: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Normal: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">normal</span><span class="si">}</span><span class="se">\n</span><span class="s2">Offset: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="si">}</span><span class="s2">&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -363,25 +364,25 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_d</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Hyperplane"</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">from_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Hyperplane&quot;</span><span class="p">:</span>
         <span class="n">normal</span> <span class="o">=</span> <span class="n">n</span>
         <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">batched_dot_product</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Hyperplane</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">through</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">p0</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Hyperplane"</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">through</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">p0</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Hyperplane&quot;</span><span class="p">:</span>
         <span class="c1"># 2d case</span>
         <span class="k">if</span> <span class="n">p2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
             <span class="c1"># TODO: implement `.unitOrthonormal`</span>
             <span class="n">normal</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">((</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">batched_dot_product</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">Hyperplane</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
         <span class="c1"># 3d case</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
         <span class="n">v0</span><span class="p">,</span> <span class="n">v1</span> <span class="o">=</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">),</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">)</span>
         <span class="n">normal</span> <span class="o">=</span> <span class="n">v0</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -396,7 +397,7 @@
 <span class="c1"># TODO: factor to avoid duplicated from line.py</span>
 <span class="c1"># https://github.com/strasdat/Sophus/blob/23.04-beta/cpp/sophus/geometry/fit_plane.h</span>
 <span class="k">def</span> <span class="nf">fit_plane</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Hyperplane</span><span class="p">:</span>
-    <span class="sd">"""Fit a plane from a set of points using SVD.</span>
+    <span class="sd">&quot;&quot;&quot;Fit a plane from a set of points using SVD.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        points: tensor containing a batch of sets of n-dimensional points. The  expected</span>
@@ -404,8 +405,8 @@
 
 <span class="sd">    Return:</span>
 <span class="sd">        The computed hyperplane object.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">])</span>
 
     <span class="n">mean</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">points_centered</span> <span class="o">=</span> <span class="n">points</span> <span class="o">-</span> <span class="n">mean</span>
@@ -457,7 +458,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/mix/cutmix.html" />
 
-    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation._2d.mix.cutmix - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -327,7 +328,7 @@
 
 
 <span class="k">class</span> <span class="nc">RandomCutMix</span><span class="p">(</span><span class="n">MixAugmentationBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Apply CutMix augmentation to a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply CutMix augmentation to a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/RandomCutMix.png</span>
 
@@ -403,7 +404,7 @@
 <span class="sd">                  [1.0000, 1.0000, 0.0542],</span>
 <span class="sd">                  [0.4594, 0.1756, 0.9492]]]]), tensor([[[0.0000, 1.0000, 0.4444],</span>
 <span class="sd">                 [1.0000, 0.0000, 0.4444]]]))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -419,26 +420,26 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">p_batch</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">"height and width can be inferred automatically now. "</span>
-                <span class="s2">"The height and width arguments will be removed finally."</span><span class="p">,</span>
+                <span class="s2">&quot;height and width can be inferred automatically now. &quot;</span>
+                <span class="s2">&quot;The height and width arguments will be removed finally.&quot;</span><span class="p">,</span>
                 <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_param_generator</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">rg</span><span class="o">.</span><span class="n">CutmixGenerator</span><span class="p">,</span> <span class="n">rg</span><span class="o">.</span><span class="n">CutmixGenerator</span><span class="p">(</span><span class="n">cut_size</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">num_mix</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">))</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">"`RandomCutMix` is deprecated. Please use `RandomCutMixV2` instead."</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;`RandomCutMix` is deprecated. Please use `RandomCutMixV2` instead.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
         <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">num_mixes</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">num_mixes</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="n">_shape_validation</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">],</span> <span class="p">[</span><span class="n">num_mixes</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">],</span> <span class="s2">"mix_pairs"</span><span class="p">)</span>
-        <span class="n">_shape_validation</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"crop_src"</span><span class="p">],</span> <span class="p">[</span><span class="n">num_mixes</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">"crop_src"</span><span class="p">)</span>
+        <span class="n">_shape_validation</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">num_mixes</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">],</span> <span class="s2">&quot;mix_pairs&quot;</span><span class="p">)</span>
+        <span class="n">_shape_validation</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;crop_src&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">num_mixes</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;crop_src&quot;</span><span class="p">)</span>
 
         <span class="n">out_inputs</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
         <span class="n">out_labels</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">"crop_src"</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;crop_src&quot;</span><span class="p">]):</span>
             <span class="n">input_permute</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pair</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
             <span class="n">labels_permute</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pair</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
             <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">infer_bbox_shape</span><span class="p">(</span><span class="n">crop</span><span class="p">)</span>
@@ -454,7 +455,7 @@
 
 
 <div class="viewcode-block" id="RandomCutMixV2"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomCutMixV2">[docs]</a><span class="k">class</span> <span class="nc">RandomCutMixV2</span><span class="p">(</span><span class="n">MixAugmentationBaseV2</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Apply CutMix augmentation to a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply CutMix augmentation to a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/RandomCutMix.png</span>
 
@@ -500,7 +501,7 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 1, 3, 3)</span>
 <span class="sd">        &gt;&gt;&gt; input[0] = torch.ones((1, 3, 3))</span>
 <span class="sd">        &gt;&gt;&gt; label = torch.tensor([0, 1])</span>
-<span class="sd">        &gt;&gt;&gt; cutmix = RandomCutMixV2(data_keys=["input", "class"])</span>
+<span class="sd">        &gt;&gt;&gt; cutmix = RandomCutMixV2(data_keys=[&quot;input&quot;, &quot;class&quot;])</span>
 <span class="sd">        &gt;&gt;&gt; cutmix(input, label)</span>
 <span class="sd">        [tensor([[[[0.8879, 0.4510, 1.0000],</span>
 <span class="sd">                  [0.1498, 0.4015, 1.0000],</span>
@@ -511,7 +512,7 @@
 <span class="sd">                  [1.0000, 1.0000, 0.0542],</span>
 <span class="sd">                  [0.4594, 0.1756, 0.9492]]]]), tensor([[[0.0000, 1.0000, 0.4444],</span>
 <span class="sd">                 [1.0000, 0.0000, 0.4444]]])]</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -527,19 +528,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_param_generator</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">rg</span><span class="o">.</span><span class="n">CutmixGenerator</span><span class="p">,</span> <span class="n">rg</span><span class="o">.</span><span class="n">CutmixGenerator</span><span class="p">(</span><span class="n">cut_size</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">num_mix</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">apply_transform_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">"image_shape"</span><span class="p">]</span>
+        <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;image_shape&quot;</span><span class="p">]</span>
 
         <span class="n">out_labels</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">"crop_src"</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;crop_src&quot;</span><span class="p">]):</span>
             <span class="n">labels_permute</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pair</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
             <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">infer_bbox_shape</span><span class="p">(</span><span class="n">crop</span><span class="p">)</span>
             <span class="n">lam</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span>  <span class="c1"># width_beta * height_beta</span>
             <span class="n">out_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
                     <span class="p">[</span>
-                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
-                        <span class="n">labels_permute</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
-                        <span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
+                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
+                        <span class="n">labels_permute</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
+                        <span class="n">lam</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
                     <span class="p">],</span>
                     <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -551,13 +552,13 @@
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="n">out_labels</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">lam</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="p">)),</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())))</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="p">)),</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())))</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_param_generator</span><span class="o">.</span><span class="n">num_mix</span><span class="p">):</span>
             <span class="n">out_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
                     <span class="p">[</span>
-                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
-                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"dtype"</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
+                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
+                        <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DType</span><span class="o">.</span><span class="n">to_torch</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dtype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))),</span>
                         <span class="n">lam</span><span class="p">,</span>
                     <span class="p">],</span>
                     <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -572,7 +573,7 @@
         <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
         <span class="n">out_inputs</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">"mix_pairs"</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">"crop_src"</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">crop</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mix_pairs&quot;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;crop_src&quot;</span><span class="p">]):</span>
             <span class="n">input_permute</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">index_select</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">pair</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
             <span class="c1"># compute mask to match input shape</span>
             <span class="n">mask</span> <span class="o">=</span> <span class="n">bbox_to_mask</span><span class="p">(</span><span class="n">crop</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span><span class="o">.</span><span class="n">bool</span><span class="p">()</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -617,7 +618,9 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
     <script src="../../../../../_static/jquery.js"></script>
     <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../../_static/scripts/furo.js"></script>
     <script src="../../../../../_static/clipboard.min.js"></script>
     <script src="../../../../../_static/copybutton.js"></script>

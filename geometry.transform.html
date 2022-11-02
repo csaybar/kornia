@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.ransac" href="geometry.ransac.html" /><link rel="prev" title="kornia.geometry.subpix" href="geometry.subpix.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.transform.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.transform - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,22 +316,24 @@
         </div>
         <article role="main">
           <section id="kornia-geometry-transform">
-<h1>kornia.geometry.transform<a class="headerlink" href="#kornia-geometry-transform" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry.transform<a class="headerlink" href="#kornia-geometry-transform" title="Permalink to this heading">#</a></h1>
 <p>The functions in this section perform various geometrical transformations of 2D images.</p>
 <section id="warp-operators">
-<h2>Warp operators<a class="headerlink" href="#warp-operators" title="Permalink to this headline">#</a></h2>
+<h2>Warp operators<a class="headerlink" href="#warp-operators" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_perspective">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.zeros(3)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#warp_perspective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_perspective" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a perspective transformation to an image.</p>
-<img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/warp_perspective_10_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/warp_perspective_10_1.png"/>
+<img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/warp_perspective_10_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/warp_perspective_10_1.png" />
 <p>The function warp_perspective transforms the source image using
 the specified matrix:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{dst} (x, y) = \text{src} \left(
 \frac{M^{-1}_{11} x + M^{-1}_{12} y + M^{-1}_{13}}{M^{-1}_{31} x + M^{-1}_{32} y + M^{-1}_{33}} ,
 \frac{M^{-1}_{21} x + M^{-1}_{22} y + M^{-1}_{23}}{M^{-1}_{31} x + M^{-1}_{32} y + M^{-1}_{33}}
-\right )\]</div></div>
+\right )\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -370,17 +374,20 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">torc
 <p>See a working example <a class="reference external" href="https://kornia-tutorials.readthedocs.io/en/latest/warp_perspective.html">here</a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_perspective3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_perspective3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#warp_perspective3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_perspective3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a perspective transformation to an image.</p>
 <p>The function warp_perspective transforms the source image using
 the specified matrix:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{dst} (x, y) = \text{src} \left(
 \frac{M_{11} x + M_{12} y + M_{13}}{M_{31} x + M_{32} y + M_{33}} ,
 \frac{M_{21} x + M_{22} y + M_{23}}{M_{31} x + M_{32} y + M_{33}}
-\right )\]</div></div>
+\right )\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -409,16 +416,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.get_perspective_transform3d" title="kornia.geometry.transform.get_perspective_transform3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_perspective_transform3d()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_affine">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.zeros(3)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#warp_affine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_affine" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply an affine transformation to a tensor.</p>
-<img alt="_images/warp_affine.png" src="_images/warp_affine.png"/>
+<img alt="_images/warp_affine.png" src="_images/warp_affine.png" />
 <p>The function warp_affine transforms the source tensor using
 the specified matrix:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\text{dst}(x, y) = \text{src} \left( M_{11} x + M_{12} y + M_{13} ,
-M_{21} x + M_{22} y + M_{23} \right )\]</div></div>
+M_{21} x + M_{22} y + M_{23} \right )\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -460,6 +470,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">torc
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_affine3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_affine3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#warp_affine3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_affine3d" title="Permalink to this definition">#</a></dt>
@@ -495,12 +506,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.get_perspective_transform3d" title="kornia.geometry.transform.get_perspective_transform3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_perspective_transform3d()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_image_tps">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_image_tps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_centers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/thin_plate_spline.html#warp_image_tps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_image_tps" title="Permalink to this definition">#</a></dt>
 <dd><p>Warp an image tensor according to the thin plate spline transform defined by kernel centers, kernel weights,
 and affine weights.</p>
-<img alt="_images/warp_image_tps.png" src="_images/warp_image_tps.png"/>
+<img alt="_images/warp_image_tps.png" src="_images/warp_image_tps.png" />
 <p>The transform is applied to each pixel coordinate in the output image to obtain a point in the input
 image for interpolation of the output pixel. So the TPS parameters should correspond to a warp from
 output space to input space.</p>
@@ -538,6 +550,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.get_tps_transform" title="kornia.geometry.transform.get_tps_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_tps_transform()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.warp_points_tps">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">warp_points_tps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_centers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">affine_weights</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/thin_plate_spline.html#warp_points_tps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.warp_points_tps" title="Permalink to this definition">#</a></dt>
@@ -576,14 +589,17 @@ weights for the x-transform and tensor[…, 1] the weights for the y-transform.<
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.get_tps_transform" title="kornia.geometry.transform.get_tps_transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_tps_transform()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.remap">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">remap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#remap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.remap" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a generic geometrical transformation to an image tensor.</p>
-<img alt="_images/remap.png" src="_images/remap.png"/>
+<img alt="_images/remap.png" src="_images/remap.png" />
 <p>The function remap transforms the source tensor using the specified map:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\text{dst}(x, y) = \text{src}(map_x(x, y), map_y(x, y))\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{dst}(x, y) = \text{src}(map_x(x, y), map_y(x, y))\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -629,14 +645,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>This function is often used in conjunction with <a class="reference internal" href="utils.html#kornia.utils.create_meshgrid" title="kornia.utils.create_meshgrid"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.utils.create_meshgrid()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 </section>
 <section id="image-2d-transforms">
-<h2>Image 2d transforms<a class="headerlink" href="#image-2d-transforms" title="Permalink to this headline">#</a></h2>
+<h2>Image 2d transforms<a class="headerlink" href="#image-2d-transforms" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.affine">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#affine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.affine" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply an affine transformation to the image.</p>
-<img alt="_images/warp_affine.png" src="_images/warp_affine.png"/>
+<img alt="_images/warp_affine.png" src="_images/warp_affine.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -668,11 +685,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.rotate">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.rotate" title="Permalink to this definition">#</a></dt>
 <dd><p>Rotate the tensor anti-clockwise about the center.</p>
-<img alt="_images/rotate.png" src="_images/rotate.png"/>
+<img alt="_images/rotate.png" src="_images/rotate.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -713,11 +731,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.translate">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#translate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.translate" title="Permalink to this definition">#</a></dt>
 <dd><p>Translate the tensor in pixel units.</p>
-<img alt="_images/translate.png" src="_images/translate.png"/>
+<img alt="_images/translate.png" src="_images/translate.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -751,11 +770,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.scale">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.scale" title="Permalink to this definition">#</a></dt>
 <dd><p>Scale the tensor by a factor.</p>
-<img alt="_images/scale.png" src="_images/scale.png"/>
+<img alt="_images/scale.png" src="_images/scale.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -794,11 +814,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.shear">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#shear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.shear" title="Permalink to this definition">#</a></dt>
 <dd><p>Shear the tensor.</p>
-<img alt="_images/shear.png" src="_images/shear.png"/>
+<img alt="_images/shear.png" src="_images/shear.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -832,11 +853,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.hflip">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">hflip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#hflip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.hflip" title="Permalink to this definition">#</a></dt>
 <dd><p>Horizontally flip a tensor image or a batch of tensor images.</p>
-<img alt="_images/hflip.png" src="_images/hflip.png"/>
+<img alt="_images/hflip.png" src="_images/hflip.png" />
 <p>Input must be a tensor of shape (C, H, W) or a batch of tensors <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -850,11 +872,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.vflip">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">vflip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#vflip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.vflip" title="Permalink to this definition">#</a></dt>
 <dd><p>Vertically flip a tensor image or a batch of tensor images.</p>
-<img alt="_images/vflip.png" src="_images/vflip.png"/>
+<img alt="_images/vflip.png" src="_images/vflip.png" />
 <p>Input must be a tensor of shape (C, H, W) or a batch of tensors <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -868,11 +891,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.rot180">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">rot180</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#rot180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.rot180" title="Permalink to this definition">#</a></dt>
 <dd><p>Rotate a tensor image or a batch of tensor images 180 degrees.</p>
-<img alt="_images/rot180.png" src="_images/rot180.png"/>
+<img alt="_images/rot180.png" src="_images/rot180.png" />
 <p>Input must be a tensor of shape (C, H, W) or a batch of tensors <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -886,11 +910,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.resize">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'short'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.resize" title="Permalink to this definition">#</a></dt>
 <dd><p>Resize the input torch.Tensor to the given size.</p>
-<img alt="_images/resize.png" src="_images/resize.png"/>
+<img alt="_images/resize.png" src="_images/resize.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -928,11 +953,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.rescale">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">rescale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#rescale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.rescale" title="Permalink to this definition">#</a></dt>
 <dd><p>Rescale the input torch.Tensor with the given factor.</p>
-<img alt="_images/rescale.png" src="_images/rescale.png"/>
+<img alt="_images/rescale.png" src="_images/rescale.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -966,11 +992,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.elastic_transform2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">elastic_transform2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(63,</span> <span class="pre">63)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(32.0,</span> <span class="pre">32.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/elastic_transform.html#elastic_transform2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.elastic_transform2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply elastic transform of images as described in <span id="id1">[<a class="reference internal" href="community/bibliography.html#id17" title="P. Simard, David Steinkraus, and John C. Platt. Best practices for convolutional neural networks applied to visual document analysis. Seventh International Conference on Document Analysis and Recognition, 2003. Proceedings., pages 958-963, 2003.">SSP03</a>]</span>.</p>
-<img alt="_images/elastic_transform2d.png" src="_images/elastic_transform2d.png"/>
+<img alt="_images/elastic_transform2d.png" src="_images/elastic_transform2d.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1025,11 +1052,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'zer
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.pyrdown">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">pyrdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#pyrdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.pyrdown" title="Permalink to this definition">#</a></dt>
 <dd><p>Blur a tensor and downsamples it.</p>
-<img alt="_images/pyrdown.png" src="_images/pyrdown.png"/>
+<img alt="_images/pyrdown.png" src="_images/pyrdown.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1059,11 +1087,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">2.0<
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.pyrup">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">pyrup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#pyrup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.pyrup" title="Permalink to this definition">#</a></dt>
 <dd><p>Upsample a tensor and then blurs it.</p>
-<img alt="_images/pyrup.png" src="_images/pyrup.png"/>
+<img alt="_images/pyrup.png" src="_images/pyrup.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1092,11 +1121,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.build_pyramid">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">build_pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#build_pyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.build_pyramid" title="Permalink to this definition">#</a></dt>
 <dd><p>Construct the Gaussian pyramid for a tensor image.</p>
-<img alt="_images/build_pyramid.png" src="_images/build_pyramid.png"/>
+<img alt="_images/build_pyramid.png" src="_images/build_pyramid.png" />
 <p>The function constructs a vector of images and builds the Gaussian pyramid
 by recursively applying pyrDown to the previously built pyramid layers.</p>
 <dl class="field-list simple">
@@ -1127,6 +1157,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.build_laplacian_pyramid">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">build_laplacian_pyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#build_laplacian_pyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.build_laplacian_pyramid" title="Permalink to this definition">#</a></dt>
@@ -1157,9 +1188,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="matrix-transformations">
-<h2>Matrix transformations<a class="headerlink" href="#matrix-transformations" title="Permalink to this headline">#</a></h2>
+<h2>Matrix transformations<a class="headerlink" href="#matrix-transformations" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_perspective_transform">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_perspective_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_perspective_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_perspective_transform" title="Permalink to this definition">#</a></dt>
@@ -1168,7 +1200,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 See more: <a class="reference external" href="https://www.cs.cmu.edu/~16385/s17/Slides/10.2_2D_Alignment__DLT.pdf">https://www.cs.cmu.edu/~16385/s17/Slides/10.2_2D_Alignment__DLT.pdf</a></p>
 <p>The function calculates the matrix of a perspective transform that maps from
 the source to destination points:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 x^{'} \\
 y^{'} \\
@@ -1185,7 +1218,8 @@ h_7 &amp; h_8 &amp; h_9 \\
 x \\
 y \\
 1 \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1212,12 +1246,14 @@ the destination image with shape <span class="math notranslate nohighlight">\((B
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_perspective_transform3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_perspective_transform3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_perspective_transform3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_perspective_transform3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate a 3d perspective transform from four pairs of the corresponding points.</p>
 <p>The function calculates the matrix of a perspective transform so that:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 t_{i}x_{i}^{'} \\
 t_{i}y_{i}^{'} \\
@@ -1231,19 +1267,25 @@ x_{i} \\
 y_{i} \\
 z_{i} \\
 1 \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>where</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[dst(i) = (x_{i}^{'},y_{i}^{'},z_{i}^{'}), src(i) = (x_{i}, y_{i}, z_{i}), i = 0,1,2,5,7\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[dst(i) = (x_{i}^{'},y_{i}^{'},z_{i}^{'}), src(i) = (x_{i}, y_{i}, z_{i}), i = 0,1,2,5,7\]</div>
+</div>
 <p>Concrete math is as below:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\[ u_i =\frac{c_{00} * x_i + c_{01} * y_i + c_{02} * z_i + c_{03}}
     {c_{30} * x_i + c_{31} * y_i + c_{32} * z_i + c_{33}} \]
 \[ v_i =\frac{c_{10} * x_i + c_{11} * y_i + c_{12} * z_i + c_{13}}
     {c_{30} * x_i + c_{31} * y_i + c_{32} * z_i + c_{33}} \]
 \[ w_i =\frac{c_{20} * x_i + c_{21} * y_i + c_{22} * z_i + c_{23}}
-    {c_{30} * x_i + c_{31} * y_i + c_{32} * z_i + c_{33}} \]\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+    {c_{30} * x_i + c_{31} * y_i + c_{32} * z_i + c_{33}} \]\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}
 x_0 &amp; y_0 &amp; z_0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -x_0*u_0 &amp; -y_0*u_0 &amp; -z_0 * u_0 \\
 x_1 &amp; y_1 &amp; z_1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -x_1*u_1 &amp; -y_1*u_1 &amp; -z_1 * u_1 \\
@@ -1260,7 +1302,8 @@ x_7 &amp; y_7 &amp; z_7 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_2 &amp; y_2 &amp; z_2 &amp; 1 &amp; -x_2*w_2 &amp; -y_2*w_2 &amp; -z_2 * w_2 \\
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_5 &amp; y_5 &amp; z_5 &amp; 1 &amp; -x_5*w_5 &amp; -y_5*w_5 &amp; -z_5 * w_5 \\
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; x_7 &amp; y_7 &amp; z_7 &amp; 1 &amp; -x_7*w_7 &amp; -y_7*w_7 &amp; -z_7 * w_7 \\
-\end{pmatrix}\end{split}\]</div></div>
+\end{pmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1281,6 +1324,7 @@ the destination image with shape <span class="math notranslate nohighlight">\((B
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_perspective3d" title="kornia.geometry.transform.warp_perspective3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_perspective3d()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_projective_transform">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_projective_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scales</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_projective_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_projective_transform" title="Permalink to this definition">#</a></dt>
@@ -1312,22 +1356,27 @@ the rotation matrix from axis-angle.</p></li>
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_affine3d" title="kornia.geometry.transform.warp_affine3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_affine3d()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_rotation_matrix2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_rotation_matrix2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_rotation_matrix2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_rotation_matrix2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate an affine matrix of 2D rotation.</p>
 <p>The function calculates the following matrix:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
     \alpha &amp; \beta &amp; (1 - \alpha) \cdot \text{x}
     - \beta \cdot \text{y} \\
     -\beta &amp; \alpha &amp; \beta \cdot \text{x}
     + (1 - \alpha) \cdot \text{y}
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>where</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\alpha = \text{scale} \cdot cos(\text{angle}) \\
-\beta = \text{scale} \cdot sin(\text{angle})\end{split}\]</div></div>
+\beta = \text{scale} \cdot sin(\text{angle})\end{split}\]</div>
+</div>
 <p>The transformation maps the rotation center to itself
 If this is not the target, adjust the shift.</p>
 <dl class="field-list simple">
@@ -1361,16 +1410,19 @@ be the top-left corner) with shape <span class="math notranslate nohighlight">\(
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_affine" title="kornia.geometry.transform.warp_affine"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_affine()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_shear_matrix2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_shear_matrix2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_shear_matrix2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_shear_matrix2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compose shear matrix Bx4x4 from the components.</p>
 <p>Note: Ordered shearing, shear x-axis then y-axis.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
     1 &amp; b \\
     a &amp; ab + 1 \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1402,12 +1454,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_affine" title="kornia.geometry.transform.warp_affine"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_affine()</span></code></a>, <a class="reference internal" href="#kornia.geometry.transform.warp_perspective" title="kornia.geometry.transform.warp_perspective"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_perspective()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_shear_matrix3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_shear_matrix3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sxz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">szx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">szy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_shear_matrix3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_shear_matrix3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compose shear matrix Bx4x4 from the components.
 Note: Ordered shearing, shear x-axis then y-axis then z-axis.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
     1 &amp; o &amp; r &amp; oy + rz \\
     m &amp; p &amp; s &amp; mx + py + sz -y \\
@@ -1422,7 +1476,8 @@ p = S_{xy}S_{yx} + 1
 q = S_{xz}S_{yx} + S_{yz}
 r = S_{zx} + S_{yx}S_{zy}
 s = S_{xy}S_{zx} + (S_{xy}S_{yx} + 1)S_{zy}
-t = S_{xz}S_{zx} + (S_{xz}S_{yx} + S_{yz})S_{zy} + 1\end{split}\]</div></div>
+t = S_{xz}S_{zx} + (S_{xz}S_{yx} + S_{yz})S_{zy} + 1\end{split}\]</div>
+</div>
 <dl class="simple">
 <dt>Params:</dt><dd><p>center: shearing center coordinates of (x, y, z).
 sxy: shearing degree along x axis, towards y plane.
@@ -1456,6 +1511,7 @@ szy: shearing degree along z axis, towards y plane.</p>
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_perspective3d" title="kornia.geometry.transform.warp_perspective3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_perspective3d()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_affine_matrix2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_affine_matrix2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_affine_matrix2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_affine_matrix2d" title="Permalink to this definition">#</a></dt>
@@ -1485,6 +1541,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_affine" title="kornia.geometry.transform.warp_affine"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_affine()</span></code></a>, <a class="reference internal" href="#kornia.geometry.transform.warp_perspective" title="kornia.geometry.transform.warp_perspective"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_perspective()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_affine_matrix3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_affine_matrix3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sxz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">szx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">szy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#get_affine_matrix3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_affine_matrix3d" title="Permalink to this definition">#</a></dt>
@@ -1524,17 +1581,20 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_perspective" title="kornia.geometry.transform.warp_perspective"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_perspective()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.invert_affine_transform">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">invert_affine_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#invert_affine_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.invert_affine_transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Invert an affine transformation.</p>
 <p>The function computes an inverse affine transformation represented by
 2×3 matrix:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
     a_{11} &amp; a_{12} &amp; b_{1} \\
     a_{21} &amp; a_{22} &amp; b_{2} \\
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>The result is also a 2×3 matrix of the same type as M.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1553,6 +1613,7 @@ in the shape of <span class="math notranslate nohighlight">\((B, 2, 3)\)</span>.
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_affine" title="kornia.geometry.transform.warp_affine"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_affine()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.projection_from_Rt">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">projection_from_Rt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tvec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/imgwarp.html#projection_from_Rt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.projection_from_Rt" title="Permalink to this definition">#</a></dt>
@@ -1577,6 +1638,7 @@ in the shape of <span class="math notranslate nohighlight">\((B, 2, 3)\)</span>.
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.get_tps_transform">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">get_tps_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/thin_plate_spline.html#get_tps_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.get_tps_transform" title="Permalink to this definition">#</a></dt>
@@ -1613,9 +1675,10 @@ as separate columns.</p>
 <p>This function is often used in conjunction with <a class="reference internal" href="#kornia.geometry.transform.warp_points_tps" title="kornia.geometry.transform.warp_points_tps"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_points_tps()</span></code></a>, <a class="reference internal" href="#kornia.geometry.transform.warp_image_tps" title="kornia.geometry.transform.warp_image_tps"><code class="xref py py-func docutils literal notranslate"><span class="pre">warp_image_tps()</span></code></a>.</p>
 </div>
 </dd></dl>
+
 </section>
 <section id="crop-operators">
-<h2>Crop operators<a class="headerlink" href="#crop-operators" title="Permalink to this headline">#</a></h2>
+<h2>Crop operators<a class="headerlink" href="#crop-operators" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.crop_by_indices">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">crop_by_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_compensation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'resize'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/crop2d.html#crop_by_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.crop_by_indices" title="Permalink to this definition">#</a></dt>
@@ -1649,6 +1712,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'res
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.crop_by_boxes">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">crop_by_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_box</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validate_boxes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/crop2d.html#crop_by_boxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.crop_by_boxes" title="Permalink to this definition">#</a></dt>
@@ -1711,6 +1775,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 RuntimeError: solve_cpu: For batch 0: U(2,2) is zero, singular U.</p>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.center_crop">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">center_crop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/crop2d.html#center_crop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.center_crop" title="Permalink to this definition">#</a></dt>
@@ -1745,12 +1810,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <span class="gp">... </span>    <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mf">13.</span><span class="p">,</span> <span class="mf">14.</span><span class="p">,</span> <span class="mf">15.</span><span class="p">,</span> <span class="mf">16.</span><span class="p">],</span>
 <span class="gp">... </span> <span class="p">]]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">center_crop</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">center_crop</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">tensor([[[[ 5.,  6.,  7.,  8.],</span>
 <span class="go">          [ 9., 10., 11., 12.]]]])</span>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.transform.crop_and_resize">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">crop_and_resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boxes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/crop2d.html#crop_and_resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.crop_and_resize" title="Permalink to this definition">#</a></dt>
@@ -1795,15 +1861,16 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <span class="gp">... </span>    <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
 <span class="gp">... </span><span class="p">]])</span>  <span class="c1"># 1x4x2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">crop_and_resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">boxes</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'nearest'</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crop_and_resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">boxes</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">tensor([[[[ 6.,  7.],</span>
 <span class="go">          [10., 11.]]]])</span>
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">#</a></h2>
+<h2>Module<a class="headerlink" href="#module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Rotate">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Rotate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Rotate" title="Permalink to this definition">#</a></dt>
@@ -1840,6 +1907,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Translate">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Translate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Translate" title="Permalink to this definition">#</a></dt>
@@ -1873,6 +1941,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Scale">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Scale" title="Permalink to this definition">#</a></dt>
@@ -1911,6 +1980,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Shear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shear</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Shear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Shear" title="Permalink to this definition">#</a></dt>
@@ -1944,6 +2014,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.PyrDown">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">PyrDown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#PyrDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.PyrDown" title="Permalink to this definition">#</a></dt>
@@ -1978,6 +2049,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">2.0<
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.PyrUp">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">PyrUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reflect'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#PyrUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.PyrUp" title="Permalink to this definition">#</a></dt>
@@ -2009,6 +2081,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.ScalePyramid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">ScalePyramid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/pyramid.html#ScalePyramid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.ScalePyramid" title="Permalink to this definition">#</a></dt>
@@ -2051,6 +2124,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Hflip">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Hflip</span></span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#Hflip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Hflip" title="Permalink to this definition">#</a></dt>
@@ -2078,6 +2152,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Vflip">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Vflip</span></span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#Vflip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Vflip" title="Permalink to this definition">#</a></dt>
@@ -2105,6 +2180,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Rot180">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Rot180</span></span><a class="reference internal" href="_modules/kornia/geometry/transform/flips.html#Rot180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Rot180" title="Permalink to this definition">#</a></dt>
@@ -2129,6 +2205,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Resize">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'short'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Resize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Resize" title="Permalink to this definition">#</a></dt>
@@ -2165,6 +2242,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 <gradio-app space="kornia/kornia-resize-antialias"></gradio-app></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Rescale">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Rescale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">antialias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Rescale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Rescale" title="Permalink to this definition">#</a></dt>
@@ -2198,6 +2276,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.Affine">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">Affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/affwarp.html#Affine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.Affine" title="Permalink to this definition">#</a></dt>
@@ -2247,12 +2326,15 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.HomographyWarper">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.</span></span><span class="sig-name descname"><span class="pre">HomographyWarper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bilinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zeros'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/homography_warper.html#HomographyWarper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.HomographyWarper" title="Permalink to this definition">#</a></dt>
 <dd><p>Warp tensors by homographies.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[X_{dst} = H_{src}^{\{dst\}} * X_{src}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[X_{dst} = H_{src}^{\{dst\}} * X_{src}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2271,10 +2353,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="image-registration">
-<h2>Image registration<a class="headerlink" href="#image-registration" title="Permalink to this headline">#</a></h2>
-<a class="reference internal image-reference" href="_images/registration.gif"><img alt="Image registration with ImageRegistrator module" src="_images/registration.gif" style="width: 400px;"/></a>
+<h2>Image registration<a class="headerlink" href="#image-registration" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="_images/registration.gif"><img alt="Image registration with ImageRegistrator module" src="_images/registration.gif" style="width: 400px;" /></a>
 <span class="target" id="module-kornia.geometry.transform.image_registrator"></span><dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Homography">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.image_registrator.</span></span><span class="sig-name descname"><span class="pre">Homography</span></span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Homography"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Homography" title="Permalink to this definition">#</a></dt>
@@ -2293,6 +2376,7 @@ image registration.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Homography.forward_inverse">
 <span class="sig-name descname"><span class="pre">forward_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Homography.forward_inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Homography.forward_inverse" title="Permalink to this definition">#</a></dt>
@@ -2306,12 +2390,15 @@ image registration.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Homography.reset_model">
 <span class="sig-name descname"><span class="pre">reset_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Homography.reset_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Homography.reset_model" title="Permalink to this definition">#</a></dt>
 <dd><p>Initializes the model with identity transform.</p>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.ImageRegistrator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.image_registrator.</span></span><span class="sig-name descname"><span class="pre">ImageRegistrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'homography'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">optim.Adam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">F.l1_loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pyramid_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#ImageRegistrator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.ImageRegistrator" title="Permalink to this definition">#</a></dt>
@@ -2342,7 +2429,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">kornia.geometry</span> <span class="kn">import</span> <span class="n">ImageRegistrator</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_dst</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">registrator</span> <span class="o">=</span> <span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">'similarity'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">registrator</span> <span class="o">=</span> <span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">homo</span> <span class="o">=</span> <span class="n">registrator</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">img_src</span><span class="p">,</span> <span class="n">img_dst</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2356,6 +2443,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.ImageRegistrator.register">
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_intermediate_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#ImageRegistrator.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.register" title="Permalink to this definition">#</a></dt>
@@ -2381,6 +2469,7 @@ typically [1x3x3] tensor for string model_types.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.ImageRegistrator.reset_model">
 <span class="sig-name descname"><span class="pre">reset_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#ImageRegistrator.reset_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.reset_model" title="Permalink to this definition">#</a></dt>
@@ -2391,6 +2480,7 @@ typically [1x3x3] tensor for string model_types.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.ImageRegistrator.warp_dst_inro_src">
 <span class="sig-name descname"><span class="pre">warp_dst_inro_src</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dst_img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#ImageRegistrator.warp_dst_inro_src"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.warp_dst_inro_src" title="Permalink to this definition">#</a></dt>
@@ -2401,6 +2491,7 @@ typically [1x3x3] tensor for string model_types.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.ImageRegistrator.warp_src_into_dst">
 <span class="sig-name descname"><span class="pre">warp_src_into_dst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#ImageRegistrator.warp_src_into_dst"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.warp_src_into_dst" title="Permalink to this definition">#</a></dt>
@@ -2411,7 +2502,9 @@ typically [1x3x3] tensor for string model_types.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Similarity">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.transform.image_registrator.</span></span><span class="sig-name descname"><span class="pre">Similarity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Similarity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Similarity" title="Permalink to this definition">#</a></dt>
@@ -2442,6 +2535,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Similarity.forward_inverse">
 <span class="sig-name descname"><span class="pre">forward_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Similarity.forward_inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Similarity.forward_inverse" title="Permalink to this definition">#</a></dt>
@@ -2455,6 +2549,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.transform.image_registrator.Similarity.reset_model">
 <span class="sig-name descname"><span class="pre">reset_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/transform/image_registrator.html#Similarity.reset_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.transform.image_registrator.Similarity.reset_model" title="Permalink to this definition">#</a></dt>
@@ -2465,10 +2560,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="interactive-demo">
-<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h2>
+<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -2484,10 +2581,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
                 </div>
                 <div class="title">kornia.geometry.ransac</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.subpix.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -2523,19 +2620,102 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.geometry.transform</a><ul>
-<li><a class="reference internal" href="#warp-operators">Warp operators</a></li>
-<li><a class="reference internal" href="#image-2d-transforms">Image 2d transforms</a></li>
-<li><a class="reference internal" href="#matrix-transformations">Matrix transformations</a></li>
-<li><a class="reference internal" href="#crop-operators">Crop operators</a></li>
-<li><a class="reference internal" href="#module">Module</a></li>
-<li><a class="reference internal" href="#image-registration">Image registration</a></li>
+<li><a class="reference internal" href="#warp-operators">Warp operators</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_perspective"><code class="docutils literal notranslate"><span class="pre">warp_perspective()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_perspective3d"><code class="docutils literal notranslate"><span class="pre">warp_perspective3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_affine"><code class="docutils literal notranslate"><span class="pre">warp_affine()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_affine3d"><code class="docutils literal notranslate"><span class="pre">warp_affine3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_image_tps"><code class="docutils literal notranslate"><span class="pre">warp_image_tps()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.warp_points_tps"><code class="docutils literal notranslate"><span class="pre">warp_points_tps()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.remap"><code class="docutils literal notranslate"><span class="pre">remap()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-2d-transforms">Image 2d transforms</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.affine"><code class="docutils literal notranslate"><span class="pre">affine()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.scale"><code class="docutils literal notranslate"><span class="pre">scale()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.shear"><code class="docutils literal notranslate"><span class="pre">shear()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.hflip"><code class="docutils literal notranslate"><span class="pre">hflip()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.vflip"><code class="docutils literal notranslate"><span class="pre">vflip()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.rot180"><code class="docutils literal notranslate"><span class="pre">rot180()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.rescale"><code class="docutils literal notranslate"><span class="pre">rescale()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.elastic_transform2d"><code class="docutils literal notranslate"><span class="pre">elastic_transform2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.pyrdown"><code class="docutils literal notranslate"><span class="pre">pyrdown()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.pyrup"><code class="docutils literal notranslate"><span class="pre">pyrup()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.build_pyramid"><code class="docutils literal notranslate"><span class="pre">build_pyramid()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.build_laplacian_pyramid"><code class="docutils literal notranslate"><span class="pre">build_laplacian_pyramid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#matrix-transformations">Matrix transformations</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_perspective_transform"><code class="docutils literal notranslate"><span class="pre">get_perspective_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_perspective_transform3d"><code class="docutils literal notranslate"><span class="pre">get_perspective_transform3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_projective_transform"><code class="docutils literal notranslate"><span class="pre">get_projective_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_rotation_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_rotation_matrix2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_shear_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_shear_matrix2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_shear_matrix3d"><code class="docutils literal notranslate"><span class="pre">get_shear_matrix3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_affine_matrix2d"><code class="docutils literal notranslate"><span class="pre">get_affine_matrix2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_affine_matrix3d"><code class="docutils literal notranslate"><span class="pre">get_affine_matrix3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.invert_affine_transform"><code class="docutils literal notranslate"><span class="pre">invert_affine_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.projection_from_Rt"><code class="docutils literal notranslate"><span class="pre">projection_from_Rt()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.get_tps_transform"><code class="docutils literal notranslate"><span class="pre">get_tps_transform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crop-operators">Crop operators</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.crop_by_indices"><code class="docutils literal notranslate"><span class="pre">crop_by_indices()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.crop_by_boxes"><code class="docutils literal notranslate"><span class="pre">crop_by_boxes()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.center_crop"><code class="docutils literal notranslate"><span class="pre">center_crop()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.crop_and_resize"><code class="docutils literal notranslate"><span class="pre">crop_and_resize()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module">Module</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.Rotate"><code class="docutils literal notranslate"><span class="pre">Rotate</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Translate"><code class="docutils literal notranslate"><span class="pre">Translate</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Scale"><code class="docutils literal notranslate"><span class="pre">Scale</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Shear"><code class="docutils literal notranslate"><span class="pre">Shear</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.PyrDown"><code class="docutils literal notranslate"><span class="pre">PyrDown</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.PyrUp"><code class="docutils literal notranslate"><span class="pre">PyrUp</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.ScalePyramid"><code class="docutils literal notranslate"><span class="pre">ScalePyramid</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Hflip"><code class="docutils literal notranslate"><span class="pre">Hflip</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Vflip"><code class="docutils literal notranslate"><span class="pre">Vflip</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Rot180"><code class="docutils literal notranslate"><span class="pre">Rot180</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Resize"><code class="docutils literal notranslate"><span class="pre">Resize</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Rescale"><code class="docutils literal notranslate"><span class="pre">Rescale</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.Affine"><code class="docutils literal notranslate"><span class="pre">Affine</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.HomographyWarper"><code class="docutils literal notranslate"><span class="pre">HomographyWarper</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-registration">Image registration</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Homography"><code class="docutils literal notranslate"><span class="pre">Homography</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Homography.forward"><code class="docutils literal notranslate"><span class="pre">Homography.forward()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Homography.forward_inverse"><code class="docutils literal notranslate"><span class="pre">Homography.forward_inverse()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Homography.reset_model"><code class="docutils literal notranslate"><span class="pre">Homography.reset_model()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.get_single_level_loss"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator.get_single_level_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.register"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator.register()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.reset_model"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator.reset_model()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.warp_dst_inro_src"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator.warp_dst_inro_src()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.ImageRegistrator.warp_src_into_dst"><code class="docutils literal notranslate"><span class="pre">ImageRegistrator.warp_src_into_dst()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Similarity"><code class="docutils literal notranslate"><span class="pre">Similarity</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Similarity.forward"><code class="docutils literal notranslate"><span class="pre">Similarity.forward()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Similarity.forward_inverse"><code class="docutils literal notranslate"><span class="pre">Similarity.forward_inverse()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.transform.image_registrator.Similarity.reset_model"><code class="docutils literal notranslate"><span class="pre">Similarity.reset_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
@@ -2552,7 +2732,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

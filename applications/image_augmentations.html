@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Image Classification" href="image_classification.html" /><link rel="prev" title="Face Detection" href="face_detection.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/applications/image_augmentations.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Image Augmentation - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,14 +316,14 @@
         </div>
         <article role="main">
           <section id="image-augmentation">
-<h1>Image Augmentation<a class="headerlink" href="#image-augmentation" title="Permalink to this headline">#</a></h1>
+<h1>Image Augmentation<a class="headerlink" href="#image-augmentation" title="Permalink to this heading">#</a></h1>
 <p>Image Augmentation is a data augmentation method that generates more training data
 from the existing training samples. Image Augmentation is especially useful in domains
 where training data is limited or expensive to obtain like in biomedical applications.</p>
-<img alt="https://github.com/kornia/data/raw/main/girona_aug.png" class="align-center" src="https://github.com/kornia/data/raw/main/girona_aug.png"/>
+<img alt="https://github.com/kornia/data/raw/main/girona_aug.png" class="align-center" src="https://github.com/kornia/data/raw/main/girona_aug.png" />
 <p>Learn more: <a class="reference external" href="https://paperswithcode.com/task/image-augmentation">https://paperswithcode.com/task/image-augmentation</a></p>
 <section id="kornia-augmentations">
-<h2>Kornia Augmentations<a class="headerlink" href="#kornia-augmentations" title="Permalink to this headline">#</a></h2>
+<h2>Kornia Augmentations<a class="headerlink" href="#kornia-augmentations" title="Permalink to this heading">#</a></h2>
 <p>Kornia leverages differentiable and GPU image data augmentation through the module <a class="reference external" href="https://kornia.readthedocs.io/en/latest/augmentation.html">kornia.augmentation</a>
 by implementing the functionality to be easily used with <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Sequential.html?highlight=sequential#torch.nn.Sequential">torch.nn.Sequential</a>
 and other advanced containers such as
@@ -343,7 +345,7 @@ without any float -&gt; uint8 conversions plus on device acceleration.</p>
 </pre></div>
 </div>
 <section id="best-practices-1-image-augmentation">
-<h3>Best Practices 1: Image Augmentation<a class="headerlink" href="#best-practices-1-image-augmentation" title="Permalink to this headline">#</a></h3>
+<h3>Best Practices 1: Image Augmentation<a class="headerlink" href="#best-practices-1-image-augmentation" title="Permalink to this heading">#</a></h3>
 <p>Kornia augmentations provides simple on-device augmentation framework with the support of various syntax sugars
 (e.g. return transformation matrix, inverse geometric transform). Therefore, we provide advanced augmentation
 container <a class="reference internal" href="../augmentation.container.html#kornia.augmentation.container.AugmentationSequential" title="kornia.augmentation.container.AugmentationSequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">AugmentationSequential</span></code></a> to ease the pain of building augmenation pipelines. This API would also provide predefined routines
@@ -354,7 +356,7 @@ for automating the processing of masks, bounding boxes, and keypoints.</p>
    <span class="n">K</span><span class="o">.</span><span class="n">ColorJiggle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
    <span class="n">K</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">30.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
    <span class="n">K</span><span class="o">.</span><span class="n">RandomPerspective</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
-   <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">"input"</span><span class="p">,</span> <span class="s2">"bbox"</span><span class="p">,</span> <span class="s2">"keypoints"</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">],</span>  <span class="c1"># Just to define the future input here.</span>
+   <span class="n">data_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;bbox&quot;</span><span class="p">,</span> <span class="s2">&quot;keypoints&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">],</span>  <span class="c1"># Just to define the future input here.</span>
    <span class="n">return_transform</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
    <span class="n">same_on_batch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
@@ -364,11 +366,11 @@ for automating the processing of masks, bounding boxes, and keypoints.</p>
 <span class="n">out_tensor_inv</span> <span class="o">=</span> <span class="n">aug</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="o">*</span><span class="n">out_tensor</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://discuss.pytorch.org/uploads/default/optimized/3X/2/4/24bb0f4520f547d3a321440293c1d44921ecadf8_2_690x119.jpeg" src="https://discuss.pytorch.org/uploads/default/optimized/3X/2/4/24bb0f4520f547d3a321440293c1d44921ecadf8_2_690x119.jpeg"/>
+<img alt="https://discuss.pytorch.org/uploads/default/optimized/3X/2/4/24bb0f4520f547d3a321440293c1d44921ecadf8_2_690x119.jpeg" src="https://discuss.pytorch.org/uploads/default/optimized/3X/2/4/24bb0f4520f547d3a321440293c1d44921ecadf8_2_690x119.jpeg" />
 <p>From left to right: the original image, the transformed image, and the inversed image.</p>
 </section>
 <section id="best-practices-2-video-augmentation">
-<h3>Best Practices 2: Video Augmentation<a class="headerlink" href="#best-practices-2-video-augmentation" title="Permalink to this headline">#</a></h3>
+<h3>Best Practices 2: Video Augmentation<a class="headerlink" href="#best-practices-2-video-augmentation" title="Permalink to this heading">#</a></h3>
 <p>Video data is a special case of 3D volumetric data that contains both spatial and temporal information, which can be referred as 2.5D than 3D.
 In most applications, augmenting video data requires a static temporal dimension to have the same augmentations are performed for each frame.
 Thus, <a class="reference internal" href="../augmentation.container.html#kornia.augmentation.container.VideoSequential" title="kornia.augmentation.container.VideoSequential"><code class="xref py py-class docutils literal notranslate"><span class="pre">VideoSequential</span></code></a> can be used to do such trick as same as <cite>nn.Sequential</cite>.
@@ -379,15 +381,15 @@ Currently, <a class="reference internal" href="../augmentation.container.html#ko
    <span class="n">K</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="mi">360</span><span class="p">),</span>
    <span class="n">K</span><span class="o">.</span><span class="n">RandomGrayscale</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
    <span class="n">K</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-   <span class="n">data_format</span><span class="o">=</span><span class="s2">"BCTHW"</span><span class="p">,</span>
+   <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;BCTHW&quot;</span><span class="p">,</span>
    <span class="n">same_on_frame</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://user-images.githubusercontent.com/17788259/101993516-4625ca80-3c89-11eb-843e-0b87dca6e2b8.png" src="https://user-images.githubusercontent.com/17788259/101993516-4625ca80-3c89-11eb-843e-0b87dca6e2b8.png"/>
+<img alt="https://user-images.githubusercontent.com/17788259/101993516-4625ca80-3c89-11eb-843e-0b87dca6e2b8.png" src="https://user-images.githubusercontent.com/17788259/101993516-4625ca80-3c89-11eb-843e-0b87dca6e2b8.png" />
 </section>
 <section id="customization">
-<h3>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">#</a></h3>
+<h3>Customization<a class="headerlink" href="#customization" title="Permalink to this heading">#</a></h3>
 <p>Kornia augmentation implementations have two additional parameters compare to TorchVision,
 <code class="docutils literal notranslate"><span class="pre">return_transform</span></code> and <code class="docutils literal notranslate"><span class="pre">same_on_batch</span></code>. The former provides the ability of undoing one geometry
 transformation while the latter can be used to control the randomness for a batched transformation.
@@ -419,8 +421,8 @@ To enable those behaviour, you may simply set the flags to True.</p>
 
    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
       <span class="k">assert</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
-         <span class="sa">f</span><span class="s2">"Input shape should be consistent with mask shape, "</span>
-         <span class="sa">f</span><span class="s2">"while got </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span>
+         <span class="sa">f</span><span class="s2">&quot;Input shape should be consistent with mask shape, &quot;</span>
+         <span class="sa">f</span><span class="s2">&quot;while got </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
 
       <span class="n">aff_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
       <span class="nb">input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">aff_params</span><span class="p">)</span>
@@ -448,10 +450,10 @@ To enable those behaviour, you may simply set the flags to True.</p>
                 </div>
                 <div class="title">Image Classification</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="face_detection.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -487,7 +489,7 @@ To enable those behaviour, you may simply set the flags to True.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -515,7 +517,9 @@ To enable those behaviour, you may simply set the flags to True.</p>
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

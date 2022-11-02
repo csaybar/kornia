@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Perspective Camera" href="geometry.camera.perspective.html" /><link rel="prev" title="kornia.geometry.camera" href="geometry.camera.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.camera.pinhole.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Pinhole Camera - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -163,7 +163,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -307,23 +309,26 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="pinhole-camera">
-<h1>Pinhole Camera<a class="headerlink" href="#pinhole-camera" title="Permalink to this headline">#</a></h1>
+<h1>Pinhole Camera<a class="headerlink" href="#pinhole-camera" title="Permalink to this heading">#</a></h1>
 <p>In this module we have all the functions and data structures needed to describe the projection of a 3D scene space onto a 2D image plane.</p>
 <p>In computer vision, we can map between the 3D world and a 2D image using <em>projective geometry</em>. The module implements the simplest camera model, the <strong>Pinhole Camera</strong>, which is the most basic model for general projective cameras from the finite cameras group.</p>
 <p>The Pinhole Camera model is shown in the following figure:</p>
-<img alt="_images/pinhole_model.png" src="_images/pinhole_model.png"/>
+<img alt="_images/pinhole_model.png" src="_images/pinhole_model.png" />
 <p>Using this model, a scene view can be formed by projecting 3D points into the image plane using a perspective transformation.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[s  \; m' = K [R|t] M'\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[s  \; m' = K [R|t] M'\]</div>
+</div>
 <p>or</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}s \begin{bmatrix} u \\ v \\ 1\end{bmatrix} =
 \begin{bmatrix}
 f_x &amp; 0 &amp; u_0 \\
@@ -340,7 +345,8 @@ X \\
 Y \\
 Z \\
 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(M'\)</span> is a 3D point in space with coordinates <span class="math notranslate nohighlight">\([X,Y,Z]^T\)</span> expressed in an Euclidean coordinate frame known as the <em>world coordinate system</em>.</p></li>
@@ -354,21 +360,25 @@ Z \\
 <p>The camera rotation and translation are expressed in terms of an Euclidean coordinate frame known as the <em>world coordinate system</em>. These terms are usually expressed by the joint rotation-translation matrix <span class="math notranslate nohighlight">\([R|t]\)</span> which is also known as the extrinsic matrix. It is used to describe the camera pose around a static scene and transforms the coordinates of a 3D point <span class="math notranslate nohighlight">\((X,Y,Z)\)</span> from the <em>world coordinate system</em> to the <em>camera coordinate system</em>.</p>
 <p>The <a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera" title="kornia.geometry.camera.pinhole.PinholeCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">PinholeCamera</span></code></a> expects the <em>intrinsic matrices</em> and the <em>extrinsic matrices</em>
 to be of shape <cite>(B, 4, 4)</cite> such that each <em>intrinsic matrix</em> has the following format:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 f_x &amp; 0 &amp; u_0 &amp; 0\\
 0 &amp; f_y &amp; v_0 &amp; 0\\
 0 &amp; 0 &amp; 1 &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>And each <em>extrinsic matrix</em> has the following format:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 r_{11} &amp; r_{12} &amp; r_{13} &amp; t_1  \\
 r_{21} &amp; r_{22} &amp; r_{23} &amp; t_2  \\
 r_{31} &amp; r_{32} &amp; r_{33} &amp; t_3  \\
 0      &amp; 0      &amp; 0      &amp; 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.camera.pinhole.</span></span><span class="sig-name descname"><span class="pre">PinholeCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intrinsics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrinsics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera" title="Permalink to this definition">#</a></dt>
@@ -403,9 +413,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.camera_matrix">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">camera_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.camera_matrix" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">camera_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.camera_matrix" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the 3x3 camera matrix containing the intrinsics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -416,6 +427,7 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.clone">
 <span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.clone" title="Permalink to this definition">#</a></dt>
@@ -426,9 +438,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.cx">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.cx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.cx" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the x-coordinate of the principal point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -439,9 +452,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.cy">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.cy" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.cy" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the y-coordinate of the principal point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -452,6 +466,7 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.device">
 <span class="sig-name descname"><span class="pre">device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.device" title="Permalink to this definition">#</a></dt>
@@ -465,9 +480,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.extrinsics">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extrinsics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.extrinsics" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">extrinsics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.extrinsics" title="Permalink to this definition">#</a></dt>
 <dd><p>The full 4x4 extrinsics matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -478,9 +494,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.fx">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.fx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.fx" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the focal length in the x-direction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -491,9 +508,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.fy">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.fy" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.fy" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the focal length in the y-direction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -504,9 +522,10 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.intrinsics">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intrinsics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intrinsics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics" title="Permalink to this definition">#</a></dt>
 <dd><p>The full 4x4 intrinsics matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -517,6 +536,7 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.intrinsics_inverse">
 <span class="sig-name descname"><span class="pre">intrinsics_inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.intrinsics_inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics_inverse" title="Permalink to this definition">#</a></dt>
@@ -530,6 +550,7 @@ advantage of PyTorch parallelism to boost computing performance.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.project">
 <span class="sig-name descname"><span class="pre">project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point_3d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.project"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.project" title="Permalink to this definition">#</a></dt>
@@ -559,9 +580,10 @@ to the camera plane. The shape of the tensor can be <span class="math notranslat
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.rotation_matrix">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotation_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.rotation_matrix" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotation_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.rotation_matrix" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the 3x3 rotation matrix from the extrinsics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -572,9 +594,10 @@ to the camera plane. The shape of the tensor can be <span class="math notranslat
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.rt_matrix">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rt_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.rt_matrix" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rt_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.rt_matrix" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the 3x4 rotation-translation matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -585,6 +608,7 @@ to the camera plane. The shape of the tensor can be <span class="math notranslat
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.scale">
 <span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.scale" title="Permalink to this definition">#</a></dt>
@@ -603,6 +627,7 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.scale_">
 <span class="sig-name descname"><span class="pre">scale_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.scale_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.scale_" title="Permalink to this definition">#</a></dt>
@@ -621,9 +646,10 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.translation_vector">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translation_vector</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.translation_vector" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translation_vector</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.translation_vector" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the translation vector from the extrinsics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -634,9 +660,10 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.tx">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.tx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.tx" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the x-coordinate of the translation vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -647,9 +674,10 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.ty">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.ty" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.ty" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the y-coordinate of the translation vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -660,9 +688,10 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.tz">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tz</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.tz" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tz</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.tz" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the z-coordinate of the translation vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -673,6 +702,7 @@ to be broadcastable with class members. The expected shape is
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.PinholeCamera.unproject">
 <span class="sig-name descname"><span class="pre">unproject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point_2d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#PinholeCamera.unproject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.PinholeCamera.unproject" title="Permalink to this definition">#</a></dt>
@@ -708,7 +738,9 @@ ray length from the camera position.</p></li>
 </pre></div>
 </div>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.cam2pixel">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.camera.pinhole.</span></span><span class="sig-name descname"><span class="pre">cam2pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam_coords_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_proj_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#cam2pixel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.cam2pixel" title="Permalink to this definition">#</a></dt>
@@ -731,6 +763,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.camera.pinhole.pixel2cam">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.camera.pinhole.</span></span><span class="sig-name descname"><span class="pre">pixel2cam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intrinsics_inv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/pinhole.html#pixel2cam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.pinhole.pixel2cam" title="Permalink to this definition">#</a></dt>
@@ -751,6 +784,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 
         </article>
@@ -765,10 +799,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
                 </div>
                 <div class="title">Perspective Camera</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.camera.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -798,8 +832,52 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Pinhole Camera</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera"><code class="docutils literal notranslate"><span class="pre">PinholeCamera</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.batch_size"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.batch_size</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.camera_matrix"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.camera_matrix</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.clone"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.clone()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.cx"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.cx</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.cy"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.cy</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.device"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.device()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.extrinsics"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.extrinsics</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.fx"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.fx</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.fy"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.fy</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.intrinsics</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.intrinsics_inverse"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.intrinsics_inverse()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.project"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.project()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.rotation_matrix"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.rotation_matrix</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.rt_matrix"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.rt_matrix</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.scale"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.scale()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.scale_"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.scale_()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.translation_vector"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.translation_vector</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.tx"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.tx</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.ty"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.ty</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.tz"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.tz</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.PinholeCamera.unproject"><code class="docutils literal notranslate"><span class="pre">PinholeCamera.unproject()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.cam2pixel"><code class="docutils literal notranslate"><span class="pre">cam2pixel()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.pinhole.pixel2cam"><code class="docutils literal notranslate"><span class="pre">pixel2cam()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -808,7 +886,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

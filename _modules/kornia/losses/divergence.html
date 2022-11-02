@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/losses/divergence.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses.divergence - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -313,7 +314,7 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.losses.divergence</h1><div class="highlight"><pre>
-<span></span><span class="sa">r</span><span class="sd">"""Losses based on the divergence between probability distributions."""</span>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Losses based on the divergence between probability distributions.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
@@ -323,7 +324,7 @@
     <span class="c1"># D_KL(P || Q)</span>
     <span class="n">batch</span><span class="p">,</span> <span class="n">chans</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">unsummed_kl</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">kl_div</span><span class="p">(</span>
-        <span class="n">q</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">chans</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span><span class="o">.</span><span class="n">log</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">chans</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'none'</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">chans</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span><span class="o">.</span><span class="n">log</span><span class="p">(),</span> <span class="n">p</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">chans</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="p">),</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span>
     <span class="p">)</span>
     <span class="n">kl_values</span> <span class="o">=</span> <span class="n">unsummed_kl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">chans</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">kl_values</span>
@@ -339,21 +340,21 @@
 
 
 <span class="k">def</span> <span class="nf">_reduce_loss</span><span class="p">(</span><span class="n">losses</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'none'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">losses</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'mean'</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="js_div_loss_2d"><a class="viewcode-back" href="../../../losses.html#kornia.losses.js_div_loss_2d">[docs]</a><span class="k">def</span> <span class="nf">js_div_loss_2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Calculate the Jensen-Shannon divergence loss between heatmaps.</span>
+<div class="viewcode-block" id="js_div_loss_2d"><a class="viewcode-back" href="../../../losses.html#kornia.losses.js_div_loss_2d">[docs]</a><span class="k">def</span> <span class="nf">js_div_loss_2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the Jensen-Shannon divergence loss between heatmaps.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the input tensor with shape :math:`(B, N, H, W)`.</span>
 <span class="sd">        target: the target tensor with shape :math:`(B, N, H, W)`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 
 <span class="sd">    Examples:</span>
@@ -361,20 +362,20 @@
 <span class="sd">        &gt;&gt;&gt; loss = js_div_loss_2d(input, input)</span>
 <span class="sd">        &gt;&gt;&gt; loss.item()</span>
 <span class="sd">        0.0</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_reduce_loss</span><span class="p">(</span><span class="n">_js_div_2d</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">input</span><span class="p">),</span> <span class="n">reduction</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="kl_div_loss_2d"><a class="viewcode-back" href="../../../losses.html#kornia.losses.kl_div_loss_2d">[docs]</a><span class="k">def</span> <span class="nf">kl_div_loss_2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Calculate the Kullback-Leibler divergence loss between heatmaps.</span>
+<div class="viewcode-block" id="kl_div_loss_2d"><a class="viewcode-back" href="../../../losses.html#kornia.losses.kl_div_loss_2d">[docs]</a><span class="k">def</span> <span class="nf">kl_div_loss_2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate the Kullback-Leibler divergence loss between heatmaps.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the input tensor with shape :math:`(B, N, H, W)`.</span>
 <span class="sd">        target: the target tensor with shape :math:`(B, N, H, W)`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 
 <span class="sd">    Examples:</span>
@@ -382,7 +383,7 @@
 <span class="sd">        &gt;&gt;&gt; loss = kl_div_loss_2d(input, input)</span>
 <span class="sd">        &gt;&gt;&gt; loss.item()</span>
 <span class="sd">        0.0</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_reduce_loss</span><span class="p">(</span><span class="n">_kl_div_2d</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="nb">input</span><span class="p">),</span> <span class="n">reduction</span><span class="p">)</span></div>
 </pre></div>
         </article>
@@ -422,7 +423,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

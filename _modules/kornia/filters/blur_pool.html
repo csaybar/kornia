@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/filters/blur_pool.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.filters.blur_pool - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -324,11 +325,11 @@
 <span class="kn">from</span> <span class="nn">.kernels</span> <span class="kn">import</span> <span class="n">get_pascal_kernel_2d</span>
 <span class="kn">from</span> <span class="nn">.median</span> <span class="kn">import</span> <span class="n">_compute_zero_padding</span>  <span class="c1"># TODO: Move to proper place</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"BlurPool2D"</span><span class="p">,</span> <span class="s2">"MaxBlurPool2D"</span><span class="p">,</span> <span class="s2">"blur_pool2d"</span><span class="p">,</span> <span class="s2">"max_blur_pool2d"</span><span class="p">,</span> <span class="s1">'edge_aware_blur_pool2d'</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BlurPool2D&quot;</span><span class="p">,</span> <span class="s2">&quot;MaxBlurPool2D&quot;</span><span class="p">,</span> <span class="s2">&quot;blur_pool2d&quot;</span><span class="p">,</span> <span class="s2">&quot;max_blur_pool2d&quot;</span><span class="p">,</span> <span class="s1">&#39;edge_aware_blur_pool2d&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="BlurPool2D"><a class="viewcode-back" href="../../../filters.html#kornia.filters.BlurPool2D">[docs]</a><span class="k">class</span> <span class="nc">BlurPool2D</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compute blur (anti-aliasing) and downsample a given feature map.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute blur (anti-aliasing) and downsample a given feature map.</span>
 
 <span class="sd">    See :cite:`zhang2019shiftinvar` for more details.</span>
 
@@ -356,13 +357,13 @@
 <span class="sd">        tensor([[[[0.3125, 0.0625, 0.0000],</span>
 <span class="sd">                  [0.0625, 0.3750, 0.0625],</span>
 <span class="sd">                  [0.0000, 0.0625, 0.3125]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span> <span class="o">=</span> <span class="n">kernel_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">stride</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'kernel'</span><span class="p">,</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="c1"># To align the logic with the whole lib</span>
@@ -371,7 +372,7 @@
 
 
 <div class="viewcode-block" id="MaxBlurPool2D"><a class="viewcode-back" href="../../../filters.html#kornia.filters.MaxBlurPool2D">[docs]</a><span class="k">class</span> <span class="nc">MaxBlurPool2D</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compute pools and blurs and downsample a given feature map.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute pools and blurs and downsample a given feature map.</span>
 
 <span class="sd">    Equivalent to ```nn.Sequential(nn.MaxPool2d(...), BlurPool2D(...))```</span>
 
@@ -402,7 +403,7 @@
 <span class="sd">        &gt;&gt;&gt; seq(input)</span>
 <span class="sd">        tensor([[[[0.5625, 0.3125],</span>
 <span class="sd">                  [0.3125, 0.8750]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ceil_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -410,7 +411,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">stride</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_pool_size</span> <span class="o">=</span> <span class="n">max_pool_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ceil_mode</span> <span class="o">=</span> <span class="n">ceil_mode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'kernel'</span><span class="p">,</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;kernel&#39;</span><span class="p">,</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="c1"># To align the logic with the whole lib</span>
@@ -421,7 +422,7 @@
 
 
 <div class="viewcode-block" id="blur_pool2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.blur_pool2d">[docs]</a><span class="k">def</span> <span class="nf">blur_pool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compute blurs and downsample a given feature map.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute blurs and downsample a given feature map.</span>
 
 <span class="sd">    .. image:: _static/img/blur_pool2d.png</span>
 
@@ -461,7 +462,7 @@
 <span class="sd">        tensor([[[[0.3125, 0.0625, 0.0000],</span>
 <span class="sd">                  [0.0625, 0.3750, 0.0625],</span>
 <span class="sd">                  [0.0000, 0.0625, 0.3125]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">kernel</span> <span class="o">=</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">((</span><span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_blur_pool_by_kernel2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">stride</span><span class="p">)</span></div>
 
@@ -469,7 +470,7 @@
 <div class="viewcode-block" id="max_blur_pool2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.max_blur_pool2d">[docs]</a><span class="k">def</span> <span class="nf">max_blur_pool2d</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ceil_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute pools and blurs and downsample a given feature map.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute pools and blurs and downsample a given feature map.</span>
 
 <span class="sd">    .. image:: _static/img/max_blur_pool2d.png</span>
 
@@ -493,25 +494,25 @@
 <span class="sd">        &gt;&gt;&gt; max_blur_pool2d(input, 3)</span>
 <span class="sd">        tensor([[[[0.5625, 0.3125],</span>
 <span class="sd">                  [0.3125, 0.8750]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">kernel</span> <span class="o">=</span> <span class="n">get_pascal_kernel_2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">((</span><span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_max_blur_pool_by_kernel2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="p">,</span> <span class="n">ceil_mode</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_blur_pool_by_kernel2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-    <span class="sd">"""Compute blur_pool by a given :math:`CxC_{out}xNxN` kernel."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute blur_pool by a given :math:`CxC_{out}xNxN` kernel.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">kernel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">kernel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid kernel shape. Expect CxC_outxNxN, Got </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid kernel shape. Expect CxC_outxNxN, Got </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">padding</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">_compute_zero_padding</span><span class="p">((</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">padding</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">_max_blur_pool_by_kernel2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ceil_mode</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-    <span class="sd">"""Compute max_blur_pool by a given :math:`CxC_{out}xNxN` kernel."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute max_blur_pool by a given :math:`CxC_{out}xNxN` kernel.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">kernel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">kernel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid kernel shape. Expect CxC_outxNxN, Got </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid kernel shape. Expect CxC_outxNxN, Got </span><span class="si">{</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="c1"># compute local maxima</span>
     <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">max_pool_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ceil_mode</span><span class="o">=</span><span class="n">ceil_mode</span><span class="p">)</span>
     <span class="c1"># blur and downsample</span>
@@ -526,7 +527,7 @@
     <span class="n">edge_dilation_kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
     <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Blur the input tensor while maintaining its edges.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blur the input tensor while maintaining its edges.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the input image to blur with shape :math:`(B, C, H, W)`.</span>
@@ -537,11 +538,11 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The blurred tensor of shape :math:`(B, C, H, W)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">edge_threshold</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"edge threshold should be positive, but got '</span><span class="si">{</span><span class="n">edge_threshold</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">edge_threshold</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;edge threshold should be positive, but got &#39;</span><span class="si">{</span><span class="n">edge_threshold</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
-    <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"reflect"</span><span class="p">)</span>  <span class="c1"># pad to avoid artifacts near physical edges</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>  <span class="c1"># pad to avoid artifacts near physical edges</span>
     <span class="n">blurred_input</span> <span class="o">=</span> <span class="n">blur_pool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># blurry version of the input</span>
 
     <span class="c1"># calculate the edges (add epsilon to avoid taking the log of 0)</span>
@@ -601,7 +602,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/color/gray.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.color.gray - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -323,7 +324,7 @@
 
 
 <div class="viewcode-block" id="grayscale_to_rgb"><a class="viewcode-back" href="../../../color.html#kornia.color.grayscale_to_rgb">[docs]</a><span class="k">def</span> <span class="nf">grayscale_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert a grayscale image to RGB version of image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a grayscale image to RGB version of image.</span>
 
 <span class="sd">    .. image:: _static/img/grayscale_to_rgb.png</span>
 
@@ -338,17 +339,17 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(2, 1, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; gray = grayscale_to_rgb(input) # 2x3x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must have a shape of (*, 1, H, W). "</span> <span class="sa">f</span><span class="s2">"Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must have a shape of (*, 1, H, W). &quot;</span> <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">concatenate</span><span class="p">([</span><span class="n">image</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">image</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="rgb_to_grayscale"><a class="viewcode-back" href="../../../color.html#kornia.color.rgb_to_grayscale">[docs]</a><span class="k">def</span> <span class="nf">rgb_to_grayscale</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">rgb_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert a RGB image to grayscale version of image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a RGB image to grayscale version of image.</span>
 
 <span class="sd">    .. image:: _static/img/rgb_to_grayscale.png</span>
 
@@ -368,11 +369,11 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; gray = rgb_to_grayscale(input) # 2x1x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must have a shape of (*, 3, H, W). Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must have a shape of (*, 3, H, W). Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">rgb_weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># 8 bit images</span>
@@ -382,7 +383,7 @@
         <span class="k">elif</span> <span class="n">image</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">in</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">):</span>
             <span class="n">rgb_weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.299</span><span class="p">,</span> <span class="mf">0.587</span><span class="p">,</span> <span class="mf">0.114</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown data type: </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown data type: </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># is tensor that we make sure is in the same device/dtype</span>
         <span class="n">rgb_weights</span> <span class="o">=</span> <span class="n">rgb_weights</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -397,7 +398,7 @@
 
 
 <div class="viewcode-block" id="bgr_to_grayscale"><a class="viewcode-back" href="../../../color.html#kornia.color.bgr_to_grayscale">[docs]</a><span class="k">def</span> <span class="nf">bgr_to_grayscale</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Convert a BGR image to grayscale.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a BGR image to grayscale.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1). First flips to RGB, then converts.</span>
 
@@ -410,18 +411,18 @@
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; gray = bgr_to_grayscale(input) # 2x1x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input size must have a shape of (*, 3, H, W). Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must have a shape of (*, 3, H, W). Got </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">image_rgb</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">bgr_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rgb_to_grayscale</span><span class="p">(</span><span class="n">image_rgb</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="GrayscaleToRgb"><a class="viewcode-back" href="../../../color.html#kornia.color.GrayscaleToRgb">[docs]</a><span class="k">class</span> <span class="nc">GrayscaleToRgb</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module to convert a grayscale image to RGB version of image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a grayscale image to RGB version of image.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1).</span>
 
@@ -436,14 +437,14 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 1, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; rgb = GrayscaleToRgb()</span>
 <span class="sd">        &gt;&gt;&gt; output = rgb(input)  # 2x3x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">grayscale_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="RgbToGrayscale"><a class="viewcode-back" href="../../../color.html#kornia.color.RgbToGrayscale">[docs]</a><span class="k">class</span> <span class="nc">RgbToGrayscale</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module to convert a RGB image to grayscale version of image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a RGB image to grayscale version of image.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1).</span>
 
@@ -458,7 +459,7 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; gray = RgbToGrayscale()</span>
 <span class="sd">        &gt;&gt;&gt; output = gray(input)  # 2x1x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rgb_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -469,7 +470,7 @@
 
 
 <div class="viewcode-block" id="BgrToGrayscale"><a class="viewcode-back" href="../../../color.html#kornia.color.BgrToGrayscale">[docs]</a><span class="k">class</span> <span class="nc">BgrToGrayscale</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module to convert a BGR image to grayscale version of image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a BGR image to grayscale version of image.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1). First flips to RGB, then converts.</span>
 
@@ -484,7 +485,7 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
 <span class="sd">        &gt;&gt;&gt; gray = BgrToGrayscale()</span>
 <span class="sd">        &gt;&gt;&gt; output = gray(input)  # 2x1x4x5</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">bgr_to_grayscale</span><span class="p">(</span><span class="n">image</span><span class="p">)</span></div>
@@ -526,7 +527,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.losses" href="losses.html" /><link rel="prev" title="kornia.geometry.ransac" href="geometry.ransac.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/io.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.io - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -163,7 +163,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -307,14 +309,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="kornia-io">
-<h1>kornia.io<a class="headerlink" href="#kornia-io" title="Permalink to this headline">#</a></h1>
+<h1>kornia.io<a class="headerlink" href="#kornia-io" title="Permalink to this heading">#</a></h1>
 <p>Package to load and save image data.</p>
 <p>The package internally implements <a class="reference external" href="https://github.com/kornia/kornia-rs">kornia_rs</a> which contains a low level implementation
 for Computer Vision in the <a class="reference external" href="https://www.rust-lang.org/">Rust</a> language. In addition, we implement the <a class="reference external" href="https://github.com/dmlc/dlpack">DLPack</a> protocol
@@ -332,20 +334,20 @@ Contact us or sponsor the project for more support (mac, win, rust, c++, video a
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kornia</span> <span class="k">as</span> <span class="nn">K</span>
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
-<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">UNCHANGED</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="c1"># will load CxHxW / in the original format in "cuda"</span>
+<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">UNCHANGED</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="c1"># will load CxHxW / in the original format in &quot;cuda&quot;</span>
 
-<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">RGB8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
-<span class="c1"># will load 3xHxW / in torch.uint in range [0,255] in "cpu"</span>
+<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">RGB8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="c1"># will load 3xHxW / in torch.uint in range [0,255] in &quot;cpu&quot;</span>
 
-<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="c1"># will load 1xHxW / in torch.uint8 in range [0,255] in "cuda"</span>
+<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">GRAY8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="c1"># will load 1xHxW / in torch.uint8 in range [0,255] in &quot;cuda&quot;</span>
 
-<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">GRAY32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
-<span class="c1"># will load 1xHxW / in torch.float32 in range [0,1] in "cpu"</span>
+<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">GRAY32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="c1"># will load 1xHxW / in torch.float32 in range [0,1] in &quot;cpu&quot;</span>
 
-<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">RGB32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span>
-<span class="c1"># will load 3xHxW / in torch.float32 in range [0,1] in "cuda"</span>
+<span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">ImageType</span><span class="o">.</span><span class="n">RGB32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="c1"># will load 3xHxW / in torch.float32 in range [0,1] in &quot;cuda&quot;</span>
 </pre></div>
 </div>
 <dl class="py function">
@@ -369,6 +371,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'cpu
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.io.</span></span><span class="sig-name descname"><span class="pre">ImageLoadType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/io/io.html#ImageLoadType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.io.ImageLoadType" title="Permalink to this definition">#</a></dt>
@@ -377,27 +380,34 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'cpu
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.GRAY32">
 <span class="sig-name descname"><span class="pre">GRAY32</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.GRAY32" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.GRAY8">
 <span class="sig-name descname"><span class="pre">GRAY8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.GRAY8" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.RGB32">
 <span class="sig-name descname"><span class="pre">RGB32</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.RGB32" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.RGB8">
 <span class="sig-name descname"><span class="pre">RGB8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.RGB8" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.RGBA8">
 <span class="sig-name descname"><span class="pre">RGBA8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.RGBA8" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="kornia.io.ImageLoadType.UNCHANGED">
 <span class="sig-name descname"><span class="pre">UNCHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#kornia.io.ImageLoadType.UNCHANGED" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
 </dd></dl>
+
 </section>
 
         </article>
@@ -412,10 +422,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'cpu
                 </div>
                 <div class="title">kornia.losses</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.ransac.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -445,8 +455,36 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'cpu
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">kornia.io</a><ul>
+<li><a class="reference internal" href="#kornia.io.load_image"><code class="docutils literal notranslate"><span class="pre">load_image()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType"><code class="docutils literal notranslate"><span class="pre">ImageLoadType</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.GRAY32"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.GRAY32</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.GRAY8"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.GRAY8</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.RGB32"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.RGB32</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.RGB8"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.RGB8</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.RGBA8"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.RGBA8</span></code></a></li>
+<li><a class="reference internal" href="#kornia.io.ImageLoadType.UNCHANGED"><code class="docutils literal notranslate"><span class="pre">ImageLoadType.UNCHANGED</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -455,7 +493,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'cpu
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

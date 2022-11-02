@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/filters/gaussian.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.filters.gaussian - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -326,10 +327,10 @@
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
-    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span>
+    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span>
     <span class="n">separable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Create an operator that blurs a tensor using a Gaussian filter.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an operator that blurs a tensor using a Gaussian filter.</span>
 
 <span class="sd">    .. image:: _static/img/gaussian_blur2d.png</span>
 
@@ -341,8 +342,8 @@
 <span class="sd">        kernel_size: the size of the kernel.</span>
 <span class="sd">        sigma: the standard deviation of the kernel.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
-<span class="sd">          The expected modes are: ``'constant'``, ``'reflect'``,</span>
-<span class="sd">          ``'replicate'`` or ``'circular'``. Default: ``'reflect'``.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``, ``&#39;reflect&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``. Default: ``&#39;reflect&#39;``.</span>
 <span class="sd">        separable: run as composition of two 1d-convolutions.</span>
 
 <span class="sd">    Returns:</span>
@@ -357,7 +358,7 @@
 <span class="sd">        &gt;&gt;&gt; output = gaussian_blur2d(input, (3, 3), (1.5, 1.5))</span>
 <span class="sd">        &gt;&gt;&gt; output.shape</span>
 <span class="sd">        torch.Size([2, 4, 5, 5])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">separable</span><span class="p">:</span>
         <span class="n">kernel_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -369,7 +370,7 @@
 
 
 <div class="viewcode-block" id="GaussianBlur2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.GaussianBlur2d">[docs]</a><span class="k">class</span> <span class="nc">GaussianBlur2d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Create an operator that blurs a tensor using a Gaussian filter.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an operator that blurs a tensor using a Gaussian filter.</span>
 
 <span class="sd">    The operator smooths the given tensor with a gaussian kernel by convolving</span>
 <span class="sd">    it to each channel. It supports batched operation.</span>
@@ -378,8 +379,8 @@
 <span class="sd">        kernel_size: the size of the kernel.</span>
 <span class="sd">        sigma: the standard deviation of the kernel.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
-<span class="sd">          The expected modes are: ``'constant'``, ``'reflect'``,</span>
-<span class="sd">          ``'replicate'`` or ``'circular'``. Default: ``'reflect'``.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``, ``&#39;reflect&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``. Default: ``&#39;reflect&#39;``.</span>
 <span class="sd">        separable: run as composition of two 1d-convolutions.</span>
 
 <span class="sd">    Returns:</span>
@@ -396,13 +397,13 @@
 <span class="sd">        &gt;&gt;&gt; output = gauss(input)  # 2x4x5x5</span>
 <span class="sd">        &gt;&gt;&gt; output.shape</span>
 <span class="sd">        torch.Size([2, 4, 5, 5])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
         <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
-        <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'reflect'</span><span class="p">,</span>
+        <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span>
         <span class="n">separable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -414,17 +415,17 @@
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-            <span class="o">+</span> <span class="s1">'(kernel_size='</span>
+            <span class="o">+</span> <span class="s1">&#39;(kernel_size=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'sigma='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;sigma=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'border_type='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;border_type=&#39;</span>
             <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">border_type</span>
-            <span class="o">+</span> <span class="s1">'separable='</span>
+            <span class="o">+</span> <span class="s1">&#39;separable=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">separable</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">')'</span>
+            <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
@@ -467,7 +468,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

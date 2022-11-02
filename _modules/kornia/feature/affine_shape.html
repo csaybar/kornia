@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/affine_shape.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.affine_shape - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -335,36 +336,36 @@
 <span class="p">)</span>
 
 <span class="n">urls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"affnet"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/ducha-aiki/affnet/raw/master/pretrained/AffNet.pth"</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;affnet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/ducha-aiki/affnet/raw/master/pretrained/AffNet.pth&quot;</span>
 
 
 <div class="viewcode-block" id="PatchAffineShapeEstimator"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PatchAffineShapeEstimator">[docs]</a><span class="k">class</span> <span class="nc">PatchAffineShapeEstimator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module, which estimates the second moment matrix of the patch gradients.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which estimates the second moment matrix of the patch gradients.</span>
 
 <span class="sd">    The method determines the affine shape of the local feature as in :cite:`baumberg2000`.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        patch_size: the input image patch size.</span>
 <span class="sd">        eps: for safe division.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">patch_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gradient</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span> <span class="o">=</span> <span class="n">SpatialGradient</span><span class="p">(</span><span class="s1">'sobel'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gradient</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span> <span class="o">=</span> <span class="n">SpatialGradient</span><span class="p">(</span><span class="s1">&#39;sobel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">eps</span>
         <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel2d</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">),</span> <span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'('</span> <span class="s1">'patch_size='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="s1">'eps='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span> <span class="o">+</span> <span class="s1">')'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="s1">&#39;patch_size=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="s1">&#39;eps=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
 
 <div class="viewcode-block" id="PatchAffineShapeEstimator.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PatchAffineShapeEstimator.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Args:</span>
+        <span class="sd">&quot;&quot;&quot;Args:</span>
 <span class="sd">            patch: (torch.Tensor) shape [Bx1xHxW]</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            torch.Tensor: ellipse_shape shape [Bx1x3]"""</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+<span class="sd">            torch.Tensor: ellipse_shape shape [Bx1x3]&quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">patch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">patch</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
         <span class="n">grads</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weighting</span>
         <span class="c1"># unpack the edges</span>
@@ -391,7 +392,7 @@
 
 
 <div class="viewcode-block" id="LAFAffineShapeEstimator"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFAffineShapeEstimator">[docs]</a><span class="k">class</span> <span class="nc">LAFAffineShapeEstimator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Module, which extracts patches using input images and local affine frames (LAFs).</span>
+    <span class="sd">&quot;&quot;&quot;Module, which extracts patches using input images and local affine frames (LAFs).</span>
 
 <span class="sd">    Then runs :class:`~kornia.feature.PatchAffineShapeEstimator` on patches to estimate LAFs shape.</span>
 
@@ -403,7 +404,7 @@
 <span class="sd">        patch_size: the input image patch size.</span>
 <span class="sd">        affine_shape_detector: Patch affine shape estimator, :class:`~kornia.feature.PatchAffineShapeEstimator`.</span>
 <span class="sd">        preserve_orientation: if True, the original orientation is preserved.</span>
-<span class="sd">    """</span>  <span class="c1"># pylint: disable</span>
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c1"># pylint: disable</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">patch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">affine_shape_detector</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">preserve_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
@@ -414,37 +415,37 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">preserve_orientation</span> <span class="o">=</span> <span class="n">preserve_orientation</span>
         <span class="k">if</span> <span class="n">preserve_orientation</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">"`LAFAffineShapeEstimator` default behaviour is changed "</span>
-                <span class="s2">"and now it does preserve original LAF orientation. "</span>
-                <span class="s2">"Make sure your code accounts for this."</span><span class="p">,</span>
+                <span class="s2">&quot;`LAFAffineShapeEstimator` default behaviour is changed &quot;</span>
+                <span class="s2">&quot;and now it does preserve original LAF orientation. &quot;</span>
+                <span class="s2">&quot;Make sure your code accounts for this.&quot;</span><span class="p">,</span>
                 <span class="ne">DeprecationWarning</span><span class="p">,</span>
                 <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'('</span>
-            <span class="s1">'patch_size='</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span>
+            <span class="s1">&#39;patch_size=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'affine_shape_detector='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;affine_shape_detector=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">affine_shape_detector</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'preserve_orientation='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;preserve_orientation=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preserve_orientation</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">')'</span>
+            <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="p">)</span>
 
 <div class="viewcode-block" id="LAFAffineShapeEstimator.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFAffineShapeEstimator.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            laf: (torch.Tensor) shape [BxNx2x3]</span>
 <span class="sd">            img: (torch.Tensor) shape [Bx1xHxW]</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            torch.Tensor: laf_out shape [BxNx2x3]"""</span>
+<span class="sd">            torch.Tensor: laf_out shape [BxNx2x3]&quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_LAF</span><span class="p">(</span><span class="n">laf</span><span class="p">)</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="n">B</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">laf</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">PS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span>
         <span class="n">patches</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">extract_patches_from_pyramid</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">make_upright</span><span class="p">(</span><span class="n">laf</span><span class="p">),</span> <span class="n">PS</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PS</span><span class="p">,</span> <span class="n">PS</span><span class="p">)</span>
@@ -462,10 +463,10 @@
 
 
 <div class="viewcode-block" id="LAFAffNetShapeEstimator"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFAffNetShapeEstimator">[docs]</a><span class="k">class</span> <span class="nc">LAFAffNetShapeEstimator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Module, which extracts patches using input images and local affine frames (LAFs).</span>
+    <span class="sd">&quot;&quot;&quot;Module, which extracts patches using input images and local affine frames (LAFs).</span>
 
 <span class="sd">    Then runs AffNet on patches to estimate LAFs shape. This is based on the original code from paper</span>
-<span class="sd">    "Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability"".</span>
+<span class="sd">    &quot;Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability&quot;&quot;.</span>
 <span class="sd">    See :cite:`AffNet2018` for more details.</span>
 
 <span class="sd">    Then original LAF shape is replaced with estimated one. The original LAF orientation is not preserved,</span>
@@ -473,7 +474,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        pretrained: Download and set pretrained weights to the model.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">preserve_orientation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -505,14 +506,14 @@
         <span class="c1"># use torch.hub to load pretrained model</span>
         <span class="k">if</span> <span class="n">pretrained</span><span class="p">:</span>
             <span class="n">storage_fcn</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
-            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'affnet'</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">'state_dict'</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;affnet&#39;</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">&#39;state_dict&#39;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">preserve_orientation</span> <span class="o">=</span> <span class="n">preserve_orientation</span>
         <span class="k">if</span> <span class="n">preserve_orientation</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s2">"`LAFAffNetShapeEstimator` default behaviour is changed "</span>
-                <span class="s2">"and now it does preserve original LAF orientation. "</span>
-                <span class="s2">"Make sure your code accounts for this."</span><span class="p">,</span>
+                <span class="s2">&quot;`LAFAffNetShapeEstimator` default behaviour is changed &quot;</span>
+                <span class="s2">&quot;and now it does preserve original LAF orientation. &quot;</span>
+                <span class="s2">&quot;Make sure your code accounts for this.&quot;</span><span class="p">,</span>
                 <span class="ne">DeprecationWarning</span><span class="p">,</span>
                 <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
             <span class="p">)</span>
@@ -520,7 +521,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_normalize_input</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Utility function that normalizes the input by batch."""</span>
+        <span class="sd">&quot;&quot;&quot;Utility function that normalizes the input by batch.&quot;&quot;&quot;</span>
         <span class="n">sp</span><span class="p">,</span> <span class="n">mp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">std_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="c1"># WARNING: we need to .detach() input, otherwise the gradients produced by</span>
         <span class="c1"># the patches extractor with F.grid_sample are very noisy, making the detector</span>
@@ -528,16 +529,16 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mp</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LAFAffNetShapeEstimator.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFAffNetShapeEstimator.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            laf: shape [BxNx2x3]</span>
 <span class="sd">            img: shape [Bx1xHxW]</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            laf_out shape [BxNx2x3]</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_LAF</span><span class="p">(</span><span class="n">laf</span><span class="p">)</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="n">B</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">laf</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">PS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch_size</span>
         <span class="n">patches</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">extract_patches_from_pyramid</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">make_upright</span><span class="p">(</span><span class="n">laf</span><span class="p">),</span> <span class="n">PS</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PS</span><span class="p">,</span> <span class="n">PS</span><span class="p">)</span>
@@ -592,7 +593,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

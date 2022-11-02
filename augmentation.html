@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Base Classes" href="augmentation.base.html" /><link rel="prev" title="Dexined (edge detection)" href="models/dexined.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/augmentation.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.augmentation - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,7 +316,7 @@
         </div>
         <article role="main">
           <section id="kornia-augmentation">
-<h1>kornia.augmentation<a class="headerlink" href="#kornia-augmentation" title="Permalink to this headline">#</a></h1>
+<h1>kornia.augmentation<a class="headerlink" href="#kornia-augmentation" title="Permalink to this heading">#</a></h1>
 <p>This module implements in a high level logic. The main features of this module, and similar to the rest of the
 library, is that can it perform data augmentation routines in a batch mode, using any supported device,
 and can be used for backpropagation. Some of the available functionalities which are worth to mention are the
@@ -327,21 +329,22 @@ itself, or to be applied to additional metadata such as the label images for sem
 in bounding boxes or landmark keypoints for object detection tasks. It gives the user the flexibility to
 perform complex data augmentations pipelines.</p>
 <p>Try it out :</p>
-<a class="reference external image-reference" href="https://huggingface.co/spaces/kornia/kornia-augmentations-tester"><img alt="https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Interactive%20Demo-blue" src="https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Interactive%20Demo-blue"/></a>
+<a class="reference external image-reference" href="https://huggingface.co/spaces/kornia/kornia-augmentations-tester"><img alt="https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Interactive%20Demo-blue" src="https://img.shields.io/badge/%F0%9F%A4%97%20Spaces-Interactive%20Demo-blue" /></a>
 <section id="benchmark">
-<h2>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">#</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id1">
+<h2>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this heading">#</a></h2>
+<div class="table-wrapper docutils container" id="id1">
+<table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Here is a benchmark performed on <a class="reference external" href="https://colab.research.google.com/drive/1b-HpK4EsZR8uolztgH4roNBLaDwcMULx?usp=sharing">Google Colab</a>
 K80 GPU with different libraries and batch sizes. This benchmark shows
 strong GPU augmentation speed acceleration brought by Kornia data augmentations. The image size is fixed to 224x224 and the
 unit is milliseconds (ms).</span><a class="headerlink" href="#id1" title="Permalink to this table">#</a></caption>
 <colgroup>
-<col style="width: 27%"/>
-<col style="width: 15%"/>
-<col style="width: 15%"/>
-<col style="width: 15%"/>
-<col style="width: 15%"/>
-<col style="width: 15%"/>
+<col style="width: 27%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Libraries</p></th>
@@ -436,32 +439,148 @@ unit is milliseconds (ms).</span><a class="headerlink" href="#id1" title="Permal
 <td><p>0.07±9.41</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="augmentation.base.html">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="augmentation.base.html">Base Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase2D"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase2D.generate_parameters"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.generate_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase2D.compute_transformation"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.compute_transformation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase2D.apply_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase3D"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase3D.generate_parameters"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.generate_parameters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase3D.compute_transformation"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.compute_transformation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.base.html#kornia.augmentation.AugmentationBase3D.apply_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.apply_transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="augmentation.container.html">Augmentation Containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#augmentation-sequential">Augmentation Sequential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#augmentation-dispatchers">Augmentation Dispatchers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#imagesequential">ImageSequential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#patchsequential">PatchSequential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#video-data-augmentation">Video Data Augmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#augmentation-sequential">Augmentation Sequential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.AugmentationSequential"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.AugmentationSequential.forward"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.AugmentationSequential.inverse"><code class="docutils literal notranslate"><span class="pre">AugmentationSequential.inverse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#augmentation-dispatchers">Augmentation Dispatchers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ManyToManyAugmentationDispather"><code class="docutils literal notranslate"><span class="pre">ManyToManyAugmentationDispather</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ManyToManyAugmentationDispather.forward"><code class="docutils literal notranslate"><span class="pre">ManyToManyAugmentationDispather.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ManyToOneAugmentationDispather"><code class="docutils literal notranslate"><span class="pre">ManyToOneAugmentationDispather</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ManyToOneAugmentationDispather.forward"><code class="docutils literal notranslate"><span class="pre">ManyToOneAugmentationDispather.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#imagesequential">ImageSequential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ImageSequential"><code class="docutils literal notranslate"><span class="pre">ImageSequential</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.ImageSequential.forward"><code class="docutils literal notranslate"><span class="pre">ImageSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#patchsequential">PatchSequential</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.PatchSequential"><code class="docutils literal notranslate"><span class="pre">PatchSequential</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.PatchSequential.forward"><code class="docutils literal notranslate"><span class="pre">PatchSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.container.html#video-data-augmentation">Video Data Augmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.VideoSequential"><code class="docutils literal notranslate"><span class="pre">VideoSequential</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.container.html#kornia.augmentation.container.VideoSequential.forward"><code class="docutils literal notranslate"><span class="pre">VideoSequential.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="augmentation.module.html">Image Augmentations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#transforms2d">Transforms2D</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#intensity">Intensity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#geometric">Geometric</a></li>
-<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#mix">Mix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#intensity">Intensity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPlanckianJitter"><code class="docutils literal notranslate"><span class="pre">RandomPlanckianJitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPlasmaShadow"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaShadow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPlasmaBrightness"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaBrightness</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPlasmaContrast"><code class="docutils literal notranslate"><span class="pre">RandomPlasmaContrast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.ColorJiggle"><code class="docutils literal notranslate"><span class="pre">ColorJiggle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.ColorJitter"><code class="docutils literal notranslate"><span class="pre">ColorJitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomBoxBlur"><code class="docutils literal notranslate"><span class="pre">RandomBoxBlur</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomBrightness"><code class="docutils literal notranslate"><span class="pre">RandomBrightness</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomChannelShuffle"><code class="docutils literal notranslate"><span class="pre">RandomChannelShuffle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomContrast"><code class="docutils literal notranslate"><span class="pre">RandomContrast</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomEqualize"><code class="docutils literal notranslate"><span class="pre">RandomEqualize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomGamma"><code class="docutils literal notranslate"><span class="pre">RandomGamma</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomGrayscale"><code class="docutils literal notranslate"><span class="pre">RandomGrayscale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomGaussianBlur"><code class="docutils literal notranslate"><span class="pre">RandomGaussianBlur</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomGaussianNoise"><code class="docutils literal notranslate"><span class="pre">RandomGaussianNoise</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomHue"><code class="docutils literal notranslate"><span class="pre">RandomHue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomMotionBlur"><code class="docutils literal notranslate"><span class="pre">RandomMotionBlur</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPosterize"><code class="docutils literal notranslate"><span class="pre">RandomPosterize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomRGBShift"><code class="docutils literal notranslate"><span class="pre">RandomRGBShift</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomSharpness"><code class="docutils literal notranslate"><span class="pre">RandomSharpness</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomSolarize"><code class="docutils literal notranslate"><span class="pre">RandomSolarize</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#geometric">Geometric</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.CenterCrop"><code class="docutils literal notranslate"><span class="pre">CenterCrop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomAffine"><code class="docutils literal notranslate"><span class="pre">RandomAffine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomCrop"><code class="docutils literal notranslate"><span class="pre">RandomCrop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomErasing"><code class="docutils literal notranslate"><span class="pre">RandomErasing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomElasticTransform"><code class="docutils literal notranslate"><span class="pre">RandomElasticTransform</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomFisheye"><code class="docutils literal notranslate"><span class="pre">RandomFisheye</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomHorizontalFlip"><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomInvert"><code class="docutils literal notranslate"><span class="pre">RandomInvert</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomPerspective"><code class="docutils literal notranslate"><span class="pre">RandomPerspective</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomResizedCrop"><code class="docutils literal notranslate"><span class="pre">RandomResizedCrop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomRotation"><code class="docutils literal notranslate"><span class="pre">RandomRotation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomVerticalFlip"><code class="docutils literal notranslate"><span class="pre">RandomVerticalFlip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomThinPlateSpline"><code class="docutils literal notranslate"><span class="pre">RandomThinPlateSpline</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#mix">Mix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomCutMixV2"><code class="docutils literal notranslate"><span class="pre">RandomCutMixV2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomMixUpV2"><code class="docutils literal notranslate"><span class="pre">RandomMixUpV2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomMosaic"><code class="docutils literal notranslate"><span class="pre">RandomMosaic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomJigsaw"><code class="docutils literal notranslate"><span class="pre">RandomJigsaw</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#transforms3d">Transforms3D</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#id11">Geometric</a></li>
-<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#id12">Intensity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#id11">Geometric</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomDepthicalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomDepthicalFlip3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomHorizontalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomVerticalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomVerticalFlip3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomRotation3D"><code class="docutils literal notranslate"><span class="pre">RandomRotation3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomAffine3D"><code class="docutils literal notranslate"><span class="pre">RandomAffine3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomCrop3D"><code class="docutils literal notranslate"><span class="pre">RandomCrop3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.CenterCrop3D"><code class="docutils literal notranslate"><span class="pre">CenterCrop3D</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#normalizations">Normalizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#image-resize">Image Resize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#id12">Intensity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomMotionBlur3D"><code class="docutils literal notranslate"><span class="pre">RandomMotionBlur3D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.RandomEqualize3D"><code class="docutils literal notranslate"><span class="pre">RandomEqualize3D</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#normalizations">Normalizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.Denormalize"><code class="docutils literal notranslate"><span class="pre">Denormalize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.Normalize"><code class="docutils literal notranslate"><span class="pre">Normalize</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentation.module.html#image-resize">Image Resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.Resize"><code class="docutils literal notranslate"><span class="pre">Resize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.LongestMaxSize"><code class="docutils literal notranslate"><span class="pre">LongestMaxSize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="augmentation.module.html#kornia.augmentation.SmallestMaxSize"><code class="docutils literal notranslate"><span class="pre">SmallestMaxSize</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -481,10 +600,10 @@ unit is milliseconds (ms).</span><a class="headerlink" href="#id1" title="Permal
                 </div>
                 <div class="title">Base Classes</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="models/dexined.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -520,7 +639,7 @@ unit is milliseconds (ms).</span><a class="headerlink" href="#id1" title="Permal
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -543,7 +662,9 @@ unit is milliseconds (ms).</span><a class="headerlink" href="#id1" title="Permal
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

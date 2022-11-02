@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.transform" href="geometry.transform.html" /><link rel="prev" title="kornia.geometry.quaternion" href="geometry.quaternion.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.subpix.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.subpix - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,18 +316,22 @@
         </div>
         <article role="main">
           <section id="kornia-geometry-subpix">
-<h1>kornia.geometry.subpix<a class="headerlink" href="#kornia-geometry-subpix" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry.subpix<a class="headerlink" href="#kornia-geometry-subpix" title="Permalink to this heading">#</a></h1>
 <p>Module with useful functionalities to extract coordinates sub-pixel accuracy.</p>
 <section id="convolutional">
-<h2>Convolutional<a class="headerlink" href="#convolutional" title="Permalink to this headline">#</a></h2>
+<h2>Convolutional<a class="headerlink" href="#convolutional" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.conv_soft_argmax2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">conv_soft_argmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#conv_soft_argmax2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.conv_soft_argmax2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the convolutional spatial Soft-Argmax 2D over the windows of a given heatmap.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[ij(X) = \frac{\sum{(i,j)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[val(X) = \frac{\sum{x * exp(x / T)  \in X}} {\sum{exp(x / T)  \in X}}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ij(X) = \frac{\sum{(i,j)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[val(X) = \frac{\sum{x * exp(x / T)  \in X}} {\sum{exp(x / T)  \in X}}\]</div>
+</div>
 <p>where <span class="math notranslate nohighlight">\(T\)</span> is temperature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -357,12 +363,16 @@ On each window, the function computed returns with shapes <span class="math notr
 W_{out})\)</span>, <span class="math notranslate nohighlight">\((N, C, H_{out}, W_{out})\)</span>,</p>
 <p>where</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] -
-  (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+  (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] -
-  (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
+  (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div>
+</div>
 </div></blockquote>
 </p>
 </dd>
@@ -373,14 +383,19 @@ W_{out})\)</span>, <span class="math notranslate nohighlight">\((N, C, H_{out}, 
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.conv_soft_argmax3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">conv_soft_argmax3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_maxima_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#conv_soft_argmax3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.conv_soft_argmax3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the convolutional spatial Soft-Argmax 3D over the windows of a given heatmap.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[ijk(X) = \frac{\sum{(i,j,k)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[val(X) = \frac{\sum{x * exp(x / T)  \in X}} {\sum{exp(x / T)  \in X}}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ijk(X) = \frac{\sum{(i,j,k)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[val(X) = \frac{\sum{x * exp(x / T)  \in X}} {\sum{exp(x / T)  \in X}}\]</div>
+</div>
 <p>where <code class="docutils literal notranslate"><span class="pre">T</span></code> is temperature.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -415,15 +430,21 @@ On each window, the function computed returns with shapes <span class="math notr
 <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span>,</p>
 <p>where</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[D_{out} = \left\lfloor\frac{D_{in}  + 2 \times \text{padding}[0] -
-(\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+(\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[1] -
-(\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+(\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[2] -
-(\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor\]</div></div>
+(\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor\]</div>
+</div>
 </div></blockquote>
 </p>
 </dd>
@@ -434,6 +455,7 @@ On each window, the function computed returns with shapes <span class="math notr
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.conv_quad_interp3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">conv_quad_interp3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_maxima_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#conv_quad_interp3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.conv_quad_interp3d" title="Permalink to this definition">#</a></dt>
@@ -457,15 +479,21 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <span class="math notranslate nohighlight">\((N, C, 3, D_{out}, H_{out}, W_{out})\)</span>, <span class="math notranslate nohighlight">\((N, C, D_{out}, H_{out}, W_{out})\)</span>,</p>
 <p>where</p>
 <blockquote>
-<div><div class="math-wrapper"><div class="math notranslate nohighlight">
+<div><div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[D_{out} = \left\lfloor\frac{D_{in}  + 2 \times \text{padding}[0] -
-(\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+(\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[1] -
-(\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div></div>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+(\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor\]</div>
+</div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[2] -
-(\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor\]</div></div>
+(\text{kernel\_size}[2] - 1) - 1}{\text{stride}[2]} + 1\right\rfloor\]</div>
+</div>
 </div></blockquote>
 </p>
 </dd>
@@ -476,9 +504,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 <section id="spatial">
-<h2>Spatial<a class="headerlink" href="#spatial" title="Permalink to this headline">#</a></h2>
+<h2>Spatial<a class="headerlink" href="#spatial" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.spatial_softmax2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">spatial_softmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/dsnt.html#spatial_softmax2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.spatial_softmax2d" title="Permalink to this definition">#</a></dt>
@@ -512,6 +541,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">torc
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.spatial_expectation2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">spatial_expectation2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/dsnt.html#spatial_expectation2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.spatial_expectation2d" title="Permalink to this definition">#</a></dt>
@@ -544,6 +574,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.spatial_soft_argmax2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">spatial_soft_argmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#spatial_soft_argmax2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.spatial_soft_argmax2d" title="Permalink to this definition">#</a></dt>
@@ -577,6 +608,7 @@ The output order is x-coord and y-coord.</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.render_gaussian2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">render_gaussian2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/dsnt.html#render_gaussian2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.render_gaussian2d" title="Permalink to this definition">#</a></dt>
@@ -598,9 +630,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="non-maxima-suppression">
-<h2>Non Maxima Suppression<a class="headerlink" href="#non-maxima-suppression" title="Permalink to this headline">#</a></h2>
+<h2>Non Maxima Suppression<a class="headerlink" href="#non-maxima-suppression" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.nms2d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">nms2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/nms.html#nms2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.nms2d" title="Permalink to this definition">#</a></dt>
@@ -612,6 +645,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.nms3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">nms3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/nms.html#nms3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.nms3d" title="Permalink to this definition">#</a></dt>
@@ -623,43 +657,50 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 <section id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">#</a></h2>
+<h2>Module<a class="headerlink" href="#module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.SpatialSoftArgmax2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">SpatialSoftArgmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#SpatialSoftArgmax2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.SpatialSoftArgmax2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute the Spatial Soft-Argmax 2D of a given heatmap.</p>
 <p>See <a class="reference internal" href="#kornia.geometry.subpix.spatial_soft_argmax2d" title="kornia.geometry.subpix.spatial_soft_argmax2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">spatial_soft_argmax2d()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.ConvSoftArgmax2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">ConvSoftArgmax2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#ConvSoftArgmax2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.ConvSoftArgmax2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates soft argmax 2d per window.</p>
 <p>See <a class="reference internal" href="#kornia.geometry.subpix.conv_soft_argmax2d" title="kornia.geometry.subpix.conv_soft_argmax2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">conv_soft_argmax2d()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.ConvSoftArgmax3d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">ConvSoftArgmax3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.tensor(1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_maxima_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#ConvSoftArgmax3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.ConvSoftArgmax3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that calculates soft argmax 3d per window.</p>
 <p>See <a class="reference internal" href="#kornia.geometry.subpix.conv_soft_argmax3d" title="kornia.geometry.subpix.conv_soft_argmax3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">conv_soft_argmax3d()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.ConvQuadInterp3d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">ConvQuadInterp3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strict_maxima_bonus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/spatial_soft_argmax.html#ConvQuadInterp3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.ConvQuadInterp3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate soft argmax 3d per window.</p>
 <p>See <a class="reference internal" href="#kornia.geometry.subpix.conv_quad_interp3d" title="kornia.geometry.subpix.conv_quad_interp3d"><code class="xref py py-func docutils literal notranslate"><span class="pre">conv_quad_interp3d()</span></code></a> for details.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.NonMaximaSuppression2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">NonMaximaSuppression2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/nms.html#NonMaximaSuppression2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.NonMaximaSuppression2d" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply non maxima suppression to filter.</p>
 </dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.subpix.NonMaximaSuppression3d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.subpix.</span></span><span class="sig-name descname"><span class="pre">NonMaximaSuppression3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/subpix/nms.html#NonMaximaSuppression3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.subpix.NonMaximaSuppression3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply non maxima suppression to filter.</p>
 </dd></dl>
+
 </section>
 </section>
 
@@ -675,10 +716,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
                 </div>
                 <div class="title">kornia.geometry.transform</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.quaternion.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -714,17 +755,40 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.geometry.subpix</a><ul>
-<li><a class="reference internal" href="#convolutional">Convolutional</a></li>
-<li><a class="reference internal" href="#spatial">Spatial</a></li>
-<li><a class="reference internal" href="#non-maxima-suppression">Non Maxima Suppression</a></li>
-<li><a class="reference internal" href="#module">Module</a></li>
+<li><a class="reference internal" href="#convolutional">Convolutional</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.subpix.conv_soft_argmax2d"><code class="docutils literal notranslate"><span class="pre">conv_soft_argmax2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.conv_soft_argmax3d"><code class="docutils literal notranslate"><span class="pre">conv_soft_argmax3d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.conv_quad_interp3d"><code class="docutils literal notranslate"><span class="pre">conv_quad_interp3d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#spatial">Spatial</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.subpix.spatial_softmax2d"><code class="docutils literal notranslate"><span class="pre">spatial_softmax2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.spatial_expectation2d"><code class="docutils literal notranslate"><span class="pre">spatial_expectation2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.spatial_soft_argmax2d"><code class="docutils literal notranslate"><span class="pre">spatial_soft_argmax2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.render_gaussian2d"><code class="docutils literal notranslate"><span class="pre">render_gaussian2d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#non-maxima-suppression">Non Maxima Suppression</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.subpix.nms2d"><code class="docutils literal notranslate"><span class="pre">nms2d()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.nms3d"><code class="docutils literal notranslate"><span class="pre">nms3d()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module">Module</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.subpix.SpatialSoftArgmax2d"><code class="docutils literal notranslate"><span class="pre">SpatialSoftArgmax2d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.ConvSoftArgmax2d"><code class="docutils literal notranslate"><span class="pre">ConvSoftArgmax2d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.ConvSoftArgmax3d"><code class="docutils literal notranslate"><span class="pre">ConvSoftArgmax3d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.ConvQuadInterp3d"><code class="docutils literal notranslate"><span class="pre">ConvQuadInterp3d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.NonMaximaSuppression2d"><code class="docutils literal notranslate"><span class="pre">NonMaximaSuppression2d</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.subpix.NonMaximaSuppression3d"><code class="docutils literal notranslate"><span class="pre">NonMaximaSuppression3d</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -740,7 +804,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

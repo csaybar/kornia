@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/losses/ms_ssim.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses.ms_ssim - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -324,7 +325,7 @@
 
 
 <div class="viewcode-block" id="MS_SSIMLoss"><a class="viewcode-back" href="../../../losses.html#kornia.losses.MS_SSIMLoss">[docs]</a><span class="k">class</span> <span class="nc">MS_SSIMLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Creates a criterion that computes MSSIM + L1 loss.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates a criterion that computes MSSIM + L1 loss.</span>
 
 <span class="sd">    According to [1], we compute the MS_SSIM + L1 loss as follows:</span>
 
@@ -348,9 +349,9 @@
 <span class="sd">        alpha : specifies the alpha value</span>
 <span class="sd">        compensation: specifies the scaling coefficient.</span>
 <span class="sd">        reduction : Specifies the reduction to apply to the</span>
-<span class="sd">         output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,</span>
-<span class="sd">         ``'mean'``: the sum of the output will be divided by the number of elements</span>
-<span class="sd">         in the output, ``'sum'``: the output will be summed.</span>
+<span class="sd">         output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction will be applied,</span>
+<span class="sd">         ``&#39;mean&#39;``: the sum of the output will be divided by the number of elements</span>
+<span class="sd">         in the output, ``&#39;sum&#39;``: the output will be summed.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The computed loss.</span>
@@ -358,14 +359,14 @@
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input1: :math:`(N, C, H, W)`.</span>
 <span class="sd">        - Input2: :math:`(N, C, H, W)`.</span>
-<span class="sd">        - Output: :math:`(N, H, W)` or scalar if reduction is set to ``'mean'`` or ``'sum'``.</span>
+<span class="sd">        - Output: :math:`(N, H, W)` or scalar if reduction is set to ``&#39;mean&#39;`` or ``&#39;sum&#39;``.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; input1 = torch.rand(1, 3, 5, 5)</span>
 <span class="sd">        &gt;&gt;&gt; input2 = torch.rand(1, 3, 5, 5)</span>
 <span class="sd">        &gt;&gt;&gt; criterion = kornia.losses.MS_SSIMLoss()</span>
 <span class="sd">        &gt;&gt;&gt; loss = criterion(input1, input2)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -374,7 +375,7 @@
         <span class="n">K</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">),</span>
         <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.025</span><span class="p">,</span>
         <span class="n">compensation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">200.0</span><span class="p">,</span>
-        <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'mean'</span><span class="p">,</span>
+        <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">DR</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">data_range</span>
@@ -395,12 +396,12 @@
             <span class="n">g_masks</span><span class="p">[</span><span class="mi">3</span> <span class="o">*</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fspecial_gauss_2d</span><span class="p">(</span><span class="n">filter_size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
             <span class="n">g_masks</span><span class="p">[</span><span class="mi">3</span> <span class="o">*</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fspecial_gauss_2d</span><span class="p">(</span><span class="n">filter_size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'_g_masks'</span><span class="p">,</span> <span class="n">g_masks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;_g_masks&#39;</span><span class="p">,</span> <span class="n">g_masks</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_fspecial_gauss_1d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Create 1-D gauss kernel.</span>
+        <span class="sd">&quot;&quot;&quot;Create 1-D gauss kernel.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: the size of gauss kernel.</span>
@@ -408,7 +409,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            1D kernel (size).</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">coords</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">coords</span> <span class="o">-=</span> <span class="n">size</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="n">g</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">coords</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
@@ -418,7 +419,7 @@
     <span class="k">def</span> <span class="nf">_fspecial_gauss_2d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Create 2-D gauss kernel.</span>
+        <span class="sd">&quot;&quot;&quot;Create 2-D gauss kernel.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: the size of gauss kernel.</span>
@@ -426,12 +427,12 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            2D kernel (size x size).</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">gaussian_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fspecial_gauss_1d</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">gaussian_vec</span><span class="p">,</span> <span class="n">gaussian_vec</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Compute MS_SSIM loss.</span>
+        <span class="sd">&quot;&quot;&quot;Compute MS_SSIM loss.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            img1: the predicted image with shape :math:`(B, C, H, W)`.</span>
@@ -439,15 +440,15 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Estimated MS-SSIM_L1 loss.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Output type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">img1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">img2</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input shapes should be same. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input shapes should be same. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="n">g_masks</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_g_masks</span><span class="p">)</span>
 
@@ -472,7 +473,7 @@
 
         <span class="c1"># TODO: pass pointer to function e.g. to make more custom with mse, cosine, etc.</span>
         <span class="c1"># Compute L1 loss</span>
-        <span class="n">loss_l1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
+        <span class="n">loss_l1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
 
         <span class="c1"># Compute average l1 loss in 3 channels</span>
         <span class="n">gaussian_l1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">loss_l1</span><span class="p">,</span> <span class="n">g_masks</span><span class="p">[</span><span class="o">-</span><span class="n">CH</span><span class="p">:],</span> <span class="n">groups</span><span class="o">=</span><span class="n">CH</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pad</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -481,14 +482,14 @@
         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">loss_ms_ssim</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">gaussian_l1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">DR</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compensation</span> <span class="o">*</span> <span class="n">loss</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span>
             <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">&quot;sum&quot;</span><span class="p">:</span>
             <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">"none"</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">reduction</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid reduction mode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid reduction mode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">reduction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">loss</span></div>
 </pre></div>
         </article>
@@ -528,7 +529,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

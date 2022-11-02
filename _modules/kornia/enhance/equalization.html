@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/enhance/equalization.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.enhance.equalization - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -313,7 +314,7 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.enhance.equalization</h1><div class="highlight"><pre>
-<span></span><span class="sd">"""In this module several equalization methods are exposed: he, ahe, clahe."""</span>
+<span></span><span class="sd">&quot;&quot;&quot;In this module several equalization methods are exposed: he, ahe, clahe.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
@@ -330,7 +331,7 @@
 <span class="k">def</span> <span class="nf">_compute_tiles</span><span class="p">(</span>
     <span class="n">imgs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">even_tile_size</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Compute tiles on an image according to a grid size.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute tiles on an image according to a grid size.</span>
 
 <span class="sd">    Note that padding can be added to the image in order to crop properly the image.</span>
 <span class="sd">    So, the grid_size (GH, GW) x tile_size (TH, TW) &gt;= image_size (H, W)</span>
@@ -342,8 +343,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor with tiles (B, GH, GW, C, TH, TW). B = 1 in case of a single image is provided.</span>
-<span class="sd">        tensor with the padded batch of 2D imageswith shape (B, C, H', W').</span>
-<span class="sd">    """</span>
+<span class="sd">        tensor with the padded batch of 2D imageswith shape (B, C, H&#39;, W&#39;).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">batch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">imgs</span>  <span class="c1"># B x C x H x W</span>
 
     <span class="c1"># compute stride and kernel size</span>
@@ -361,10 +362,10 @@
 
     <span class="c1"># add the padding in the last coluns and rows</span>
     <span class="k">if</span> <span class="n">pad_vert</span> <span class="o">&gt;</span> <span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">or</span> <span class="n">pad_horz</span> <span class="o">&gt;</span> <span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Cannot compute tiles on the image according to the given grid size'</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot compute tiles on the image according to the given grid size&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">pad_vert</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">pad_horz</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">batch</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_horz</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pad_vert</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'reflect'</span><span class="p">)</span>  <span class="c1"># B x C x H' x W'</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_horz</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pad_vert</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>  <span class="c1"># B x C x H&#39; x W&#39;</span>
 
     <span class="c1"># compute tiles</span>
     <span class="n">c</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
@@ -385,7 +386,7 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_interpolation_tiles</span><span class="p">(</span><span class="n">padded_imgs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tile_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute interpolation tiles on a properly padded set of images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute interpolation tiles on a properly padded set of images.</span>
 
 <span class="sd">    Note that images must be padded. So, the tile_size (TH, TW) * grid_size (GH, GW) = image_size (H, W)</span>
 
@@ -396,15 +397,15 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor with the interpolation tiles (B, 2GH, 2GW, C, TH/2, TW/2).</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">padded_imgs</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"Images Tensor must be 4D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Images Tensor must be 4D.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">padded_imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">%</span> <span class="n">tile_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"Images are not correctly padded."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Images are not correctly padded.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">padded_imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="n">tile_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"Images are not correctly padded."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Images are not correctly padded.&quot;</span><span class="p">)</span>
 
     <span class="c1"># tiles to be interpolated are built by dividing in 4 each already existing</span>
     <span class="n">interp_kernel_vert</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">tile_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span>
@@ -437,7 +438,7 @@
 <span class="k">def</span> <span class="nf">_compute_luts</span><span class="p">(</span>
     <span class="n">tiles_x_im</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span> <span class="n">clip</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">40.0</span><span class="p">,</span> <span class="n">diff</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute luts for a batched set of tiles.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute luts for a batched set of tiles.</span>
 
 <span class="sd">    Same approach as in OpenCV (https://github.com/opencv/opencv/blob/master/modules/imgproc/src/clahe.cpp)</span>
 
@@ -449,9 +450,9 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Lut for each tile (B, GH, GW, C, 256).</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">tiles_x_im</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"Tensor must be 6D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Tensor must be 6D.&quot;</span><span class="p">)</span>
 
     <span class="n">b</span><span class="p">,</span> <span class="n">gh</span><span class="p">,</span> <span class="n">gw</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">th</span><span class="p">,</span> <span class="n">tw</span> <span class="o">=</span> <span class="n">tiles_x_im</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">pixels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">th</span> <span class="o">*</span> <span class="n">tw</span>
@@ -488,7 +489,7 @@
 
 
 <span class="k">def</span> <span class="nf">_map_luts</span><span class="p">(</span><span class="n">interp_tiles</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">luts</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Assign the required luts to each tile.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assign the required luts to each tile.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        interp_tiles: set of interpolation tiles. (B, 2GH, 2GW, C, TH/2, TW/2)</span>
@@ -496,12 +497,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">         mapped luts (B, 2GH, 2GW, 4, C, 256)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">interp_tiles</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"interp_tiles tensor must be 6D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;interp_tiles tensor must be 6D.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">luts</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"luts tensor must be 5D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;luts tensor must be 5D.&quot;</span><span class="p">)</span>
 
     <span class="c1"># gh, gw -&gt; 2x the number of tiles used to compute the histograms</span>
     <span class="c1"># th, tw -&gt; /2 the sizes of the tiles used to compute the histograms</span>
@@ -510,13 +511,13 @@
     <span class="c1"># precompute idxs for non corner regions (doing it in cpu seems slightly faster)</span>
     <span class="n">j_idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">gh</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">j_floor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gh</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gh</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">"trunc"</span><span class="p">)</span>
+        <span class="n">j_floor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gh</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gh</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">&quot;trunc&quot;</span><span class="p">)</span>
         <span class="n">j_idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="p">((</span><span class="n">gh</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># reminder + j_idxs[:, 0:2] -= 1</span>
         <span class="n">j_idxs</span> <span class="o">+=</span> <span class="n">j_floor</span>
 
     <span class="n">i_idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">gw</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">i_floor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gw</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gw</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">"trunc"</span><span class="p">)</span>
+        <span class="n">i_floor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gw</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gw</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s2">&quot;trunc&quot;</span><span class="p">)</span>
         <span class="n">i_idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="p">((</span><span class="n">gw</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># reminder + i_idxs[:, [0, 2]] -= 1</span>
         <span class="n">i_idxs</span> <span class="o">+=</span> <span class="n">i_floor</span>
 
@@ -543,7 +544,7 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_equalized_tiles</span><span class="p">(</span><span class="n">interp_tiles</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">luts</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Equalize the tiles.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Equalize the tiles.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        interp_tiles: set of interpolation tiles, values must be in the range [0, 1].</span>
@@ -552,12 +553,12 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        equalized tiles (B, 2GH, 2GW, C, TH/2, TW/2)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">interp_tiles</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"interp_tiles tensor must be 6D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;interp_tiles tensor must be 6D.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">luts</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"luts tensor must be 5D."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;luts tensor must be 5D.&quot;</span><span class="p">)</span>
 
     <span class="n">mapped_luts</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_map_luts</span><span class="p">(</span><span class="n">interp_tiles</span><span class="p">,</span> <span class="n">luts</span><span class="p">)</span>  <span class="c1"># Bx2GHx2GWx4xCx256</span>
 
@@ -628,7 +629,7 @@
     <span class="n">grid_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
     <span class="n">slow_and_differentiable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply clahe equalization on the input tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply clahe equalization on the input tensor.</span>
 
 <span class="sd">    .. image:: _static/img/equalize_clahe.png</span>
 
@@ -653,26 +654,26 @@
 <span class="sd">        &gt;&gt;&gt; res = equalize_clahe(img)</span>
 <span class="sd">        &gt;&gt;&gt; res.shape</span>
 <span class="sd">        torch.Size([2, 3, 10, 20])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clip_limit</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input clip_limit type is not float. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">clip_limit</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input clip_limit type is not float. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">clip_limit</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input grid_size type is not Tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input grid_size type is not Tuple. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input grid_size is not a Tuple with 2 elements. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input grid_size is not a Tuple with 2 elements. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Input grid_size type is not valid, must be a Tuple[int, int]."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input grid_size type is not valid, must be a Tuple[int, int].&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">grid_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input grid_size elements must be positive. Got </span><span class="si">{</span><span class="n">grid_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input grid_size elements must be positive. Got </span><span class="si">{</span><span class="n">grid_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">imgs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="nb">input</span>  <span class="c1"># B x C x H x W</span>
 
     <span class="c1"># hist_tiles: torch.Tensor  # B x GH x GW x C x TH x TW  # not supported by JIT</span>
-    <span class="c1"># img_padded: torch.Tensor  # B x C x H' x W'  # not supported by JIT</span>
+    <span class="c1"># img_padded: torch.Tensor  # B x C x H&#39; x W&#39;  # not supported by JIT</span>
     <span class="c1"># the size of the tiles must be even in order to divide them into 4 tiles for the interpolation</span>
     <span class="n">hist_tiles</span><span class="p">,</span> <span class="n">img_padded</span> <span class="o">=</span> <span class="n">_compute_tiles</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">tile_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">hist_tiles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">hist_tiles</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -729,7 +730,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

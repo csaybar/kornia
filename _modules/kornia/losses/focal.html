@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/losses/focal.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses.focal - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -332,10 +333,10 @@
     <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
-    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">,</span>
+    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
     <span class="n">eps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Criterion that computes Focal loss.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Criterion that computes Focal loss.</span>
 
 <span class="sd">    According to :cite:`lin2018focal`, the Focal loss is computed as follows:</span>
 
@@ -344,7 +345,7 @@
 <span class="sd">        \text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)</span>
 
 <span class="sd">    Where:</span>
-<span class="sd">       - :math:`p_t` is the model's estimated probability for each class.</span>
+<span class="sd">       - :math:`p_t` is the model&#39;s estimated probability for each class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: logits tensor with shape :math:`(N, C, *)` where C = number of classes.</span>
@@ -352,9 +353,9 @@
 <span class="sd">        alpha: Weighting factor :math:`\alpha \in [0, 1]`.</span>
 <span class="sd">        gamma: Focusing parameter :math:`\gamma &gt;= 0`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 <span class="sd">        eps: Deprecated: scalar to enforce numerical stabiliy. This is no longer used.</span>
 
@@ -365,26 +366,26 @@
 <span class="sd">        &gt;&gt;&gt; N = 5  # num_classes</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(1, N, 3, 5, requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; target = torch.empty(1, 3, 5, dtype=torch.long).random_(N)</span>
-<span class="sd">        &gt;&gt;&gt; output = focal_loss(input, target, alpha=0.5, gamma=2.0, reduction='mean')</span>
+<span class="sd">        &gt;&gt;&gt; output = focal_loss(input, target, alpha=0.5, gamma=2.0, reduction=&#39;mean&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; output.backward()</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">eps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`focal_loss` has been reworked for improved numerical stability "</span>
-            <span class="s2">"and the `eps` argument is no longer necessary"</span><span class="p">,</span>
+            <span class="s2">&quot;`focal_loss` has been reworked for improved numerical stability &quot;</span>
+            <span class="s2">&quot;and the `eps` argument is no longer necessary&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
             <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">])</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">out_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="p">,)</span> <span class="o">+</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
 
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="sa">f</span><span class="s1">'Expected target size </span><span class="si">{</span><span class="n">out_size</span><span class="si">}</span><span class="s1">, got </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="sa">f</span><span class="s1">&#39;Expected target size </span><span class="si">{</span><span class="n">out_size</span><span class="si">}</span><span class="s1">, got </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">KORNIA_CHECK</span><span class="p">(</span>
         <span class="nb">input</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">target</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
-        <span class="sa">f</span><span class="s2">"input and target must be in the same device. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;input and target must be in the same device. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="c1"># compute softmax over the classes axis</span>
@@ -398,21 +399,21 @@
     <span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="o">-</span><span class="n">input_soft</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
 
     <span class="n">focal</span> <span class="o">=</span> <span class="o">-</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">log_input_soft</span>
-    <span class="n">loss_tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'bc...,bc...-&gt;b...'</span><span class="p">,</span> <span class="p">(</span><span class="n">target_one_hot</span><span class="p">,</span> <span class="n">focal</span><span class="p">))</span>
+    <span class="n">loss_tmp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;bc...,bc...-&gt;b...&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">target_one_hot</span><span class="p">,</span> <span class="n">focal</span><span class="p">))</span>
 
-    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'none'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_tmp</span>
-    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'mean'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_tmp</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'sum'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_tmp</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid reduction mode: </span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid reduction mode: </span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">loss</span></div>
 
 
 <div class="viewcode-block" id="FocalLoss"><a class="viewcode-back" href="../../../losses.html#kornia.losses.FocalLoss">[docs]</a><span class="k">class</span> <span class="nc">FocalLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Criterion that computes Focal loss.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Criterion that computes Focal loss.</span>
 
 <span class="sd">    According to :cite:`lin2018focal`, the Focal loss is computed as follows:</span>
 
@@ -421,15 +422,15 @@
 <span class="sd">        \text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)</span>
 
 <span class="sd">    Where:</span>
-<span class="sd">       - :math:`p_t` is the model's estimated probability for each class.</span>
+<span class="sd">       - :math:`p_t` is the model&#39;s estimated probability for each class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        alpha: Weighting factor :math:`\alpha \in [0, 1]`.</span>
 <span class="sd">        gamma: Focusing parameter :math:`\gamma &gt;= 0`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 <span class="sd">        eps: Deprecated: scalar to enforce numerical stability. This is no longer</span>
 <span class="sd">          used.</span>
@@ -441,15 +442,15 @@
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; N = 5  # num_classes</span>
-<span class="sd">        &gt;&gt;&gt; kwargs = {"alpha": 0.5, "gamma": 2.0, "reduction": 'mean'}</span>
+<span class="sd">        &gt;&gt;&gt; kwargs = {&quot;alpha&quot;: 0.5, &quot;gamma&quot;: 2.0, &quot;reduction&quot;: &#39;mean&#39;}</span>
 <span class="sd">        &gt;&gt;&gt; criterion = FocalLoss(**kwargs)</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(1, N, 3, 5, requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; target = torch.empty(1, 3, 5, dtype=torch.long).random_(N)</span>
 <span class="sd">        &gt;&gt;&gt; output = criterion(input, target)</span>
 <span class="sd">        &gt;&gt;&gt; output.backward()</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">alpha</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">gamma</span>
@@ -465,18 +466,18 @@
     <span class="n">target</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span>
     <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span>
-    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">,</span>
+    <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
     <span class="n">eps</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">pos_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that computes Binary Focal loss.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that computes Binary Focal loss.</span>
 
 <span class="sd">    .. math::</span>
 
 <span class="sd">        \text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)</span>
 
 <span class="sd">    where:</span>
-<span class="sd">       - :math:`p_t` is the model's estimated probability for each class.</span>
+<span class="sd">       - :math:`p_t` is the model&#39;s estimated probability for each class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: input data tensor of arbitrary shape.</span>
@@ -484,9 +485,9 @@
 <span class="sd">        alpha: Weighting factor for the rare class :math:`\alpha \in [0, 1]`.</span>
 <span class="sd">        gamma: Focusing parameter :math:`\gamma &gt;= 0`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 <span class="sd">        eps: Deprecated: scalar for numerically stability when dividing. This is no longer used.</span>
 <span class="sd">        pos_weight: a weight of positive examples.</span>
@@ -497,32 +498,32 @@
 <span class="sd">        the computed loss.</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; kwargs = {"alpha": 0.25, "gamma": 2.0, "reduction": 'mean'}</span>
+<span class="sd">        &gt;&gt;&gt; kwargs = {&quot;alpha&quot;: 0.25, &quot;gamma&quot;: 2.0, &quot;reduction&quot;: &#39;mean&#39;}</span>
 <span class="sd">        &gt;&gt;&gt; logits = torch.tensor([[[6.325]],[[5.26]],[[87.49]]])</span>
 <span class="sd">        &gt;&gt;&gt; labels = torch.tensor([[[1.]],[[1.]],[[0.]]])</span>
 <span class="sd">        &gt;&gt;&gt; binary_focal_loss_with_logits(logits, labels, **kwargs)</span>
 <span class="sd">        tensor(21.8725)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">eps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">is_scripting</span><span class="p">():</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">"`binary_focal_loss_with_logits` has been reworked for improved numerical stability "</span>
-            <span class="s2">"and the `eps` argument is no longer necessary"</span><span class="p">,</span>
+            <span class="s2">&quot;`binary_focal_loss_with_logits` has been reworked for improved numerical stability &quot;</span>
+            <span class="s2">&quot;and the `eps` argument is no longer necessary&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
             <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">])</span>
     <span class="n">KORNIA_CHECK</span><span class="p">(</span>
         <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="sa">f</span><span class="s1">'Expected input batch_size (</span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">) to match target batch_size (</span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">).'</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Expected input batch_size (</span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">) to match target batch_size (</span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">pos_weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">pos_weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">pos_weight</span><span class="p">)</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">pos_weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"Expected pos_weight equals number of classes."</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">pos_weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;Expected pos_weight equals number of classes.&quot;</span><span class="p">)</span>
 
     <span class="n">probs_pos</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">()</span>
     <span class="n">probs_neg</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="nb">input</span><span class="p">)</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">()</span>
@@ -532,19 +533,19 @@
         <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">probs_pos</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">gamma</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">*</span> <span class="n">probs_neg</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'none'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_tmp</span>
-    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'mean'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_tmp</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">'sum'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s1">&#39;sum&#39;</span><span class="p">:</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">loss_tmp</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid reduction mode: </span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid reduction mode: </span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">loss</span></div>
 
 
 <div class="viewcode-block" id="BinaryFocalLossWithLogits"><a class="viewcode-back" href="../../../losses.html#kornia.losses.BinaryFocalLossWithLogits">[docs]</a><span class="k">class</span> <span class="nc">BinaryFocalLossWithLogits</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Criterion that computes Focal loss.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Criterion that computes Focal loss.</span>
 
 <span class="sd">    According to :cite:`lin2018focal`, the Focal loss is computed as follows:</span>
 
@@ -553,15 +554,15 @@
 <span class="sd">        \text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)</span>
 
 <span class="sd">    where:</span>
-<span class="sd">       - :math:`p_t` is the model's estimated probability for each class.</span>
+<span class="sd">       - :math:`p_t` is the model&#39;s estimated probability for each class.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        alpha: Weighting factor for the rare class :math:`\alpha \in [0, 1]`.</span>
 <span class="sd">        gamma: Focusing parameter :math:`\gamma &gt;= 0`.</span>
 <span class="sd">        reduction: Specifies the reduction to apply to the</span>
-<span class="sd">          output: ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction</span>
-<span class="sd">          will be applied, ``'mean'``: the sum of the output will be divided by</span>
-<span class="sd">          the number of elements in the output, ``'sum'``: the output will be</span>
+<span class="sd">          output: ``&#39;none&#39;`` | ``&#39;mean&#39;`` | ``&#39;sum&#39;``. ``&#39;none&#39;``: no reduction</span>
+<span class="sd">          will be applied, ``&#39;mean&#39;``: the sum of the output will be divided by</span>
+<span class="sd">          the number of elements in the output, ``&#39;sum&#39;``: the output will be</span>
 <span class="sd">          summed.</span>
 <span class="sd">        pos_weight: a weight of positive examples.</span>
 <span class="sd">          It’s possible to trade off recall and precision by adding weights to positive examples.</span>
@@ -572,16 +573,16 @@
 <span class="sd">        - Target: :math:`(N, *)`.</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; kwargs = {"alpha": 0.25, "gamma": 2.0, "reduction": 'mean'}</span>
+<span class="sd">        &gt;&gt;&gt; kwargs = {&quot;alpha&quot;: 0.25, &quot;gamma&quot;: 2.0, &quot;reduction&quot;: &#39;mean&#39;}</span>
 <span class="sd">        &gt;&gt;&gt; loss = BinaryFocalLossWithLogits(**kwargs)</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(1, 3, 5, requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; target = torch.empty(1, 3, 5, dtype=torch.long).random_(2)</span>
 <span class="sd">        &gt;&gt;&gt; output = loss(input, target)</span>
 <span class="sd">        &gt;&gt;&gt; output.backward()</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'none'</span><span class="p">,</span> <span class="n">pos_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">pos_weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">alpha</span>
@@ -631,7 +632,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/epipolar/essential.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.epipolar.essential - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -313,7 +314,7 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.geometry.epipolar.essential</h1><div class="highlight"><pre>
-<span></span><span class="sd">"""Module containing functionalities for the Essential matrix."""</span>
+<span></span><span class="sd">&quot;&quot;&quot;Module containing functionalities for the Essential matrix.&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
@@ -326,17 +327,17 @@
 <span class="kn">from</span> <span class="nn">.triangulation</span> <span class="kn">import</span> <span class="n">triangulate_points</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"essential_from_fundamental"</span><span class="p">,</span>
-    <span class="s2">"decompose_essential_matrix"</span><span class="p">,</span>
-    <span class="s2">"essential_from_Rt"</span><span class="p">,</span>
-    <span class="s2">"motion_from_essential"</span><span class="p">,</span>
-    <span class="s2">"motion_from_essential_choose_solution"</span><span class="p">,</span>
-    <span class="s2">"relative_camera_motion"</span><span class="p">,</span>
+    <span class="s2">&quot;essential_from_fundamental&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;decompose_essential_matrix&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;essential_from_Rt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;motion_from_essential&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;motion_from_essential_choose_solution&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;relative_camera_motion&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <div class="viewcode-block" id="essential_from_fundamental"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.essential_from_fundamental">[docs]</a><span class="k">def</span> <span class="nf">essential_from_fundamental</span><span class="p">(</span><span class="n">F_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">K1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">K2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Get Essential matrix from Fundamental and Camera matrices.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Essential matrix from Fundamental and Camera matrices.</span>
 
 <span class="sd">    Uses the method from Hartley/Zisserman 9.6 pag 257 (formula 9.12).</span>
 
@@ -347,7 +348,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The essential matrix with shape :math:`(*, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">F_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">F_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">F_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">K1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">K1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
@@ -361,7 +362,7 @@
 
 
 <div class="viewcode-block" id="decompose_essential_matrix"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.decompose_essential_matrix">[docs]</a><span class="k">def</span> <span class="nf">decompose_essential_matrix</span><span class="p">(</span><span class="n">E_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Decompose an essential matrix to possible rotations and translation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decompose an essential matrix to possible rotations and translation.</span>
 
 <span class="sd">    This function decomposes the essential matrix E using svd decomposition [96]</span>
 <span class="sd">    and give the possible solutions: :math:`R1, R2, t`.</span>
@@ -372,7 +373,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">       A tuple containing the first and second possible rotation matrices and the translation vector.</span>
 <span class="sd">       The shape of the tensors with be same input :math:`[(*, 3, 3), (*, 3, 3), (*, 3, 1)]`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
@@ -404,7 +405,7 @@
 
 
 <div class="viewcode-block" id="essential_from_Rt"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.essential_from_Rt">[docs]</a><span class="k">def</span> <span class="nf">essential_from_Rt</span><span class="p">(</span><span class="n">R1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">R2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Get the Essential matrix from Camera motion (Rs and ts).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the Essential matrix from Camera motion (Rs and ts).</span>
 
 <span class="sd">    Reference: Hartley/Zisserman 9.6 pag 257 (formula 9.12)</span>
 
@@ -416,7 +417,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The Essential matrix with the shape :math:`(*, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
@@ -436,7 +437,7 @@
 
 
 <div class="viewcode-block" id="motion_from_essential"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.motion_from_essential">[docs]</a><span class="k">def</span> <span class="nf">motion_from_essential</span><span class="p">(</span><span class="n">E_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Get Motion (R's and t's ) from Essential matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Motion (R&#39;s and t&#39;s ) from Essential matrix.</span>
 
 <span class="sd">    Computes and return four possible poses exist for the decomposition of the Essential</span>
 <span class="sd">    matrix. The possible solutions are :math:`[R1,t], [R1,−t], [R2,t], [R2,−t]`.</span>
@@ -447,7 +448,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        The rotation and translation containing the four possible combination for the retrieved motion.</span>
 <span class="sd">        The tuple is as following :math:`[(*, 4, 3, 3), (*, 4, 3, 1)]`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
@@ -469,7 +470,7 @@
     <span class="n">x2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Recover the relative camera rotation and the translation from an estimated essential matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Recover the relative camera rotation and the translation from an estimated essential matrix.</span>
 
 <span class="sd">    The method checks the corresponding points in two images and also returns the triangulated</span>
 <span class="sd">    3d points. Internally uses :py:meth:`~kornia.geometry.epipolar.decompose_essential_matrix` and then chooses</span>
@@ -492,7 +493,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        The rotation and translation plus the 3d triangulated points.</span>
 <span class="sd">        The tuple is as following :math:`[(*, 3, 3), (*, 3, 1), (*, N, 3)]`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">E_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">K1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">K1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
@@ -575,7 +576,7 @@
 <div class="viewcode-block" id="relative_camera_motion"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.relative_camera_motion">[docs]</a><span class="k">def</span> <span class="nf">relative_camera_motion</span><span class="p">(</span>
     <span class="n">R1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">R2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the relative camera motion between two cameras.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the relative camera motion between two cameras.</span>
 
 <span class="sd">    Given the motion parameters of two cameras, computes the motion parameters of the second</span>
 <span class="sd">    one assuming the first one to be at the origin. If :math:`T1` and :math:`T2` are the camera motions,</span>
@@ -590,7 +591,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        A tuple with the relative rotation matrix and</span>
 <span class="sd">        translation vector with the shape of :math:`[(*, 3, 3), (*, 3, 1)]`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">R1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
@@ -645,7 +646,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

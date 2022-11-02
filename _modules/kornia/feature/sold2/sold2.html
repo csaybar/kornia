@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/sold2/sold2.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.sold2.sold2 - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -327,48 +328,48 @@
 <span class="kn">from</span> <span class="nn">.sold2_detector</span> <span class="kn">import</span> <span class="n">LineSegmentDetectionModule</span><span class="p">,</span> <span class="n">line_map_to_segments</span><span class="p">,</span> <span class="n">prob_to_junctions</span>
 
 <span class="n">urls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"wireframe"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"http://cmp.felk.cvut.cz/~mishkdmy/models/sold2_wireframe.pth"</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;wireframe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;http://cmp.felk.cvut.cz/~mishkdmy/models/sold2_wireframe.pth&quot;</span>
 
 
 <span class="n">default_cfg</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'backbone_cfg'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'input_channel'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'depth'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'num_stacks'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'num_blocks'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'num_classes'</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
-    <span class="s1">'use_descriptor'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">'grid_size'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="s1">'keep_border_valid'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">'detection_thresh'</span><span class="p">:</span> <span class="mf">0.0153846</span><span class="p">,</span>  <span class="c1"># = 1/65: threshold of junction detection</span>
-    <span class="s1">'max_num_junctions'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>  <span class="c1"># maximum number of junctions per image</span>
-    <span class="s1">'line_detector_cfg'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'detect_thresh'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">'num_samples'</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
-        <span class="s1">'inlier_thresh'</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span>
-        <span class="s1">'use_candidate_suppression'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">'nms_dist_tolerance'</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
-        <span class="s1">'use_heatmap_refinement'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">'heatmap_refine_cfg'</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">'mode'</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
-            <span class="s1">'ratio'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-            <span class="s1">'valid_thresh'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
-            <span class="s1">'num_blocks'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-            <span class="s1">'overlap_ratio'</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s1">&#39;backbone_cfg&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;input_channel&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;num_stacks&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;num_blocks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;num_classes&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="s1">&#39;use_descriptor&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;grid_size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;keep_border_valid&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;detection_thresh&#39;</span><span class="p">:</span> <span class="mf">0.0153846</span><span class="p">,</span>  <span class="c1"># = 1/65: threshold of junction detection</span>
+    <span class="s1">&#39;max_num_junctions&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>  <span class="c1"># maximum number of junctions per image</span>
+    <span class="s1">&#39;line_detector_cfg&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;detect_thresh&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s1">&#39;num_samples&#39;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="s1">&#39;inlier_thresh&#39;</span><span class="p">:</span> <span class="mf">0.99</span><span class="p">,</span>
+        <span class="s1">&#39;use_candidate_suppression&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;nms_dist_tolerance&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+        <span class="s1">&#39;use_heatmap_refinement&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;heatmap_refine_cfg&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;mode&#39;</span><span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;ratio&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+            <span class="s1">&#39;valid_thresh&#39;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
+            <span class="s1">&#39;num_blocks&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+            <span class="s1">&#39;overlap_ratio&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="p">},</span>
-        <span class="s1">'use_junction_refinement'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">'junction_refine_cfg'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'num_perturbs'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">'perturb_interval'</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
+        <span class="s1">&#39;use_junction_refinement&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;junction_refine_cfg&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;num_perturbs&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;perturb_interval&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
     <span class="p">},</span>
-    <span class="s1">'line_matcher_cfg'</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">'cross_check'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">'num_samples'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">'min_dist_pts'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="s1">'top_k_candidates'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-        <span class="s1">'grid_size'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;line_matcher_cfg&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;cross_check&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;num_samples&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s1">&#39;min_dist_pts&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;top_k_candidates&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;grid_size&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">}</span>
 
 
 <div class="viewcode-block" id="SOLD2"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2">[docs]</a><span class="k">class</span> <span class="nc">SOLD2</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module, which detects and describe line segments in an image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which detects and describe line segments in an image.</span>
 
-<span class="sd">    This is based on the original code from the paper "SOLD²: Self-supervised</span>
-<span class="sd">    Occlusion-aware Line Detector and Descriptor". See :cite:`SOLD22021` for more details.</span>
+<span class="sd">    This is based on the original code from the paper &quot;SOLD²: Self-supervised</span>
+<span class="sd">    Occlusion-aware Line Detector and Descriptor&quot;. See :cite:`SOLD22021` for more details.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        config: Dict specifying parameters. None will load the default parameters,</span>
@@ -383,40 +384,40 @@
 <span class="sd">        &gt;&gt;&gt; images = torch.rand(2, 1, 512, 512)</span>
 <span class="sd">        &gt;&gt;&gt; sold2 = SOLD2()</span>
 <span class="sd">        &gt;&gt;&gt; outputs = sold2(images)</span>
-<span class="sd">        &gt;&gt;&gt; line_seg1 = outputs["line_segments"][0]</span>
-<span class="sd">        &gt;&gt;&gt; line_seg2 = outputs["line_segments"][1]</span>
-<span class="sd">        &gt;&gt;&gt; desc1 = outputs["dense_desc"][0]</span>
-<span class="sd">        &gt;&gt;&gt; desc2 = outputs["dense_desc"][1]</span>
+<span class="sd">        &gt;&gt;&gt; line_seg1 = outputs[&quot;line_segments&quot;][0]</span>
+<span class="sd">        &gt;&gt;&gt; line_seg2 = outputs[&quot;line_segments&quot;][1]</span>
+<span class="sd">        &gt;&gt;&gt; desc1 = outputs[&quot;dense_desc&quot;][0]</span>
+<span class="sd">        &gt;&gt;&gt; desc2 = outputs[&quot;dense_desc&quot;][1]</span>
 <span class="sd">        &gt;&gt;&gt; matches = sold2.match(line_seg1, line_seg2, desc1[None], desc2[None])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># Initialize some parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">default_cfg</span> <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">config</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"grid_size"</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">junc_detect_thresh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"detection_thresh"</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">65</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_num_junctions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"max_num_junctions"</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;grid_size&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">junc_detect_thresh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;detection_thresh&quot;</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">65</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_num_junctions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_num_junctions&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 
         <span class="c1"># Load the pre-trained model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">SOLD2Net</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">pretrained</span><span class="p">:</span>
             <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span>
-                <span class="n">urls</span><span class="p">[</span><span class="s2">"wireframe"</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
+                <span class="n">urls</span><span class="p">[</span><span class="s2">&quot;wireframe&quot;</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
             <span class="p">)</span>
-            <span class="n">state_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">'model_state_dict'</span><span class="p">])</span>
+            <span class="n">state_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapt_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">&#39;model_state_dict&#39;</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
         <span class="c1"># Initialize the line detector</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_detector_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"line_detector_cfg"</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_detector</span> <span class="o">=</span> <span class="n">LineSegmentDetectionModule</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"line_detector_cfg"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_detector_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;line_detector_cfg&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_detector</span> <span class="o">=</span> <span class="n">LineSegmentDetectionModule</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;line_detector_cfg&quot;</span><span class="p">])</span>
 
         <span class="c1"># Initialize the line matcher</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">line_matcher</span> <span class="o">=</span> <span class="n">WunschLineMatcher</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"line_matcher_cfg"</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line_matcher</span> <span class="o">=</span> <span class="n">WunschLineMatcher</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;line_matcher_cfg&quot;</span><span class="p">])</span>
 
 <div class="viewcode-block" id="SOLD2.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            img: batched images with shape :math:`(B, 1, H, W)`.</span>
 
@@ -425,31 +426,31 @@
 <span class="sd">            - ``junction_heatmap``: raw junction heatmap of shape :math:`(B, H, W)`.</span>
 <span class="sd">            - ``line_heatmap``: raw line heatmap of shape :math:`(B, H, W)`.</span>
 <span class="sd">            - ``dense_desc``: the semi-dense descriptor map of shape :math:`(B, 128, H/4, W/4)`.</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="c1"># Forward pass of the CNN backbone</span>
         <span class="n">net_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-        <span class="n">outputs</span><span class="p">[</span><span class="s2">"junction_heatmap"</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">"junctions"</span><span class="p">]</span>
-        <span class="n">outputs</span><span class="p">[</span><span class="s2">"line_heatmap"</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">"heatmap"</span><span class="p">]</span>
-        <span class="n">outputs</span><span class="p">[</span><span class="s2">"dense_desc"</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">"descriptors"</span><span class="p">]</span>
+        <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;junction_heatmap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">&quot;junctions&quot;</span><span class="p">]</span>
+        <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;line_heatmap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">&quot;heatmap&quot;</span><span class="p">]</span>
+        <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;dense_desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">&quot;descriptors&quot;</span><span class="p">]</span>
 
         <span class="c1"># Loop through all images</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">junc_prob</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">net_outputs</span><span class="p">[</span><span class="s2">"junctions"</span><span class="p">],</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">"heatmap"</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">junc_prob</span><span class="p">,</span> <span class="n">heatmap</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">net_outputs</span><span class="p">[</span><span class="s2">&quot;junctions&quot;</span><span class="p">],</span> <span class="n">net_outputs</span><span class="p">[</span><span class="s2">&quot;heatmap&quot;</span><span class="p">]):</span>
             <span class="c1"># Get the junctions</span>
             <span class="n">junctions</span> <span class="o">=</span> <span class="n">prob_to_junctions</span><span class="p">(</span><span class="n">junc_prob</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">junc_detect_thresh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_num_junctions</span><span class="p">)</span>
 
             <span class="c1"># Run the line detector</span>
             <span class="n">line_map</span><span class="p">,</span> <span class="n">junctions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">junctions</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">)</span>
             <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line_map_to_segments</span><span class="p">(</span><span class="n">junctions</span><span class="p">,</span> <span class="n">line_map</span><span class="p">))</span>
-        <span class="n">outputs</span><span class="p">[</span><span class="s2">"line_segments"</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span>
+        <span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;line_segments&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span>
 
         <span class="k">return</span> <span class="n">outputs</span></div>
 
     <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Find the best matches between two sets of line segments and their corresponding descriptors.</span>
+        <span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            line_seg1, line_seg2: list of line segments in two images, with shape [num_lines, 2, 2].</span>
@@ -457,25 +458,25 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            A np.array of size [num_lines1] indicating the index in line_seg2 of the matched line,</span>
 <span class="sd">            for each line in line_seg1. -1 means that the line is not matched.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">line_matcher</span><span class="p">(</span><span class="n">line_seg1</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">,</span> <span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">adapt_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">):</span>
-        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"w_junc"</span><span class="p">]</span>
-        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"w_heatmap"</span><span class="p">]</span>
-        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"w_desc"</span><span class="p">]</span>
-        <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.0.weight"</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.weight"</span><span class="p">]</span>
-        <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.0.bias"</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.bias"</span><span class="p">]</span>
-        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.weight"</span><span class="p">]</span>
-        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"heatmap_decoder.conv_block_lst.2.bias"</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;w_junc&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;w_heatmap&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;w_desc&quot;</span><span class="p">]</span>
+        <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.0.weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.weight&quot;</span><span class="p">]</span>
+        <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.0.bias&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.bias&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.weight&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.bias&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">state_dict</span></div>
 
 
 <span class="k">class</span> <span class="nc">WunschLineMatcher</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Class matching two sets of line segments with the Needleman-Wunsch algorithm.</span>
+    <span class="sd">&quot;&quot;&quot;Class matching two sets of line segments with the Needleman-Wunsch algorithm.</span>
 
 <span class="sd">    TODO: move it later in kornia.feature.matching</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -495,11 +496,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">line_score</span> <span class="o">=</span> <span class="n">line_score</span>  <span class="c1"># True to compute saliency on a line</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Find the best matches between two sets of line segments and their corresponding descriptors."""</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">])</span>
+        <span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.&quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">])</span>
         <span class="n">device</span> <span class="o">=</span> <span class="n">desc1</span><span class="o">.</span><span class="n">device</span>
         <span class="n">img_size1</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">desc1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">)</span>
         <span class="n">img_size2</span> <span class="o">=</span> <span class="p">(</span><span class="n">desc2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">desc2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span><span class="p">)</span>
@@ -543,7 +544,7 @@
         <span class="k">return</span> <span class="n">matches</span>
 
     <span class="k">def</span> <span class="nf">sample_line_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
-        <span class="sd">"""Regularly sample points along each line segments, with a minimal distance between each point.</span>
+        <span class="sd">&quot;&quot;&quot;Regularly sample points along each line segments, with a minimal distance between each point.</span>
 
 <span class="sd">        Pad the remaining points.</span>
 <span class="sd">        Inputs:</span>
@@ -551,15 +552,15 @@
 <span class="sd">        Outputs:</span>
 <span class="sd">            line_points: an N x num_samples x 2 Tensor.</span>
 <span class="sd">            valid_points: a boolean N x num_samples Tensor.</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg</span><span class="p">,</span> <span class="p">[</span><span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
         <span class="n">num_lines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_seg</span><span class="p">)</span>
         <span class="n">line_lengths</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">line_seg</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">line_seg</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="c1"># Sample the points separated by at least min_dist_pts along each line</span>
         <span class="c1"># The number of samples depends on the length of the line</span>
         <span class="n">num_samples_lst</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span>
-            <span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">line_lengths</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_dist_pts</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s1">'floor'</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">line_lengths</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_dist_pts</span><span class="p">,</span> <span class="n">rounding_mode</span><span class="o">=</span><span class="s1">&#39;floor&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span>
         <span class="p">)</span><span class="o">.</span><span class="n">int</span><span class="p">()</span>
         <span class="n">line_points</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">num_lines</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
         <span class="n">valid_points</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">num_lines</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
@@ -582,7 +583,7 @@
         <span class="k">return</span> <span class="n">line_points</span><span class="p">,</span> <span class="n">valid_points</span>
 
     <span class="k">def</span> <span class="nf">filter_and_match_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Use the scores to keep the top k best lines, compute the Needleman- Wunsch algorithm on each candidate</span>
+        <span class="sd">&quot;&quot;&quot;Use the scores to keep the top k best lines, compute the Needleman- Wunsch algorithm on each candidate</span>
 <span class="sd">        pairs, and keep the highest score.</span>
 
 <span class="sd">        Inputs:</span>
@@ -590,8 +591,8 @@
 <span class="sd">                    of the elements to match.</span>
 <span class="sd">        Outputs:</span>
 <span class="sd">            matches: a (N) Tensor containing the indices of the best match</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">[</span><span class="s2">"M"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">,</span> <span class="s2">"n"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span><span class="p">])</span>
 
         <span class="c1"># Pre-filter the pairs and keep the top k best candidate lines</span>
         <span class="n">line_scores1</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -619,15 +620,15 @@
         <span class="k">return</span> <span class="n">matches</span>
 
     <span class="k">def</span> <span class="nf">needleman_wunsch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Batched implementation of the Needleman-Wunsch algorithm.</span>
+        <span class="sd">&quot;&quot;&quot;Batched implementation of the Needleman-Wunsch algorithm.</span>
 
 <span class="sd">        The cost of the InDel operation is set to 0 by subtracting the gap</span>
 <span class="sd">        penalty to the scores.</span>
 <span class="sd">        Inputs:</span>
 <span class="sd">            scores: a (B, N, M) Tensor containing the pairwise scores</span>
 <span class="sd">                    of the elements to match.</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">])</span>
         <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span>
 
         <span class="c1"># Recalibrate the scores to get a gap score of 0</span>
@@ -646,13 +647,13 @@
 
 
 <span class="k">def</span> <span class="nf">keypoints_to_grid</span><span class="p">(</span><span class="n">keypoints</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">img_size</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Convert a list of keypoints into a grid in [-1, 1]² that can be used in torch.nn.functional.interpolate.</span>
+    <span class="sd">&quot;&quot;&quot;Convert a list of keypoints into a grid in [-1, 1]² that can be used in torch.nn.functional.interpolate.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        keypoints: a tensor [N, 2] of N keypoints (ij coordinates convention).</span>
 <span class="sd">        img_size: the original image size (H, W)</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">keypoints</span><span class="p">,</span> <span class="p">[</span><span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">keypoints</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
     <span class="n">n_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">keypoints</span><span class="p">)</span>
     <span class="n">grid_points</span> <span class="o">=</span> <span class="n">normalize_pixel_coordinates</span><span class="p">(</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">img_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img_size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">grid_points</span> <span class="o">=</span> <span class="n">grid_points</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -660,7 +661,7 @@
 
 
 <span class="k">def</span> <span class="nf">batched_linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-    <span class="sd">"""Batch version of torch.normalize (similar to the numpy one)."""</span>
+    <span class="sd">&quot;&quot;&quot;Batch version of torch.normalize (similar to the numpy one).&quot;&quot;&quot;</span>
     <span class="n">intervals</span> <span class="o">=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
     <span class="n">broadcast_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">broadcast_size</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span>
@@ -705,7 +706,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

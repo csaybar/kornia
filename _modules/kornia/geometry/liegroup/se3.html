@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/liegroup/se3.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.liegroup.se3 - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -322,7 +323,7 @@
 
 
 <div class="viewcode-block" id="Se3"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3">[docs]</a><span class="k">class</span> <span class="nc">Se3</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Base class to represent the Se3 group.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base class to represent the Se3 group.</span>
 
 <span class="sd">    The SE(3) is the group of rigid body transformations about the origin of three-dimensional Euclidean</span>
 <span class="sd">    space :math:`R^3` under the operation of composition.</span>
@@ -337,10 +338,10 @@
 <span class="sd">        vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="sd">        &gt;&gt;&gt; s.t</span>
 <span class="sd">        tensor([[1., 1., 1.]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Se3.__init__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">So3</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">"""Constructor for the base class.</span>
+        <span class="sd">&quot;&quot;&quot;Constructor for the base class.</span>
 
 <span class="sd">        Internally represented by a unit quaternion `q` and a translation 3-vector.</span>
 
@@ -357,27 +358,27 @@
 <span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
 <span class="sd">            tensor([[1., 1., 1.]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">So3</span><span class="p">)</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_r</span> <span class="o">=</span> <span class="n">r</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t</span> <span class="o">=</span> <span class="n">t</span></div>
 
 <div class="viewcode-block" id="Se3.__repr__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"rotation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="si">}</span><span class="se">\n</span><span class="s2">translation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="si">}</span><span class="s2">"</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;rotation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="si">}</span><span class="se">\n</span><span class="s2">translation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Se3'</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_r</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_t</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="kc">None</span><span class="p">])</span>
 
-<div class="viewcode-block" id="Se3.__mul__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__mul__">[docs]</a>    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="s2">"Se3"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"Se3"</span><span class="p">:</span>
-        <span class="sd">"""Compose two Se3 transformations.</span>
+<div class="viewcode-block" id="Se3.__mul__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__mul__">[docs]</a>    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="s2">&quot;Se3&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Se3&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Compose two Se3 transformations.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            right: the other Se3 transformation.</span>
 
 <span class="sd">        Return:</span>
 <span class="sd">            The resulting Se3 transformation.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Se3</span><span class="p">)</span>
         <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/se3.py#L97</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">r</span>
@@ -386,17 +387,17 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">r</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">So3</span><span class="p">:</span>
-        <span class="sd">"""Return the underlying rotation(So3)."""</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying rotation(So3).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_r</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">t</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the underlying translation vector of shape :math:`(B,3)`."""</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying translation vector of shape :math:`(B,3)`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_t</span>
 
 <div class="viewcode-block" id="Se3.exp"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.exp">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Se3'</span><span class="p">:</span>
-        <span class="sd">"""Converts elements of lie algebra to elements of lie group.</span>
+    <span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Converts elements of lie algebra to elements of lie group.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            v: vector of shape :math:`(B, 6)`.</span>
@@ -409,8 +410,8 @@
 <span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
 <span class="sd">            tensor([[0., 0., 0.]])</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
         <span class="n">omega_hat</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
@@ -425,14 +426,14 @@
         <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.log"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Converts elements of lie group  to elements of lie algebra.</span>
+        <span class="sd">&quot;&quot;&quot;Converts elements of lie group  to elements of lie algebra.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; from kornia.geometry.quaternion import Quaternion</span>
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
 <span class="sd">            &gt;&gt;&gt; Se3(So3(q), torch.zeros((1,3))).log()</span>
 <span class="sd">            tensor([[0., 0., 0., 0., 0., 0.]], grad_fn=&lt;CatBackward0&gt;)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">omega</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
         <span class="n">theta</span> <span class="o">=</span> <span class="n">squared_norm</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
         <span class="n">omega_hat</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
@@ -447,7 +448,7 @@
 
 <div class="viewcode-block" id="Se3.hat"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.hat">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">hat</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Converts elements from vector space to lie algebra. Returns matrix of shape :math:`(B,4,4)`.</span>
+        <span class="sd">&quot;&quot;&quot;Converts elements from vector space to lie algebra. Returns matrix of shape :math:`(B,4,4)`.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            v: vector of shape :math:`(B,6)`.</span>
@@ -460,15 +461,15 @@
 <span class="sd">                     [ 0.,  1.,  0., -1.],</span>
 <span class="sd">                     [ 0., -1.,  1.,  0.],</span>
 <span class="sd">                     [ 0.,  1.,  1.,  1.]]])</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
         <span class="n">t</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
         <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="n">t</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># add zeros left column</span></div>
 
 <div class="viewcode-block" id="Se3.vee"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.vee">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Converts elements from lie algebra to vector space.</span>
+        <span class="sd">&quot;&quot;&quot;Converts elements from lie algebra to vector space.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            omega: 4x4-matrix representing lie algebra of shape :math:`(B,4,4)`.</span>
@@ -481,15 +482,15 @@
 <span class="sd">            &gt;&gt;&gt; omega_hat = Se3.hat(v)</span>
 <span class="sd">            &gt;&gt;&gt; Se3.vee(omega_hat)</span>
 <span class="sd">            tensor([[1., 1., 1., 1., 1., 1.]])</span>
-<span class="sd">        """</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span>
         <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.identity"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.identity">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Se3'</span><span class="p">:</span>
-        <span class="sd">"""Create a Se3 group representing an identity rotation and zero translation.</span>
+    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a Se3 group representing an identity rotation and zero translation.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            batch_size: the batch size of the underlying data.</span>
@@ -501,12 +502,12 @@
 <span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
 <span class="sd">            tensor([[0., 0., 0.]])</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">So3</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.matrix"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.matrix">[docs]</a>    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Returns the matrix representation of shape :math:`(B, 4, 4)`.</span>
+        <span class="sd">&quot;&quot;&quot;Returns the matrix representation of shape :math:`(B, 4, 4)`.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(batch_size=1), torch.ones((1,3)))</span>
@@ -515,14 +516,14 @@
 <span class="sd">                     [0., 1., 0., 1.],</span>
 <span class="sd">                     [0., 0., 1., 1.],</span>
 <span class="sd">                     [0., 0., 0., 1.]]], grad_fn=&lt;CopySlices&gt;)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">matrix</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">rt_4x4</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># add last row zeros</span>
         <span class="n">rt_4x4</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="k">return</span> <span class="n">rt_4x4</span></div>
 
-<div class="viewcode-block" id="Se3.inverse"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Se3'</span><span class="p">:</span>
-        <span class="sd">"""Returns the inverse transformation.</span>
+<div class="viewcode-block" id="Se3.inverse"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the inverse transformation.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(batch_size=1), torch.ones((1,3)))</span>
@@ -532,7 +533,7 @@
 <span class="sd">            vec: tensor([[-0., -0., -0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
 <span class="sd">            &gt;&gt;&gt; s_inv.t</span>
 <span class="sd">            tensor([[-1., -1., -1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r_inv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">r_inv</span><span class="p">,</span> <span class="n">r_inv</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">))</span></div></div>
 </pre></div>
@@ -573,7 +574,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

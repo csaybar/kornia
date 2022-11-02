@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/line.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.line - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -325,11 +326,11 @@
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 <span class="kn">from</span> <span class="nn">kornia.utils.helpers</span> <span class="kn">import</span> <span class="n">_torch_svd_cast</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ParametrizedLine"</span><span class="p">,</span> <span class="s2">"fit_line"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ParametrizedLine&quot;</span><span class="p">,</span> <span class="s2">&quot;fit_line&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="ParametrizedLine"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine">[docs]</a><span class="k">class</span> <span class="nc">ParametrizedLine</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Class that describes a parametrize line.</span>
+    <span class="sd">&quot;&quot;&quot;Class that describes a parametrize line.</span>
 
 <span class="sd">    A parametrized line is defined by an origin point :math:`o` and a unit</span>
 <span class="sd">    direction vector :math:`d` such that the line corresponds to the set</span>
@@ -337,10 +338,10 @@
 <span class="sd">    .. math::</span>
 
 <span class="sd">        l(t) = o + t * d</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ParametrizedLine.__init__"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">"""Initializes a parametrized line of direction and origin.</span>
+        <span class="sd">&quot;&quot;&quot;Initializes a parametrized line of direction and origin.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            origin: any point on the line of any dimension.</span>
@@ -350,13 +351,13 @@
 <span class="sd">            &gt;&gt;&gt; o = torch.tensor([0.0, 0.0])</span>
 <span class="sd">            &gt;&gt;&gt; d = torch.tensor([1.0, 1.0])</span>
 <span class="sd">            &gt;&gt;&gt; l = ParametrizedLine(o, d)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">origin</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_direction</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Origin: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="si">}</span><span class="se">\n</span><span class="s2">Direction: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Origin: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="si">}</span><span class="se">\n</span><span class="s2">Direction: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="si">}</span><span class="s2">&quot;</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -369,21 +370,21 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the line origin point."""</span>
+        <span class="sd">&quot;&quot;&quot;Return the line origin point.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">direction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the line direction vector."""</span>
+        <span class="sd">&quot;&quot;&quot;Return the line direction vector.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_direction</span>
 
 <div class="viewcode-block" id="ParametrizedLine.dim"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.dim">[docs]</a>    <span class="k">def</span> <span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">"""Return the dimension in which the line holds."""</span>
+        <span class="sd">&quot;&quot;&quot;Return the dimension in which the line holds.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.through"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.through">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">through</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"ParametrizedLine"</span><span class="p">:</span>
-        <span class="sd">"""Constructs a parametrized line going from a point :math:`p0` to :math:`p1`.</span>
+    <span class="k">def</span> <span class="nf">through</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ParametrizedLine&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Constructs a parametrized line going from a point :math:`p0` to :math:`p1`.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            p0: tensor with first point :math:`(B, D)` where `D` is the point dimension.</span>
@@ -393,11 +394,11 @@
 <span class="sd">            &gt;&gt;&gt; p0 = torch.tensor([0.0, 0.0])</span>
 <span class="sd">            &gt;&gt;&gt; p1 = torch.tensor([1.0, 1.0])</span>
 <span class="sd">            &gt;&gt;&gt; l = ParametrizedLine.through(p0, p1)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ParametrizedLine</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">normalize</span><span class="p">((</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.point_at"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.point_at">[docs]</a>    <span class="k">def</span> <span class="nf">point_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""The point at :math:`t` along this line.</span>
+        <span class="sd">&quot;&quot;&quot;The point at :math:`t` along this line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            t: step along the line.</span>
@@ -410,34 +411,34 @@
 <span class="sd">            &gt;&gt;&gt; p1 = torch.tensor([1.0, 1.0])</span>
 <span class="sd">            &gt;&gt;&gt; l = ParametrizedLine.through(p0, p1)</span>
 <span class="sd">            &gt;&gt;&gt; p2 = l.point_at(0.1)</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">*</span> <span class="n">t</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.projection"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.projection">[docs]</a>    <span class="k">def</span> <span class="nf">projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the projection of a point onto the line.</span>
+        <span class="sd">&quot;&quot;&quot;Return the projection of a point onto the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to be projected.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">@</span> <span class="p">(</span><span class="n">point</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span></div>
 
     <span class="c1"># TODO: improve order and speed</span>
 <div class="viewcode-block" id="ParametrizedLine.squared_distance"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.squared_distance">[docs]</a>    <span class="k">def</span> <span class="nf">squared_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the squared distance of a point to its projection onte the line.</span>
+        <span class="sd">&quot;&quot;&quot;Return the squared distance of a point to its projection onte the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to calculate the distance onto the line.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">diff</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">point</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>
         <span class="k">return</span> <span class="n">squared_norm</span><span class="p">(</span><span class="n">diff</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">@</span> <span class="n">diff</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="p">)</span></div>
 
     <span class="c1"># TODO: improve order and speed</span>
 <div class="viewcode-block" id="ParametrizedLine.distance"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.distance">[docs]</a>    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the distance of a point to its projections onto the line.</span>
+        <span class="sd">&quot;&quot;&quot;Return the distance of a point to its projections onto the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to calculate the distance into the line.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">squared_distance</span><span class="p">(</span><span class="n">point</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span></div>
 
     <span class="c1"># TODO(edgar) implement the following:</span>
@@ -447,7 +448,7 @@
 
     <span class="c1"># TODO: add tests, and possibly return a mask</span>
 <div class="viewcode-block" id="ParametrizedLine.intersect"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.intersect">[docs]</a>    <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plane</span><span class="p">:</span> <span class="n">Hyperplane</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""Return the intersection point between the line and a given plane.</span>
+        <span class="sd">&quot;&quot;&quot;Return the intersection point between the line and a given plane.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            plane: the plane to compute the intersection point.</span>
@@ -455,7 +456,7 @@
 <span class="sd">        Return:</span>
 <span class="sd">            - the lambda value used to compute the look at point.</span>
 <span class="sd">            - the intersected point.</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">dot_prod</span> <span class="o">=</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="p">)</span>
         <span class="n">dot_prod_mask</span> <span class="o">=</span> <span class="n">dot_prod</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">eps</span>
 
@@ -471,7 +472,7 @@
 
 
 <div class="viewcode-block" id="fit_line"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.fit_line">[docs]</a><span class="k">def</span> <span class="nf">fit_line</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParametrizedLine</span><span class="p">:</span>
-    <span class="sd">"""Fit a line from a set of points.</span>
+    <span class="sd">&quot;&quot;&quot;Fit a line from a set of points.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        points: tensor containing a batch of sets of n-dimensional points. The  expected</span>
@@ -488,16 +489,16 @@
 <span class="sd">        &gt;&gt;&gt; line = fit_line(points, weights)</span>
 <span class="sd">        &gt;&gt;&gt; line.direction.shape</span>
 <span class="sd">        torch.Size([2, 3])</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="s2">"points must be a tensor"</span><span class="p">)</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="s2">&quot;points must be a tensor&quot;</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">])</span>
 
     <span class="n">mean</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">points</span> <span class="o">-</span> <span class="n">mean</span>
 
     <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="s2">"weights must be a tensor"</span><span class="p">)</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">])</span>
+        <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="s2">&quot;weights must be a tensor&quot;</span><span class="p">)</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
         <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag_embed</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">@</span> <span class="n">A</span>
     <span class="k">else</span><span class="p">:</span>
@@ -550,7 +551,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

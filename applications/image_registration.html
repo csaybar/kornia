@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Semantic segmentation" href="semantic_segmentation.html" /><link rel="prev" title="Image Stitching" href="image_stitching.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/applications/image_registration.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Image Registration - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,7 +316,7 @@
         </div>
         <article role="main">
           <section id="image-registration">
-<h1>Image Registration<a class="headerlink" href="#image-registration" title="Permalink to this headline">#</a></h1>
+<h1>Image Registration<a class="headerlink" href="#image-registration" title="Permalink to this heading">#</a></h1>
 <p>Image registration is the process of transforming different sets of data into one coordinate system. Data may be multiple photographs, data from different sensors, times, depths, or viewpoints. It is used in computer vision, medical imaging, and compiling and analyzing images and data from satellites. Registration is necessary in order to be able to compare or integrate the data obtained from these different measurements.</p>
 <p>Learn more: <a class="reference external" href="https://paperswithcode.com/task/image-registration">https://paperswithcode.com/task/image-registration</a></p>
 <div class="video_wrapper" style="">
@@ -323,7 +325,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kornia.geometry</span> <span class="kn">import</span> <span class="n">ImageRegistrator</span>
 <span class="n">img_src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="n">img_dst</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">registrator</span> <span class="o">=</span> <span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">'similarity'</span><span class="p">)</span>
+<span class="n">registrator</span> <span class="o">=</span> <span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
 <span class="n">homo</span> <span class="o">=</span> <span class="n">registrator</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">img_src</span><span class="p">,</span> <span class="n">img_dst</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -339,8 +341,8 @@
 
 
 <span class="k">def</span> <span class="nf">load_timg</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
-    <span class="sd">"""Loads the image with OpenCV and converts to torch.Tensor."""</span>
-    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"Invalid file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">"</span>  <span class="c1"># nosec</span>
+    <span class="sd">&quot;&quot;&quot;Loads the image with OpenCV and converts to torch.Tensor.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Invalid file </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># nosec</span>
     <span class="c1"># load image with OpenCV</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
     <span class="c1"># convert image to torch tensor</span>
@@ -348,13 +350,13 @@
     <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">bgr_to_rgb</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
 
 
-<span class="n">registrator</span> <span class="o">=</span> <span class="n">KG</span><span class="o">.</span><span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">'similarity'</span><span class="p">)</span>
+<span class="n">registrator</span> <span class="o">=</span> <span class="n">KG</span><span class="o">.</span><span class="n">ImageRegistrator</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
 
-<span class="n">img1</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">load_timg</span><span class="p">(</span><span class="s1">'/Users/oldufo/datasets/stewart/MR-CT/CT.png'</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
-<span class="n">img2</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">load_timg</span><span class="p">(</span><span class="s1">'/Users/oldufo/datasets/stewart/MR-CT/MR.png'</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+<span class="n">img1</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">load_timg</span><span class="p">(</span><span class="s1">&#39;/Users/oldufo/datasets/stewart/MR-CT/CT.png&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+<span class="n">img2</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">load_timg</span><span class="p">(</span><span class="s1">&#39;/Users/oldufo/datasets/stewart/MR-CT/MR.png&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
 <span class="n">model</span><span class="p">,</span> <span class="n">intermediate</span> <span class="o">=</span> <span class="n">registrator</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">output_intermediate_models</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">video_writer</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="s1">'medical_registration.gif'</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">video_writer</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">get_writer</span><span class="p">(</span><span class="s1">&#39;medical_registration.gif&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">timg_dst_first</span> <span class="o">=</span> <span class="n">img1</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
 <span class="n">timg_dst_first</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">img2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
@@ -370,7 +372,7 @@
 </div>
 <p>To reproduce the same results as in the showed video you can go through or full tutorial using Colab found <a class="reference external" href="https://kornia-tutorials.readthedocs.io/en/latest/image_registration.html">here</a> .</p>
 <section id="interactive-demo">
-<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h2>
+<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h2>
 <p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/image-registration-with-kornia">Hugging Face Spaces</a>.</p>
 </section>
 </section>
@@ -387,10 +389,10 @@
                 </div>
                 <div class="title">Semantic segmentation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="image_stitching.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -426,7 +428,7 @@
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -449,7 +451,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

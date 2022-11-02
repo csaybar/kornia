@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.tracking" href="tracking.html" /><link rel="prev" title="kornia.metrics" href="metrics.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/morphology.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.morphology - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,12 +316,12 @@
         </div>
         <article role="main">
           <section id="kornia-morphology">
-<h1>kornia.morphology<a class="headerlink" href="#kornia-morphology" title="Permalink to this headline">#</a></h1>
+<h1>kornia.morphology<a class="headerlink" href="#kornia-morphology" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.dilation">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">dilation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#dilation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.dilation" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the dilated image applying the same kernel in each channel.</p>
-<img alt="_images/dilation.png" src="_images/dilation.png"/>
+<img alt="_images/dilation.png" src="_images/dilation.png" />
 <p>The kernel must have 2 dimensions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -362,11 +364,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.erosion">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">erosion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#erosion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.erosion" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the eroded image applying the same kernel in each channel.</p>
-<img alt="_images/erosion.png" src="_images/erosion.png"/>
+<img alt="_images/erosion.png" src="_images/erosion.png" />
 <p>The kernel must have 2 dimensions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -409,11 +412,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.opening">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">opening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#opening"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.opening" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the opened image, (that means, dilation after an erosion) applying the same kernel in each channel.</p>
-<img alt="_images/opening.png" src="_images/opening.png"/>
+<img alt="_images/opening.png" src="_images/opening.png" />
 <p>The kernel must have 2 dimensions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -456,11 +460,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.closing">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">closing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#closing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.closing" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the closed image, (that means, erosion after a dilation) applying the same kernel in each channel.</p>
-<img alt="_images/closing.png" src="_images/closing.png"/>
+<img alt="_images/closing.png" src="_images/closing.png" />
 <p>The kernel must have 2 dimensions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -504,11 +509,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.gradient">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.gradient" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the morphological gradient of an image.</p>
-<img alt="_images/gradient.png" src="_images/gradient.png"/>
+<img alt="_images/gradient.png" src="_images/gradient.png" />
 <p>That means, (dilation - erosion) applying the same kernel in each channel.
 The kernel must have 2 dimensions.</p>
 <dl class="field-list simple">
@@ -553,11 +559,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.top_hat">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">top_hat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#top_hat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.top_hat" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the top hat transformation of an image.</p>
-<img alt="_images/top_hat.png" src="_images/top_hat.png"/>
+<img alt="_images/top_hat.png" src="_images/top_hat.png" />
 <p>That means, (image - opened_image) applying the same kernel in each channel.
 The kernel must have 2 dimensions.</p>
 <p>See <a class="reference internal" href="#kornia.morphology.opening" title="kornia.morphology.opening"><code class="xref py py-func docutils literal notranslate"><span class="pre">opening()</span></code></a> for details.</p>
@@ -602,11 +609,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.morphology.bottom_hat">
 <span class="sig-prename descclassname"><span class="pre">kornia.morphology.</span></span><span class="sig-name descname"><span class="pre">bottom_hat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structuring_element</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'geodesic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unfold'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/morphology/morphology.html#bottom_hat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.morphology.bottom_hat" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the bottom hat transformation of an image.</p>
-<img alt="_images/bottom_hat.png" src="_images/bottom_hat.png"/>
+<img alt="_images/bottom_hat.png" src="_images/bottom_hat.png" />
 <p>That means, (closed_image - image) applying the same kernel in each channel.
 The kernel must have 2 dimensions.</p>
 <p>See <a class="reference internal" href="#kornia.morphology.closing" title="kornia.morphology.closing"><code class="xref py py-func docutils literal notranslate"><span class="pre">closing()</span></code></a> for details.</p>
@@ -651,8 +659,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
 </pre></div>
 </div>
 </dd></dl>
+
 <section id="interactive-demo">
-<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h2>
+<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h2>
 <gradio-app space="kornia/morphological_operators"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/morphological_operators">Hugging Face Spaces</a>.</p>
 </section>
 </section>
@@ -669,10 +678,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
                 </div>
                 <div class="title">kornia.tracking</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="metrics.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -708,13 +717,20 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.morphology</a><ul>
+<li><a class="reference internal" href="#kornia.morphology.dilation"><code class="docutils literal notranslate"><span class="pre">dilation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.erosion"><code class="docutils literal notranslate"><span class="pre">erosion()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.opening"><code class="docutils literal notranslate"><span class="pre">opening()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.closing"><code class="docutils literal notranslate"><span class="pre">closing()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.gradient"><code class="docutils literal notranslate"><span class="pre">gradient()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.top_hat"><code class="docutils literal notranslate"><span class="pre">top_hat()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.morphology.bottom_hat"><code class="docutils literal notranslate"><span class="pre">bottom_hat()</span></code></a></li>
 <li><a class="reference internal" href="#interactive-demo">Interactive Demo</a></li>
 </ul>
 </li>
@@ -731,7 +747,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'unf
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.subpix" href="geometry.subpix.html" /><link rel="prev" title="kornia.geometry.line" href="geometry.line.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.quaternion.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.quaternion - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -163,7 +163,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -307,14 +309,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="kornia-geometry-quaternion">
-<h1>kornia.geometry.quaternion<a class="headerlink" href="#kornia-geometry-quaternion" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry.quaternion<a class="headerlink" href="#kornia-geometry-quaternion" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.quaternion.</span></span><span class="sig-name descname"><span class="pre">Quaternion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion" title="Permalink to this definition">#</a></dt>
@@ -322,12 +324,16 @@
 <p>A quaternion is a four dimensional vector representation of a rotation transformation in 3d.
 See more: <a class="reference external" href="https://en.wikipedia.org/wiki/Quaternion">https://en.wikipedia.org/wiki/Quaternion</a></p>
 <p>The general definition of a quaternion is given by:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[Q = a + b \cdot \mathbf{i} + c \cdot \mathbf{j} + d \cdot \mathbf{k}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[Q = a + b \cdot \mathbf{i} + c \cdot \mathbf{j} + d \cdot \mathbf{k}\]</div>
+</div>
 <p>Thus, we represent a rotation quaternion as a contiguous tensor structure to
 perform rigid bodies transformations:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[Q = \begin{bmatrix} q_w &amp; q_x &amp; q_y &amp; q_z \end{bmatrix}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[Q = \begin{bmatrix} q_w &amp; q_x &amp; q_y &amp; q_z \end{bmatrix}\]</div>
+</div>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">data</span>
@@ -372,6 +378,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.__init__" title="Permalink to this definition">#</a></dt>
@@ -389,6 +396,7 @@ perform rigid bodies transformations:</p>
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.__neg__">
 <span class="sig-name descname"><span class="pre">__neg__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.__neg__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.__neg__" title="Permalink to this definition">#</a></dt>
@@ -405,6 +413,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.__pow__">
 <span class="sig-name descname"><span class="pre">__pow__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.__pow__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.__pow__" title="Permalink to this definition">#</a></dt>
@@ -425,6 +434,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.__repr__">
 <span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.__repr__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.__repr__" title="Permalink to this definition">#</a></dt>
@@ -435,6 +445,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.__sub__">
 <span class="sig-name descname"><span class="pre">__sub__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.__sub__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.__sub__" title="Permalink to this definition">#</a></dt>
@@ -459,9 +470,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.coeffs">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coeffs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.coeffs" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coeffs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.coeffs" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the underlying data with shape <span class="math notranslate nohighlight">\((B,4)\)</span>.</p>
 <p>Alias for <a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.data" title="kornia.geometry.quaternion.Quaternion.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a></p>
 <dl class="field-list simple">
@@ -470,9 +482,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.data">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.data" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.data" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the underlying data with shape <span class="math notranslate nohighlight">\((B,4).\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -480,6 +493,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.from_axis_angle">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_axis_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.from_axis_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.from_axis_angle" title="Permalink to this definition">#</a></dt>
@@ -503,6 +517,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.from_coeffs">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_coeffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.from_coeffs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.from_coeffs" title="Permalink to this definition">#</a></dt>
@@ -530,6 +545,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.from_matrix">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.from_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.from_matrix" title="Permalink to this definition">#</a></dt>
@@ -553,6 +569,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.identity">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.identity" title="Permalink to this definition">#</a></dt>
@@ -576,6 +593,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.matrix">
 <span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.matrix" title="Permalink to this definition">#</a></dt>
@@ -595,9 +613,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.polar_angle">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">polar_angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.polar_angle" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">polar_angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.polar_angle" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the polar angle with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -611,9 +630,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.q">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">q</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.q" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">q</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.q" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the underlying data with shape <span class="math notranslate nohighlight">\((B,4)\)</span>.</p>
 <p>Alias for <a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.data" title="kornia.geometry.quaternion.Quaternion.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a></p>
 <dl class="field-list simple">
@@ -622,6 +642,7 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.random">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.random" title="Permalink to this definition">#</a></dt>
@@ -642,9 +663,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.real">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">real</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.real" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">real</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.real" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the real part with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <p>Alias for <a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.w" title="kornia.geometry.quaternion.Quaternion.w"><code class="xref py py-func docutils literal notranslate"><span class="pre">w()</span></code></a></p>
 <dl class="field-list simple">
@@ -653,9 +675,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.scalar">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.scalar" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scalar</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.scalar" title="Permalink to this definition">#</a></dt>
 <dd><p>Return a scalar with the real with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <p>Alias for <a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.w" title="kornia.geometry.quaternion.Quaternion.w"><code class="xref py py-func docutils literal notranslate"><span class="pre">w()</span></code></a></p>
 <dl class="field-list simple">
@@ -664,16 +687,18 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.shape" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.shape" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the shape of the underlying data with shape <span class="math notranslate nohighlight">\((B,4)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, …]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.slerp">
 <span class="sig-name descname"><span class="pre">slerp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/quaternion.html#Quaternion.slerp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.slerp" title="Permalink to this definition">#</a></dt>
@@ -699,9 +724,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.vec">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.vec" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.vec" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the vector with the imaginary part with shape <span class="math notranslate nohighlight">\((B,3)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -709,9 +735,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.w">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.w" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">w</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.w" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the <span class="math notranslate nohighlight">\(q_w\)</span> with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -719,9 +746,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.x">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.x" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.x" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the <span class="math notranslate nohighlight">\(q_x\)</span> with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -729,9 +757,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.y">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.y" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.y" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the <span class="math notranslate nohighlight">\(q_y\)</span> with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -739,9 +768,10 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.quaternion.Quaternion.z">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.z" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.quaternion.Quaternion.z" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the <span class="math notranslate nohighlight">\(q_z\)</span> with shape <span class="math notranslate nohighlight">\((B,1)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -749,7 +779,9 @@ perform rigid bodies transformations:</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 
         </article>
@@ -764,10 +796,10 @@ perform rigid bodies transformations:</p>
                 </div>
                 <div class="title">kornia.geometry.subpix</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.line.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -797,8 +829,54 @@ perform rigid bodies transformations:</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">kornia.geometry.quaternion</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion"><code class="docutils literal notranslate"><span class="pre">Quaternion</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__add__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__add__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__init__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__neg__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__neg__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__pow__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__pow__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__repr__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__repr__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.__sub__"><code class="docutils literal notranslate"><span class="pre">Quaternion.__sub__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.coeffs"><code class="docutils literal notranslate"><span class="pre">Quaternion.coeffs</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.data"><code class="docutils literal notranslate"><span class="pre">Quaternion.data</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.from_axis_angle"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_axis_angle()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.from_coeffs"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_coeffs()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.from_matrix"><code class="docutils literal notranslate"><span class="pre">Quaternion.from_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.identity"><code class="docutils literal notranslate"><span class="pre">Quaternion.identity()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.matrix"><code class="docutils literal notranslate"><span class="pre">Quaternion.matrix()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.polar_angle"><code class="docutils literal notranslate"><span class="pre">Quaternion.polar_angle</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.q"><code class="docutils literal notranslate"><span class="pre">Quaternion.q</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.random"><code class="docutils literal notranslate"><span class="pre">Quaternion.random()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.real"><code class="docutils literal notranslate"><span class="pre">Quaternion.real</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.scalar"><code class="docutils literal notranslate"><span class="pre">Quaternion.scalar</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.shape"><code class="docutils literal notranslate"><span class="pre">Quaternion.shape</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.slerp"><code class="docutils literal notranslate"><span class="pre">Quaternion.slerp()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.vec"><code class="docutils literal notranslate"><span class="pre">Quaternion.vec</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.w"><code class="docutils literal notranslate"><span class="pre">Quaternion.w</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.x"><code class="docutils literal notranslate"><span class="pre">Quaternion.x</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.y"><code class="docutils literal notranslate"><span class="pre">Quaternion.y</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.quaternion.Quaternion.z"><code class="docutils literal notranslate"><span class="pre">Quaternion.z</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -807,7 +885,9 @@ perform rigid bodies transformations:</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Image Registration" href="image_registration.html" /><link rel="prev" title="Image Matching" href="image_matching.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/applications/image_stitching.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Image Stitching - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,23 +316,23 @@
         </div>
         <article role="main">
           <section id="image-stitching">
-<h1>Image Stitching<a class="headerlink" href="#image-stitching" title="Permalink to this headline">#</a></h1>
+<h1>Image Stitching<a class="headerlink" href="#image-stitching" title="Permalink to this heading">#</a></h1>
 <p>Image stitching is the process of combining multiple images with overlapping fields of view to produce a segmented panorama. Here, we provide <a class="reference internal" href="../contrib.html#kornia.contrib.ImageStitcher" title="kornia.contrib.image_stitching.ImageStitcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageStitcher</span></code></a> to easily stitch a number of images.</p>
-<img alt="https://raw.githubusercontent.com/kornia/data/main/matching/stitch_before.png" src="https://raw.githubusercontent.com/kornia/data/main/matching/stitch_before.png"/>
+<img alt="https://raw.githubusercontent.com/kornia/data/main/matching/stitch_before.png" src="https://raw.githubusercontent.com/kornia/data/main/matching/stitch_before.png" />
 <p>Learn more: <a class="reference external" href="https://paperswithcode.com/task/image-stitching/">https://paperswithcode.com/task/image-stitching/</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kornia.contrib</span> <span class="kn">import</span> <span class="n">ImageStitcher</span>
 
-<span class="n">matcher</span> <span class="o">=</span> <span class="n">KF</span><span class="o">.</span><span class="n">LoFTR</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="s1">'outdoor'</span><span class="p">)</span>
-<span class="n">IS</span> <span class="o">=</span> <span class="n">ImageStitcher</span><span class="p">(</span><span class="n">matcher</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">'ransac'</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+<span class="n">matcher</span> <span class="o">=</span> <span class="n">KF</span><span class="o">.</span><span class="n">LoFTR</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="s1">&#39;outdoor&#39;</span><span class="p">)</span>
+<span class="n">IS</span> <span class="o">=</span> <span class="n">ImageStitcher</span><span class="p">(</span><span class="n">matcher</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">&#39;ransac&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 <span class="c1"># NOTE: it would require a large CPU memory if many images.</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">IS</span><span class="p">(</span><span class="o">*</span><span class="n">imgs</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="https://raw.githubusercontent.com/kornia/data/main/panorama/out_panorama.jpg" src="https://raw.githubusercontent.com/kornia/data/main/panorama/out_panorama.jpg"/>
+<img alt="https://raw.githubusercontent.com/kornia/data/main/panorama/out_panorama.jpg" src="https://raw.githubusercontent.com/kornia/data/main/panorama/out_panorama.jpg" />
 <p>Explore with your data: <a class="reference external" href="https://colab.research.google.com/github/kornia/tutorials/blob/master/source/image_stitching.ipynb">https://colab.research.google.com/github/kornia/tutorials/blob/master/source/image_stitching.ipynb</a></p>
 <section id="interactive-demo">
-<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this headline">#</a></h2>
+<h2>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h2>
 <gradio-app space="kornia/Image-Stitching"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/Image-Stitching">Hugging Face Spaces</a>.</p>
 </section>
 </section>
@@ -347,10 +349,10 @@
                 </div>
                 <div class="title">Image Registration</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="image_matching.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -386,7 +388,7 @@
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -409,7 +411,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

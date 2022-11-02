@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/subpix/dsnt.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.subpix.dsnt - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -313,8 +314,8 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.geometry.subpix.dsnt</h1><div class="highlight"><pre>
-<span></span><span class="sa">r</span><span class="sd">"""Implementation of "differentiable spatial to numerical" (soft-argmax) operations, as described in the paper</span>
-<span class="sd">"Numerical Coordinate Regression with Convolutional Neural Networks" by Nibali et al."""</span>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Implementation of &quot;differentiable spatial to numerical&quot; (soft-argmax) operations, as described in the paper</span>
+<span class="sd">&quot;Numerical Coordinate Regression with Convolutional Neural Networks&quot; by Nibali et al.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
@@ -328,18 +329,18 @@
 <span class="k">def</span> <span class="nf">_validate_batched_image_tensor_input</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
     <span class="n">check_is_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="spatial_softmax2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.spatial_softmax2d">[docs]</a><span class="k">def</span> <span class="nf">spatial_softmax2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply the Softmax function over features in each image channel.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the Softmax function over features in each image channel.</span>
 
 <span class="sd">    Note that this function behaves differently to :py:class:`torch.nn.Softmax2d`, which</span>
 <span class="sd">    instead applies Softmax over features at each spatial location.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the input tensor with shape :math:`(B, N, H, W)`.</span>
-<span class="sd">        temperature: factor to apply to input, adjusting the "smoothness" of the output distribution.</span>
+<span class="sd">        temperature: factor to apply to input, adjusting the &quot;smoothness&quot; of the output distribution.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">       a 2D probability distribution per image channel with shape :math:`(B, N, H, W)`.</span>
@@ -353,7 +354,7 @@
 <span class="sd">        tensor([[[[0.0585, 0.0585, 0.0585],</span>
 <span class="sd">                  [0.0585, 0.0585, 0.0585],</span>
 <span class="sd">                  [0.0585, 0.1589, 0.4319]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_validate_batched_image_tensor_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="n">batch_size</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
@@ -366,7 +367,7 @@
 
 
 <div class="viewcode-block" id="spatial_expectation2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.spatial_expectation2d">[docs]</a><span class="k">def</span> <span class="nf">spatial_expectation2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the expectation of coordinate values using spatial probabilities.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the expectation of coordinate values using spatial probabilities.</span>
 
 <span class="sd">    The input heatmap is assumed to represent a valid spatial probability distribution,</span>
 <span class="sd">    which can be achieved using :func:`~kornia.geometry.subpixel.spatial_softmax2d`.</span>
@@ -386,7 +387,7 @@
 <span class="sd">        ... [0., 1., 0.]]]])</span>
 <span class="sd">        &gt;&gt;&gt; spatial_expectation2d(heatmaps, False)</span>
 <span class="sd">        tensor([[[1., 2.]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_validate_batched_image_tensor_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="n">batch_size</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
@@ -416,7 +417,7 @@
 <div class="viewcode-block" id="render_gaussian2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.render_gaussian2d">[docs]</a><span class="k">def</span> <span class="nf">render_gaussian2d</span><span class="p">(</span>
     <span class="n">mean</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">std</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Render the PDF of a 2D Gaussian distribution.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Render the PDF of a 2D Gaussian distribution.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        mean: the mean location of the Gaussian to render, :math:`(\mu_x, \mu_y)`. Shape: :math:`(*, 2)`.</span>
@@ -428,9 +429,9 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor including rendered points with shape :math:`(*, H, W)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">std</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">mean</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">and</span> <span class="n">std</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">mean</span><span class="o">.</span><span class="n">device</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"Expected inputs to have the same dtype and device"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected inputs to have the same dtype and device&quot;</span><span class="p">)</span>
 
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">size</span>
 
@@ -500,7 +501,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

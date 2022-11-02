@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/transform/flips.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.transform.flips - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -316,11 +317,11 @@
 <span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Vflip"</span><span class="p">,</span> <span class="s2">"Hflip"</span><span class="p">,</span> <span class="s2">"Rot180"</span><span class="p">,</span> <span class="s2">"rot180"</span><span class="p">,</span> <span class="s2">"hflip"</span><span class="p">,</span> <span class="s2">"vflip"</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Vflip&quot;</span><span class="p">,</span> <span class="s2">&quot;Hflip&quot;</span><span class="p">,</span> <span class="s2">&quot;Rot180&quot;</span><span class="p">,</span> <span class="s2">&quot;rot180&quot;</span><span class="p">,</span> <span class="s2">&quot;hflip&quot;</span><span class="p">,</span> <span class="s2">&quot;vflip&quot;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="Vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Vflip">[docs]</a><span class="k">class</span> <span class="nc">Vflip</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Vertically flip a tensor image or a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Vertically flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
 
@@ -341,7 +342,7 @@
 <span class="sd">        tensor([[[[0., 1., 1.],</span>
 <span class="sd">                  [0., 0., 0.],</span>
 <span class="sd">                  [0., 0., 0.]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">vflip</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -351,7 +352,7 @@
 
 
 <div class="viewcode-block" id="Hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Hflip">[docs]</a><span class="k">class</span> <span class="nc">Hflip</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Horizontally flip a tensor image or a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Horizontally flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
 
@@ -372,7 +373,7 @@
 <span class="sd">        tensor([[[[0., 0., 0.],</span>
 <span class="sd">                  [0., 0., 0.],</span>
 <span class="sd">                  [1., 1., 0.]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">hflip</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -382,7 +383,7 @@
 
 
 <div class="viewcode-block" id="Rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Rot180">[docs]</a><span class="k">class</span> <span class="nc">Rot180</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Rotate a tensor image or a batch of tensor images 180 degrees.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate a tensor image or a batch of tensor images 180 degrees.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
 
@@ -400,7 +401,7 @@
 <span class="sd">        tensor([[[[1., 1., 0.],</span>
 <span class="sd">                  [0., 0., 0.],</span>
 <span class="sd">                  [0., 0., 0.]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">rot180</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -410,7 +411,7 @@
 
 
 <div class="viewcode-block" id="rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.rot180">[docs]</a><span class="k">def</span> <span class="nf">rot180</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Rotate a tensor image or a batch of tensor images 180 degrees.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate a tensor image or a batch of tensor images 180 degrees.</span>
 
 <span class="sd">    .. image:: _static/img/rot180.png</span>
 
@@ -421,13 +422,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The rotated image tensor.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.hflip">[docs]</a><span class="k">def</span> <span class="nf">hflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Horizontally flip a tensor image or a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Horizontally flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/hflip.png</span>
 
@@ -438,13 +439,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The horizontally flipped image tensor.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">input</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.vflip">[docs]</a><span class="k">def</span> <span class="nf">vflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Vertically flip a tensor image or a batch of tensor images.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Vertically flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/vflip.png</span>
 
@@ -455,7 +456,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The vertically flipped image tensor.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">h</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">input</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">),</span> <span class="p">:]</span></div>
@@ -497,7 +498,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

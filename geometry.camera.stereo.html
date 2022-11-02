@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.conversions" href="geometry.conversions.html" /><link rel="prev" title="Perspective Camera" href="geometry.camera.perspective.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.camera.stereo.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Stereo Camera - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -163,7 +163,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -307,30 +309,34 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="stereo-camera">
-<h1>Stereo Camera<a class="headerlink" href="#stereo-camera" title="Permalink to this headline">#</a></h1>
+<h1>Stereo Camera<a class="headerlink" href="#stereo-camera" title="Permalink to this heading">#</a></h1>
 <p>In this module we provide the <a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera" title="kornia.geometry.camera.stereo.StereoCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">StereoCamera</span></code></a> that contains functionality for working with a horizontal stereo camera setup.</p>
 <p>The horizontal stereo camera setup is assumed to be calibrated and rectified such that the setup can be described by two camera matrices:</p>
 <p>The <em>left rectified camera matrix</em>:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}P_0 = \begin{bmatrix}
 fx &amp; 0  &amp; cx &amp; 0 \\
 0  &amp; fy &amp; cy &amp; 0 \\
 0  &amp; 0  &amp; 1  &amp; 0
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>The <em>right rectified camera matrix</em>:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}P_1 = \begin{bmatrix}
 fx &amp; 0  &amp; cx &amp; tx * fx \\
 0  &amp; fy &amp; cy &amp; 0       \\
 0  &amp; 0  &amp; 1  &amp; 0
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="simple">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(fx\)</span> is the focal length in the x-direction in pixels.</p></li>
@@ -345,7 +351,8 @@ fx &amp; 0  &amp; cx &amp; tx * fx \\
 <p>The <a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera" title="kornia.geometry.camera.stereo.StereoCamera"><code class="xref py py-class docutils literal notranslate"><span class="pre">StereoCamera</span></code></a> allows you to convert disparity maps to the real world 3D geometry represented by a point cloud.</p>
 <p>This is done by forming the <span class="math notranslate nohighlight">\(Q\)</span> matrix.</p>
 <p>Using the pinhole camera model to project <span class="math notranslate nohighlight">\([X Y Z 1]\)</span> in world coordinates to <span class="math notranslate nohighlight">\(uv\)</span> pixels in the left and right camera frame respectively:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 u \\
 v \\
@@ -367,10 +374,12 @@ X \\
 Y \\
 Z \\
 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>Where <span class="math notranslate nohighlight">\(d\)</span> is the disparity between pixels in left and right image.</p>
 <p>Combining these two expressions let us write it as one matrix multiplication</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 u \\
 v \\
@@ -388,9 +397,11 @@ X \\
 Y \\
 Z \\
 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>Now subtract the first from the third row and invert the expression and you’ll get:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 u \\
 v \\
@@ -408,27 +419,33 @@ X \\
 Y \\
 Z \\
 1
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>Where <span class="math notranslate nohighlight">\(Q\)</span> is</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}Q = \begin{bmatrix}
 fy * tx &amp; 0       &amp; 0   &amp; -fy * cx * tx \\
 0       &amp; fx * tx &amp; 0   &amp; -fx * cy * tx \\
 0       &amp; 0       &amp; 0   &amp; fx * fy * tx  \\
 0       &amp; 0       &amp; -fy &amp; fy * (cx_{left} -cx_{right})
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>Notice here that the x-coordinate for the principal point in the left and right camera <span class="math notranslate nohighlight">\(cx\)</span> might differ, which is being taken into account here.</p>
 <p>Assuming <span class="math notranslate nohighlight">\(fx = fy\)</span> you can further reduce this to:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}Q = \begin{bmatrix}
 1 &amp; 0       &amp; 0   &amp; -cx \\
 0       &amp; 1 &amp; 0   &amp; -cy \\
 0       &amp; 0       &amp; 0   &amp; fx  \\
 0       &amp; 0       &amp; -1/tx &amp; (cx_{left} -cx_{right} / tx)
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <p>But we’ll use the general <span class="math notranslate nohighlight">\(Q\)</span> matrix.</p>
 <p>Using the <span class="math notranslate nohighlight">\(Q\)</span> matrix we can obtain the 3D points by:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 X \\
 Y \\
@@ -440,7 +457,8 @@ u \\
 v \\
 disparity(y, v) \\
 z
-\end{bmatrix}\end{split}\]</div></div>
+\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.camera.stereo.</span></span><span class="sig-name descname"><span class="pre">StereoCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rectified_left_camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rectified_right_camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/stereo.html#StereoCamera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera" title="Permalink to this definition">#</a></dt>
@@ -459,9 +477,10 @@ of shape <span class="math notranslate nohighlight">\((B, 3, 4)\)</span></p></li
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.Q">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Q</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.Q" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Q</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.Q" title="Permalink to this definition">#</a></dt>
 <dd><p>The Q matrix of the horizontal stereo setup.</p>
 <p>This matrix is used for reprojecting a disparity tensor to
 the corresponding point cloud. Note that this is in a general form that allows different focal
@@ -475,6 +494,7 @@ lengths in the x and y direction.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.batch_size">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">batch_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.batch_size" title="Permalink to this definition">#</a></dt>
@@ -488,9 +508,10 @@ lengths in the x and y direction.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.cx_left">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cx_left" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cx_left" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the x-coordinate of the principal point for the left camera.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -501,9 +522,10 @@ lengths in the x and y direction.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.cx_right">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cx_right" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cx_right" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the x-coordinate of the principal point for the right camera.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -514,9 +536,10 @@ lengths in the x and y direction.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.cy">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cy" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.cy" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the y-coordinate of the principal point.</p>
 <p>Note that the y-coordinate of the principal points
 is assumed to be equal for the left and right camera.</p>
@@ -529,9 +552,10 @@ is assumed to be equal for the left and right camera.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.fx">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.fx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.fx" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the focal length in the x-direction.</p>
 <p>Note that the focal lengths of the rectified left and right
 camera are assumed to be equal.</p>
@@ -544,9 +568,10 @@ camera are assumed to be equal.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.fy">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.fy" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.fy" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the focal length in the y-direction.</p>
 <p>Note that the focal lengths of the rectified left and right
 camera are assumed to be equal.</p>
@@ -559,6 +584,7 @@ camera are assumed to be equal.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.reproject_disparity_to_3D">
 <span class="sig-name descname"><span class="pre">reproject_disparity_to_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disparity_tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/stereo.html#StereoCamera.reproject_disparity_to_3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.reproject_disparity_to_3D" title="Permalink to this definition">#</a></dt>
@@ -575,9 +601,10 @@ camera are assumed to be equal.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.StereoCamera.tx">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.tx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.camera.stereo.StereoCamera.tx" title="Permalink to this definition">#</a></dt>
 <dd><p>The horizontal baseline between the two cameras.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -588,7 +615,9 @@ camera are assumed to be equal.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.camera.stereo.reproject_disparity_to_3D">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.camera.stereo.</span></span><span class="sig-name descname"><span class="pre">reproject_disparity_to_3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disparity_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q_matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/camera/stereo.html#reproject_disparity_to_3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.camera.stereo.reproject_disparity_to_3D" title="Permalink to this definition">#</a></dt>
@@ -608,6 +637,7 @@ camera are assumed to be equal.</p>
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 
         </article>
@@ -622,10 +652,10 @@ camera are assumed to be equal.</p>
                 </div>
                 <div class="title">kornia.geometry.conversions</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.camera.perspective.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -655,8 +685,40 @@ camera are assumed to be equal.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Stereo Camera</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera"><code class="docutils literal notranslate"><span class="pre">StereoCamera</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.__init__"><code class="docutils literal notranslate"><span class="pre">StereoCamera.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.Q"><code class="docutils literal notranslate"><span class="pre">StereoCamera.Q</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.batch_size"><code class="docutils literal notranslate"><span class="pre">StereoCamera.batch_size</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.cx_left"><code class="docutils literal notranslate"><span class="pre">StereoCamera.cx_left</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.cx_right"><code class="docutils literal notranslate"><span class="pre">StereoCamera.cx_right</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.cy"><code class="docutils literal notranslate"><span class="pre">StereoCamera.cy</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.fx"><code class="docutils literal notranslate"><span class="pre">StereoCamera.fx</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.fy"><code class="docutils literal notranslate"><span class="pre">StereoCamera.fy</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.reproject_disparity_to_3D"><code class="docutils literal notranslate"><span class="pre">StereoCamera.reproject_disparity_to_3D()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.StereoCamera.tx"><code class="docutils literal notranslate"><span class="pre">StereoCamera.tx</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.geometry.camera.stereo.reproject_disparity_to_3D"><code class="docutils literal notranslate"><span class="pre">reproject_disparity_to_3D()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -665,7 +727,9 @@ camera are assumed to be equal.</p>
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

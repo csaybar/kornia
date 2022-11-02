@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Image Augmentation" href="image_augmentations.html" /><link rel="prev" title="Computer Vision Algorithms" href="intro.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/applications/face_detection.html" />
 
-    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Face Detection - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../_static/css/main.css" />
     
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -314,8 +316,8 @@
         </div>
         <article role="main">
           <section id="face-detection">
-<h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">#</a></h1>
-<a class="reference internal image-reference" href="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png"><img alt="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png" class="align-right" src="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png" style="width: 20%;"/></a>
+<h1>Face Detection<a class="headerlink" href="#face-detection" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png"><img alt="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png" class="align-right" src="https://github.com/ShiqiYu/libfacedetection/raw/master/images/cnnresult.png" style="width: 20%;" /></a>
 <p>Face detection is the task of detecting faces in a photo or video (and distinguishing them from other objects).
 We provide the <a class="reference internal" href="../contrib.html#kornia.contrib.FaceDetector" title="kornia.contrib.FaceDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">kornia.contrib.FaceDetector</span></code></a> to perform multi-face detection in real-time uding the
 <a class="reference internal" href="../models/yunet.html#yunet-model"><span class="std std-ref">YuNet</span></a> model.</p>
@@ -324,9 +326,9 @@ We provide the <a class="reference internal" href="../contrib.html#kornia.contri
 <iframe allowfullscreen="true" src="https://www.youtube.com/embed/hzQroGp5FSQ" style="border: 0; height: 345px; width: 560px">
 </iframe></div><p>Using our API you easily detect faces in images as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># select the device</span>
-    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">cuda</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-        <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda:0'</span><span class="p">)</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">)</span>
 
     <span class="c1"># load the image and scale</span>
     <span class="n">img_raw</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">image_file</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
@@ -347,10 +349,10 @@ We provide the <a class="reference internal" href="../contrib.html#kornia.contri
 <p>Check the full example <a class="reference external" href="https://github.com/kornia/kornia/tree/master/examples/face_detection/main.py">here</a>
 or run a real-time application using the camera with this <a class="reference external" href="https://github.com/kornia/kornia/tree/master/examples/face_detection/main_video.py">example</a>.</p>
 <section id="the-kornia-ai-game">
-<h2>The Kornia AI Game<a class="headerlink" href="#the-kornia-ai-game" title="Permalink to this headline">#</a></h2>
+<h2>The Kornia AI Game<a class="headerlink" href="#the-kornia-ai-game" title="Permalink to this heading">#</a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png" style="width: 49%;"/></a>
-<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png" style="width: 49%;"/></a>
+<div><a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_7_1.png" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png"><img alt="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png" src="https://kornia-tutorials.readthedocs.io/en/latest/_images/face_detection_13_1.png" style="width: 49%;" /></a>
 </div></blockquote>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -371,10 +373,10 @@ or run a real-time application using the camera with this <a class="reference ex
                 </div>
                 <div class="title">Image Augmentation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="intro.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -410,7 +412,7 @@ or run a real-time application using the camera with this <a class="reference ex
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -433,7 +435,9 @@ or run a real-time application using the camera with this <a class="reference ex
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>

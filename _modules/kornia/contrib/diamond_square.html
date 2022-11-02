@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/contrib/diamond_square.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.contrib.diamond_square - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -337,7 +338,7 @@
     <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Helper function to generate the diamond square image seee.</span>
+    <span class="sd">&quot;&quot;&quot;Helper function to generate the diamond square image seee.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        replicates: the num of batched replicas for the image.</span>
@@ -349,8 +350,8 @@
 
 <span class="sd">    Return:</span>
 <span class="sd">        the generated image seed of size Bx1xHxW.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">width</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"Height or Width must be equal to 3."</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">width</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">height</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Height or Width must be equal to 3.&quot;</span><span class="p">)</span>
     <span class="c1"># TODO(anguelos): can we avoid transposing and passing always fixed size. This will cause issues with onnx/jit</span>
     <span class="n">transpose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">height</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
@@ -358,7 +359,7 @@
         <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span>
 
     <span class="c1"># width is always 3</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">height</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"Height must be odd and height bigger than 2"</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">height</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Height must be odd and height bigger than 2&quot;</span><span class="p">)</span>
 
     <span class="n">res</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">random_fn</span><span class="p">([</span><span class="n">replicates</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">res</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_fn</span><span class="p">([</span><span class="n">replicates</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">height</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
@@ -392,7 +393,7 @@
     <span class="n">diamond_kernel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">square_kernel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Doubles the image resolution by applying a single diamond square steps.</span>
+    <span class="sd">&quot;&quot;&quot;Doubles the image resolution by applying a single diamond square steps.</span>
 
 <span class="sd">    Recursive application of this method creates plasma fractals.</span>
 
@@ -411,8 +412,8 @@
 
 <span class="sd">    Return:</span>
 <span class="sd">        A tensor on the same device as img with the same channels as img and width, height of 2^(N+1)+1.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
     <span class="c1"># TODO (anguelos) test multi channel and batch size &gt; 1</span>
 
     <span class="k">if</span> <span class="n">diamond_kernel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -461,7 +462,7 @@
     <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Generates Plasma Fractal Images using the diamond square algorithm.</span>
+    <span class="sd">&quot;&quot;&quot;Generates Plasma Fractal Images using the diamond square algorithm.</span>
 
 <span class="sd">    See: https://en.wikipedia.org/wiki/Diamond-square_algorithm</span>
 
@@ -477,8 +478,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A tensor with shape :math:`(B,C,H,W)` containing the fractal image.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output_size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"output_size must be (B,C,H,W)"</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output_size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;output_size must be (B,C,H,W)&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_scale</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="n">random_scale</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">([[[[</span><span class="n">random_scale</span><span class="p">]]]])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
         <span class="n">random_scale</span> <span class="o">=</span> <span class="n">random_scale</span><span class="o">.</span><span class="n">expand</span><span class="p">([</span><span class="n">output_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">output_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -562,7 +563,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

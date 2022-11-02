@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -16,12 +16,12 @@
     <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="kornia.geometry.line" href="geometry.line.html" /><link rel="prev" title="kornia.geometry.liegroup" href="geometry.liegroup.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/geometry.linalg.html" />
 
-    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.linalg - Kornia</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/main.css" />
     
@@ -163,7 +163,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -299,7 +299,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -307,14 +309,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="kornia-geometry-linalg">
-<h1>kornia.geometry.linalg<a class="headerlink" href="#kornia-geometry-linalg" title="Permalink to this headline">#</a></h1>
+<h1>kornia.geometry.linalg<a class="headerlink" href="#kornia-geometry-linalg" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.relative_transformation">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">relative_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans_02</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#relative_transformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.relative_transformation" title="Permalink to this definition">#</a></dt>
@@ -323,8 +325,10 @@ reference transformation <span class="math notranslate nohighlight">\(T_1^{0} = 
 \mathbf{0} &amp; 1 \end{bmatrix}\)</span> to destination <span class="math notranslate nohighlight">\(T_2^{0} =
 \begin{bmatrix} R_2 &amp; t_2 \\ \mathbf{0} &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>The relative transformation is computed as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[T_1^{2} = (T_0^{1})^{-1} \cdot T_0^{2}\]</div></div>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[T_1^{2} = (T_0^{1})^{-1} \cdot T_0^{2}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -348,13 +352,16 @@ reference transformation <span class="math notranslate nohighlight">\(T_1^{0} = 
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.compose_transformations">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">compose_transformations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans_12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#compose_transformations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.compose_transformations" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that composes two homogeneous transformations.</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}T_0^{2} = \begin{bmatrix} R_0^1 R_1^{2} &amp; R_0^{1} t_1^{2} + t_0^{1} \\
-\mathbf{0} &amp; 1\end{bmatrix}\end{split}\]</div></div>
+\mathbf{0} &amp; 1\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -382,15 +389,18 @@ shape of <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <spa
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.inverse_transformation">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">inverse_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#inverse_transformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.inverse_transformation" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that inverts a 4x4 homogeneous transformation
 <span class="math notranslate nohighlight">\(T_1^{2} = \begin{bmatrix} R_1 &amp; t_1 \\ \mathbf{0} &amp; 1 \end{bmatrix}\)</span></p>
 <p>The inverse transformation is computed as follows:</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
 \[\begin{split}T_2^{1} = (T_1^{2})^{-1} = \begin{bmatrix} R_1^T &amp; -R_1^T t_1 \\
-\mathbf{0} &amp; 1\end{bmatrix}\end{split}\]</div></div>
+\mathbf{0} &amp; 1\end{bmatrix}\end{split}\]</div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>trans_12</strong> – transformation tensor of shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p>
@@ -405,6 +415,7 @@ shape of <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <spa
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.transform_points">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">transform_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#transform_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.transform_points" title="Permalink to this definition">#</a></dt>
@@ -437,6 +448,7 @@ shape of <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <spa
 </pre></div>
 </div>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.point_line_distance">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">point_line_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#point_line_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.point_line_distance" title="Permalink to this definition">#</a></dt>
@@ -458,6 +470,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.squared_norm">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">squared_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#squared_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.squared_norm" title="Permalink to this definition">#</a></dt>
@@ -468,6 +481,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.linalg.batched_dot_product">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">batched_dot_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#batched_dot_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.batched_dot_product" title="Permalink to this definition">#</a></dt>
@@ -478,6 +492,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 </dd>
 </dl>
 </dd></dl>
+
 </section>
 
         </article>
@@ -492,10 +507,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
                 </div>
                 <div class="title">kornia.geometry.line</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="geometry.liegroup.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -525,8 +540,33 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">kornia.geometry.linalg</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.linalg.relative_transformation"><code class="docutils literal notranslate"><span class="pre">relative_transformation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.compose_transformations"><code class="docutils literal notranslate"><span class="pre">compose_transformations()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.inverse_transformation"><code class="docutils literal notranslate"><span class="pre">inverse_transformation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.transform_points"><code class="docutils literal notranslate"><span class="pre">transform_points()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.point_line_distance"><code class="docutils literal notranslate"><span class="pre">point_line_distance()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.squared_norm"><code class="docutils literal notranslate"><span class="pre">squared_norm()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.linalg.batched_dot_product"><code class="docutils literal notranslate"><span class="pre">batched_dot_product()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -535,7 +575,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>

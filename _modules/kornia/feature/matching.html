@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/matching.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.matching - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -325,7 +326,7 @@
 
 
 <span class="k">def</span> <span class="nf">_cdist</span><span class="p">(</span><span class="n">d1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">d2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Manual `torch.cdist` for M1."""</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Manual `torch.cdist` for M1.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_mps_tensor_safe</span><span class="p">(</span><span class="n">d1</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_mps_tensor_safe</span><span class="p">(</span><span class="n">d2</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cdist</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
     <span class="n">d1_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">d1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -336,12 +337,12 @@
 
 
 <span class="k">def</span> <span class="nf">_get_default_fginn_params</span><span class="p">():</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"th"</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s2">"mutual"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"spatial_th"</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">}</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;th&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s2">&quot;mutual&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;spatial_th&quot;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">config</span>
 
 
 <span class="k">def</span> <span class="nf">_get_lazy_distance_matrix</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">"""Helper function, which checks validity of provided distance matrix, or calculates L2-distance matrix dm is</span>
+    <span class="sd">&quot;&quot;&quot;Helper function, which checks validity of provided distance matrix, or calculates L2-distance matrix dm is</span>
 <span class="sd">    not provided.</span>
 
 <span class="sd">    Args:</span>
@@ -349,7 +350,7 @@
 <span class="sd">        desc2: Batch of descriptors of a shape :math:`(B2, D)`.</span>
 <span class="sd">        dm: Tensor containing the distances from each descriptor in desc1</span>
 <span class="sd">          to each descriptor in desc2, shape of :math:`(B1, B2)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">dm_</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">dm</span> <span class="o">=</span> <span class="n">_cdist</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -359,19 +360,19 @@
 
 
 <span class="k">def</span> <span class="nf">_no_match</span><span class="p">(</span><span class="n">dm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">"""Helper function, which output empty tensors.</span>
+    <span class="sd">&quot;&quot;&quot;Helper function, which output empty tensors.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">            - Descriptor distance of matching descriptors, shape of :math:`(0, 1)`.</span>
 <span class="sd">            - Long tensor indexes of matching descriptors in desc1 and desc2, shape of :math:`(0, 2)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dists</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">dists</span><span class="p">,</span> <span class="n">idxs</span>
 
 
 <div class="viewcode-block" id="match_nn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_nn">[docs]</a><span class="k">def</span> <span class="nf">match_nn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
 
@@ -384,9 +385,9 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        - Descriptor distance of matching descriptors, shape of :math:`(B1, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2, shape of :math:`(B1, 2)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_no_match</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span>
     <span class="n">distance_matrix</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">_get_lazy_distance_matrix</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
@@ -397,7 +398,7 @@
 
 
 <div class="viewcode-block" id="match_mnn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_mnn">[docs]</a><span class="k">def</span> <span class="nf">match_mnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
+    <span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
 
@@ -411,9 +412,9 @@
 <span class="sd">        - Descriptor distance of matching descriptors, shape of. :math:`(B3, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2, shape of :math:`(B3, 2)`,</span>
 <span class="sd">          where 0 &lt;= B3 &lt;= min(B1, B2)</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">desc2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_no_match</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span>
     <span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">_get_lazy_distance_matrix</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
@@ -434,7 +435,7 @@
 
 
 <div class="viewcode-block" id="match_snn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_snn">[docs]</a><span class="k">def</span> <span class="nf">match_snn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+    <span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    The method satisfies first to second nearest neighbor distance &lt;= th.</span>
 
@@ -451,9 +452,9 @@
 <span class="sd">        - Descriptor distance of matching descriptors, shape of :math:`(B3, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2. Shape: :math:`(B3, 2)`,</span>
 <span class="sd">          where 0 &lt;= B3 &lt;= B1.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">desc2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># We cannot perform snn check, so output empty matches</span>
         <span class="k">return</span> <span class="n">_no_match</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span>
@@ -471,7 +472,7 @@
 
 
 <div class="viewcode-block" id="match_smnn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_smnn">[docs]</a><span class="k">def</span> <span class="nf">match_smnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
+    <span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    the method satisfies first to second nearest neighbor distance &lt;= th.</span>
 
@@ -488,9 +489,9 @@
 <span class="sd">        - Descriptor distance of matching descriptors, shape of. :math:`(B3, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2,</span>
 <span class="sd">          shape of :math:`(B3, 2)` where 0 &lt;= B3 &lt;= B1.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">desc1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">desc2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">_no_match</span><span class="p">(</span><span class="n">desc1</span><span class="p">)</span>
@@ -534,7 +535,7 @@
     <span class="n">mutual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">"""Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+    <span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    The method satisfies first to second nearest neighbor distance &lt;= th,</span>
 <span class="sd">    and assures 2nd nearest neighbor is geometrically inconsistent with the 1st one</span>
@@ -558,9 +559,9 @@
 <span class="sd">        - Descriptor distance of matching descriptors, shape of :math:`(B3, 1)`.</span>
 <span class="sd">        - Long tensor indexes of matching descriptors in desc1 and desc2. Shape: :math:`(B3, 2)`,</span>
 <span class="sd">          where 0 &lt;= B3 &lt;= B1.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"DIM"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;DIM&quot;</span><span class="p">])</span>
     <span class="n">BIG_NUMBER</span> <span class="o">=</span> <span class="mf">1000000.0</span>
 
     <span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">_get_lazy_distance_matrix</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">dm</span><span class="p">)</span>
@@ -602,7 +603,7 @@
 
 
 <div class="viewcode-block" id="DescriptorMatcher"><a class="viewcode-back" href="../../../feature.html#kornia.feature.DescriptorMatcher">[docs]</a><span class="k">class</span> <span class="nc">DescriptorMatcher</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Module version of matching functions.</span>
+    <span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
 
 <span class="sd">    See :func:`~kornia.feature.match_nn`, :func:`~kornia.feature.match_snn`,</span>
 <span class="sd">        :func:`~kornia.feature.match_mnn` or :func:`~kornia.feature.match_smnn` for more details.</span>
@@ -610,20 +611,20 @@
 <span class="sd">    Args:</span>
 <span class="sd">        match_mode: type of matching, can be `nn`, `snn`, `mnn`, `smnn`.</span>
 <span class="sd">        th: threshold on distance ratio, or other quality measure.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">known_modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'nn'</span><span class="p">,</span> <span class="s1">'mnn'</span><span class="p">,</span> <span class="s1">'snn'</span><span class="p">,</span> <span class="s1">'smnn'</span><span class="p">]</span>
+    <span class="n">known_modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nn&#39;</span><span class="p">,</span> <span class="s1">&#39;mnn&#39;</span><span class="p">,</span> <span class="s1">&#39;snn&#39;</span><span class="p">,</span> <span class="s1">&#39;smnn&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'snn'</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;snn&#39;</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">_match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">match_mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">_match_mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">match_mode</span><span class="si">}</span><span class="s2"> is not supported. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">match_mode</span><span class="si">}</span><span class="s2"> is not supported. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">=</span> <span class="n">_match_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">th</span> <span class="o">=</span> <span class="n">th</span>
 
 <div class="viewcode-block" id="DescriptorMatcher.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.DescriptorMatcher.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            desc1: Batch of descriptors of a shape :math:`(B1, D)`.</span>
 <span class="sd">            desc2: Batch of descriptors of a shape :math:`(B2, D)`.</span>
@@ -634,14 +635,14 @@
 <span class="sd">            - Descriptor distance of matching descriptors, shape of :math:`(B3, 1)`.</span>
 <span class="sd">            - Long tensor indexes of matching descriptors in desc1 and desc2,</span>
 <span class="sd">                shape of :math:`(B3, 2)` where :math:`0 &lt;= B3 &lt;= B1`.</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'nn'</span><span class="p">:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;nn&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">match_nn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'mnn'</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;mnn&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">match_mnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'snn'</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;snn&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">match_snn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">th</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'smnn'</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;smnn&#39;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">match_smnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">th</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
@@ -649,7 +650,7 @@
 
 
 <div class="viewcode-block" id="GeometryAwareDescriptorMatcher"><a class="viewcode-back" href="../../../feature.html#kornia.feature.GeometryAwareDescriptorMatcher">[docs]</a><span class="k">class</span> <span class="nc">GeometryAwareDescriptorMatcher</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Module version of matching functions.</span>
+    <span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
 
 <span class="sd">    See :func:`~kornia.feature.match_nn`, :func:`~kornia.feature.match_snn`,</span>
 <span class="sd">        :func:`~kornia.feature.match_mnn` or :func:`~kornia.feature.match_smnn` for more details.</span>
@@ -657,20 +658,20 @@
 <span class="sd">    Args:</span>
 <span class="sd">        match_mode: type of matching, can be `fginn`.</span>
 <span class="sd">        th: threshold on distance ratio, or other quality measure.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">known_modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'fginn'</span><span class="p">,</span> <span class="s2">"adalam"</span><span class="p">]</span>
+    <span class="n">known_modes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fginn&#39;</span><span class="p">,</span> <span class="s2">&quot;adalam&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'fginn'</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;fginn&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">_match_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">match_mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">_match_mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">match_mode</span><span class="si">}</span><span class="s2"> is not supported. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">match_mode</span><span class="si">}</span><span class="s2"> is not supported. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">known_modes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">=</span> <span class="n">_match_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
 
 <div class="viewcode-block" id="GeometryAwareDescriptorMatcher.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.GeometryAwareDescriptorMatcher.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            desc1: Batch of descriptors of a shape :math:`(B1, D)`.</span>
 <span class="sd">            desc2: Batch of descriptors of a shape :math:`(B2, D)`.</span>
@@ -681,12 +682,12 @@
 <span class="sd">            - Descriptor distance of matching descriptors, shape of :math:`(B3, 1)`.</span>
 <span class="sd">            - Long tensor indexes of matching descriptors in desc1 and desc2,</span>
 <span class="sd">                shape of :math:`(B3, 2)` where :math:`0 &lt;= B3 &lt;= B1`.</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'fginn'</span><span class="p">:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;fginn&#39;</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">_get_default_fginn_params</span><span class="p">()</span>
             <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">match_fginn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">lafs1</span><span class="p">,</span> <span class="n">lafs2</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">'th'</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">'spatial_th'</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">'mutual'</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">'adalam'</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">match_fginn</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">lafs1</span><span class="p">,</span> <span class="n">lafs2</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;th&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;spatial_th&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;mutual&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_mode</span> <span class="o">==</span> <span class="s1">&#39;adalam&#39;</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">get_adalam_default_config</span><span class="p">()</span>
             <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">match_adalam</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="n">desc2</span><span class="p">,</span> <span class="n">lafs1</span><span class="p">,</span> <span class="n">lafs2</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
@@ -731,7 +732,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

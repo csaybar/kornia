@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/responses.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.responses - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -325,10 +326,10 @@
 <div class="viewcode-block" id="harris_response"><a class="viewcode-back" href="../../../feature.html#kornia.feature.harris_response">[docs]</a><span class="k">def</span> <span class="nf">harris_response</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">k</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04</span><span class="p">,</span>
-    <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'sobel'</span><span class="p">,</span>
+    <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sobel&#39;</span><span class="p">,</span>
     <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Harris cornerness function.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Harris cornerness function.</span>
 
 <span class="sd">    Function does not do any normalization or nms. The response map is computed according the following formulation:</span>
 
@@ -350,7 +351,7 @@
 <span class="sd">    Args:</span>
 <span class="sd">        input: input image with shape :math:`(B, C, H, W)`.</span>
 <span class="sd">        k: the Harris detector free parameter.</span>
-<span class="sd">        grads_mode: can be ``'sobel'`` for standalone use or ``'diff'`` for use on Gaussian pyramid.</span>
+<span class="sd">        grads_mode: can be ``&#39;sobel&#39;`` for standalone use or ``&#39;diff&#39;`` for use on Gaussian pyramid.</span>
 <span class="sd">        sigmas: coefficients to be multiplied by multichannel response. Should be shape of :math:`(B)`</span>
 <span class="sd">          It is necessary for performing non-maxima-suppression across different scale pyramid levels.</span>
 <span class="sd">          See `vlfeat &lt;https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874&gt;`_.</span>
@@ -377,15 +378,15 @@
 <span class="sd">                  [0.0020, 0.0040, 0.0029, 0.0000, 0.0029, 0.0040, 0.0020],</span>
 <span class="sd">                  [0.0039, 0.0065, 0.0040, 0.0000, 0.0040, 0.0065, 0.0039],</span>
 <span class="sd">                  [0.0012, 0.0039, 0.0020, 0.0000, 0.0020, 0.0039, 0.0012]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Recompute doctest</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">sigmas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigmas</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sigmas type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sigmas</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sigmas type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sigmas</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">sigmas</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid sigmas shape, we expect B == input.size(0). Got: </span><span class="si">{</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid sigmas shape, we expect B == input.size(0). Got: </span><span class="si">{</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">gradients</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">)</span>
     <span class="n">dx</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">gradients</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -410,9 +411,9 @@
 
 
 <div class="viewcode-block" id="gftt_response"><a class="viewcode-back" href="../../../feature.html#kornia.feature.gftt_response">[docs]</a><span class="k">def</span> <span class="nf">gftt_response</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'sobel'</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sobel&#39;</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Shi-Tomasi cornerness function.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Shi-Tomasi cornerness function.</span>
 
 <span class="sd">    Function does not do any normalization or nms. The response map is computed according the following formulation:</span>
 
@@ -430,7 +431,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: input image with shape :math:`(B, C, H, W)`.</span>
-<span class="sd">        grads_mode: can be ``'sobel'`` for standalone use or ``'diff'`` for use on Gaussian pyramid.</span>
+<span class="sd">        grads_mode: can be ``&#39;sobel&#39;`` for standalone use or ``&#39;diff&#39;`` for use on Gaussian pyramid.</span>
 <span class="sd">        sigmas: coefficients to be multiplied by multichannel response. Should be shape of :math:`(B)`</span>
 <span class="sd">          It is necessary for performing non-maxima-suppression across different scale pyramid levels.</span>
 <span class="sd">          See `vlfeat &lt;https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874&gt;`_.</span>
@@ -457,9 +458,9 @@
 <span class="sd">                  [0.0194, 0.0339, 0.0497, 0.0000, 0.0497, 0.0339, 0.0194],</span>
 <span class="sd">                  [0.0334, 0.0575, 0.0339, 0.0000, 0.0339, 0.0575, 0.0334],</span>
 <span class="sd">                  [0.0155, 0.0334, 0.0194, 0.0000, 0.0194, 0.0334, 0.0155]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Recompute doctest</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
 
     <span class="n">gradients</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">)</span>
     <span class="n">dx</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">gradients</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -484,9 +485,9 @@
 
 
 <div class="viewcode-block" id="hessian_response"><a class="viewcode-back" href="../../../feature.html#kornia.feature.hessian_response">[docs]</a><span class="k">def</span> <span class="nf">hessian_response</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'sobel'</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sobel&#39;</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the absolute of determinant of the Hessian matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the absolute of determinant of the Hessian matrix.</span>
 
 <span class="sd">    Function does not do any normalization or nms. The response map is computed according the following formulation:</span>
 
@@ -504,7 +505,7 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: input image with shape :math:`(B, C, H, W)`.</span>
-<span class="sd">        grads_mode: can be ``'sobel'`` for standalone use or ``'diff'`` for use on Gaussian pyramid.</span>
+<span class="sd">        grads_mode: can be ``&#39;sobel&#39;`` for standalone use or ``&#39;diff&#39;`` for use on Gaussian pyramid.</span>
 <span class="sd">        sigmas: coefficients to be multiplied by multichannel response. Should be shape of :math:`(B)`</span>
 <span class="sd">          It is necessary for performing non-maxima-suppression across different scale pyramid levels.</span>
 <span class="sd">          See `vlfeat &lt;https://github.com/vlfeat/vlfeat/blob/master/vl/covdet.c#L874&gt;`_.</span>
@@ -535,16 +536,16 @@
 <span class="sd">                  [0.0194, 0.0339, 0.0497, 0.0000, 0.0497, 0.0339, 0.0194],</span>
 <span class="sd">                  [0.0334, 0.0575, 0.0339, 0.0000, 0.0339, 0.0575, 0.0334],</span>
 <span class="sd">                  [0.0155, 0.0334, 0.0194, 0.0000, 0.0194, 0.0334, 0.0155]]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TODO: Recompute doctest</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">sigmas</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigmas</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sigmas type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sigmas</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sigmas type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">sigmas</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">sigmas</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid sigmas shape, we expect B == input.size(0). Got: </span><span class="si">{</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid sigmas shape, we expect B == input.size(0). Got: </span><span class="si">{</span><span class="n">sigmas</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">gradients</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">dxx</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">gradients</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
@@ -560,24 +561,24 @@
 
 
 <div class="viewcode-block" id="dog_response"><a class="viewcode-back" href="../../../feature.html#kornia.feature.dog_response">[docs]</a><span class="k">def</span> <span class="nf">dog_response</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Difference-of-Gaussian response.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Difference-of-Gaussian response.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: a given the gaussian 5d tensor :math:`(B, C, D, H, W)`.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">        the response map per channel with shape :math:`(B, C, D-1, H, W)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"L"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="nb">input</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="nb">input</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="BlobDoG"><a class="viewcode-back" href="../../../feature.html#kornia.feature.BlobDoG">[docs]</a><span class="k">class</span> <span class="nc">BlobDoG</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates Difference-of-Gaussians blobs.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Difference-of-Gaussians blobs.</span>
 
 <span class="sd">    See :func:`~kornia.feature.dog_response` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -591,58 +592,58 @@
 
 
 <div class="viewcode-block" id="CornerHarris"><a class="viewcode-back" href="../../../feature.html#kornia.feature.CornerHarris">[docs]</a><span class="k">class</span> <span class="nc">CornerHarris</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates Harris corners.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Harris corners.</span>
 
 <span class="sd">    See :func:`~kornia.feature.harris_response` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">'sobel'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">&#39;sobel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">grads_mode</span>
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'(k='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="s1">'grads_mode='</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">')'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;(k=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="s1">&#39;grads_mode=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">harris_response</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
 
 
 <div class="viewcode-block" id="CornerGFTT"><a class="viewcode-back" href="../../../feature.html#kornia.feature.CornerGFTT">[docs]</a><span class="k">class</span> <span class="nc">CornerGFTT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates Shi-Tomasi corners.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Shi-Tomasi corners.</span>
 
 <span class="sd">    See :func:`~kornia.feature.gfft_response` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">'sobel'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">&#39;sobel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">grads_mode</span>
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'grads_mode='</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">')'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;grads_mode=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">gftt_response</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BlobHessian"><a class="viewcode-back" href="../../../feature.html#kornia.feature.BlobHessian">[docs]</a><span class="k">class</span> <span class="nc">BlobHessian</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates Hessian blobs.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Hessian blobs.</span>
 
 <span class="sd">    See :func:`~kornia.feature.hessian_response` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">'sobel'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grads_mode</span><span class="o">=</span><span class="s1">&#39;sobel&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">grads_mode</span>
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'grads_mode='</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">')'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;grads_mode=&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">hessian_response</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads_mode</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">)</span></div>
@@ -684,7 +685,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

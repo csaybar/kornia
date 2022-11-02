@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/losses/total_variation.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.losses.total_variation - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -317,14 +318,14 @@
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
 
-<div class="viewcode-block" id="total_variation"><a class="viewcode-back" href="../../../losses.html#kornia.losses.total_variation">[docs]</a><span class="k">def</span> <span class="nf">total_variation</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"sum"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Function that computes Total Variation according to [1].</span>
+<div class="viewcode-block" id="total_variation"><a class="viewcode-back" href="../../../losses.html#kornia.losses.total_variation">[docs]</a><span class="k">def</span> <span class="nf">total_variation</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">reduction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sum&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that computes Total Variation according to [1].</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        img: the input image with shape :math:`(*, H, W)`.</span>
-<span class="sd">        reduction : Specifies the reduction to apply to the output: ``'mean'`` | ``'sum'``.</span>
-<span class="sd">         ``'mean'``: the sum of the output will be divided by the number of elements</span>
-<span class="sd">         in the output, ``'sum'``: the output will be summed.</span>
+<span class="sd">        reduction : Specifies the reduction to apply to the output: ``&#39;mean&#39;`` | ``&#39;sum&#39;``.</span>
+<span class="sd">         ``&#39;mean&#39;``: the sum of the output will be divided by the number of elements</span>
+<span class="sd">         in the output, ``&#39;sum&#39;``: the output will be summed.</span>
 
 <span class="sd">    Return:</span>
 <span class="sd">         a tensor with shape :math:`(*,)`.</span>
@@ -339,13 +340,13 @@
 <span class="sd">       See a working example `here &lt;https://kornia-tutorials.readthedocs.io/en/latest/</span>
 <span class="sd">       total_variation_denoising.html&gt;`__.</span>
 <span class="sd">       Total Variation is formulated with summation, however this is not resolution invariant.</span>
-<span class="sd">       Thus, `reduction='mean'` was added as an optional reduction method.</span>
+<span class="sd">       Thus, `reduction=&#39;mean&#39;` was added as an optional reduction method.</span>
 
 <span class="sd">    Reference:</span>
 <span class="sd">        [1] https://en.wikipedia.org/wiki/Total_variation</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"H"</span><span class="p">,</span> <span class="s2">"W"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">reduction</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"sum"</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"Expected reduction to be one of 'mean'/'sum', but got '</span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">'."</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">reduction</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected reduction to be one of &#39;mean&#39;/&#39;sum&#39;, but got &#39;</span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
     <span class="n">pixel_dif1</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">pixel_dif2</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">img</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -354,14 +355,14 @@
     <span class="n">res2</span> <span class="o">=</span> <span class="n">pixel_dif2</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
 
     <span class="n">reduce_axes</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">"mean"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">():</span>
             <span class="n">res1</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
             <span class="n">res2</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">res1</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
             <span class="n">res2</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">"sum"</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">reduction</span> <span class="o">==</span> <span class="s2">&quot;sum&quot;</span><span class="p">:</span>
         <span class="n">res1</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
         <span class="n">res2</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">reduce_axes</span><span class="p">)</span>
 
@@ -369,7 +370,7 @@
 
 
 <div class="viewcode-block" id="TotalVariation"><a class="viewcode-back" href="../../../losses.html#kornia.losses.TotalVariation">[docs]</a><span class="k">class</span> <span class="nc">TotalVariation</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Total Variation according to [1].</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Total Variation according to [1].</span>
 
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: :math:`(*, H, W)`.</span>
@@ -385,7 +386,7 @@
 
 <span class="sd">    Reference:</span>
 <span class="sd">        [1] https://en.wikipedia.org/wiki/Total_variation</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">total_variation</span><span class="p">(</span><span class="n">img</span><span class="p">)</span></div>
@@ -427,7 +428,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

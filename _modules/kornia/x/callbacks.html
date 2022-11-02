@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/x/callbacks.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.x.callbacks - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -324,11 +325,11 @@
 
 <span class="c1"># default function to generate the filename in the model checkpoint</span>
 <span class="k">def</span> <span class="nf">default_filename_fcn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"model_</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">.pt"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;model_</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">.pt&quot;</span>
 
 
 <div class="viewcode-block" id="EarlyStopping"><a class="viewcode-back" href="../../../x.html#kornia.x.EarlyStopping">[docs]</a><span class="k">class</span> <span class="nc">EarlyStopping</span><span class="p">:</span>
-    <span class="sd">"""Callback that evaluates whether there is improvement in the loss function.</span>
+    <span class="sd">&quot;&quot;&quot;Callback that evaluates whether there is improvement in the loss function.</span>
 
 <span class="sd">    The module track the losses and in case of finish patience sends a termination signal to the trainer.</span>
 
@@ -342,13 +343,13 @@
 <span class="sd">    .. code:: python</span>
 
 <span class="sd">        early_stop = EarlyStopping(</span>
-<span class="sd">            monitor="top5", filepath="early_stop_model.pt"</span>
+<span class="sd">            monitor=&quot;top5&quot;, filepath=&quot;early_stop_model.pt&quot;</span>
 <span class="sd">        )</span>
 
 <span class="sd">        trainer = ImageClassifierTrainer(...,</span>
-<span class="sd">            callbacks={"on_checkpoint", early_stop}</span>
+<span class="sd">            callbacks={&quot;on_checkpoint&quot;, early_stop}</span>
 <span class="sd">        )</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">min_delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">patience</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">monitor</span> <span class="o">=</span> <span class="n">monitor</span>
@@ -373,14 +374,14 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">early_stop</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[INFO] Early-Stopping the training process. Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[INFO] Early-Stopping the training process. Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">TrainerState</span><span class="o">.</span><span class="n">TERMINATE</span>
 
         <span class="k">return</span> <span class="n">TrainerState</span><span class="o">.</span><span class="n">TRAINING</span></div>
 
 
 <div class="viewcode-block" id="ModelCheckpoint"><a class="viewcode-back" href="../../../x.html#kornia.x.ModelCheckpoint">[docs]</a><span class="k">class</span> <span class="nc">ModelCheckpoint</span><span class="p">:</span>
-    <span class="sd">"""Callback that save the model at the end of every epoch.</span>
+    <span class="sd">&quot;&quot;&quot;Callback that save the model at the end of every epoch.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        filepath: the where to save the mode.</span>
@@ -391,13 +392,13 @@
 <span class="sd">    .. code:: python</span>
 
 <span class="sd">        model_checkpoint = ModelCheckpoint(</span>
-<span class="sd">            filepath="./outputs", monitor="top5",</span>
+<span class="sd">            filepath=&quot;./outputs&quot;, monitor=&quot;top5&quot;,</span>
 <span class="sd">        )</span>
 
 <span class="sd">        trainer = ImageClassifierTrainer(...,</span>
-<span class="sd">            callbacks={"on_checkpoint", model_checkpoint}</span>
+<span class="sd">            callbacks={&quot;on_checkpoint&quot;, model_checkpoint}</span>
 <span class="sd">        )</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">monitor</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">filename_fcn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="n">filepath</span>
@@ -455,7 +456,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

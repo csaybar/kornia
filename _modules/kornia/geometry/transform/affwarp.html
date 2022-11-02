@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/transform/affwarp.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.transform.affwarp - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -325,31 +326,31 @@
 <span class="kn">from</span> <span class="nn">.imgwarp</span> <span class="kn">import</span> <span class="n">get_affine_matrix2d</span><span class="p">,</span> <span class="n">get_projective_transform</span><span class="p">,</span> <span class="n">get_rotation_matrix2d</span><span class="p">,</span> <span class="n">warp_affine</span><span class="p">,</span> <span class="n">warp_affine3d</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"affine"</span><span class="p">,</span>
-    <span class="s2">"affine3d"</span><span class="p">,</span>
-    <span class="s2">"scale"</span><span class="p">,</span>
-    <span class="s2">"rotate"</span><span class="p">,</span>
-    <span class="s2">"rotate3d"</span><span class="p">,</span>
-    <span class="s2">"translate"</span><span class="p">,</span>
-    <span class="s2">"shear"</span><span class="p">,</span>
-    <span class="s2">"resize"</span><span class="p">,</span>
-    <span class="s2">"rescale"</span><span class="p">,</span>
-    <span class="s2">"Scale"</span><span class="p">,</span>
-    <span class="s2">"Rotate"</span><span class="p">,</span>
-    <span class="s2">"Translate"</span><span class="p">,</span>
-    <span class="s2">"Shear"</span><span class="p">,</span>
-    <span class="s2">"Resize"</span><span class="p">,</span>
-    <span class="s2">"Rescale"</span><span class="p">,</span>
-    <span class="s2">"Affine"</span><span class="p">,</span>
+    <span class="s2">&quot;affine&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;affine3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scale&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rotate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rotate3d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;translate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;shear&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;resize&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rescale&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Scale&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Rotate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Translate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Shear&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Resize&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Rescale&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Affine&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="c1"># utilities to compute affine matrices</span>
 
 
 <span class="k">def</span> <span class="nf">_compute_tensor_center</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute the center of tensor plane for (H, W), (C, H, W) and (B, C, H, W)."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute the center of tensor plane for (H, W), (C, H, W) and (B, C, H, W).&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Must be a 3D tensor as HW, CHW and BCHW. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Must be a 3D tensor as HW, CHW and BCHW. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
     <span class="n">center_x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="n">center_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
@@ -358,9 +359,9 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_tensor_center3d</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute the center of tensor plane for (D, H, W), (C, D, H, W) and (B, C, D, H, W)."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute the center of tensor plane for (D, H, W), (C, D, H, W) and (B, C, D, H, W).&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Must be a 3D tensor as DHW, CDHW and BCDHW. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Must be a 3D tensor as DHW, CDHW and BCDHW. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
     <span class="n">depth</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
     <span class="n">center_x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="n">center_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
@@ -370,7 +371,7 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_rotation_matrix</span><span class="p">(</span><span class="n">angle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute a pure affine rotation matrix."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute a pure affine rotation matrix.&quot;&quot;&quot;</span>
     <span class="n">scale</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_rotation_matrix2d</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">matrix</span>
@@ -379,7 +380,7 @@
 <span class="k">def</span> <span class="nf">_compute_rotation_matrix3d</span><span class="p">(</span>
     <span class="n">yaw</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">roll</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute a pure affine rotation matrix."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute a pure affine rotation matrix.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yaw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pitch</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">roll</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">yaw</span> <span class="o">=</span> <span class="n">yaw</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">pitch</span> <span class="o">=</span> <span class="n">pitch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -391,7 +392,7 @@
         <span class="n">roll</span> <span class="o">=</span> <span class="n">roll</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yaw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pitch</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">roll</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected yaw, pitch, roll to be (B, 1). Got </span><span class="si">{</span><span class="n">yaw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pitch</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">roll</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected yaw, pitch, roll to be (B, 1). Got </span><span class="si">{</span><span class="n">yaw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pitch</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">roll</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="n">angles</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">yaw</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">roll</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">scales</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span>
@@ -400,7 +401,7 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_translation_matrix</span><span class="p">(</span><span class="n">translation</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute affine matrix for translation."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute affine matrix for translation.&quot;&quot;&quot;</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">translation</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">translation</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">translation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -411,14 +412,14 @@
 
 
 <span class="k">def</span> <span class="nf">_compute_scaling_matrix</span><span class="p">(</span><span class="n">scale</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">center</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute affine matrix for scaling."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute affine matrix for scaling.&quot;&quot;&quot;</span>
     <span class="n">angle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">scale</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">scale</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">scale</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_rotation_matrix2d</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">matrix</span>
 
 
 <span class="k">def</span> <span class="nf">_compute_shear_matrix</span><span class="p">(</span><span class="n">shear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Compute affine matrix for shearing."""</span>
+    <span class="sd">&quot;&quot;&quot;Compute affine matrix for shearing.&quot;&quot;&quot;</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">shear</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">shear</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">shear</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -435,11 +436,11 @@
 <div class="viewcode-block" id="affine"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.affine">[docs]</a><span class="k">def</span> <span class="nf">affine</span><span class="p">(</span>
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply an affine transformation to the image.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply an affine transformation to the image.</span>
 
 <span class="sd">    .. image:: _static/img/warp_affine.png</span>
 
@@ -447,9 +448,9 @@
 <span class="sd">        tensor: The image tensor to be warped in shapes of</span>
 <span class="sd">            :math:`(H, W)`, :math:`(D, H, W)` and :math:`(B, C, H, W)`.</span>
 <span class="sd">        matrix: The 2x3 affine transformation matrix.</span>
-<span class="sd">        mode: interpolation mode to calculate output values ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">        mode: interpolation mode to calculate output values ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -461,7 +462,7 @@
 <span class="sd">        &gt;&gt;&gt; out = affine(img, aff)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 2, 3, 5])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># warping needs data in the shape of BCHW</span>
     <span class="n">is_unbatched</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">ndimension</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span>
     <span class="k">if</span> <span class="n">is_unbatched</span><span class="p">:</span>
@@ -486,20 +487,20 @@
 <span class="k">def</span> <span class="nf">affine3d</span><span class="p">(</span>
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Apply an affine transformation to the 3d volume.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply an affine transformation to the 3d volume.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor: The image tensor to be warped in shapes of</span>
 <span class="sd">            :math:`(D, H, W)`, :math:`(C, D, H, W)` and :math:`(B, C, D, H, W)`.</span>
 <span class="sd">        matrix: The affine transformation matrix with shape :math:`(B, 3, 4)`.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">         `` 'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">         `` &#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -511,7 +512,7 @@
 <span class="sd">        &gt;&gt;&gt; out = affine3d(img, aff)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 2, 4, 3, 5])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># warping needs data in the shape of BCDHW</span>
     <span class="n">is_unbatched</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">ndimension</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span>
     <span class="k">if</span> <span class="n">is_unbatched</span><span class="p">:</span>
@@ -542,11 +543,11 @@
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">angle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">center</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Rotate the tensor anti-clockwise about the center.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate the tensor anti-clockwise about the center.</span>
 
 <span class="sd">    .. image:: _static/img/rotate.png</span>
 
@@ -558,9 +559,9 @@
 <span class="sd">          must have a shape of (B, 2), where B is batch size and last</span>
 <span class="sd">          dimension contains cx and cy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -576,18 +577,18 @@
 <span class="sd">        &gt;&gt;&gt; out = rotate(img, angle)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input angle type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input angle type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid tensor shape, we expect CxHxW or BxCxHxW. "</span> <span class="s2">"Got: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid tensor shape, we expect CxHxW or BxCxHxW. &quot;</span> <span class="s2">&quot;Got: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
     <span class="c1"># compute the rotation center</span>
     <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -609,11 +610,11 @@
     <span class="n">pitch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">roll</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">center</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Rotate 3D the tensor anti-clockwise about the centre.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate 3D the tensor anti-clockwise about the centre.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor: The image tensor to be warped in shapes of :math:`(B, C, D, H, W)`.</span>
@@ -627,31 +628,31 @@
 <span class="sd">          must have a shape of (B, 2), where B is batch size and last</span>
 <span class="sd">          dimension contains cx and cy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        torch.Tensor: The rotated tensor with shape as input.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">yaw</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"yaw is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;yaw is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"pitch is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">pitch</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pitch is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">pitch</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"roll is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">roll</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;roll is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">roll</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input center type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid tensor shape, we expect CxDxHxW or BxCxDxHxW. "</span> <span class="s2">"Got: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid tensor shape, we expect CxDxHxW or BxCxDxHxW. &quot;</span> <span class="s2">&quot;Got: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
     <span class="c1"># compute the rotation center</span>
     <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -672,11 +673,11 @@
 <div class="viewcode-block" id="translate"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.translate">[docs]</a><span class="k">def</span> <span class="nf">translate</span><span class="p">(</span>
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">translation</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Translate the tensor in pixel units.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Translate the tensor in pixel units.</span>
 
 <span class="sd">    .. image:: _static/img/translate.png</span>
 
@@ -686,9 +687,9 @@
 <span class="sd">          translate in the x and y direction. The tensor must have a shape of</span>
 <span class="sd">          (B, 2), where B is batch size, last dimension contains dx dy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -700,15 +701,15 @@
 <span class="sd">        &gt;&gt;&gt; out = translate(img, translation)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">translation</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input translation type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input translation type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid tensor shape, we expect CxHxW or BxCxHxW. "</span> <span class="s2">"Got: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid tensor shape, we expect CxHxW or BxCxHxW. &quot;</span> <span class="s2">&quot;Got: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
     <span class="c1"># compute the translation matrix</span>
     <span class="n">translation_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_compute_translation_matrix</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
@@ -721,11 +722,11 @@
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">scale_factor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">center</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Scale the tensor by a factor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the tensor by a factor.</span>
 
 <span class="sd">    .. image:: _static/img/scale.png</span>
 
@@ -739,9 +740,9 @@
 <span class="sd">          must have a shape of (B, 2), where B is batch size and last</span>
 <span class="sd">          dimension contains cx and cy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -753,12 +754,12 @@
 <span class="sd">        &gt;&gt;&gt; out = scale(img, scale_factor)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input scale_factor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input scale_factor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">scale_factor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">scale_factor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="c1"># convert isotropic scaling to x-y direction</span>
@@ -781,11 +782,11 @@
 <div class="viewcode-block" id="shear"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.shear">[docs]</a><span class="k">def</span> <span class="nf">shear</span><span class="p">(</span>
     <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">shear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+    <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Shear the tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Shear the tensor.</span>
 
 <span class="sd">    .. image:: _static/img/shear.png</span>
 
@@ -795,9 +796,9 @@
 <span class="sd">          in the x and y direction. The tensor must have a shape of</span>
 <span class="sd">          (B, 2), where B is batch size, last dimension contains shx shy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -809,15 +810,15 @@
 <span class="sd">        &gt;&gt;&gt; out = shear(img, shear_factor)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shear</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input shear type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">shear</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input shear type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">shear</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid tensor shape, we expect CxHxW or BxCxHxW. "</span> <span class="s2">"Got: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid tensor shape, we expect CxHxW or BxCxHxW. &quot;</span> <span class="s2">&quot;Got: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 
     <span class="c1"># compute the translation matrix</span>
     <span class="n">shear_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">_compute_shear_matrix</span><span class="p">(</span><span class="n">shear</span><span class="p">)</span>
@@ -826,14 +827,14 @@
     <span class="k">return</span> <span class="n">affine</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shear_matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">_side_to_image_size</span><span class="p">(</span><span class="n">side_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"short"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">side</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"short"</span><span class="p">,</span> <span class="s2">"long"</span><span class="p">,</span> <span class="s2">"vert"</span><span class="p">,</span> <span class="s2">"horz"</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"side can be one of 'short', 'long', 'vert', and 'horz'. Got '</span><span class="si">{</span><span class="n">side</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">"vert"</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_side_to_image_size</span><span class="p">(</span><span class="n">side_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;short&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">,</span> <span class="s2">&quot;vert&quot;</span><span class="p">,</span> <span class="s2">&quot;horz&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;side can be one of &#39;short&#39;, &#39;long&#39;, &#39;vert&#39;, and &#39;horz&#39;. Got &#39;</span><span class="si">{</span><span class="n">side</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;vert&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">side_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">side_size</span> <span class="o">*</span> <span class="n">aspect_ratio</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">"horz"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;horz&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">side_size</span> <span class="o">/</span> <span class="n">aspect_ratio</span><span class="p">),</span> <span class="n">side_size</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">side</span> <span class="o">==</span> <span class="s2">"short"</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">aspect_ratio</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">side</span> <span class="o">==</span> <span class="s2">&quot;short&quot;</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">aspect_ratio</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">side_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">side_size</span> <span class="o">*</span> <span class="n">aspect_ratio</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">side_size</span> <span class="o">/</span> <span class="n">aspect_ratio</span><span class="p">),</span> <span class="n">side_size</span>
 
@@ -842,12 +843,12 @@
 <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
-    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"short"</span><span class="p">,</span>
+    <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;short&quot;</span><span class="p">,</span>
     <span class="n">antialias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Resize the input torch.Tensor to the given size.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Resize the input torch.Tensor to the given size.</span>
 
 <span class="sd">    .. image:: _static/img/resize.png</span>
 
@@ -858,11 +859,11 @@
 <span class="sd">            output size will be matched to this. If size is an int, smaller edge of the image will</span>
 <span class="sd">            be matched to this number. i.e, if height &gt; width, then image will be rescaled</span>
 <span class="sd">            to (size * height / width, size)</span>
-<span class="sd">        interpolation:  algorithm used for upsampling: ``'nearest'`` | ``'linear'`` | ``'bilinear'`` |</span>
-<span class="sd">            'bicubic' | 'trilinear' | 'area'.</span>
+<span class="sd">        interpolation:  algorithm used for upsampling: ``&#39;nearest&#39;`` | ``&#39;linear&#39;`` | ``&#39;bilinear&#39;`` |</span>
+<span class="sd">            &#39;bicubic&#39; | &#39;trilinear&#39; | &#39;area&#39;.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
-<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``'short'``, ``'long'``, ``'vert'``,</span>
-<span class="sd">            or ``'horz'``.</span>
+<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``&#39;short&#39;``, ``&#39;long&#39;``, ``&#39;vert&#39;``,</span>
+<span class="sd">            or ``&#39;horz&#39;``.</span>
 <span class="sd">        antialias: if True, then image will be filtered with Gaussian before downscaling.</span>
 <span class="sd">            No effect for upscaling.</span>
 
@@ -874,12 +875,12 @@
 <span class="sd">        &gt;&gt;&gt; out = resize(img, (6, 8))</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 6, 8])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Input tensor must have at least two dimensions. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Input tensor must have at least two dimensions. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">input_size</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -901,7 +902,7 @@
 
         <span class="c1"># Now kernel size. Good results are for 3 sigma, but that is kind of slow. Pillow uses 1 sigma</span>
         <span class="c1"># https://github.com/python-pillow/Pillow/blob/master/src/libImaging/Resample.c#L206</span>
-        <span class="c1"># But they do it in the 2 passes, which gives better results. Let's try 2 sigmas for now</span>
+        <span class="c1"># But they do it in the 2 passes, which gives better results. Let&#39;s try 2 sigmas for now</span>
         <span class="n">ks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
 
         <span class="c1"># Make sure it is odd</span>
@@ -920,11 +921,11 @@
 <div class="viewcode-block" id="rescale"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.rescale">[docs]</a><span class="k">def</span> <span class="nf">rescale</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
-    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"bilinear"</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">antialias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Rescale the input torch.Tensor with the given factor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rescale the input torch.Tensor with the given factor.</span>
 
 <span class="sd">    .. image:: _static/img/rescale.png</span>
 
@@ -932,11 +933,11 @@
 <span class="sd">        input: The image tensor to be scale with shape of :math:`(B, C, H, W)`.</span>
 <span class="sd">        factor: Desired scaling factor in each direction. If scalar, the value is used</span>
 <span class="sd">            for both the x- and y-direction.</span>
-<span class="sd">        interpolation:  algorithm used for upsampling: ``'nearest'`` | ``'linear'`` | ``'bilinear'`` |</span>
-<span class="sd">            ``'bicubic'`` | ``'trilinear'`` | ``'area'``.</span>
+<span class="sd">        interpolation:  algorithm used for upsampling: ``&#39;nearest&#39;`` | ``&#39;linear&#39;`` | ``&#39;bilinear&#39;`` |</span>
+<span class="sd">            ``&#39;bicubic&#39;`` | ``&#39;trilinear&#39;`` | ``&#39;area&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
-<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``'short'``, ``'long'``, ``'vert'``,</span>
-<span class="sd">            or ``'horz'``.</span>
+<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``&#39;short&#39;``, ``&#39;long&#39;``, ``&#39;vert&#39;``,</span>
+<span class="sd">            or ``&#39;horz&#39;``.</span>
 <span class="sd">        antialias: if True, then image will be filtered with Gaussian before downscaling.</span>
 <span class="sd">            No effect for upscaling.</span>
 
@@ -948,7 +949,7 @@
 <span class="sd">        &gt;&gt;&gt; out = rescale(img, (2, 3))</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 8, 12])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
         <span class="n">factor_vert</span> <span class="o">=</span> <span class="n">factor_horz</span> <span class="o">=</span> <span class="n">factor</span>
     <span class="k">else</span><span class="p">:</span>
@@ -960,18 +961,18 @@
 
 
 <div class="viewcode-block" id="Resize"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Resize">[docs]</a><span class="k">class</span> <span class="nc">Resize</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Resize the input torch.Tensor to the given size.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Resize the input torch.Tensor to the given size.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        size: Desired output size. If size is a sequence like (h, w),</span>
 <span class="sd">            output size will be matched to this. If size is an int, smaller edge of the image will</span>
 <span class="sd">            be matched to this number. i.e, if height &gt; width, then image will be rescaled</span>
 <span class="sd">            to (size * height / width, size)</span>
-<span class="sd">        interpolation:  algorithm used for upsampling: ``'nearest'`` | ``'linear'`` | ``'bilinear'`` |</span>
-<span class="sd">            'bicubic' | 'trilinear' | 'area'.</span>
+<span class="sd">        interpolation:  algorithm used for upsampling: ``&#39;nearest&#39;`` | ``&#39;linear&#39;`` | ``&#39;bilinear&#39;`` |</span>
+<span class="sd">            &#39;bicubic&#39; | &#39;trilinear&#39; | &#39;area&#39;.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
-<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``'short'``, ``'long'``, ``'vert'``,</span>
-<span class="sd">            or ``'horz'``.</span>
+<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``&#39;short&#39;``, ``&#39;long&#39;``, ``&#39;vert&#39;``,</span>
+<span class="sd">            or ``&#39;horz&#39;``.</span>
 <span class="sd">        antialias: if True, then image will be filtered with Gaussian before downscaling.</span>
 <span class="sd">            No effect for upscaling.</span>
 
@@ -986,15 +987,15 @@
 
 <span class="sd">    .. raw:: html</span>
 
-<span class="sd">        &lt;gradio-app space="kornia/kornia-resize-antialias"&gt;&lt;/gradio-app&gt;</span>
-<span class="sd">    """</span>
+<span class="sd">        &lt;gradio-app space=&quot;kornia/kornia-resize-antialias&quot;&gt;&lt;/gradio-app&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">size</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
-        <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
+        <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"short"</span><span class="p">,</span>
+        <span class="n">side</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;short&quot;</span><span class="p">,</span>
         <span class="n">antialias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1016,7 +1017,7 @@
 
 
 <div class="viewcode-block" id="Affine"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Affine">[docs]</a><span class="k">class</span> <span class="nc">Affine</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Apply multiple elementary affine transforms simultaneously.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply multiple elementary affine transforms simultaneously.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        angle: Angle in degrees for counter-clockwise rotation around the center. The tensor</span>
@@ -1031,9 +1032,9 @@
 <span class="sd">            B is the batch size and the last dimension contains cx and cy. Defaults to the center of image to be</span>
 <span class="sd">            transformed.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Raises:</span>
@@ -1048,7 +1049,7 @@
 <span class="sd">        &gt;&gt;&gt; out = Affine(angle)(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 2, 3, 5])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1057,21 +1058,21 @@
         <span class="n">scale_factor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">shear</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">center</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">batch_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">translation</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">,</span> <span class="n">shear</span><span class="p">)</span> <span class="k">if</span> <span class="n">arg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">batch_sizes</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="s2">"Affine was created without any affine parameter. At least one of angle, translation, scale_factor, or "</span>
-                <span class="s2">"shear has to be set."</span>
+                <span class="s2">&quot;Affine was created without any affine parameter. At least one of angle, translation, scale_factor, or &quot;</span>
+                <span class="s2">&quot;shear has to be set.&quot;</span>
             <span class="p">)</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
         <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">other</span> <span class="o">==</span> <span class="n">batch_size</span> <span class="k">for</span> <span class="n">other</span> <span class="ow">in</span> <span class="n">batch_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The batch sizes of the affine parameters mismatch: </span><span class="si">{</span><span class="n">batch_sizes</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The batch sizes of the affine parameters mismatch: </span><span class="si">{</span><span class="n">batch_sizes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
 
@@ -1112,16 +1113,16 @@
 
 
 <div class="viewcode-block" id="Rescale"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Rescale">[docs]</a><span class="k">class</span> <span class="nc">Rescale</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Rescale the input torch.Tensor with the given factor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rescale the input torch.Tensor with the given factor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        factor: Desired scaling factor in each direction. If scalar, the value is used</span>
 <span class="sd">            for both the x- and y-direction.</span>
-<span class="sd">        interpolation:  algorithm used for upsampling: ``'nearest'`` | ``'linear'`` | ``'bilinear'`` |</span>
-<span class="sd">            ``'bicubic'`` | ``'trilinear'`` | ``'area'``.</span>
+<span class="sd">        interpolation:  algorithm used for upsampling: ``&#39;nearest&#39;`` | ``&#39;linear&#39;`` | ``&#39;bilinear&#39;`` |</span>
+<span class="sd">            ``&#39;bicubic&#39;`` | ``&#39;trilinear&#39;`` | ``&#39;area&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
-<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``'short'``, ``'long'``, ``'vert'``,</span>
-<span class="sd">            or ``'horz'``.</span>
+<span class="sd">        side: Corresponding side if ``size`` is an integer. Can be one of ``&#39;short&#39;``, ``&#39;long&#39;``, ``&#39;vert&#39;``,</span>
+<span class="sd">            or ``&#39;horz&#39;``.</span>
 <span class="sd">        antialias: if True, then image will be filtered with Gaussian before downscaling.</span>
 <span class="sd">            No effect for upscaling.</span>
 
@@ -1133,12 +1134,12 @@
 <span class="sd">        &gt;&gt;&gt; out = Rescale((2, 3))(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 8, 12])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
-        <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"bilinear"</span><span class="p">,</span>
+        <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">,</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">antialias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1155,7 +1156,7 @@
 
 
 <div class="viewcode-block" id="Rotate"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Rotate">[docs]</a><span class="k">class</span> <span class="nc">Rotate</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Rotate the tensor anti-clockwise about the centre.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate the tensor anti-clockwise about the centre.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        angle: The angle through which to rotate. The tensor</span>
@@ -1164,9 +1165,9 @@
 <span class="sd">          must have a shape of (B, 2), where B is batch size and last</span>
 <span class="sd">          dimension contains cx and cy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -1178,14 +1179,14 @@
 <span class="sd">        &gt;&gt;&gt; out = Rotate(angle)(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">angle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
         <span class="n">center</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1200,16 +1201,16 @@
 
 
 <div class="viewcode-block" id="Translate"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Translate">[docs]</a><span class="k">class</span> <span class="nc">Translate</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Translate the tensor in pixel units.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Translate the tensor in pixel units.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        translation: tensor containing the amount of pixels to</span>
 <span class="sd">          translate in the x and y direction. The tensor must have a shape of</span>
 <span class="sd">          (B, 2), where B is batch size, last dimension contains dx dy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -1221,10 +1222,10 @@
 <span class="sd">        &gt;&gt;&gt; out = Translate(translation)(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">translation</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">translation</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">translation</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">translation</span>
@@ -1237,7 +1238,7 @@
 
 
 <div class="viewcode-block" id="Scale"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Scale">[docs]</a><span class="k">class</span> <span class="nc">Scale</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Scale the tensor by a factor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the tensor by a factor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        scale_factor: The scale factor apply. The tensor</span>
@@ -1248,9 +1249,9 @@
 <span class="sd">          must have a shape of (B, 2), where B is batch size and last</span>
 <span class="sd">          dimension contains cx and cy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -1262,14 +1263,14 @@
 <span class="sd">        &gt;&gt;&gt; out = Scale(scale_factor)(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">scale_factor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
         <span class="n">center</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span>
-        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
+        <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
         <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1284,16 +1285,16 @@
 
 
 <div class="viewcode-block" id="Shear"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Shear">[docs]</a><span class="k">class</span> <span class="nc">Shear</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Shear the tensor.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Shear the tensor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        shear: tensor containing the angle to shear</span>
 <span class="sd">          in the x and y direction. The tensor must have a shape of</span>
 <span class="sd">          (B, 2), where B is batch size, last dimension contains shx shy.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
-<span class="sd">          ``'bilinear'`` | ``'nearest'``.</span>
+<span class="sd">          ``&#39;bilinear&#39;`` | ``&#39;nearest&#39;``.</span>
 <span class="sd">        padding_mode: padding mode for outside grid values</span>
-<span class="sd">          ``'zeros'`` | ``'border'`` | ``'reflection'``.</span>
+<span class="sd">          ``&#39;zeros&#39;`` | ``&#39;border&#39;`` | ``&#39;reflection&#39;``.</span>
 <span class="sd">        align_corners: interpolation flag.</span>
 
 <span class="sd">    Returns:</span>
@@ -1305,10 +1306,10 @@
 <span class="sd">        &gt;&gt;&gt; out = Shear(shear_factor)(img)</span>
 <span class="sd">        &gt;&gt;&gt; print(out.shape)</span>
 <span class="sd">        torch.Size([1, 3, 4, 4])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">shear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'zeros'</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">shear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shear</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">shear</span>
@@ -1356,7 +1357,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/homography.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.homography - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -331,7 +332,7 @@
 
 
 <div class="viewcode-block" id="oneway_transfer_error"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.oneway_transfer_error">[docs]</a><span class="k">def</span> <span class="nf">oneway_transfer_error</span><span class="p">(</span><span class="n">pts1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pts2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">squared</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Return transfer error in image 2 for correspondences given the homography matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return transfer error in image 2 for correspondences given the homography matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pts1: correspondences from the left images with shape</span>
@@ -344,8 +345,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed distance with shape :math:`(B, N)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">pts1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">pts1</span> <span class="o">=</span> <span class="n">convert_points_from_homogeneous</span><span class="p">(</span><span class="n">pts1</span><span class="p">)</span>
@@ -354,7 +355,7 @@
         <span class="n">pts2</span> <span class="o">=</span> <span class="n">convert_points_from_homogeneous</span><span class="p">(</span><span class="n">pts2</span><span class="p">)</span>
 
     <span class="c1"># From Hartley and Zisserman, Error in one image (4.6)</span>
-    <span class="c1"># dist = \sum_{i} ( d(x', Hx)**2)</span>
+    <span class="c1"># dist = \sum_{i} ( d(x&#39;, Hx)**2)</span>
     <span class="n">pts1_in_2</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">transform_points</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pts1</span><span class="p">)</span>
     <span class="n">error_squared</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="p">(</span><span class="n">pts1_in_2</span> <span class="o">-</span> <span class="n">pts2</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">squared</span><span class="p">:</span>
@@ -363,7 +364,7 @@
 
 
 <div class="viewcode-block" id="symmetric_transfer_error"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.symmetric_transfer_error">[docs]</a><span class="k">def</span> <span class="nf">symmetric_transfer_error</span><span class="p">(</span><span class="n">pts1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pts2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">squared</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Return Symmetric transfer error for correspondences given the homography matrix.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return Symmetric transfer error for correspondences given the homography matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pts1: correspondences from the left images with shape</span>
@@ -376,8 +377,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed distance with shape :math:`(B, N)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">pts1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">pts1</span> <span class="o">=</span> <span class="n">convert_points_from_homogeneous</span><span class="p">(</span><span class="n">pts1</span><span class="p">)</span>
 
@@ -386,7 +387,7 @@
 
     <span class="n">max_num</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">pts1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
     <span class="c1"># From Hartley and Zisserman, Symmetric transfer error (4.7)</span>
-    <span class="c1"># dist = \sum_{i} (d(x, H^-1 x')**2 + d(x', Hx)**2)</span>
+    <span class="c1"># dist = \sum_{i} (d(x, H^-1 x&#39;)**2 + d(x&#39;, Hx)**2)</span>
     <span class="n">H_inv</span><span class="p">,</span> <span class="n">good_H</span> <span class="o">=</span> <span class="n">safe_inverse_with_mask</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 
     <span class="n">there</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">oneway_transfer_error</span><span class="p">(</span><span class="n">pts1</span><span class="p">,</span> <span class="n">pts2</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
@@ -399,7 +400,7 @@
 
 
 <div class="viewcode-block" id="line_segment_transfer_error_one_way"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.line_segment_transfer_error_one_way">[docs]</a><span class="k">def</span> <span class="nf">line_segment_transfer_error_one_way</span><span class="p">(</span><span class="n">ls1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">squared</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Return transfer error in image 2 for line segment correspondences given the homography matrix. Line segment</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return transfer error in image 2 for line segment correspondences given the homography matrix. Line segment</span>
 <span class="sd">    end points are reprojected into image 2, and point-to-line error is calculted w.r.t. line, induced by line</span>
 <span class="sd">    segment in image 2. See :cite:`homolines2001` for details.</span>
 
@@ -413,10 +414,10 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed distance with shape :math:`(B, N)`.</span>
-<span class="sd">    """</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
     <span class="n">B</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">ls1</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">ps1</span><span class="p">,</span> <span class="n">pe1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">ps2</span><span class="p">,</span> <span class="n">pe2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -434,9 +435,9 @@
 
 
 <div class="viewcode-block" id="find_homography_dlt"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.find_homography_dlt">[docs]</a><span class="k">def</span> <span class="nf">find_homography_dlt</span><span class="p">(</span>
-    <span class="n">points1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">points2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">solver</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'lu'</span>
+    <span class="n">points1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">points2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">solver</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;lu&#39;</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the homography matrix using the DLT formulation.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the DLT formulation.</span>
 
 <span class="sd">    The linear system is solved by using the Weighted Least Squares Solution for the 4 Points algorithm.</span>
 
@@ -449,13 +450,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed homography matrix with shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">points1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">points2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">points1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">points1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">points1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
 
     <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_extract_device_dtype</span><span class="p">([</span><span class="n">points1</span><span class="p">,</span> <span class="n">points2</span><span class="p">])</span>
 
@@ -482,14 +483,14 @@
         <span class="n">w_diag</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag_embed</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="n">w_diag</span> <span class="o">@</span> <span class="n">A</span>
 
-    <span class="k">if</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">'svd'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;svd&#39;</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">_torch_svd_cast</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'SVD did not converge'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;SVD did not converge&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">points1_norm</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">'lu'</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;lu&#39;</span><span class="p">:</span>
         <span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">sol</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">safe_solve_with_mask</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -503,7 +504,7 @@
 <div class="viewcode-block" id="find_homography_dlt_iterated"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.find_homography_dlt_iterated">[docs]</a><span class="k">def</span> <span class="nf">find_homography_dlt_iterated</span><span class="p">(</span>
     <span class="n">points1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">points2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">soft_inl_th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the homography matrix using the iteratively-reweighted least squares (IRWLS).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the iteratively-reweighted least squares (IRWLS).</span>
 
 <span class="sd">    The linear system is solved by using the Reweighted Least Squares Solution for the 4 Points algorithm.</span>
 
@@ -517,7 +518,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed homography matrix with shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">find_homography_dlt</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="n">points2</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">errors</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">symmetric_transfer_error</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="n">points2</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -527,7 +528,7 @@
 
 
 <div class="viewcode-block" id="sample_is_valid_for_homography"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.sample_is_valid_for_homography">[docs]</a><span class="k">def</span> <span class="nf">sample_is_valid_for_homography</span><span class="p">(</span><span class="n">points1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">points2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Function, which implements oriented constraint check from :cite:`Marquez-Neila2015`.</span>
+    <span class="sd">&quot;&quot;&quot;Function, which implements oriented constraint check from :cite:`Marquez-Neila2015`.</span>
 
 <span class="sd">    Analogous to https://github.com/opencv/opencv/blob/4.x/modules/calib3d/src/usac/degeneracy.cpp#L88</span>
 
@@ -537,11 +538,11 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Mask with the minimal sample is good for homography estimation:math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">points1</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">points2</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">points1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">points1</span><span class="o">.</span><span class="n">device</span>
     <span class="n">idx_perm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
     <span class="n">points_src_h</span> <span class="o">=</span> <span class="n">convert_points_to_homogeneous</span><span class="p">(</span><span class="n">points1</span><span class="p">)</span>
@@ -560,7 +561,7 @@
 
 
 <div class="viewcode-block" id="find_homography_lines_dlt"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.find_homography_lines_dlt">[docs]</a><span class="k">def</span> <span class="nf">find_homography_lines_dlt</span><span class="p">(</span><span class="n">ls1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the homography matrix using the DLT formulation for line correspondences.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the DLT formulation for line correspondences.</span>
 
 <span class="sd">    See :cite:`homolines2001` for details.</span>
 <span class="sd">    The linear system is solved by using the Weighted Least Squares Solution for the 4 Line correspondences algorithm.</span>
@@ -570,13 +571,13 @@
 <span class="sd">        weights: Tensor containing the weights per point correspondence with a shape of :math:`(B, N)`.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed homography matrix with shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ls1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">ls1</span> <span class="o">=</span> <span class="n">ls1</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ls2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">ls2</span> <span class="o">=</span> <span class="n">ls2</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
-    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"B"</span><span class="p">,</span> <span class="s2">"N"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">ls2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
     <span class="n">BS</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">ls1</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_extract_device_dtype</span><span class="p">([</span><span class="n">ls1</span><span class="p">,</span> <span class="n">ls2</span><span class="p">])</span>
 
@@ -617,7 +618,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'SVD did not converge'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;SVD did not converge&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">points1_norm</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="n">H</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -629,7 +630,7 @@
 <div class="viewcode-block" id="find_homography_lines_dlt_iterated"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.find_homography_lines_dlt_iterated">[docs]</a><span class="k">def</span> <span class="nf">find_homography_lines_dlt_iterated</span><span class="p">(</span>
     <span class="n">ls1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">soft_inl_th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the homography matrix using the iteratively-reweighted least squares (IRWLS) from line segments. The</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the iteratively-reweighted least squares (IRWLS) from line segments. The</span>
 <span class="sd">    linear system is solved by using the Reweighted Least Squares Solution for the 4 line segments algorithm.</span>
 
 <span class="sd">    Args:</span>
@@ -642,7 +643,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed homography matrix with shape :math:`(B, 3, 3)`.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">H</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">find_homography_lines_dlt</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="n">ls2</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">errors</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">line_segment_transfer_error_one_way</span><span class="p">(</span><span class="n">ls1</span><span class="p">,</span> <span class="n">ls2</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
@@ -687,7 +688,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>

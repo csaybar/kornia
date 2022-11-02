@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/geometry/subpix/spatial_soft_argmax.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.geometry.subpix.spatial_soft_argmax - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -329,8 +330,8 @@
 <span class="kn">from</span> <span class="nn">.nms</span> <span class="kn">import</span> <span class="n">nms3d</span>
 
 
-<span class="k">def</span> <span class="nf">_get_window_grid_kernel2d</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Helper function, which generates a kernel to with window coordinates, residual to window center.</span>
+<span class="k">def</span> <span class="nf">_get_window_grid_kernel2d</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper function, which generates a kernel to with window coordinates, residual to window center.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">         h: kernel height.</span>
@@ -339,15 +340,15 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        conv_kernel [2x1xhxw]</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">window_grid2d</span> <span class="o">=</span> <span class="n">create_meshgrid</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
     <span class="n">window_grid2d</span> <span class="o">=</span> <span class="n">normalize_pixel_coordinates</span><span class="p">(</span><span class="n">window_grid2d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
     <span class="n">conv_kernel</span> <span class="o">=</span> <span class="n">window_grid2d</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">conv_kernel</span>
 
 
-<span class="k">def</span> <span class="nf">_get_center_kernel2d</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Helper function, which generates a kernel to return center coordinates, when applied with F.conv2d to 2d</span>
+<span class="k">def</span> <span class="nf">_get_center_kernel2d</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper function, which generates a kernel to return center coordinates, when applied with F.conv2d to 2d</span>
 <span class="sd">    coordinates grid.</span>
 
 <span class="sd">    Args:</span>
@@ -357,7 +358,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        conv_kernel [2x2xhxw].</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">center_kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 
     <span class="c1">#  If the size is odd, we have one pixel for center, if even - 2</span>
@@ -377,8 +378,8 @@
     <span class="k">return</span> <span class="n">center_kernel</span>
 
 
-<span class="k">def</span> <span class="nf">_get_center_kernel3d</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Helper function, which generates a kernel to return center coordinates, when applied with F.conv2d to 3d</span>
+<span class="k">def</span> <span class="nf">_get_center_kernel3d</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper function, which generates a kernel to return center coordinates, when applied with F.conv2d to 3d</span>
 <span class="sd">    coordinates grid.</span>
 
 <span class="sd">    Args:</span>
@@ -389,7 +390,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        conv_kernel [3x3xdxhxw].</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">center_kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
     <span class="c1">#  If the size is odd, we have one pixel for center, if even - 2</span>
     <span class="k">if</span> <span class="n">h</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -415,8 +416,8 @@
     <span class="k">return</span> <span class="n">center_kernel</span>
 
 
-<span class="k">def</span> <span class="nf">_get_window_grid_kernel3d</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Helper function, which generates a kernel to return coordinates, residual to window center.</span>
+<span class="k">def</span> <span class="nf">_get_window_grid_kernel3d</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper function, which generates a kernel to return coordinates, residual to window center.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        d: kernel depth.</span>
@@ -426,7 +427,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        conv_kernel [3x1xdxhxw]</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">grid2d</span> <span class="o">=</span> <span class="n">create_meshgrid</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -438,10 +439,10 @@
 
 
 <div class="viewcode-block" id="ConvSoftArgmax2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.ConvSoftArgmax2d">[docs]</a><span class="k">class</span> <span class="nc">ConvSoftArgmax2d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates soft argmax 2d per window.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates soft argmax 2d per window.</span>
 
 <span class="sd">    See :func:`~kornia.geometry.subpix.conv_soft_argmax2d` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -465,28 +466,28 @@
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-            <span class="o">+</span> <span class="s1">'('</span>
-            <span class="o">+</span> <span class="s1">'kernel_size='</span>
+            <span class="o">+</span> <span class="s1">&#39;(&#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;kernel_size=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'stride='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;stride=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stride</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'padding='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;padding=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'temperature='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;temperature=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'normalized_coordinates='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;normalized_coordinates=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalized_coordinates</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'eps='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;eps=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'output_value='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;output_value=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_value</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">')'</span>
+            <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
@@ -503,10 +504,10 @@
 
 
 <div class="viewcode-block" id="ConvSoftArgmax3d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.ConvSoftArgmax3d">[docs]</a><span class="k">class</span> <span class="nc">ConvSoftArgmax3d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Module that calculates soft argmax 3d per window.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates soft argmax 3d per window.</span>
 
 <span class="sd">    See :func:`~kornia.geometry.subpix.conv_soft_argmax3d` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -533,31 +534,31 @@
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-            <span class="o">+</span> <span class="s1">'('</span>
-            <span class="o">+</span> <span class="s1">'kernel_size='</span>
+            <span class="o">+</span> <span class="s1">&#39;(&#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;kernel_size=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'stride='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;stride=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stride</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'padding='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;padding=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'temperature='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;temperature=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'normalized_coordinates='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;normalized_coordinates=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalized_coordinates</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'eps='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;eps=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'strict_maxima_bonus='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;strict_maxima_bonus=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strict_maxima_bonus</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'output_value='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;output_value=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_value</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">')'</span>
+            <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
@@ -584,7 +585,7 @@
     <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">,</span>
     <span class="n">output_value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the convolutional spatial Soft-Argmax 2D over the windows of a given heatmap.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the convolutional spatial Soft-Argmax 2D over the windows of a given heatmap.</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        ij(X) = \frac{\sum{(i,j)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}</span>
@@ -623,15 +624,15 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(20, 16, 50, 32)</span>
 <span class="sd">        &gt;&gt;&gt; nms_coords, nms_val = conv_soft_argmax2d(input, (3,3), (2,2), (1,1), output_value=True)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature should be positive float or tensor. Got: </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature should be positive float or tensor. Got: </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span> <span class="o">=</span> <span class="n">kernel_size</span>
@@ -651,7 +652,7 @@
     <span class="n">x_exp</span> <span class="o">=</span> <span class="p">((</span><span class="nb">input</span> <span class="o">-</span> <span class="n">x_max</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">)</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span>
 
     <span class="c1"># F.avg_pool2d(.., divisor_override = 1.0) - proper way for sum pool in PyTorch 1.2.</span>
-    <span class="c1"># Not available yet in version 1.0, so let's do manually</span>
+    <span class="c1"># Not available yet in version 1.0, so let&#39;s do manually</span>
     <span class="n">pool_coef</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">kx</span> <span class="o">*</span> <span class="n">ky</span><span class="p">)</span>
 
     <span class="c1"># softmax denominator</span>
@@ -698,7 +699,7 @@
     <span class="n">output_value</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">strict_maxima_bonus</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the convolutional spatial Soft-Argmax 3D over the windows of a given heatmap.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the convolutional spatial Soft-Argmax 3D over the windows of a given heatmap.</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">             ijk(X) = \frac{\sum{(i,j,k)} * exp(x / T)  \in X} {\sum{exp(x / T)  \in X}}</span>
@@ -743,15 +744,15 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(20, 16, 3, 50, 32)</span>
 <span class="sd">        &gt;&gt;&gt; nms_coords, nms_val = conv_soft_argmax3d(input, (3, 3, 3), (1, 2, 2), (0, 1, 1))</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature should be positive float or tensor. Got: </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature should be positive float or tensor. Got: </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">kz</span> <span class="o">=</span> <span class="n">kernel_size</span>
@@ -818,7 +819,7 @@
 <div class="viewcode-block" id="spatial_soft_argmax2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.spatial_soft_argmax2d">[docs]</a><span class="k">def</span> <span class="nf">spatial_soft_argmax2d</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Spatial Soft-Argmax 2D of a given input heatmap.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Spatial Soft-Argmax 2D of a given input heatmap.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the given heatmap with shape :math:`(B, N, H, W)`.</span>
@@ -837,17 +838,17 @@
 <span class="sd">        ... [0., 0., 0.]]]])</span>
 <span class="sd">        &gt;&gt;&gt; spatial_soft_argmax2d(input, normalized_coordinates=False)</span>
 <span class="sd">        tensor([[[1.0000, 1.0000]]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input_soft</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_softmax2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">temperature</span><span class="p">)</span>
     <span class="n">output</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_expectation2d</span><span class="p">(</span><span class="n">input_soft</span><span class="p">,</span> <span class="n">normalized_coordinates</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">output</span></div>
 
 
 <div class="viewcode-block" id="SpatialSoftArgmax2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.SpatialSoftArgmax2d">[docs]</a><span class="k">class</span> <span class="nc">SpatialSoftArgmax2d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Compute the Spatial Soft-Argmax 2D of a given heatmap.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Spatial Soft-Argmax 2D of a given heatmap.</span>
 
 <span class="sd">    See :func:`~kornia.geometry.subpix.spatial_soft_argmax2d` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperature</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">normalized_coordinates</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -857,12 +858,12 @@
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-            <span class="o">+</span> <span class="s1">'(temperature='</span>
+            <span class="o">+</span> <span class="s1">&#39;(temperature=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">', '</span>
-            <span class="o">+</span> <span class="s1">'normalized_coordinates='</span>
+            <span class="o">+</span> <span class="s1">&#39;, &#39;</span>
+            <span class="o">+</span> <span class="s1">&#39;normalized_coordinates=&#39;</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalized_coordinates</span><span class="p">)</span>
-            <span class="o">+</span> <span class="s1">')'</span>
+            <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
@@ -872,7 +873,7 @@
 <div class="viewcode-block" id="conv_quad_interp3d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.conv_quad_interp3d">[docs]</a><span class="k">def</span> <span class="nf">conv_quad_interp3d</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">strict_maxima_bonus</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-7</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">"""Compute the single iteration of quadratic interpolation of the extremum (max or min).</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the single iteration of quadratic interpolation of the extremum (max or min).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: the given heatmap with shape :math:`(N, C, D_{in}, H_{in}, W_{in})`.</span>
@@ -901,12 +902,12 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(20, 16, 3, 50, 32)</span>
 <span class="sd">        &gt;&gt;&gt; nms_coords, nms_val = conv_quad_interp3d(input, 1.0)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input shape, we expect BxCxDxHxW. Got: </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">B</span><span class="p">,</span> <span class="n">CH</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">grid_global</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">create_meshgrid3d</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -914,9 +915,9 @@
 
     <span class="c1"># to determine the location we are solving system of linear equations Ax = b, where b is 1st order gradient</span>
     <span class="c1"># and A is Hessian matrix</span>
-    <span class="n">b</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient3d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'diff'</span><span class="p">)</span>  <span class="c1">#</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient3d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;diff&#39;</span><span class="p">)</span>  <span class="c1">#</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">A</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient3d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'diff'</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">spatial_gradient3d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;diff&#39;</span><span class="p">)</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
     <span class="n">dxx</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">dyy</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -956,10 +957,10 @@
 
 
 <div class="viewcode-block" id="ConvQuadInterp3d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.ConvQuadInterp3d">[docs]</a><span class="k">class</span> <span class="nc">ConvQuadInterp3d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">"""Calculate soft argmax 3d per window.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate soft argmax 3d per window.</span>
 
 <span class="sd">    See :func:`~kornia.geometry.subpix.conv_quad_interp3d` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict_maxima_bonus</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -968,7 +969,7 @@
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">'('</span> <span class="o">+</span> <span class="s1">'strict_maxima_bonus='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strict_maxima_bonus</span><span class="p">)</span> <span class="o">+</span> <span class="s1">')'</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="s1">&#39;strict_maxima_bonus=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strict_maxima_bonus</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
         <span class="k">return</span> <span class="n">conv_quad_interp3d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict_maxima_bonus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
@@ -1010,7 +1011,9 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/scripts/furo.js"></script>
     <script src="../../../../_static/clipboard.min.js"></script>
     <script src="../../../../_static/copybutton.js"></script>

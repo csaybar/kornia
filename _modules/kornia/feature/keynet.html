@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark">
@@ -15,12 +15,12 @@
     <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
         <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/feature/keynet.html" />
 
-    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/kornia_logo_favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>kornia.feature.keynet - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.59c74d8c95b765a7fd995ac71d459ebe.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/main.css" />
     
@@ -298,7 +298,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -329,29 +330,29 @@
 <span class="kn">from</span> <span class="nn">.orientation</span> <span class="kn">import</span> <span class="n">PassLAF</span>
 
 <span class="n">keynet_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'KeyNet_default_config'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;KeyNet_default_config&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="c1"># Key.Net Model</span>
-        <span class="s1">'num_filters'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-        <span class="s1">'num_levels'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s1">'kernel_size'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s1">&#39;num_filters&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;num_levels&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s1">&#39;kernel_size&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
         <span class="c1"># Extraction Parameters</span>
-        <span class="s1">'nms_size'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-        <span class="s1">'pyramid_levels'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s1">'up_levels'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s1">'scale_factor_levels'</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-        <span class="s1">'s_mult'</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+        <span class="s1">&#39;nms_size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s1">&#39;pyramid_levels&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s1">&#39;up_levels&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;scale_factor_levels&#39;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;s_mult&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">urls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">urls</span><span class="p">[</span><span class="s2">"keynet"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/axelBarroso/Key.Net-Pytorch/raw/main/model/weights/keynet_pytorch.pth"</span>
+<span class="n">urls</span><span class="p">[</span><span class="s2">&quot;keynet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/axelBarroso/Key.Net-Pytorch/raw/main/model/weights/keynet_pytorch.pth&quot;</span>
 
 
 <span class="k">class</span> <span class="nc">_FeatureExtractor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Helper class for KeyNet.</span>
+    <span class="sd">&quot;&quot;&quot;Helper class for KeyNet.</span>
 
 <span class="sd">    It loads both, the handcrafted and learnable blocks</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -366,11 +367,11 @@
 
 
 <span class="k">class</span> <span class="nc">_HandcraftedBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Helper class for KeyNet, it defines the handcrafted filters within the Key.Net handcrafted block."""</span>
+    <span class="sd">&quot;&quot;&quot;Helper class for KeyNet, it defines the handcrafted filters within the Key.Net handcrafted block.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_gradient</span> <span class="o">=</span> <span class="n">SpatialGradient</span><span class="p">(</span><span class="s1">'sobel'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_gradient</span> <span class="o">=</span> <span class="n">SpatialGradient</span><span class="p">(</span><span class="s1">&#39;sobel&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 
@@ -389,10 +390,10 @@
 
 
 <span class="k">class</span> <span class="nc">_LearnableBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">):</span>
-    <span class="sd">"""Helper class for KeyNet.</span>
+    <span class="sd">&quot;&quot;&quot;Helper class for KeyNet.</span>
 
 <span class="sd">    It defines the learnable blocks within the Key.Net</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -414,10 +415,10 @@
     <span class="n">padding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">dilation</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">"""Helper function for KeyNet.</span>
+    <span class="sd">&quot;&quot;&quot;Helper function for KeyNet.</span>
 
 <span class="sd">    Default learnable convolutional block for KeyNet.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">dilation</span><span class="p">),</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">),</span>
@@ -426,8 +427,8 @@
 
 
 <div class="viewcode-block" id="KeyNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.KeyNet">[docs]</a><span class="k">class</span> <span class="nc">KeyNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Key.Net model definition -- local feature detector (response function). This is based on the original code</span>
-<span class="sd">    from paper "Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters". See :cite:`KeyNet2019` for</span>
+    <span class="sd">&quot;&quot;&quot;Key.Net model definition -- local feature detector (response function). This is based on the original code</span>
+<span class="sd">    from paper &quot;Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters&quot;. See :cite:`KeyNet2019` for</span>
 <span class="sd">    more details.</span>
 
 <span class="sd">    Args:</span>
@@ -440,14 +441,14 @@
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: :math:`(B, 1, H, W)`</span>
 <span class="sd">        - Output: :math:`(B, 1, H, W)`</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">keynet_conf</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">keynet_config</span><span class="p">[</span><span class="s1">'KeyNet_default_config'</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">keynet_conf</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">keynet_config</span><span class="p">[</span><span class="s1">&#39;KeyNet_default_config&#39;</span><span class="p">]):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-        <span class="n">num_filters</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'num_filters'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'num_levels'</span><span class="p">]</span>
-        <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'kernel_size'</span><span class="p">]</span>
+        <span class="n">num_filters</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;num_filters&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;num_levels&#39;</span><span class="p">]</span>
+        <span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;kernel_size&#39;</span><span class="p">]</span>
         <span class="n">padding</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">kernel_size</span> <span class="o">//</span> <span class="mi">2</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">feature_extractor</span> <span class="o">=</span> <span class="n">_FeatureExtractor</span><span class="p">()</span>
@@ -460,30 +461,30 @@
         <span class="c1"># use torch.hub to load pretrained model</span>
         <span class="k">if</span> <span class="n">pretrained</span><span class="p">:</span>
             <span class="n">storage_fcn</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span>
-            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">'keynet'</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">'state_dict'</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">pretrained_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hub</span><span class="o">.</span><span class="n">load_state_dict_from_url</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;keynet&#39;</span><span class="p">],</span> <span class="n">map_location</span><span class="o">=</span><span class="n">storage_fcn</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_dict</span><span class="p">[</span><span class="s1">&#39;state_dict&#39;</span><span class="p">],</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        x - input image</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">shape_im</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">feats</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_extractor</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_levels</span><span class="p">):</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">pyrdown</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
             <span class="n">feats_i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_extractor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">feats_i</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">feats_i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">shape_im</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">shape_im</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">)</span>
+            <span class="n">feats_i</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">feats_i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">shape_im</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">shape_im</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
             <span class="n">feats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feats_i</span><span class="p">)</span>
         <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_conv</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">scores</span></div>
 
 
 <div class="viewcode-block" id="KeyNetDetector"><a class="viewcode-back" href="../../../feature.html#kornia.feature.KeyNetDetector">[docs]</a><span class="k">class</span> <span class="nc">KeyNetDetector</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""Multi-scale feature detector based on KeyNet.</span>
+    <span class="sd">&quot;&quot;&quot;Multi-scale feature detector based on KeyNet.</span>
 
 <span class="sd">    This is based on the original code from paper</span>
-<span class="sd">    "Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters".</span>
+<span class="sd">    &quot;Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters&quot;.</span>
 <span class="sd">    See :cite:`KeyNet2019` for more details.</span>
 
 <span class="sd">    Args:</span>
@@ -494,31 +495,31 @@
 <span class="sd">           which does nothing. See :class:`~kornia.feature.LAFOrienter` for details.</span>
 <span class="sd">        aff_module: for local feature affine shape estimation. Default: :class:`~kornia.feature.PassLAF`,</span>
 <span class="sd">            which does nothing. See :class:`~kornia.feature.LAFAffineShapeEstimator` for details.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">,</span>
-        <span class="n">keynet_conf</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">keynet_config</span><span class="p">[</span><span class="s1">'KeyNet_default_config'</span><span class="p">],</span>
+        <span class="n">keynet_conf</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">keynet_config</span><span class="p">[</span><span class="s1">&#39;KeyNet_default_config&#39;</span><span class="p">],</span>
         <span class="n">ori_module</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span> <span class="o">=</span> <span class="n">PassLAF</span><span class="p">(),</span>
         <span class="n">aff_module</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span> <span class="o">=</span> <span class="n">PassLAF</span><span class="p">(),</span>
     <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">KeyNet</span><span class="p">(</span><span class="n">pretrained</span><span class="p">,</span> <span class="n">keynet_conf</span><span class="p">)</span>
         <span class="c1"># Load extraction configuration</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'pyramid_levels'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'up_levels'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'scale_factor_levels'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mr_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'s_mult'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">'nms_size'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;pyramid_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;up_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;scale_factor_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mr_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;s_mult&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">keynet_conf</span><span class="p">[</span><span class="s1">&#39;nms_size&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nms</span> <span class="o">=</span> <span class="n">NonMaximaSuppression2d</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ori</span> <span class="o">=</span> <span class="n">ori_module</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">aff</span> <span class="o">=</span> <span class="n">aff_module</span>
 
     <span class="k">def</span> <span class="nf">remove_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_map</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">):</span>
-        <span class="sd">"""It removes the borders of the image to avoid detections on the corners."""</span>
+        <span class="sd">&quot;&quot;&quot;It removes the borders of the image to avoid detections on the corners.&quot;&quot;&quot;</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">score_map</span><span class="p">)</span>
         <span class="n">mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">mask</span> <span class="o">*</span> <span class="n">score_map</span>
@@ -573,7 +574,7 @@
             <span class="n">up_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">idx_level</span><span class="p">)</span>
             <span class="n">nh</span><span class="p">,</span> <span class="n">nw</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">up_factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">up_factor</span><span class="p">)</span>
             <span class="n">up_factor_kpts</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nw</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nh</span><span class="p">))</span>
-            <span class="n">img_up</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">img_up</span><span class="p">,</span> <span class="p">(</span><span class="n">nh</span><span class="p">,</span> <span class="n">nw</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'bilinear'</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">img_up</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">img_up</span><span class="p">,</span> <span class="p">(</span><span class="n">nh</span><span class="p">,</span> <span class="n">nw</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
             <span class="n">cur_scores</span><span class="p">,</span> <span class="n">cur_lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect_features_on_single_level</span><span class="p">(</span><span class="n">img_up</span><span class="p">,</span> <span class="n">num_points_level</span><span class="p">,</span> <span class="n">up_factor_kpts</span><span class="p">)</span>
 
@@ -608,7 +609,7 @@
 <div class="viewcode-block" id="KeyNetDetector.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.KeyNetDetector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">"""Three stage local feature detection. First the location and scale of interest points are determined by</span>
+        <span class="sd">&quot;&quot;&quot;Three stage local feature detection. First the location and scale of interest points are determined by</span>
 <span class="sd">        detect function. Then affine shape and orientation.</span>
 
 <span class="sd">        Args:</span>
@@ -620,9 +621,9 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            lafs: shape [1xNx2x3]. Detected local affine frames.</span>
 <span class="sd">            responses: shape [1xNx1]. Response function values for corresponding lafs</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"KeyNet supports only single-image input"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;KeyNet supports only single-image input&quot;</span><span class="p">)</span>
         <span class="n">responses</span><span class="p">,</span> <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ori</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
@@ -665,7 +666,9 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
