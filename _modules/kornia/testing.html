@@ -562,10 +562,18 @@
     <span class="k">return</span> <span class="n">tol_val_default</span>
 
 
+<span class="c1"># {dtype: (rtol, atol)}</span>
+<span class="n">_DTYPE_PRECISIONS</span> <span class="o">=</span> <span class="p">{</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">:</span> <span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span> <span class="p">(</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span> <span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-8</span><span class="p">)}</span>
+
+
+<span class="k">def</span> <span class="nf">_default_tolerances</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="n">rtols</span><span class="p">,</span> <span class="n">atols</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">_DTYPE_PRECISIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">rtols</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">atols</span><span class="p">)</span>
+
+
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># torch.testing.assert_close is only available for torch&gt;=1.9</span>
     <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_close</span> <span class="k">as</span> <span class="n">_assert_close</span>  <span class="c1"># type: ignore</span>
-    <span class="kn">from</span> <span class="nn">torch.testing._core</span> <span class="kn">import</span> <span class="n">_get_default_tolerance</span>  <span class="c1"># type: ignore</span>
 
     <span class="k">def</span> <span class="nf">assert_close</span><span class="p">(</span>
         <span class="n">actual</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
@@ -576,31 +584,27 @@
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">rtol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">atol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-                <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span> <span class="o">=</span> <span class="n">_get_default_tolerance</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+            <span class="c1"># `torch.testing.assert_close` used different default tolerances than `torch.testing.assert_allclose`.</span>
+            <span class="c1"># TODO: remove this special handling as soon as https://github.com/kornia/kornia/issues/1134 is resolved.</span>
+            <span class="c1">#  Basically, this whole wrapper function can be removed and `torch.testing.assert_close` can be used</span>
+            <span class="c1">#  directly.</span>
+            <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span> <span class="o">=</span> <span class="n">_default_tolerances</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">_assert_close</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span> <span class="n">check_stride</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_assert_close</span><span class="p">(</span>
+            <span class="n">actual</span><span class="p">,</span>
+            <span class="n">expected</span><span class="p">,</span>
+            <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span>
+            <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+            <span class="c1"># this is the default value for torch&gt;=1.10, but not for torch==1.9</span>
+            <span class="c1"># TODO: remove this if kornia relies on torch&gt;=1.10</span>
+            <span class="n">check_stride</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c1"># Partial backport of torch.testing.assert_close for torch&lt;1.9</span>
     <span class="c1"># TODO: remove this branch if kornia relies on torch&gt;=1.9</span>
-    <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_allclose</span> <span class="k">as</span> <span class="n">_assert_close</span>
-
-    <span class="k">class</span> <span class="nc">UsageError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">assert_close</span><span class="p">(</span>
-        <span class="n">actual</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-        <span class="n">expected</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-        <span class="o">*</span><span class="p">,</span>
-        <span class="n">rtol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">atol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">_assert_close</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">error</span>
+    <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_allclose</span> <span class="k">as</span> <span class="n">assert_close</span>  <span class="c1"># type: ignore</span>
 
 
 <span class="c1"># Logger api</span>
