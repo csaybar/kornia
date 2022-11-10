@@ -1482,7 +1482,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dd class="field-even"><p>Dictionary with image correspondences and confidence scores.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a>]</p>
+<dd class="field-odd"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>, Tensor]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1660,12 +1660,12 @@ becomes:
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor).</p></li>
-<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor) images, LAFs are detected in</p></li>
+<li><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (Tensor).</p></li>
+<li><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (Tensor) images, LAFs are detected in</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>(torch.Tensor).</p>
+<dd class="field-even"><p>(Tensor).</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>LAF</p>
@@ -1909,13 +1909,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Return orientation of the LAFs, in degrees.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (torch.Tensor): tensor [BxNx2x3].</p>
+<dd class="field-odd"><p><strong>LAF</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – (Tensor): tensor [BxNx2x3].</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>tensor  BxNx1 .</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)">torch.Tensor</a></p>
+<dd class="field-odd"><p>Tensor</p>
 </dd>
 </dl>
 <dl class="simple">
@@ -2275,7 +2275,7 @@ responses: shape [BxNx1]. Response function values for corresponding lafs</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNetDetector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNetDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keynet_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">keynet_config['KeyNet_default_config']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNetDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetDetector" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNetDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keynet_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">keynet_config['KeyNet_default_config']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNetDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetDetector" title="Permalink to this definition">#</a></dt>
 <dd><p>Multi-scale feature detector based on KeyNet.</p>
 <p>This is based on the original code from paper
 “Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters”.
@@ -2289,9 +2289,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 Default:  <code class="code docutils literal notranslate"><span class="pre">2048</span></code></p></li>
 <li><p><strong>keynet_conf</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>, <em>optional</em>) – Dict with initiliazation parameters. Do not pass it, unless you know what you are doing`.
 Default:  <code class="code docutils literal notranslate"><span class="pre">keynet_config['KeyNet_default_config']</span></code></p></li>
-<li><p><strong>ori_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature orientation estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+<li><p><strong>ori_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – for local feature orientation estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFOrienter" title="kornia.feature.LAFOrienter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFOrienter</span></code></a> for details.</p></li>
-<li><p><strong>aff_module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>, <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+<li><p><strong>aff_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
 which does nothing. See <a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator" title="kornia.feature.LAFAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator</span></code></a> for details.</p></li>
 </ul>
 </dd>
