@@ -307,7 +307,7 @@
 <span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
-<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">,</span> <span class="n">check_is_tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">,</span> <span class="n">check_is_tensor</span>
 
 <span class="kn">from</span> <span class="nn">.conversions</span> <span class="kn">import</span> <span class="n">convert_points_from_homogeneous</span><span class="p">,</span> <span class="n">convert_points_to_homogeneous</span>
 
@@ -319,6 +319,7 @@
     <span class="s2">&quot;point_line_distance&quot;</span><span class="p">,</span>
     <span class="s2">&quot;squared_norm&quot;</span><span class="p">,</span>
     <span class="s2">&quot;batched_dot_product&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;euclidean_distance&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -532,16 +533,34 @@
     <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="p">(</span><span class="n">denominator</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="squared_norm"><a class="viewcode-back" href="../../../geometry.linalg.html#kornia.geometry.linalg.squared_norm">[docs]</a><span class="k">def</span> <span class="nf">squared_norm</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return the squared norm of a vector.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">)</span></div>
-
-
 <div class="viewcode-block" id="batched_dot_product"><a class="viewcode-back" href="../../../geometry.linalg.html#kornia.geometry.linalg.batched_dot_product">[docs]</a><span class="k">def</span> <span class="nf">batched_dot_product</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Return a batched version of .dot()&quot;&quot;&quot;</span>
     <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
     <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="squared_norm"><a class="viewcode-back" href="../../../geometry.linalg.html#kornia.geometry.linalg.squared_norm">[docs]</a><span class="k">def</span> <span class="nf">squared_norm</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the squared norm of a vector.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="euclidean_distance"><a class="viewcode-back" href="../../../geometry.linalg.html#kornia.geometry.linalg.euclidean_distance">[docs]</a><span class="k">def</span> <span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two set of n-dimensional points.</span>
+
+<span class="sd">    More: https://en.wikipedia.org/wiki/Euclidean_distance</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: first set of points of shape :math:`(*, N)`.</span>
+<span class="sd">        y: second set of points of shape :math:`(*, N)`.</span>
+<span class="sd">        keepdim: whether to keep the dimension after reduction.</span>
+<span class="sd">        eps: small value to have numerical stability.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span></div>
 
 
 <span class="c1"># aliases</span>
