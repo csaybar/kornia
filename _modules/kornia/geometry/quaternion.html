@@ -309,9 +309,9 @@
 <span class="c1"># https://github.com/KieranWynn/pyquaternion/blob/master/pyquaternion/quaternion.py</span>
 <span class="c1"># https://gitlab.com/libeigen/eigen/-/blob/master/Eigen/src/Geometry/Quaternion.h</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">as_tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">rand</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">where</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">rand</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">where</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry.conversions</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">QuaternionCoeffOrder</span><span class="p">,</span>
     <span class="n">angle_axis_to_quaternion</span><span class="p">,</span>
@@ -319,7 +319,8 @@
     <span class="n">quaternion_to_rotation_matrix</span><span class="p">,</span>
     <span class="n">rotation_matrix_to_quaternion</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">,</span> <span class="n">KORNIA_CHECK_TYPE</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.linalg</span> <span class="kn">import</span> <span class="n">batched_dot_product</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">,</span> <span class="n">KORNIA_CHECK_TYPE</span>
 
 
 <div class="viewcode-block" id="Quaternion"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion">[docs]</a><span class="k">class</span> <span class="nc">Quaternion</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
@@ -350,10 +351,7 @@
 <span class="sd">                [1., 0., 0., 0.],</span>
 <span class="sd">                [1., 0., 0., 0.]], requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; q.real</span>
-<span class="sd">        tensor([[1.],</span>
-<span class="sd">                [1.],</span>
-<span class="sd">                [1.],</span>
-<span class="sd">                [1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">        tensor([1., 1., 1., 1.], grad_fn=&lt;SelectBackward0&gt;)</span>
 <span class="sd">        &gt;&gt;&gt; q.vec</span>
 <span class="sd">        tensor([[0., 0., 0.],</span>
 <span class="sd">                [0., 0., 0.],</span>
@@ -378,7 +376,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Quaternion.__repr__"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;real: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="se">\n</span><span class="s2">vec: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="si">}</span><span class="s2">&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -387,9 +385,9 @@
         <span class="sd">&quot;&quot;&quot;Inverts the sign of the quaternion data.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity()</span>
 <span class="sd">            &gt;&gt;&gt; -q.data</span>
-<span class="sd">            tensor([[-1., -0., -0., -0.]], grad_fn=&lt;NegBackward0&gt;)</span>
+<span class="sd">            tensor([-1., -0., -0., -0.], grad_fn=&lt;NegBackward0&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
@@ -400,12 +398,12 @@
 <span class="sd">            right: the quaternion to add.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q1 = Quaternion.identity(batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; q2 = Quaternion(Tensor([[2., 0., 1., 1.]]))</span>
+<span class="sd">            &gt;&gt;&gt; q1 = Quaternion.identity()</span>
+<span class="sd">            &gt;&gt;&gt; q2 = Quaternion(tensor([2., 0., 1., 1.]))</span>
 <span class="sd">            &gt;&gt;&gt; q3 = q1 + q2</span>
 <span class="sd">            &gt;&gt;&gt; q3.data</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[3., 0., 1., 1.]], requires_grad=True)</span>
+<span class="sd">            tensor([3., 0., 1., 1.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
@@ -417,12 +415,12 @@
 <span class="sd">            right: the quaternion to subtract.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q1 = Quaternion(Tensor([[2., 0., 1., 1.]]))</span>
-<span class="sd">            &gt;&gt;&gt; q2 = Quaternion.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; q1 = Quaternion(tensor([2., 0., 1., 1.]))</span>
+<span class="sd">            &gt;&gt;&gt; q2 = Quaternion.identity()</span>
 <span class="sd">            &gt;&gt;&gt; q3 = q1 - q2</span>
 <span class="sd">            &gt;&gt;&gt; q3.data</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1., 0., 1., 1.]], requires_grad=True)</span>
+<span class="sd">            tensor([1., 0., 1., 1.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">right</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
@@ -431,13 +429,13 @@
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">)</span>
         <span class="c1"># NOTE: borrowed from sophus sympy. Produce less multiplications compared to others.</span>
         <span class="c1"># https://github.com/strasdat/Sophus/blob/785fef35b7d9e0fc67b4964a69124277b7434a44/sympy/sophus/quaternion.py#L19</span>
-        <span class="n">new_real</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batched_squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">right</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-        <span class="n">new_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">vec</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">concatenate</span><span class="p">((</span><span class="n">new_real</span><span class="p">,</span> <span class="n">new_vec</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">new_real</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="n">right</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+        <span class="n">new_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">vec</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">concatenate</span><span class="p">((</span><span class="n">new_real</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">new_vec</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">right</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">right</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
 
@@ -451,10 +449,10 @@
 <span class="sd">            t: raised exponent.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion(torch.tensor([1., .5, 0., 0.]))</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion(tensor([1., .5, 0., 0.]))</span>
 <span class="sd">            &gt;&gt;&gt; q_pow = q**2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polar_angle</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">polar_angle</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
         <span class="n">vec_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">vec_norm</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span> <span class="o">/</span> <span class="n">vec_norm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span> <span class="o">*</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>
@@ -463,12 +461,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B,4).`&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B, 4).`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">coeffs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B,4)`.</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B, 4)`.</span>
 
 <span class="sd">        Alias for :func:`~kornia.geometry.quaternion.Quaternion.data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -476,7 +474,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the real part with shape :math:`(B,1)`.</span>
+        <span class="sd">&quot;&quot;&quot;Return the real part with shape :math:`(B,)`.</span>
 
 <span class="sd">        Alias for :func:`~kornia.geometry.quaternion.Quaternion.w`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -484,12 +482,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">vec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the vector with the imaginary part with shape :math:`(B,3)`.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the vector with the imaginary part with shape :math:`(B, 3)`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">q</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B,4)`.</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying data with shape :math:`(B, 4)`.</span>
 
 <span class="sd">        Alias for :func:`~kornia.geometry.quaternion.Quaternion.data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -497,7 +495,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a scalar with the real with shape :math:`(B,1)`.</span>
+        <span class="sd">&quot;&quot;&quot;Return a scalar with the real with shape :math:`(B,)`.</span>
 
 <span class="sd">        Alias for :func:`~kornia.geometry.quaternion.Quaternion.w`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -505,27 +503,27 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the :math:`q_w` with shape :math:`(B,1)`.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Return the :math:`q_w` with shape :math:`(B,)`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the :math:`q_x` with shape :math:`(B,1)`.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Return the :math:`q_x` with shape :math:`(B,)`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">y</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the :math:`q_y` with shape :math:`(B,1)`.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Return the :math:`q_y` with shape :math:`(B,)`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the :math:`q_z` with shape :math:`(B,1)`.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="sd">&quot;&quot;&quot;Return the :math:`q_z` with shape :math:`(B,)`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return the shape of the underlying data with shape :math:`(B,4)`.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Return the shape of the underlying data with shape :math:`(B, 4)`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -533,22 +531,22 @@
         <span class="sd">&quot;&quot;&quot;Return the polar angle with shape :math:`(B,1)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity()</span>
 <span class="sd">            &gt;&gt;&gt; q.polar_angle</span>
-<span class="sd">            tensor([[0.]], grad_fn=&lt;AcosBackward0&gt;)</span>
+<span class="sd">            tensor(0., grad_fn=&lt;AcosBackward0&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scalar</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">())</span><span class="o">.</span><span class="n">acos</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Quaternion.matrix"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.matrix">[docs]</a>    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert the quaternion to a rotation matrix of shape :math:`(B,3,3)`.</span>
+        <span class="sd">&quot;&quot;&quot;Convert the quaternion to a rotation matrix of shape :math:`(B, 3, 3)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity()</span>
 <span class="sd">            &gt;&gt;&gt; m = q.matrix()</span>
 <span class="sd">            &gt;&gt;&gt; m</span>
-<span class="sd">            tensor([[[1., 0., 0.],</span>
-<span class="sd">                     [0., 1., 0.],</span>
-<span class="sd">                     [0., 0., 1.]]], grad_fn=&lt;ViewBackward0&gt;)</span>
+<span class="sd">            tensor([[1., 0., 0.],</span>
+<span class="sd">                    [0., 1., 0.],</span>
+<span class="sd">                    [0., 0., 1.]], grad_fn=&lt;SqueezeBackward1&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">quaternion_to_rotation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">WXYZ</span><span class="p">)</span></div>
 
@@ -557,7 +555,7 @@
         <span class="sd">&quot;&quot;&quot;Create a quaternion from a rotation matrix.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            matrix: the rotation matrix to convert of shape :math:`(B,3,3)`.</span>
+<span class="sd">            matrix: the rotation matrix to convert of shape :math:`(B, 3, 3)`.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; m = torch.eye(3)[None]</span>
@@ -573,7 +571,7 @@
         <span class="sd">&quot;&quot;&quot;Create a quaternion from axis-angle representation.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            axis_angle: rotation vector of shape :math:`(B,3)`.</span>
+<span class="sd">            axis_angle: rotation vector of shape :math:`(B, 3)`.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; axis_angle = torch.tensor([[1., 0., 0.]])</span>
@@ -585,21 +583,21 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">angle_axis_to_quaternion</span><span class="p">(</span><span class="n">axis_angle</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">QuaternionCoeffOrder</span><span class="o">.</span><span class="n">WXYZ</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Quaternion.identity"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.identity">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Create a quaternion representing an identity rotation.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            batch_size: the batch size of the underlying data.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=2)</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity()</span>
 <span class="sd">            &gt;&gt;&gt; q.data</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1., 0., 0., 0.],</span>
-<span class="sd">                    [1., 0., 0., 0.]], requires_grad=True)</span>
+<span class="sd">            tensor([1., 0., 0., 0.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Quaternion.from_coeffs"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.from_coeffs">[docs]</a>    <span class="nd">@classmethod</span>
@@ -616,15 +614,15 @@
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.from_coeffs(1., 0., 0., 0.)</span>
 <span class="sd">            &gt;&gt;&gt; q.data</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1., 0., 0., 0.]], requires_grad=True)</span>
+<span class="sd">            tensor([1., 0., 0., 0.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">as_tensor</span><span class="p">([[</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]]))</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">tensor</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]))</span></div>
 
     <span class="c1"># TODO: update signature</span>
     <span class="c1"># def random(cls, shape: Optional[List] = None, device = None, dtype = None) -&gt; &#39;Quaternion&#39;:</span>
 <div class="viewcode-block" id="Quaternion.random"><a class="viewcode-back" href="../../../geometry.quaternion.html#kornia.geometry.quaternion.Quaternion.random">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a random unit quaternion of shape :math:`(B,4)`.</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a random unit quaternion of shape :math:`(B, 4)`.</span>
 
 <span class="sd">        Uniformly distributed across the rotation space as per: http://planning.cs.uiuc.edu/node198.html</span>
 
@@ -632,9 +630,12 @@
 <span class="sd">            batch_size: the batch size of the underlying data.</span>
 
 <span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.random()</span>
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.random(batch_size=2)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+        <span class="n">rand_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,)</span> <span class="k">if</span> <span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">()</span>
+
+        <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="n">rand</span><span class="p">((</span><span class="mi">3</span><span class="p">,)</span> <span class="o">+</span> <span class="n">rand_shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="n">q1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">())</span>
         <span class="n">q2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">r1</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r2</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">())</span>
         <span class="n">q3</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r3</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>
@@ -651,8 +652,8 @@
 <span class="sd">            t: interpolation ratio, range [0-1]</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; q0 = Quaternion.identity(batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; q1 = Quaternion(torch.tensor([[1., .5, 0., 0.]]))</span>
+<span class="sd">            &gt;&gt;&gt; q0 = Quaternion.identity()</span>
+<span class="sd">            &gt;&gt;&gt; q1 = Quaternion(torch.tensor([1., .5, 0., 0.]))</span>
 <span class="sd">            &gt;&gt;&gt; q2 = q0.slerp(q1, .3)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">Quaternion</span><span class="p">)</span>
@@ -660,26 +661,26 @@
         <span class="n">q1</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">q0</span> <span class="o">*</span> <span class="p">(</span><span class="n">q0</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span> <span class="o">*</span> <span class="n">q1</span><span class="p">)</span> <span class="o">**</span> <span class="n">t</span></div>
 
-    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># TODO: add docs</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="c1"># p==2, dim|axis==-1, keepdim</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">)</span>
 
+    <span class="c1"># TODO: add docs</span>
     <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">normalize_quaternion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
 
+    <span class="c1"># TODO: add docs</span>
     <span class="k">def</span> <span class="nf">conj</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
+    <span class="c1"># TODO: add docs</span>
     <span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Quaternion&#39;</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span>
 
+    <span class="c1"># TODO: add docs</span>
     <span class="k">def</span> <span class="nf">squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batched_squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span>
-
-    <span class="k">def</span> <span class="nf">_batched_squared_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">@</span> <span class="n">y</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">])[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="o">**</span><span class="mi">2</span></div>
 </pre></div>
         </article>
       </div>

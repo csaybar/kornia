@@ -306,13 +306,15 @@
           <h1>Source code for kornia.geometry.liegroup.se3</h1><div class="highlight"><pre>
 <span></span><span class="c1"># kornia.geometry.so3 module inspired by Sophus-sympy.</span>
 <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/se3.py</span>
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">as_tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">where</span>
-<span class="kn">from</span> <span class="nn">kornia.geometry.liegroup._utils</span> <span class="kn">import</span> <span class="n">squared_norm</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">where</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry.liegroup.so3</span> <span class="kn">import</span> <span class="n">So3</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.linalg</span> <span class="kn">import</span> <span class="n">batched_dot_product</span>
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">,</span> <span class="n">KORNIA_CHECK_TYPE</span>
 
 
-<div class="viewcode-block" id="Se3"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3">[docs]</a><span class="k">class</span> <span class="nc">Se3</span><span class="p">:</span>
+<div class="viewcode-block" id="Se3"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3">[docs]</a><span class="k">class</span> <span class="nc">Se3</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base class to represent the Se3 group.</span>
 
 <span class="sd">    The SE(3) is the group of rigid body transformations about the origin of three-dimensional Euclidean</span>
@@ -321,13 +323,14 @@
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; from kornia.geometry.quaternion import Quaternion</span>
-<span class="sd">        &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
-<span class="sd">        &gt;&gt;&gt; s = Se3(So3(q), torch.ones((1, 3)))</span>
+<span class="sd">        &gt;&gt;&gt; q = Quaternion.identity()</span>
+<span class="sd">        &gt;&gt;&gt; s = Se3(So3(q), torch.ones(3))</span>
 <span class="sd">        &gt;&gt;&gt; s.r</span>
-<span class="sd">        real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">        vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">        Parameter containing:</span>
+<span class="sd">        tensor([1., 0., 0., 0.], requires_grad=True)</span>
 <span class="sd">        &gt;&gt;&gt; s.t</span>
-<span class="sd">        tensor([[1., 1., 1.]])</span>
+<span class="sd">        Parameter containing:</span>
+<span class="sd">        tensor([1., 1., 1.], requires_grad=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Se3.__init__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">So3</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -342,17 +345,19 @@
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; from kornia.geometry.quaternion import Quaternion</span>
 <span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; s = Se3(So3(q), torch.ones((1,3)))</span>
+<span class="sd">            &gt;&gt;&gt; s = Se3(So3(q), torch.ones((1, 3)))</span>
 <span class="sd">            &gt;&gt;&gt; s.r</span>
-<span class="sd">            real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([[1., 0., 0., 0.]], requires_grad=True)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
-<span class="sd">            tensor([[1., 1., 1.]])</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([[1., 1., 1.]], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">So3</span><span class="p">)</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_r</span> <span class="o">=</span> <span class="n">r</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_t</span> <span class="o">=</span> <span class="n">t</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_t</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.__repr__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;rotation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="si">}</span><span class="se">\n</span><span class="s2">translation: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span></div>
@@ -369,11 +374,23 @@
 <span class="sd">        Return:</span>
 <span class="sd">            The resulting Se3 transformation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Se3</span><span class="p">)</span>
-        <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/se3.py#L97</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">r</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">t</span>
-        <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Se3</span><span class="p">):</span>
+            <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Se3</span><span class="p">)</span>
+            <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/se3.py#L97</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">so3</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">so3</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">so3</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">t</span>
+            <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+            <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span>
+            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">so3</span> <span class="o">*</span> <span class="n">right</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">so3</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">So3</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the underlying rotation(So3).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_r</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">r</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">So3</span><span class="p">:</span>
@@ -396,23 +413,25 @@
 <span class="sd">            &gt;&gt;&gt; v = torch.zeros((1, 6))</span>
 <span class="sd">            &gt;&gt;&gt; s = Se3.exp(v)</span>
 <span class="sd">            &gt;&gt;&gt; s.r</span>
-<span class="sd">            real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([[1., 0., 0., 0.]], requires_grad=True)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
-<span class="sd">            tensor([[0., 0., 0.]])</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([[0., 0., 0.]], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">upsilon</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
         <span class="n">omega_hat</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">squared_norm</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+        <span class="n">omega_hat_sq</span> <span class="o">=</span> <span class="n">omega_hat</span> <span class="o">@</span> <span class="n">omega_hat</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">omega</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
         <span class="n">V</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-            <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="o">.</span><span class="n">cos</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">theta</span><span class="o">**</span><span class="mi">2</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">omega_hat</span>
-            <span class="o">+</span> <span class="p">((</span><span class="n">theta</span> <span class="o">-</span> <span class="n">theta</span><span class="o">.</span><span class="n">sin</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">theta</span><span class="o">**</span><span class="mi">3</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">omega_hat</span> <span class="o">@</span> <span class="n">omega_hat</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="o">.</span><span class="n">cos</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">theta</span><span class="o">**</span><span class="mi">2</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">omega_hat</span>
+            <span class="o">+</span> <span class="p">((</span><span class="n">theta</span> <span class="o">-</span> <span class="n">theta</span><span class="o">.</span><span class="n">sin</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">theta</span><span class="o">**</span><span class="mi">3</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">omega_hat_sq</span>
         <span class="p">)</span>
-        <span class="n">U</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">theta</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">U</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="n">upsilon</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">upsilon</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.log"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -420,42 +439,45 @@
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; from kornia.geometry.quaternion import Quaternion</span>
-<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity(batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; Se3(So3(q), torch.zeros((1,3))).log()</span>
-<span class="sd">            tensor([[0., 0., 0., 0., 0., 0.]], grad_fn=&lt;CatBackward0&gt;)</span>
+<span class="sd">            &gt;&gt;&gt; q = Quaternion.identity()</span>
+<span class="sd">            &gt;&gt;&gt; Se3(So3(q), torch.zeros(3)).log()</span>
+<span class="sd">            tensor([0., 0., 0., 0., 0., 0.], grad_fn=&lt;CatBackward0&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">omega</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">squared_norm</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">omega</span><span class="p">)</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
         <span class="n">omega_hat</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
+        <span class="n">omega_hat_sq</span> <span class="o">=</span> <span class="n">omega_hat</span> <span class="o">@</span> <span class="n">omega_hat</span>
         <span class="n">V_inv</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">omega</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">omega</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
             <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">omega_hat</span>
-            <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">()))</span> <span class="o">/</span> <span class="n">theta</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
-            <span class="o">*</span> <span class="p">(</span><span class="n">omega_hat</span> <span class="o">@</span> <span class="n">omega_hat</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sin</span><span class="p">()))</span> <span class="o">/</span> <span class="n">theta</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">omega_hat_sq</span>
         <span class="p">)</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">theta</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">V_inv</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">V_inv</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">omega</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.hat"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.hat">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">hat</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Converts elements from vector space to lie algebra. Returns matrix of shape :math:`(B,4,4)`.</span>
+        <span class="sd">&quot;&quot;&quot;Converts elements from vector space to lie algebra.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            v: vector of shape :math:`(B,6)`.</span>
+<span class="sd">            v: vector of shape :math:`(B, 6)`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            matrix of shape :math:`(B, 4, 4)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; v = torch.ones((1,6))</span>
+<span class="sd">            &gt;&gt;&gt; v = torch.ones((1, 6))</span>
 <span class="sd">            &gt;&gt;&gt; m = Se3.hat(v)</span>
 <span class="sd">            &gt;&gt;&gt; m</span>
-<span class="sd">            tensor([[[ 0.,  0., -1.,  1.],</span>
-<span class="sd">                     [ 0.,  1.,  0., -1.],</span>
-<span class="sd">                     [ 0., -1.,  1.,  0.],</span>
-<span class="sd">                     [ 0.,  1.,  1.,  1.]]])</span>
+<span class="sd">            tensor([[[ 0., -1.,  1.,  1.],</span>
+<span class="sd">                     [ 1.,  0., -1.,  1.],</span>
+<span class="sd">                     [-1.,  1.,  0.,  1.],</span>
+<span class="sd">                     [ 0.,  0.,  0.,  0.]]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
-        <span class="n">t</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
-        <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="n">t</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># add zeros left column</span></div>
+        <span class="n">upsilon</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="n">upsilon</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># add zeros bottom</span></div>
 
 <div class="viewcode-block" id="Se3.vee"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.vee">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -468,46 +490,50 @@
 <span class="sd">            vector of shape :math:`(B,6)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; v = torch.ones((1,6))</span>
+<span class="sd">            &gt;&gt;&gt; v = torch.ones((1, 6))</span>
 <span class="sd">            &gt;&gt;&gt; omega_hat = Se3.hat(v)</span>
 <span class="sd">            &gt;&gt;&gt; Se3.vee(omega_hat)</span>
 <span class="sd">            tensor([[1., 1., 1., 1., 1., 1.]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span>
-        <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span></div>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.identity"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.identity">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Se3&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Create a Se3 group representing an identity rotation and zero translation.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            batch_size: the batch size of the underlying data.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; s = Se3.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; s = Se3.identity()</span>
 <span class="sd">            &gt;&gt;&gt; s.r</span>
-<span class="sd">            real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">            vec: tensor([[0., 0., 0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([1., 0., 0., 0.], requires_grad=True)</span>
 <span class="sd">            &gt;&gt;&gt; s.t</span>
-<span class="sd">            tensor([[0., 0., 0.]])</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([0., 0., 0.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">*</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">t</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">So3</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">),</span> <span class="n">t</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se3.matrix"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se3.matrix">[docs]</a>    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns the matrix representation of shape :math:`(B, 4, 4)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(batch_size=1), torch.ones((1,3)))</span>
+<span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(), torch.ones(3))</span>
 <span class="sd">            &gt;&gt;&gt; s.matrix()</span>
-<span class="sd">            tensor([[[1., 0., 0., 1.],</span>
-<span class="sd">                     [0., 1., 0., 1.],</span>
-<span class="sd">                     [0., 0., 1., 1.],</span>
-<span class="sd">                     [0., 0., 0., 1.]]], grad_fn=&lt;CopySlices&gt;)</span>
+<span class="sd">            tensor([[1., 0., 0., 1.],</span>
+<span class="sd">                    [0., 1., 0., 1.],</span>
+<span class="sd">                    [0., 0., 1., 1.],</span>
+<span class="sd">                    [0., 0., 0., 1.]], grad_fn=&lt;CopySlices&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">matrix</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">matrix</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">rt_4x4</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># add last row zeros</span>
         <span class="n">rt_4x4</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="k">return</span> <span class="n">rt_4x4</span></div>
@@ -516,13 +542,14 @@
         <span class="sd">&quot;&quot;&quot;Returns the inverse transformation.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(batch_size=1), torch.ones((1,3)))</span>
+<span class="sd">            &gt;&gt;&gt; s = Se3(So3.identity(), torch.ones(3))</span>
 <span class="sd">            &gt;&gt;&gt; s_inv = s.inverse()</span>
 <span class="sd">            &gt;&gt;&gt; s_inv.r</span>
-<span class="sd">            real: tensor([[1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
-<span class="sd">            vec: tensor([[-0., -0., -0.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([1., -0., -0., -0.], requires_grad=True)</span>
 <span class="sd">            &gt;&gt;&gt; s_inv.t</span>
-<span class="sd">            tensor([[-1., -1., -1.]], grad_fn=&lt;SliceBackward0&gt;)</span>
+<span class="sd">            Parameter containing:</span>
+<span class="sd">            tensor([-1., -1., -1.], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r_inv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">r_inv</span><span class="p">,</span> <span class="n">r_inv</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">))</span></div></div>
