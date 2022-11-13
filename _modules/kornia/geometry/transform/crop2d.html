@@ -307,8 +307,8 @@
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">as_tensor</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">tensor</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry.bbox</span> <span class="kn">import</span> <span class="n">infer_bbox_shape</span><span class="p">,</span> <span class="n">validate_bbox</span>
 
 <span class="kn">from</span> <span class="nn">.affwarp</span> <span class="kn">import</span> <span class="n">resize</span>
@@ -318,17 +318,17 @@
 
 
 <div class="viewcode-block" id="crop_and_resize"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.crop_and_resize">[docs]</a><span class="k">def</span> <span class="nf">crop_and_resize</span><span class="p">(</span>
-    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">boxes</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Extract crops from 2D images (4D tensor) and resize given a bounding box.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        tensor: the 2D image tensor with shape (B, C, H, W).</span>
+<span class="sd">        input_tensor: the 2D image tensor with shape (B, C, H, W).</span>
 <span class="sd">        boxes : a tensor containing the coordinates of the bounding boxes to be extracted.</span>
 <span class="sd">            The tensor must have the shape of Bx4x2, where each box is defined in the following (clockwise)</span>
 <span class="sd">            order: top-left, top-right, bottom-right and bottom-left. The coordinates must be in the x, y order.</span>
@@ -342,7 +342,7 @@
 <span class="sd">        align_corners: mode for grid_generation.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        torch.Tensor: tensor containing the patches with shape BxCxN1xN2.</span>
+<span class="sd">        Tensor: tensor containing the patches with shape BxCxN1xN2.</span>
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.tensor([[[</span>
@@ -361,45 +361,47 @@
 <span class="sd">        tensor([[[[ 6.,  7.],</span>
 <span class="sd">                  [10., 11.]]]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">boxes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must be a tuple/list of length 2. Got </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="c1"># unpack input data</span>
     <span class="n">dst_h</span><span class="p">,</span> <span class="n">dst_w</span> <span class="o">=</span> <span class="n">size</span>
 
     <span class="c1"># [x, y] origin</span>
     <span class="c1"># top-left, top-right, bottom-right, bottom-left</span>
-    <span class="n">points_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+    <span class="n">points_src</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
 
     <span class="c1"># [x, y] destination</span>
     <span class="c1"># top-left, top-right, bottom-right, bottom-left</span>
-    <span class="n">points_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
-        <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]],</span> <span class="n">device</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="n">points_dst</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
+        <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]],</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
     <span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">crop_by_boxes</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">points_src</span><span class="p">,</span> <span class="n">points_dst</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">crop_by_boxes</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">points_src</span><span class="p">,</span> <span class="n">points_dst</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="center_crop"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.center_crop">[docs]</a><span class="k">def</span> <span class="nf">center_crop</span><span class="p">(</span>
-    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Crop the 2D images (4D tensor) from the center.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        tensor: the 2D image tensor with shape (B, C, H, W).</span>
+<span class="sd">        input_tensor: the 2D image tensor with shape (B, C, H, W).</span>
 <span class="sd">        size: a tuple with the expected height and width</span>
 <span class="sd">          of the output patch.</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
@@ -422,18 +424,18 @@
 <span class="sd">        tensor([[[[ 5.,  6.,  7.,  8.],</span>
 <span class="sd">                  [ 9., 10., 11., 12.]]]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input tensor type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input size must be a tuple/list of length 2. Got </span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="c1"># unpack input sizes</span>
     <span class="n">dst_h</span><span class="p">,</span> <span class="n">dst_w</span> <span class="o">=</span> <span class="n">size</span>
-    <span class="n">src_h</span><span class="p">,</span> <span class="n">src_w</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="n">src_h</span><span class="p">,</span> <span class="n">src_w</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 
     <span class="c1"># compute start/end offsets</span>
     <span class="n">dst_h_half</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">dst_h</span> <span class="o">/</span> <span class="mi">2</span>
@@ -449,30 +451,32 @@
 
     <span class="c1"># [y, x] origin</span>
     <span class="c1"># top-left, top-right, bottom-right, bottom-left</span>
-    <span class="n">points_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
+    <span class="n">points_src</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
         <span class="p">[[[</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">],</span> <span class="p">[</span><span class="n">end_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">],</span> <span class="p">[</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">],</span> <span class="p">[</span><span class="n">start_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">]]],</span>
-        <span class="n">device</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
-        <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="c1"># [y, x] destination</span>
     <span class="c1"># top-left, top-right, bottom-right, bottom-left</span>
-    <span class="n">points_dst</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span>
-        <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]],</span> <span class="n">device</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="n">points_dst</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span>
+        <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">dst_w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">dst_h</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]],</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
     <span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">points_src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">crop_by_boxes</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">points_src</span><span class="p">,</span> <span class="n">points_dst</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">crop_by_boxes</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">points_src</span><span class="p">,</span> <span class="n">points_dst</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="crop_by_boxes"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.crop_by_boxes">[docs]</a><span class="k">def</span> <span class="nf">crop_by_boxes</span><span class="p">(</span>
-    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">src_box</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">dst_box</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">src_box</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">dst_box</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Perform crop transform on 2D images (4D tensor) given two bounding boxes.</span>
 
 <span class="sd">    Given an input tensor, this function selected the interested areas by the provided bounding boxes (src_box).</span>
@@ -481,7 +485,7 @@
 <span class="sd">    in a batch must be rectangles with same width and height.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        tensor: the 2D image tensor with shape (B, C, H, W).</span>
+<span class="sd">        input_tensor: the 2D image tensor with shape (B, C, H, W).</span>
 <span class="sd">        src_box: a tensor with shape (B, 4, 2) containing the coordinates of the bounding boxes</span>
 <span class="sd">            to be extracted. The tensor must have the shape of Bx4x2, where each box is defined in the clockwise</span>
 <span class="sd">            order: top-left, top-right, bottom-right and bottom-left. The coordinates must be in x, y order.</span>
@@ -496,7 +500,7 @@
 <span class="sd">        validate_boxes: flag to perform validation on boxes.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        torch.Tensor: the output tensor with patches.</span>
+<span class="sd">        Tensor: the output tensor with patches.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.arange(16, dtype=torch.float32).reshape((1, 1, 4, 4))</span>
@@ -524,14 +528,14 @@
         <span class="n">validate_bbox</span><span class="p">(</span><span class="n">src_box</span><span class="p">)</span>
         <span class="n">validate_bbox</span><span class="p">(</span><span class="n">dst_box</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only tensor with shape (B, C, H, W) supported. Got </span><span class="si">{</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="c1"># compute transformation between points and warp</span>
     <span class="c1"># Note: Tensor.dtype must be float. &quot;solve_cpu&quot; not implemented for &#39;Long&#39;</span>
-    <span class="n">dst_trans_src</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_perspective_transform</span><span class="p">(</span><span class="n">src_box</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tensor</span><span class="p">),</span> <span class="n">dst_box</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">tensor</span><span class="p">))</span>
+    <span class="n">dst_trans_src</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_perspective_transform</span><span class="p">(</span><span class="n">src_box</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">),</span> <span class="n">dst_box</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">))</span>
 
-    <span class="n">bbox</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">infer_bbox_shape</span><span class="p">(</span><span class="n">dst_box</span><span class="p">)</span>
+    <span class="n">bbox</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">infer_bbox_shape</span><span class="p">(</span><span class="n">dst_box</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Cropping height, width and depth must be exact same in a batch. &quot;</span>
@@ -542,22 +546,22 @@
     <span class="n">w_out</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 
     <span class="k">return</span> <span class="n">crop_by_transform_mat</span><span class="p">(</span>
-        <span class="n">tensor</span><span class="p">,</span> <span class="n">dst_trans_src</span><span class="p">,</span> <span class="p">(</span><span class="n">h_out</span><span class="p">,</span> <span class="n">w_out</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span>
+        <span class="n">input_tensor</span><span class="p">,</span> <span class="n">dst_trans_src</span><span class="p">,</span> <span class="p">(</span><span class="n">h_out</span><span class="p">,</span> <span class="n">w_out</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span>
     <span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">crop_by_transform_mat</span><span class="p">(</span>
-    <span class="n">tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">transform</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">transform</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">out_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">padding_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;zeros&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Perform crop transform on 2D images (4D tensor) given a perspective transformation matrix.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        tensor: the 2D image tensor with shape (B, C, H, W).</span>
+<span class="sd">        input_tensor: the 2D image tensor with shape (B, C, H, W).</span>
 <span class="sd">        transform: a perspective transformation matrix with shape (B, 3, 3).</span>
 <span class="sd">        out_size: size of the output image (height, width).</span>
 <span class="sd">        mode: interpolation mode to calculate output values</span>
@@ -570,24 +574,31 @@
 <span class="sd">        the output tensor with patches.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># simulate broadcasting</span>
-    <span class="n">dst_trans_src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">transform</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">dst_trans_src</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span>
+        <span class="n">transform</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="p">)</span>
 
-    <span class="n">patches</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">warp_affine</span><span class="p">(</span>
-        <span class="n">tensor</span><span class="p">,</span> <span class="n">dst_trans_src</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="n">out_size</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span>
+    <span class="n">patches</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">warp_affine</span><span class="p">(</span>
+        <span class="n">input_tensor</span><span class="p">,</span>
+        <span class="n">dst_trans_src</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span>
+        <span class="n">out_size</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+        <span class="n">padding_mode</span><span class="o">=</span><span class="n">padding_mode</span><span class="p">,</span>
+        <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">patches</span>
 
 
 <div class="viewcode-block" id="crop_by_indices"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.crop_by_indices">[docs]</a><span class="k">def</span> <span class="nf">crop_by_indices</span><span class="p">(</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">src_box</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">input_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">src_box</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
     <span class="n">size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">interpolation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;bilinear&#39;</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">antialias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">shape_compensation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;resize&quot;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Crop tensors with naive indices.</span>
 
 <span class="sd">    Args:</span>
@@ -606,8 +617,8 @@
 <span class="sd">        shape_compensation: if the cropped slice sizes are not exactly align `size`, the image can either be padded</span>
 <span class="sd">            or resized.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">src_box</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+    <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">src_box</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
     <span class="n">x1</span> <span class="o">=</span> <span class="n">src</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="n">src</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">y1</span> <span class="o">=</span> <span class="n">src</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -620,7 +631,7 @@
         <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">y2</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">sorted</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
         <span class="o">==</span> <span class="mi">1</span>
     <span class="p">):</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">y2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>  <span class="c1"># type:ignore</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">y2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">x2</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>  <span class="c1"># type: ignore[misc]</span>
         <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="n">size</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">resize</span><span class="p">(</span>
                 <span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="n">antialias</span>
@@ -629,14 +640,14 @@
     <span class="k">if</span> <span class="n">size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">infer_bbox_shape</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
         <span class="n">size</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">sorted</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">w</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="nb">sorted</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">input_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
     <span class="c1"># Find out the cropped shapes that need to be resized.</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
-        <span class="n">_out</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="n">y1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">y2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>  <span class="c1"># type: ignore[misc]</span>
+        <span class="n">_out</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="n">y1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">y2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">:</span> <span class="n">x2</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>  <span class="c1"># type: ignore[misc]</span>
         <span class="k">if</span> <span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="n">size</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">shape_compensation</span> <span class="o">==</span> <span class="s2">&quot;resize&quot;</span><span class="p">:</span>
                 <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span>
-                    <span class="n">_out</span><span class="p">,</span>  <span class="c1"># type:ignore</span>
+                    <span class="n">_out</span><span class="p">,</span>
                     <span class="n">size</span><span class="p">,</span>
                     <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span>
                     <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span><span class="p">,</span>
@@ -644,9 +655,9 @@
                     <span class="n">antialias</span><span class="o">=</span><span class="n">antialias</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_out</span>  <span class="c1"># type:ignore</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_out</span>
     <span class="k">return</span> <span class="n">out</span></div>
 </pre></div>
         </article>

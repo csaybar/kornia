@@ -311,11 +311,11 @@
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">tensor</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;tensor_to_gradcheck_var&quot;</span><span class="p">,</span>
@@ -352,7 +352,7 @@
 <span class="c1"># TODO: Isn&#39;t this function duplicated with eye_like?</span>
 <div class="viewcode-block" id="create_eye_batch"><a class="viewcode-back" href="../../testing.html#kornia.feature.create_eye_batch">[docs]</a><span class="k">def</span> <span class="nf">create_eye_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create a batch of identity matrices of shape Bx3x3.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">eye_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">eye</span><span class="p">(</span><span class="n">eye_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">create_random_homography</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">std_val</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
@@ -375,7 +375,7 @@
 <span class="k">def</span> <span class="nf">dict_to</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="n">val</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="n">val</span>
     <span class="k">return</span> <span class="n">out</span>
 
 
@@ -386,13 +386,13 @@
 
 <span class="k">def</span> <span class="nf">check_is_tensor</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Check whether the supplied object is a tensor.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a torch.Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">create_rectified_fundamental_matrix</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create a batch of rectified fundamental matrices of shape Bx3x3.&quot;&quot;&quot;</span>
-    <span class="n">F_rect</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">F_rect</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">F_repeat</span> <span class="o">=</span> <span class="n">F_rect</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">F_repeat</span>
 
@@ -473,13 +473,13 @@
 
 <span class="k">def</span> <span class="nf">generate_two_view_random_scene</span><span class="p">(</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">),</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
     <span class="kn">from</span> <span class="nn">kornia.geometry</span> <span class="kn">import</span> <span class="n">epipolar</span> <span class="k">as</span> <span class="n">epi</span>
 
     <span class="n">num_views</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">num_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
 
-    <span class="n">scene</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">epi</span><span class="o">.</span><span class="n">generate_scene</span><span class="p">(</span><span class="n">num_views</span><span class="p">,</span> <span class="n">num_points</span><span class="p">)</span>
+    <span class="n">scene</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">epi</span><span class="o">.</span><span class="n">generate_scene</span><span class="p">(</span><span class="n">num_views</span><span class="p">,</span> <span class="n">num_points</span><span class="p">)</span>
 
     <span class="c1"># internal parameters (same K)</span>
     <span class="n">K1</span> <span class="o">=</span> <span class="n">scene</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
@@ -561,41 +561,48 @@
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">rtols</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">atols</span><span class="p">)</span>
 
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="c1"># torch.testing.assert_close is only available for torch&gt;=1.9</span>
-    <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_close</span> <span class="k">as</span> <span class="n">_assert_close</span>  <span class="c1"># type: ignore</span>
-
-    <span class="k">def</span> <span class="nf">assert_close</span><span class="p">(</span>
-        <span class="n">actual</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-        <span class="n">expected</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-        <span class="o">*</span><span class="p">,</span>
-        <span class="n">rtol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">atol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">rtol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">atol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># `torch.testing.assert_close` used different default tolerances than `torch.testing.assert_allclose`.</span>
-            <span class="c1"># TODO: remove this special handling as soon as https://github.com/kornia/kornia/issues/1134 is resolved.</span>
-            <span class="c1">#  Basically, this whole wrapper function can be removed and `torch.testing.assert_close` can be used</span>
-            <span class="c1">#  directly.</span>
-            <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span> <span class="o">=</span> <span class="n">_default_tolerances</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">_assert_close</span><span class="p">(</span>
-            <span class="n">actual</span><span class="p">,</span>
-            <span class="n">expected</span><span class="p">,</span>
-            <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span>
-            <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
-            <span class="c1"># this is the default value for torch&gt;=1.10, but not for torch==1.9</span>
-            <span class="c1"># TODO: remove this if kornia relies on torch&gt;=1.10</span>
-            <span class="n">check_stride</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-        <span class="p">)</span>
-
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="c1"># TODO: remove this branch if kornia relies on torch&gt;=1.9</span>
-    <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_allclose</span> <span class="k">as</span> <span class="n">assert_close</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">assert_close</span><span class="p">(</span>
+        <span class="n">actual</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">expected</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rtol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">atol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="o">...</span>
 
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># torch.testing.assert_close is only available for torch&gt;=1.9</span>
+        <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_close</span> <span class="k">as</span> <span class="n">_assert_close</span>
+
+        <span class="k">def</span> <span class="nf">assert_close</span><span class="p">(</span>
+            <span class="n">actual</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">expected</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
+            <span class="o">*</span><span class="p">,</span>
+            <span class="n">rtol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">atol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rtol</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">atol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># `torch.testing.assert_close` used different default tolerances than `torch.testing.assert_allclose`.</span>
+                <span class="c1"># TODO: remove this special handling as soon as https://github.com/kornia/kornia/issues/1134 is resolved</span>
+                <span class="c1">#  Basically, this whole wrapper function can be removed and `torch.testing.assert_close` can be used</span>
+                <span class="c1">#  directly.</span>
+                <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span> <span class="o">=</span> <span class="n">_default_tolerances</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">_assert_close</span><span class="p">(</span>
+                <span class="n">actual</span><span class="p">,</span>
+                <span class="n">expected</span><span class="p">,</span>
+                <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span>
+                <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+                <span class="c1"># this is the default value for torch&gt;=1.10, but not for torch==1.9</span>
+                <span class="c1"># TODO: remove this if kornia relies on torch&gt;=1.10</span>
+                <span class="n">check_stride</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="c1"># TODO: remove this branch if kornia relies on torch&gt;=1.9</span>
+        <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_allclose</span> <span class="k">as</span> <span class="n">assert_close</span>
 
 <span class="c1"># Logger api</span>
 

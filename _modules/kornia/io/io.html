@@ -313,6 +313,7 @@
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.utils</span> <span class="kn">import</span> <span class="n">dlpack</span>  <span class="c1"># TODO: remove this  if kornia relies on torch&gt;=1.10</span>
 
 <span class="kn">from</span> <span class="nn">kornia.color</span> <span class="kn">import</span> <span class="n">rgb_to_grayscale</span><span class="p">,</span> <span class="n">rgba_to_rgb</span>
 <span class="kn">from</span> <span class="nn">kornia.color.gray</span> <span class="kn">import</span> <span class="n">grayscale_to_rgb</span>
@@ -340,7 +341,7 @@
     <span class="c1"># for convenience use the torch dlpack parser to get a zero copy torch.Tensor</span>
     <span class="c1"># TODO: evaluate other potential API so that we can return in numpy, jax, mxnet since</span>
     <span class="c1"># the kornia_rs cv::Tensor has this ability.</span>
-    <span class="n">th_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">dlpack</span><span class="o">.</span><span class="n">from_dlpack</span><span class="p">(</span><span class="n">cv_tensor</span><span class="p">)</span>  <span class="c1"># type: ignore # HxWx3</span>
+    <span class="n">th_tensor</span> <span class="o">=</span> <span class="n">dlpack</span><span class="o">.</span><span class="n">from_dlpack</span><span class="p">(</span><span class="n">cv_tensor</span><span class="p">)</span>  <span class="c1"># HxWx3</span>
     <span class="c1"># move the tensor to the desired device, move the data layout to CHW and clone</span>
     <span class="c1"># to return an owned data tensor.</span>
     <span class="k">return</span> <span class="n">th_tensor</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">device</span><span class="p">))</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>  <span class="c1"># CxHxW</span>

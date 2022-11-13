@@ -309,9 +309,8 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Device</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">zeros</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">find_fundamental</span><span class="p">,</span>
     <span class="n">find_homography_dlt</span><span class="p">,</span>
@@ -330,7 +329,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;RANSAC&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="RANSAC"><a class="viewcode-back" href="../../../geometry.ransac.html#kornia.geometry.ransac.RANSAC">[docs]</a><span class="k">class</span> <span class="nc">RANSAC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="RANSAC"><a class="viewcode-back" href="../../../geometry.ransac.html#kornia.geometry.ransac.RANSAC">[docs]</a><span class="k">class</span> <span class="nc">RANSAC</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Module for robust geometry estimation with RANSAC. https://en.wikipedia.org/wiki/Random_sample_consensus.</span>
 
 <span class="sd">    Args:</span>
@@ -362,9 +361,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">max_lo_iters</span> <span class="o">=</span> <span class="n">max_lo_iters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">=</span> <span class="n">model_type</span>
         <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;homography&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">oneway_transfer_error</span>  <span class="c1"># type: ignore</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt</span>  <span class="c1"># type: ignore</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt_iterated</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">oneway_transfer_error</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt_iterated</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span> <span class="o">=</span> <span class="mi">4</span>
         <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;homography_from_linesegments&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">line_segment_transfer_error_one_way</span>  <span class="c1"># type: ignore</span>
@@ -381,9 +380,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2"> is unknown. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">supported_models</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pop_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pop_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Minimal sampler, but unlike traditional RANSAC we sample in batches to get benefit of the parallel</span>
 <span class="sd">        processing, esp.</span>
 
@@ -485,8 +482,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">validate_inputs</span><span class="p">(</span><span class="n">kp1</span><span class="p">,</span> <span class="n">kp2</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
         <span class="n">best_score_total</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span><span class="p">)</span>
         <span class="n">num_tc</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kp1</span><span class="p">)</span>
-        <span class="n">best_model_total</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">inliers_best_total</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_tc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+        <span class="n">best_model_total</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">inliers_best_total</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">num_tc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">kp1</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
             <span class="c1"># Sample minimal samples in batch to estimate models</span>
             <span class="n">idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span><span class="p">,</span> <span class="n">num_tc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">kp1</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>

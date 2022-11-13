@@ -305,12 +305,13 @@
         <article role="main">
           <h1>Source code for kornia.geometry.transform.flips</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Vflip&quot;</span><span class="p">,</span> <span class="s2">&quot;Hflip&quot;</span><span class="p">,</span> <span class="s2">&quot;Rot180&quot;</span><span class="p">,</span> <span class="s2">&quot;rot180&quot;</span><span class="p">,</span> <span class="s2">&quot;hflip&quot;</span><span class="p">,</span> <span class="s2">&quot;vflip&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Vflip">[docs]</a><span class="k">class</span> <span class="nc">Vflip</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="Vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Vflip">[docs]</a><span class="k">class</span> <span class="nc">Vflip</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Vertically flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
@@ -334,14 +335,14 @@
 <span class="sd">                  [0., 0., 0.]]]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">vflip</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
 
 
-<div class="viewcode-block" id="Hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Hflip">[docs]</a><span class="k">class</span> <span class="nc">Hflip</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="Hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Hflip">[docs]</a><span class="k">class</span> <span class="nc">Hflip</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Horizontally flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
@@ -365,14 +366,14 @@
 <span class="sd">                  [1., 1., 0.]]]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">hflip</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
 
 
-<div class="viewcode-block" id="Rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Rot180">[docs]</a><span class="k">class</span> <span class="nc">Rot180</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="Rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.Rot180">[docs]</a><span class="k">class</span> <span class="nc">Rot180</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate a tensor image or a batch of tensor images 180 degrees.</span>
 
 <span class="sd">    Input must be a tensor of shape (C, H, W) or a batch of tensors :math:`(*, C, H, W)`.</span>
@@ -393,14 +394,14 @@
 <span class="sd">                  [0., 0., 0.]]]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">rot180</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
 
 
-<div class="viewcode-block" id="rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.rot180">[docs]</a><span class="k">def</span> <span class="nf">rot180</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="rot180"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.rot180">[docs]</a><span class="k">def</span> <span class="nf">rot180</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotate a tensor image or a batch of tensor images 180 degrees.</span>
 
 <span class="sd">    .. image:: _static/img/rot180.png</span>
@@ -417,7 +418,7 @@
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
 
 
-<div class="viewcode-block" id="hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.hflip">[docs]</a><span class="k">def</span> <span class="nf">hflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="hflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.hflip">[docs]</a><span class="k">def</span> <span class="nf">hflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Horizontally flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/hflip.png</span>
@@ -434,7 +435,7 @@
     <span class="k">return</span> <span class="nb">input</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">)]</span></div>
 
 
-<div class="viewcode-block" id="vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.vflip">[docs]</a><span class="k">def</span> <span class="nf">vflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="vflip"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.vflip">[docs]</a><span class="k">def</span> <span class="nf">vflip</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Vertically flip a tensor image or a batch of tensor images.</span>
 
 <span class="sd">    .. image:: _static/img/vflip.png</span>
