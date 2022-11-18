@@ -308,7 +308,7 @@
 <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/so2.py</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">zeros_like</span>
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span>
 
 
@@ -326,7 +326,7 @@
 <span class="sd">        &gt;&gt;&gt; imag = torch.tensor([2.0])</span>
 <span class="sd">        &gt;&gt;&gt; So2(torch.complex(real, imag))</span>
 <span class="sd">        Parameter containing:</span>
-<span class="sd">        tensor([[1.+2.j]], requires_grad=True)</span>
+<span class="sd">        tensor([1.+2.j], requires_grad=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="So2.__init__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -338,11 +338,11 @@
 <span class="sd">            z: Complex number with the shape of :math:`(B, 1)` or :math:`(B)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; real = torch.tensor([1.0])</span>
-<span class="sd">            &gt;&gt;&gt; imag = torch.tensor([2.0])</span>
-<span class="sd">            &gt;&gt;&gt; So2(torch.complex(real, imag))</span>
+<span class="sd">            &gt;&gt;&gt; real = torch.tensor(1.0)</span>
+<span class="sd">            &gt;&gt;&gt; imag = torch.tensor(2.0)</span>
+<span class="sd">            &gt;&gt;&gt; So2(torch.complex(real, imag)).z</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1.+2.j]], requires_grad=True)</span>
+<span class="sd">            tensor(1.+2.j, requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
@@ -351,7 +351,6 @@
         <span class="n">len_z_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z_shape</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">z_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">z</span><span class="o">.</span><span class="n">numel</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 1], [B] or []. Got: </span><span class="si">{</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="So2.__repr__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -382,7 +381,6 @@
                 <span class="ow">or</span> <span class="p">(</span><span class="n">len_right_shape</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">len_right_shape</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
             <span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 2, 1], [2, 1] or [1, 2]. Got: </span><span class="si">{</span><span class="n">right_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span> <span class="o">@</span> <span class="n">right</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not So2 or Tensor type. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -405,7 +403,7 @@
 <span class="sd">            &gt;&gt;&gt; s = So2.exp(v)</span>
 <span class="sd">            &gt;&gt;&gt; s</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[4.6329e-05+1.j]], requires_grad=True)</span>
+<span class="sd">            tensor([4.6329e-05+1.j], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
         <span class="n">theta_shape</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">shape</span>
@@ -425,7 +423,7 @@
 <span class="sd">            &gt;&gt;&gt; real = torch.tensor([1.0])</span>
 <span class="sd">            &gt;&gt;&gt; imag = torch.tensor([3.0])</span>
 <span class="sd">            &gt;&gt;&gt; So2(torch.complex(real, imag)).log()</span>
-<span class="sd">            tensor([[1.2490]], grad_fn=&lt;Atan2Backward0&gt;)</span>
+<span class="sd">            tensor([1.2490], grad_fn=&lt;Atan2Backward0&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">)</span></div>
 
@@ -434,13 +432,13 @@
         <span class="sd">&quot;&quot;&quot;Converts elements from vector space to lie algebra. Returns matrix of shape :math:`(B, 2, 2)`.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            theta: angle in radians of shape :math:`(B, 1)`.</span>
+<span class="sd">            theta: angle in radians of shape :math:`(B)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; theta = torch.tensor([3.1415/2])</span>
+<span class="sd">            &gt;&gt;&gt; theta = torch.tensor(3.1415/2)</span>
 <span class="sd">            &gt;&gt;&gt; So2.hat(theta)</span>
-<span class="sd">            tensor([[[0.0000, 1.5707],</span>
-<span class="sd">                     [1.5707, 0.0000]]])</span>
+<span class="sd">            tensor([[0.0000, 1.5707],</span>
+<span class="sd">                    [1.5707, 0.0000]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
         <span class="n">theta_shape</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">shape</span>
@@ -451,24 +449,24 @@
             <span class="ow">or</span> <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
         <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 1] or [B]. Got: </span><span class="si">{</span><span class="n">theta_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">row0</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">row1</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+        <span class="n">row0</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">row1</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="n">theta</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">stack</span><span class="p">((</span><span class="n">row0</span><span class="p">,</span> <span class="n">row1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="So2.matrix"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.matrix">[docs]</a>    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Convert the complex number to a rotation matrix of shape :math:`(B, 2, 2)`.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; s = So2.identity(batch_size=1)</span>
+<span class="sd">            &gt;&gt;&gt; s = So2.identity()</span>
 <span class="sd">            &gt;&gt;&gt; m = s.matrix()</span>
 <span class="sd">            &gt;&gt;&gt; m</span>
-<span class="sd">            tensor([[[1., -0.],</span>
-<span class="sd">                     [0., 1.]]], grad_fn=&lt;CatBackward0&gt;)</span>
+<span class="sd">            tensor([[1., -0.],</span>
+<span class="sd">                    [0., 1.]], grad_fn=&lt;StackBackward0&gt;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">row0</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">row1</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">real</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">row0</span><span class="p">,</span> <span class="n">row1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">stack</span><span class="p">((</span><span class="n">row0</span><span class="p">,</span> <span class="n">row1</span><span class="p">),</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="So2.from_matrix"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.from_matrix">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_matrix</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;So2&#39;</span><span class="p">:</span>
@@ -480,9 +478,9 @@
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; m = torch.eye(2)</span>
 <span class="sd">            &gt;&gt;&gt; s = So2.from_matrix(m)</span>
-<span class="sd">            &gt;&gt;&gt; s</span>
+<span class="sd">            &gt;&gt;&gt; s.z</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1.+0.j]], requires_grad=True)</span>
+<span class="sd">            tensor(1.+0.j, requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
         <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span>
@@ -493,7 +491,8 @@
             <span class="ow">or</span> <span class="p">(</span><span class="n">len_matrix_shape</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">len_matrix_shape</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
         <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 2, 2] or [2, 2]. Got: </span><span class="si">{</span><span class="n">matrix_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span></div>
+        <span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="So2.identity"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.identity">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;So2&#39;</span><span class="p">:</span>
@@ -506,25 +505,24 @@
 <span class="sd">            &gt;&gt;&gt; s = So2.identity(batch_size=2)</span>
 <span class="sd">            &gt;&gt;&gt; s</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1.+0.j],</span>
-<span class="sd">                    [1.+0.j]], requires_grad=True)</span>
+<span class="sd">            tensor([1.+0.j, 1.+0.j], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">real_data</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="n">imag_data</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">real_data</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">imag_data</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">batch_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;batch_size must be positive&quot;</span><span class="p">)</span>
-            <span class="n">real_data</span> <span class="o">=</span> <span class="n">real_data</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">imag_data</span> <span class="o">=</span> <span class="n">imag_data</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">real_data</span> <span class="o">=</span> <span class="n">real_data</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">imag_data</span> <span class="o">=</span> <span class="n">imag_data</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="n">real_data</span><span class="p">,</span> <span class="n">imag_data</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="So2.inverse"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;So2&#39;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns the inverse transformation.</span>
 
 <span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; s = So2.identity(batch_size=1)</span>
-<span class="sd">            &gt;&gt;&gt; s.inverse()</span>
+<span class="sd">            &gt;&gt;&gt; s = So2.identity()</span>
+<span class="sd">            &gt;&gt;&gt; s.inverse().z</span>
 <span class="sd">            Parameter containing:</span>
-<span class="sd">            tensor([[1.+0.j]], requires_grad=True)</span>
+<span class="sd">            tensor(1.+0.j, requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">So2</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span></div></div>
 </pre></div>
