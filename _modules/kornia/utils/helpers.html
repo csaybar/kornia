@@ -310,6 +310,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">overload</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.linalg</span> <span class="kn">import</span> <span class="n">inv_ex</span>
 
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span>
 <span class="kn">from</span> <span class="nn">kornia.utils._compat</span> <span class="kn">import</span> <span class="n">torch_version_geq</span>
@@ -543,11 +544,6 @@
 <span class="k">def</span> <span class="nf">safe_inverse_with_mask</span><span class="p">(</span><span class="n">A</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper function, which avoids crashing because of non-invertable matrix input and outputs the mask of valid</span>
 <span class="sd">    solution.&quot;&quot;&quot;</span>
-    <span class="c1"># Based on https://github.com/pytorch/pytorch/issues/31546#issuecomment-694135622</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">torch_version_geq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
-        <span class="n">inv</span> <span class="o">=</span> <span class="n">_torch_inverse_cast</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;PyTorch version &lt; 1.9, inverse validness mask maybe not correct&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">inv</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">A</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A must be Tensor. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
@@ -558,19 +554,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype_original</span>
 
-    <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-        <span class="c1"># TODO: remove this branch when kornia relies on torch &gt;= 1.9</span>
-        <span class="n">dummy</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">dummy</span><span class="p">,</span> <span class="n">dummy</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">torch_version_geq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
-            <span class="kn">from</span> <span class="nn">torch.linalg</span> <span class="kn">import</span> <span class="n">inv_ex</span>  <span class="c1"># (not available in 1.8)</span>
-
-            <span class="n">inverse</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">inv_ex</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
-            <span class="n">mask</span> <span class="o">=</span> <span class="n">info</span> <span class="o">==</span> <span class="mi">0</span>
-            <span class="k">return</span> <span class="n">inverse</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype_original</span><span class="p">),</span> <span class="n">mask</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;This function just work with pytorch newer than 1.9.0&#39;</span><span class="p">)</span>
+    <span class="n">inverse</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">inv_ex</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">info</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">inverse</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype_original</span><span class="p">),</span> <span class="n">mask</span>
 </pre></div>
         </article>
       </div>
