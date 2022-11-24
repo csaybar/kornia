@@ -309,6 +309,12 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">zeros_like</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.liegroup._utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">check_so2_matrix_shape</span><span class="p">,</span>
+    <span class="n">check_so2_t_shape</span><span class="p">,</span>
+    <span class="n">check_so2_theta_shape</span><span class="p">,</span>
+    <span class="n">check_so2_z_shape</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span>
 
 
@@ -347,10 +353,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-        <span class="n">z_shape</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">len_z_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z_shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">z_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">z</span><span class="o">.</span><span class="n">numel</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="n">len_z_shape</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 1], [B] or []. Got: </span><span class="si">{</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">check_so2_z_shape</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_z</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="So2.__repr__"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -373,14 +376,7 @@
             <span class="n">out</span> <span class="o">=</span> <span class="n">So2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">right</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
             <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-            <span class="n">right_shape</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">shape</span>
-            <span class="n">len_right_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">right_shape</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="p">(</span><span class="n">len_right_shape</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="p">(</span><span class="n">right_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">right_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">))</span>
-                <span class="ow">or</span> <span class="p">(</span><span class="n">len_right_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">))</span>
-                <span class="ow">or</span> <span class="p">(</span><span class="n">len_right_shape</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">len_right_shape</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 2, 1], [2, 1] or [1, 2]. Got: </span><span class="si">{</span><span class="n">right_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">check_so2_t_shape</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
             <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span> <span class="o">@</span> <span class="n">right</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not So2 or Tensor type. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -406,14 +402,7 @@
 <span class="sd">            tensor([4.6329e-05+1.j], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-        <span class="n">theta_shape</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">len_theta_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta_shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">theta_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">theta</span><span class="o">.</span><span class="n">numel</span><span class="p">())</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 1] or [B]. Got: </span><span class="si">{</span><span class="n">theta_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">check_so2_theta_shape</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">So2</span><span class="p">(</span><span class="nb">complex</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">cos</span><span class="p">(),</span> <span class="n">theta</span><span class="o">.</span><span class="n">sin</span><span class="p">()))</span></div>
 
 <div class="viewcode-block" id="So2.log"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -441,14 +430,7 @@
 <span class="sd">                    [1.5707, 0.0000]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-        <span class="n">theta_shape</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">len_theta_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta_shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">theta_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">theta</span><span class="o">.</span><span class="n">numel</span><span class="p">())</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_theta_shape</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 1] or [B]. Got: </span><span class="si">{</span><span class="n">theta_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">check_so2_theta_shape</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
         <span class="n">row0</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">row1</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="n">theta</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -483,14 +465,7 @@
 <span class="sd">            tensor(1.+0.j, requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-        <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">len_matrix_shape</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix_shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="p">(</span><span class="n">len_matrix_shape</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="p">(</span><span class="n">matrix_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">))</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_matrix_shape</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="n">matrix_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">))</span>
-            <span class="ow">or</span> <span class="p">(</span><span class="n">len_matrix_shape</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">len_matrix_shape</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input size, we expect [B, 2, 2] or [2, 2]. Got: </span><span class="si">{</span><span class="n">matrix_shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">check_so2_matrix_shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
         <span class="n">z</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">matrix</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></div>
 
