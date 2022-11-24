@@ -313,10 +313,9 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">GeometricAugmentationBase2D</span><span class="p">,</span>
     <span class="n">IntensityAugmentationBase2D</span><span class="p">,</span>
-    <span class="n">MixAugmentationBase</span><span class="p">,</span>
+    <span class="n">MixAugmentationBaseV2</span><span class="p">,</span>
     <span class="n">RandomCrop</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">kornia.augmentation._2d.mix.base</span> <span class="kn">import</span> <span class="n">MixAugmentationBaseV2</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.base</span> <span class="kn">import</span> <span class="n">_AugmentationBase</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.base</span> <span class="kn">import</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">SequentialBase</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.utils</span> <span class="kn">import</span> <span class="n">ApplyInverseInterface</span><span class="p">,</span> <span class="n">InputApplyInverse</span>
@@ -359,14 +358,13 @@
 <span class="sd">        ...     kornia.filters.MedianBlur((3, 3)),</span>
 <span class="sd">        ...     kornia.augmentation.RandomAffine(360, p=1.0),</span>
 <span class="sd">        ...     kornia.enhance.Invert(),</span>
-<span class="sd">        ...     kornia.augmentation.RandomMixUp(p=1.0),</span>
+<span class="sd">        ...     kornia.augmentation.RandomMixUpV2(p=1.0),</span>
 <span class="sd">        ...     same_on_batch=True,</span>
 <span class="sd">        ...     random_apply=10,</span>
 <span class="sd">        ... )</span>
 <span class="sd">        &gt;&gt;&gt; out, lab = aug_list(input, label=label)</span>
 <span class="sd">        &gt;&gt;&gt; lab</span>
-<span class="sd">        tensor([[0.0000, 1.0000, 0.1214],</span>
-<span class="sd">                [1.0000, 0.0000, 0.1214]])</span>
+<span class="sd">        tensor([0, 1])</span>
 <span class="sd">        &gt;&gt;&gt; out.shape</span>
 <span class="sd">        torch.Size([2, 3, 5, 6])</span>
 
@@ -396,18 +394,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Module</span><span class="p">,</span>
         <span class="n">same_on_batch</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">return_transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">keepdim</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">random_apply_weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">if_unsupported_ops</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;raise&quot;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">return_transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;`return_transform` is deprecated. Please access&quot;</span>
-                <span class="s2">&quot; `.transform_matrix` in `AugmentationSequential` instead.&quot;</span>
-            <span class="p">)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">return_transform</span><span class="o">=</span><span class="n">return_transform</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_random_apply</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">random_apply_weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_apply_weights</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -484,11 +476,8 @@
 
 <span class="sd">        Special operations needed for label-involved augmentations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">named_modules</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="p">(</span><span class="n">MixAugmentationBase</span><span class="p">,)):</span>  <span class="c1"># NOTE: MixV2 will not be a special op in the future.</span>
-                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">indices</span>
+        <span class="c1"># NOTE: MixV2 will not be a special op in the future.</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">named_modules</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">)]</span>
 
     <span class="k">def</span> <span class="nf">get_forward_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -529,7 +518,7 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">RandomCrop</span><span class="p">):</span>
                 <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters_precrop</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mod_param</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
                 <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mod_param</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -577,9 +566,7 @@
         <span class="c1"># Define as 1 for broadcasting</span>
         <span class="n">res_mat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">named_modules</span><span class="p">,</span> <span class="n">params</span> <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
-                <span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">MixAugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">)</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">):</span>
                 <span class="n">pdata</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
                 <span class="n">to_apply</span> <span class="o">=</span> <span class="n">pdata</span><span class="p">[</span><span class="s1">&#39;batch_prob&#39;</span><span class="p">]</span>
                 <span class="n">ori_shape</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
@@ -688,7 +675,7 @@
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
             <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="nb">input</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_to_input</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">SequentialBase</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">SequentialBase</span><span class="p">)):</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">_params</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
