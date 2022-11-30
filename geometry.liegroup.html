@@ -570,6 +570,28 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.random">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.random" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a So3 group representing a random rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <em>optional</em>) – the batch size of the underlying data.
+Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><code class="xref py py-class docutils literal notranslate"><span class="pre">So3</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.rot_x">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rot_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.rot_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.rot_x" title="Permalink to this definition">#</a></dt>
 <dd><p>Construct a x-axis rotation.</p>
@@ -886,6 +908,28 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><code class="xref py py-class docutils literal notranslate"><span class="pre">So3</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.random">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3.random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3.random" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a Se3 group representing a random transformation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <em>optional</em>) – the batch size of the underlying data.
+Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se3</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se3" title="kornia.geometry.liegroup.se3.Se3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se3</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1254,6 +1298,28 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.random">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so2.html#So2.random"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So2.random" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a So2 group representing a random rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>], <em>optional</em>) – the batch size of the underlying data.
+Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">So2</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">So2</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.liegroup.So2" title="kornia.geometry.liegroup.so2.So2"><code class="xref py py-class docutils literal notranslate"><span class="pre">So2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.z">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.So2.z" title="Permalink to this definition">#</a></dt>
@@ -1340,6 +1406,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.log"><code class="docutils literal notranslate"><span class="pre">So3.log()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.matrix"><code class="docutils literal notranslate"><span class="pre">So3.matrix()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.q"><code class="docutils literal notranslate"><span class="pre">So3.q</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.So3.random"><code class="docutils literal notranslate"><span class="pre">So3.random()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.rot_x"><code class="docutils literal notranslate"><span class="pre">So3.rot_x()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.rot_y"><code class="docutils literal notranslate"><span class="pre">So3.rot_y()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So3.rot_z"><code class="docutils literal notranslate"><span class="pre">So3.rot_z()</span></code></a></li>
@@ -1358,6 +1425,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.log"><code class="docutils literal notranslate"><span class="pre">Se3.log()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.matrix"><code class="docutils literal notranslate"><span class="pre">Se3.matrix()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.r"><code class="docutils literal notranslate"><span class="pre">Se3.r</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.random"><code class="docutils literal notranslate"><span class="pre">Se3.random()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_x"><code class="docutils literal notranslate"><span class="pre">Se3.rot_x()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_y"><code class="docutils literal notranslate"><span class="pre">Se3.rot_y()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_z"><code class="docutils literal notranslate"><span class="pre">Se3.rot_z()</span></code></a></li>
@@ -1381,6 +1449,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.inverse"><code class="docutils literal notranslate"><span class="pre">So2.inverse()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.log"><code class="docutils literal notranslate"><span class="pre">So2.log()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.matrix"><code class="docutils literal notranslate"><span class="pre">So2.matrix()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.So2.random"><code class="docutils literal notranslate"><span class="pre">So2.random()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.z"><code class="docutils literal notranslate"><span class="pre">So2.z</span></code></a></li>
 </ul>
 </li>

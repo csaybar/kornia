@@ -557,6 +557,19 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">So3</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="o">.</span><span class="n">conj</span><span class="p">())</span></div>
 
+<div class="viewcode-block" id="So3.random"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So3.random">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;So3&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a So3 group representing a random rotation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            batch_size: the batch size of the underlying data.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; s = So3.random()</span>
+<span class="sd">            &gt;&gt;&gt; s = So3.random(batch_size=3)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">Quaternion</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="p">))</span></div>
+
 <div class="viewcode-block" id="So3.rot_x"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So3.rot_x">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">rot_x</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;So3&quot;</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Construct a x-axis rotation.</span>
