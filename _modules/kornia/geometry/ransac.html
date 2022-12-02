@@ -306,7 +306,7 @@
           <h1>Source code for kornia.geometry.ransac</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Module containing RANSAC modules.&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 
@@ -360,23 +360,28 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">confidence</span> <span class="o">=</span> <span class="n">confidence</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_lo_iters</span> <span class="o">=</span> <span class="n">max_lo_iters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">=</span> <span class="n">model_type</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;homography&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">oneway_transfer_error</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_homography_dlt_iterated</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span> <span class="o">=</span> <span class="mi">4</span>
         <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;homography_from_linesegments&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">line_segment_transfer_error_one_way</span>  <span class="c1"># type: ignore</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_homography_lines_dlt</span>  <span class="c1"># type: ignore</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_homography_lines_dlt_iterated</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">line_segment_transfer_error_one_way</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_homography_lines_dlt</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_homography_lines_dlt_iterated</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span> <span class="o">=</span> <span class="mi">4</span>
         <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;fundamental&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">symmetrical_epipolar_distance</span>  <span class="c1"># type: ignore</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_fundamental</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">error_fn</span> <span class="o">=</span> <span class="n">symmetrical_epipolar_distance</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">minimal_solver</span> <span class="o">=</span> <span class="n">find_fundamental</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">minimal_sample_size</span> <span class="o">=</span> <span class="mi">8</span>
             <span class="c1"># ToDo: implement 7pt solver instead of 8pt minimal_solver</span>
             <span class="c1"># https://github.com/opencv/opencv/blob/master/modules/calib3d/src/fundam.cpp#L498</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_fundamental</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">polisher_solver</span> <span class="o">=</span> <span class="n">find_fundamental</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2"> is unknown. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">supported_models</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 

@@ -434,6 +434,7 @@
     <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">num_feats</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
         <span class="n">dev</span><span class="p">:</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">device</span>
         <span class="n">dtype</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">dtype</span>
+        <span class="n">sigmas</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span>
         <span class="n">sp</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
         <span class="n">all_responses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">all_lafs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -450,7 +451,7 @@
                 <span class="c1"># We want nms for scale responses, so reorder to (B, CH, L, H, W)</span>
                 <span class="n">oct_resp</span> <span class="o">=</span> <span class="n">oct_resp</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
                 <span class="c1"># 3rd extra level is required for DoG only</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">extra_levels</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">extra_levels</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">extra_levels</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">oct_resp</span> <span class="o">=</span> <span class="n">oct_resp</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
             <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -458,6 +459,8 @@
                 <span class="n">oct_resp</span> <span class="o">=</span> <span class="n">oct_mask</span> <span class="o">*</span> <span class="n">oct_resp</span>
 
             <span class="c1"># Differentiable nms</span>
+            <span class="n">coord_max</span><span class="p">:</span> <span class="n">Tensor</span>
+            <span class="n">response_max</span><span class="p">:</span> <span class="n">Tensor</span>
             <span class="n">coord_max</span><span class="p">,</span> <span class="n">response_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms</span><span class="p">(</span><span class="n">oct_resp</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">minima_are_also_good</span><span class="p">:</span>
                 <span class="n">coord_min</span><span class="p">,</span> <span class="n">response_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms</span><span class="p">(</span><span class="o">-</span><span class="n">oct_resp</span><span class="p">)</span>
@@ -478,9 +481,18 @@
             <span class="n">B</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">resp_flat_best</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
             <span class="c1"># Converts scale level index from ConvSoftArgmax3d to the actual scale, using the sigmas</span>
-            <span class="n">max_coords_best</span> <span class="o">=</span> <span class="n">_scale_index_to_scale</span><span class="p">(</span>
-                <span class="n">max_coords_best</span><span class="p">,</span> <span class="n">sigmas_oct</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span>  <span class="c1"># type: ignore</span>
-            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+                <span class="n">num_levels</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">num_levels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s1">&#39;Expected the scale pyramid module to have `n_levels` as a Tensor or int.&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;Gotcha </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_pyr</span><span class="o">.</span><span class="n">n_levels</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="p">)</span>
+
+            <span class="n">max_coords_best</span> <span class="o">=</span> <span class="n">_scale_index_to_scale</span><span class="p">(</span><span class="n">max_coords_best</span><span class="p">,</span> <span class="n">sigmas_oct</span><span class="p">,</span> <span class="n">num_levels</span><span class="p">)</span>
 
             <span class="c1"># Create local affine frames (LAFs)</span>
             <span class="n">rotmat</span> <span class="o">=</span> <span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>

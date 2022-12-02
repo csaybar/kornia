@@ -306,7 +306,7 @@
           <h1>Source code for kornia.augmentation.container.augment</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">zip_longest</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">AugmentationBase3D</span><span class="p">,</span>
@@ -462,7 +462,7 @@
             <span class="n">random_apply_weights</span><span class="o">=</span><span class="n">random_apply_weights</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DataKey</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">DataKey</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">data_keys</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">DataKey</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">data_keys</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">in_type</span> <span class="ow">in</span> <span class="n">DataKey</span> <span class="k">for</span> <span class="n">in_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`data_keys` must be in </span><span class="si">{</span><span class="n">DataKey</span><span class="si">}</span><span class="s2">. Got </span><span class="si">{</span><span class="n">data_keys</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
@@ -494,7 +494,7 @@
     <span class="k">def</span> <span class="nf">transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform_matrix</span>
 
-<div class="viewcode-block" id="AugmentationSequential.inverse"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.AugmentationSequential.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+<div class="viewcode-block" id="AugmentationSequential.inverse"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.AugmentationSequential.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
         <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -522,7 +522,7 @@
                 <span class="p">)</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span>
 
-        <span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_data_keys</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_data_keys</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">dcate</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">_data_keys</span><span class="p">)):</span>
 
             <span class="k">if</span> <span class="n">dcate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_args</span><span class="p">:</span>
@@ -537,12 +537,18 @@
                 <span class="nb">input</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># all boxes are in (B, N, 4, 2) format now.</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="nb">input</span> <span class="o">=</span> <span class="n">arg</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">_param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
-                    <span class="c1"># TODO(jian): verify what&#39;s happening here. Mypy was complaining,</span>
-                    <span class="n">param</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">else</span> <span class="n">param</span>  <span class="c1"># type: ignore</span>
+                    <span class="n">_mb</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">p</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_mb</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">param</span> <span class="o">=</span> <span class="n">_mb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_param</span><span class="p">,</span> <span class="n">ParamItem</span><span class="p">):</span>
+                        <span class="n">param</span> <span class="o">=</span> <span class="n">_param</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">param</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">param</span> <span class="o">=</span> <span class="kc">None</span>
+
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">IntensityAugmentationBase2D</span><span class="p">)</span>
                     <span class="ow">and</span> <span class="n">dcate</span> <span class="ow">in</span> <span class="n">DataKey</span>
@@ -576,21 +582,28 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">outputs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outputs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)]</span>
 
-        <span class="k">return</span> <span class="n">outputs</span></div>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_outputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_outputs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__packup_output__</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+        <span class="k">return</span> <span class="n">_outputs</span></div>
+
+    <span class="k">def</span> <span class="nf">__packup_output__</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
+
+        <span class="n">_out</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">_out</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_out</span> <span class="o">=</span> <span class="n">output</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">label</span>
-        <span class="k">return</span> <span class="n">output</span>
+            <span class="k">return</span> <span class="n">_out</span><span class="p">,</span> <span class="n">label</span>
+
+        <span class="k">return</span> <span class="n">_out</span>
 
     <span class="k">def</span> <span class="nf">_validate_args_datakeys</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">data_keys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DataKey</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_keys</span><span class="p">):</span>
@@ -618,13 +631,13 @@
                 <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;input type of </span><span class="si">{</span><span class="n">dcate</span><span class="si">}</span><span class="s2"> is not implemented.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">inp</span>
 
-<div class="viewcode-block" id="AugmentationSequential.forward"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.AugmentationSequential.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+<div class="viewcode-block" id="AugmentationSequential.forward"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.AugmentationSequential.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
         <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">data_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">DataKey</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
         <span class="sd">&quot;&quot;&quot;Compute multiple tensors simultaneously according to ``self.data_keys``.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">data_keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">_data_keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_keys</span>
@@ -638,8 +651,7 @@
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># image data must exist if params is not provided.</span>
             <span class="k">if</span> <span class="n">DataKey</span><span class="o">.</span><span class="n">INPUT</span> <span class="ow">in</span> <span class="n">_data_keys</span><span class="p">:</span>
-                <span class="n">_input</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">_data_keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">DataKey</span><span class="o">.</span><span class="n">INPUT</span><span class="p">)]</span>
-                <span class="n">inp</span> <span class="o">=</span> <span class="n">_input</span>
+                <span class="n">inp</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">_data_keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">DataKey</span><span class="o">.</span><span class="n">INPUT</span><span class="p">)]</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`INPUT` should be a tensor but `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span><span class="si">}</span><span class="s2">` received.&quot;</span><span class="p">)</span>
                 <span class="c1"># A video input shall be BCDHW while an image input shall be BCHW</span>
@@ -651,7 +663,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`params` must be provided whilst INPUT is not in data_keys.&quot;</span><span class="p">)</span>
 
-        <span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_data_keys</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="n">outputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_data_keys</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span> <span class="ow">or</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains_label_operations</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
@@ -667,10 +679,12 @@
 
                 <span class="n">_out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">_inp</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_transform_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transformation_matrix</span><span class="p">(</span><span class="n">_inp</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span>
-                    <span class="n">_input</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">_out</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">_input</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">_out</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                    <span class="n">_input</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">_out</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+                    <span class="n">_input</span> <span class="o">=</span> <span class="n">_out</span>
+
                 <span class="n">outputs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">_input</span>
                 <span class="c1"># NOTE: Skip the rest here.</span>
                 <span class="k">continue</span>
@@ -717,8 +731,8 @@
                 <span class="n">outputs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">outputs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__packup_output__</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div></div>
+        <span class="n">_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outputs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__packup_output__</span><span class="p">(</span><span class="n">_outputs</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div></div>
 </pre></div>
         </article>
       </div>
