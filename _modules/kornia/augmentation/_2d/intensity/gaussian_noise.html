@@ -312,6 +312,15 @@
 <span class="kn">from</span> <span class="nn">kornia.augmentation._2d.intensity.base</span> <span class="kn">import</span> <span class="n">IntensityAugmentationBase2D</span>
 
 
+<span class="k">def</span> <span class="nf">_randn_like</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mean</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">std</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>  <span class="c1"># Generating on GPU is fastest with `torch.randn_like(...)`</span>
+    <span class="k">if</span> <span class="n">std</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>  <span class="c1"># `if` is cheaper than multiplication</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="n">std</span>
+    <span class="k">if</span> <span class="n">mean</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>  <span class="c1"># `if` is cheaper than addition</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">mean</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
 <div class="viewcode-block" id="RandomGaussianNoise"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomGaussianNoise">[docs]</a><span class="k">class</span> <span class="nc">RandomGaussianNoise</span><span class="p">(</span><span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Add gaussian noise to a batch of multi-dimensional images.</span>
 
@@ -353,13 +362,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">generate_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;noise&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="o">*</span> <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span></div>
+        <span class="k">if</span> <span class="s2">&quot;gaussian_noise&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">gaussian_noise</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;gaussian_noise&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gaussian_noise</span> <span class="o">=</span> <span class="n">_randn_like</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="p">[</span><span class="s2">&quot;gaussian_noise&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gaussian_noise</span>
+        <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="n">gaussian_noise</span></div>
 </pre></div>
         </article>
       </div>
