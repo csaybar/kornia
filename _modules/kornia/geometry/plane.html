@@ -328,8 +328,8 @@
 <div class="viewcode-block" id="Hyperplane"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.Hyperplane">[docs]</a><span class="k">class</span> <span class="nc">Hyperplane</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(n, [&quot;B&quot;, &quot;*&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(d, [&quot;B&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n</span> <span class="o">=</span> <span class="n">n</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_d</span> <span class="o">=</span> <span class="n">d</span>
 
@@ -370,9 +370,9 @@
             <span class="n">offset</span> <span class="o">=</span> <span class="o">-</span><span class="n">batched_dot_product</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">Hyperplane</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
         <span class="c1"># 3d case</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(p0, [&quot;B&quot;, &quot;3&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(p1, [&quot;B&quot;, &quot;3&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(p2, [&quot;B&quot;, &quot;3&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="n">v0</span><span class="p">,</span> <span class="n">v1</span> <span class="o">=</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">),</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">)</span>
         <span class="n">normal</span> <span class="o">=</span> <span class="n">v0</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>

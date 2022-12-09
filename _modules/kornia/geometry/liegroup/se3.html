@@ -355,7 +355,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">So3</span><span class="p">)</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(t, [&quot;B&quot;, &quot;3&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_r</span> <span class="o">=</span> <span class="n">r</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
 
@@ -382,7 +382,7 @@
             <span class="k">return</span> <span class="n">Se3</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
             <span class="n">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span>
-            <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">])</span>
+            <span class="c1"># KORNIA_CHECK_SHAPE(right, [&quot;B&quot;, &quot;N&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">so3</span> <span class="o">*</span> <span class="n">right</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">right</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
@@ -419,7 +419,7 @@
 <span class="sd">            Parameter containing:</span>
 <span class="sd">            tensor([[0., 0., 0.]], requires_grad=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(v, [&quot;B&quot;, &quot;6&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="n">upsilon</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
         <span class="n">omega_hat</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
@@ -474,7 +474,7 @@
 <span class="sd">                     [-1.,  1.,  0.,  1.],</span>
 <span class="sd">                     [ 0.,  0.,  0.,  0.]]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(v, [&quot;B&quot;, &quot;6&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="n">upsilon</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">:]</span>
         <span class="n">rt</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">So3</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="n">upsilon</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">pad</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># add zeros bottom</span></div>
@@ -495,7 +495,7 @@
 <span class="sd">            &gt;&gt;&gt; Se3.vee(omega_hat)</span>
 <span class="sd">            tensor([[1., 1., 1., 1., 1., 1.]])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
+        <span class="c1"># KORNIA_CHECK_SHAPE(omega, [&quot;B&quot;, &quot;4&quot;, &quot;4&quot;])  # FIXME: resolve shape bugs. @edgarriba</span>
         <span class="n">head</span> <span class="o">=</span> <span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">tail</span> <span class="o">=</span> <span class="n">So3</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">concatenate</span><span class="p">((</span><span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
