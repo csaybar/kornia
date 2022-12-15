@@ -305,7 +305,7 @@
         <article role="main">
           <h1>Source code for kornia.feature.sold2.sold2_detector</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 
@@ -367,7 +367,7 @@
 <span class="sd">        &gt;&gt;&gt; line_segments = sold2_detector(img)[&quot;line_segments&quot;]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1"># Initialize some parameters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">default_detector_cfg</span> <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">config</span>
@@ -397,7 +397,7 @@
         <span class="k">del</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;heatmap_decoder.conv_block_lst.2.bias&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">state_dict</span>
 
-<div class="viewcode-block" id="SOLD2_detector.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2_detector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<div class="viewcode-block" id="SOLD2_detector.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2_detector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            img: batched images with shape :math:`(B, 1, H, W)`.</span>
@@ -496,7 +496,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_junction_refinement</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">junction_refine_cfg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;[Error] Missing junction refinement config.&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Main function performing line segment detection.&quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">heatmap</span><span class="o">.</span><span class="n">shape</span>
@@ -696,7 +696,7 @@
 
     <span class="k">def</span> <span class="nf">refine_junction_perturb</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">W</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Refine the line endpoints in a similar way as in LSD.&quot;&quot;&quot;</span>
         <span class="c1"># Fetch refinement parameters</span>
         <span class="n">num_perturbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">junction_refine_cfg</span><span class="p">[</span><span class="s2">&quot;num_perturbs&quot;</span><span class="p">]</span>
