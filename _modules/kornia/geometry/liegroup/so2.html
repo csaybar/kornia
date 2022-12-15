@@ -447,23 +447,6 @@
         <span class="n">row1</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="n">theta</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">stack</span><span class="p">((</span><span class="n">row0</span><span class="p">,</span> <span class="n">row1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="So2.vee"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.vee">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Converts elements from lie algebra to vector space. Returns vector of shape :math:`(B,)`.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            omega: 2x2-matrix representing lie algebra.</span>
-
-<span class="sd">        Example:</span>
-<span class="sd">            &gt;&gt;&gt; v = torch.ones(3)</span>
-<span class="sd">            &gt;&gt;&gt; omega = So2.hat(v)</span>
-<span class="sd">            &gt;&gt;&gt; So2.vee(omega)</span>
-<span class="sd">            tensor([1., 1., 1.])</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># TODO change to KORNIA_CHECK_SHAPE once there is multiple shape support</span>
-        <span class="n">check_so2_matrix_shape</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">omega</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span></div>
-
 <div class="viewcode-block" id="So2.matrix"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.So2.matrix">[docs]</a>    <span class="k">def</span> <span class="nf">matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Convert the complex number to a rotation matrix of shape :math:`(B, 2, 2)`.</span>
 
