@@ -1319,6 +1319,29 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.vee">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">omega</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so2.html#So2.vee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So2.vee" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts elements from lie algebra to vector space. Returns vector of shape <span class="math notranslate nohighlight">\((B,)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>omega</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – 2x2-matrix representing lie algebra.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">omega</span> <span class="o">=</span> <span class="n">So2</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">So2</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega</span><span class="p">)</span>
+<span class="go">tensor([1., 1., 1.])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.z">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.So2.z" title="Permalink to this definition">#</a></dt>
@@ -1433,10 +1456,10 @@ See more:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.hat">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.hat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.hat" title="Permalink to this definition">#</a></dt>
-<dd><p>Converts elements from vector space to lie algebra. Returns matrix of shape <span class="math notranslate nohighlight">\((B, 2, 2)\)</span>.</p>
+<dd><p>Converts elements from vector space to lie algebra. Returns matrix of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>theta</strong> – angle in radians of shape <span class="math notranslate nohighlight">\((B)\)</span>.</p>
+<dd class="field-odd"><p><strong>v</strong> – vector of shape:math:<cite>(B, 3)</cite>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1611,6 +1634,30 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.vee">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">omega</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.vee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.vee" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts elements from lie algebra to vector space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>omega</strong> – 3x3-matrix representing lie algebra of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vector of shape <span class="math notranslate nohighlight">\((B, 3)\)</span>.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">omega_hat</span> <span class="o">=</span> <span class="n">Se2</span><span class="o">.</span><span class="n">hat</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Se2</span><span class="o">.</span><span class="n">vee</span><span class="p">(</span><span class="n">omega_hat</span><span class="p">)</span>
+<span class="go">tensor([1., 1., 1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1728,6 +1775,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.log"><code class="docutils literal notranslate"><span class="pre">So2.log()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.matrix"><code class="docutils literal notranslate"><span class="pre">So2.matrix()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.random"><code class="docutils literal notranslate"><span class="pre">So2.random()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.So2.vee"><code class="docutils literal notranslate"><span class="pre">So2.vee()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.z"><code class="docutils literal notranslate"><span class="pre">So2.z</span></code></a></li>
 </ul>
 </li>
@@ -1747,6 +1795,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.so2"><code class="docutils literal notranslate"><span class="pre">Se2.so2</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.t"><code class="docutils literal notranslate"><span class="pre">Se2.t</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.translation"><code class="docutils literal notranslate"><span class="pre">Se2.translation</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.vee"><code class="docutils literal notranslate"><span class="pre">Se2.vee()</span></code></a></li>
 </ul>
 </li>
 </ul>
