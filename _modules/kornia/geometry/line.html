@@ -447,13 +447,13 @@
 <span class="sd">            - the lambda value used to compute the look at point.</span>
 <span class="sd">            - the intersected point.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">dot_prod</span> <span class="o">=</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="p">)</span>
+        <span class="n">dot_prod</span> <span class="o">=</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">normal</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="n">dot_prod_mask</span> <span class="o">=</span> <span class="n">dot_prod</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">eps</span>
 
         <span class="c1"># TODO: add check for dot product</span>
         <span class="n">res_lambda</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span>
             <span class="n">dot_prod_mask</span><span class="p">,</span>
-            <span class="o">-</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">normal</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">))</span> <span class="o">/</span> <span class="n">dot_prod</span><span class="p">,</span>
+            <span class="o">-</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">offset</span> <span class="o">+</span> <span class="n">batched_dot_product</span><span class="p">(</span><span class="n">plane</span><span class="o">.</span><span class="n">normal</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">/</span> <span class="n">dot_prod</span><span class="p">,</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dot_prod</span><span class="p">),</span>
         <span class="p">)</span>
 

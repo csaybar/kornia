@@ -589,8 +589,11 @@
 
 <span class="c1"># Logger api</span>
 
+<span class="c1"># TODO: add somehow type check, or enforce to do it before</span>
+<span class="c1"># TODO: get rid of torchscript test because prevents us to have type safe code</span>
 
-<div class="viewcode-block" id="KORNIA_CHECK_SHAPE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SHAPE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="KORNIA_CHECK_SHAPE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SHAPE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Check whether a tensor has a specified shape.</span>
 
 <span class="sd">    The shape can be specified with a implicit or explicit list of strings.</span>
@@ -610,9 +613,6 @@
 <span class="sd">        &gt;&gt;&gt; x = torch.rand(2, 3, 4, 4)</span>
 <span class="sd">        &gt;&gt;&gt; KORNIA_CHECK_SHAPE(x, [&quot;2&quot;,&quot;3&quot;, &quot;H&quot;, &quot;W&quot;])  # explicit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Desired shape here is list and not tuple, because torch.jit</span>
-    <span class="c1"># does not like variable-length tuples</span>
-    <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="s1">&#39;*&#39;</span> <span class="o">==</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
         <span class="n">shape_to_check</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>

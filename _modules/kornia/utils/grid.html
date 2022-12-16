@@ -366,6 +366,11 @@
         <span class="n">xs</span> <span class="o">=</span> <span class="p">(</span><span class="n">xs</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
         <span class="n">ys</span> <span class="o">=</span> <span class="p">(</span><span class="n">ys</span> <span class="o">/</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
     <span class="c1"># generate grid by stacking coordinates</span>
+    <span class="c1"># TODO: torchscript doesn&#39;t like `torch_version_ge`</span>
+    <span class="c1"># if torch_version_ge(1, 13, 0):</span>
+    <span class="c1">#     x, y = torch_meshgrid([xs, ys], indexing=&quot;xy&quot;)</span>
+    <span class="c1">#     return stack([x, y], -1).unsqueeze(0)  # 1xHxWx2</span>
+    <span class="c1"># TODO: remove after we drop support of old versions</span>
     <span class="n">base_grid</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">stack</span><span class="p">(</span><span class="n">torch_meshgrid</span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">],</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;ij&quot;</span><span class="p">),</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># WxHx2</span>
     <span class="k">return</span> <span class="n">base_grid</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 1xHxWx2</span></div>
 

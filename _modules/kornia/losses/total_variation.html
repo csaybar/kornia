@@ -335,6 +335,10 @@
 <span class="sd">    Reference:</span>
 <span class="sd">        [1] https://en.wikipedia.org/wiki/Total_variation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: here torchscript doesn&#39;t like KORNIA_CHECK_TYPE</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not a Tensor type. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
     <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
     <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">reduction</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected reduction to be one of &#39;mean&#39;/&#39;sum&#39;, but got &#39;</span><span class="si">{</span><span class="n">reduction</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
