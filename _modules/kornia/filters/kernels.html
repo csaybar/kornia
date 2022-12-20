@@ -335,8 +335,7 @@
 <span class="k">def</span> <span class="nf">gaussian_discrete_erf</span><span class="p">(</span><span class="n">window_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Discrete Gaussian by interpolating the error function.</span>
 
-<span class="sd">    Adapted from:</span>
-<span class="sd">    https://github.com/Project-MONAI/MONAI/blob/master/monai/networks/layers/convutils.py</span>
+<span class="sd">    Adapted from: https://github.com/Project-MONAI/MONAI/blob/master/monai/networks/layers/convutils.py</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">device</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
@@ -413,8 +412,7 @@
 <span class="k">def</span> <span class="nf">gaussian_discrete</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Discrete Gaussian kernel based on the modified Bessel functions.</span>
 
-<span class="sd">    Adapted from:</span>
-<span class="sd">    https://github.com/Project-MONAI/MONAI/blob/master/monai/networks/layers/convutils.py</span>
+<span class="sd">    Adapted from: https://github.com/Project-MONAI/MONAI/blob/master/monai/networks/layers/convutils.py</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">device</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">sigma</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
