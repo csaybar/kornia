@@ -1148,6 +1148,24 @@ See more: <a class="reference external" href="https://en.wikipedia.org/wiki/Orth
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.adjoint">
+<span class="sig-name descname"><span class="pre">adjoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so2.html#So2.adjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So2.adjoint" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the adjoint matrix of shape <span class="math notranslate nohighlight">\((B, 2, 2)\)</span>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">So2</span><span class="o">.</span><span class="n">identity</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
+<span class="go">tensor([[1., -0.],</span>
+<span class="go">        [0., 1.]], grad_fn=&lt;StackBackward0&gt;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So2.exp">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so2.html#So2.exp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So2.exp" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts elements of lie algebra to elements of lie group.</p>
@@ -1422,6 +1440,25 @@ See more:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.adjoint">
+<span class="sig-name descname"><span class="pre">adjoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.adjoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.adjoint" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the adjoint matrix of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Se2</span><span class="o">.</span><span class="n">identity</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">adjoint</span><span class="p">()</span>
+<span class="go">tensor([[1., -0., 0.],</span>
+<span class="go">        [0., 1., -0.],</span>
+<span class="go">        [0., 0., 1.]], grad_fn=&lt;CopySlices&gt;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1767,6 +1804,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.__init__"><code class="docutils literal notranslate"><span class="pre">So2.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.__mul__"><code class="docutils literal notranslate"><span class="pre">So2.__mul__()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.__repr__"><code class="docutils literal notranslate"><span class="pre">So2.__repr__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.So2.adjoint"><code class="docutils literal notranslate"><span class="pre">So2.adjoint()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.exp"><code class="docutils literal notranslate"><span class="pre">So2.exp()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.from_matrix"><code class="docutils literal notranslate"><span class="pre">So2.from_matrix()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.So2.hat"><code class="docutils literal notranslate"><span class="pre">So2.hat()</span></code></a></li>
@@ -1783,6 +1821,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.__init__"><code class="docutils literal notranslate"><span class="pre">Se2.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.__mul__"><code class="docutils literal notranslate"><span class="pre">Se2.__mul__()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.__repr__"><code class="docutils literal notranslate"><span class="pre">Se2.__repr__()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.adjoint"><code class="docutils literal notranslate"><span class="pre">Se2.adjoint()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.exp"><code class="docutils literal notranslate"><span class="pre">Se2.exp()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.hat"><code class="docutils literal notranslate"><span class="pre">Se2.hat()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.identity"><code class="docutils literal notranslate"><span class="pre">Se2.identity()</span></code></a></li>

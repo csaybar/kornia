@@ -585,7 +585,21 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;batch_size must be positive&quot;</span><span class="p">)</span>
             <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Se2.adjoint"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2.adjoint">[docs]</a>    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the adjoint matrix of shape :math:`(B, 3, 3)`.</span>
+
+<span class="sd">        Example:</span>
+<span class="sd">            &gt;&gt;&gt; s = Se2.identity()</span>
+<span class="sd">            &gt;&gt;&gt; s.adjoint()</span>
+<span class="sd">            tensor([[1., -0., 0.],</span>
+<span class="sd">                    [0., 1., -0.],</span>
+<span class="sd">                    [0., 0., 1.]], grad_fn=&lt;CopySlices&gt;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+        <span class="n">rt</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">stack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rt</span></div></div>
 </pre></div>
         </article>
       </div>
