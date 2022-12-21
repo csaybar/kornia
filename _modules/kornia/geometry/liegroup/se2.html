@@ -308,10 +308,10 @@
 <span class="c1"># https://github.com/strasdat/Sophus/blob/master/sympy/sophus/se2.py</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">overload</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">rand</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">where</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">rand</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">zeros_like</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry.liegroup._utils</span> <span class="kn">import</span> <span class="n">check_se2_omega_shape</span><span class="p">,</span> <span class="n">check_se2_r_t_shape</span><span class="p">,</span> <span class="n">check_v_shape</span>
 <span class="kn">from</span> <span class="nn">kornia.geometry.liegroup.so2</span> <span class="kn">import</span> <span class="n">So2</span>
-<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_TYPE</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SAME_DEVICES</span><span class="p">,</span> <span class="n">KORNIA_CHECK_TYPE</span>
 
 
 <div class="viewcode-block" id="Se2"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2">[docs]</a><span class="k">class</span> <span class="nc">Se2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
@@ -338,8 +338,8 @@
 <span class="sd">        Internally represented by a complex number `z` and a translation 2-vector.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            r: So2 group encompassing a rotation.</span>
-<span class="sd">            t: translation vector with the shape of :math:`(B, 2)`.</span>
+<span class="sd">            rotation: So2 group encompassing a rotation.</span>
+<span class="sd">            translation: translation vector with the shape of :math:`(B, 2)`.</span>
 
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; so2 = So2.identity(1)</span>
@@ -586,6 +586,40 @@
             <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">batch_size</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;batch_size must be positive&quot;</span><span class="p">)</span>
             <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Se2.trans"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2.trans">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">trans</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Se2&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Construct a translation only Se2 instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x: the x-axis translation.</span>
+<span class="sd">            y: the y-axis translation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">KORNIA_CHECK_SAME_DEVICES</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">rotation</span> <span class="o">=</span> <span class="n">So2</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">rotation</span><span class="p">,</span> <span class="n">stack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Se2.trans_x"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2.trans_x">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">trans_x</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Se2&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Construct a x-axis translation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x: the x-axis translation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">trans</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Se2.trans_y"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2.trans_y">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">trans_y</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Se2&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Construct a y-axis translation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            y: the y-axis translation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">zeros_like</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">trans</span><span class="p">(</span><span class="n">zs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Se2.adjoint"><a class="viewcode-back" href="../../../../geometry.liegroup.html#kornia.geometry.liegroup.Se2.adjoint">[docs]</a>    <span class="k">def</span> <span class="nf">adjoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Returns the adjoint matrix of shape :math:`(B, 3, 3)`.</span>

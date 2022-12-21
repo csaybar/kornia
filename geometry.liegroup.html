@@ -666,7 +666,7 @@ c &amp; 0 &amp; -a \\
 
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.liegroup.</span></span><span class="sig-name descname"><span class="pre">Se3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.geometry.liegroup.</span></span><span class="sig-name descname"><span class="pre">Se3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3" title="Permalink to this definition">#</a></dt>
 <dd><p>Base class to represent the Se3 group.</p>
 <p>The SE(3) is the group of rigid body transformations about the origin of three-dimensional Euclidean
 space <span class="math notranslate nohighlight">\(R^3\)</span> under the operation of composition.
@@ -685,14 +685,14 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3.__init__" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se3.html#Se3.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se3.__init__" title="Permalink to this definition">#</a></dt>
 <dd><p>Constructor for the base class.</p>
 <p>Internally represented by a unit quaternion <cite>q</cite> and a translation 3-vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>r</strong> (<a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><code class="xref py py-class docutils literal notranslate"><span class="pre">So3</span></code></a>) – So3 group encompassing a rotation.</p></li>
-<li><p><strong>t</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – translation vector with the shape of <span class="math notranslate nohighlight">\((B, 3)\)</span>.</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><code class="xref py py-class docutils literal notranslate"><span class="pre">So3</span></code></a>) – So3 group encompassing a rotation.</p></li>
+<li><p><strong>translation</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – translation vector with the shape of <span class="math notranslate nohighlight">\((B, 3)\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -977,6 +977,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.rotation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><span class="pre">So3</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.Se3.rotation" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the underlying rotation(So3).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><code class="xref py py-class docutils literal notranslate"><span class="pre">So3</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.so3">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">so3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#kornia.geometry.liegroup.So3" title="kornia.geometry.liegroup.so3.So3"><span class="pre">So3</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.Se3.so3" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the underlying rotation(So3).</p>
@@ -1054,6 +1065,17 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se3" title="kornia.geometry.liegroup.se3.Se3"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se3</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se3.translation">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.Se3.translation" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the underlying translation vector of shape <span class="math notranslate nohighlight">\((B,3)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1399,8 +1421,8 @@ See more:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>r</strong> – So2 group encompassing a rotation.</p></li>
-<li><p><strong>t</strong> – translation vector with the shape of <span class="math notranslate nohighlight">\((B, 2)\)</span>.</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="#kornia.geometry.liegroup.So2" title="kornia.geometry.liegroup.so2.So2"><code class="xref py py-class docutils literal notranslate"><span class="pre">So2</span></code></a>) – So2 group encompassing a rotation.</p></li>
+<li><p><strong>translation</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – translation vector with the shape of <span class="math notranslate nohighlight">\((B, 2)\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1660,6 +1682,51 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.trans">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.trans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.trans" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a translation only Se2 instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the x-axis translation.</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the y-axis translation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se2" title="kornia.geometry.liegroup.se2.Se2"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.trans_x">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trans_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.trans_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.trans_x" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a x-axis translation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the x-axis translation.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se2" title="kornia.geometry.liegroup.se2.Se2"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.trans_y">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trans_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/se2.html#Se2.trans_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.Se2.trans_y" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a y-axis translation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the y-axis translation.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.liegroup.Se2" title="kornia.geometry.liegroup.se2.Se2"><code class="xref py py-class docutils literal notranslate"><span class="pre">Se2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.Se2.translation">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">translation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.liegroup.Se2.translation" title="Permalink to this definition">#</a></dt>
@@ -1791,12 +1858,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_x"><code class="docutils literal notranslate"><span class="pre">Se3.rot_x()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_y"><code class="docutils literal notranslate"><span class="pre">Se3.rot_y()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rot_z"><code class="docutils literal notranslate"><span class="pre">Se3.rot_z()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.rotation"><code class="docutils literal notranslate"><span class="pre">Se3.rotation</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.so3"><code class="docutils literal notranslate"><span class="pre">Se3.so3</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.t"><code class="docutils literal notranslate"><span class="pre">Se3.t</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.trans"><code class="docutils literal notranslate"><span class="pre">Se3.trans()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.trans_x"><code class="docutils literal notranslate"><span class="pre">Se3.trans_x()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.trans_y"><code class="docutils literal notranslate"><span class="pre">Se3.trans_y()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.trans_z"><code class="docutils literal notranslate"><span class="pre">Se3.trans_z()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.translation"><code class="docutils literal notranslate"><span class="pre">Se3.translation</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se3.vee"><code class="docutils literal notranslate"><span class="pre">Se3.vee()</span></code></a></li>
 </ul>
 </li>
@@ -1833,6 +1902,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.rotation"><code class="docutils literal notranslate"><span class="pre">Se2.rotation</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.so2"><code class="docutils literal notranslate"><span class="pre">Se2.so2</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.t"><code class="docutils literal notranslate"><span class="pre">Se2.t</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.trans"><code class="docutils literal notranslate"><span class="pre">Se2.trans()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.trans_x"><code class="docutils literal notranslate"><span class="pre">Se2.trans_x()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.trans_y"><code class="docutils literal notranslate"><span class="pre">Se2.trans_y()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.translation"><code class="docutils literal notranslate"><span class="pre">Se2.translation</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.liegroup.Se2.vee"><code class="docutils literal notranslate"><span class="pre">Se2.vee()</span></code></a></li>
 </ul>
