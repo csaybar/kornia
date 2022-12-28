@@ -310,10 +310,11 @@
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch.testing</span> <span class="kn">import</span> <span class="n">assert_close</span> <span class="k">as</span> <span class="n">_assert_close</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypeGuard</span>
 
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">tensor</span>
 
@@ -327,6 +328,7 @@
     <span class="s2">&quot;KORNIA_UNWRAP&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_TYPE&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_IS_TENSOR&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;KORNIA_CHECK_IS_LIST_OF_TENSOR&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_SAME_DEVICE&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_SAME_DEVICES&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_IS_COLOR&quot;</span><span class="p">,</span>
@@ -700,6 +702,25 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not a Tensor type. Got: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="KORNIA_CHECK_IS_LIST_OF_TENSOR"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_LIST_OF_TENSOR">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_LIST_OF_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">object</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">TypeGuard</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Check the input variable is a List of Tensors.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: Any sequence of objects</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        True if the input is a list of Tensors, otherwise return False.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; x = torch.rand(2, 3, 3)</span>
+<span class="sd">        &gt;&gt;&gt; KORNIA_CHECK_IS_LIST_OF_TENSOR(x)</span>
+<span class="sd">        False</span>
+<span class="sd">        &gt;&gt;&gt; KORNIA_CHECK_IS_LIST_OF_TENSOR([x])</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_SAME_DEVICE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SAME_DEVICE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SAME_DEVICE</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>

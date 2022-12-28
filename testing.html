@@ -408,6 +408,31 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="kornia.testing.KORNIA_CHECK_IS_LIST_OF_TENSOR">
+<span class="sig-prename descclassname"><span class="pre">kornia.testing.</span></span><span class="sig-name descname"><span class="pre">KORNIA_CHECK_IS_LIST_OF_TENSOR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/testing.html#KORNIA_CHECK_IS_LIST_OF_TENSOR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.testing.KORNIA_CHECK_IS_LIST_OF_TENSOR" title="Permalink to this definition">#</a></dt>
+<dd><p>Check the input variable is a List of Tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>]]) – Any sequence of objects</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeGuard</span></code>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the input is a list of Tensors, otherwise return False.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KORNIA_CHECK_IS_LIST_OF_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">KORNIA_CHECK_IS_LIST_OF_TENSOR</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="kornia.testing.KORNIA_CHECK_IS_TENSOR">
 <span class="sig-prename descclassname"><span class="pre">kornia.testing.</span></span><span class="sig-name descname"><span class="pre">KORNIA_CHECK_IS_TENSOR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/testing.html#KORNIA_CHECK_IS_TENSOR"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.testing.KORNIA_CHECK_IS_TENSOR" title="Permalink to this definition">#</a></dt>
 <dd><p>Check the input variable is a Tensor.</p>
@@ -658,6 +683,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_DM_DESC"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_DM_DESC()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_IS_COLOR"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_IS_COLOR()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_IS_GRAY"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_IS_GRAY()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_IS_LIST_OF_TENSOR"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_IS_LIST_OF_TENSOR()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_IS_TENSOR"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_IS_TENSOR()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_LAF"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_LAF()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.testing.KORNIA_CHECK_SAME_DEVICE"><code class="docutils literal notranslate"><span class="pre">KORNIA_CHECK_SAME_DEVICE()</span></code></a></li>
