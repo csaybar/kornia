@@ -1686,6 +1686,58 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sli
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="kornia.augmentation.PadTo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">PadTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'constant'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/pad.html#PadTo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.PadTo" title="Permalink to this definition">#</a></dt>
+<dd><p>Pad the given sample to a specific size. Always occurs (p=1.0).</p>
+<img alt="_images/PadTo.png" src="_images/PadTo.png" />
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – a tuple of ints in the format (height, width) that give the spatial
+dimensions to pad inputs to.</p></li>
+<li><p><strong>pad_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – the type of padding to perform on the image (valid values
+are those accepted by torch.nn.functional.pad)
+Default:  <code class="code docutils literal notranslate"><span class="pre">'constant'</span></code></p></li>
+<li><p><strong>pad_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>], <em>optional</em>) – fill value for ‘constant’ padding applied to the image
+Default:  <code class="code docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – whether to keep the output shape the same as input (True) or broadcast it
+to the batch form (False).
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((C, H, W)\)</span> or <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>, Optional: <span class="math notranslate nohighlight">\((B, 3, 3)\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((B, C, H, W)\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function internally uses <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.pad.html#torch.nn.functional.pad" title="(in PyTorch v1.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.pad()</span></code></a>.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<span class="gp">... </span>                      <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pad</span> <span class="o">=</span> <span class="n">PadTo</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">pad_value</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span>
+<span class="go">tensor([[[[0., 0., 0., 1., 1.],</span>
+<span class="go">          [0., 0., 0., 1., 1.],</span>
+<span class="go">          [0., 0., 0., 1., 1.],</span>
+<span class="go">          [1., 1., 1., 1., 1.]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pad</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="go">tensor([[[[0., 0., 0.],</span>
+<span class="go">          [0., 0., 0.],</span>
+<span class="go">          [0., 0., 0.]]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomAffine">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomAffine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.BILINEAR.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_corners</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SamplePadding.ZEROS.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/affine.html#RandomAffine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomAffine" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random 2D affine transformation to a tensor image.</p>
@@ -3597,6 +3649,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </li>
 <li><a class="reference internal" href="#geometric">Geometric</a><ul>
 <li><a class="reference internal" href="#kornia.augmentation.CenterCrop"><code class="docutils literal notranslate"><span class="pre">CenterCrop</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.PadTo"><code class="docutils literal notranslate"><span class="pre">PadTo</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomAffine"><code class="docutils literal notranslate"><span class="pre">RandomAffine</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomCrop"><code class="docutils literal notranslate"><span class="pre">RandomCrop</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomErasing"><code class="docutils literal notranslate"><span class="pre">RandomErasing</span></code></a></li>
