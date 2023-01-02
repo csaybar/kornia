@@ -311,7 +311,7 @@
 
 <span class="c1"># Based on https://github.com/opencv/opencv/blob/master/modules/calib3d/src/distortion_model.hpp#L75</span>
 <div class="viewcode-block" id="tilt_projection"><a class="viewcode-back" href="../../../../geometry.calibration.html#kornia.geometry.calibration.tilt_projection">[docs]</a><span class="k">def</span> <span class="nf">tilt_projection</span><span class="p">(</span><span class="n">taux</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">tauy</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">return_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Estimate the tilt projection matrix or the inverse tilt projection matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Estimate the tilt projection matrix or the inverse tilt projection matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        taux: Rotation angle in radians around the :math:`x`-axis with shape :math:`(*, 1)`.</span>
@@ -365,7 +365,7 @@
 <div class="viewcode-block" id="distort_points"><a class="viewcode-back" href="../../../../geometry.calibration.html#kornia.geometry.calibration.distort_points">[docs]</a><span class="k">def</span> <span class="nf">distort_points</span><span class="p">(</span>
     <span class="n">points</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">dist</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">new_K</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Distortion of a set of 2D points based on the lens distortion model.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Distortion of a set of 2D points based on the lens distortion model.</span>
 
 <span class="sd">    Radial :math:`(k_1, k_2, k_3, k_4, k_4, k_6)`,</span>
 <span class="sd">    tangential :math:`(p_1, p_2)`, thin prism :math:`(s_1, s_2, s_3, s_4)`, and tilt :math:`(\tau_x, \tau_y)`</span>

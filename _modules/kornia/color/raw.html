@@ -311,7 +311,7 @@
 
 
 <div class="viewcode-block" id="CFA"><a class="viewcode-back" href="../../../color.html#kornia.color.CFA">[docs]</a><span class="k">class</span> <span class="nc">CFA</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Define the configuration of the color filter array.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Define the configuration of the color filter array.</span>
 
 <span class="sd">    So far only bayer images is supported and the enum sets the pixel order for bayer. Note that this can change due</span>
 <span class="sd">    to things like rotations and cropping of images. Take care if including the translations in pipeline.</span>
@@ -334,7 +334,7 @@
 
 
 <div class="viewcode-block" id="raw_to_rgb"><a class="viewcode-back" href="../../../color.html#kornia.color.raw_to_rgb">[docs]</a><span class="k">def</span> <span class="nf">raw_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">cfa</span><span class="p">:</span> <span class="n">CFA</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a raw bayer image to RGB version of image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a raw bayer image to RGB version of image.</span>
 
 <span class="sd">    We are assuming a CFA with 2 green, 1 red, 1 blue. A bilinear interpolation is used for R/G and a fix convolution</span>
 <span class="sd">    for the green pixels. To simplify calculations we expect the Height Width to be evenly divisible by 2.</span>
@@ -475,7 +475,7 @@
 
 
 <div class="viewcode-block" id="rgb_to_raw"><a class="viewcode-back" href="../../../color.html#kornia.color.rgb_to_raw">[docs]</a><span class="k">def</span> <span class="nf">rgb_to_raw</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">cfa</span><span class="p">:</span> <span class="n">CFA</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a RGB image to RAW version of image with the specified color filter array.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a RGB image to RAW version of image with the specified color filter array.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1).</span>
 
@@ -518,7 +518,7 @@
 
 
 <div class="viewcode-block" id="RawToRgb"><a class="viewcode-back" href="../../../color.html#kornia.color.RawToRgb">[docs]</a><span class="k">class</span> <span class="nc">RawToRgb</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a bayer raw image to RGB version of image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a bayer raw image to RGB version of image.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1).</span>
 
@@ -541,7 +541,7 @@
 
 
 <div class="viewcode-block" id="RgbToRaw"><a class="viewcode-back" href="../../../color.html#kornia.color.RgbToRaw">[docs]</a><span class="k">class</span> <span class="nc">RgbToRaw</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a RGB image to bayer raw version of image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to convert a RGB image to bayer raw version of image.</span>
 
 <span class="sd">    The image data is assumed to be in the range of (0, 1).</span>
 

@@ -327,7 +327,7 @@
 
 
 <div class="viewcode-block" id="essential_from_fundamental"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.essential_from_fundamental">[docs]</a><span class="k">def</span> <span class="nf">essential_from_fundamental</span><span class="p">(</span><span class="n">F_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">K1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">K2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Essential matrix from Fundamental and Camera matrices.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Essential matrix from Fundamental and Camera matrices.</span>
 
 <span class="sd">    Uses the method from Hartley/Zisserman 9.6 pag 257 (formula 9.12).</span>
 
@@ -352,7 +352,7 @@
 
 
 <div class="viewcode-block" id="decompose_essential_matrix"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.decompose_essential_matrix">[docs]</a><span class="k">def</span> <span class="nf">decompose_essential_matrix</span><span class="p">(</span><span class="n">E_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decompose an essential matrix to possible rotations and translation.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decompose an essential matrix to possible rotations and translation.</span>
 
 <span class="sd">    This function decomposes the essential matrix E using svd decomposition [96]</span>
 <span class="sd">    and give the possible solutions: :math:`R1, R2, t`.</span>
@@ -395,7 +395,7 @@
 
 
 <div class="viewcode-block" id="essential_from_Rt"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.essential_from_Rt">[docs]</a><span class="k">def</span> <span class="nf">essential_from_Rt</span><span class="p">(</span><span class="n">R1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">R2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the Essential matrix from Camera motion (Rs and ts).</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the Essential matrix from Camera motion (Rs and ts).</span>
 
 <span class="sd">    Reference: Hartley/Zisserman 9.6 pag 257 (formula 9.12)</span>
 
@@ -427,7 +427,7 @@
 
 
 <div class="viewcode-block" id="motion_from_essential"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.motion_from_essential">[docs]</a><span class="k">def</span> <span class="nf">motion_from_essential</span><span class="p">(</span><span class="n">E_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Motion (R&#39;s and t&#39;s ) from Essential matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get Motion (R&#39;s and t&#39;s ) from Essential matrix.</span>
 
 <span class="sd">    Computes and return four possible poses exist for the decomposition of the Essential</span>
 <span class="sd">    matrix. The possible solutions are :math:`[R1,t], [R1,−t], [R2,t], [R2,−t]`.</span>
@@ -460,7 +460,7 @@
     <span class="n">x2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Recover the relative camera rotation and the translation from an estimated essential matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Recover the relative camera rotation and the translation from an estimated essential matrix.</span>
 
 <span class="sd">    The method checks the corresponding points in two images and also returns the triangulated</span>
 <span class="sd">    3d points. Internally uses :py:meth:`~kornia.geometry.epipolar.decompose_essential_matrix` and then chooses</span>
@@ -566,7 +566,7 @@
 <div class="viewcode-block" id="relative_camera_motion"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.relative_camera_motion">[docs]</a><span class="k">def</span> <span class="nf">relative_camera_motion</span><span class="p">(</span>
     <span class="n">R1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">R2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the relative camera motion between two cameras.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the relative camera motion between two cameras.</span>
 
 <span class="sd">    Given the motion parameters of two cameras, computes the motion parameters of the second</span>
 <span class="sd">    one assuming the first one to be at the origin. If :math:`T1` and :math:`T2` are the camera motions,</span>

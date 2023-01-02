@@ -312,7 +312,7 @@
 
 
 <div class="viewcode-block" id="AugmentationBase3D"><a class="viewcode-back" href="../../../../augmentation.base.html#kornia.augmentation.AugmentationBase3D">[docs]</a><span class="k">class</span> <span class="nc">AugmentationBase3D</span><span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;AugmentationBase3D base class for customized augmentation implementations.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;AugmentationBase3D base class for customized augmentation implementations.</span>
 
 <span class="sd">    For any augmentation, the implementation of &quot;generate_parameters&quot; and &quot;apply_transform&quot; are required while the</span>
 <span class="sd">    &quot;compute_transformation&quot; is only required when passing &quot;return_transform&quot; as True.</span>
@@ -342,12 +342,12 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized output shape. Expected 3, 4 or 5, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">transform_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert any incoming (D, H, W), (C, D, H, W) and (B, C, D, H, W) into (B, C, D, H, W).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert any incoming (D, H, W), (C, D, H, W) and (B, C, D, H, W) into (B, C, D, H, W).&quot;&quot;&quot;</span>
         <span class="n">_validate_input_dtype</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">accepted_dtypes</span><span class="o">=</span><span class="p">[</span><span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">_transform_input3d</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">identity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return 4x4 identity matrix.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return 4x4 identity matrix.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">eye_like</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span></div>
 </pre></div>
         </article>

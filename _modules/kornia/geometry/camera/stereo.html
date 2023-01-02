@@ -313,7 +313,7 @@
 
 <span class="k">class</span> <span class="nc">StereoException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom exception for the :module:`~kornia.geometry.camera.stereo` module.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Custom exception for the :module:`~kornia.geometry.camera.stereo` module.</span>
 
 <span class="sd">        Adds a general helper module redirecting the user to the proper documentation site.</span>
 
@@ -334,7 +334,7 @@
 
 <div class="viewcode-block" id="StereoCamera"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera">[docs]</a><span class="k">class</span> <span class="nc">StereoCamera</span><span class="p">:</span>
 <div class="viewcode-block" id="StereoCamera.__init__"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rectified_left_camera</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">rectified_right_camera</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class representing a horizontal stereo camera setup.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class representing a horizontal stereo camera setup.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            rectified_left_camera: The rectified left camera projection matrix</span>
@@ -353,7 +353,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_stereo_camera</span><span class="p">(</span><span class="n">rectified_left_camera</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">rectified_right_camera</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure user specified correct camera matrices.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure user specified correct camera matrices.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            rectified_left_camera: The rectified left camera projection matrix</span>
@@ -405,7 +405,7 @@
             <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Expected &#39;left_rectified_camera&#39; and &#39;rectified_right_camera&#39; to have&quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;same parameters except for the last column.&quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="n">rectified_left_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">rectified_right_camera</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="p">:,</span><span class="w"> </span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="c1"># Ensure that tx * fx is negative and exists.</span>
@@ -415,7 +415,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">batch_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the batch size of the storage.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the batch size of the storage.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">           scalar with the batch size</span>
@@ -424,7 +424,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the focal length in the x-direction.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the focal length in the x-direction.</span>
 
 <span class="sd">        Note that the focal lengths of the rectified left and right</span>
 <span class="sd">        camera are assumed to be equal.</span>
@@ -436,7 +436,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the focal length in the y-direction.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the focal length in the y-direction.</span>
 
 <span class="sd">        Note that the focal lengths of the rectified left and right</span>
 <span class="sd">        camera are assumed to be equal.</span>
@@ -448,7 +448,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cx_left</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the left camera.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the left camera.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
@@ -457,7 +457,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cx_right</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the right camera.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the x-coordinate of the principal point for the right camera.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            tensor of shape :math:`(B)`</span>
@@ -466,7 +466,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the y-coordinate of the principal point.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the y-coordinate of the principal point.</span>
 
 <span class="sd">        Note that the y-coordinate of the principal points</span>
 <span class="sd">        is assumed to be equal for the left and right camera.</span>
@@ -478,7 +478,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tx</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The horizontal baseline between the two cameras.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The horizontal baseline between the two cameras.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Tensor of shape :math:`(B)`</span>
@@ -487,7 +487,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">Q</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The Q matrix of the horizontal stereo setup.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;The Q matrix of the horizontal stereo setup.</span>
 
 <span class="sd">        This matrix is used for reprojecting a disparity tensor to</span>
 <span class="sd">        the corresponding point cloud. Note that this is in a general form that allows different focal</span>
@@ -499,7 +499,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Q_matrix</span>
 
     <span class="k">def</span> <span class="nf">_init_Q_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialized the Q matrix of the horizontal stereo setup. See the Q property.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Initialized the Q matrix of the horizontal stereo setup. See the Q property.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The Q matrix of shape :math:`(B, 4, 4)`.</span>
@@ -516,7 +516,7 @@
         <span class="k">return</span> <span class="n">Q</span>
 
 <div class="viewcode-block" id="StereoCamera.reproject_disparity_to_3D"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.StereoCamera.reproject_disparity_to_3D">[docs]</a>    <span class="k">def</span> <span class="nf">reproject_disparity_to_3D</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            disparity_tensor: Disparity tensor of shape :math:`(B, 1, H, W)`.</span>
@@ -528,7 +528,7 @@
 
 
 <span class="k">def</span> <span class="nf">_check_disparity_tensor</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure correct user provided correct disparity tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure correct user provided correct disparity tensor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        disparity_tensor: The disparity tensor of shape :math:`(B, 1, H, W)`.</span>
@@ -555,7 +555,7 @@
 
 
 <span class="k">def</span> <span class="nf">_check_Q_matrix</span><span class="p">(</span><span class="n">Q_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure Q matrix is of correct form.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Utility function to ensure Q matrix is of correct form.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        Q_matrix: The Q matrix for reprojecting disparity to a point cloud of shape :math:`(B, 4, 4)`</span>
@@ -579,7 +579,7 @@
 
 
 <div class="viewcode-block" id="reproject_disparity_to_3D"><a class="viewcode-back" href="../../../../geometry.camera.stereo.html#kornia.geometry.camera.stereo.reproject_disparity_to_3D">[docs]</a><span class="k">def</span> <span class="nf">reproject_disparity_to_3D</span><span class="p">(</span><span class="n">disparity_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Q_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reproject the disparity tensor to a 3D point cloud.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        disparity_tensor: Disparity tensor of shape :math:`(B, H, W, 1)`.</span>
@@ -606,7 +606,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">StereoException</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Something went wrong in `reproject_disparity_to_3D`. Expected the final output&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;to be of shape </span><span class="si">{</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;to be of shape </span><span class="si">{</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="sa">f</span><span class="s2">&quot;But the computed point cloud had shape </span><span class="si">{</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">. &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;Please ensure input are correct. If this is an error, please submit an issue.&quot;</span>
         <span class="p">)</span>

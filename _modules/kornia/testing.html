@@ -340,32 +340,32 @@
 
 
 <div class="viewcode-block" id="xla_is_available"><a class="viewcode-back" href="../../testing.html#kornia.feature.xla_is_available">[docs]</a><span class="k">def</span> <span class="nf">xla_is_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return whether `torch_xla` is available in the system.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return whether `torch_xla` is available in the system.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span><span class="s2">&quot;torch_xla&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <span class="k">def</span> <span class="nf">is_mps_tensor_safe</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return whether tensor is on MPS device.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return whether tensor is on MPS device.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="s1">&#39;mps&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 
 
 <span class="c1"># TODO: Isn&#39;t this function duplicated with eye_like?</span>
 <div class="viewcode-block" id="create_eye_batch"><a class="viewcode-back" href="../../testing.html#kornia.feature.create_eye_batch">[docs]</a><span class="k">def</span> <span class="nf">create_eye_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a batch of identity matrices of shape Bx3x3.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a batch of identity matrices of shape Bx3x3.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">eye</span><span class="p">(</span><span class="n">eye_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">create_random_homography</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">std_val</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a batch of random homographies of shape Bx3x3.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a batch of random homographies of shape Bx3x3.&quot;&quot;&quot;</span>
     <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">)</span>
     <span class="n">eye</span> <span class="o">=</span> <span class="n">create_eye_batch</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">eye_size</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">eye</span> <span class="o">+</span> <span class="n">std</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="o">-</span><span class="n">std_val</span><span class="p">,</span> <span class="n">std_val</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="tensor_to_gradcheck_var"><a class="viewcode-back" href="../../testing.html#kornia.feature.tensor_to_gradcheck_var">[docs]</a><span class="k">def</span> <span class="nf">tensor_to_gradcheck_var</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert the input tensor to a valid variable to check the gradient.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert the input tensor to a valid variable to check the gradient.</span>
 
 <span class="sd">    `gradcheck` needs 64-bit floating point and requires gradient.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -385,25 +385,25 @@
 
 
 <span class="k">def</span> <span class="nf">compute_patch_error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the absolute error between patches.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the absolute error between patches.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">4</span> <span class="p">:</span> <span class="o">-</span><span class="n">h</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">w</span> <span class="o">//</span> <span class="mi">4</span> <span class="p">:</span> <span class="o">-</span><span class="n">w</span> <span class="o">//</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">check_is_tensor</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether the supplied object is a tensor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether the supplied object is a tensor.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">create_rectified_fundamental_matrix</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a batch of rectified fundamental matrices of shape Bx3x3.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a batch of rectified fundamental matrices of shape Bx3x3.&quot;&quot;&quot;</span>
     <span class="n">F_rect</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">F_repeat</span> <span class="o">=</span> <span class="n">F_rect</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">F_repeat</span>
 
 
 <span class="k">def</span> <span class="nf">create_random_fundamental_matrix</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">std_val</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a batch of random fundamental matrices of shape Bx3x3.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a batch of random fundamental matrices of shape Bx3x3.&quot;&quot;&quot;</span>
     <span class="n">F_rect</span> <span class="o">=</span> <span class="n">create_rectified_fundamental_matrix</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
     <span class="n">H_left</span> <span class="o">=</span> <span class="n">create_random_homography</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">std_val</span><span class="p">)</span>
     <span class="n">H_right</span> <span class="o">=</span> <span class="n">create_random_homography</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">std_val</span><span class="p">)</span>
@@ -445,7 +445,7 @@
         <span class="n">atol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">low_tolerance</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Asserts that `actual` and `expected` are close.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asserts that `actual` and `expected` are close.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            actual: Actual input.</span>
@@ -518,7 +518,7 @@
 
 
 <span class="k">def</span> <span class="nf">cartesian_product_of_parameters</span><span class="p">(</span><span class="o">**</span><span class="n">possible_parameters</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create cartesian product of given parameters.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create cartesian product of given parameters.&quot;&quot;&quot;</span>
     <span class="n">parameter_names</span> <span class="o">=</span> <span class="n">possible_parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
     <span class="n">possible_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">possible_parameters</span><span class="p">[</span><span class="n">parameter_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">parameter_name</span> <span class="ow">in</span> <span class="n">parameter_names</span><span class="p">]</span>
 
@@ -596,7 +596,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_SHAPE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SHAPE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Check whether a tensor has a specified shape.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether a tensor has a specified shape.</span>
 
 <span class="sd">    The shape can be specified with a implicit or explicit list of strings.</span>
 <span class="sd">    The guard also check whether the variable is a type `Tensor`.</span>
@@ -641,7 +641,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK</span><span class="p">(</span><span class="n">condition</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Check any arbitrary boolean condition.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check any arbitrary boolean condition.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        condition: the condition to evaluate.</span>
@@ -659,7 +659,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_UNWRAP"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_UNWRAP">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_UNWRAP</span><span class="p">(</span><span class="n">maybe_obj</span><span class="p">,</span> <span class="n">typ</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Unwraps an optional contained value that may or not be present.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unwraps an optional contained value that may or not be present.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        maybe_obj: the object to unwrap.</span>
@@ -669,7 +669,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_TYPE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_TYPE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_TYPE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">typ</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check the type of an aribratry variable.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the type of an aribratry variable.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: any input variable.</span>
@@ -687,7 +687,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_IS_TENSOR"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_TENSOR">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check the input variable is a Tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the input variable is a Tensor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: any input variable.</span>
@@ -705,7 +705,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_IS_LIST_OF_TENSOR"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_LIST_OF_TENSOR">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_LIST_OF_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">object</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">TypeGuard</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;Check the input variable is a List of Tensors.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the input variable is a List of Tensors.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: Any sequence of objects</span>
@@ -724,7 +724,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_SAME_DEVICE"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SAME_DEVICE">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SAME_DEVICE</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether two tensor in the same device.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether two tensor in the same device.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: first tensor to evaluate.</span>
@@ -744,7 +744,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_SAME_DEVICES"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_SAME_DEVICES">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_SAME_DEVICES</span><span class="p">(</span><span class="n">tensors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether a list provided tensors live in the same device.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether a list provided tensors live in the same device.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: a list of tensors.</span>
@@ -760,11 +760,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">tensors</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensors</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expected a list with at least one element&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">tensors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">device</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensors</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not same device for tensors. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">device</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensors</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not same device for tensors. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tensors</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_IS_COLOR"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_COLOR">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_COLOR</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether an image tensor is a color images.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether an image tensor is a color images.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: image tensor to evaluate.</span>
@@ -782,7 +782,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_IS_GRAY"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_GRAY">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_GRAY</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether an image tensor is grayscale.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether an image tensor is grayscale.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: image tensor to evaluate.</span>
@@ -800,7 +800,7 @@
 
 
 <span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_COLOR_OR_GRAY</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether an image tensor is grayscale or color.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether an image tensor is grayscale or color.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x: image tensor to evaluate.</span>
@@ -818,7 +818,7 @@
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_DM_DESC"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_DM_DESC">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_DM_DESC</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Check whether the provided descriptors match with a distance matrix.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether the provided descriptors match with a distance matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        desc1: first descriptor tensor to evaluate.</span>
@@ -836,13 +836,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">dm</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">desc1</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">desc2</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))):</span>
         <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;distance matrix shape </span><span class="si">{</span><span class="n">dm</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> is not</span>
-<span class="s2">                      consistent with descriptors shape: desc1 </span><span class="si">{</span><span class="n">desc1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">                      consistent with descriptors shape: desc1 </span><span class="si">{</span><span class="n">desc1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span>
 <span class="s2">                      desc2 </span><span class="si">{</span><span class="n">desc2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_LAF"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_LAF">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_LAF</span><span class="p">(</span><span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Check whether a Local Affine Frame (laf) has a valid shape.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether a Local Affine Frame (laf) has a valid shape.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        laf: local affine frame tensor to evaluate.</span>

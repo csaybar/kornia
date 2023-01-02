@@ -326,7 +326,7 @@
 
 
 <div class="viewcode-block" id="ImageSequential"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.ImageSequential">[docs]</a><span class="k">class</span> <span class="nc">ImageSequential</span><span class="p">(</span><span class="n">SequentialBase</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sequential for creating kornia image processing pipeline.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sequential for creating kornia image processing pipeline.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        *args : a list of kornia augmentation and image operation modules.</span>
@@ -415,7 +415,7 @@
     <span class="k">def</span> <span class="nf">_read_random_apply</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">random_apply</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span> <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Process the scenarios for random apply.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process the scenarios for random apply.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,))</span> <span class="ow">and</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">random_apply</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">random_apply</span><span class="p">,</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,))</span> <span class="ow">and</span> <span class="n">random_apply</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -443,7 +443,7 @@
         <span class="k">return</span> <span class="n">random_apply</span>
 
     <span class="k">def</span> <span class="nf">get_random_forward_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_mix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get a forward sequence when random apply is in need.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a forward sequence when random apply is in need.</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">            Mix augmentations (e.g. RandomMixUp) will be only applied once even in a random forward.</span>
@@ -476,7 +476,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_children_by_indices</span><span class="p">(</span><span class="n">indices</span><span class="p">),</span> <span class="n">mix_added</span>
 
     <span class="k">def</span> <span class="nf">get_mix_augmentation_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">named_modules</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get all the mix augmentations since they are label-involved.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get all the mix augmentations since they are label-involved.</span>
 
 <span class="sd">        Special operations needed for label-involved augmentations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -532,7 +532,7 @@
         <span class="k">return</span> <span class="n">params</span>
 
     <span class="k">def</span> <span class="nf">contains_label_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Check if current sequential contains label-involved operations like MixUp.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if current sequential contains label-involved operations like MixUp.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomMixUp_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomCutMix_&quot;</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">True</span>
@@ -547,7 +547,7 @@
         <span class="k">return</span> <span class="n">output</span>
 
     <span class="k">def</span> <span class="nf">identity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return identity matrix.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return identity matrix.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">eye_like</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_transformation_matrix</span><span class="p">(</span>
@@ -557,7 +557,7 @@
         <span class="n">recompute</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Compute the transformation matrix according to the provided parameters.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the transformation matrix according to the provided parameters.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            input: the input tensor.</span>
@@ -609,7 +609,7 @@
         <span class="k">return</span> <span class="n">res_mat</span>
 
     <span class="k">def</span> <span class="nf">is_intensity_only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Check if all transformations are intensity-based.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if all transformations are intensity-based.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            strict: if strict is False, it will allow non-augmentation Modules to be passed.</span>
@@ -634,7 +634,7 @@
     <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Inverse transformation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse transformation.</span>
 
 <span class="sd">        Used to inverse a tensor according to the performed transformation by a forward pass, or with respect to</span>
 <span class="sd">        provided parameters.</span>
@@ -692,7 +692,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_new_batch_shape</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Get the new batch shape if the augmentation changes the image size.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the new batch shape if the augmentation changes the image size.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">       Augmentations that change the image size must provide the parameter `output_size`.</span>

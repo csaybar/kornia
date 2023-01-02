@@ -330,7 +330,7 @@
 
 
 <div class="viewcode-block" id="RANSAC"><a class="viewcode-back" href="../../../geometry.ransac.html#kornia.geometry.ransac.RANSAC">[docs]</a><span class="k">class</span> <span class="nc">RANSAC</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module for robust geometry estimation with RANSAC. https://en.wikipedia.org/wiki/Random_sample_consensus.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module for robust geometry estimation with RANSAC. https://en.wikipedia.org/wiki/Random_sample_consensus.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        model_type: type of model to estimate, e.g. &quot;homography&quot; or &quot;fundamental&quot;.</span>
@@ -386,7 +386,7 @@
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s2"> is unknown. Try one of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">supported_models</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pop_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Minimal sampler, but unlike traditional RANSAC we sample in batches to get benefit of the parallel</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimal sampler, but unlike traditional RANSAC we sample in batches to get benefit of the parallel</span>
 <span class="sd">        processing, esp.</span>
 
 <span class="sd">        on GPU.</span>
@@ -397,7 +397,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">max_samples_by_conf</span><span class="p">(</span><span class="n">n_inl</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_tc</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">conf</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Formula to update max_iter in order to stop iterations earlier</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Formula to update max_iter in order to stop iterations earlier</span>
 <span class="sd">        https://en.wikipedia.org/wiki/Random_sample_consensus.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">n_inl</span> <span class="o">==</span> <span class="n">num_tc</span><span class="p">:</span>
             <span class="k">return</span> <span class="mf">1.0</span>
@@ -427,7 +427,7 @@
         <span class="k">return</span> <span class="n">model_best</span><span class="p">,</span> <span class="n">inliers_best</span><span class="p">,</span> <span class="n">best_model_score</span>
 
     <span class="k">def</span> <span class="nf">remove_bad_samples</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kp1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kp2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
         <span class="c1"># ToDo: add (model-specific) verification of the samples,</span>
         <span class="c1"># E.g. constraints on not to be a degenerate sample</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;homography&#39;</span><span class="p">:</span>
@@ -473,7 +473,7 @@
                 <span class="p">)</span>
 
 <div class="viewcode-block" id="RANSAC.forward"><a class="viewcode-back" href="../../../geometry.ransac.html#kornia.geometry.ransac.RANSAC.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kp1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kp2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Main forward method to execute the RANSAC algorithm.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Main forward method to execute the RANSAC algorithm.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            kp1: source image keypoints :math:`(N, 2)`.</span>

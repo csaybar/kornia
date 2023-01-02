@@ -323,7 +323,7 @@
 
 
 <div class="viewcode-block" id="depth_to_3d"><a class="viewcode-back" href="../../../geometry.depth.html#kornia.geometry.depth.depth_to_3d">[docs]</a><span class="k">def</span> <span class="nf">depth_to_3d</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">normalize_points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute a 3d point per pixel given its depth value and the camera intrinsics.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute a 3d point per pixel given its depth value and the camera intrinsics.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        depth: image tensor containing a depth value per pixel with shape :math:`(B, 1, H, W)`.</span>
@@ -370,7 +370,7 @@
 
 
 <div class="viewcode-block" id="depth_to_normals"><a class="viewcode-back" href="../../../geometry.depth.html#kornia.geometry.depth.depth_to_normals">[docs]</a><span class="k">def</span> <span class="nf">depth_to_normals</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">normalize_points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Compute the normal surface per pixel.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the normal surface per pixel.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        depth: image tensor containing a depth value per pixel with shape :math:`(B, 1, H, W)`.</span>
@@ -415,7 +415,7 @@
 <div class="viewcode-block" id="warp_frame_depth"><a class="viewcode-back" href="../../../geometry.depth.html#kornia.geometry.depth.warp_frame_depth">[docs]</a><span class="k">def</span> <span class="nf">warp_frame_depth</span><span class="p">(</span>
     <span class="n">image_src</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">depth_dst</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">src_trans_dst</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">normalize_points</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Warp a tensor from a source to destination frame by the depth in the destination.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Warp a tensor from a source to destination frame by the depth in the destination.</span>
 
 <span class="sd">    Compute 3d points from the depth, transform them using given transformation, then project the point cloud to an</span>
 <span class="sd">    image plane.</span>
@@ -475,7 +475,7 @@
 
 
 <span class="k">class</span> <span class="nc">DepthWarper</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Warp a patch by depth.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Warp a patch by depth.</span>
 
 <span class="sd">    .. math::</span>
 <span class="sd">        P_{src}^{\{dst\}} = K_{dst} * T_{src}^{\{dst\}}</span>
@@ -522,7 +522,7 @@
         <span class="k">return</span> <span class="n">convert_points_to_homogeneous</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>  <span class="c1"># append ones to last dim</span>
 
     <span class="k">def</span> <span class="nf">compute_projection_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pinhole_src</span><span class="p">:</span> <span class="n">PinholeCamera</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;DepthWarper&#39;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the projection matrix from the source to destination frame.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the projection matrix from the source to destination frame.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pinhole_dst</span><span class="p">,</span> <span class="n">PinholeCamera</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="s2">&quot;Member self._pinhole_dst expected to be of class &quot;</span>
@@ -559,7 +559,7 @@
         <span class="k">return</span> <span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">compute_subpixel_step</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute the required inverse depth step to achieve sub pixel accurate sampling of the depth cost volume,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the required inverse depth step to achieve sub pixel accurate sampling of the depth cost volume,</span>
 <span class="sd">        per camera.</span>
 
 <span class="sd">        Szeliski, Richard, and Daniel Scharstein. &quot;Symmetric sub-pixel stereo matching.&quot; European Conference on Computer</span>
@@ -574,7 +574,7 @@
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">dxdd</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">warp_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth_src</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute a grid for warping a given the depth from the reference pinhole camera.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute a grid for warping a given the depth from the reference pinhole camera.</span>
 
 <span class="sd">        The function `compute_projection_matrix` has to be called beforehand in order to have precomputed the relative</span>
 <span class="sd">        projection matrices encoding the relative pose and the intrinsics between the reference and a non reference</span>
@@ -610,7 +610,7 @@
         <span class="k">return</span> <span class="n">pixel_coords_src_norm</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth_src</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">patch_dst</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Warp a tensor from destination frame to reference given the depth in the reference frame.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Warp a tensor from destination frame to reference given the depth in the reference frame.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            depth_src: the depth in the reference frame. The tensor must have a shape :math:`(B, 1, H, W)`.</span>
@@ -654,7 +654,7 @@
     <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that warps a tensor from destination frame to reference given the depth in the reference frame.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that warps a tensor from destination frame to reference given the depth in the reference frame.</span>
 
 <span class="sd">    See :class:`~kornia.geometry.warp.DepthWarper` for details.</span>
 
@@ -675,7 +675,7 @@
 
 
 <span class="k">def</span> <span class="nf">depth_from_disparity</span><span class="p">(</span><span class="n">disparity</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">baseline</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">focal</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Computes depth from disparity.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes depth from disparity.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        disparity: Disparity tensor of shape :math:`(*, H, W)`.</span>

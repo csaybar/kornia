@@ -320,7 +320,7 @@
 
 
 <div class="viewcode-block" id="ParametrizedLine"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine">[docs]</a><span class="k">class</span> <span class="nc">ParametrizedLine</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class that describes a parametrize line.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class that describes a parametrize line.</span>
 
 <span class="sd">    A parametrized line is defined by an origin point :math:`o` and a unit</span>
 <span class="sd">    direction vector :math:`d` such that the line corresponds to the set</span>
@@ -331,7 +331,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ParametrizedLine.__init__"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Initializes a parametrized line of direction and origin.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes a parametrized line of direction and origin.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            origin: any point on the line of any dimension.</span>
@@ -360,21 +360,21 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the line origin point.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the line origin point.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_origin</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">direction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the line direction vector.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the line direction vector.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_direction</span>
 
 <div class="viewcode-block" id="ParametrizedLine.dim"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.dim">[docs]</a>    <span class="k">def</span> <span class="nf">dim</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the dimension in which the line holds.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the dimension in which the line holds.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.through"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.through">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">through</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ParametrizedLine&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Constructs a parametrized line going from a point :math:`p0` to :math:`p1`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructs a parametrized line going from a point :math:`p0` to :math:`p1`.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            p0: tensor with first point :math:`(B, D)` where `D` is the point dimension.</span>
@@ -388,7 +388,7 @@
         <span class="k">return</span> <span class="n">ParametrizedLine</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">normalize</span><span class="p">((</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.point_at"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.point_at">[docs]</a>    <span class="k">def</span> <span class="nf">point_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;The point at :math:`t` along this line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The point at :math:`t` along this line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            t: step along the line.</span>
@@ -405,7 +405,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">direction</span> <span class="o">*</span> <span class="n">t</span></div>
 
 <div class="viewcode-block" id="ParametrizedLine.projection"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.projection">[docs]</a>    <span class="k">def</span> <span class="nf">projection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the projection of a point onto the line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the projection of a point onto the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to be projected.</span>
@@ -414,7 +414,7 @@
 
     <span class="c1"># TODO: improve order and speed</span>
 <div class="viewcode-block" id="ParametrizedLine.squared_distance"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.squared_distance">[docs]</a>    <span class="k">def</span> <span class="nf">squared_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the squared distance of a point to its projection onte the line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the squared distance of a point to its projection onte the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to calculate the distance onto the line.</span>
@@ -424,7 +424,7 @@
 
     <span class="c1"># TODO: improve order and speed</span>
 <div class="viewcode-block" id="ParametrizedLine.distance"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.distance">[docs]</a>    <span class="k">def</span> <span class="nf">distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return the distance of a point to its projections onto the line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the distance of a point to its projections onto the line.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            point: the point to calculate the distance into the line.</span>
@@ -438,7 +438,7 @@
 
     <span class="c1"># TODO: add tests, and possibly return a mask</span>
 <div class="viewcode-block" id="ParametrizedLine.intersect"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.ParametrizedLine.intersect">[docs]</a>    <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plane</span><span class="p">:</span> <span class="n">Hyperplane</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Return the intersection point between the line and a given plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the intersection point between the line and a given plane.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            plane: the plane to compute the intersection point.</span>
@@ -462,7 +462,7 @@
 
 
 <div class="viewcode-block" id="fit_line"><a class="viewcode-back" href="../../../geometry.line.html#kornia.geometry.line.fit_line">[docs]</a><span class="k">def</span> <span class="nf">fit_line</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParametrizedLine</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Fit a line from a set of points.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit a line from a set of points.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        points: tensor containing a batch of sets of n-dimensional points. The  expected</span>

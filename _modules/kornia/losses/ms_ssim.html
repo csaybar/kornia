@@ -315,7 +315,7 @@
 
 
 <div class="viewcode-block" id="MS_SSIMLoss"><a class="viewcode-back" href="../../../losses.html#kornia.losses.MS_SSIMLoss">[docs]</a><span class="k">class</span> <span class="nc">MS_SSIMLoss</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates a criterion that computes MSSIM + L1 loss.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates a criterion that computes MSSIM + L1 loss.</span>
 
 <span class="sd">    According to [1], we compute the MS_SSIM + L1 loss as follows:</span>
 
@@ -391,7 +391,7 @@
     <span class="k">def</span> <span class="nf">_fspecial_gauss_1d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create 1-D gauss kernel.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create 1-D gauss kernel.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: the size of gauss kernel.</span>
@@ -409,7 +409,7 @@
     <span class="k">def</span> <span class="nf">_fspecial_gauss_2d</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create 2-D gauss kernel.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create 2-D gauss kernel.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: the size of gauss kernel.</span>
@@ -422,7 +422,7 @@
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">gaussian_vec</span><span class="p">,</span> <span class="n">gaussian_vec</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute MS_SSIM loss.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute MS_SSIM loss.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            img1: the predicted image with shape :math:`(B, C, H, W)`.</span>

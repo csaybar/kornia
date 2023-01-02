@@ -319,7 +319,7 @@
 
 
 <span class="k">def</span> <span class="nf">_scale_index_to_scale</span><span class="p">(</span><span class="n">max_coords</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">num_levels</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Auxiliary function for ScaleSpaceDetector. Converts scale level index from ConvSoftArgmax3d to the actual</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Auxiliary function for ScaleSpaceDetector. Converts scale level index from ConvSoftArgmax3d to the actual</span>
 <span class="sd">    scale, using the sigmas from the ScalePyramid output.</span>
 
 <span class="sd">    Args:</span>
@@ -345,14 +345,14 @@
 
 
 <span class="k">def</span> <span class="nf">_create_octave_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">octave_shape</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Downsample a mask based on the given octave shape.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Downsample a mask based on the given octave shape.&quot;&quot;&quot;</span>
     <span class="n">mask_shape</span> <span class="o">=</span> <span class="n">octave_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
     <span class="n">mask_octave</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">mask_shape</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mask_octave</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="ScaleSpaceDetector"><a class="viewcode-back" href="../../../feature.html#kornia.feature.ScaleSpaceDetector">[docs]</a><span class="k">class</span> <span class="nc">ScaleSpaceDetector</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module for differentiable local feature detection, as close as possible to classical local feature detectors</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module for differentiable local feature detection, as close as possible to classical local feature detectors</span>
 <span class="sd">    like Harris, Hessian-Affine or SIFT (DoG).</span>
 
 <span class="sd">    It has 5 modules inside: scale pyramid generator, response (&quot;cornerness&quot;) function,</span>
@@ -522,7 +522,7 @@
         <span class="k">return</span> <span class="n">responses</span><span class="p">,</span> <span class="n">denormalize_laf</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ScaleSpaceDetector.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.ScaleSpaceDetector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Three stage local feature detection. First the location and scale of interest points are determined by</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Three stage local feature detection. First the location and scale of interest points are determined by</span>
 <span class="sd">        detect function. Then affine shape and orientation.</span>
 
 <span class="sd">        Args:</span>

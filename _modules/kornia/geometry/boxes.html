@@ -321,9 +321,9 @@
 
 
 <span class="k">def</span> <span class="nf">_merge_box_list</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;pad&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merge a list of boxes into one tensor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merge a list of boxes into one tensor.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="ow">and</span> <span class="n">box</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes must be a list of (N, 4, 2) shaped. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input boxes must be a list of (N, 4, 2) shaped. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">boxes</span><span class="p">]</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;pad&quot;</span><span class="p">:</span>
         <span class="n">max_N</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">box</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">)</span>
@@ -336,7 +336,7 @@
 
 
 <span class="k">def</span> <span class="nf">_transform_boxes</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Transforms 3D and 2D in kornia format by applying the transformation matrix M. Boxes and the transformation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transforms 3D and 2D in kornia format by applying the transformation matrix M. Boxes and the transformation</span>
 <span class="sd">    matrix could be batched or not.</span>
 
 <span class="sd">    Args:</span>
@@ -380,7 +380,7 @@
 
 
 <span class="k">def</span> <span class="nf">_boxes_to_quadrilaterals</span><span class="p">(</span><span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert from boxes to quadrilaterals.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert from boxes to quadrilaterals.&quot;&quot;&quot;</span>
     <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;vertices&quot;</span><span class="p">):</span>
@@ -471,7 +471,7 @@
 <span class="c1"># NOTE: Cannot jit with Union types with torch &lt;= 0.10</span>
 <span class="c1"># @torch.jit.script</span>
 <div class="viewcode-block" id="Boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes">[docs]</a><span class="k">class</span> <span class="nc">Boxes</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;2D boxes containing N or BxN boxes.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;2D boxes containing N or BxN boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 2D boxes, shape of :math:`(N, 4, 2)`, :math:`(B, N, 4, 2)` or a list of :math:`(N, 4, 2)`.</span>
@@ -523,7 +523,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
 
 <div class="viewcode-block" id="Boxes.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            - Boxes heights, shape of :math:`(N,)` or :math:`(B,N)`.</span>
@@ -540,7 +540,7 @@
         <span class="k">return</span> <span class="n">heights</span><span class="p">,</span> <span class="n">widths</span></div>
 
 <div class="viewcode-block" id="Boxes.merge"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Merges boxes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merges boxes.</span>
 
 <span class="sd">        Say, current instance holds :math:`(B, N, 4, 2)` and the incoming boxes holds :math:`(B, M, 4, 2)`,</span>
 <span class="sd">        the merge results in :math:`(B, N + M, 4, 2)`.</span>
@@ -561,7 +561,7 @@
         <span class="n">botright</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">topleft</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">botright</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">)):</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
@@ -584,7 +584,7 @@
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Boxes.trim"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.trim">[docs]</a>    <span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">correspondence_preserve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Trim out zero padded boxes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Trim out zero padded boxes.</span>
 
 <span class="sd">        Given box arrangements of shape :math:`(4, 4, Box)`:</span>
 <span class="sd">            -- Box -- Box -- Box  -- Box --</span>
@@ -621,7 +621,7 @@
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Boxes.compute_area"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.compute_area">[docs]</a>    <span class="k">def</span> <span class="nf">compute_area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns :math:`(B, N)`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns :math:`(B, N)`.&quot;&quot;&quot;</span>
         <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">w</span> <span class="o">*</span> <span class="n">h</span></div>
@@ -630,7 +630,7 @@
     <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyxy&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes` from boxes stored in another format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes` from boxes stored in another format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            boxes: 2D boxes, shape of :math:`(N, 4)`, :math:`(B, N, 4)`, :math:`(N, 4, 2)` or :math:`(B, N, 4, 2)`.</span>
@@ -684,7 +684,7 @@
 <div class="viewcode-block" id="Boxes.to_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes` to a tensor. ``mode`` controls which 2D boxes format should be use to represent</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes` to a tensor. ``mode`` controls which 2D boxes format should be use to represent</span>
 <span class="sd">        boxes in the tensor.</span>
 
 <span class="sd">        Args:</span>
@@ -754,7 +754,7 @@
         <span class="k">return</span> <span class="n">boxes</span></div>
 
 <div class="viewcode-block" id="Boxes.to_mask"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to_mask">[docs]</a>    <span class="k">def</span> <span class="nf">to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert 2D boxes to masks. Covered area is 1 and the remaining is 0.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert 2D boxes to masks. Covered area is 1 and the remaining is 0.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            height: height of the masked image/images.</span>
@@ -807,7 +807,7 @@
         <span class="k">return</span> <span class="n">mask</span></div>
 
 <div class="viewcode-block" id="Boxes.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 2D boxes.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 2D boxes.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            M: The transformation matrix to be applied, shape of :math:`(3, 3)` or :math:`(B, 3, 3)`.</span>
@@ -829,11 +829,11 @@
         <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Boxes.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes.transform_boxes`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes.transform_boxes`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_boxes</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Boxes.translate"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.translate">[docs]</a>    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;warp&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Translates boxes by the provided size.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Translates boxes by the provided size.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            size: translate size for x, y direction, shape of :math:`(B, 2)`.</span>
@@ -864,16 +864,16 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">device</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span>
 
 <div class="viewcode-block" id="Boxes.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
         <span class="c1"># In torchscript, dtype is a int and not a class. https://github.com/pytorch/pytorch/issues/51941</span>
         <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_is_floating_point_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boxes must be in floating point&quot;</span><span class="p">)</span>
@@ -886,7 +886,7 @@
 
 <div class="viewcode-block" id="Boxes3D"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D">[docs]</a><span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span>
 <span class="k">class</span> <span class="nc">Boxes3D</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;3D boxes containing N or BxN boxes.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;3D boxes containing N or BxN boxes.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 3D boxes, shape of :math:`(N,8,3)` or :math:`(B,N,8,3)`. See below for more details.</span>
@@ -927,7 +927,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
 
 <div class="viewcode-block" id="Boxes3D.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            - Boxes depths, shape of :math:`(N,)` or :math:`(B,N)`.</span>
@@ -946,7 +946,7 @@
 
 <div class="viewcode-block" id="Boxes3D.from_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.from_tensor">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz&quot;</span><span class="p">,</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes3D` from 3D boxes stored in another format.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Helper method to easily create :class:`Boxes3D` from 3D boxes stored in another format.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            boxes: 3D boxes, shape of :math:`(N,6)` or :math:`(B,N,6)`.</span>
@@ -1024,7 +1024,7 @@
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">hexahedrons</span><span class="p">,</span> <span class="n">raise_if_not_floating_point</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Boxes3D.to_tensor"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;xyzxyz&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes3D` to a tensor. ``mode`` controls which 3D boxes format should be use to represent</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Cast :class:`Boxes3D` to a tensor. ``mode`` controls which 3D boxes format should be use to represent</span>
 <span class="sd">        boxes in the tensor.</span>
 
 <span class="sd">        Args:</span>
@@ -1101,7 +1101,7 @@
         <span class="k">return</span> <span class="n">boxes</span></div>
 
 <div class="viewcode-block" id="Boxes3D.to_mask"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to_mask">[docs]</a>    <span class="k">def</span> <span class="nf">to_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert ·D boxes to masks. Covered area is 1 and the remaining is 0.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert ·D boxes to masks. Covered area is 1 and the remaining is 0.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            depth: depth of the masked image/images.</span>
@@ -1186,7 +1186,7 @@
         <span class="k">return</span> <span class="n">mask</span></div>
 
 <div class="viewcode-block" id="Boxes3D.transform_boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 3D boxes.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply a transformation matrix to the 3D boxes.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            M: The transformation matrix to be applied, shape of :math:`(4, 4)` or :math:`(B, 4, 4)`.</span>
@@ -1208,7 +1208,7 @@
         <span class="k">return</span> <span class="n">Boxes3D</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;xyzxyz_plus&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Boxes3D.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes3D.transform_boxes`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes3D.transform_boxes`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_boxes</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
@@ -1221,16 +1221,16 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns boxes device.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">device</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns boxes dtype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">dtype</span>
 
 <div class="viewcode-block" id="Boxes3D.to"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.to">[docs]</a>    <span class="k">def</span> <span class="nf">to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like :func:`torch.nn.Module.to()` method.&quot;&quot;&quot;</span>
         <span class="c1"># In torchscript, dtype is a int and not a class. https://github.com/pytorch/pytorch/issues/51941</span>
         <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">_is_floating_point_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Boxes must be in floating point&quot;</span><span class="p">)</span>

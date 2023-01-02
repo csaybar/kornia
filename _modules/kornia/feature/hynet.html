@@ -325,7 +325,7 @@
 
 
 <div class="viewcode-block" id="FilterResponseNorm2d"><a class="viewcode-back" href="../../../feature.html#kornia.feature.FilterResponseNorm2d">[docs]</a><span class="k">class</span> <span class="nc">FilterResponseNorm2d</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Feature Response Normalization layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Feature Response Normalization layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence</span>
 <span class="sd">    in the Training of Deep Neural Networks&#39;, see :cite:`FRN2019` for more details.</span>
 
 <span class="sd">    .. math::</span>
@@ -398,7 +398,7 @@
 
 
 <div class="viewcode-block" id="TLU"><a class="viewcode-back" href="../../../feature.html#kornia.feature.TLU">[docs]</a><span class="k">class</span> <span class="nc">TLU</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;TLU layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence in the Training of Deep</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;TLU layer from &#39;Filter Response Normalization Layer: Eliminating Batch Dependence in the Training of Deep</span>
 <span class="sd">    Neural Networks, see :cite:`FRN2019` for more details. :math:`{\tau}` is learnable per channel.</span>
 
 <span class="sd">    .. math::</span>
@@ -416,7 +416,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;max(y, tau) = max(y - tau, 0) + tau = ReLU(y - tau) + tau&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;max(y, tau) = max(y - tau, 0) + tau = ReLU(y - tau) + tau&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -434,7 +434,7 @@
 
 
 <div class="viewcode-block" id="HyNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.HyNet">[docs]</a><span class="k">class</span> <span class="nc">HyNet</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which computes HyNet descriptors of given grayscale patches of 32x32.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which computes HyNet descriptors of given grayscale patches of 32x32.</span>
 
 <span class="sd">    This is based on the original code from paper</span>
 <span class="sd">    &quot;HyNet: Learning Local Descriptor with Hybrid Similarity Measure and Triplet Loss&quot;.</span>

@@ -346,7 +346,7 @@
     <span class="n">hw2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Function, which performs descriptor matching, followed by AdaLAM filtering (see :cite:`AdaLAM2020` for more</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function, which performs descriptor matching, followed by AdaLAM filtering (see :cite:`AdaLAM2020` for more</span>
 <span class="sd">    details)</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
@@ -393,7 +393,7 @@
 
 <span class="k">class</span> <span class="nc">AdalamFilter</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">custom_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AdalamConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This class acts as a wrapper to the method AdaLAM for outlier filtering.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This class acts as a wrapper to the method AdaLAM for outlier filtering.</span>
 
 <span class="sd">        init args:</span>
 <span class="sd">            custom_config: dictionary overriding the default configuration. Missing parameters are kept as default.</span>
@@ -419,7 +419,7 @@
         <span class="n">s2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">return_dist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Call the core functionality of AdaLAM, i.e. just outlier filtering. No sanity check is performed on the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Call the core functionality of AdaLAM, i.e. just outlier filtering. No sanity check is performed on the</span>
 <span class="sd">        inputs.</span>
 
 <span class="sd">        Inputs:</span>
@@ -486,7 +486,7 @@
         <span class="n">s2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">return_dist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Standard matching and filtering with AdaLAM. This function:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Standard matching and filtering with AdaLAM. This function:</span>
 
 <span class="sd">            - performs some elementary sanity check on the inputs;</span>
 <span class="sd">            - wraps input arrays into torch tensors and loads to GPU if necessary;</span>

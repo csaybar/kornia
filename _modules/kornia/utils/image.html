@@ -317,7 +317,7 @@
 
 
 <div class="viewcode-block" id="image_to_tensor"><a class="viewcode-back" href="../../../utils.html#kornia.utils.image_to_tensor">[docs]</a><span class="k">def</span> <span class="nf">image_to_tensor</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="s2">&quot;npt.NDArray[Any]&quot;</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a numpy image to a PyTorch 4d tensor image.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a numpy image to a PyTorch 4d tensor image.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        image: image of the form :math:`(H, W, C)`, :math:`(H, W)` or</span>
@@ -365,7 +365,7 @@
 
 
 <div class="viewcode-block" id="image_list_to_tensor"><a class="viewcode-back" href="../../../utils.html#kornia.utils.image_list_to_tensor">[docs]</a><span class="k">def</span> <span class="nf">image_list_to_tensor</span><span class="p">(</span><span class="n">images</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;npt.NDArray[Any]&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Converts a list of numpy images to a PyTorch 4d tensor image.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a list of numpy images to a PyTorch 4d tensor image.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        images: list of images, each of the form :math:`(H, W, C)`.</span>
@@ -392,7 +392,7 @@
 
 
 <span class="k">def</span> <span class="nf">_to_bchw</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a PyTorch tensor image to BCHW format.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a PyTorch tensor image to BCHW format.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor (torch.Tensor): image of the form :math:`(*, H, W)`.</span>
@@ -419,7 +419,7 @@
 
 
 <span class="k">def</span> <span class="nf">_to_bcdhw</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a PyTorch tensor image to BCDHW format.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a PyTorch tensor image to BCDHW format.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        tensor (torch.Tensor): image of the form :math:`(*, D, H, W)`.</span>
@@ -446,7 +446,7 @@
 
 
 <div class="viewcode-block" id="tensor_to_image"><a class="viewcode-back" href="../../../utils.html#kornia.utils.tensor_to_image">[docs]</a><span class="k">def</span> <span class="nf">tensor_to_image</span><span class="p">(</span><span class="n">tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;npt.NDArray[Any]&quot;</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Converts a PyTorch tensor image to a numpy image.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a PyTorch tensor image to a numpy image.</span>
 
 <span class="sd">    In case the tensor is in the GPU, it will be copied back to CPU.</span>
 
@@ -501,7 +501,7 @@
 
 
 <span class="k">class</span> <span class="nc">ImageToTensor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Converts a numpy image to a PyTorch 4d tensor image.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a numpy image to a PyTorch 4d tensor image.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        keepdim: If ``False`` unsqueeze the input image to match the shape :math:`(B, H, W, C)`.</span>
@@ -516,7 +516,7 @@
 
 
 <span class="k">def</span> <span class="nf">perform_keep_shape_image</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;A decorator that enable `f` to be applied to an image of arbitrary leading dimensions `(*, C, H, W)`.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator that enable `f` to be applied to an image of arbitrary leading dimensions `(*, C, H, W)`.</span>
 
 <span class="sd">    It works by first viewing the image as `(B, C, H, W)`, applying the function and re-viewing the image as original</span>
 <span class="sd">    shape.</span>
@@ -548,7 +548,7 @@
 
 
 <span class="k">def</span> <span class="nf">perform_keep_shape_video</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;A decorator that enable `f` to be applied to an image of arbitrary leading dimensions `(*, C, D, H, W)`.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A decorator that enable `f` to be applied to an image of arbitrary leading dimensions `(*, C, D, H, W)`.</span>
 
 <span class="sd">    It works by first viewing the image as `(B, C, D, H, W)`, applying the function and re-viewing the image as original</span>
 <span class="sd">    shape.</span>

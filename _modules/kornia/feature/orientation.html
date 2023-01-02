@@ -324,10 +324,10 @@
 
 
 <div class="viewcode-block" id="PassLAF"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PassLAF">[docs]</a><span class="k">class</span> <span class="nc">PassLAF</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Dummy module to use instead of local feature orientation or affine shape estimator.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dummy module to use instead of local feature orientation or affine shape estimator.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PassLAF.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PassLAF.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            laf: 4d tensor.</span>
 <span class="sd">            img: the input image tensor.</span>
@@ -338,7 +338,7 @@
 
 
 <div class="viewcode-block" id="PatchDominantGradientOrientation"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PatchDominantGradientOrientation">[docs]</a><span class="k">class</span> <span class="nc">PatchDominantGradientOrientation</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module, which estimates the dominant gradient orientation of the given patches, in radians.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module, which estimates the dominant gradient orientation of the given patches, in radians.</span>
 
 <span class="sd">    Zero angle points towards right.</span>
 
@@ -375,7 +375,7 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="PatchDominantGradientOrientation.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.PatchDominantGradientOrientation.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Args:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Args:</span>
 <span class="sd">            patch: shape [Bx1xHxW]</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            torch.Tensor: angle shape [B]&quot;&quot;&quot;</span>
@@ -420,7 +420,7 @@
 
 
 <div class="viewcode-block" id="OriNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.OriNet">[docs]</a><span class="k">class</span> <span class="nc">OriNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Network, which estimates the canonical orientation of the given 32x32 patches, in radians.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Network, which estimates the canonical orientation of the given 32x32 patches, in radians.</span>
 
 <span class="sd">    Zero angle points towards right. This is based on the original code from paper</span>
 <span class="sd">    &quot;Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability&quot;&quot;.</span>
@@ -478,7 +478,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_normalize_input</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Utility function that normalizes the input by batch.&quot;&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Utility function that normalizes the input by batch.&quot;&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
         <span class="n">sp</span><span class="p">,</span> <span class="n">mp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">std_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="c1"># WARNING: we need to .detach() input, otherwise the gradients produced by</span>
         <span class="c1"># the patches extractor with F.grid_sample are very noisy, making the detector</span>
@@ -486,7 +486,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mp</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 
 <div class="viewcode-block" id="OriNet.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.OriNet.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Args:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Args:</span>
 <span class="sd">            patch: (torch.Tensor) shape [Bx1xHxW]</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            patch: (torch.Tensor) shape [B]&quot;&quot;&quot;</span>
@@ -496,7 +496,7 @@
 
 
 <div class="viewcode-block" id="LAFOrienter"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFOrienter">[docs]</a><span class="k">class</span> <span class="nc">LAFOrienter</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module, which extracts patches using input images and local affine frames (LAFs).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module, which extracts patches using input images and local affine frames (LAFs).</span>
 
 <span class="sd">    Then runs :class:`~kornia.feature.PatchDominantGradientOrientation` or</span>
 <span class="sd">    :class:`~kornia.feature.OriNet` on patches and then rotates the LAFs by the estimated angles</span>
@@ -525,7 +525,7 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="LAFOrienter.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFOrienter.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            laf: shape [BxNx2x3]</span>
 <span class="sd">            img: shape [Bx1xHxW]</span>

@@ -318,7 +318,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_pyramid_gaussian_kernel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Utility function that return a pre-computed gaussian kernel.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Utility function that return a pre-computed gaussian kernel.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">tensor</span><span class="p">(</span>
             <span class="p">[</span>
@@ -336,7 +336,7 @@
 
 
 <div class="viewcode-block" id="PyrDown"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.PyrDown">[docs]</a><span class="k">class</span> <span class="nc">PyrDown</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blur a tensor and downsamples it.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blur a tensor and downsamples it.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
@@ -368,7 +368,7 @@
 
 
 <div class="viewcode-block" id="PyrUp"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.PyrUp">[docs]</a><span class="k">class</span> <span class="nc">PyrUp</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Upsample a tensor and then blurs it.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Upsample a tensor and then blurs it.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        borde_type: the padding mode to be applied before convolving.</span>
@@ -398,7 +398,7 @@
 
 
 <div class="viewcode-block" id="ScalePyramid"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.ScalePyramid">[docs]</a><span class="k">class</span> <span class="nc">ScalePyramid</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an scale pyramid of image, usually used for local feature detection.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an scale pyramid of image, usually used for local feature detection.</span>
 
 <span class="sd">    Images are consequently smoothed with Gaussian blur and downscaled.</span>
 
@@ -537,7 +537,7 @@
 
 
 <div class="viewcode-block" id="pyrdown"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrdown">[docs]</a><span class="k">def</span> <span class="nf">pyrdown</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blur a tensor and downsamples it.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blur a tensor and downsamples it.</span>
 
 <span class="sd">    .. image:: _static/img/pyrdown.png</span>
 
@@ -577,7 +577,7 @@
 
 
 <div class="viewcode-block" id="pyrup"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.pyrup">[docs]</a><span class="k">def</span> <span class="nf">pyrup</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Upsample a tensor and then blurs it.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Upsample a tensor and then blurs it.</span>
 
 <span class="sd">    .. image:: _static/img/pyrup.png</span>
 
@@ -614,7 +614,7 @@
 <div class="viewcode-block" id="build_pyramid"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.build_pyramid">[docs]</a><span class="k">def</span> <span class="nf">build_pyramid</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the Gaussian pyramid for a tensor image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the Gaussian pyramid for a tensor image.</span>
 
 <span class="sd">    .. image:: _static/img/build_pyramid.png</span>
 
@@ -667,7 +667,7 @@
 <div class="viewcode-block" id="build_laplacian_pyramid"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.build_laplacian_pyramid">[docs]</a><span class="k">def</span> <span class="nf">build_laplacian_pyramid</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_level</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the Laplacian pyramid for a tensor image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Construct the Laplacian pyramid for a tensor image.</span>
 
 <span class="sd">    The function constructs a vector of images and builds the Laplacian pyramid</span>
 <span class="sd">    by recursively computing the difference after applying</span>

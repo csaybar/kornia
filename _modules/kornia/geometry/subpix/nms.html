@@ -313,7 +313,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_nms_kernel2d</span><span class="p">(</span><span class="n">kx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ky</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Utility function, which returns neigh2channels conv kernel.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Utility function, which returns neigh2channels conv kernel.&quot;&quot;&quot;</span>
     <span class="n">numel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">ky</span> <span class="o">*</span> <span class="n">kx</span>
     <span class="n">center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">numel</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="n">eye</span><span class="p">(</span><span class="n">numel</span><span class="p">)</span>
@@ -322,7 +322,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_nms_kernel3d</span><span class="p">(</span><span class="n">kd</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ky</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">kx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Utility function, which returns neigh2channels conv kernel.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Utility function, which returns neigh2channels conv kernel.&quot;&quot;&quot;</span>
     <span class="n">numel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">kd</span> <span class="o">*</span> <span class="n">ky</span> <span class="o">*</span> <span class="n">kx</span>
     <span class="n">center</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">numel</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="n">eye</span><span class="p">(</span><span class="n">numel</span><span class="p">)</span>
@@ -331,7 +331,7 @@
 
 
 <div class="viewcode-block" id="NonMaximaSuppression2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.NonMaximaSuppression2d">[docs]</a><span class="k">class</span> <span class="nc">NonMaximaSuppression2d</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.&quot;&quot;&quot;</span>
     <span class="n">kernel</span><span class="p">:</span> <span class="n">Tensor</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
@@ -373,7 +373,7 @@
 
 
 <div class="viewcode-block" id="NonMaximaSuppression3d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.NonMaximaSuppression3d">[docs]</a><span class="k">class</span> <span class="nc">NonMaximaSuppression3d</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -454,7 +454,7 @@
 
 
 <div class="viewcode-block" id="nms2d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.nms2d">[docs]</a><span class="k">def</span> <span class="nf">nms2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">mask_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.</span>
 
 <span class="sd">    See :class:`~kornia.geometry.subpix.NonMaximaSuppression2d` for details.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -462,7 +462,7 @@
 
 
 <div class="viewcode-block" id="nms3d"><a class="viewcode-back" href="../../../../geometry.subpix.html#kornia.geometry.subpix.nms3d">[docs]</a><span class="k">def</span> <span class="nf">nms3d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">mask_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply non maxima suppression to filter.</span>
 
 <span class="sd">    See :class:`~kornia.feature.NonMaximaSuppression3d` for details.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

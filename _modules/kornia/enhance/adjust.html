@@ -318,7 +318,7 @@
 
 
 <span class="k">def</span> <span class="nf">adjust_saturation_raw</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
 
 <span class="sd">    Expecting image to be in hsv format already.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -349,7 +349,7 @@
 
 
 <span class="k">def</span> <span class="nf">adjust_saturation_with_gray_subtraction</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image by blending the image with its grayscaled version.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image by blending the image with its grayscaled version.</span>
 
 <span class="sd">    The image is expected to be an RGB image or a gray image in the range of [0, 1].</span>
 <span class="sd">    If it is an RGB image, returns blending of the image with its grayscaled version.</span>
@@ -406,7 +406,7 @@
 
 
 <div class="viewcode-block" id="adjust_saturation"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_saturation">[docs]</a><span class="k">def</span> <span class="nf">adjust_saturation</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
 
 <span class="sd">    .. image:: _static/img/adjust_saturation.png</span>
 
@@ -449,7 +449,7 @@
 
 
 <span class="k">def</span> <span class="nf">adjust_hue_raw</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
 
 <span class="sd">    Expecting image to be in hsv format already.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -483,7 +483,7 @@
 
 
 <div class="viewcode-block" id="adjust_hue"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_hue">[docs]</a><span class="k">def</span> <span class="nf">adjust_hue</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
 
 <span class="sd">    .. image:: _static/img/adjust_hue.png</span>
 
@@ -527,7 +527,7 @@
 
 
 <div class="viewcode-block" id="adjust_gamma"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_gamma">[docs]</a><span class="k">def</span> <span class="nf">adjust_gamma</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">gain</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Perform gamma correction on an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Perform gamma correction on an image.</span>
 
 <span class="sd">    .. image:: _static/img/adjust_contrast.png</span>
 
@@ -600,7 +600,7 @@
 
 
 <div class="viewcode-block" id="adjust_contrast"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_contrast">[docs]</a><span class="k">def</span> <span class="nf">adjust_contrast</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">clip_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor.</span>
 
 <span class="sd">    .. image:: _static/img/adjust_contrast.png</span>
 
@@ -668,7 +668,7 @@
 
 
 <div class="viewcode-block" id="adjust_contrast_with_mean_subtraction"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_contrast_with_mean_subtraction">[docs]</a><span class="k">def</span> <span class="nf">adjust_contrast_with_mean_subtraction</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor by subtracting the mean over channels.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor by subtracting the mean over channels.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        this is just a convenience function to have compatibility with Pil. For exact</span>
@@ -725,7 +725,7 @@
 
 
 <div class="viewcode-block" id="adjust_brightness"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_brightness">[docs]</a><span class="k">def</span> <span class="nf">adjust_brightness</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">clip_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the brightness of an image tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the brightness of an image tensor.</span>
 
 <span class="sd">    .. image:: _static/img/adjust_brightness.png</span>
 
@@ -792,7 +792,7 @@
 
 
 <span class="k">def</span> <span class="nf">adjust_brightness_accumulative</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">clip_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the brightness accumulatively of an image tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the brightness accumulatively of an image tensor.</span>
 
 <span class="sd">    This implementation follows PIL convention.</span>
 
@@ -843,7 +843,7 @@
 
 
 <div class="viewcode-block" id="adjust_sigmoid"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_sigmoid">[docs]</a><span class="k">def</span> <span class="nf">adjust_sigmoid</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">inv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Adjust sigmoid correction on the input image tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust sigmoid correction on the input image tensor.</span>
 
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
 
@@ -876,7 +876,7 @@
 
 
 <div class="viewcode-block" id="adjust_log"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.adjust_log">[docs]</a><span class="k">def</span> <span class="nf">adjust_log</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inv</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">clip_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Adjust log correction on the input image tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust log correction on the input image tensor.</span>
 
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
 
@@ -913,7 +913,7 @@
 
 
 <span class="k">def</span> <span class="nf">_solarize</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;For each pixel in the image, select the pixel if the value is less than the threshold. Otherwise, subtract</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;For each pixel in the image, select the pixel if the value is less than the threshold. Otherwise, subtract</span>
 <span class="sd">    1.0 from the pixel.</span>
 
 <span class="sd">    Args:</span>
@@ -944,7 +944,7 @@
 <div class="viewcode-block" id="solarize"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.solarize">[docs]</a><span class="k">def</span> <span class="nf">solarize</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">additions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;For each pixel in the image less than threshold.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;For each pixel in the image less than threshold.</span>
 
 <span class="sd">    .. image:: _static/img/solarize.png</span>
 
@@ -1009,7 +1009,7 @@
 
 <div class="viewcode-block" id="posterize"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.posterize">[docs]</a><span class="nd">@perform_keep_shape_image</span>
 <span class="k">def</span> <span class="nf">posterize</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">bits</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reduce the number of bits for each color channel.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Reduce the number of bits for each color channel.</span>
 
 <span class="sd">    .. image:: _static/img/posterize.png</span>
 
@@ -1097,7 +1097,7 @@
 
 <div class="viewcode-block" id="sharpness"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.sharpness">[docs]</a><span class="nd">@perform_keep_shape_image</span>
 <span class="k">def</span> <span class="nf">sharpness</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply sharpness to the input tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply sharpness to the input tensor.</span>
 
 <span class="sd">    .. image:: _static/img/sharpness.png</span>
 
@@ -1151,7 +1151,7 @@
 
 
 <span class="k">def</span> <span class="nf">_blend_one</span><span class="p">(</span><span class="n">input1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">input2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blend two images into one.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Blend two images into one.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input1: image tensor with shapes like :math:`(H, W)` or :math:`(D, H, W)`.</span>
@@ -1193,7 +1193,7 @@
 
 <span class="c1"># Code taken from: https://github.com/pytorch/vision/pull/796</span>
 <span class="k">def</span> <span class="nf">_scale_channel</span><span class="p">(</span><span class="n">im</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the data in the channel to implement equalize.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale the data in the channel to implement equalize.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: image tensor with shapes like :math:`(H, W)` or :math:`(D, H, W)`.</span>
@@ -1235,7 +1235,7 @@
 
 <div class="viewcode-block" id="equalize"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.equalize">[docs]</a><span class="nd">@perform_keep_shape_image</span>
 <span class="k">def</span> <span class="nf">equalize</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply equalize on the input tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply equalize on the input tensor.</span>
 
 <span class="sd">    .. image:: _static/img/equalize.png</span>
 
@@ -1264,7 +1264,7 @@
 
 <div class="viewcode-block" id="equalize3d"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.equalize3d">[docs]</a><span class="nd">@perform_keep_shape_video</span>
 <span class="k">def</span> <span class="nf">equalize3d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Equalize the values for a 3D volumetric tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Equalize the values for a 3D volumetric tensor.</span>
 
 <span class="sd">    Implements Equalize function for a sequence of images using PyTorch ops based on uint8 format:</span>
 <span class="sd">    https://github.com/tensorflow/tpu/blob/master/models/official/efficientnet/autoaugment.py#L352</span>
@@ -1286,7 +1286,7 @@
 
 
 <div class="viewcode-block" id="invert"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.invert">[docs]</a><span class="k">def</span> <span class="nf">invert</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">max_val</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">]))</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert the values of an input image tensor by its maximum value.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert the values of an input image tensor by its maximum value.</span>
 
 <span class="sd">    .. image:: _static/img/invert.png</span>
 
@@ -1318,7 +1318,7 @@
 
 
 <div class="viewcode-block" id="AdjustSaturation"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustSaturation">[docs]</a><span class="k">class</span> <span class="nc">AdjustSaturation</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
 
 <span class="sd">    The input image is expected to be an RGB image in the range of [0, 1].</span>
 
@@ -1362,7 +1362,7 @@
 
 
 <span class="k">class</span> <span class="nc">AdjustSaturationWithGraySubtraction</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust color saturation of an image.</span>
 
 <span class="sd">    This implementation aligns PIL. Hence, the output is close to TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1409,7 +1409,7 @@
 
 
 <div class="viewcode-block" id="AdjustHue"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustHue">[docs]</a><span class="k">class</span> <span class="nc">AdjustHue</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust hue of an image.</span>
 
 <span class="sd">    This implementation aligns PIL. Hence, the output is close to TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1456,7 +1456,7 @@
 
 
 <div class="viewcode-block" id="AdjustGamma"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustGamma">[docs]</a><span class="k">class</span> <span class="nc">AdjustGamma</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Perform gamma correction on an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Perform gamma correction on an image.</span>
 
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
 
@@ -1494,7 +1494,7 @@
 
 
 <div class="viewcode-block" id="AdjustContrast"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustContrast">[docs]</a><span class="k">class</span> <span class="nc">AdjustContrast</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Contrast of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Contrast of an image.</span>
 
 <span class="sd">    This implementation aligns OpenCV, not PIL. Hence, the output differs from TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1531,7 +1531,7 @@
 
 
 <span class="k">class</span> <span class="nc">AdjustContrastWithMeanSubtraction</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Contrast of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Contrast of an image.</span>
 
 <span class="sd">    This implementation aligns PIL. Hence, the output is close to TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1569,7 +1569,7 @@
 
 
 <div class="viewcode-block" id="AdjustBrightness"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustBrightness">[docs]</a><span class="k">class</span> <span class="nc">AdjustBrightness</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Brightness of an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Brightness of an image.</span>
 
 <span class="sd">    This implementation aligns OpenCV, not PIL. Hence, the output differs from TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1605,7 +1605,7 @@
 
 
 <div class="viewcode-block" id="AdjustSigmoid"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustSigmoid">[docs]</a><span class="k">class</span> <span class="nc">AdjustSigmoid</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor or performs sigmoid correction on the input image tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust the contrast of an image tensor or performs sigmoid correction on the input image tensor.</span>
 
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
 
@@ -1637,7 +1637,7 @@
 
 
 <div class="viewcode-block" id="AdjustLog"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.AdjustLog">[docs]</a><span class="k">class</span> <span class="nc">AdjustLog</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adjust log correction on the input image tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust log correction on the input image tensor.</span>
 
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
 
@@ -1668,7 +1668,7 @@
 
 
 <span class="k">class</span> <span class="nc">AdjustBrightnessAccumulative</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Brightness of an image accumulatively.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Adjust Brightness of an image accumulatively.</span>
 
 <span class="sd">    This implementation aligns PIL. Hence, the output is close to TorchVision.</span>
 <span class="sd">    The input image is expected to be in the range of [0, 1].</span>
@@ -1704,7 +1704,7 @@
 
 
 <div class="viewcode-block" id="Invert"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.Invert">[docs]</a><span class="k">class</span> <span class="nc">Invert</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert the values of an input tensor by its maximum value.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert the values of an input tensor by its maximum value.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        input: The input tensor to invert with an arbitatry shape.</span>

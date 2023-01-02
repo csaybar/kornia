@@ -348,7 +348,7 @@
 
 
 <div class="viewcode-block" id="SOLD2_detector"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2_detector">[docs]</a><span class="k">class</span> <span class="nc">SOLD2_detector</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which detects line segments in an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which detects line segments in an image.</span>
 
 <span class="sd">    This is based on the original code from the paper &quot;SOLD²: Self-supervised</span>
 <span class="sd">    Occlusion-aware Line Detector and Descriptor&quot;. See :cite:`SOLD22021` for more details.</span>
@@ -398,7 +398,7 @@
         <span class="k">return</span> <span class="n">state_dict</span>
 
 <div class="viewcode-block" id="SOLD2_detector.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2_detector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            img: batched images with shape :math:`(B, 1, H, W)`.</span>
 
@@ -430,7 +430,7 @@
 
 
 <span class="k">class</span> <span class="nc">LineSegmentDetectionModule</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module extracting line segments from junctions and line heatmaps.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module extracting line segments from junctions and line heatmaps.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        detect_thresh: The probability threshold for mean activation (0. ~ 1.)</span>
@@ -497,7 +497,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;[Error] Missing junction refinement config.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Main function performing line segment detection.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Main function performing line segment detection.&quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">heatmap</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
         <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">heatmap</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">device</span> <span class="o">=</span> <span class="n">junctions</span><span class="o">.</span><span class="n">device</span>
@@ -601,7 +601,7 @@
         <span class="k">return</span> <span class="n">line_map_pred</span><span class="p">,</span> <span class="n">junctions</span><span class="p">,</span> <span class="n">heatmap</span>
 
     <span class="k">def</span> <span class="nf">refine_heatmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">valid_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Global heatmap refinement method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Global heatmap refinement method.&quot;&quot;&quot;</span>
         <span class="c1"># Grab the top 10% values</span>
         <span class="n">heatmap_values</span> <span class="o">=</span> <span class="n">heatmap</span><span class="p">[</span><span class="n">heatmap</span> <span class="o">&gt;</span> <span class="n">valid_thresh</span><span class="p">]</span>
         <span class="n">sorted_values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heatmap_values</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -618,7 +618,7 @@
         <span class="n">ratio</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
         <span class="n">valid_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2e-3</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Local heatmap refinement method.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Local heatmap refinement method.&quot;&quot;&quot;</span>
         <span class="c1"># Get the shape of the heatmap</span>
         <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">heatmap</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">increase_ratio</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">overlap_ratio</span>
@@ -648,7 +648,7 @@
         <span class="k">return</span> <span class="n">heatmap_output</span>
 
     <span class="k">def</span> <span class="nf">candidate_suppression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">candidate_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Suppress overlapping long lines in the candidate segments.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Suppress overlapping long lines in the candidate segments.&quot;&quot;&quot;</span>
         <span class="c1"># Define the distance tolerance</span>
         <span class="n">dist_tolerance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms_dist_tolerance</span>
 
@@ -697,7 +697,7 @@
     <span class="k">def</span> <span class="nf">refine_junction_perturb</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">W</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Refine the line endpoints in a similar way as in LSD.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Refine the line endpoints in a similar way as in LSD.&quot;&quot;&quot;</span>
         <span class="c1"># Fetch refinement parameters</span>
         <span class="n">num_perturbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">junction_refine_cfg</span><span class="p">[</span><span class="s2">&quot;num_perturbs&quot;</span><span class="p">]</span>
         <span class="n">perturb_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">junction_refine_cfg</span><span class="p">[</span><span class="s2">&quot;perturb_interval&quot;</span><span class="p">]</span>
@@ -766,7 +766,7 @@
         <span class="k">return</span> <span class="n">junctions_new</span><span class="p">,</span> <span class="n">line_map_new</span>
 
     <span class="k">def</span> <span class="nf">segments_to_line_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">segments</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Convert the list of segments to line map.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the list of segments to line map.&quot;&quot;&quot;</span>
         <span class="c1"># Create empty line map</span>
         <span class="n">num_junctions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">junctions</span><span class="p">)</span>
         <span class="n">line_map</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">([</span><span class="n">num_junctions</span><span class="p">,</span> <span class="n">num_junctions</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">junctions</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
@@ -782,7 +782,7 @@
         <span class="k">return</span> <span class="n">line_map</span>
 
     <span class="k">def</span> <span class="nf">detect_bilinear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heatmap</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">cand_h</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">cand_w</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Detection by bilinear sampling.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Detection by bilinear sampling.&quot;&quot;&quot;</span>
         <span class="c1"># Get the floor and ceiling locations</span>
         <span class="n">cand_h_floor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">cand_h</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
         <span class="n">cand_h_ceil</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">cand_h</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
@@ -809,7 +809,7 @@
         <span class="n">normalized_seg_length</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
         <span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Detection by local maximum search.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Detection by local maximum search.&quot;&quot;&quot;</span>
         <span class="c1"># Compute the distance threshold</span>
         <span class="n">dist_thresh</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambda_radius</span> <span class="o">*</span> <span class="n">normalized_seg_length</span>
         <span class="c1"># Make it N x 64</span>
@@ -853,14 +853,14 @@
 
 
 <span class="k">def</span> <span class="nf">line_map_to_segments</span><span class="p">(</span><span class="n">junctions</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a junction connectivity map to a Nx2x2 tensor of segments.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a junction connectivity map to a Nx2x2 tensor of segments.&quot;&quot;&quot;</span>
     <span class="n">junc_loc1</span><span class="p">,</span> <span class="n">junc_loc2</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">line_map</span><span class="p">))</span>
     <span class="n">segments</span> <span class="o">=</span> <span class="n">stack</span><span class="p">([</span><span class="n">junctions</span><span class="p">[</span><span class="n">junc_loc1</span><span class="p">],</span> <span class="n">junctions</span><span class="p">[</span><span class="n">junc_loc2</span><span class="p">]],</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">segments</span>
 
 
 <span class="k">def</span> <span class="nf">prob_to_junctions</span><span class="p">(</span><span class="n">prob</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dist</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">prob_thresh</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Extract junctions from a probability map, apply NMS, and extract the top k candidates.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract junctions from a probability map, apply NMS, and extract the top k candidates.&quot;&quot;&quot;</span>
     <span class="c1"># Extract the junctions</span>
     <span class="n">junctions</span> <span class="o">=</span> <span class="n">stack</span><span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">prob</span> <span class="o">&gt;=</span> <span class="n">prob_thresh</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">junctions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

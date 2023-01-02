@@ -314,7 +314,7 @@
 
 
 <div class="viewcode-block" id="ZCAWhitening"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.ZCAWhitening">[docs]</a><span class="k">class</span> <span class="nc">ZCAWhitening</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the ZCA whitening matrix transform and the mean vector and applies the transform to the data.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the ZCA whitening matrix transform and the mean vector and applies the transform to the data.</span>
 
 <span class="sd">    The data tensor is flattened, and the mean :math:`\mathbf{\mu}`</span>
 <span class="sd">    and covariance matrix :math:`\mathbf{\Sigma}` are computed from</span>
@@ -392,7 +392,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">transform_inv</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span>
 
 <div class="viewcode-block" id="ZCAWhitening.fit"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.ZCAWhitening.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit ZCA whitening matrices to the data.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit ZCA whitening matrices to the data.</span>
 
 <span class="sd">        Args:</span>
 
@@ -421,7 +421,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="ZCAWhitening.forward"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.ZCAWhitening.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">include_fit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the whitening transform to the data.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the whitening transform to the data.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            x: Input data.</span>
@@ -442,7 +442,7 @@
         <span class="k">return</span> <span class="n">x_whiten</span></div>
 
 <div class="viewcode-block" id="ZCAWhitening.inverse_transform"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.ZCAWhitening.inverse_transform">[docs]</a>    <span class="k">def</span> <span class="nf">inverse_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the inverse transform to the whitened data.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply the inverse transform to the whitened data.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            x: Whitened data.</span>
@@ -470,7 +470,7 @@
 <div class="viewcode-block" id="zca_mean"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.zca_mean">[docs]</a><span class="k">def</span> <span class="nf">zca_mean</span><span class="p">(</span>
     <span class="n">inp</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">return_inverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the ZCA whitening matrix and mean vector.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the ZCA whitening matrix and mean vector.</span>
 
 <span class="sd">    The output can be used with :py:meth:`~kornia.color.linear_transform`.</span>
 <span class="sd">    See :class:`~kornia.color.ZCAWhitening` for details.</span>
@@ -568,7 +568,7 @@
 
 
 <div class="viewcode-block" id="zca_whiten"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.zca_whiten">[docs]</a><span class="k">def</span> <span class="nf">zca_whiten</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply ZCA whitening transform.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply ZCA whitening transform.</span>
 
 <span class="sd">    See :class:`~kornia.color.ZCAWhitening` for details.</span>
 
@@ -613,7 +613,7 @@
 
 
 <div class="viewcode-block" id="linear_transform"><a class="viewcode-back" href="../../../enhance.html#kornia.enhance.linear_transform">[docs]</a><span class="k">def</span> <span class="nf">linear_transform</span><span class="p">(</span><span class="n">inp</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">transform_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mean_vector</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Given a transformation matrix and a mean vector, this function will flatten the input tensor along the given</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Given a transformation matrix and a mean vector, this function will flatten the input tensor along the given</span>
 <span class="sd">    dimension and subtract the mean vector from it. Then the dot product with the transformation matrix will be</span>
 <span class="sd">    computed and then the resulting tensor is reshaped to the original input shape.</span>
 

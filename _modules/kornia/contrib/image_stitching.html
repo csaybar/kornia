@@ -317,7 +317,7 @@
 
 
 <div class="viewcode-block" id="ImageStitcher"><a class="viewcode-back" href="../../../contrib.html#kornia.contrib.ImageStitcher">[docs]</a><span class="k">class</span> <span class="nc">ImageStitcher</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Stitch two images with overlapping fields of view.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stitch two images with overlapping fields of view.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        matcher: image feature matching module.</span>
@@ -350,7 +350,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ransac</span> <span class="o">=</span> <span class="n">RANSAC</span><span class="p">(</span><span class="s1">&#39;homography&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_estimate_homography</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keypoints1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">keypoints2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Estimate homography by the matched keypoints.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Estimate homography by the matched keypoints.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            keypoints1: matched keypoint set from an image, shaped as :math:`(N, 2)`.</span>
@@ -369,7 +369,7 @@
         <span class="k">return</span> <span class="n">homo</span>
 
     <span class="k">def</span> <span class="nf">estimate_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Compute the corresponding homography.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the corresponding homography.&quot;&quot;&quot;</span>
         <span class="n">homos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">kp1</span><span class="p">,</span> <span class="n">kp2</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keypoints0&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keypoints1&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;batch_indexes&#39;</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">unique</span><span class="p">())):</span>
@@ -379,7 +379,7 @@
         <span class="k">return</span> <span class="n">concatenate</span><span class="p">(</span><span class="n">homos</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">blend_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dst_img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Blend two images together.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Blend two images together.&quot;&quot;&quot;</span>
         <span class="n">out</span><span class="p">:</span> <span class="n">Tensor</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">blending_method</span> <span class="o">==</span> <span class="s2">&quot;naive&quot;</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">src_img</span><span class="p">,</span> <span class="n">dst_img</span><span class="p">)</span>
@@ -388,7 +388,7 @@
         <span class="k">return</span> <span class="n">out</span>
 
     <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">image_2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Preprocess input to the required format.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Preprocess input to the required format.&quot;&quot;&quot;</span>
         <span class="c1"># TODO: probably perform histogram matching here.</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matcher</span><span class="p">,</span> <span class="n">LoFTR</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">matcher</span><span class="p">,</span> <span class="n">LocalFeatureMatcher</span><span class="p">):</span>
             <span class="n">input_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># LofTR works on grayscale images only</span>

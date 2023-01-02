@@ -328,7 +328,7 @@
 <div class="viewcode-block" id="get_laf_descriptors"><a class="viewcode-back" href="../../../feature.html#kornia.feature.get_laf_descriptors">[docs]</a><span class="k">def</span> <span class="nf">get_laf_descriptors</span><span class="p">(</span>
     <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">patch_descriptor</span><span class="p">:</span> <span class="n">Module</span><span class="p">,</span> <span class="n">patch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">grayscale_descriptor</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to get local descriptors, corresponding to LAFs (keypoints).</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to get local descriptors, corresponding to LAFs (keypoints).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        img: image features with shape :math:`(B,C,H,W)`.</span>
@@ -360,7 +360,7 @@
 
 
 <div class="viewcode-block" id="LAFDescriptor"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFDescriptor">[docs]</a><span class="k">class</span> <span class="nc">LAFDescriptor</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to get local descriptors, corresponding to LAFs (keypoints).</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module to get local descriptors, corresponding to LAFs (keypoints).</span>
 
 <span class="sd">    Internally uses :func:`~kornia.feature.get_laf_descriptors`.</span>
 
@@ -397,7 +397,7 @@
         <span class="p">)</span>
 
 <div class="viewcode-block" id="LAFDescriptor.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LAFDescriptor.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Three stage local feature detection.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Three stage local feature detection.</span>
 
 <span class="sd">        First the location and scale of interest points are determined by</span>
 <span class="sd">        detect function. Then affine shape and orientation.</span>
@@ -413,7 +413,7 @@
 
 
 <div class="viewcode-block" id="LocalFeature"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LocalFeature">[docs]</a><span class="k">class</span> <span class="nc">LocalFeature</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module, which combines local feature detector and descriptor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module, which combines local feature detector and descriptor.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        detector: the detection module.</span>
@@ -430,7 +430,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">scaling_coef</span> <span class="o">=</span> <span class="n">scaling_coef</span>
 
 <div class="viewcode-block" id="LocalFeature.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LocalFeature.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            img: image to extract features with shape :math:`(B,C,H,W)`.</span>
 <span class="sd">            mask: a mask with weights where to apply the response function.</span>
@@ -448,7 +448,7 @@
 
 
 <div class="viewcode-block" id="SIFTFeature"><a class="viewcode-back" href="../../../feature.html#kornia.feature.SIFTFeature">[docs]</a><span class="k">class</span> <span class="nc">SIFTFeature</span><span class="p">(</span><span class="n">LocalFeature</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convenience module, which implements DoG detector + (Root)SIFT descriptor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience module, which implements DoG detector + (Root)SIFT descriptor.</span>
 
 <span class="sd">    Still not as good as OpenCV/VLFeat because of https://github.com/kornia/kornia/pull/884, but we are working on it</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -478,7 +478,7 @@
 
 
 <div class="viewcode-block" id="GFTTAffNetHardNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.GFTTAffNetHardNet">[docs]</a><span class="k">class</span> <span class="nc">GFTTAffNetHardNet</span><span class="p">(</span><span class="n">LocalFeature</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convenience module, which implements GFTT detector + AffNet-HardNet descriptor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience module, which implements GFTT detector + AffNet-HardNet descriptor.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8000</span><span class="p">,</span> <span class="n">upright</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span> <span class="n">Device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)):</span>
         <span class="n">detector</span> <span class="o">=</span> <span class="n">ScaleSpaceDetector</span><span class="p">(</span>
@@ -495,7 +495,7 @@
 
 
 <div class="viewcode-block" id="KeyNetHardNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.KeyNetHardNet">[docs]</a><span class="k">class</span> <span class="nc">KeyNetHardNet</span><span class="p">(</span><span class="n">LocalFeature</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convenience module, which implements KeyNet detector + HardNet descriptor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience module, which implements KeyNet detector + HardNet descriptor.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -511,7 +511,7 @@
 
 
 <div class="viewcode-block" id="KeyNetAffNetHardNet"><a class="viewcode-back" href="../../../feature.html#kornia.feature.KeyNetAffNetHardNet">[docs]</a><span class="k">class</span> <span class="nc">KeyNetAffNetHardNet</span><span class="p">(</span><span class="n">LocalFeature</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convenience module, which implements KeyNet detector + AffNet + HardNet descriptor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience module, which implements KeyNet detector + AffNet + HardNet descriptor.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -529,7 +529,7 @@
 
 
 <div class="viewcode-block" id="LocalFeatureMatcher"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LocalFeatureMatcher">[docs]</a><span class="k">class</span> <span class="nc">LocalFeatureMatcher</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which finds correspondences between two images based on local features.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which finds correspondences between two images based on local features.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        local_feature: Local feature detector. See :class:`~kornia.feature.GFTTAffNetHardNet`.</span>
@@ -555,7 +555,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">extract_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Function for feature extraction from simple image.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function for feature extraction from simple image.&quot;&quot;&quot;</span>
         <span class="n">lafs0</span><span class="p">,</span> <span class="n">resps0</span><span class="p">,</span> <span class="n">descs0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_feature</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;lafs&quot;</span><span class="p">:</span> <span class="n">lafs0</span><span class="p">,</span> <span class="s2">&quot;responses&quot;</span><span class="p">:</span> <span class="n">resps0</span><span class="p">,</span> <span class="s2">&quot;descriptors&quot;</span><span class="p">:</span> <span class="n">descs0</span><span class="p">}</span>
 
@@ -570,7 +570,7 @@
         <span class="p">}</span>
 
 <div class="viewcode-block" id="LocalFeatureMatcher.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.LocalFeatureMatcher.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            data: dictionary containing the input data in the following format:</span>
 

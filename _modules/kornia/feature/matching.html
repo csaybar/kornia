@@ -316,7 +316,7 @@
 
 
 <span class="k">def</span> <span class="nf">_cdist</span><span class="p">(</span><span class="n">d1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">d2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Manual `torch.cdist` for M1.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Manual `torch.cdist` for M1.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_mps_tensor_safe</span><span class="p">(</span><span class="n">d1</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_mps_tensor_safe</span><span class="p">(</span><span class="n">d2</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cdist</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span>
     <span class="n">d1_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">d1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -332,7 +332,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_lazy_distance_matrix</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Helper function, which checks validity of provided distance matrix, or calculates L2-distance matrix dm is</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function, which checks validity of provided distance matrix, or calculates L2-distance matrix dm is</span>
 <span class="sd">    not provided.</span>
 
 <span class="sd">    Args:</span>
@@ -350,7 +350,7 @@
 
 
 <span class="k">def</span> <span class="nf">_no_match</span><span class="p">(</span><span class="n">dm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Helper function, which output empty tensors.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function, which output empty tensors.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">            - Descriptor distance of matching descriptors, shape of :math:`(0, 1)`.</span>
@@ -362,7 +362,7 @@
 
 
 <div class="viewcode-block" id="match_nn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_nn">[docs]</a><span class="k">def</span> <span class="nf">match_nn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
 
@@ -388,7 +388,7 @@
 
 
 <div class="viewcode-block" id="match_mnn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_mnn">[docs]</a><span class="k">def</span> <span class="nf">match_mnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    If the distance matrix dm is not provided, :py:func:`torch.cdist` is used.</span>
 
@@ -425,7 +425,7 @@
 
 
 <div class="viewcode-block" id="match_snn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_snn">[docs]</a><span class="k">def</span> <span class="nf">match_snn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    The method satisfies first to second nearest neighbor distance &lt;= th.</span>
 
@@ -462,7 +462,7 @@
 
 
 <div class="viewcode-block" id="match_smnn"><a class="viewcode-back" href="../../../feature.html#kornia.feature.match_smnn">[docs]</a><span class="k">def</span> <span class="nf">match_smnn</span><span class="p">(</span><span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">th</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function, which finds mutual nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    the method satisfies first to second nearest neighbor distance &lt;= th.</span>
 
@@ -525,7 +525,7 @@
     <span class="n">mutual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">dm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function, which finds nearest neighbors in desc2 for each vector in desc1.</span>
 
 <span class="sd">    The method satisfies first to second nearest neighbor distance &lt;= th,</span>
 <span class="sd">    and assures 2nd nearest neighbor is geometrically inconsistent with the 1st one</span>
@@ -593,7 +593,7 @@
 
 
 <div class="viewcode-block" id="DescriptorMatcher"><a class="viewcode-back" href="../../../feature.html#kornia.feature.DescriptorMatcher">[docs]</a><span class="k">class</span> <span class="nc">DescriptorMatcher</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
 
 <span class="sd">    See :func:`~kornia.feature.match_nn`, :func:`~kornia.feature.match_snn`,</span>
 <span class="sd">        :func:`~kornia.feature.match_mnn` or :func:`~kornia.feature.match_smnn` for more details.</span>
@@ -614,7 +614,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">th</span> <span class="o">=</span> <span class="n">th</span>
 
 <div class="viewcode-block" id="DescriptorMatcher.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.DescriptorMatcher.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            desc1: Batch of descriptors of a shape :math:`(B1, D)`.</span>
 <span class="sd">            desc2: Batch of descriptors of a shape :math:`(B2, D)`.</span>
@@ -640,7 +640,7 @@
 
 
 <div class="viewcode-block" id="GeometryAwareDescriptorMatcher"><a class="viewcode-back" href="../../../feature.html#kornia.feature.GeometryAwareDescriptorMatcher">[docs]</a><span class="k">class</span> <span class="nc">GeometryAwareDescriptorMatcher</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Module version of matching functions.</span>
 
 <span class="sd">    See :func:`~kornia.feature.match_nn`, :func:`~kornia.feature.match_snn`,</span>
 <span class="sd">        :func:`~kornia.feature.match_mnn` or :func:`~kornia.feature.match_smnn` for more details.</span>
@@ -661,7 +661,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
 
 <div class="viewcode-block" id="GeometryAwareDescriptorMatcher.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.GeometryAwareDescriptorMatcher.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            desc1: Batch of descriptors of a shape :math:`(B1, D)`.</span>
 <span class="sd">            desc2: Batch of descriptors of a shape :math:`(B2, D)`.</span>

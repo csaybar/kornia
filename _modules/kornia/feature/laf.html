@@ -318,7 +318,7 @@
 
 
 <div class="viewcode-block" id="get_laf_scale"><a class="viewcode-back" href="../../../feature.html#kornia.feature.get_laf_scale">[docs]</a><span class="k">def</span> <span class="nf">get_laf_scale</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return a scale of the LAFs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a scale of the LAFs.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        LAF: tensor [BxNx2x3] or [BxNx2x2].</span>
@@ -341,7 +341,7 @@
 
 
 <div class="viewcode-block" id="get_laf_center"><a class="viewcode-back" href="../../../feature.html#kornia.feature.get_laf_center">[docs]</a><span class="k">def</span> <span class="nf">get_laf_center</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return a center (keypoint) of the LAFs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a center (keypoint) of the LAFs.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        LAF: tensor [BxNx2x3].</span>
@@ -363,7 +363,7 @@
 
 
 <div class="viewcode-block" id="get_laf_orientation"><a class="viewcode-back" href="../../../feature.html#kornia.feature.get_laf_orientation">[docs]</a><span class="k">def</span> <span class="nf">get_laf_orientation</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return orientation of the LAFs, in degrees.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return orientation of the LAFs, in degrees.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        LAF: (Tensor): tensor [BxNx2x3].</span>
@@ -385,7 +385,7 @@
 
 
 <span class="k">def</span> <span class="nf">set_laf_orientation</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">angles_degrees</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Change the orientation of the LAFs.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change the orientation of the LAFs.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        LAF: tensor [BxNx2x3].</span>
@@ -408,7 +408,7 @@
 
 
 <div class="viewcode-block" id="laf_from_center_scale_ori"><a class="viewcode-back" href="../../../feature.html#kornia.feature.laf_from_center_scale_ori">[docs]</a><span class="k">def</span> <span class="nf">laf_from_center_scale_ori</span><span class="p">(</span><span class="n">xy</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ori</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Return orientation of the LAFs, in radians. Useful to create kornia LAFs from OpenCV keypoints.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return orientation of the LAFs, in radians. Useful to create kornia LAFs from OpenCV keypoints.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        xy: tensor [BxNx2].</span>
@@ -434,7 +434,7 @@
 
 
 <div class="viewcode-block" id="scale_laf"><a class="viewcode-back" href="../../../feature.html#kornia.feature.scale_laf">[docs]</a><span class="k">def</span> <span class="nf">scale_laf</span><span class="p">(</span><span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">scale_coef</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Multiplies region part of LAF ([:, :, :2, :2]) by a scale_coefficient.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiplies region part of LAF ([:, :, :2, :2]) by a scale_coefficient.</span>
 
 <span class="sd">    So the center, shape and orientation of the local feature stays the same, but the region area changes.</span>
 
@@ -463,7 +463,7 @@
 
 
 <div class="viewcode-block" id="make_upright"><a class="viewcode-back" href="../../../feature.html#kornia.feature.make_upright">[docs]</a><span class="k">def</span> <span class="nf">make_upright</span><span class="p">(</span><span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Rectify the affine matrix, so that it becomes upright.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rectify the affine matrix, so that it becomes upright.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        laf: tensor of LAFs.</span>
@@ -499,7 +499,7 @@
 
 
 <div class="viewcode-block" id="ellipse_to_laf"><a class="viewcode-back" href="../../../feature.html#kornia.feature.ellipse_to_laf">[docs]</a><span class="k">def</span> <span class="nf">ellipse_to_laf</span><span class="p">(</span><span class="n">ells</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert ellipse regions to LAF format.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert ellipse regions to LAF format.</span>
 
 <span class="sd">    Ellipse (a, b, c) and upright covariance matrix [a11 a12; 0 a22] are connected</span>
 <span class="sd">    by inverse matrix square root: A = invsqrt([a b; b c]).</span>
@@ -548,7 +548,7 @@
 
 
 <div class="viewcode-block" id="laf_to_boundary_points"><a class="viewcode-back" href="../../../feature.html#kornia.feature.laf_to_boundary_points">[docs]</a><span class="k">def</span> <span class="nf">laf_to_boundary_points</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">n_pts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert LAFs to boundary points of the regions + center.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert LAFs to boundary points of the regions + center.</span>
 
 <span class="sd">    Used for local features visualization, see visualize_laf function.</span>
 
@@ -583,7 +583,7 @@
 
 
 <span class="k">def</span> <span class="nf">get_laf_pts_to_draw</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">img_idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return numpy array for drawing LAFs (local features).</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return numpy array for drawing LAFs (local features).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        LAF:</span>
@@ -611,7 +611,7 @@
 
 
 <div class="viewcode-block" id="denormalize_laf"><a class="viewcode-back" href="../../../feature.html#kornia.feature.denormalize_laf">[docs]</a><span class="k">def</span> <span class="nf">denormalize_laf</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">images</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;De-normalize LAFs from scale to image scale.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;De-normalize LAFs from scale to image scale.</span>
 
 <span class="sd">        B,N,H,W = images.size()</span>
 <span class="sd">        MIN_SIZE = min(H,W)</span>
@@ -644,7 +644,7 @@
 
 
 <div class="viewcode-block" id="normalize_laf"><a class="viewcode-back" href="../../../feature.html#kornia.feature.normalize_laf">[docs]</a><span class="k">def</span> <span class="nf">normalize_laf</span><span class="p">(</span><span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">images</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Normalize LAFs to [0,1] scale from pixel scale. See below:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize LAFs to [0,1] scale from pixel scale. See below:</span>
 <span class="sd">        B,N,H,W = images.size()</span>
 <span class="sd">        MIN_SIZE = min(H,W)</span>
 <span class="sd">        [a11 a21 x]</span>
@@ -676,7 +676,7 @@
 
 
 <span class="k">def</span> <span class="nf">generate_patch_grid_from_normalized_LAF</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">LAF</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">PS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Helper function for affine grid generation.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function for affine grid generation.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        img: image tensor of shape :math:`(B, CH, H, W)`.</span>
@@ -703,7 +703,7 @@
 <div class="viewcode-block" id="extract_patches_simple"><a class="viewcode-back" href="../../../feature.html#kornia.feature.extract_patches_simple">[docs]</a><span class="k">def</span> <span class="nf">extract_patches_simple</span><span class="p">(</span>
     <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">PS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">normalize_lafs_before_extraction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Extract patches defined by LAFs from image tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract patches defined by LAFs from image tensor.</span>
 
 <span class="sd">    No smoothing applied, huge aliasing (better use extract_patches_from_pyramid).</span>
 
@@ -738,7 +738,7 @@
 <div class="viewcode-block" id="extract_patches_from_pyramid"><a class="viewcode-back" href="../../../feature.html#kornia.feature.extract_patches_from_pyramid">[docs]</a><span class="k">def</span> <span class="nf">extract_patches_from_pyramid</span><span class="p">(</span>
     <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">PS</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">normalize_lafs_before_extraction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Extract patches defined by LAFs from image tensor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract patches defined by LAFs from image tensor.</span>
 
 <span class="sd">    Patches are extracted from appropriate pyramid level.</span>
 
@@ -782,7 +782,7 @@
 
 
 <div class="viewcode-block" id="laf_is_inside_image"><a class="viewcode-back" href="../../../feature.html#kornia.feature.laf_is_inside_image">[docs]</a><span class="k">def</span> <span class="nf">laf_is_inside_image</span><span class="p">(</span><span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">images</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">border</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Check if the LAF is touching or partly outside the image boundary.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the LAF is touching or partly outside the image boundary.</span>
 
 <span class="sd">    Returns the mask of LAFs, which are fully inside the image, i.e. valid.</span>
 
@@ -805,7 +805,7 @@
 
 
 <div class="viewcode-block" id="laf_to_three_points"><a class="viewcode-back" href="../../../feature.html#kornia.feature.laf_to_three_points">[docs]</a><span class="k">def</span> <span class="nf">laf_to_three_points</span><span class="p">(</span><span class="n">laf</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert local affine frame(LAF) to alternative representation: coordinates of LAF center, LAF-x unit vector,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert local affine frame(LAF) to alternative representation: coordinates of LAF center, LAF-x unit vector,</span>
 <span class="sd">    LAF-y unit vector.</span>
 
 <span class="sd">    Args:</span>
@@ -820,7 +820,7 @@
 
 
 <div class="viewcode-block" id="laf_from_three_points"><a class="viewcode-back" href="../../../feature.html#kornia.feature.laf_from_three_points">[docs]</a><span class="k">def</span> <span class="nf">laf_from_three_points</span><span class="p">(</span><span class="n">threepts</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert three points to local affine frame.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert three points to local affine frame.</span>
 
 <span class="sd">    Order is (0,0), (0, 1), (1, 0).</span>
 
@@ -835,7 +835,7 @@
 
 
 <div class="viewcode-block" id="perspective_transform_lafs"><a class="viewcode-back" href="../../../feature.html#kornia.feature.perspective_transform_lafs">[docs]</a><span class="k">def</span> <span class="nf">perspective_transform_lafs</span><span class="p">(</span><span class="n">trans_01</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">lafs_1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that applies perspective transformations to a set of local affine frames (LAFs).</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that applies perspective transformations to a set of local affine frames (LAFs).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        trans_01: tensor for perspective transformations of shape :math:`(B, 3, 3)`.</span>

@@ -315,7 +315,7 @@
 
 
 <span class="k">def</span> <span class="nf">_draw_pixel</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draws a pixel into an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draws a pixel into an image.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        image: the input image to where to draw the lines with shape :math`(C,H,W)`.</span>
@@ -330,7 +330,7 @@
 
 
 <div class="viewcode-block" id="draw_line"><a class="viewcode-back" href="../../../utils.html#kornia.utils.draw_line">[docs]</a><span class="k">def</span> <span class="nf">draw_line</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">p2</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw a single line into an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw a single line into an image.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        image: the input image to where to draw the lines with shape :math`(C,H,W)`.</span>
@@ -441,7 +441,7 @@
 <div class="viewcode-block" id="draw_rectangle"><a class="viewcode-back" href="../../../utils.html#kornia.utils.draw_rectangle">[docs]</a><span class="k">def</span> <span class="nf">draw_rectangle</span><span class="p">(</span>
     <span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">rectangle</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fill</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw N rectangles on a batch of image tensors.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draw N rectangles on a batch of image tensors.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        image: is tensor of BxCxHxW.</span>
@@ -516,7 +516,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_convex_edges</span><span class="p">(</span><span class="n">polygon</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Gets the left and right edges of a polygon for each y-coordinate y \in [0, h)</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Gets the left and right edges of a polygon for each y-coordinate y \in [0, h)</span>
 <span class="sd">    Args:</span>
 <span class="sd">        polygons: represents polygons to draw in BxNx2</span>
 <span class="sd">            N is the number of points</span>
@@ -557,7 +557,7 @@
 
 
 <span class="k">def</span> <span class="nf">_batch_polygons</span><span class="p">(</span><span class="n">polygons</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts a List of variable length polygons into a fixed size tensor.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Converts a List of variable length polygons into a fixed size tensor.</span>
 
 <span class="sd">    Works by repeating the last element in the tensor.</span>
 <span class="sd">    Args:</span>
@@ -576,7 +576,7 @@
 
 
 <div class="viewcode-block" id="draw_convex_polygon"><a class="viewcode-back" href="../../../utils.html#kornia.utils.draw_convex_polygon">[docs]</a><span class="k">def</span> <span class="nf">draw_convex_polygon</span><span class="p">(</span><span class="n">images</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">polygons</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">colors</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draws convex polygons on a batch of image tensors.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Draws convex polygons on a batch of image tensors.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        images: is tensor of BxCxHxW.</span>

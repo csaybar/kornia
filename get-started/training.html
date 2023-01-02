@@ -536,36 +536,36 @@ Expect some adventures or <a class="reference external" href="https://join.slack
 <li><p>single CPU:</p>
 <ul>
 <li><p>from a server without GPU</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ./train/image_classifier/main.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>./train/image_classifier/main.py
 </pre></div>
 </div>
 </li>
 <li><p>from any server by passing <cite>cpu=True</cite> to the <cite>Accelerator</cite>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ./train/image_classifier/main.py --data_path path_to_data --cpu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w"> </span>--cpu
 </pre></div>
 </div>
 </li>
 <li><p>from any server with Accelerate launcher</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate launch --cpu ./train/image_classifier/main.py --data_path path_to_data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate<span class="w"> </span>launch<span class="w"> </span>--cpu<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
 <li><p>single GPU:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ./train/image_classifier/main.py  <span class="c1"># from a server with a GPU</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>./train/image_classifier/main.py<span class="w">  </span><span class="c1"># from a server with a GPU</span>
 </pre></div>
 </div>
 </li>
 <li><p>with fp16 (mixed-precision)</p>
 <ul>
 <li><p>from any server by passing <cite>fp16=True</cite> to the <cite>Accelerator</cite>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ./train/image_classifier/main.py --data_path path_to_data --fp16
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w"> </span>--fp16
 </pre></div>
 </div>
 </li>
 <li><p>from any server with Accelerate launcher</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate launch --fp16 ./train/image_classifier/main.py --data_path path_to_data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate<span class="w"> </span>launch<span class="w"> </span>--fp16<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data
 </pre></div>
 </div>
 </li>
@@ -574,13 +574,13 @@ Expect some adventures or <a class="reference external" href="https://join.slack
 <li><p>multi GPUs (using PyTorch distributed mode)</p>
 <ul>
 <li><p>With Accelerate config and launcher</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate config  <span class="c1"># This will create a config file on your server</span>
-accelerate launch ./train/image_classifier/main.py --data_path path_to_data  <span class="c1"># This will run the script on your server</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate<span class="w"> </span>config<span class="w">  </span><span class="c1"># This will create a config file on your server</span>
+accelerate<span class="w"> </span>launch<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w">  </span><span class="c1"># This will run the script on your server</span>
 </pre></div>
 </div>
 </li>
 <li><p>With traditional PyTorch launcher</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m torch.distributed.launch --nproc_per_node <span class="m">2</span> --use_env ./train/image_classifier/main.py --data_path path_to_data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="w"> </span><span class="m">2</span><span class="w"> </span>--use_env<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data
 </pre></div>
 </div>
 </li>
@@ -589,23 +589,23 @@ accelerate launch ./train/image_classifier/main.py --data_path path_to_data  <sp
 <li><p>multi GPUs, multi node (several machines, using PyTorch distributed mode)</p>
 <ul>
 <li><p>With Accelerate config and launcher, on each machine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate config  <span class="c1"># This will create a config file on each server</span>
-accelerate launch ./train/image_classifier/main.py --data_path path_to_data  <span class="c1"># This will run the script on each server</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate<span class="w"> </span>config<span class="w">  </span><span class="c1"># This will create a config file on each server</span>
+accelerate<span class="w"> </span>launch<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w">  </span><span class="c1"># This will run the script on each server</span>
 </pre></div>
 </div>
 </li>
 <li><p>With PyTorch launcher only</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m torch.distributed.launch --nproc_per_node <span class="m">2</span> <span class="se">\</span>
-  --use_env <span class="se">\</span>
-  --node_rank <span class="m">0</span> <span class="se">\</span>
-  --master_addr master_node_ip_address <span class="se">\</span>
-  ./train/image_classifier/main.py --data_path path_to_data  <span class="c1"># On the first server</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_env<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--node_rank<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--master_addr<span class="w"> </span>master_node_ip_address<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w">  </span><span class="c1"># On the first server</span>
 
-python -m torch.distributed.launch --nproc_per_node <span class="m">2</span> <span class="se">\</span>
-  --use_env <span class="se">\</span>
-  --node_rank <span class="m">1</span> <span class="se">\</span>
-  --master_addr master_node_ip_address <span class="se">\</span>
-  ./train/image_classifier/main.py --data_path path_to_data  <span class="c1"># On the second server</span>
+python<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use_env<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--node_rank<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--master_addr<span class="w"> </span>master_node_ip_address<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w">  </span><span class="c1"># On the second server</span>
 </pre></div>
 </div>
 </li>
@@ -614,8 +614,8 @@ python -m torch.distributed.launch --nproc_per_node <span class="m">2</span> <sp
 <li><p>(multi) TPUs</p>
 <ul>
 <li><p>With Accelerate config and launcher</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate config  <span class="c1"># This will create a config file on your TPU server</span>
-accelerate launch ./train/image_classifier/main.py --data_path path_to_data  <span class="c1"># This will run the script on each server</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>accelerate<span class="w"> </span>config<span class="w">  </span><span class="c1"># This will create a config file on your TPU server</span>
+accelerate<span class="w"> </span>launch<span class="w"> </span>./train/image_classifier/main.py<span class="w"> </span>--data_path<span class="w"> </span>path_to_data<span class="w">  </span><span class="c1"># This will run the script on each server</span>
 </pre></div>
 </div>
 </li>

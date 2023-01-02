@@ -356,7 +356,7 @@
 
 
 <div class="viewcode-block" id="SOLD2"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2">[docs]</a><span class="k">class</span> <span class="nc">SOLD2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which detects and describe line segments in an image.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module, which detects and describe line segments in an image.</span>
 
 <span class="sd">    This is based on the original code from the paper &quot;SOLD²: Self-supervised</span>
 <span class="sd">    Occlusion-aware Line Detector and Descriptor&quot;. See :cite:`SOLD22021` for more details.</span>
@@ -405,7 +405,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">line_matcher</span> <span class="o">=</span> <span class="n">WunschLineMatcher</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;line_matcher_cfg&quot;</span><span class="p">])</span>
 
 <div class="viewcode-block" id="SOLD2.forward"><a class="viewcode-back" href="../../../../feature.html#kornia.feature.SOLD2.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            img: batched images with shape :math:`(B, 1, H, W)`.</span>
 
@@ -438,7 +438,7 @@
         <span class="k">return</span> <span class="n">outputs</span></div>
 
     <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            line_seg1, line_seg2: list of line segments in two images, with shape [num_lines, 2, 2].</span>
@@ -461,7 +461,7 @@
 
 
 <span class="k">class</span> <span class="nc">WunschLineMatcher</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Class matching two sets of line segments with the Needleman-Wunsch algorithm.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class matching two sets of line segments with the Needleman-Wunsch algorithm.</span>
 
 <span class="sd">    TODO: move it later in kornia.feature.matching</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -484,7 +484,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">line_score</span> <span class="o">=</span> <span class="n">line_score</span>  <span class="c1"># True to compute saliency on a line</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">line_seg2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">desc2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the best matches between two sets of line segments and their corresponding descriptors.&quot;&quot;&quot;</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">line_seg2</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">])</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">desc1</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">])</span>
@@ -532,7 +532,7 @@
         <span class="k">return</span> <span class="n">matches</span>
 
     <span class="k">def</span> <span class="nf">sample_line_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line_seg</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Regularly sample points along each line segments, with a minimal distance between each point.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Regularly sample points along each line segments, with a minimal distance between each point.</span>
 
 <span class="sd">        Pad the remaining points.</span>
 <span class="sd">        Inputs:</span>
@@ -571,7 +571,7 @@
         <span class="k">return</span> <span class="n">line_points</span><span class="p">,</span> <span class="n">valid_points</span>
 
     <span class="k">def</span> <span class="nf">filter_and_match_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Use the scores to keep the top k best lines, compute the Needleman- Wunsch algorithm on each candidate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the scores to keep the top k best lines, compute the Needleman- Wunsch algorithm on each candidate</span>
 <span class="sd">        pairs, and keep the highest score.</span>
 
 <span class="sd">        Inputs:</span>
@@ -609,7 +609,7 @@
         <span class="k">return</span> <span class="n">matches</span>
 
     <span class="k">def</span> <span class="nf">needleman_wunsch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Batched implementation of the Needleman-Wunsch algorithm.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Batched implementation of the Needleman-Wunsch algorithm.</span>
 
 <span class="sd">        The cost of the InDel operation is set to 0 by subtracting the gap</span>
 <span class="sd">        penalty to the scores.</span>
@@ -636,7 +636,7 @@
 
 
 <span class="k">def</span> <span class="nf">keypoints_to_grid</span><span class="p">(</span><span class="n">keypoints</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">img_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a list of keypoints into a grid in [-1, 1]² that can be used in torch.nn.functional.interpolate.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a list of keypoints into a grid in [-1, 1]² that can be used in torch.nn.functional.interpolate.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        keypoints: a tensor [N, 2] of N keypoints (ij coordinates convention).</span>
@@ -650,7 +650,7 @@
 
 
 <span class="k">def</span> <span class="nf">batched_linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Batch version of torch.normalize (similar to the numpy one).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Batch version of torch.normalize (similar to the numpy one).&quot;&quot;&quot;</span>
     <span class="n">intervals</span> <span class="o">=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
     <span class="n">broadcast_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">broadcast_size</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span>

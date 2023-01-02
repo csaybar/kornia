@@ -317,7 +317,7 @@
 
 
 <div class="viewcode-block" id="intrinsics_like"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.intrinsics_like">[docs]</a><span class="k">def</span> <span class="nf">intrinsics_like</span><span class="p">(</span><span class="n">focal</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a 3x3 instrinsics matrix, with same size as the input.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a 3x3 instrinsics matrix, with same size as the input.</span>
 
 <span class="sd">    The center of projection will be based in the input image size.</span>
 
@@ -345,7 +345,7 @@
 
 
 <div class="viewcode-block" id="random_intrinsics"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.random_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">random_intrinsics</span><span class="p">(</span><span class="n">low</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">high</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Generate a random camera matrix based on a given uniform distribution.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Generate a random camera matrix based on a given uniform distribution.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        low: lower range (inclusive).</span>
@@ -362,7 +362,7 @@
 
 
 <div class="viewcode-block" id="scale_intrinsics"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.scale_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">scale_intrinsics</span><span class="p">(</span><span class="n">camera_matrix</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">scale_factor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale a camera matrix containing the intrinsics.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Scale a camera matrix containing the intrinsics.</span>
 
 <span class="sd">    Applies the scaling factor to the focal length and center of projection.</span>
 
@@ -383,7 +383,7 @@
 
 
 <div class="viewcode-block" id="projection_from_KRt"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.projection_from_KRt">[docs]</a><span class="k">def</span> <span class="nf">projection_from_KRt</span><span class="p">(</span><span class="n">K</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">R</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the projection matrix P from K, R and t.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the projection matrix P from K, R and t.</span>
 
 <span class="sd">    This function estimate the projection matrix by solving the following equation: :math:`P = K * [R|t]`.</span>
 
@@ -415,7 +415,7 @@
 
 
 <span class="k">def</span> <span class="nf">KRt_from_projection</span><span class="p">(</span><span class="n">P</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decompose the Projection matrix into Camera-Matrix, Rotation Matrix and Translation vector.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decompose the Projection matrix into Camera-Matrix, Rotation Matrix and Translation vector.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        P: the projection matrix with shape :math:`(B, 3, 4)`.</span>
@@ -453,7 +453,7 @@
 
 
 <span class="k">def</span> <span class="nf">depth_from_point</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the depth of a point transformed by a rigid transform.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the depth of a point transformed by a rigid transform.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">       R: The rotation matrix with shape :math:`(*, 3, 3)`.</span>
@@ -474,7 +474,7 @@
 
 
 <span class="k">def</span> <span class="nf">_nullspace</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the null space of A.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the null space of A.</span>
 
 <span class="sd">    Return the smallest singular value and the corresponding vector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -483,7 +483,7 @@
 
 
 <div class="viewcode-block" id="projections_from_fundamental"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.projections_from_fundamental">[docs]</a><span class="k">def</span> <span class="nf">projections_from_fundamental</span><span class="p">(</span><span class="n">F_mat</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the projection matrices from the Fundamental Matrix.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the projection matrices from the Fundamental Matrix.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">       F_mat: the fundamental matrix with the shape :math:`(B, 3, 3)`.</span>
