@@ -310,7 +310,7 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 
 <span class="kn">from</span> <span class="nn">.filter</span> <span class="kn">import</span> <span class="n">filter2d</span><span class="p">,</span> <span class="n">filter2d_separable</span>
-<span class="kn">from</span> <span class="nn">.kernels</span> <span class="kn">import</span> <span class="n">get_gaussian_kernel1d</span><span class="p">,</span> <span class="n">get_gaussian_kernel2d</span>
+<span class="kn">from</span> <span class="nn">.kernels</span> <span class="kn">import</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">,</span> <span class="n">get_gaussian_kernel2d_t</span>
 
 
 <div class="viewcode-block" id="gaussian_blur2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.gaussian_blur2d">[docs]</a><span class="k">def</span> <span class="nf">gaussian_blur2d</span><span class="p">(</span>
@@ -349,14 +349,59 @@
 <span class="sd">        &gt;&gt;&gt; output.shape</span>
 <span class="sd">        torch.Size([2, 4, 5, 5])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="n">sigma_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">gaussian_blur2d_t</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">sigma_t</span><span class="p">,</span> <span class="n">border_type</span><span class="p">,</span> <span class="n">separable</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">gaussian_blur2d_t</span><span class="p">(</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;reflect&#39;</span><span class="p">,</span>
+    <span class="n">separable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an operator that blurs a tensor using a Gaussian filter.</span>
+
+<span class="sd">    .. image:: _static/img/gaussian_blur2d.png</span>
+
+<span class="sd">    The operator smooths the given tensor with a gaussian kernel by convolving</span>
+<span class="sd">    it to each channel. It supports batched operation.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        input: the input tensor with shape :math:`(B,C,H,W)`.</span>
+<span class="sd">        kernel_size: the size of the kernel.</span>
+<span class="sd">        sigma: the standard deviation of the kernel with shape :math:`(B,2)`.</span>
+<span class="sd">        border_type: the padding mode to be applied before convolving.</span>
+<span class="sd">          The expected modes are: ``&#39;constant&#39;``, ``&#39;reflect&#39;``,</span>
+<span class="sd">          ``&#39;replicate&#39;`` or ``&#39;circular&#39;``. Default: ``&#39;reflect&#39;``.</span>
+<span class="sd">        separable: run as composition of two 1d-convolutions.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the blurred tensor with shape :math:`(B, C, H, W)`.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       See a working example `here &lt;https://kornia-tutorials.readthedocs.io/en/latest/</span>
+<span class="sd">       gaussian_blur.html&gt;`__.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 4, 5, 5)</span>
+<span class="sd">        &gt;&gt;&gt; output = gaussian_blur2d_t(input, (3, 3), torch.tensor([[1.5, 1.5]]))</span>
+<span class="sd">        &gt;&gt;&gt; output.shape</span>
+<span class="sd">        torch.Size([2, 4, 5, 5])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">device</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">dtype</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">separable</span><span class="p">:</span>
-        <span class="n">kernel_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">filter2d_separable</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_x</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">kernel_y</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">border_type</span><span class="p">)</span>
+        <span class="n">kernel_x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">filter2d_separable</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel_x</span><span class="p">,</span> <span class="n">kernel_y</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">border_type</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">out</span></div>
+        <span class="n">kernel</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel2d_t</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">filter2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">border_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
 
 
 <div class="viewcode-block" id="GaussianBlur2d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.GaussianBlur2d">[docs]</a><span class="k">class</span> <span class="nc">GaussianBlur2d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>

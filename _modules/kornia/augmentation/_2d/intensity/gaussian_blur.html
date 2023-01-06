@@ -304,29 +304,34 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.augmentation._2d.intensity.gaussian_blur</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
+<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="n">random_generator</span> <span class="k">as</span> <span class="n">rg</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation._2d.intensity.base</span> <span class="kn">import</span> <span class="n">IntensityAugmentationBase2D</span>
 <span class="kn">from</span> <span class="nn">kornia.constants</span> <span class="kn">import</span> <span class="n">BorderType</span>
-<span class="kn">from</span> <span class="nn">kornia.filters</span> <span class="kn">import</span> <span class="n">gaussian_blur2d</span>
+<span class="kn">from</span> <span class="nn">kornia.filters</span> <span class="kn">import</span> <span class="n">gaussian_blur2d_t</span>
 
 
 <div class="viewcode-block" id="RandomGaussianBlur"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomGaussianBlur">[docs]</a><span class="k">class</span> <span class="nc">RandomGaussianBlur</span><span class="p">(</span><span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply gaussian blur given tensor image or a batch of tensor images randomly.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Apply gaussian blur given tensor image or a batch of tensor images randomly. The standard deviation is</span>
+<span class="sd">    sampled for each instance.</span>
 
 <span class="sd">    .. image:: _static/img/RandomGaussianBlur.png</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        kernel_size: the size of the kernel.</span>
-<span class="sd">        sigma: the standard deviation of the kernel.</span>
+<span class="sd">        sigma: the range for the standard deviation of the kernel.</span>
 <span class="sd">        border_type: the padding mode to be applied before convolving.</span>
 <span class="sd">          The expected modes are: ``constant``, ``reflect``, ``replicate`` or ``circular``.</span>
+<span class="sd">        separable: run as composition of two 1d-convolutions.</span>
 <span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
 <span class="sd">        p: probability of applying the transformation.</span>
 <span class="sd">        keepdim: whether to keep the output shape the same as input (True) or broadcast it</span>
 <span class="sd">                 to the batch form (False).</span>
+<span class="sd">        silence_instantiation_warning: if True, silence the warning at instantiation.</span>
 
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: :math:`(C, H, W)` or :math:`(B, C, H, W)`, Optional: :math:`(B, 3, 3)`</span>
@@ -340,11 +345,11 @@
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(1, 1, 5, 5)</span>
 <span class="sd">        &gt;&gt;&gt; blur = RandomGaussianBlur((3, 3), (0.1, 2.0), p=1.)</span>
 <span class="sd">        &gt;&gt;&gt; blur(input)</span>
-<span class="sd">        tensor([[[[0.6699, 0.4645, 0.3193, 0.1741, 0.1955],</span>
-<span class="sd">                  [0.5422, 0.6657, 0.6261, 0.6527, 0.5195],</span>
-<span class="sd">                  [0.3826, 0.2638, 0.1902, 0.1620, 0.2141],</span>
-<span class="sd">                  [0.6329, 0.6732, 0.5634, 0.4037, 0.2049],</span>
-<span class="sd">                  [0.8307, 0.6753, 0.7147, 0.5768, 0.7097]]]])</span>
+<span class="sd">        tensor([[[[0.5941, 0.5833, 0.5022, 0.4384, 0.3934],</span>
+<span class="sd">                  [0.5310, 0.4964, 0.4113, 0.3637, 0.3472],</span>
+<span class="sd">                  [0.4991, 0.4997, 0.4312, 0.3620, 0.3081],</span>
+<span class="sd">                  [0.6082, 0.5667, 0.4954, 0.3825, 0.3508],</span>
+<span class="sd">                  [0.7042, 0.6849, 0.6275, 0.4753, 0.4105]]]])</span>
 
 <span class="sd">    To apply the exact augmenation again, you may take the advantage of the previous parameter state:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(1, 3, 32, 32)</span>
@@ -358,20 +363,38 @@
         <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
         <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
         <span class="n">border_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;reflect&quot;</span><span class="p">,</span>
+        <span class="n">separable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">same_on_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">return_transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">silence_instantiation_warning</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">return_transform</span><span class="o">=</span><span class="n">return_transform</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">p_batch</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="n">BorderType</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">border_type</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">silence_instantiation_warning</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;`RandomGaussianBlur` has changed its behavior and now randomly sample sigma for both axes. &quot;</span>
+                <span class="s2">&quot;To retrieve old behavior please consider using kornia.filters.GaussianBlur2d&quot;</span><span class="p">,</span>
+                <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">separable</span><span class="o">=</span><span class="n">separable</span><span class="p">,</span> <span class="n">border_type</span><span class="o">=</span><span class="n">BorderType</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">border_type</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_param_generator</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">RandomGaussianBlurGenerator</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">gaussian_blur2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;kernel_size&quot;</span><span class="p">],</span> <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;sigma&quot;</span><span class="p">],</span> <span class="n">flags</span><span class="p">[</span><span class="s2">&quot;border_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span></div>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;sigma&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">gaussian_blur2d_t</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;kernel_size&quot;</span><span class="p">],</span>
+            <span class="n">sigma</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;border_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span>
+            <span class="n">separable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;separable&quot;</span><span class="p">],</span>
+        <span class="p">)</span></div>
 </pre></div>
         </article>
       </div>
