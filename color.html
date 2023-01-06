@@ -398,6 +398,44 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.color.apply_colormap">
+<span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">apply_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#apply_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.apply_colormap" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply to a gray tensor a colormap.</p>
+<blockquote>
+<div><p>The image data is assumed to be integer values.</p>
+</div></blockquote>
+<img alt="_images/apply_colormap.png" src="_images/apply_colormap.png" />
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input tensor of a gray image.</p></li>
+<li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A RGB tensor with the applied color map into the input_tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">63</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colormap</span> <span class="o">=</span> <span class="n">AUTUMN</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_colormap</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">colormap</span><span class="p">)</span>
+<span class="go">tensor([[[1.0000, 1.0000, 1.0000],</span>
+<span class="go">         [1.0000, 1.0000, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0159, 0.0317],</span>
+<span class="go">         [0.3968, 0.7937, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0000, 0.0000],</span>
+<span class="go">         [0.0000, 0.0000, 0.0000]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.color.GrayscaleToRgb">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">GrayscaleToRgb</span></span><a class="reference internal" href="_modules/kornia/color/gray.html#GrayscaleToRgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.GrayscaleToRgb" title="Permalink to this definition">#</a></dt>
@@ -460,6 +498,38 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gray</span> <span class="o">=</span> <span class="n">BgrToGrayscale</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">gray</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>  <span class="c1"># 2x1x4x5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.color.ApplyColorMap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">ApplyColorMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colormap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#ApplyColorMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.ApplyColorMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Module that apply to a gray tensor (integer tensor) a colormap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> – the input tensor of a gray image.</p></li>
+<li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A RGB tensor with the applied color map into the input_tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">63</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colormap</span> <span class="o">=</span> <span class="n">AUTUMN</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_cm</span> <span class="o">=</span> <span class="n">ApplyColorMap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_cm</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
+<span class="go">tensor([[[1.0000, 1.0000, 1.0000],</span>
+<span class="go">         [1.0000, 1.0000, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0159, 0.0317],</span>
+<span class="go">         [0.3968, 0.7937, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0000, 0.0000],</span>
+<span class="go">         [0.0000, 0.0000, 0.0000]]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2147,6 +2217,101 @@ as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W
 </dd></dl>
 
 </section>
+<section id="color-maps">
+<h2>Color Maps<a class="headerlink" href="#color-maps" title="Permalink to this heading">#</a></h2>
+<p>You can create your custom color map with</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.color.ColorMap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">ColorMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_colormap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#ColorMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.ColorMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Abstract class to represents a color map.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="kornia.color.RGBColor">
+<span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">RGBColor</span></span><a class="headerlink" href="#kornia.color.RGBColor" title="Permalink to this definition">#</a></dt>
+<dd><p>alias of <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</p>
+</dd></dl>
+
+<p>Color maps availables:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.color.AUTUMN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">AUTUMN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#AUTUMN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.AUTUMN" title="Permalink to this definition">#</a></dt>
+<dd><p>The GNU Octave colormap <cite>autumn</cite></p>
+<img alt="_images/AUTUMN.png" src="_images/AUTUMN.png" />
+</dd></dl>
+
+<p>Functions and modules to use the color maps:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">apply_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#apply_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply to a gray tensor a colormap.</p>
+<blockquote>
+<div><p>The image data is assumed to be integer values.</p>
+</div></blockquote>
+<img alt="_images/apply_colormap.png" src="_images/apply_colormap.png" />
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the input tensor of a gray image.</p></li>
+<li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A RGB tensor with the applied color map into the input_tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">63</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colormap</span> <span class="o">=</span> <span class="n">AUTUMN</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_colormap</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">colormap</span><span class="p">)</span>
+<span class="go">tensor([[[1.0000, 1.0000, 1.0000],</span>
+<span class="go">         [1.0000, 1.0000, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0159, 0.0317],</span>
+<span class="go">         [0.3968, 0.7937, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0000, 0.0000],</span>
+<span class="go">         [0.0000, 0.0000, 0.0000]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">ApplyColorMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colormap</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/colormap.html#ApplyColorMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Permalink to this definition">#</a></dt>
+<dd><p>Module that apply to a gray tensor (integer tensor) a colormap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> – the input tensor of a gray image.</p></li>
+<li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A RGB tensor with the applied color map into the input_tensor</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">63</span><span class="p">]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colormap</span> <span class="o">=</span> <span class="n">AUTUMN</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_cm</span> <span class="o">=</span> <span class="n">ApplyColorMap</span><span class="p">(</span><span class="n">colormap</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">apply_cm</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">)</span>
+<span class="go">tensor([[[1.0000, 1.0000, 1.0000],</span>
+<span class="go">         [1.0000, 1.0000, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0159, 0.0317],</span>
+<span class="go">         [0.3968, 0.7937, 1.0000]],</span>
+
+<span class="go">        [[0.0000, 0.0000, 0.0000],</span>
+<span class="go">         [0.0000, 0.0000, 0.0000]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -2209,9 +2374,11 @@ as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W
 <li><a class="reference internal" href="#kornia.color.rgb_to_grayscale"><code class="docutils literal notranslate"><span class="pre">rgb_to_grayscale()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.bgr_to_grayscale"><code class="docutils literal notranslate"><span class="pre">bgr_to_grayscale()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.grayscale_to_rgb"><code class="docutils literal notranslate"><span class="pre">grayscale_to_rgb()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.color.apply_colormap"><code class="docutils literal notranslate"><span class="pre">apply_colormap()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.GrayscaleToRgb"><code class="docutils literal notranslate"><span class="pre">GrayscaleToRgb</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.RgbToGrayscale"><code class="docutils literal notranslate"><span class="pre">RgbToGrayscale</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.BgrToGrayscale"><code class="docutils literal notranslate"><span class="pre">BgrToGrayscale</span></code></a></li>
+<li><a class="reference internal" href="#kornia.color.ApplyColorMap"><code class="docutils literal notranslate"><span class="pre">ApplyColorMap</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#rgb">RGB</a><ul>
@@ -2316,6 +2483,14 @@ as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W
 <li><a class="reference internal" href="#sepia">Sepia</a><ul>
 <li><a class="reference internal" href="#kornia.color.Sepia"><code class="docutils literal notranslate"><span class="pre">Sepia</span></code></a></li>
 <li><a class="reference internal" href="#kornia.color.sepia"><code class="docutils literal notranslate"><span class="pre">sepia()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#color-maps">Color Maps</a><ul>
+<li><a class="reference internal" href="#kornia.color.ColorMap"><code class="docutils literal notranslate"><span class="pre">ColorMap</span></code></a></li>
+<li><a class="reference internal" href="#kornia.color.RGBColor"><code class="docutils literal notranslate"><span class="pre">RGBColor</span></code></a></li>
+<li><a class="reference internal" href="#kornia.color.AUTUMN"><code class="docutils literal notranslate"><span class="pre">AUTUMN</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">apply_colormap()</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">ApplyColorMap</span></code></a></li>
 </ul>
 </li>
 </ul>
