@@ -334,7 +334,6 @@
     <span class="s2">&quot;KORNIA_CHECK_SAME_DEVICES&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_IS_COLOR&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_IS_GRAY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;KORNIA_CHECK_IS_COLR_OR_GRAY&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_DM_DESC&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KORNIA_CHECK_LAF&quot;</span><span class="p">,</span>
 <span class="p">]</span>
@@ -762,6 +761,26 @@
     <span class="n">KORNIA_CHECK</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">tensors</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">tensors</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expected a list with at least one element&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">tensors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="n">x</span><span class="o">.</span><span class="n">device</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensors</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not same device for tensors. Got: </span><span class="si">{</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tensors</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">KORNIA_CHECK_SAME_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether two tensor have the same shape.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: first tensor to evaluate.</span>
+<span class="sd">        y: sencod tensor to evaluate.</span>
+<span class="sd">        msg: message to show in the exception.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TypeException: if the two tensors have not the same shape.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; x1 = torch.rand(2, 3, 3)</span>
+<span class="sd">        &gt;&gt;&gt; x2 = torch.rand(2, 3, 3)</span>
+<span class="sd">        &gt;&gt;&gt; KORNIA_CHECK_SAME_SHAPE(x1, x2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Not same shape for tensors. Got: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="KORNIA_CHECK_IS_COLOR"><a class="viewcode-back" href="../../testing.html#kornia.feature.KORNIA_CHECK_IS_COLOR">[docs]</a><span class="k">def</span> <span class="nf">KORNIA_CHECK_IS_COLOR</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
