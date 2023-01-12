@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -584,7 +585,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision. However, it does not
 follow the color theory and is not be actively maintained. Prefer using
 <a class="reference internal" href="#kornia.augmentation.ColorJiggle" title="kornia.augmentation.ColorJiggle"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.augmentation.ColorJiggle()</span></code></a></p>
-<img alt="_static/img/ColorJitter.png" src="_static/img/ColorJitter.png" />
+<img alt="_images/ColorJitter.png" src="_images/ColorJitter.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -640,15 +641,13 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <span class="go">          [0.9993, 0.9993, 0.9993]]]])</span>
 </pre></div>
 </div>
-<dl>
-<dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<p>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">ColorJitter</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -703,7 +702,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomBrightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/brightness.html#RandomBrightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomBrightness" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the brightness of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomBrighness.png" src="_static/img/RandomBrighness.png" />
+<img alt="_images/RandomBrightness.png" src="_images/RandomBrightness.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -732,40 +731,32 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function internally uses <a class="reference internal" href="enhance.html#kornia.enhance.adjust_brightness" title="kornia.enhance.adjust_brightness"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.enhance.adjust_brightness()</span></code></a></p>
-<p>Examples:
-&gt;&gt;&gt; rng = torch.manual_seed(0)
-&gt;&gt;&gt; inputs = torch.rand(1, 3, 3, 3)
-&gt;&gt;&gt; aug = RandomBrightness(brightness = (0.5,2.),p=1.)
-&gt;&gt;&gt; aug(inputs)
-tensor([[[[0.0505, 0.3225, 0.0000],</p>
-<blockquote>
-<div><p>[0.0000, 0.0000, 0.1883],
-[0.0443, 0.4507, 0.0099]],</p>
-</div></blockquote>
-<dl class="simple">
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.1866, 0.0000, 0.0000],</dt><dd><p>[0.0000, 0.0000, 0.0000],
-[0.0728, 0.2519, 0.3543]],</p>
-</dd>
-</dl>
-</dd>
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.0000, 0.0000, 0.2359],</dt><dd><p>[0.4694, 0.0000, 0.4284],
-[0.0000, 0.1072, 0.5070]]]])</p>
-</dd>
-</dl>
-</dd>
-</dl>
 </div>
-<dl>
-<dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomBrightness</span><span class="p">(</span><span class="n">brightness</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.</span><span class="p">),</span><span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="go">tensor([[[[0.0505, 0.3225, 0.0000],</span>
+<span class="go">          [0.0000, 0.0000, 0.1883],</span>
+<span class="go">          [0.0443, 0.4507, 0.0099]],</span>
+
+<span class="go">         [[0.1866, 0.0000, 0.0000],</span>
+<span class="go">          [0.0000, 0.0000, 0.0000],</span>
+<span class="go">          [0.0728, 0.2519, 0.3543]],</span>
+
+<span class="go">         [[0.0000, 0.0000, 0.2359],</span>
+<span class="go">          [0.4694, 0.0000, 0.4284],</span>
+<span class="go">          [0.0000, 0.1072, 0.5070]]]])</span>
+</pre></div>
+</div>
+<p>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomBrightness</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -813,7 +804,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomContrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/contrast.html#RandomContrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomContrast" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the contrast of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomContrast.png" src="_static/img/RandomContrast.png" />
+<img alt="_images/RandomContrast.png" src="_images/RandomContrast.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -841,41 +832,33 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function internally uses :func:<a href="#id5"><span class="problematic" id="id6">`</span></a>kornia.enhance.adjust_contrast</p>
-<p>Examples:
-&gt;&gt;&gt; rng = torch.manual_seed(0)
-&gt;&gt;&gt; inputs = torch.rand(1, 3, 3, 3)
-&gt;&gt;&gt; aug = RandomContrast(contrast = (0.5,2.),p=1.)
-&gt;&gt;&gt; aug(inputs)
-tensor([[[[0.2750, 0.4258, 0.0490],</p>
-<blockquote>
-<div><p>[0.0732, 0.1704, 0.3514],
-[0.2716, 0.4969, 0.2525]],</p>
-</div></blockquote>
-<dl class="simple">
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.3505, 0.1934, 0.2227],</dt><dd><p>[0.0124, 0.0936, 0.1629],
-[0.2874, 0.3867, 0.4434]],</p>
-</dd>
-</dl>
-</dd>
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.0893, 0.1564, 0.3778],</dt><dd><p>[0.5072, 0.2201, 0.4845],
-[0.2325, 0.3064, 0.5281]]]])</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>This function internally uses <a class="reference internal" href="enhance.html#kornia.enhance.adjust_contrast" title="kornia.enhance.adjust_contrast"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.enhance.adjust_contrast()</span></code></a></p>
 </div>
-<dl>
-<dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomContrast</span><span class="p">(</span><span class="n">contrast</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.</span><span class="p">),</span> <span class="n">p</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="go">tensor([[[[0.2750, 0.4258, 0.0490],</span>
+<span class="go">          [0.0732, 0.1704, 0.3514],</span>
+<span class="go">          [0.2716, 0.4969, 0.2525]],</span>
+
+<span class="go">         [[0.3505, 0.1934, 0.2227],</span>
+<span class="go">          [0.0124, 0.0936, 0.1629],</span>
+<span class="go">          [0.2874, 0.3867, 0.4434]],</span>
+
+<span class="go">         [[0.0893, 0.1564, 0.3778],</span>
+<span class="go">          [0.5072, 0.2201, 0.4845],</span>
+<span class="go">          [0.2325, 0.3064, 0.5281]]]])</span>
+</pre></div>
+</div>
+<p>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomContrast</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -935,7 +918,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomGamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/gamma.html#RandomGamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomGamma" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the gamma of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomGamma.png" src="_static/img/RandomGamma.png" />
+<img alt="_images/RandomGamma.png" src="_images/RandomGamma.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1162,7 +1145,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomHue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/hue.html#RandomHue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomHue" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the hue of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomHue.png" src="_static/img/RandomHue.png" />
+<img alt="_images/RandomHue.png" src="_images/RandomHue.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1188,41 +1171,33 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function internally uses :func:<a href="#id7"><span class="problematic" id="id8">`</span></a>kornia.enhance.adjust_hue</p>
-<p>Examples:
-&gt;&gt;&gt; rng = torch.manual_seed(0)
-&gt;&gt;&gt; inputs = torch.rand(1, 3, 3, 3)
-&gt;&gt;&gt; aug = RandomHue(hue = (-0.5,0.5),p=1.)
-&gt;&gt;&gt; aug(inputs)
-tensor([[[[0.3993, 0.2823, 0.6816],</p>
-<blockquote>
-<div><p>[0.6117, 0.2090, 0.4081],
-[0.4693, 0.5529, 0.9527]],</p>
-</div></blockquote>
-<dl class="simple">
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.1610, 0.5962, 0.4971],</dt><dd><p>[0.9152, 0.3971, 0.8742],
-[0.4194, 0.6771, 0.7162]],</p>
-</dd>
-</dl>
-</dd>
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.6323, 0.7682, 0.0885],</dt><dd><p>[0.0223, 0.1689, 0.2939],
-[0.5185, 0.8964, 0.4556]]]])</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>This function internally uses <a class="reference internal" href="enhance.html#kornia.enhance.adjust_hue" title="kornia.enhance.adjust_hue"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.enhance.adjust_hue()</span></code></a></p>
 </div>
-<dl>
-<dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomHue</span><span class="p">(</span><span class="n">hue</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span><span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="go">tensor([[[[0.3993, 0.2823, 0.6816],</span>
+<span class="go">          [0.6117, 0.2090, 0.4081],</span>
+<span class="go">          [0.4693, 0.5529, 0.9527]],</span>
+
+<span class="go">         [[0.1610, 0.5962, 0.4971],</span>
+<span class="go">          [0.9152, 0.3971, 0.8742],</span>
+<span class="go">          [0.4194, 0.6771, 0.7162]],</span>
+
+<span class="go">         [[0.6323, 0.7682, 0.0885],</span>
+<span class="go">          [0.0223, 0.1689, 0.2939],</span>
+<span class="go">          [0.5185, 0.8964, 0.4556]]]])</span>
+</pre></div>
+</div>
+<p>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomHue</span><span class="p">((</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -1441,7 +1416,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomSaturation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saturation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/saturation.html#RandomSaturation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomSaturation" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply a random transformation to the saturation of a tensor image.</p>
 <p>This implementation aligns PIL. Hence, the output is close to TorchVision.</p>
-<img alt="_static/img/RandomSaturation.png" src="_static/img/RandomSaturation.png" />
+<img alt="_images/RandomSaturation.png" src="_images/RandomSaturation.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1467,41 +1442,33 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function internally uses :func:<a href="#id9"><span class="problematic" id="id10">`</span></a>kornia.enhance.adjust_saturation</p>
-<p>Examples:
-&gt;&gt;&gt; rng = torch.manual_seed(0)
-&gt;&gt;&gt; inputs = torch.rand(1, 3, 3, 3)
-&gt;&gt;&gt; aug = RandomSaturation(saturation = (0.5,2.),p=1.)
-&gt;&gt;&gt; aug(inputs)
-tensor([[[[0.5569, 0.7682, 0.3529],</p>
-<blockquote>
-<div><p>[0.4811, 0.3474, 0.7411],
-[0.5028, 0.8964, 0.6772]],</p>
-</div></blockquote>
-<dl class="simple">
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.6323, 0.5358, 0.5265],</dt><dd><p>[0.4203, 0.2706, 0.5525],
-[0.5185, 0.7863, 0.8681]],</p>
-</dd>
-</dl>
-</dd>
-<dt>&lt;BLANKLINE&gt;</dt><dd><dl class="simple">
-<dt>[[0.3711, 0.4989, 0.6816],</dt><dd><p>[0.9152, 0.3971, 0.8742],
-[0.4636, 0.7060, 0.9527]]]])</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>This function internally uses <a class="reference internal" href="enhance.html#kornia.enhance.adjust_saturation" title="kornia.enhance.adjust_saturation"><code class="xref py py-func docutils literal notranslate"><span class="pre">kornia.enhance.adjust_saturation()</span></code></a></p>
 </div>
-<dl>
-<dt>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rng</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomSaturation</span><span class="p">(</span><span class="n">saturation</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.</span><span class="p">),</span><span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="go">tensor([[[[0.5569, 0.7682, 0.3529],</span>
+<span class="go">          [0.4811, 0.3474, 0.7411],</span>
+<span class="go">          [0.5028, 0.8964, 0.6772]],</span>
+
+<span class="go">         [[0.6323, 0.5358, 0.5265],</span>
+<span class="go">          [0.4203, 0.2706, 0.5525],</span>
+<span class="go">          [0.5185, 0.7863, 0.8681]],</span>
+
+<span class="go">         [[0.3711, 0.4989, 0.6816],</span>
+<span class="go">          [0.9152, 0.3971, 0.8742],</span>
+<span class="go">          [0.4636, 0.7060, 0.9527]]]])</span>
+</pre></div>
+</div>
+<p>To apply the exact augmenation again, you may take the advantage of the previous parameter state:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aug</span> <span class="o">=</span> <span class="n">RandomSaturation</span><span class="p">((</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="n">aug</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">aug</span><span class="o">.</span><span class="n">_params</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">tensor(True)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -2499,9 +2466,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dt class="sig sig-object py" id="kornia.augmentation.RandomCutMixV2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomCutMixV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_mix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/cutmix.html#RandomCutMixV2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomCutMixV2" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply CutMix augmentation to a batch of tensor images.</p>
-<img alt="_static/img/RandomCutMix.png" src="_static/img/RandomCutMix.png" />
+<img alt="_images/RandomCutMixV2.png" src="_images/RandomCutMixV2.png" />
 <p>Implementation for <cite>CutMix: Regularization Strategy to Train Strong Classifiers with
-Localizable Features</cite> <span id="id11">[<a class="reference internal" href="community/bibliography.html#id14" title="Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, and Youngjoon Yoo. Cutmix: regularization strategy to train strong classifiers with localizable features. In International Conference on Computer Vision (ICCV). 2019.">YHO+19</a>]</span>.</p>
+Localizable Features</cite> <span id="id5">[<a class="reference internal" href="community/bibliography.html#id14" title="Sangdoo Yun, Dongyoon Han, Seong Joon Oh, Sanghyuk Chun, Junsuk Choe, and Youngjoon Yoo. Cutmix: regularization strategy to train strong classifiers with localizable features. In International Conference on Computer Vision (ICCV). 2019.">YHO+19</a>]</span>.</p>
 <p>The function returns (inputs, labels), in which the inputs is the tensor that contains the mixup images
 while the labels is a <span class="math notranslate nohighlight">\((\text{num_mixes}, B, 3)\)</span> tensor that contains (label_permuted_batch, lambda)
 for each cutmix.</p>
@@ -2578,8 +2545,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMixUpV2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMixUpV2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[DataKey.INPUT]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/mix/mixup.html#RandomMixUpV2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMixUpV2" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply MixUp augmentation to a batch of tensor images.</p>
-<img alt="_static/img/RandomMixUp.png" src="_static/img/RandomMixUp.png" />
-<p>Implementation for <cite>mixup: BEYOND EMPIRICAL RISK MINIMIZATION</cite> <span id="id12">[<a class="reference internal" href="community/bibliography.html#id12" title="Hongyi Zhang, Moustapha Cisse nad Yann N. Dauphin, and David Lopez-Paz. Mixup: beyond empirical risk minimization. International Conference on Learning Representations, 2018. URL: https://openreview.net/forum?id=r1Ddp1-Rb.">ZnYNDLP18</a>]</span>.</p>
+<img alt="_images/RandomMixUpV2.png" src="_images/RandomMixUpV2.png" />
+<p>Implementation for <cite>mixup: BEYOND EMPIRICAL RISK MINIMIZATION</cite> <span id="id6">[<a class="reference internal" href="community/bibliography.html#id12" title="Hongyi Zhang, Moustapha Cisse nad Yann N. Dauphin, and David Lopez-Paz. Mixup: beyond empirical risk minimization. International Conference on Learning Representations, 2018. URL: https://openreview.net/forum?id=r1Ddp1-Rb.">ZnYNDLP18</a>]</span>.</p>
 <p>The function returns (inputs, labels), in which the inputs is the tensor that contains the mixup images
 while the labels is a <span class="math notranslate nohighlight">\((B, 3)\)</span> tensor that contains (label_batch, label_permuted_batch, lambda) for
 each image.</p>
@@ -2764,8 +2731,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <section id="transforms3d">
 <h2>Transforms3D<a class="headerlink" href="#transforms3d" title="Permalink to this heading">#</a></h2>
 <p>Set of operators to perform data augmentation on 3D volumetric tensors.</p>
-<section id="id13">
-<h3>Geometric<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>Geometric<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomDepthicalFlip3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomDepthicalFlip3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/geometric/depthical_flip.html#RandomDepthicalFlip3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomDepthicalFlip3D" title="Permalink to this definition">#</a></dt>
@@ -3289,8 +3256,8 @@ applied transformation will be merged int to the input transformation tensor and
 </dd></dl>
 
 </section>
-<section id="id14">
-<h3>Intensity<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>Intensity<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.RandomMotionBlur3D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">RandomMotionBlur3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BorderType.CONSTANT.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Resample.NEAREST.name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/intensity/motion_blur.html#RandomMotionBlur3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.RandomMotionBlur3D" title="Permalink to this definition">#</a></dt>
@@ -3679,7 +3646,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </ul>
 </li>
 <li><a class="reference internal" href="#transforms3d">Transforms3D</a><ul>
-<li><a class="reference internal" href="#id13">Geometric</a><ul>
+<li><a class="reference internal" href="#id7">Geometric</a><ul>
 <li><a class="reference internal" href="#kornia.augmentation.RandomDepthicalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomDepthicalFlip3D</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomHorizontalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomHorizontalFlip3D</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomVerticalFlip3D"><code class="docutils literal notranslate"><span class="pre">RandomVerticalFlip3D</span></code></a></li>
@@ -3689,7 +3656,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <li><a class="reference internal" href="#kornia.augmentation.CenterCrop3D"><code class="docutils literal notranslate"><span class="pre">CenterCrop3D</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14">Intensity</a><ul>
+<li><a class="reference internal" href="#id8">Intensity</a><ul>
 <li><a class="reference internal" href="#kornia.augmentation.RandomMotionBlur3D"><code class="docutils literal notranslate"><span class="pre">RandomMotionBlur3D</span></code></a></li>
 <li><a class="reference internal" href="#kornia.augmentation.RandomEqualize3D"><code class="docutils literal notranslate"><span class="pre">RandomEqualize3D</span></code></a></li>
 </ul>

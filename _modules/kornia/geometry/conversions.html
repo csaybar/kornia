@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -1162,7 +1163,7 @@
 <span class="c1"># inspired by: https://stackoverflow.com/questions/56207448/efficient-quaternions-to-euler-transformation</span>
 
 
-<span class="k">def</span> <span class="nf">euler_from_quaternion</span><span class="p">(</span><span class="n">w</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+<div class="viewcode-block" id="euler_from_quaternion"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.euler_from_quaternion">[docs]</a><span class="k">def</span> <span class="nf">euler_from_quaternion</span><span class="p">(</span><span class="n">w</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a quaternion coefficients to Euler angles.</span>
 
 <span class="sd">    Returned angles are in radians in XYZ convention.</span>
@@ -1194,10 +1195,10 @@
     <span class="n">cosy_cosp</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">yy</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>
     <span class="n">yaw</span> <span class="o">=</span> <span class="n">siny_cosp</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">cosy_cosp</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span>
+    <span class="k">return</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span></div>
 
 
-<span class="k">def</span> <span class="nf">quaternion_from_euler</span><span class="p">(</span><span class="n">roll</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">yaw</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+<div class="viewcode-block" id="quaternion_from_euler"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.quaternion_from_euler">[docs]</a><span class="k">def</span> <span class="nf">quaternion_from_euler</span><span class="p">(</span><span class="n">roll</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">yaw</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert Euler angles to quaternion coefficients.</span>
 
 <span class="sd">    Euler angles are assumed to be in radians in XYZ convention.</span>
@@ -1229,7 +1230,7 @@
     <span class="n">qy</span> <span class="o">=</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">cp</span> <span class="o">*</span> <span class="n">sr</span> <span class="o">+</span> <span class="n">cy</span> <span class="o">*</span> <span class="n">sp</span> <span class="o">*</span> <span class="n">cr</span>
     <span class="n">qz</span> <span class="o">=</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">cp</span> <span class="o">*</span> <span class="n">cr</span> <span class="o">-</span> <span class="n">cy</span> <span class="o">*</span> <span class="n">sp</span> <span class="o">*</span> <span class="n">sr</span>
 
-    <span class="k">return</span> <span class="n">qw</span><span class="p">,</span> <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">qz</span>
+    <span class="k">return</span> <span class="n">qw</span><span class="p">,</span> <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">qz</span></div>
 
 
 <span class="c1"># based on:</span>
@@ -1549,13 +1550,12 @@
 
 
 <div class="viewcode-block" id="normalize_points_with_intrinsics"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.normalize_points_with_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">normalize_points_with_intrinsics</span><span class="p">(</span><span class="n">point_2d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        point_2d: tensor containing the 2d points in the image pixel coordinates.</span>
-<span class="sd">        The shape of the tensor can be :math:`(*, 2)`.</span>
-<span class="sd">        camera_matrix: tensor containing the intrinsics camera</span>
-<span class="sd">            matrix. The tensor shape must be :math:`(*, 3, 3)`.</span>
+<span class="sd">        point_2d: tensor containing the 2d points in the image pixel coordinates. The shape of the tensor can be</span>
+<span class="sd">                  :math:`(*, 2)`.</span>
+<span class="sd">        camera_matrix: tensor containing the intrinsics camera matrix. The tensor shape must be :math:`(*, 3, 3)`.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor of (u, v) cam coordinates with shape :math:`(*, 2)`.</span>
@@ -1592,13 +1592,12 @@
 
 
 <div class="viewcode-block" id="denormalize_points_with_intrinsics"><a class="viewcode-back" href="../../../geometry.conversions.html#kornia.geometry.conversions.denormalize_points_with_intrinsics">[docs]</a><span class="k">def</span> <span class="nf">denormalize_points_with_intrinsics</span><span class="p">(</span><span class="n">point_2d_norm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">camera_matrix</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        point_2d_norm: tensor containing the 2d points in the image pixel coordinates.</span>
-<span class="sd">        The shape of the tensor can be :math:`(*, 2)`.</span>
-<span class="sd">        camera_matrix: tensor containing the intrinsics camera</span>
-<span class="sd">            matrix. The tensor shape must be :math:`(*, 3, 3)`.</span>
+<span class="sd">        point_2d_norm: tensor containing the 2d points in the image pixel coordinates. The shape of the tensor can be</span>
+<span class="sd">                       :math:`(*, 2)`.</span>
+<span class="sd">        camera_matrix: tensor containing the intrinsics camera matrix. The tensor shape must be :math:`(*, 3, 3)`.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tensor of (u, v) cam coordinates with shape :math:`(*, 2)`.</span>

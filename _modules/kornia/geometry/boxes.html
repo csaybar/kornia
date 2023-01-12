@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -476,15 +477,16 @@
 <span class="sd">    Args:</span>
 <span class="sd">        boxes: 2D boxes, shape of :math:`(N, 4, 2)`, :math:`(B, N, 4, 2)` or a list of :math:`(N, 4, 2)`.</span>
 <span class="sd">            See below for more details.</span>
-<span class="sd">        raise_if_not_floating_point: flag to control floating point casting behaviour when `boxes` is not a floating</span>
-<span class="sd">            point tensor. True to raise an error when `boxes` isn&#39;t a floating point tensor, False to cast to float.</span>
+<span class="sd">        raise_if_not_floating_point: flag to control floating point casting behaviour when `boxes` is not a</span>
+<span class="sd">            floating point tensor. True to raise an error when `boxes` isn&#39;t a floating point tensor, False</span>
+<span class="sd">            to cast to float.</span>
 <span class="sd">        mode: the box format of the input boxes.</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        **2D boxes format** is defined as a floating data type tensor of shape ``Nx4x2`` or ``BxNx4x2``</span>
-<span class="sd">        where each box is a `quadrilateral &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ defined by it&#39;s 4 vertices</span>
-<span class="sd">        coordinates (A, B, C, D). Coordinates must be in ``x, y`` order. The height and width of a box is defined as</span>
-<span class="sd">        ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. Examples of</span>
+<span class="sd">        where each box is a `quadrilateral &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ defined by it&#39;s</span>
+<span class="sd">        4 vertices coordinates (A, B, C, D). Coordinates must be in ``x, y`` order. The height and width of</span>
+<span class="sd">        a box is defined as ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. Examples of</span>
 <span class="sd">        `quadrilaterals &lt;https://en.wikipedia.org/wiki/Quadrilateral&gt;`_ are rectangles, rhombus and trapezoids.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -587,20 +589,28 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Trim out zero padded boxes.</span>
 
 <span class="sd">        Given box arrangements of shape :math:`(4, 4, Box)`:</span>
-<span class="sd">            -- Box -- Box -- Box  -- Box --</span>
-<span class="sd">            --  0  --  0  -- Box  -- Box --</span>
-<span class="sd">            --  0  -- Box --  0   --  0  --</span>
-<span class="sd">            --  0  --  0  --  0   --  0  --</span>
+<span class="sd">            == === == === == === == === ==</span>
+<span class="sd">            -- Box -- Box -- Box -- Box --</span>
+<span class="sd">            --  0  --  0  -- Box -- Box --</span>
+<span class="sd">            --  0  -- Box --  0  --  0  --</span>
+<span class="sd">            --  0  --  0  --  0  --  0  --</span>
+<span class="sd">            == === == === == === == === ==</span>
 
-<span class="sd">        Nothing will change if correspondence_preserve is True. Only pure zero layers will be</span>
-<span class="sd">        removed, resulting in shape :math:`(4, 3, Box)`:</span>
-<span class="sd">            -- Box -- Box -- Box  -- Box --</span>
-<span class="sd">            --  0  --  0  -- Box  -- Box --</span>
-<span class="sd">            --  0  -- Box --  0   --  0  --</span>
+<span class="sd">        Nothing will change if correspondence_preserve is True. Only pure zero layers will be removed, resulting in</span>
+<span class="sd">        shape :math:`(4, 3, Box)`:</span>
+
+<span class="sd">            == === == === == === == === ==</span>
+<span class="sd">            -- Box -- Box -- Box -- Box --</span>
+<span class="sd">            --  0  --  0  -- Box -- Box --</span>
+<span class="sd">            --  0  -- Box --  0  --  0  --</span>
+<span class="sd">            == === == === == === == === ==</span>
 
 <span class="sd">        Otherwise, you will get :math:`(4, 2, Box)`:</span>
-<span class="sd">            -- Box -- Box -- Box  -- Box --</span>
-<span class="sd">            --  0  -- Box -- Box  -- Box --</span>
+
+<span class="sd">            == === == === == === == === ==</span>
+<span class="sd">            -- Box -- Box -- Box -- Box --</span>
+<span class="sd">            --  0  -- Box -- Box -- Box --</span>
+<span class="sd">            == === == === == === == === ==</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 

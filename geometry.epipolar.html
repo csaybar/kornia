@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -626,12 +627,11 @@ perpenducular lines. Each line is described as
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape
-(<a href="#id1"><span class="problematic" id="id2">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape
-(<a href="#id3"><span class="problematic" id="id4">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to
-avoid ambiguity with torch.nn.functional.</p></li>
+<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to avoid ambiguity with torch.nn.functional.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -653,12 +653,11 @@ avoid ambiguity with torch.nn.functional.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape
-(<a href="#id5"><span class="problematic" id="id6">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape
-(<a href="#id7"><span class="problematic" id="id8">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to
-avoid ambiguity with torch.nn.functional.</p></li>
+<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to avoid ambiguity with torch.nn.functional.</p></li>
 <li><p><strong>squared</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True (default), the squared distance is returned.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
 <li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Small constant for safe sqrt.
@@ -681,12 +680,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape
-(<a href="#id9"><span class="problematic" id="id10">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape
-(<a href="#id11"><span class="problematic" id="id12">*</span></a>, N, 2 or 3). If they are not homogeneous, converted automatically.</p></li>
-<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to
-avoid ambiguity with torch.nn.functional.</p></li>
+<li><p><strong>pts1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the left images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>pts2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – correspondences from the right images with shape <span class="math notranslate nohighlight">\((*, N, (2|3))\)</span>. If they are not homogeneous,
+converted automatically.</p></li>
+<li><p><strong>Fm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Fundamental matrices with shape <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>. Called Fm to avoid ambiguity with torch.nn.functional.</p></li>
 <li><p><strong>squared</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True (default), the squared distance is returned.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
 <li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Small constant for safe sqrt.

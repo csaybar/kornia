@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -493,15 +494,14 @@
 
 
 <div class="viewcode-block" id="get_closest_point_on_epipolar_line"><a class="viewcode-back" href="../../../../geometry.epipolar.html#kornia.geometry.epipolar.get_closest_point_on_epipolar_line">[docs]</a><span class="k">def</span> <span class="nf">get_closest_point_on_epipolar_line</span><span class="p">(</span><span class="n">pts1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pts2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Fm</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return closest point on the epipolar line to the correspondence, given the fundamental matrix.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return closest point on the epipolar line to the correspondence, given the fundamental matrix.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        pts1: correspondences from the left images with shape</span>
-<span class="sd">          (*, N, 2 or 3). If they are not homogeneous, converted automatically.</span>
-<span class="sd">        pts2: correspondences from the right images with shape</span>
-<span class="sd">          (*, N, 2 or 3). If they are not homogeneous, converted automatically.</span>
-<span class="sd">        Fm: Fundamental matrices with shape :math:`(*, 3, 3)`. Called Fm to</span>
-<span class="sd">          avoid ambiguity with torch.nn.functional.</span>
+<span class="sd">        pts1: correspondences from the left images with shape :math:`(*, N, (2|3))`. If they are not homogeneous,</span>
+<span class="sd">              converted automatically.</span>
+<span class="sd">        pts2: correspondences from the right images with shape :math:`(*, N, (2|3))`. If they are not homogeneous,</span>
+<span class="sd">              converted automatically.</span>
+<span class="sd">        Fm: Fundamental matrices with shape :math:`(*, 3, 3)`. Called Fm to avoid ambiguity with torch.nn.functional.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        point on epipolar line :math:`(*, N, 2)`.</span>

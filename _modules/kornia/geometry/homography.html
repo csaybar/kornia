@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -551,14 +552,17 @@
 
 
 <div class="viewcode-block" id="find_homography_lines_dlt"><a class="viewcode-back" href="../../../geometry.homography.html#kornia.geometry.homography.find_homography_lines_dlt">[docs]</a><span class="k">def</span> <span class="nf">find_homography_lines_dlt</span><span class="p">(</span><span class="n">ls1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the DLT formulation for line correspondences.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the homography matrix using the DLT formulation for line correspondences.</span>
 
 <span class="sd">    See :cite:`homolines2001` for details.</span>
+
 <span class="sd">    The linear system is solved by using the Weighted Least Squares Solution for the 4 Line correspondences algorithm.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        ls1: A set of line segments in the first image with a tensor shape :math:`(B, N, 2, 2)`.</span>
 <span class="sd">        ls2: A set of line segments in the second image with a tensor shape :math:`(B, N, 2, 2)`.</span>
 <span class="sd">        weights: Tensor containing the weights per point correspondence with a shape of :math:`(B, N)`.</span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">        the computed homography matrix with shape :math:`(B, 3, 3)`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

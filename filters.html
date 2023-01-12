@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -606,7 +607,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ref
 
 <section id="interactive-demo">
 <h3>Interactive Demo<a class="headerlink" href="#interactive-demo" title="Permalink to this heading">#</a></h3>
-<gradio-app space="kornia/kornia-image-filtering"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/kornia-image-filtering">Hugging Face Spaces</a>.</p>
+<gradio-app space="kornia/kornia-image-filtering"></gradio-app><p>Visit the <a class="reference external" href="https://huggingface.co/spaces/kornia/kornia-image-filtering">Kornia image filtering demo on the Hugging Face Spaces</a>.</p>
 </section>
 </section>
 <section id="edge-detection">
@@ -1001,7 +1002,7 @@ is the edges map with shape <span class="math notranslate nohighlight">\((B,1,H,
 
 <section id="id3">
 <h3>Interactive Demo<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<gradio-app space="kornia/edge_detector"></gradio-app><p>Visit the demo on <a class="reference external" href="https://huggingface.co/spaces/kornia/edge_detector">Hugging Face Spaces</a>.</p>
+<gradio-app space="kornia/edge_detector"></gradio-app><p>Visit the <a class="reference external" href="https://huggingface.co/spaces/kornia/edge_detector">Kornia edge detector demo on the Hugging Face Spaces</a>.</p>
 </section>
 </section>
 <section id="filtering-api">
@@ -1532,7 +1533,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'nea
 <dt class="sig sig-object py" id="kornia.filters.BlurPool2D">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">BlurPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#BlurPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.BlurPool2D" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute blur (anti-aliasing) and downsample a given feature map.</p>
-<p>See <span id="id5">[<a class="reference internal" href="community/bibliography.html#id4" title="Richard Zhang. Making convolutional networks shift-invariant again. In ICML. 2019.">Zha19</a>]</span> for more details.</p>
+<p>See <span id="id4">[<a class="reference internal" href="community/bibliography.html#id4" title="Richard Zhang. Making convolutional networks shift-invariant again. In ICML. 2019.">Zha19</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1624,7 +1625,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.filters.</span></span><span class="sig-name descname"><span class="pre">MaxBlurPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pool_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ceil_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/filters/blur_pool.html#MaxBlurPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.filters.MaxBlurPool2D" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute pools and blurs and downsample a given feature map.</p>
 <p>Equivalent to <code class="docutils literal notranslate"><span class="pre">`nn.Sequential(nn.MaxPool2d(...),</span> <span class="pre">BlurPool2D(...))`</span></code></p>
-<p>See <span id="id6">[<a class="reference internal" href="community/bibliography.html#id4" title="Richard Zhang. Making convolutional networks shift-invariant again. In ICML. 2019.">Zha19</a>]</span> for more details.</p>
+<p>See <span id="id5">[<a class="reference internal" href="community/bibliography.html#id4" title="Richard Zhang. Making convolutional networks shift-invariant again. In ICML. 2019.">Zha19</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

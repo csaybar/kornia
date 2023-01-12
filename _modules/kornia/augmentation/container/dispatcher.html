@@ -195,6 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -313,10 +314,10 @@
 
 
 <div class="viewcode-block" id="ManyToManyAugmentationDispather"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.ManyToManyAugmentationDispather">[docs]</a><span class="k">class</span> <span class="nc">ManyToManyAugmentationDispather</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dispatches different augmentations to different inputs element-wisely.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Dispatches different augmentations to different inputs element-wisely.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        augmentations: *args: a list of kornia AugmentationSequential modules.</span>
+<span class="sd">        augmentations: a list or a sequence of kornia AugmentationSequential modules.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import torch</span>
@@ -353,20 +354,20 @@
 
 
 <div class="viewcode-block" id="ManyToOneAugmentationDispather"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.ManyToOneAugmentationDispather">[docs]</a><span class="k">class</span> <span class="nc">ManyToOneAugmentationDispather</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dispatches different augmentations to a single input and returns a list.</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Dispatches different augmentations to a single input and returns a list.</span>
 
 <span class="sd">    Same `datakeys` must be applied across different augmentations. By default, with input</span>
 <span class="sd">    (image, mask), the augmentations must not mess it as (mask, image) to avoid unexpected</span>
 <span class="sd">    errors. This check can be cancelled with `strict=False` if needed.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        augmentations: *args: a list of kornia AugmentationSequential modules.</span>
+<span class="sd">        augmentations: a list or a sequence of kornia AugmentationSequential modules.</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import torch</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(2, 3, 5, 6)</span>
 <span class="sd">        &gt;&gt;&gt; mask = torch.ones(2, 3, 5, 6)</span>
-<span class="sd">        &gt;&gt;&gt; aug_list = ManyToManyAugmentationDispather(</span>
+<span class="sd">        &gt;&gt;&gt; aug_list = ManyToOneAugmentationDispather(</span>
 <span class="sd">        ...     AugmentationSequential(</span>
 <span class="sd">        ...         kornia.augmentation.ColorJiggle(0.1, 0.1, 0.1, 0.1, p=1.0),</span>
 <span class="sd">        ...         kornia.augmentation.RandomAffine(360, p=1.0),</span>
@@ -378,7 +379,7 @@
 <span class="sd">        ...         data_keys=[&quot;input&quot;, &quot;mask&quot;,],</span>
 <span class="sd">        ...     )</span>
 <span class="sd">        ... )</span>
-<span class="sd">        &gt;&gt;&gt; output = aug_list((input, mask))</span>
+<span class="sd">        &gt;&gt;&gt; output = aug_list(input, mask)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">augmentations</span><span class="p">:</span> <span class="n">AugmentationSequential</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

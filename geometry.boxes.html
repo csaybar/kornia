@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -317,8 +318,9 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>boxes</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]) – 2D boxes, shape of <span class="math notranslate nohighlight">\((N, 4, 2)\)</span>, <span class="math notranslate nohighlight">\((B, N, 4, 2)\)</span> or a list of <span class="math notranslate nohighlight">\((N, 4, 2)\)</span>.
 See below for more details.</p></li>
-<li><p><strong>raise_if_not_floating_point</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – flag to control floating point casting behaviour when <cite>boxes</cite> is not a floating
-point tensor. True to raise an error when <cite>boxes</cite> isn’t a floating point tensor, False to cast to float.
+<li><p><strong>raise_if_not_floating_point</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – flag to control floating point casting behaviour when <cite>boxes</cite> is not a
+floating point tensor. True to raise an error when <cite>boxes</cite> isn’t a floating point tensor, False
+to cast to float.
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
 <li><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – the box format of the input boxes.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'vertices_plus'</span></code></p></li>
@@ -328,9 +330,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'ver
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>2D boxes format</strong> is defined as a floating data type tensor of shape <code class="docutils literal notranslate"><span class="pre">Nx4x2</span></code> or <code class="docutils literal notranslate"><span class="pre">BxNx4x2</span></code>
-where each box is a <a class="reference external" href="https://en.wikipedia.org/wiki/Quadrilateral">quadrilateral</a> defined by it’s 4 vertices
-coordinates (A, B, C, D). Coordinates must be in <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> order. The height and width of a box is defined as
-<code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span> <span class="pre">xmax</span> <span class="pre">-</span> <span class="pre">xmin</span> <span class="pre">+</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">=</span> <span class="pre">ymax</span> <span class="pre">-</span> <span class="pre">ymin</span> <span class="pre">+</span> <span class="pre">1</span></code>. Examples of
+where each box is a <a class="reference external" href="https://en.wikipedia.org/wiki/Quadrilateral">quadrilateral</a> defined by it’s
+4 vertices coordinates (A, B, C, D). Coordinates must be in <code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y</span></code> order. The height and width of
+a box is defined as <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span> <span class="pre">xmax</span> <span class="pre">-</span> <span class="pre">xmin</span> <span class="pre">+</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span> <span class="pre">=</span> <span class="pre">ymax</span> <span class="pre">-</span> <span class="pre">ymin</span> <span class="pre">+</span> <span class="pre">1</span></code>. Examples of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Quadrilateral">quadrilaterals</a> are rectangles, rhombus and trapezoids.</p>
 </div>
 <dl class="py method">
@@ -625,25 +627,157 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dt class="sig sig-object py" id="kornia.geometry.boxes.Boxes.trim">
 <span class="sig-name descname"><span class="pre">trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correspondence_preserve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/boxes.html#Boxes.trim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.boxes.Boxes.trim" title="Permalink to this definition">#</a></dt>
 <dd><p>Trim out zero padded boxes.</p>
-<dl class="simple">
-<dt>Given box arrangements of shape <span class="math notranslate nohighlight">\((4, 4, Box)\)</span>:</dt><dd><p>– Box – Box – Box  – Box –
-–  0  –  0  – Box  – Box –
-–  0  – Box –  0   –  0  –
-–  0  –  0  –  0   –  0  –</p>
+<dl>
+<dt>Given box arrangements of shape <span class="math notranslate nohighlight">\((4, 4, Box)\)</span>:</dt><dd><div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </dd>
 </dl>
-<p>Nothing will change if correspondence_preserve is True. Only pure zero layers will be
-removed, resulting in shape <span class="math notranslate nohighlight">\((4, 3, Box)\)</span>:</p>
+<p>Nothing will change if correspondence_preserve is True. Only pure zero layers will be removed, resulting in
+shape <span class="math notranslate nohighlight">\((4, 3, Box)\)</span>:</p>
 <blockquote>
-<div><p>– Box – Box – Box  – Box –
-–  0  –  0  – Box  – Box –
-–  0  – Box –  0   –  0  –</p>
+<div><div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div></blockquote>
-<dl class="simple">
-<dt>Otherwise, you will get <span class="math notranslate nohighlight">\((4, 2, Box)\)</span>:</dt><dd><p>– Box – Box – Box  – Box –
-–  0  – Box – Box  – Box –</p>
-</dd>
-</dl>
+<p>Otherwise, you will get <span class="math notranslate nohighlight">\((4, 2, Box)\)</span>:</p>
+<blockquote>
+<div><div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.boxes.Boxes" title="kornia.geometry.boxes.Boxes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Boxes</span></code></a></p>

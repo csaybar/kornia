@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="applications/image_stitching.html">Image Stitching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/image_registration.html">Image Registration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications/semantic_segmentation.html">Semantic segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/image_denoising.html">Image Denoising</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">KORNIA MODELS</span></p>
 <ul>
@@ -634,19 +635,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>point_2d</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the 2d points in the image pixel coordinates.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point_2d</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the 2d points in the image pixel coordinates. The shape of the tensor can be
+<span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p><strong>camera_matrix</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the intrinsics camera matrix. The tensor shape must be <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
+</ul>
 </dd>
-</dl>
-<p>:param The shape of the tensor can be <span class="math notranslate nohighlight">\(:
-:type The shape of the tensor can be :math:\)</span>: <a href="#id1"><span class="problematic" id="id2">*</span></a>, 2
-:type camera_matrix: <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>
-:param camera_matrix: tensor containing the intrinsics camera</p>
-<blockquote>
-<div><p>matrix. The tensor shape must be <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>tensor of (u, v) cam coordinates with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor of (u, v) cam coordinates with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -665,19 +661,14 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Normalizes points with intrinsics. Useful for conversion of keypoints to be used with essential matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>point_2d_norm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the 2d points in the image pixel coordinates.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point_2d_norm</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the 2d points in the image pixel coordinates. The shape of the tensor can be
+<span class="math notranslate nohighlight">\((*, 2)\)</span>.</p></li>
+<li><p><strong>camera_matrix</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor containing the intrinsics camera matrix. The tensor shape must be <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p></li>
+</ul>
 </dd>
-</dl>
-<p>:param The shape of the tensor can be <span class="math notranslate nohighlight">\(:
-:type The shape of the tensor can be :math:\)</span>: <a href="#id3"><span class="problematic" id="id4">*</span></a>, 2
-:type camera_matrix: <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>
-:param camera_matrix: tensor containing the intrinsics camera</p>
-<blockquote>
-<div><p>matrix. The tensor shape must be <span class="math notranslate nohighlight">\((*, 3, 3)\)</span>.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>tensor of (u, v) cam coordinates with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor of (u, v) cam coordinates with shape <span class="math notranslate nohighlight">\((*, 2)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1072,6 +1063,51 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Quat
 </section>
 <section id="euler-angles">
 <h2>Euler Angles<a class="headerlink" href="#euler-angles" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.geometry.conversions.quaternion_from_euler">
+<span class="sig-prename descclassname"><span class="pre">kornia.geometry.conversions.</span></span><span class="sig-name descname"><span class="pre">quaternion_from_euler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/conversions.html#quaternion_from_euler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.conversions.quaternion_from_euler" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert Euler angles to quaternion coefficients.</p>
+<p>Euler angles are assumed to be in radians in XYZ convention.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roll</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the roll euler angle.</p></li>
+<li><p><strong>pitch</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the pitch euler angle.</p></li>
+<li><p><strong>yaw</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the yaw euler angle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A tuple with quaternion coefficients in order of <cite>wxyz</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.geometry.conversions.euler_from_quaternion">
+<span class="sig-prename descclassname"><span class="pre">kornia.geometry.conversions.</span></span><span class="sig-name descname"><span class="pre">euler_from_quaternion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/conversions.html#euler_from_quaternion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.conversions.euler_from_quaternion" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert a quaternion coefficients to Euler angles.</p>
+<p>Returned angles are in radians in XYZ convention.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>w</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – quaternion <span class="math notranslate nohighlight">\(q_w\)</span> coefficient.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – quaternion <span class="math notranslate nohighlight">\(q_x\)</span> coefficient.</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – quaternion <span class="math notranslate nohighlight">\(q_y\)</span> coefficient.</p></li>
+<li><p><strong>z</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – quaternion <span class="math notranslate nohighlight">\(q_z\)</span> coefficient.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A tuple with euler angles`roll`, <cite>pitch</cite>, <cite>yaw</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="pose">
 <h2>Pose<a class="headerlink" href="#pose" title="Permalink to this heading">#</a></h2>
@@ -1453,7 +1489,11 @@ tvec: translation vector <span class="math notranslate nohighlight">\((B, 3, 1)\
 <li><a class="reference internal" href="#kornia.geometry.conversions.angle_axis_to_rotation_matrix"><code class="docutils literal notranslate"><span class="pre">angle_axis_to_rotation_matrix()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#euler-angles">Euler Angles</a></li>
+<li><a class="reference internal" href="#euler-angles">Euler Angles</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.conversions.quaternion_from_euler"><code class="docutils literal notranslate"><span class="pre">quaternion_from_euler()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.geometry.conversions.euler_from_quaternion"><code class="docutils literal notranslate"><span class="pre">euler_from_quaternion()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#pose">Pose</a><ul>
 <li><a class="reference internal" href="#kornia.geometry.conversions.Rt_to_matrix4x4"><code class="docutils literal notranslate"><span class="pre">Rt_to_matrix4x4()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.conversions.matrix4x4_to_Rt"><code class="docutils literal notranslate"><span class="pre">matrix4x4_to_Rt()</span></code></a></li>
