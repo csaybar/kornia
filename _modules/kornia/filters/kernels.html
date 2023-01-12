@@ -311,7 +311,7 @@
 <span class="kn">import</span> <span class="nn">torch</span>
 
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">as_tensor</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">zeros</span>
-<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
 
 <span class="k">def</span> <span class="nf">normalize_kernel2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -868,6 +868,125 @@
     <span class="n">kernel_y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">ksize_y</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">force_even</span><span class="p">)</span>
     <span class="n">kernel_2d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">kernel_x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">kernel_y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">kernel_2d</span>
+
+
+<span class="k">def</span> <span class="nf">get_gaussian_kernel3d</span><span class="p">(</span>
+    <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">force_even</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that returns Gaussian filter matrix coefficients.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kernel_size: filter sizes in the x, y and z direction.</span>
+<span class="sd">         Sizes should be odd and positive.</span>
+<span class="sd">        sigma: gaussian standard deviation in the x, y and z</span>
+<span class="sd">         direction.</span>
+<span class="sd">        force_even: overrides requirement for odd kernel size.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        3D tensor with gaussian filter matrix coefficients.</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Output: :math:`(B, \text{kernel_size}_x, \text{kernel_size}_y,  \text{kernel_size}_z)`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d((3, 3, 3), (1.5, 1.5, 1.5))</span>
+<span class="sd">        tensor([[[[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0455, 0.0568, 0.0455],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]]]])</span>
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d((3, 3, 3), (1.5, 1.5, 1.5)).sum()</span>
+<span class="sd">        tensor(1.)</span>
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d((3, 3, 3), (1.5, 1.5, 1.5)).shape</span>
+<span class="sd">        torch.Size([1, 3, 3, 3])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sigma_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">get_gaussian_kernel3d_t</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">sigma_t</span><span class="p">,</span> <span class="n">force_even</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_gaussian_kernel3d_t</span><span class="p">(</span>
+    <span class="n">kernel_size</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">force_even</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function that returns Gaussian filter matrix coefficients.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kernel_size: filter sizes in the x, y and z direction.</span>
+<span class="sd">         Sizes should be odd and positive.</span>
+<span class="sd">        sigma: gaussian standard deviation in the x, y and z</span>
+<span class="sd">         direction with shape of :math:`(B, 3)`.</span>
+<span class="sd">        force_even: overrides requirement for odd kernel size.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        3D tensor with gaussian filter matrix coefficients.</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Output: :math:`(B, \text{kernel_size}_x, \text{kernel_size}_y, \text{kernel_size}_z)`</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d_t((3, 3, 3), torch.tensor([[1.5, 1.5, 1.5]]))</span>
+<span class="sd">        tensor([[[[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0455, 0.0568, 0.0455],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]]]])</span>
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d_t((3, 7, 5), torch.tensor([[1.5, 1.5, 1.5]])).shape</span>
+<span class="sd">        torch.Size([1, 3, 7, 5])</span>
+
+<span class="sd">        &gt;&gt;&gt; get_gaussian_kernel3d_t((3, 3, 3), torch.tensor([[1.5, 1.5, 1.5], [0.5, 0.5, 0.5]]))</span>
+<span class="sd">        tensor([[[[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0455, 0.0568, 0.0455],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0292, 0.0364, 0.0292],</span>
+<span class="sd">                  [0.0364, 0.0455, 0.0364],</span>
+<span class="sd">                  [0.0292, 0.0364, 0.0292]]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                [[[0.0012, 0.0089, 0.0012],</span>
+<span class="sd">                  [0.0089, 0.0660, 0.0089],</span>
+<span class="sd">                  [0.0012, 0.0089, 0.0012]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0089, 0.0660, 0.0089],</span>
+<span class="sd">                  [0.0660, 0.4874, 0.0660],</span>
+<span class="sd">                  [0.0089, 0.0660, 0.0089]],</span>
+<span class="sd">        &lt;BLANKLINE&gt;</span>
+<span class="sd">                 [[0.0012, 0.0089, 0.0012],</span>
+<span class="sd">                  [0.0089, 0.0660, 0.0089],</span>
+<span class="sd">                  [0.0012, 0.0089, 0.0012]]]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;kernel_size must be a tuple of length three. Got </span><span class="si">{</span><span class="n">kernel_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="s2">&quot;signma must be a tensor&quot;</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">])</span>
+
+    <span class="n">ksize_x</span><span class="p">,</span> <span class="n">ksize_y</span><span class="p">,</span> <span class="n">ksize_z</span> <span class="o">=</span> <span class="n">kernel_size</span>
+    <span class="n">sigma_x</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">sigma_z</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">kernel_x</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">ksize_x</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">force_even</span><span class="p">)</span>
+    <span class="n">kernel_y</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">ksize_y</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">force_even</span><span class="p">)</span>
+    <span class="n">kernel_z</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">get_gaussian_kernel1d_t</span><span class="p">(</span><span class="n">ksize_z</span><span class="p">,</span> <span class="n">sigma_z</span><span class="p">,</span> <span class="n">force_even</span><span class="p">)</span>
+    <span class="n">kernel_2d</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">kernel_x</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">@</span> <span class="n">kernel_y</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">kernel_3d</span><span class="p">:</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="p">(</span><span class="n">kernel_z</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">@</span> <span class="p">(</span><span class="n">kernel_2d</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kernel_3d</span>
 
 
 <div class="viewcode-block" id="get_laplacian_kernel1d"><a class="viewcode-back" href="../../../filters.html#kornia.filters.get_laplacian_kernel1d">[docs]</a><span class="k">def</span> <span class="nf">get_laplacian_kernel1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
