@@ -313,9 +313,18 @@
 
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">pad</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">tensor</span>
 <span class="kn">from</span> <span class="nn">kornia.filters</span> <span class="kn">import</span> <span class="n">filter2d</span><span class="p">,</span> <span class="n">gaussian_blur2d</span>
-<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK</span><span class="p">,</span> <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">,</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;PyrDown&quot;</span><span class="p">,</span> <span class="s2">&quot;PyrUp&quot;</span><span class="p">,</span> <span class="s2">&quot;ScalePyramid&quot;</span><span class="p">,</span> <span class="s2">&quot;pyrdown&quot;</span><span class="p">,</span> <span class="s2">&quot;pyrup&quot;</span><span class="p">,</span> <span class="s2">&quot;build_pyramid&quot;</span><span class="p">,</span> <span class="s2">&quot;build_laplacian_pyramid&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;PyrDown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PyrUp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ScalePyramid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyrdown&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pyrup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;build_pyramid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;build_laplacian_pyramid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;upscale_double&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">_get_pyramid_gaussian_kernel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -478,7 +487,7 @@
         <span class="n">cur_sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
         <span class="c1"># Same as in OpenCV up to interpolation difference</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">double_image</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">upscale_double</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
             <span class="n">pixel_distance</span> <span class="o">=</span> <span class="mf">0.5</span>
             <span class="n">cur_sigma</span> <span class="o">*=</span> <span class="mf">2.0</span>
         <span class="k">else</span><span class="p">:</span>
@@ -520,9 +529,8 @@
                 <span class="n">sigmas</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="n">level_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">cur_sigma</span>
                 <span class="n">pixel_dists</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="n">level_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">pixel_distance</span>
             <span class="n">_pyr</span> <span class="o">=</span> <span class="n">pyr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_levels</span><span class="p">]</span>
-            <span class="n">nextOctaveFirstLevel</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
-                <span class="n">_pyr</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">_pyr</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">_pyr</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span>
-            <span class="p">)</span>  <span class="c1"># Nearest matches OpenCV SIFT</span>
+            <span class="n">nextOctaveFirstLevel</span> <span class="o">=</span> <span class="n">_pyr</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+
             <span class="n">pixel_distance</span> <span class="o">*=</span> <span class="mf">2.0</span>
             <span class="n">cur_sigma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_sigma</span>
             <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">nextOctaveFirstLevel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">nextOctaveFirstLevel</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_size</span><span class="p">:</span>
@@ -717,6 +725,30 @@
         <span class="n">laplacian_pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">laplacian</span><span class="p">)</span>
     <span class="n">laplacian_pyramid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gaussian_pyramid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">laplacian_pyramid</span></div>
+
+
+<div class="viewcode-block" id="upscale_double"><a class="viewcode-back" href="../../../../geometry.transform.html#kornia.geometry.transform.upscale_double">[docs]</a><span class="k">def</span> <span class="nf">upscale_double</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Upscale image by the factor of 2, even indices maps to original indices.</span>
+
+<span class="sd">    Odd indices are linearly interpolated from the even ones.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x: input image.</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Input: :math:`(*, H, W)`</span>
+<span class="sd">        - Output :math:`(*, H, W)`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_IS_TENSOR</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">double_shape</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">upscaled</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">double_shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:][</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:][</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">upscaled</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">upscaled</span></div>
 </pre></div>
         </article>
       </div>
