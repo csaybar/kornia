@@ -582,6 +582,58 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.metrics.ssim3d">
+<span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">ssim3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/ssim3d.html#ssim3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.ssim3d" title="Permalink to this definition">#</a></dt>
+<dd><p>Function that computes the Structural Similarity (SSIM) index map between two images.</p>
+<p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
+<p>The index can be described as:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
+{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div>
+</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_1=(k_1 L)^2\)</span> and <span class="math notranslate nohighlight">\(c_2=(k_2 L)^2\)</span> are two variables to
+stabilize the division with weak denominator.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is the dynamic range of the pixel-values (typically this is
+<span class="math notranslate nohighlight">\(2^{\#\text{bits per pixel}}-1\)</span>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the first input image with shape <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p></li>
+<li><p><strong>img2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the second input image with shape <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p></li>
+<li><p><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the size of the gaussian kernel to smooth the images.</p></li>
+<li><p><strong>max_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – the dynamic range of the images.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Small value for numerically stability when dividing.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1e-12</span></code></p></li>
+<li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'same'</span></code> | <code class="docutils literal notranslate"><span class="pre">'valid'</span></code>. Whether to only use the “valid” convolution
+area to compute SSIM to match the MATLAB implementation of original SSIM paper.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'same'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The ssim index map with shape <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ssim_map</span> <span class="o">=</span> <span class="n">ssim3d</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 1x4x5x5x5</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.metrics.SSIM">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">SSIM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/ssim.html#SSIM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.SSIM" title="Permalink to this definition">#</a></dt>
@@ -629,6 +681,57 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 <span class="gp">&gt;&gt;&gt; </span><span class="n">input2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ssim</span> <span class="o">=</span> <span class="n">SSIM</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ssim_map</span> <span class="o">=</span> <span class="n">ssim</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>  <span class="c1"># 1x4x5x5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.metrics.SSIM3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.metrics.</span></span><span class="sig-name descname"><span class="pre">SSIM3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/metrics/ssim3d.html#SSIM3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.metrics.SSIM3D" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a module that computes the Structural Similarity (SSIM) index between two 3D images.</p>
+<p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
+<p>The index can be described as:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
+{(\mu_x^2+\mu_y^2+c_1)(\sigma_x^2+\sigma_y^2+c_2)}\]</div>
+</div>
+<dl class="simple">
+<dt>where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_1=(k_1 L)^2\)</span> and <span class="math notranslate nohighlight">\(c_2=(k_2 L)^2\)</span> are two variables to
+stabilize the division with weak denominator.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is the dynamic range of the pixel-values (typically this is
+<span class="math notranslate nohighlight">\(2^{\#\text{bits per pixel}}-1\)</span>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the size of the gaussian kernel to smooth the images.</p></li>
+<li><p><strong>max_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – the dynamic range of the images.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – Small value for numerically stability when dividing.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1e-12</span></code></p></li>
+<li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – <code class="docutils literal notranslate"><span class="pre">'same'</span></code> | <code class="docutils literal notranslate"><span class="pre">'valid'</span></code>. Whether to only use the “valid” convolution
+area to compute SSIM to match the MATLAB implementation of original SSIM paper.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'same'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p></li>
+<li><p>Target <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">input1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ssim</span> <span class="o">=</span> <span class="n">SSIM3D</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ssim_map</span> <span class="o">=</span> <span class="n">ssim</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">)</span>  <span class="c1"># 1x4x5x5x5</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -726,7 +829,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 <li><a class="reference internal" href="#image-quality">Image Quality</a><ul>
 <li><a class="reference internal" href="#kornia.metrics.psnr"><code class="docutils literal notranslate"><span class="pre">psnr()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.metrics.ssim"><code class="docutils literal notranslate"><span class="pre">ssim()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.ssim3d"><code class="docutils literal notranslate"><span class="pre">ssim3d()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.metrics.SSIM"><code class="docutils literal notranslate"><span class="pre">SSIM</span></code></a></li>
+<li><a class="reference internal" href="#kornia.metrics.SSIM3D"><code class="docutils literal notranslate"><span class="pre">SSIM3D</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring">Monitoring</a><ul>

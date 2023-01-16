@@ -309,6 +309,35 @@
           <section id="kornia-geometry-depth">
 <h1>kornia.geometry.depth<a class="headerlink" href="#kornia-geometry-depth" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
+<dt class="sig sig-object py" id="kornia.geometry.depth.depth_from_disparity">
+<span class="sig-prename descclassname"><span class="pre">kornia.geometry.depth.</span></span><span class="sig-name descname"><span class="pre">depth_from_disparity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">disparity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/depth.html#depth_from_disparity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.depth.depth_from_disparity" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes depth from disparity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>disparity</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Disparity tensor of shape <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p></li>
+<li><p><strong>baseline</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – float/tensor containing the distance between the two lenses.</p></li>
+<li><p><strong>focal</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – float/tensor containing the focal length.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Depth map of the shape <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">disparity</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">baseline</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">focal</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">depth_from_disparity</span><span class="p">(</span><span class="n">disparity</span><span class="p">,</span> <span class="n">baseline</span><span class="p">,</span> <span class="n">focal</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">torch.Size([4, 1, 4, 4])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="kornia.geometry.depth.depth_to_3d">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.depth.</span></span><span class="sig-name descname"><span class="pre">depth_to_3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/depth.html#depth_to_3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.depth.depth_to_3d" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute a 3d point per pixel given its depth value and the camera intrinsics.</p>
@@ -453,6 +482,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">kornia.geometry.depth</a><ul>
+<li><a class="reference internal" href="#kornia.geometry.depth.depth_from_disparity"><code class="docutils literal notranslate"><span class="pre">depth_from_disparity()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.depth.depth_to_3d"><code class="docutils literal notranslate"><span class="pre">depth_to_3d()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.depth.depth_to_normals"><code class="docutils literal notranslate"><span class="pre">depth_to_normals()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.geometry.depth.warp_frame_depth"><code class="docutils literal notranslate"><span class="pre">warp_frame_depth()</span></code></a></li>

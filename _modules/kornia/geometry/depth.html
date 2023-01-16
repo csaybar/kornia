@@ -675,7 +675,7 @@
     <span class="k">return</span> <span class="n">warper</span><span class="p">(</span><span class="n">depth_src</span><span class="p">,</span> <span class="n">patch_dst</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">depth_from_disparity</span><span class="p">(</span><span class="n">disparity</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">baseline</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">focal</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="depth_from_disparity"><a class="viewcode-back" href="../../../geometry.depth.html#kornia.geometry.depth.depth_from_disparity">[docs]</a><span class="k">def</span> <span class="nf">depth_from_disparity</span><span class="p">(</span><span class="n">disparity</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">baseline</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">focal</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes depth from disparity.</span>
 
 <span class="sd">    Args:</span>
@@ -709,7 +709,7 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">focal</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">])</span>
 
-    <span class="k">return</span> <span class="n">baseline</span> <span class="o">*</span> <span class="n">focal</span> <span class="o">/</span> <span class="n">disparity</span>
+    <span class="k">return</span> <span class="n">baseline</span> <span class="o">*</span> <span class="n">focal</span> <span class="o">/</span> <span class="n">disparity</span></div>
 </pre></div>
         </article>
       </div>
