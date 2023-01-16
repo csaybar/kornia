@@ -323,6 +323,11 @@
 <dt class="sig sig-object py" id="kornia.color.rgb_to_grayscale">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_grayscale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgb_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/gray.html#rgb_to_grayscale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_grayscale" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to grayscale version of image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_grayscale.png" src="_images/rgb_to_grayscale.png" />
 <p>The image data is assumed to be in the range of (0, 1).</p>
 <dl class="field-list simple">
@@ -334,11 +339,8 @@ The sum of the weights should add up to one.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>grayscale version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>grayscale version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -361,11 +363,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – BGR image to be converted to grayscale with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>grayscale version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>grayscale version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -379,17 +381,19 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.color.grayscale_to_rgb">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">grayscale_to_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/gray.html#grayscale_to_rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.grayscale_to_rgb" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a grayscale image to RGB version of image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/grayscale_to_rgb.png" src="_images/grayscale_to_rgb.png" />
 <p>The image data is assumed to be in the range of (0, 1).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – grayscale image to be converted to RGB with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -406,6 +410,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <blockquote>
 <div><p>The image data is assumed to be integer values.</p>
 </div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/apply_colormap.png" src="_images/apply_colormap.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -414,11 +423,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A RGB tensor with the applied color map into the input_tensor</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A RGB tensor with the applied color map into the input_tensor</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -546,16 +552,18 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.color.rgb_to_bgr">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_bgr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/rgb.html#rgb_to_bgr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_bgr" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to BGR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_bgr.png" src="_images/rgb_to_bgr.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to BGRof of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>BGR version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>BGR version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -573,11 +581,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – BGR Image to be converted to BGR of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -591,16 +599,18 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.color.rgb_to_linear_rgb">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_linear_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/rgb.html#rgb_to_linear_rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_linear_rgb" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert an sRGB image to linear RGB. Used in colorspace conversions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_linear_rgb.png" src="_images/rgb_to_linear_rgb.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – sRGB Image to be converted to linear RGB of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>linear RGB version of the image with shape of <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>linear RGB version of the image with shape of <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -618,11 +628,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – linear RGB Image to be converted to sRGB of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sRGB version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>sRGB version of the image with shape of shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -760,11 +770,11 @@ The image data is assumed to be in the range of <span class="math notranslate no
 of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGBA version of the image with shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGBA version of the image with shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -790,11 +800,11 @@ of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p></l
 of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGBA version of the image with shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGBA version of the image with shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -816,11 +826,11 @@ of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p></l
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGBA Image to be converted to RGB of shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -838,11 +848,11 @@ of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p></l
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGBA Image to be converted to BGR of shape <span class="math notranslate nohighlight">\((*,4,H,W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -982,6 +992,11 @@ of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 <dt class="sig sig-object py" id="kornia.color.rgb_to_hls">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_hls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/hls.html#rgb_to_hls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_hls" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to HLS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_hls.png" src="_images/rgb_to_hls.png" />
 <p>The image data is assumed to be in the range of (0, 1).</p>
 <p>NOTE: this method cannot be compiled with JIT in pytohrch &lt; 1.7.0</p>
@@ -993,11 +1008,8 @@ of shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-08</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>HLS version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HLS version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1016,11 +1028,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – HLS image to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1093,6 +1105,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dt class="sig sig-object py" id="kornia.color.rgb_to_hsv">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_hsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/hsv.html#rgb_to_hsv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_hsv" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert an image from RGB to HSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_hsv.png" src="_images/rgb_to_hsv.png" />
 <p>The image data is assumed to be in the range of (0, 1).</p>
 <dl class="field-list simple">
@@ -1103,11 +1120,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-08</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>HSV version of the image with shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HSV version of the image with shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.
 The H channel values are in the range 0..2pi. S and V are in the range 0..1.</p>
 </dd>
 </dl>
@@ -1131,11 +1145,11 @@ The H channel values are in the range 0..2pi. S and V are in the range 0..1.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – HSV Image to be converted to HSV with shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1210,6 +1224,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dt class="sig sig-object py" id="kornia.color.rgb_to_luv">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_luv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/luv.html#rgb_to_luv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_luv" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to Luv.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_luv.png" src="_images/rgb_to_luv.png" />
 <p>The image data is assumed to be in the range of <span class="math notranslate nohighlight">\([0, 1]\)</span>. Luv
 color is computed using the D65 illuminant and Observer 2.</p>
@@ -1221,11 +1240,8 @@ color is computed using the D65 illuminant and Observer 2.</p>
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-12</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Luv version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Luv version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1247,11 +1263,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-12</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Luv version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Luv version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1332,6 +1348,11 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="sig sig-object py" id="kornia.color.rgb_to_lab">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_lab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/lab.html#rgb_to_lab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_lab" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to Lab.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_lab.png" src="_images/rgb_to_lab.png" />
 <p>The image data is assumed to be in the range of <span class="math notranslate nohighlight">\([0, 1]\)</span>. Lab
 color is computed using the D65 illuminant and Observer 2.</p>
@@ -1339,11 +1360,8 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to Lab with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Lab version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Lab version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.
 The L channel values are in the range 0..100. a and b are in the range -127..127.</p>
 </dd>
 </dl>
@@ -1366,11 +1384,11 @@ The L channel values are in the range 0..100. a and b are in the range -127..127
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Lab version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Lab version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1451,16 +1469,18 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="sig sig-object py" id="kornia.color.rgb_to_ycbcr">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_ycbcr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/ycbcr.html#rgb_to_ycbcr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_ycbcr" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert an RGB image to YCbCr.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_ycbcr.png" src="_images/rgb_to_ycbcr.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to YCbCr with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>YCbCr version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>YCbCr version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1479,11 +1499,11 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – YCbCr Image to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1554,17 +1574,19 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="sig sig-object py" id="kornia.color.rgb_to_yuv">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_yuv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/yuv.html#rgb_to_yuv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_yuv" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert an RGB image to YUV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_yuv.png" src="_images/rgb_to_yuv.png" />
 <p>The image data is assumed to be in the range of (0, 1).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to YUV with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>YUV version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>YUV version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1583,11 +1605,11 @@ color is computed using the D65 illuminant and Observer 2.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – YUV Image to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1672,12 +1694,12 @@ horizontal and vertical. This function will output chroma siting (0.5,0.5)</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to YUV with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A Tensor containing the Y plane with shape <span class="math notranslate nohighlight">\((*, 1, H, W)\)</span>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Tensor containing the Y plane with shape <span class="math notranslate nohighlight">\((*, 1, H, W)\)</span>
 A Tensor containing the UV planes with shape <span class="math notranslate nohighlight">\((*, 2, H/2, W/2)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1701,11 +1723,11 @@ This function assumed chroma siting is (0.5, 0.5)</p>
 <li><p><strong>imageuv</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – UV (chroma) Image planes to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 2, H/2, W/2)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1794,12 +1816,12 @@ vertical. This function will output chroma siting (0.5)</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to YUV with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A Tensor containing the Y plane with shape <span class="math notranslate nohighlight">\((*, 1, H, W)\)</span>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Tensor containing the Y plane with shape <span class="math notranslate nohighlight">\((*, 1, H, W)\)</span>
 A Tensor containing the UV planes with shape <span class="math notranslate nohighlight">\((*, 2, H, W/2)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1822,11 +1844,11 @@ Input need to be padded to be evenly divisible by 2 vertical. This function assu
 <li><p><strong>imageuv</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – UV (luma) Image planes to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 2, H, W/2)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1905,16 +1927,18 @@ Width evenly divisible by 2.</p>
 <dt class="sig sig-object py" id="kornia.color.rgb_to_xyz">
 <span class="sig-prename descclassname"><span class="pre">kornia.color.</span></span><span class="sig-name descname"><span class="pre">rgb_to_xyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/color/xyz.html#rgb_to_xyz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.color.rgb_to_xyz" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert a RGB image to XYZ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/rgb_to_xyz.png" src="_images/rgb_to_xyz.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – RGB Image to be converted to XYZ with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>XYZ version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>XYZ version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1932,11 +1956,11 @@ Width evenly divisible by 2.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – XYZ Image to be converted to RGB with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -2060,11 +2084,11 @@ GR</p>
 <li><p><strong>cfa</strong> (<a class="reference internal" href="#kornia.color.CFA" title="kornia.color.raw.CFA"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFA</span></code></a>) – Which color filter array do we want the output to mimic. I.e. which pixels are red/green/blue.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>raw version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>raw version of the image with shape <span class="math notranslate nohighlight">\((*,1,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -2089,11 +2113,11 @@ for simplicity reasons</p>
 <li><p><strong>cfa</strong> (<a class="reference internal" href="#kornia.color.CFA" title="kornia.color.raw.CFA"><code class="xref py py-class docutils literal notranslate"><span class="pre">CFA</span></code></a>) – The configuration of the color filter.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>RGB version of the image with shape <span class="math notranslate nohighlight">\((*,3,H,W)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -2249,6 +2273,11 @@ as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W
 <blockquote>
 <div><p>The image data is assumed to be integer values.</p>
 </div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/apply_colormap.png" src="_images/apply_colormap.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2257,11 +2286,8 @@ as the input with shape <span class="math notranslate nohighlight">\((*, C, H, W
 <li><p><strong>colormap</strong> (<a class="reference internal" href="#kornia.color.ColorMap" title="kornia.color.colormap.ColorMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorMap</span></code></a>) – the colormap desired to be applied to the input tensor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A RGB tensor with the applied color map into the input_tensor</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A RGB tensor with the applied color map into the input_tensor</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>

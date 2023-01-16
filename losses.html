@@ -315,6 +315,11 @@
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">ssim_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/ssim.html#ssim_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.ssim_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes a loss based on the SSIM measurement.</p>
 <p>The loss, or the Structural dissimilarity (DSSIM) is described as:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{loss}(x, y) = \frac{1 - \text{SSIM}(x, y)}{2}\]</div>
@@ -340,11 +345,8 @@ area to compute SSIM to match the MATLAB implementation of original SSIM paper.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'same'</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>The loss based on the ssim index.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The loss based on the ssim index.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -375,11 +377,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 <li><p><strong>max_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The maximum value in the input tensor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the computed loss as a scalar.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the computed loss as a scalar.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -404,11 +406,11 @@ in the output, <code class="docutils literal notranslate"><span class="pre">'sum
 Default:  <code class="code docutils literal notranslate"><span class="pre">'sum'</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tensor with shape <span class="math notranslate nohighlight">\((*,)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a tensor with shape <span class="math notranslate nohighlight">\((*,)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -434,6 +436,11 @@ Thus, <cite>reduction=’mean’</cite> was added as an optional reduction metho
 <dt class="sig sig-object py" id="kornia.losses.inverse_depth_smoothness_loss">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">inverse_depth_smoothness_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idepth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/depth_smooth.html#inverse_depth_smoothness_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.inverse_depth_smoothness_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes image-aware inverse depth smoothness loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{loss} = \left | \partial_x d_{ij} \right | e^{-\left \|
@@ -447,11 +454,8 @@ Thus, <cite>reduction=’mean’</cite> was added as an optional reduction metho
 <li><p><strong>image</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – tensor with the input image with shape <span class="math notranslate nohighlight">\((N, 3, H, W)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a scalar with the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -659,6 +663,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 <dt class="sig sig-object py" id="kornia.losses.binary_focal_loss_with_logits">
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">binary_focal_loss_with_logits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#binary_focal_loss_with_logits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.binary_focal_loss_with_logits" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that computes Binary Focal loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
@@ -692,11 +701,8 @@ Must be a vector with length equal to the number of classes.
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -714,6 +720,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">focal_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/focal.html#focal_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.focal_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Focal loss.</p>
 <p>According to <span id="id1">[<a class="reference internal" href="community/bibliography.html#id15" title="Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and Piotr Dollár. Focal loss for dense object detection. arXiv ePrint 1708.02002, 2018.">LGG+18</a>]</span>, the Focal loss is computed as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{FL}(p_t) = -\alpha_t (1 - p_t)^{\gamma} \, \text{log}(p_t)\]</div>
@@ -742,11 +753,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'non
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -764,6 +772,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">dice_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/dice.html#dice_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.dice_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Sørensen-Dice Coefficient loss.</p>
 <p>According to [1], we compute the Sørensen-Dice Coefficient as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{Dice}(x, class) = \frac{2 |X \cap Y|}{|X| + |Y|}\]</div>
@@ -794,11 +807,8 @@ is <span class="math notranslate nohighlight">\(0 ≤ targets[i] ≤ C−1\)</sp
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-08</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -816,6 +826,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">tversky_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/tversky.html#tversky_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.tversky_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes Tversky Coefficient loss.</p>
 <p>According to <span id="id2">[<a class="reference internal" href="community/bibliography.html#id16" title="Seyed Sadegh Mohseni Salehi, Deniz Erdogmus, and Ali Gholipour. Tversky loss function for image segmentation using 3d fully convolutional deep networks. arXiv ePrint 1706.05721, 2017.">SEG17</a>]</span>, we compute the Tversky Coefficient as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{S}(P, G, \alpha; \beta) =
@@ -850,11 +865,8 @@ is <span class="math notranslate nohighlight">\(0 ≤ targets[i] ≤ C−1\)</sp
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-08</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -872,6 +884,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">lovasz_hinge_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/lovasz_hinge.html#lovasz_hinge_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.lovasz_hinge_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate binary intersection-over-union (IoU) loss.</p>
 <p>According to [2], we compute the IoU as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
@@ -904,11 +921,8 @@ use the Lovasz-Softmax loss.</p>
 <li><p><strong>labels</strong> – labels tensor with shape <span class="math notranslate nohighlight">\((N, H, W)\)</span> with binary values.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a scalar with the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -926,6 +940,11 @@ use the Lovasz-Softmax loss.</p>
 <span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">lovasz_softmax_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/lovasz_softmax.html#lovasz_softmax_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.lovasz_softmax_loss" title="Permalink to this definition">#</a></dt>
 <dd><p>Criterion that computes a surrogate multi-class intersection-over-union (IoU) loss.</p>
 <p>According to [1], we compute the IoU as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{IoU}(x, class) = \frac{|X \cap Y|}{|X \cup Y|}\]</div>
@@ -958,11 +977,8 @@ labels please use the Lovasz-Hinge loss.</p>
 is <span class="math notranslate nohighlight">\(0 ≤ targets[i] ≤ C−1\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a scalar with the computed loss.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>

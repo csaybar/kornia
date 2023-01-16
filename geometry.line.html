@@ -353,11 +353,6 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 <dt class="sig sig-object py" id="kornia.geometry.line.ParametrizedLine.direction">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.line.ParametrizedLine.direction" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the line direction vector.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -399,11 +394,6 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 <dt class="sig sig-object py" id="kornia.geometry.line.ParametrizedLine.origin">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">origin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><span class="pre">Tensor</span></a></em><a class="headerlink" href="#kornia.geometry.line.ParametrizedLine.origin" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the line origin point.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -414,11 +404,11 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>t</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – step along the line.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor with the point.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>tensor with the point.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -469,6 +459,9 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 <li><p><strong>p1</strong> – tensor with second point <span class="math notranslate nohighlight">\((B, D)\)</span> where <cite>D</cite> is the point dimension.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.line.ParametrizedLine" title="kornia.geometry.line.ParametrizedLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParametrizedLine</span></code></a></p>
+</dd>
 </dl>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
@@ -476,11 +469,6 @@ direction vector <span class="math notranslate nohighlight">\(d\)</span> such th
 <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">ParametrizedLine</span><span class="o">.</span><span class="n">through</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.line.ParametrizedLine" title="kornia.geometry.line.ParametrizedLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParametrizedLine</span></code></a></p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -499,11 +487,11 @@ shape of the tensor is <span class="math notranslate nohighlight">\((B, N)\)</sp
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="#kornia.geometry.line.ParametrizedLine" title="kornia.geometry.line.ParametrizedLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParametrizedLine</span></code></a></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tensor containing the direction of the fited line of shape <span class="math notranslate nohighlight">\((B, D)\)</span>.</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A tensor containing the direction of the fited line of shape <span class="math notranslate nohighlight">\((B, D)\)</span>.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.line.ParametrizedLine" title="kornia.geometry.line.ParametrizedLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParametrizedLine</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
