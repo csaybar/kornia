@@ -324,7 +324,7 @@
 
 <span class="sd">    .. image:: _static/img/rgb_to_lab.png</span>
 
-<span class="sd">    The image data is assumed to be in the range of :math:`[0, 1]`. Lab</span>
+<span class="sd">    The input RGB image is assumed to be in the range of :math:`[0, 1]`. Lab</span>
 <span class="sd">    color is computed using the D65 illuminant and Observer 2.</span>
 
 <span class="sd">    Args:</span>
@@ -332,7 +332,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Lab version of the image with shape :math:`(*, 3, H, W)`.</span>
-<span class="sd">        The L channel values are in the range 0..100. a and b are in the range -127..127.</span>
+<span class="sd">        The L channel values are in the range 0..100. a and b are in the range -128..127.</span>
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
@@ -374,12 +374,16 @@
 <div class="viewcode-block" id="lab_to_rgb"><a class="viewcode-back" href="../../../color.html#kornia.color.lab_to_rgb">[docs]</a><span class="k">def</span> <span class="nf">lab_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">clip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Convert a Lab image to RGB.</span>
 
+<span class="sd">    The L channel is assumed to be in the range of :math:`[0, 100]`.</span>
+<span class="sd">    a and b channels are in the range of :math:`[-128, 127]`.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        image: Lab image to be converted to RGB with shape :math:`(*, 3, H, W)`.</span>
 <span class="sd">        clip: Whether to apply clipping to insure output RGB values in range :math:`[0, 1]`.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Lab version of the image with shape :math:`(*, 3, H, W)`.</span>
+<span class="sd">        The output RGB image are in the range of :math:`[0, 1]`.</span>
 
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.rand(2, 3, 4, 5)</span>
