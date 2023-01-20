@@ -513,6 +513,212 @@ Thus, <cite>reduction=’mean’</cite> was added as an optional reduction metho
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.losses.charbonnier_loss">
+<span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">charbonnier_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/charbonnier.html#charbonnier_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.charbonnier_loss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Charbonnier [2] (aka. L1-L2 [3]) loss.</p>
+<p>According to [1], we compute the Charbonnier loss as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = \sqrt{(x - y)^{2} + 1} - 1\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://ieeexplore.ieee.org/document/413553">https://ieeexplore.ieee.org/document/413553</a>
+[3] <a class="reference external" href="https://hal.inria.fr/inria-00074015/document">https://hal.inria.fr/inria-00074015/document</a>
+[4] <a class="reference external" href="https://arxiv.org/pdf/1712.05927.pdf">https://arxiv.org/pdf/1712.05927.pdf</a></p>
+</dd>
+<dt>. note::</dt><dd><p>This implementation follows the formulation by Barron [1]. Other works utilize
+a slightly different implementation (see [4]).</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p><strong>img2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the target tensor with the same shape as img1.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">charbonnier_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.losses.welsch_loss">
+<span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">welsch_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/welsch.html#welsch_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.welsch_loss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Welsch [2] (aka. Leclerc [3]) loss.</p>
+<p>According to [1], we compute the Welsch loss as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = 1 - exp(-\frac{1}{2} (x - y)^{2})\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/03610917808812083">https://www.tandfonline.com/doi/abs/10.1080/03610917808812083</a>
+[3] <a class="reference external" href="https://link.springer.com/article/10.1007/BF00054839">https://link.springer.com/article/10.1007/BF00054839</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p><strong>img2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the target tensor with the same shape as img1.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">welsch_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.losses.cauchy_loss">
+<span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">cauchy_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/cauchy.html#cauchy_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.cauchy_loss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Cauchy [2] (aka. Lorentzian) loss.</p>
+<p>According to [1], we compute the Cauchy loss as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = log(\frac{1}{2} (x - y)^{2} + 1)\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://files.is.tue.mpg.de/black/papers/cviu.63.1.1996.pdf">https://files.is.tue.mpg.de/black/papers/cviu.63.1.1996.pdf</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p><strong>img2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the target tensor with the same shape as img1.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">cauchy_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.losses.geman_mcclure_loss">
+<span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">geman_mcclure_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/geman_mcclure.html#geman_mcclure_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.geman_mcclure_loss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Geman-McClure loss [2].</p>
+<p>According to [1], we compute the Geman-McClure loss as follows:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = \frac{2 (x - y)^{2}}{(x - y)^{2} + 4}\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] Bayesian image analysis: An application to single photon emission tomography, Geman and McClure, 1985</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p><strong>img2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – the target tensor with the same shape as img1.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a scalar with the computed loss.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">geman_mcclure_loss</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.losses.SSIMLoss">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">SSIMLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/ssim.html#SSIMLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.SSIMLoss" title="Permalink to this definition">#</a></dt>
@@ -740,6 +946,196 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">smooth</span> <span class="o">=</span> <span class="n">InverseDepthSmoothnessLoss</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">idepth</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.losses.CharbonnierLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">CharbonnierLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/charbonnier.html#CharbonnierLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.CharbonnierLoss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Charbonnier [2] (aka. L1-L2 [3]) loss.</p>
+<p>According to [1], we compute the Charbonnier loss as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = \sqrt{(x - y)^{2} + 1} - 1\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://ieeexplore.ieee.org/document/413553">https://ieeexplore.ieee.org/document/413553</a>
+[3] <a class="reference external" href="https://hal.inria.fr/inria-00074015/document">https://hal.inria.fr/inria-00074015/document</a>
+[4] <a class="reference external" href="https://arxiv.org/pdf/1712.05927.pdf">https://arxiv.org/pdf/1712.05927.pdf</a></p>
+</dd>
+<dt>. note::</dt><dd><p>This implementation follows the formulation by Barron [1]. Other works utilize
+a slightly different implementation (see [4]).</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>img1: the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p>img2: the target tensor with the same shape as img1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">CharbonnierLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.losses.WelschLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">WelschLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/welsch.html#WelschLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.WelschLoss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Welsch [2] (aka. Leclerc [3]) loss.</p>
+<p>According to [1], we compute the Welsch loss as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = 1 - exp(-\frac{1}{2} (x - y)^{2})\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/03610917808812083">https://www.tandfonline.com/doi/abs/10.1080/03610917808812083</a>
+[3] <a class="reference external" href="https://link.springer.com/article/10.1007/BF00054839">https://link.springer.com/article/10.1007/BF00054839</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>img1: the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p>img2: the target tensor with the same shape as img1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">WelschLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1904</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1904</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.losses.CauchyLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">CauchyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/cauchy.html#CauchyLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.CauchyLoss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Cauchy [2] (aka. Lorentzian) loss.</p>
+<p>According to [1], we compute the Cauchy loss as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = log(\frac{1}{2} (x - y)^{2} + 1)\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] <a class="reference external" href="https://files.is.tue.mpg.de/black/papers/cviu.63.1.1996.pdf">https://files.is.tue.mpg.de/black/papers/cviu.63.1.1996.pdf</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>img1: the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p>img2: the target tensor with the same shape as img1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">CauchyLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.losses.GemanMcclureLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.losses.</span></span><span class="sig-name descname"><span class="pre">GemanMcclureLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/losses/geman_mcclure.html#GemanMcclureLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.losses.GemanMcclureLoss" title="Permalink to this definition">#</a></dt>
+<dd><p>Criterion that computes the Geman-McClure loss [2].</p>
+<p>According to [1], we compute the Geman-McClure loss as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{WL}(x, y) = \frac{2 (x - y)^{2}}{(x - y)^{2} + 4}\]</div>
+</div>
+<dl class="simple">
+<dt>Where:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the target to be regressed to.</p></li>
+</ul>
+</dd>
+<dt>Reference:</dt><dd><p>[1] <a class="reference external" href="https://arxiv.org/pdf/1701.03077.pdf">https://arxiv.org/pdf/1701.03077.pdf</a>
+[2] Bayesian image analysis: An application to single photon emission tomography, Geman and McClure, 1985</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <em>optional</em>) – Specifies the reduction to apply to the
+output: <code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction
+will be applied (default), <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided
+by the number of elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be
+summed.
+Default:  <code class="code docutils literal notranslate"><span class="pre">'none'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>img1: the predicted tensor with shape <span class="math notranslate nohighlight">\((*)\)</span>.</p></li>
+<li><p>img2: the target tensor with the same shape as img1.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">GemanMcclureLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">2107</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1603,12 +1999,20 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'mea
 <li><a class="reference internal" href="#kornia.losses.psnr_loss"><code class="docutils literal notranslate"><span class="pre">psnr_loss()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.total_variation"><code class="docutils literal notranslate"><span class="pre">total_variation()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.inverse_depth_smoothness_loss"><code class="docutils literal notranslate"><span class="pre">inverse_depth_smoothness_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.charbonnier_loss"><code class="docutils literal notranslate"><span class="pre">charbonnier_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.welsch_loss"><code class="docutils literal notranslate"><span class="pre">welsch_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.cauchy_loss"><code class="docutils literal notranslate"><span class="pre">cauchy_loss()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.geman_mcclure_loss"><code class="docutils literal notranslate"><span class="pre">geman_mcclure_loss()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.SSIMLoss"><code class="docutils literal notranslate"><span class="pre">SSIMLoss</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.SSIM3DLoss"><code class="docutils literal notranslate"><span class="pre">SSIM3DLoss</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.MS_SSIMLoss"><code class="docutils literal notranslate"><span class="pre">MS_SSIMLoss</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.TotalVariation"><code class="docutils literal notranslate"><span class="pre">TotalVariation</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.PSNRLoss"><code class="docutils literal notranslate"><span class="pre">PSNRLoss</span></code></a></li>
 <li><a class="reference internal" href="#kornia.losses.InverseDepthSmoothnessLoss"><code class="docutils literal notranslate"><span class="pre">InverseDepthSmoothnessLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.CharbonnierLoss"><code class="docutils literal notranslate"><span class="pre">CharbonnierLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.WelschLoss"><code class="docutils literal notranslate"><span class="pre">WelschLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.CauchyLoss"><code class="docutils literal notranslate"><span class="pre">CauchyLoss</span></code></a></li>
+<li><a class="reference internal" href="#kornia.losses.GemanMcclureLoss"><code class="docutils literal notranslate"><span class="pre">GemanMcclureLoss</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#semantic-segmentation">Semantic Segmentation</a><ul>
