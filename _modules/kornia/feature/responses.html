@@ -314,6 +314,18 @@
 <span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
 
+<span class="k">def</span> <span class="nf">_get_kernel_size</span><span class="p">(</span><span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="n">ksize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1">#  matches OpenCV, but may cause padding problem for small images</span>
+    <span class="c1">#  PyTorch does not allow to pad more than original size.</span>
+    <span class="c1">#  Therefore there is a hack in forward function</span>
+
+    <span class="k">if</span> <span class="n">ksize</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ksize</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">ksize</span>
+
+
 <div class="viewcode-block" id="harris_response"><a class="viewcode-back" href="../../../feature.html#kornia.feature.harris_response">[docs]</a><span class="k">def</span> <span class="nf">harris_response</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.04</span><span class="p">,</span> <span class="n">grads_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sobel&#39;</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -558,6 +570,25 @@
     <span class="k">return</span> <span class="nb">input</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="nb">input</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="dog_response_single"><a class="viewcode-back" href="../../../feature.html#kornia.feature.dog_response_single">[docs]</a><span class="k">def</span> <span class="nf">dog_response_single</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the Difference-of-Gaussian response.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input: a given the gaussian 4d tensor :math:`(B, C, H, W)`.</span>
+<span class="sd">        sigma1: lower gaussian sigma</span>
+<span class="sd">        sigma2: bigger gaussian sigma</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">        the response map per channel with shape :math:`(B, C, H, W)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+    <span class="n">ks1</span> <span class="o">=</span> <span class="n">_get_kernel_size</span><span class="p">(</span><span class="n">sigma1</span><span class="p">)</span>
+    <span class="n">ks2</span> <span class="o">=</span> <span class="n">_get_kernel_size</span><span class="p">(</span><span class="n">sigma1</span><span class="p">)</span>
+    <span class="n">g1</span> <span class="o">=</span> <span class="n">gaussian_blur2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="n">ks1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">),</span> <span class="p">(</span><span class="n">sigma1</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">))</span>
+    <span class="n">g2</span> <span class="o">=</span> <span class="n">gaussian_blur2d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="p">(</span><span class="n">ks2</span><span class="p">,</span> <span class="n">ks2</span><span class="p">),</span> <span class="p">(</span><span class="n">sigma2</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">g2</span> <span class="o">-</span> <span class="n">g1</span></div>
+
+
 <div class="viewcode-block" id="BlobDoG"><a class="viewcode-back" href="../../../feature.html#kornia.feature.BlobDoG">[docs]</a><span class="k">class</span> <span class="nc">BlobDoG</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Difference-of-Gaussians blobs.</span>
 
@@ -573,6 +604,24 @@
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">dog_response</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BlobDoGSingle"><a class="viewcode-back" href="../../../feature.html#kornia.feature.BlobDoGSingle">[docs]</a><span class="k">class</span> <span class="nc">BlobDoGSingle</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Module that calculates Difference-of-Gaussians blobs.</span>
+
+<span class="sd">    See :func:`~kornia.feature.dog_response_single` for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigma1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.6</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma1</span> <span class="o">=</span> <span class="n">sigma1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">sigma2</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">, sigma1=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma1</span><span class="si">}</span><span class="s1">, sigma2=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">sigmas</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">dog_response_single</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma2</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CornerHarris"><a class="viewcode-back" href="../../../feature.html#kornia.feature.CornerHarris">[docs]</a><span class="k">class</span> <span class="nc">CornerHarris</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>

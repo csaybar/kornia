@@ -305,16 +305,19 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.feature.scale_space_detector</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypedDict</span>
 
-<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Device</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">eye</span>
-<span class="kn">from</span> <span class="nn">kornia.geometry.subpix</span> <span class="kn">import</span> <span class="n">ConvSoftArgmax3d</span>
-<span class="kn">from</span> <span class="nn">kornia.geometry.transform</span> <span class="kn">import</span> <span class="n">ScalePyramid</span>
+<span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Device</span><span class="p">,</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">zeros</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.subpix</span> <span class="kn">import</span> <span class="n">ConvSoftArgmax3d</span><span class="p">,</span> <span class="n">NonMaximaSuppression2d</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.transform</span> <span class="kn">import</span> <span class="n">ScalePyramid</span><span class="p">,</span> <span class="n">pyrdown</span><span class="p">,</span> <span class="n">resize</span>
+<span class="kn">from</span> <span class="nn">kornia.testing</span> <span class="kn">import</span> <span class="n">KORNIA_CHECK_SHAPE</span>
 
-<span class="kn">from</span> <span class="nn">.laf</span> <span class="kn">import</span> <span class="n">laf_is_inside_image</span>
+<span class="kn">from</span> <span class="nn">.laf</span> <span class="kn">import</span> <span class="n">laf_from_center_scale_ori</span><span class="p">,</span> <span class="n">laf_is_inside_image</span>
 <span class="kn">from</span> <span class="nn">.orientation</span> <span class="kn">import</span> <span class="n">PassLAF</span>
 <span class="kn">from</span> <span class="nn">.responses</span> <span class="kn">import</span> <span class="n">BlobHessian</span>
 
@@ -541,6 +544,176 @@
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ori</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">lafs</span><span class="p">,</span> <span class="n">responses</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">Detector_config</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">nms_size</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">pyramid_levels</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">up_levels</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">scale_factor_levels</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">s_mult</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<span class="k">def</span> <span class="nf">get_default_detector_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Detector_config</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="c1"># Extraction Parameters</span>
+        <span class="s1">&#39;nms_size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s1">&#39;pyramid_levels&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s1">&#39;up_levels&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;scale_factor_levels&#39;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;s_mult&#39;</span><span class="p">:</span> <span class="mf">22.0</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">MultiResolutionDetector</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multi-scale feature detector, based on code from KeyNet. Can be used with any response function.</span>
+
+<span class="sd">    This is based on the original code from paper</span>
+<span class="sd">    &quot;Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters&quot;.</span>
+<span class="sd">    See :cite:`KeyNet2019` for more details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: response function, such as KeyNet or BlobHessian</span>
+<span class="sd">        num_features: Number of features to detect.</span>
+<span class="sd">        conf: Dict with initiliazation parameters. Do not pass it, unless you know what you are doing`.</span>
+<span class="sd">        ori_module: for local feature orientation estimation. Default: :class:`~kornia.feature.PassLAF`,</span>
+<span class="sd">           which does nothing. See :class:`~kornia.feature.LAFOrienter` for details.</span>
+<span class="sd">        aff_module: for local feature affine shape estimation. Default: :class:`~kornia.feature.PassLAF`,</span>
+<span class="sd">            which does nothing. See :class:`~kornia.feature.LAFAffineShapeEstimator` for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Module</span><span class="p">,</span>
+        <span class="n">num_features</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Detector_config</span> <span class="o">=</span> <span class="n">get_default_detector_config</span><span class="p">(),</span>
+        <span class="n">ori_module</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">aff_module</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="c1"># Load extraction configuration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;pyramid_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;up_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;scale_factor_levels&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mr_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;s_mult&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;nms_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nms</span> <span class="o">=</span> <span class="n">NonMaximaSuppression2d</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
+
+        <span class="k">if</span> <span class="n">ori_module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ori</span><span class="p">:</span> <span class="n">Module</span> <span class="o">=</span> <span class="n">PassLAF</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ori</span> <span class="o">=</span> <span class="n">ori_module</span>
+
+        <span class="k">if</span> <span class="n">aff_module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">:</span> <span class="n">Module</span> <span class="o">=</span> <span class="n">PassLAF</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aff</span> <span class="o">=</span> <span class="n">aff_module</span>
+
+    <span class="k">def</span> <span class="nf">remove_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;It removes the borders of the image to avoid detections on the corners.&quot;&quot;&quot;</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">score_map</span><span class="p">)</span>
+        <span class="n">mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">mask</span> <span class="o">*</span> <span class="n">score_map</span>
+
+    <span class="k">def</span> <span class="nf">detect_features_on_single_level</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">level_img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">num_kp</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+        <span class="n">det_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nms</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">remove_borders</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">level_img</span><span class="p">)))</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">level_img</span><span class="o">.</span><span class="n">device</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">level_img</span><span class="o">.</span><span class="n">dtype</span>
+        <span class="n">yx</span> <span class="o">=</span> <span class="n">det_map</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">det_map</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">yx</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yx</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>  <span class="c1"># keynet supports only non-batched images</span>
+
+        <span class="n">scores_sorted</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">where</span><span class="p">(</span><span class="n">scores_sorted</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)]</span>
+        <span class="n">yx</span> <span class="o">=</span> <span class="n">yx</span><span class="p">[:,</span> <span class="n">indices</span><span class="p">[:</span><span class="n">num_kp</span><span class="p">]]</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+        <span class="n">current_kp_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">yx</span><span class="p">)</span>
+        <span class="n">xy_projected</span> <span class="o">=</span> <span class="n">yx</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">current_kp_num</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">tensor</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">scale_factor</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">factor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">factor</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mr_size</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">current_kp_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">lafs</span> <span class="o">=</span> <span class="n">laf_from_center_scale_ori</span><span class="p">(</span><span class="n">xy_projected</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">current_kp_num</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">scores_sorted</span><span class="p">[:</span><span class="n">num_kp</span><span class="p">],</span> <span class="n">lafs</span>
+
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+        <span class="c1"># Compute points per level</span>
+        <span class="n">num_features_per_level</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">factor_points</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">levels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">idx_level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">levels</span><span class="p">):</span>
+            <span class="n">tmp</span> <span class="o">+=</span> <span class="n">factor_points</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">idx_level</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">))</span>
+            <span class="n">nf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">*</span> <span class="n">factor_points</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">idx_level</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">))</span>
+            <span class="n">num_features_per_level</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nf</span><span class="p">)</span>
+        <span class="n">num_features_per_level</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">tmp</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">num_features_per_level</span><span class="p">]</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">img_up</span> <span class="o">=</span> <span class="n">img</span>
+        <span class="n">cur_img</span> <span class="o">=</span> <span class="n">img</span>
+        <span class="n">all_responses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">all_lafs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Extract features from the upper levels</span>
+        <span class="k">for</span> <span class="n">idx_level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">):</span>
+            <span class="n">nf</span> <span class="o">=</span> <span class="n">num_features_per_level</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">num_features_per_level</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">idx_level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+            <span class="n">num_points_level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nf</span><span class="p">)</span>
+
+            <span class="c1"># Resize input image</span>
+            <span class="n">up_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">idx_level</span><span class="p">)</span>
+            <span class="n">nh</span><span class="p">,</span> <span class="n">nw</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">up_factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">up_factor</span><span class="p">)</span>
+            <span class="n">up_factor_kpts</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nw</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nh</span><span class="p">))</span>
+            <span class="n">img_up</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">img_up</span><span class="p">,</span> <span class="p">(</span><span class="n">nh</span><span class="p">,</span> <span class="n">nw</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">cur_scores</span><span class="p">,</span> <span class="n">cur_lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect_features_on_single_level</span><span class="p">(</span><span class="n">img_up</span><span class="p">,</span> <span class="n">num_points_level</span><span class="p">,</span> <span class="n">up_factor_kpts</span><span class="p">)</span>
+
+            <span class="n">all_responses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_scores</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">all_lafs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_lafs</span><span class="p">)</span>
+
+        <span class="c1"># Extract features from the downsampling pyramid</span>
+        <span class="k">for</span> <span class="n">idx_level</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_pyramid_levels</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx_level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">cur_img</span> <span class="o">=</span> <span class="n">pyrdown</span><span class="p">(</span><span class="n">cur_img</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_factor_levels</span><span class="p">)</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">nh</span><span class="p">,</span> <span class="n">nw</span> <span class="o">=</span> <span class="n">cur_img</span><span class="o">.</span><span class="n">shape</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nw</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nh</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+            <span class="n">num_points_level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_features_per_level</span><span class="p">[</span><span class="n">idx_level</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">idx_level</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">nf2</span> <span class="o">=</span> <span class="p">[</span><span class="n">num_features_per_level</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">idx_level</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_upscale_levels</span><span class="p">)]</span>
+                <span class="n">res_points</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span><span class="n">nf2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                <span class="n">num_points_level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">res_points</span><span class="p">)</span>
+
+            <span class="n">cur_scores</span><span class="p">,</span> <span class="n">cur_lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect_features_on_single_level</span><span class="p">(</span><span class="n">cur_img</span><span class="p">,</span> <span class="n">num_points_level</span><span class="p">,</span> <span class="n">factor</span><span class="p">)</span>
+            <span class="n">all_responses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_scores</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">all_lafs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_lafs</span><span class="p">)</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">(</span><span class="n">all_responses</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">lafs</span> <span class="o">=</span> <span class="n">concatenate</span><span class="p">(</span><span class="n">all_lafs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lafs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">:</span>
+            <span class="n">responses</span><span class="p">,</span> <span class="n">idxs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="n">responses</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">lafs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idxs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">responses</span><span class="p">,</span> <span class="n">lafs</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Three stage local feature detection. First the location and scale of interest points are determined by</span>
+<span class="sd">        detect function. Then affine shape and orientation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            img: image to extract features with shape [1xCxHxW]. KeyNetDetector does not support batch processing,</span>
+<span class="sd">        because the number of detections is different on each image.</span>
+<span class="sd">            mask: a mask with weights where to apply the response function. The shape must be the same as</span>
+<span class="sd">              the input image.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            lafs: shape [1xNx2x3]. Detected local affine frames.</span>
+<span class="sd">            responses: shape [1xNx1]. Response function values for corresponding lafs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">KORNIA_CHECK_SHAPE</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+        <span class="n">responses</span><span class="p">,</span> <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+        <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ori</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lafs</span><span class="p">,</span> <span class="n">responses</span>
 </pre></div>
         </article>
       </div>

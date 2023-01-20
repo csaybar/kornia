@@ -526,6 +526,29 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.feature.dog_response_single">
+<span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">dog_response_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#dog_response_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.dog_response_single" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the Difference-of-Gaussian response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – a given the gaussian 4d tensor <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p></li>
+<li><p><strong>sigma1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – lower gaussian sigma
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
+<li><p><strong>sigma2</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – bigger gaussian sigma
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.6</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the response map per channel with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SOLD2_detector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SOLD2_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/sold2/sold2_detector.html#SOLD2_detector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SOLD2_detector" title="Permalink to this definition">#</a></dt>
@@ -1337,9 +1360,10 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.SIFTFeature">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SIFTFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#SIFTFeature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SIFTFeature" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SIFTFeature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">get_default_detector_config()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#SIFTFeature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SIFTFeature" title="Permalink to this definition">#</a></dt>
 <dd><p>Convenience module, which implements DoG detector + (Root)SIFT descriptor.</p>
-<p>Still not as good as OpenCV/VLFeat because of <a class="reference external" href="https://github.com/kornia/kornia/pull/884">https://github.com/kornia/kornia/pull/884</a>, but we are working on it</p>
+<p>Using <cite>kornia.feature.MultiResolutionDetector</cite> without blur pyramid Still not as good as OpenCV/VLFeat because of
+<a class="reference external" href="https://github.com/kornia/kornia/pull/884">https://github.com/kornia/kornia/pull/884</a>, but we are working on it</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.feature.SIFTFeature.forward">
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.feature.SIFTFeature.forward" title="Permalink to this definition">#</a></dt>
@@ -1369,8 +1393,42 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="kornia.feature.SIFTFeatureScaleSpace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">SIFTFeatureScaleSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rootsift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#SIFTFeatureScaleSpace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.SIFTFeatureScaleSpace" title="Permalink to this definition">#</a></dt>
+<dd><p>Convenience module, which implements DoG detector + (Root)SIFT descriptor. Using
+<cite>kornia.feature.ScaleSpaceDetector</cite> with blur pyramid.</p>
+<p>Still not as good as OpenCV/VLFeat because of <a class="reference external" href="https://github.com/kornia/kornia/pull/884">https://github.com/kornia/kornia/pull/884</a>, but we are working on it</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.feature.SIFTFeatureScaleSpace.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.feature.SIFTFeatureScaleSpace.forward" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape <span class="math notranslate nohighlight">\((B,C,H,W)\)</span>.</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>], <em>optional</em>) – a mask with weights where to apply the response function.
+The shape must be the same as the input image.
+Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Detected local affine frames with shape <span class="math notranslate nohighlight">\((B,N,2,3)\)</span>.</p></li>
+<li><p>Response function values for corresponding lafs with shape <span class="math notranslate nohighlight">\((B,N,1)\)</span>.</p></li>
+<li><p>Local descriptors of shape <span class="math notranslate nohighlight">\((B,N,D)\)</span> where <span class="math notranslate nohighlight">\(D\)</span> is descriptor size.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.GFTTAffNetHardNet">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">GFTTAffNetHardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#GFTTAffNetHardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.GFTTAffNetHardNet" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">GFTTAffNetHardNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device('cpu')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">get_default_detector_config()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/integrated.html#GFTTAffNetHardNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.GFTTAffNetHardNet" title="Permalink to this definition">#</a></dt>
 <dd><p>Convenience module, which implements GFTT detector + AffNet-HardNet descriptor.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.feature.GFTTAffNetHardNet.forward">
@@ -2123,6 +2181,13 @@ LAF-y unit vector.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="kornia.feature.BlobDoGSingle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">BlobDoGSingle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sigma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/responses.html#BlobDoGSingle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.BlobDoGSingle" title="Permalink to this definition">#</a></dt>
+<dd><p>Module that calculates Difference-of-Gaussians blobs.</p>
+<p>See <a class="reference internal" href="#kornia.feature.dog_response_single" title="kornia.feature.dog_response_single"><code class="xref py py-func docutils literal notranslate"><span class="pre">dog_response_single()</span></code></a> for details.</p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.KeyNet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">KeyNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keynet_conf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">keynet_default_config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNet" title="Permalink to this definition">#</a></dt>
 <dd><p>Key.Net model definition – local feature detector (response function). This is based on the original code
@@ -2303,7 +2368,7 @@ which does nothing. See <a class="reference internal" href="#kornia.feature.LAFA
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="kornia.feature.KeyNetDetector.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/keynet.html#KeyNetDetector.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.KeyNetDetector.forward" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.feature.KeyNetDetector.forward" title="Permalink to this definition">#</a></dt>
 <dd><p>Three stage local feature detection. First the location and scale of interest points are determined by
 detect function. Then affine shape and orientation.</p>
 <dl class="field-list simple">
@@ -2704,6 +2769,7 @@ registered hooks while the latter silently ignores them.</p>
 <li><a class="reference internal" href="#kornia.feature.harris_response"><code class="docutils literal notranslate"><span class="pre">harris_response()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.hessian_response"><code class="docutils literal notranslate"><span class="pre">hessian_response()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.dog_response"><code class="docutils literal notranslate"><span class="pre">dog_response()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.dog_response_single"><code class="docutils literal notranslate"><span class="pre">dog_response_single()</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.SOLD2_detector"><code class="docutils literal notranslate"><span class="pre">SOLD2_detector</span></code></a><ul>
 <li><a class="reference internal" href="#kornia.feature.SOLD2_detector.forward"><code class="docutils literal notranslate"><span class="pre">SOLD2_detector.forward()</span></code></a></li>
 </ul>
@@ -2753,6 +2819,10 @@ registered hooks while the latter silently ignores them.</p>
 <li><a class="reference internal" href="#kornia.feature.SIFTFeature.forward"><code class="docutils literal notranslate"><span class="pre">SIFTFeature.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#kornia.feature.SIFTFeatureScaleSpace"><code class="docutils literal notranslate"><span class="pre">SIFTFeatureScaleSpace</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.SIFTFeatureScaleSpace.forward"><code class="docutils literal notranslate"><span class="pre">SIFTFeatureScaleSpace.forward()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet"><code class="docutils literal notranslate"><span class="pre">GFTTAffNetHardNet</span></code></a><ul>
 <li><a class="reference internal" href="#kornia.feature.GFTTAffNetHardNet.forward"><code class="docutils literal notranslate"><span class="pre">GFTTAffNetHardNet.forward()</span></code></a></li>
 </ul>
@@ -2800,6 +2870,7 @@ registered hooks while the latter silently ignores them.</p>
 <li><a class="reference internal" href="#kornia.feature.CornerGFTT"><code class="docutils literal notranslate"><span class="pre">CornerGFTT</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.CornerHarris"><code class="docutils literal notranslate"><span class="pre">CornerHarris</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.BlobDoG"><code class="docutils literal notranslate"><span class="pre">BlobDoG</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.BlobDoGSingle"><code class="docutils literal notranslate"><span class="pre">BlobDoGSingle</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.KeyNet"><code class="docutils literal notranslate"><span class="pre">KeyNet</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.FilterResponseNorm2d"><code class="docutils literal notranslate"><span class="pre">FilterResponseNorm2d</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.TLU"><code class="docutils literal notranslate"><span class="pre">TLU</span></code></a></li>
