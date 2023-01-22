@@ -308,52 +308,184 @@
         <article role="main">
           <section id="base-classes">
 <h1>Base Classes<a class="headerlink" href="#base-classes" title="Permalink to this heading">#</a></h1>
-<p>This is the base class for creating a new transform using <cite>kornia.augmentation</cite>.
-The user only needs to override: <cite>generate_parameters</cite>, <cite>apply_transform</cite> and optionally, <cite>compute_transformation</cite>.</p>
-<p>Create your own transformations with the following snippet:</p>
+<p>This is the base class for creating a new transform on top the predefined routine of <cite>kornia.augmentation</cite>.
+Specifically, an any given augmentation can be recognized as either rigid (e.g. affine transformations that
+manipulate images with standard transformation matrice), or non-rigid (e.g. cut out a random area). At
+image-level, Kornia supports rigid transformation like <cite>GeometricAugmentationBase2D</cite> that modifies the geometric
+location of image pixels and <cite>IntensityAugmentationBase2D</cite> that preserves the pixel locations, as well as
+generic <cite>AugmentationBase2D</cite> that allows higher freedom for customized augmentation design.</p>
+<section id="the-predefined-augmentation-routine">
+<h2>The Predefined Augmentation Routine<a class="headerlink" href="#the-predefined-augmentation-routine" title="Permalink to this heading">#</a></h2>
+<p>Kornia augmentation follows the simplest <cite>sample-apply</cite> routine for all the augmentations.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>sample</cite>: Kornia aims at flexible tensor-level augmentations that augment all images in a tensor with</dt><dd><p>different augmentations and probabilities. The sampling operation firstly samples a suite of random
+parameters. Then all the sampled augmentation state (parameters) is stored
+inside <cite>_param</cite> of the augmentation, the users can hereby reproduce the same augmentation results.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>apply</cite>: With generated or passed parameters, the augmentation will be performed accordingly.</dt><dd><p>Apart from performing image tensor operations, Kornia also supports inverse operations that
+to revert the transform operations. Meanwhile, other data modalities (<cite>datakeys</cite> in Kornia) like
+masks, keypoints, and bounding boxes. Such features are better supported with <cite>AugmentationSequential</cite>.
+Notably, the augmentation pipeline for rigid operations are implemented already without further efforts.
+For non-rigid operations, the user may implement customized inverse and data modality operations, e.g.
+<cite>apply_mask_transform</cite> for applying transformations on mask tensors.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="custom-augmentation-classes">
+<h2>Custom Augmentation Classes<a class="headerlink" href="#custom-augmentation-classes" title="Permalink to this heading">#</a></h2>
+<p>For rigid transformations, <cite>IntensityAugmentationBase2D</cite> and <cite>GeometricAugmentationBase2D</cite> are sharing the exact same logic
+apart from the transformation matrix computations. Namely, the intensity augmentation always results in
+identity transformation matrices, without changing the geometric location for each pixel.</p>
+<p>If it is a rigid geometric operation, <cite>compute_transformation</cite> and <cite>apply_transform</cite> need to be implemented, as well as
+<cite>compute_inverse_transformation</cite> and <cite>inverse_transform</cite> to compute its inverse.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.augmentation.GeometricAugmentationBase2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">GeometricAugmentationBase2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/base.html#GeometricAugmentationBase2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.GeometricAugmentationBase2D" title="Permalink to this definition">#</a></dt>
+<dd><p>GeometricAugmentationBase2D base class for customized geometric augmentation implementations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation. This param controls the augmentation probabilities
+element-wise for a batch.
+Default:  <code class="code docutils literal notranslate"><span class="pre">0.5</span></code></p></li>
+<li><p><strong>p_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation to a batch. This param controls the augmentation
+probabilities batch-wise.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
+<li><p><strong>same_on_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – apply the same transformation across the batch.
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – whether to keep the output shape the same as input <code class="docutils literal notranslate"><span class="pre">True</span></code> or broadcast it
+to the batch form <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.GeometricAugmentationBase2D.compute_transformation">
+<span class="sig-name descname"><span class="pre">compute_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.GeometricAugmentationBase2D.compute_transformation" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.GeometricAugmentationBase2D.apply_transform">
+<span class="sig-name descname"><span class="pre">apply_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.GeometricAugmentationBase2D.apply_transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.GeometricAugmentationBase2D.compute_inverse_transformation">
+<span class="sig-name descname"><span class="pre">compute_inverse_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transform</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/base.html#GeometricAugmentationBase2D.compute_inverse_transformation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.GeometricAugmentationBase2D.compute_inverse_transformation" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the inverse transform of given transformation matrices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.GeometricAugmentationBase2D.inverse_transform">
+<span class="sig-name descname"><span class="pre">inverse_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/geometric/base.html#GeometricAugmentationBase2D.inverse_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.GeometricAugmentationBase2D.inverse_transform" title="Permalink to this definition">#</a></dt>
+<dd><p>By default, the exact transformation as <code class="docutils literal notranslate"><span class="pre">apply_transform</span></code> will be used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>For <cite>IntensityAugmentationBase2D</cite>, the user only needs to override <cite>apply_transform</cite>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="kornia.augmentation.IntensityAugmentationBase2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">IntensityAugmentationBase2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/intensity/base.html#IntensityAugmentationBase2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.IntensityAugmentationBase2D" title="Permalink to this definition">#</a></dt>
+<dd><p>IntensityAugmentationBase2D base class for customized intensity augmentation implementations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation. This param controls the augmentation probabilities
+element-wise for a batch.
+Default:  <code class="code docutils literal notranslate"><span class="pre">0.5</span></code></p></li>
+<li><p><strong>p_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation to a batch. This param controls the augmentation
+probabilities batch-wise.
+Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
+<li><p><strong>same_on_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – apply the same transformation across the batch.
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>keepdim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – whether to keep the output shape the same as input <code class="docutils literal notranslate"><span class="pre">True</span></code> or broadcast it
+to the batch form <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.IntensityAugmentationBase2D.apply_transform">
+<span class="sig-name descname"><span class="pre">apply_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.IntensityAugmentationBase2D.apply_transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>A minimal example to create your own rigid geometric augmentations with the following snippet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">kornia</span> <span class="k">as</span> <span class="nn">K</span>
 
-<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="n">AugmentationBase2D</span>
+<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="n">GeometricAugmentationBase2D</span>
+<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="n">random_generator</span> <span class="k">as</span> <span class="n">rg</span>
 
-<span class="k">class</span> <span class="nc">MyRandomTransform</span><span class="p">(</span><span class="n">AugmentationBase2D</span><span class="p">):</span>
-   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_transform</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-      <span class="nb">super</span><span class="p">(</span><span class="n">MyRandomTransform</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">return_transform</span><span class="p">)</span>
 
-   <span class="k">def</span> <span class="nf">generate_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">):</span>
-      <span class="c1"># generate the random parameters for your use case.</span>
-      <span class="n">angles_rad</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">K</span><span class="o">.</span><span class="n">pi</span>
-      <span class="n">angles_deg</span> <span class="o">=</span> <span class="n">kornia</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">angles_rad</span><span class="p">)</span>
-      <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">angles</span><span class="o">=</span><span class="n">angles_deg</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MyRandomTransform</span><span class="p">(</span><span class="n">GeometricAugmentationBase2D</span><span class="p">):</span>
+
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span>
+      <span class="n">factor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span>
+      <span class="n">same_on_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+      <span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+   <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_param_generator</span> <span class="o">=</span> <span class="n">rg</span><span class="o">.</span><span class="n">PlainUniformGenerator</span><span class="p">((</span><span class="n">factor</span><span class="p">,</span> <span class="s2">&quot;factor&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 
    <span class="k">def</span> <span class="nf">compute_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+      <span class="c1"># a simple identity transformation example</span>
+      <span class="n">factor</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;factor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">eyelike</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">factor</span>
 
-      <span class="n">B</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
-
-      <span class="c1"># compute transformation</span>
-      <span class="n">angles</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;angles&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-      <span class="n">center</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">W</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-      <span class="n">transform</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">get_rotation_matrix2d</span><span class="p">(</span>
-         <span class="n">center</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">angles</span><span class="p">))</span>
-      <span class="k">return</span> <span class="n">transform</span>
-
-   <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-
-      <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
-      <span class="c1"># compute transformation</span>
-      <span class="n">transform</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_transformation</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-
-      <span class="c1"># apply transformation and return</span>
-      <span class="n">output</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">warp_affine</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span>
-      <span class="k">return</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+   <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+   <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+      <span class="n">factor</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;factor&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">factor</span>
 </pre></div>
 </div>
+<p>For non-rigid augmentations, the user may implement the <cite>apply_transform*</cite> and <cite>apply_non_transform*</cite> APIs
+to meet the needs. Specifically, <cite>apply_transform*</cite> applies to the elements of a tensor that need to be transformed,
+while <cite>apply_non_transform*</cite> applies to the elements of a tensor that are skipped from augmentation. For example,
+a crop operation may change the tensor size partially, while we need to resize the rest to maintain the whole tensor
+as an integrated one with the same size.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">AugmentationBase2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/base.html#AugmentationBase2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">AugmentationBase2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_2d/base.html#AugmentationBase2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D" title="Permalink to this definition">#</a></dt>
 <dd><p>AugmentationBase2D base class for customized augmentation implementations.</p>
-<p>For any augmentation, the implementation of “generate_parameters” and “apply_transform” are required while the
-“compute_transformation” is only required when passing “return_transform” as True.</p>
+<p>AugmentationBase2D aims at offering a generic base class for a greater level of customization.
+If the subclass contains routined matrix-based transformations, <cite>RigidAffineAugmentationBase2D</cite>
+might be a better fit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -372,26 +504,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.generate_parameters">
-<span class="sig-name descname"><span class="pre">generate_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.generate_parameters" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.compute_transformation">
-<span class="sig-name descname"><span class="pre">compute_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.compute_transformation" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_transform">
 <span class="sig-name descname"><span class="pre">apply_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Defines the computation performed at every call.</p>
@@ -403,41 +515,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase3D">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.augmentation.</span></span><span class="sig-name descname"><span class="pre">AugmentationBase3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_on_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/augmentation/_3d/base.html#AugmentationBase3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.augmentation.AugmentationBase3D" title="Permalink to this definition">#</a></dt>
-<dd><p>AugmentationBase3D base class for customized augmentation implementations.</p>
-<p>For any augmentation, the implementation of “generate_parameters” and “apply_transform” are required while the
-“compute_transformation” is only required when passing “return_transform” as True.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation. This param controls the augmentation probabilities
-element-wise for a batch.
-Default:  <code class="code docutils literal notranslate"><span class="pre">0.5</span></code></p></li>
-<li><p><strong>p_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – probability for applying an augmentation to a batch. This param controls the augmentation
-probabilities batch-wise.
-Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
-<li><p><strong>same_on_batch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – apply the same transformation across the batch.
-Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
-</ul>
-</dd>
-</dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase3D.generate_parameters">
-<span class="sig-name descname"><span class="pre">generate_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase3D.generate_parameters" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase3D.compute_transformation">
-<span class="sig-name descname"><span class="pre">compute_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase3D.compute_transformation" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_non_transform">
+<span class="sig-name descname"><span class="pre">apply_non_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform" title="Permalink to this definition">#</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
@@ -446,10 +526,86 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase3D.apply_transform">
-<span class="sig-name descname"><span class="pre">apply_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase3D.apply_transform" title="Permalink to this definition">#</a></dt>
-<dd><p>Defines the computation performed at every call.</p>
-<p>Should be overridden by all subclasses.</p>
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_transform_mask">
+<span class="sig-name descname"><span class="pre">apply_transform_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_transform_mask" title="Permalink to this definition">#</a></dt>
+<dd><p>Process masks corresponding to the inputs that are transformed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_non_transform_mask">
+<span class="sig-name descname"><span class="pre">apply_non_transform_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_mask" title="Permalink to this definition">#</a></dt>
+<dd><p>Process masks corresponding to the inputs that are no transformation applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_transform_box">
+<span class="sig-name descname"><span class="pre">apply_transform_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_transform_box" title="Permalink to this definition">#</a></dt>
+<dd><p>Process boxes corresponding to the inputs that are transformed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes" title="kornia.geometry.boxes.Boxes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Boxes</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_non_transform_box">
+<span class="sig-name descname"><span class="pre">apply_non_transform_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_box" title="Permalink to this definition">#</a></dt>
+<dd><p>Process boxes corresponding to the inputs that are no transformation applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="geometry.boxes.html#kornia.geometry.boxes.Boxes" title="kornia.geometry.boxes.Boxes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Boxes</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_transform_keypoint">
+<span class="sig-name descname"><span class="pre">apply_transform_keypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_transform_keypoint" title="Permalink to this definition">#</a></dt>
+<dd><p>Process keypoints corresponding to the inputs that are transformed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Keypoints</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_non_transform_keypoint">
+<span class="sig-name descname"><span class="pre">apply_non_transform_keypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_keypoint" title="Permalink to this definition">#</a></dt>
+<dd><p>Process keypoints corresponding to the inputs that are no transformation applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Keypoints</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_transform_class">
+<span class="sig-name descname"><span class="pre">apply_transform_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_transform_class" title="Permalink to this definition">#</a></dt>
+<dd><p>Process class tags corresponding to the inputs that are transformed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.augmentation.AugmentationBase2D.apply_non_transform_class">
+<span class="sig-name descname"><span class="pre">apply_non_transform_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_class" title="Permalink to this definition">#</a></dt>
+<dd><p>Process class tags corresponding to the inputs that are no transformation applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
@@ -459,6 +615,30 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 
 </dd></dl>
 
+<p>The similar logic applies to 3D augmentations as well.</p>
+</section>
+<section id="some-further-notes">
+<h2>Some Further Notes<a class="headerlink" href="#some-further-notes" title="Permalink to this heading">#</a></h2>
+<section id="probabilities">
+<h3>Probabilities<a class="headerlink" href="#probabilities" title="Permalink to this heading">#</a></h3>
+<p>Kornia supports two types of randomness for element-level randomness <cite>p</cite> and batch-level randomness <cite>p_batch</cite>,
+as in <cite>_BasicAugmentationBase</cite>. Under the hood, operations like <cite>crop</cite>, <cite>resize</cite> are implemented with a fixed
+element-level randomness of <cite>p=1</cite> that only maintains batch-level randomness.</p>
+</section>
+<section id="random-generators">
+<h3>Random Generators<a class="headerlink" href="#random-generators" title="Permalink to this heading">#</a></h3>
+<p>For automatically generating the corresponding <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> with full customized parameters, you may need to
+implement <code class="docutils literal notranslate"><span class="pre">_param_generator</span></code> by inheriting <code class="docutils literal notranslate"><span class="pre">RandomGeneratorBase</span></code> for generating random parameters and
+put all static parameters inside <code class="docutils literal notranslate"><span class="pre">self.flags</span></code>. You may take the advantage of <code class="docutils literal notranslate"><span class="pre">PlainUniformGenerator</span></code> to
+generate simple uniform parameters with less boilerplate code.</p>
+</section>
+<section id="random-reproducibility">
+<h3>Random Reproducibility<a class="headerlink" href="#random-reproducibility" title="Permalink to this heading">#</a></h3>
+<p>Plain augmentation base class without the functionality of transformation matrix calculations.
+By default, the random computations will be happened on CPU with <code class="docutils literal notranslate"><span class="pre">torch.get_default_dtype()</span></code>.
+To change this behaviour, please use <code class="docutils literal notranslate"><span class="pre">set_rng_device_and_dtype</span></code>.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -517,16 +697,38 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Base Classes</a><ul>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D</span></code></a><ul>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.generate_parameters"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.generate_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.compute_transformation"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.compute_transformation()</span></code></a></li>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform()</span></code></a></li>
+<li><a class="reference internal" href="#the-predefined-augmentation-routine">The Predefined Augmentation Routine</a></li>
+<li><a class="reference internal" href="#custom-augmentation-classes">Custom Augmentation Classes</a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.GeometricAugmentationBase2D"><code class="docutils literal notranslate"><span class="pre">GeometricAugmentationBase2D</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.GeometricAugmentationBase2D.compute_transformation"><code class="docutils literal notranslate"><span class="pre">GeometricAugmentationBase2D.compute_transformation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.GeometricAugmentationBase2D.apply_transform"><code class="docutils literal notranslate"><span class="pre">GeometricAugmentationBase2D.apply_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.GeometricAugmentationBase2D.compute_inverse_transformation"><code class="docutils literal notranslate"><span class="pre">GeometricAugmentationBase2D.compute_inverse_transformation()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.GeometricAugmentationBase2D.inverse_transform"><code class="docutils literal notranslate"><span class="pre">GeometricAugmentationBase2D.inverse_transform()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase3D"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D</span></code></a><ul>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase3D.generate_parameters"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.generate_parameters()</span></code></a></li>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase3D.compute_transformation"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.compute_transformation()</span></code></a></li>
-<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase3D.apply_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase3D.apply_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.IntensityAugmentationBase2D"><code class="docutils literal notranslate"><span class="pre">IntensityAugmentationBase2D</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.IntensityAugmentationBase2D.apply_transform"><code class="docutils literal notranslate"><span class="pre">IntensityAugmentationBase2D.apply_transform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_non_transform()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform_mask"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform_mask()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_mask"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_non_transform_mask()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform_box"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform_box()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_box"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_non_transform_box()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform_keypoint"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform_keypoint()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_keypoint"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_non_transform_keypoint()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_transform_class"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_transform_class()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.augmentation.AugmentationBase2D.apply_non_transform_class"><code class="docutils literal notranslate"><span class="pre">AugmentationBase2D.apply_non_transform_class()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#some-further-notes">Some Further Notes</a><ul>
+<li><a class="reference internal" href="#probabilities">Probabilities</a></li>
+<li><a class="reference internal" href="#random-generators">Random Generators</a></li>
+<li><a class="reference internal" href="#random-reproducibility">Random Reproducibility</a></li>
 </ul>
 </li>
 </ul>

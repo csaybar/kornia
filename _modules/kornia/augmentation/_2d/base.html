@@ -305,18 +305,23 @@
         </div>
         <article role="main">
           <h1>Source code for kornia.augmentation._2d.base</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">import</span> <span class="nn">kornia</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span>
+
 <span class="kn">from</span> <span class="nn">kornia.augmentation.base</span> <span class="kn">import</span> <span class="n">_AugmentationBase</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.utils</span> <span class="kn">import</span> <span class="n">_transform_input</span><span class="p">,</span> <span class="n">_validate_input_dtype</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.boxes</span> <span class="kn">import</span> <span class="n">Boxes</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.keypoints</span> <span class="kn">import</span> <span class="n">Keypoints</span>
+<span class="kn">from</span> <span class="nn">kornia.utils</span> <span class="kn">import</span> <span class="n">eye_like</span>
 
 
 <div class="viewcode-block" id="AugmentationBase2D"><a class="viewcode-back" href="../../../../augmentation.base.html#kornia.augmentation.AugmentationBase2D">[docs]</a><span class="k">class</span> <span class="nc">AugmentationBase2D</span><span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;AugmentationBase2D base class for customized augmentation implementations.</span>
 
-<span class="sd">    For any augmentation, the implementation of &quot;generate_parameters&quot; and &quot;apply_transform&quot; are required while the</span>
-<span class="sd">    &quot;compute_transformation&quot; is only required when passing &quot;return_transform&quot; as True.</span>
+<span class="sd">    AugmentationBase2D aims at offering a generic base class for a greater level of customization.</span>
+<span class="sd">    If the subclass contains routined matrix-based transformations, `RigidAffineAugmentationBase2D`</span>
+<span class="sd">    might be a better fit.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        p: probability for applying an augmentation. This param controls the augmentation probabilities</span>
@@ -328,30 +333,107 @@
 <span class="sd">          form ``False``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__check_batching__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">inp</span><span class="p">,</span> <span class="n">mat</span> <span class="o">=</span> <span class="nb">input</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s1">&#39;Input tensor is in batch mode &#39;</span> <span class="s1">&#39;but transformation matrix is not&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">&quot;In batch dimension, input has </span><span class="si">{</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> but transformation matrix has </span><span class="si">{</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-                    <span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Input tensor is in non-batch mode but transformation matrix is not&quot;</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized output shape. Expected 2, 3, or 4, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">validate_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the input tensor is formatted as expected.&quot;&quot;&quot;</span>
+        <span class="n">_validate_input_dtype</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">accepted_dtypes</span><span class="o">=</span><span class="p">[</span><span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expect (B, C, H, W). Got </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">transform_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert any incoming (H, W), (C, H, W) and (B, C, H, W) into (B, C, H, W).&quot;&quot;&quot;</span>
         <span class="n">_validate_input_dtype</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">accepted_dtypes</span><span class="o">=</span><span class="p">[</span><span class="n">float16</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float64</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">_transform_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_transform_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+
+<span class="k">class</span> <span class="nc">RigidAffineAugmentationBase2D</span><span class="p">(</span><span class="n">AugmentationBase2D</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;AugmentationBase2D base class for rigid/affine augmentation implementations.</span>
+
+<span class="sd">    RigidAffineAugmentationBase2D enables routined transformation with given transformation matrices</span>
+<span class="sd">    for different data types like masks, boxes, and keypoints.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        p: probability for applying an augmentation. This param controls the augmentation probabilities</span>
+<span class="sd">          element-wise for a batch.</span>
+<span class="sd">        p_batch: probability for applying an augmentation to a batch. This param controls the augmentation</span>
+<span class="sd">          probabilities batch-wise.</span>
+<span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
+<span class="sd">        keepdim: whether to keep the output shape the same as input ``True`` or broadcast it to the batch</span>
+<span class="sd">          form ``False``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_transform_matrix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transform_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform_matrix</span>
 
     <span class="k">def</span> <span class="nf">identity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return 3x3 identity matrix.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">kornia</span><span class="o">.</span><span class="n">eye_like</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">eye_like</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compute_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">generate_transformation_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate transformation matrices with the given input and param settings.&quot;&quot;&quot;</span>
+        <span class="c1"># Note about the explicit type conversions here:</span>
+        <span class="c1"># If this code is run in an autocast-enabled region, the transformation matrix or the output</span>
+        <span class="c1"># may be float16 even though the input was float32 (e.g. torch.mm produces float16 output),</span>
+        <span class="c1"># see also the documentation on autocasting: https://pytorch.org/docs/stable/amp.html.</span>
+        <span class="c1"># It may be unexpected for the user if the output type changes and it can also lead to errors</span>
+        <span class="c1"># for the index_put operation below (see also https://github.com/kornia/kornia/issues/1737)</span>
+        <span class="c1"># In case the type already matches the input type, the conversions are no-ops</span>
+
+        <span class="n">to_apply</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;batch_prob&#39;</span><span class="p">]</span>
+        <span class="n">in_tensor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">to_apply</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">trans_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">to_apply</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">trans_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_transformation</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">in_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">trans_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_matrix</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">)</span>
+            <span class="n">trans_matrix</span> <span class="o">=</span> <span class="n">trans_matrix</span><span class="o">.</span><span class="n">index_put</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">to_apply</span><span class="p">,),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">compute_transformation</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">[</span><span class="n">to_apply</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">in_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">trans_matrix</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">in_tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">inverse_inputs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">inverse_masks</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">inverse_boxes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Boxes</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">inverse_keypoints</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Keypoints</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Keypoints</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">inverse_classes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">apply_func</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">in_tensor</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">flags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">flags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flags</span>
+
+        <span class="n">trans_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_transformation_matrix</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_inputs</span><span class="p">(</span><span class="n">in_tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">trans_matrix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transform_matrix</span> <span class="o">=</span> <span class="n">trans_matrix</span>
+
+        <span class="k">return</span> <span class="n">output</span>
 </pre></div>
         </article>
       </div>

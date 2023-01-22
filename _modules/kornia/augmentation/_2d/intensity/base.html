@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
-        <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/intensity/invert.html" />
+        <link rel="canonical" href="https://kornia.readthedocs.io/_modules/kornia/augmentation/_2d/intensity/base.html" />
 
     <link rel="shortcut icon" href="../../../../../_static/kornia_logo_favicon.png"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
-        <title>kornia.augmentation._2d.intensity.invert - Kornia</title>
+        <title>kornia.augmentation._2d.intensity.base - Kornia</title>
       <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
@@ -304,63 +304,77 @@
           </label>
         </div>
         <article role="main">
-          <h1>Source code for kornia.augmentation._2d.intensity.invert</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+          <h1>Source code for kornia.augmentation._2d.intensity.base</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
-<span class="kn">from</span> <span class="nn">kornia.augmentation._2d.intensity.base</span> <span class="kn">import</span> <span class="n">IntensityAugmentationBase2D</span>
-<span class="kn">from</span> <span class="nn">kornia.enhance</span> <span class="kn">import</span> <span class="n">invert</span>
+<span class="kn">from</span> <span class="nn">kornia.augmentation._2d.base</span> <span class="kn">import</span> <span class="n">RigidAffineAugmentationBase2D</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.boxes</span> <span class="kn">import</span> <span class="n">Boxes</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.keypoints</span> <span class="kn">import</span> <span class="n">Keypoints</span>
 
 
-<div class="viewcode-block" id="RandomInvert"><a class="viewcode-back" href="../../../../../augmentation.module.html#kornia.augmentation.RandomInvert">[docs]</a><span class="k">class</span> <span class="nc">RandomInvert</span><span class="p">(</span><span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Invert the tensor images values randomly.</span>
-
-<span class="sd">    .. image:: _static/img/RandomInvert.png</span>
+<div class="viewcode-block" id="IntensityAugmentationBase2D"><a class="viewcode-back" href="../../../../../augmentation.base.html#kornia.augmentation.IntensityAugmentationBase2D">[docs]</a><span class="k">class</span> <span class="nc">IntensityAugmentationBase2D</span><span class="p">(</span><span class="n">RigidAffineAugmentationBase2D</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;IntensityAugmentationBase2D base class for customized intensity augmentation implementations.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        max_val: The expected maximum value in the input tensor. The shape has to</span>
-<span class="sd">          according to the input tensor shape, or at least has to work with broadcasting.</span>
+<span class="sd">        p: probability for applying an augmentation. This param controls the augmentation probabilities</span>
+<span class="sd">          element-wise for a batch.</span>
+<span class="sd">        p_batch: probability for applying an augmentation to a batch. This param controls the augmentation</span>
+<span class="sd">          probabilities batch-wise.</span>
 <span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
-<span class="sd">        p: probability of applying the transformation.</span>
-<span class="sd">        keepdim: whether to keep the output shape the same as input (True) or broadcast it</span>
-<span class="sd">                 to the batch form (False).</span>
-<span class="sd">    .. note::</span>
-<span class="sd">        This function internally uses :func:`kornia.enhance.invert`.</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; rng = torch.manual_seed(0)</span>
-<span class="sd">        &gt;&gt;&gt; img = torch.rand(1, 1, 5, 5)</span>
-<span class="sd">        &gt;&gt;&gt; inv = RandomInvert()</span>
-<span class="sd">        &gt;&gt;&gt; inv(img)</span>
-<span class="sd">        tensor([[[[0.4963, 0.7682, 0.0885, 0.1320, 0.3074],</span>
-<span class="sd">                  [0.6341, 0.4901, 0.8964, 0.4556, 0.6323],</span>
-<span class="sd">                  [0.3489, 0.4017, 0.0223, 0.1689, 0.2939],</span>
-<span class="sd">                  [0.5185, 0.6977, 0.8000, 0.1610, 0.2823],</span>
-<span class="sd">                  [0.6816, 0.9152, 0.3971, 0.8742, 0.4194]]]])</span>
-
-<span class="sd">    To apply the exact augmenation again, you may take the advantage of the previous parameter state:</span>
-<span class="sd">        &gt;&gt;&gt; input = torch.randn(1, 3, 32, 32)</span>
-<span class="sd">        &gt;&gt;&gt; aug = RandomInvert(p=1.)</span>
-<span class="sd">        &gt;&gt;&gt; (aug(input) == aug(input, params=aug._params)).all()</span>
-<span class="sd">        tensor(True)</span>
+<span class="sd">        keepdim: whether to keep the output shape the same as input ``True`` or broadcast it</span>
+<span class="sd">          to the batch form ``False``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">max_val</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span>
-        <span class="n">same_on_batch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="n">p</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">keepdim</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">same_on_batch</span><span class="o">=</span><span class="n">same_on_batch</span><span class="p">,</span> <span class="n">p_batch</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="n">keepdim</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">max_val</span><span class="o">=</span><span class="n">max_val</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">compute_transformation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">identity_matrix</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">apply_transform</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">apply_non_transform</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">invert</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;max_val&quot;</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span></div>
+        <span class="c1"># For the images where batch_prob == False.</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_non_transform_mask</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_transform_mask</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_non_transform_boxes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Boxes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_transform_boxes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Boxes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_non_transform_keypoint</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Keypoints</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Keypoints</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_transform_keypoint</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Keypoints</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Keypoints</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_non_transform_class</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">apply_transform_class</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">flags</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">transform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">input</span></div>
 </pre></div>
         </article>
       </div>

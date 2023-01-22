@@ -469,7 +469,6 @@
     <span class="k">return</span> <span class="n">polygons3d</span>
 
 
-<span class="c1"># NOTE: Cannot jit with Union types with torch &lt;= 0.10</span>
 <span class="c1"># @torch.jit.script</span>
 <div class="viewcode-block" id="Boxes"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes">[docs]</a><span class="k">class</span> <span class="nc">Boxes</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;2D boxes containing N or BxN boxes.</span>
@@ -524,6 +523,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">boxes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
 
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="n">new_box</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">new_box</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+        <span class="k">return</span> <span class="n">new_box</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">_data</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
 <div class="viewcode-block" id="Boxes.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>
 
@@ -555,7 +567,54 @@
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
             <span class="k">return</span> <span class="bp">self</span>
-        <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+    <span class="k">def</span> <span class="nf">index_put</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">Boxes</span><span class="p">):</span>
+            <span class="n">_data</span><span class="o">.</span><span class="n">index_put_</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_data</span><span class="o">.</span><span class="n">index_put_</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">_data</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+<div class="viewcode-block" id="Boxes.pad"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.pad">[docs]</a>    <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padding_size</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pad a bounding box.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            padding_size: (B, 4)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">padding_size</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">padding_size</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected padding_size as (B, 4). Got </span><span class="si">{</span><span class="n">padding_size</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">padding_size</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># left padding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">padding_size</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># top padding</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Boxes.unpad"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.unpad">[docs]</a>    <span class="k">def</span> <span class="nf">unpad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">padding_size</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pad a bounding box.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            padding_size: (B, 4)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">padding_size</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">padding_size</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected padding_size as (B, 4). Got </span><span class="si">{</span><span class="n">padding_size</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">padding_size</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># left padding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">padding_size</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># top padding</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">clamp</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -583,7 +642,10 @@
         <span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">][</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">botright_y</span><span class="p">]</span> <span class="o">=</span> <span class="n">botright_y</span><span class="p">[</span><span class="n">_data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">botright_y</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
-        <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">_data</span>
+        <span class="k">return</span> <span class="n">obj</span>
 
 <div class="viewcode-block" id="Boxes.trim"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.trim">[docs]</a>    <span class="k">def</span> <span class="nf">trim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">correspondence_preserve</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Trim out zero padded boxes.</span>
@@ -628,7 +690,10 @@
             <span class="n">_data</span><span class="p">[</span><span class="n">area</span> <span class="o">&gt;</span> <span class="n">max_area</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
-        <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">_data</span>
+        <span class="k">return</span> <span class="n">obj</span>
 
 <div class="viewcode-block" id="Boxes.compute_area"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.compute_area">[docs]</a>    <span class="k">def</span> <span class="nf">compute_area</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns :math:`(B, N)`.&quot;&quot;&quot;</span>
@@ -712,7 +777,7 @@
 <span class="sd">                * &#39;vertices_plus&#39;: similar to &#39;vertices&#39; mode but where box width and length are defined as</span>
 <span class="sd">                  ``width = xmax - xmin + 1`` and ``height = ymax - ymin + 1``. ymin + 1``.</span>
 <span class="sd">            as_padded_sequence: whether to keep the pads for a list of boxes. This parameter is only valid</span>
-<span class="sd">                if the boxes are from a box list.</span>
+<span class="sd">                if the boxes are from a box list whilst `from_tensor`.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Boxes tensor in the ``mode`` format. The shape depends with the ``mode`` value:</span>
@@ -836,7 +901,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">transformed_boxes</span>
             <span class="k">return</span> <span class="bp">self</span>
 
-        <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">transformed_boxes</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">transformed_boxes</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
 
 <div class="viewcode-block" id="Boxes.transform_boxes_"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes.transform_boxes_">[docs]</a>    <span class="k">def</span> <span class="nf">transform_boxes_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inplace version of :func:`Boxes.transform_boxes`&quot;&quot;&quot;</span>
@@ -891,7 +958,52 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Boxes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="kc">False</span><span class="p">)</span></div>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_N</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_is_batched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<span class="k">class</span> <span class="nc">VideoBoxes</span><span class="p">(</span><span class="n">Boxes</span><span class="p">):</span>
+    <span class="n">temporal_channel_size</span><span class="p">:</span> <span class="nb">int</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_tensor</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">boxes</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span> <span class="n">validate_boxes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;VideoBoxes&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">5</span> <span class="ow">or</span> <span class="n">boxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">!=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">])):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input box type is not yet supported. Please input an `BxTxNx4x2` tensor directly.&quot;</span><span class="p">)</span>
+
+        <span class="n">temporal_channel_size</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">quadrilaterals</span> <span class="o">=</span> <span class="n">_boxes_to_quadrilaterals</span><span class="p">(</span>
+            <span class="n">boxes</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">boxes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">boxes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">boxes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">boxes</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">4</span><span class="p">)),</span>
+            <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;vertices_plus&quot;</span><span class="p">,</span>
+            <span class="n">validate_boxes</span><span class="o">=</span><span class="n">validate_boxes</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Due to some torch.jit.script bug (at least &lt;= 1.9), you need to pass all arguments to __init__ when</span>
+        <span class="c1"># constructing the class from inside of a method.</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">quadrilaterals</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;vertices_plus&quot;</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">temporal_channel_size</span> <span class="o">=</span> <span class="n">temporal_channel_size</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span> <span class="nf">to_tensor</span><span class="p">(</span>  <span class="c1"># type: ignore[override]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">as_padded_sequence</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_channel_size</span><span class="p">,</span> <span class="o">*</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="c1"># If returns a list of boxes.</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">_out</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_channel_size</span><span class="p">,</span> <span class="o">*</span><span class="n">_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">_out</span> <span class="ow">in</span> <span class="n">out</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;VideoBoxes&quot;</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">clone</span><span class="p">(),</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_N</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_is_batched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_batched</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">temporal_channel_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_channel_size</span>
+        <span class="k">return</span> <span class="n">obj</span>
 
 
 <div class="viewcode-block" id="Boxes3D"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D">[docs]</a><span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">script</span>
@@ -935,6 +1047,19 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">boxes</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="n">new_box</span> <span class="o">=</span> <span class="n">Boxes3D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="kc">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;xyzxyz_plus&quot;</span><span class="p">)</span>
+        <span class="n">new_box</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span>
+        <span class="k">return</span> <span class="n">new_box</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Boxes3D&quot;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">_data</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 
 <div class="viewcode-block" id="Boxes3D.get_boxes_shape"><a class="viewcode-back" href="../../../geometry.boxes.html#kornia.geometry.boxes.Boxes3D.get_boxes_shape">[docs]</a>    <span class="k">def</span> <span class="nf">get_boxes_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute boxes heights and widths.</span>

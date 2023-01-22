@@ -306,22 +306,24 @@
         <article role="main">
           <h1>Source code for kornia.augmentation.container.image</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">zip_longest</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
 
 <span class="kn">import</span> <span class="nn">kornia</span>
-<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">GeometricAugmentationBase2D</span><span class="p">,</span>
-    <span class="n">IntensityAugmentationBase2D</span><span class="p">,</span>
-    <span class="n">MixAugmentationBaseV2</span><span class="p">,</span>
-    <span class="n">RandomCrop</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">kornia.augmentation</span> <span class="kn">import</span> <span class="n">GeometricAugmentationBase2D</span><span class="p">,</span> <span class="n">IntensityAugmentationBase2D</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.base</span> <span class="kn">import</span> <span class="n">_AugmentationBase</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.container.base</span> <span class="kn">import</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">SequentialBase</span>
-<span class="kn">from</span> <span class="nn">kornia.augmentation.container.utils</span> <span class="kn">import</span> <span class="n">ApplyInverseInterface</span><span class="p">,</span> <span class="n">InputApplyInverse</span>
+<span class="kn">from</span> <span class="nn">kornia.augmentation.container.ops</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BoxSequentialOps</span><span class="p">,</span>
+    <span class="n">InputSequentialOps</span><span class="p">,</span>
+    <span class="n">KeypointSequentialOps</span><span class="p">,</span>
+    <span class="n">MaskSequentialOps</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">kornia.augmentation.utils</span> <span class="kn">import</span> <span class="n">override_parameters</span>
 <span class="kn">from</span> <span class="nn">kornia.core</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">as_tensor</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.boxes</span> <span class="kn">import</span> <span class="n">Boxes</span>
+<span class="kn">from</span> <span class="nn">kornia.geometry.keypoints</span> <span class="kn">import</span> <span class="n">Keypoints</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ImageSequential&quot;</span><span class="p">]</span>
 
@@ -352,7 +354,7 @@
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; _ = torch.manual_seed(77)</span>
 <span class="sd">        &gt;&gt;&gt; import kornia</span>
-<span class="sd">        &gt;&gt;&gt; input, label = torch.randn(2, 3, 5, 6), torch.tensor([0, 1])</span>
+<span class="sd">        &gt;&gt;&gt; input = torch.randn(2, 3, 5, 6)</span>
 <span class="sd">        &gt;&gt;&gt; aug_list = ImageSequential(</span>
 <span class="sd">        ...     kornia.color.BgrToRgb(),</span>
 <span class="sd">        ...     kornia.augmentation.ColorJiggle(0.1, 0.1, 0.1, 0.1, p=1.0),</span>
@@ -363,16 +365,14 @@
 <span class="sd">        ...     same_on_batch=True,</span>
 <span class="sd">        ...     random_apply=10,</span>
 <span class="sd">        ... )</span>
-<span class="sd">        &gt;&gt;&gt; out, lab = aug_list(input, label=label)</span>
-<span class="sd">        &gt;&gt;&gt; lab</span>
-<span class="sd">        tensor([0, 1])</span>
+<span class="sd">        &gt;&gt;&gt; out = aug_list(input)</span>
 <span class="sd">        &gt;&gt;&gt; out.shape</span>
 <span class="sd">        torch.Size([2, 3, 5, 6])</span>
 
 <span class="sd">        Reproduce with provided params.</span>
-<span class="sd">        &gt;&gt;&gt; out2, lab2 = aug_list(input, label=label, params=aug_list._params)</span>
-<span class="sd">        &gt;&gt;&gt; torch.equal(out, out2), torch.equal(lab, lab2)</span>
-<span class="sd">        (True, True)</span>
+<span class="sd">        &gt;&gt;&gt; out2 = aug_list(input, params=aug_list._params)</span>
+<span class="sd">        &gt;&gt;&gt; torch.equal(out, out2)</span>
+<span class="sd">        True</span>
 
 <span class="sd">    Perform ``OneOf`` transformation with ``random_apply=1`` and ``random_apply_weights`` in ``ImageSequential``.</span>
 
@@ -409,8 +409,6 @@
                 <span class="sa">f</span><span class="s2">&quot;Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">random_apply_weights</span><span class="p">)</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">random_apply_weights</span> <span class="o">=</span> <span class="n">as_tensor</span><span class="p">(</span><span class="n">random_apply_weights</span> <span class="ow">or</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),)))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">ApplyInverseInterface</span><span class="p">]</span> <span class="o">=</span> <span class="n">InputApplyInverse</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">if_unsupported_ops</span> <span class="o">=</span> <span class="n">if_unsupported_ops</span>
 
     <span class="k">def</span> <span class="nf">_read_random_apply</span><span class="p">(</span>
@@ -445,6 +443,9 @@
 
     <span class="k">def</span> <span class="nf">get_random_forward_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_mix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a forward sequence when random apply is in need.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            with_mix: if to require a mix augmentation for the sequence.</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">            Mix augmentations (e.g. RandomMixUp) will be only applied once even in a random forward.</span>
@@ -495,24 +496,12 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="s2">&quot;Multiple mix augmentation is prohibited without enabling random_apply.&quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mix_indices</span><span class="p">)</span><span class="si">}</span><span class="s2"> mix augmentations.&quot;</span>
                 <span class="p">)</span>
 
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">named_children</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_children_by_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">apply_to_input</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span>
-        <span class="n">module</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Module</span><span class="p">],</span>
-        <span class="n">param</span><span class="p">:</span> <span class="n">ParamItem</span><span class="p">,</span>
-        <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span><span class="o">.</span><span class="n">apply_trans</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]:</span>
         <span class="n">named_modules</span><span class="p">:</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">()</span>
@@ -520,10 +509,7 @@
         <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">mod_param</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">named_modules</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">RandomCrop</span><span class="p">):</span>
-                <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters_precrop</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
-                <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mod_param</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
                 <span class="n">mod_param</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="n">batch_shape</span><span class="p">)</span>
                 <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mod_param</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -531,21 +517,6 @@
             <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">_get_new_batch_shape</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">)</span>
             <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">params</span>
-
-    <span class="k">def</span> <span class="nf">contains_label_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if current sequential contains label-involved operations like MixUp.&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomMixUp_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;RandomCutMix_&quot;</span><span class="p">):</span>
-                <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span>
-
-    <span class="k">def</span> <span class="nf">__packup_output__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span><span class="p">:</span>
-            <span class="c1"># Implicitly indicating the label cannot be optional since there is a mix aug</span>
-            <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">label</span>
-        <span class="k">return</span> <span class="n">output</span>
 
     <span class="k">def</span> <span class="nf">identity_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return identity matrix.&quot;&quot;&quot;</span>
@@ -573,11 +544,7 @@
         <span class="c1"># Define as 1 for broadcasting</span>
         <span class="n">res_mat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">named_modules</span><span class="p">,</span> <span class="n">params</span> <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]):</span>
-            <span class="k">if</span> <span class="p">(</span>
-                <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,))</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">GeometricAugmentationBase2D</span><span class="p">,))</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="n">to_apply</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;batch_prob&#39;</span><span class="p">]</span>
                 <span class="n">ori_shape</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span>
                 <span class="k">try</span><span class="p">:</span>
@@ -609,6 +576,7 @@
                 <span class="n">res_mat</span> <span class="o">=</span> <span class="n">mat</span> <span class="k">if</span> <span class="n">res_mat</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">mat</span> <span class="o">@</span> <span class="n">res_mat</span>
         <span class="k">return</span> <span class="n">res_mat</span>
 
+    <span class="c1"># TODO: Make this as a class property to avoid running every time.</span>
     <span class="k">def</span> <span class="nf">is_intensity_only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if all transformations are intensity-based.</span>
 
@@ -632,6 +600,54 @@
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span>
 
+    <span class="k">def</span> <span class="nf">transform_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">InputSequentialOps</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">inverse_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">InputSequentialOps</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">transform_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">MaskSequentialOps</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">inverse_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">MaskSequentialOps</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">transform_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Boxes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">BoxSequentialOps</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">inverse_boxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="n">Boxes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">BoxSequentialOps</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">transform_keypoints</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Keypoints</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Keypoints</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">KeypointSequentialOps</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
+    <span class="k">def</span> <span class="nf">inverse_keypoints</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Keypoints</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">],</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Keypoints</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">KeypointSequentialOps</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">input</span>
+
     <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
@@ -648,48 +664,26 @@
                 <span class="p">)</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span>
 
-        <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="p">),</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_forward_sequence</span><span class="p">(</span><span class="n">params</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)):</span>
-                <span class="n">_mb</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">p</span><span class="p">]</span>
-                <span class="n">maybe_param</span> <span class="o">=</span> <span class="n">_mb</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_mb</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[</span><span class="n">param</span><span class="p">]</span>
-
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">IntensityAugmentationBase2D</span><span class="p">):</span>
-                <span class="k">pass</span>  <span class="c1"># Do nothing</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)</span> <span class="ow">and</span> <span class="n">module</span><span class="o">.</span><span class="n">is_intensity_only</span><span class="p">():</span>
-                <span class="k">pass</span>  <span class="c1"># Do nothing</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">ImageSequential</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">maybe_param</span><span class="p">,</span> <span class="n">ParamItem</span><span class="p">):</span>
-                <span class="nb">input</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">maybe_param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">GeometricAugmentationBase2D</span><span class="p">,)):</span>
-                <span class="nb">input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_inverse_func</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">pass</span>
-                <span class="c1"># raise NotImplementedError(f&quot;`inverse` is not implemented for {module}.&quot;)</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse_inputs</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">input</span>
 
 <div class="viewcode-block" id="ImageSequential.forward"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.ImageSequential.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]]:</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">ParamItem</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">clear_state</span><span class="p">()</span>
+
         <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">inp</span> <span class="o">=</span> <span class="nb">input</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">out_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">autofill_dim</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">dim_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
             <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward_parameters</span><span class="p">(</span><span class="n">out_shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">return_label</span> <span class="o">=</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains_label_operations</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
             <span class="n">module</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_submodule</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="nb">input</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_to_input</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="p">(</span><span class="n">_AugmentationBase</span><span class="p">,</span> <span class="n">MixAugmentationBaseV2</span><span class="p">,</span> <span class="n">SequentialBase</span><span class="p">)):</span>
-                <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">_params</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">param</span> <span class="o">=</span> <span class="n">ParamItem</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">update_params</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__packup_output__</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span></div></div>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">InputSequentialOps</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="n">extra_args</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="k">return</span> <span class="nb">input</span></div></div>
 
 
 <span class="k">def</span> <span class="nf">_get_new_batch_shape</span><span class="p">(</span><span class="n">param</span><span class="p">:</span> <span class="n">ParamItem</span><span class="p">,</span> <span class="n">batch_shape</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">:</span>
