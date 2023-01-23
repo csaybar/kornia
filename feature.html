@@ -2266,6 +2266,68 @@ Neural Networks, see <span id="id15">[<a class="reference internal" href="commun
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="kornia.feature.MultiResolutionDetector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">MultiResolutionDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">get_default_detector_config()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/scale_space_detector.html#MultiResolutionDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.MultiResolutionDetector" title="Permalink to this definition">#</a></dt>
+<dd><p>Multi-scale feature detector, based on code from KeyNet. Can be used with any response function.</p>
+<p>This is based on the original code from paper
+“Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters”.
+See <span id="id16">[<a class="reference internal" href="community/bibliography.html#id22" title="Axel Barroso-Laguna, Edgar Riba, Daniel Ponsa, and Krystian Mikolajczyk. Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters. In ICCV. 2019.">BLRPM19</a>]</span> for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) – response function, such as KeyNet or BlobHessian</p></li>
+<li><p><strong>num_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <em>optional</em>) – Number of features to detect.
+Default:  <code class="code docutils literal notranslate"><span class="pre">2048</span></code></p></li>
+<li><p><strong>conf</strong> – Dict with initiliazation parameters. Do not pass it, unless you know what you are doing`.</p></li>
+<li><p><strong>ori_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – for local feature orientation estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+which does nothing. See <a class="reference internal" href="#kornia.feature.LAFOrienter" title="kornia.feature.LAFOrienter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFOrienter</span></code></a> for details.</p></li>
+<li><p><strong>aff_module</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>], <em>optional</em>) – for local feature affine shape estimation. Default: <a class="reference internal" href="#kornia.feature.PassLAF" title="kornia.feature.PassLAF"><code class="xref py py-class docutils literal notranslate"><span class="pre">PassLAF</span></code></a>,
+which does nothing. See <a class="reference internal" href="#kornia.feature.LAFAffineShapeEstimator" title="kornia.feature.LAFAffineShapeEstimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LAFAffineShapeEstimator</span></code></a> for details.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.feature.MultiResolutionDetector.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/scale_space_detector.html#MultiResolutionDetector.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.MultiResolutionDetector.forward" title="Permalink to this definition">#</a></dt>
+<dd><p>Three stage local feature detection. First the location and scale of interest points are determined by
+detect function. Then affine shape and orientation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>img</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image to extract features with shape [1xCxHxW]. KeyNetDetector does not support batch processing,</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>because the number of detections is different on each image.</dt><dd><dl class="simple">
+<dt>mask: a mask with weights where to apply the response function. The shape must be the same as</dt><dd><p>the input image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>shape [1xNx2x3]. Detected local affine frames.
+responses: shape [1xNx1]. Response function values for corresponding lafs</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>lafs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="kornia.feature.MultiResolutionDetector.remove_borders">
+<span class="sig-name descname"><span class="pre">remove_borders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">borders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/scale_space_detector.html#MultiResolutionDetector.remove_borders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.MultiResolutionDetector.remove_borders" title="Permalink to this definition">#</a></dt>
+<dd><p>It removes the borders of the image to avoid detections on the corners.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="kornia.feature.ScaleSpaceDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">ScaleSpaceDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mr_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_pyr_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ScalePyramid(3,</span> <span class="pre">1.6,</span> <span class="pre">15)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resp_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BlobHessian()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nms_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ConvSoftArgmax3d((3,</span> <span class="pre">3,</span> <span class="pre">3),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">1),</span> <span class="pre">normalized_coordinates=False,</span> <span class="pre">output_value=True)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ori_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aff_module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">PassLAF()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minima_are_also_good</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_space_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/scale_space_detector.html#ScaleSpaceDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.ScaleSpaceDetector" title="Permalink to this definition">#</a></dt>
 <dd><p>Module for differentiable local feature detection, as close as possible to classical local feature detectors
@@ -2333,7 +2395,7 @@ responses: shape [BxNx1]. Response function values for corresponding lafs</p>
 <dd><p>Multi-scale feature detector based on KeyNet.</p>
 <p>This is based on the original code from paper
 “Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters”.
-See <span id="id16">[<a class="reference internal" href="community/bibliography.html#id22" title="Axel Barroso-Laguna, Edgar Riba, Daniel Ponsa, and Krystian Mikolajczyk. Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters. In ICCV. 2019.">BLRPM19</a>]</span> for more details.</p>
+See <span id="id17">[<a class="reference internal" href="community/bibliography.html#id22" title="Axel Barroso-Laguna, Edgar Riba, Daniel Ponsa, and Krystian Mikolajczyk. Key.Net: Keypoint Detection by Handcrafted and Learned CNN Filters. In ICCV. 2019.">BLRPM19</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2409,7 +2471,7 @@ responses: shape [1xNx1]. Response function values for corresponding lafs</p>
 <dt class="sig sig-object py" id="kornia.feature.PatchAffineShapeEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">PatchAffineShapeEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/affine_shape.html#PatchAffineShapeEstimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.PatchAffineShapeEstimator" title="Permalink to this definition">#</a></dt>
 <dd><p>Module, which estimates the second moment matrix of the patch gradients.</p>
-<p>The method determines the affine shape of the local feature as in <span id="id17">[<a class="reference internal" href="community/bibliography.html#id5" title="A. Baumberg. Reliable feature matching across widely separated views. In CVPR. 2000.">Baumberg00</a>]</span>.</p>
+<p>The method determines the affine shape of the local feature as in <span id="id18">[<a class="reference internal" href="community/bibliography.html#id5" title="A. Baumberg. Reliable feature matching across widely separated views. In CVPR. 2000.">Baumberg00</a>]</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2557,7 +2619,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Network, which estimates the canonical orientation of the given 32x32 patches, in radians.</p>
 <p>Zero angle points towards right. This is based on the original code from paper
 “Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability””.
-See <span id="id18">[<a class="reference internal" href="community/bibliography.html#id13" title="D. Mishkin, F. Radenovic, and J. Matas. Repeatability is Not Enough: Learning Affine Regions via Discriminability. In ECCV. 2018.">MRM18</a>]</span> for more details.</p>
+See <span id="id19">[<a class="reference internal" href="community/bibliography.html#id13" title="D. Mishkin, F. Radenovic, and J. Matas. Repeatability is Not Enough: Learning Affine Regions via Discriminability. In ECCV. 2018.">MRM18</a>]</span> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -2608,7 +2670,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Module, which extracts patches using input images and local affine frames (LAFs).</p>
 <p>Then runs AffNet on patches to estimate LAFs shape. This is based on the original code from paper
 “Repeatability Is Not Enough: Learning Discriminative Affine Regions via Discriminability””.
-See <span id="id19">[<a class="reference internal" href="community/bibliography.html#id13" title="D. Mishkin, F. Radenovic, and J. Matas. Repeatability is Not Enough: Learning Affine Regions via Discriminability. In ECCV. 2018.">MRM18</a>]</span> for more details.</p>
+See <span id="id20">[<a class="reference internal" href="community/bibliography.html#id13" title="D. Mishkin, F. Radenovic, and J. Matas. Repeatability is Not Enough: Learning Affine Regions via Discriminability. In ECCV. 2018.">MRM18</a>]</span> for more details.</p>
 <p>Then original LAF shape is replaced with estimated one. The original LAF orientation is not preserved,
 so it is recommended to first run LAFAffineShapeEstimator and then LAFOrienter.</p>
 <dl class="field-list simple">
@@ -2643,7 +2705,7 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">kornia.feature.</span></span><span class="sig-name descname"><span class="pre">DeFMO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/feature/defmo.html#DeFMO"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.feature.DeFMO" title="Permalink to this definition">#</a></dt>
 <dd><p>Module that disentangle a fast-moving object from the background and performs deblurring.</p>
 <dl class="simple">
-<dt>This is based on the original code from paper “DeFMO: Deblurring and Shape Recovery</dt><dd><p>of Fast Moving Objects”. See <span id="id20">[<a class="reference internal" href="community/bibliography.html#id3" title="Denys Rozumnyi, Martin R. Oswald, Vittorio Ferrari, Jiri Matas, and Marc Pollefeys. Defmo: deblurring and shape recovery of fast moving objects. In CVPR. 2021.">ROF+21</a>]</span> for more details.</p>
+<dt>This is based on the original code from paper “DeFMO: Deblurring and Shape Recovery</dt><dd><p>of Fast Moving Objects”. See <span id="id21">[<a class="reference internal" href="community/bibliography.html#id3" title="Denys Rozumnyi, Martin R. Oswald, Vittorio Ferrari, Jiri Matas, and Marc Pollefeys. Defmo: deblurring and shape recovery of fast moving objects. In CVPR. 2021.">ROF+21</a>]</span> for more details.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
@@ -2858,6 +2920,11 @@ registered hooks while the latter silently ignores them.</p>
 <li><a class="reference internal" href="#kornia.feature.KeyNet"><code class="docutils literal notranslate"><span class="pre">KeyNet</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.FilterResponseNorm2d"><code class="docutils literal notranslate"><span class="pre">FilterResponseNorm2d</span></code></a></li>
 <li><a class="reference internal" href="#kornia.feature.TLU"><code class="docutils literal notranslate"><span class="pre">TLU</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.MultiResolutionDetector"><code class="docutils literal notranslate"><span class="pre">MultiResolutionDetector</span></code></a><ul>
+<li><a class="reference internal" href="#kornia.feature.MultiResolutionDetector.forward"><code class="docutils literal notranslate"><span class="pre">MultiResolutionDetector.forward()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.feature.MultiResolutionDetector.remove_borders"><code class="docutils literal notranslate"><span class="pre">MultiResolutionDetector.remove_borders()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#kornia.feature.ScaleSpaceDetector"><code class="docutils literal notranslate"><span class="pre">ScaleSpaceDetector</span></code></a><ul>
 <li><a class="reference internal" href="#kornia.feature.ScaleSpaceDetector.forward"><code class="docutils literal notranslate"><span class="pre">ScaleSpaceDetector.forward()</span></code></a></li>
 </ul>

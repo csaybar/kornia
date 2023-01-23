@@ -326,35 +326,37 @@
 <div class="viewcode-block" id="AugmentationSequential"><a class="viewcode-back" href="../../../../augmentation.container.html#kornia.augmentation.container.AugmentationSequential">[docs]</a><span class="k">class</span> <span class="nc">AugmentationSequential</span><span class="p">(</span><span class="n">ImageSequential</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;AugmentationSequential for handling multiple input types like inputs, masks, keypoints at once.</span>
 
-<span class="sd">    .. image:: https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_5_1.png</span>
-<span class="sd">        :width: 49 %</span>
-<span class="sd">    .. image:: https://kornia-tutorials.readthedocs.io/en/latest/_images/data_augmentation_sequential_7_0.png</span>
-<span class="sd">        :width: 49 %</span>
+<span class="sd">    .. image:: _static/img/AugmentationSequential.png</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        *args: a list of kornia augmentation modules.</span>
-<span class="sd">        data_keys: the input type sequential for applying augmentations.</span>
-<span class="sd">            Accepts &quot;input&quot;, &quot;mask&quot;, &quot;bbox&quot;, &quot;bbox_xyxy&quot;, &quot;bbox_xywh&quot;, &quot;keypoints&quot;.</span>
-<span class="sd">        same_on_batch: apply the same transformation across the batch.</span>
-<span class="sd">            If None, it will not overwrite the function-wise settings.</span>
-<span class="sd">        keepdim: whether to keep the output shape the same as input (True) or broadcast it</span>
-<span class="sd">            to the batch form (False). If None, it will not overwrite the function-wise settings.</span>
-<span class="sd">        random_apply: randomly select a sublist (order agnostic) of args to</span>
-<span class="sd">            apply transformation.</span>
-<span class="sd">            If int, a fixed number of transformations will be selected.</span>
-<span class="sd">            If (a,), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.</span>
-<span class="sd">            If (a, b), x number of transformations (a &lt;= x &lt;= b) will be selected.</span>
-<span class="sd">            If True, the whole list of args will be processed as a sequence in a random order.</span>
-<span class="sd">            If False, the whole list of args will be processed as a sequence in original order.</span>
-<span class="sd">        transformation_matrix: computation mode for the chained transformation matrix,</span>
-<span class="sd">            via `.transform_matrix` attribute.</span>
-<span class="sd">            If `silence`, transformation matrix will be computed silently and the non-rigid modules</span>
-<span class="sd">                will be ignored as identity transformations.</span>
-<span class="sd">            If `rigid`, transformation matrix will be computed silently and the non-rigid modules</span>
-<span class="sd">                will trigger errors.</span>
-<span class="sd">            If `skip`, transformation matrix will be totally ignored.</span>
-<span class="sd">        extra_args: to control the behaviour for each datakeys. By default, masks are handled</span>
-<span class="sd">            by nearest interpolation strategies.</span>
+
+<span class="sd">        data_keys: the input type sequential for applying augmentations. Accepts &quot;input&quot;, &quot;mask&quot;, &quot;bbox&quot;, &quot;bbox_xyxy&quot;,</span>
+<span class="sd">                   &quot;bbox_xywh&quot;, &quot;keypoints&quot;.</span>
+
+<span class="sd">        same_on_batch: apply the same transformation across the batch. If None, it will not overwrite the function-wise</span>
+<span class="sd">                       settings.</span>
+
+<span class="sd">        keepdim: whether to keep the output shape the same as input (True) or broadcast it to the batch form (False).</span>
+<span class="sd">                 If None, it will not overwrite the function-wise settings.</span>
+
+<span class="sd">        random_apply: randomly select a sublist (order agnostic) of args to apply transformation.</span>
+<span class="sd">                      If int, a fixed number of transformations will be selected.</span>
+<span class="sd">                      If (a,), x number of transformations (a &lt;= x &lt;= len(args)) will be selected.</span>
+<span class="sd">                      If (a, b), x number of transformations (a &lt;= x &lt;= b) will be selected.</span>
+<span class="sd">                      If True, the whole list of args will be processed as a sequence in a random order.</span>
+<span class="sd">                      If False, the whole list of args will be processed as a sequence in original order.</span>
+
+<span class="sd">        transformation_matrix: computation mode for the chained transformation matrix, via `.transform_matrix`</span>
+<span class="sd">                               attribute.</span>
+<span class="sd">                               If `silence`, transformation matrix will be computed silently and the non-rigid modules</span>
+<span class="sd">                               will be ignored as identity transformations.</span>
+<span class="sd">                               If `rigid`, transformation matrix will be computed silently and the non-rigid modules</span>
+<span class="sd">                               will trigger errors.</span>
+<span class="sd">                               If `skip`, transformation matrix will be totally ignored.</span>
+
+<span class="sd">        extra_args: to control the behaviour for each datakeys. By default, masks are handled by nearest interpolation</span>
+<span class="sd">                    strategies.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">        Mix augmentations (e.g. RandomMixUp, RandomCutMix) can only be working with &quot;input&quot; data key.</span>

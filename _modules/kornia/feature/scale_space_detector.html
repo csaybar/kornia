@@ -565,7 +565,7 @@
     <span class="p">}</span>
 
 
-<span class="k">class</span> <span class="nc">MultiResolutionDetector</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiResolutionDetector"><a class="viewcode-back" href="../../../feature.html#kornia.feature.MultiResolutionDetector">[docs]</a><span class="k">class</span> <span class="nc">MultiResolutionDetector</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Multi-scale feature detector, based on code from KeyNet. Can be used with any response function.</span>
 
 <span class="sd">    This is based on the original code from paper</span>
@@ -611,11 +611,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">aff</span> <span class="o">=</span> <span class="n">aff_module</span>
 
-    <span class="k">def</span> <span class="nf">remove_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<div class="viewcode-block" id="MultiResolutionDetector.remove_borders"><a class="viewcode-back" href="../../../feature.html#kornia.feature.MultiResolutionDetector.remove_borders">[docs]</a>    <span class="k">def</span> <span class="nf">remove_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">score_map</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;It removes the borders of the image to avoid detections on the corners.&quot;&quot;&quot;</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">score_map</span><span class="p">)</span>
         <span class="n">mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">,</span> <span class="n">borders</span><span class="p">:</span><span class="o">-</span><span class="n">borders</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">mask</span> <span class="o">*</span> <span class="n">score_map</span>
+        <span class="k">return</span> <span class="n">mask</span> <span class="o">*</span> <span class="n">score_map</span></div>
 
     <span class="k">def</span> <span class="nf">detect_features_on_single_level</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">level_img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">num_kp</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
@@ -695,7 +695,7 @@
             <span class="n">lafs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">idxs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">responses</span><span class="p">,</span> <span class="n">lafs</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+<div class="viewcode-block" id="MultiResolutionDetector.forward"><a class="viewcode-back" href="../../../feature.html#kornia.feature.MultiResolutionDetector.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Three stage local feature detection. First the location and scale of interest points are determined by</span>
 <span class="sd">        detect function. Then affine shape and orientation.</span>
 
@@ -713,7 +713,7 @@
         <span class="n">responses</span><span class="p">,</span> <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aff</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
         <span class="n">lafs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ori</span><span class="p">(</span><span class="n">lafs</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">lafs</span><span class="p">,</span> <span class="n">responses</span>
+        <span class="k">return</span> <span class="n">lafs</span><span class="p">,</span> <span class="n">responses</span></div></div>
 </pre></div>
         </article>
       </div>

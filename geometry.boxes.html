@@ -631,17 +631,66 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 <dt class="sig sig-object py" id="kornia.geometry.boxes.Boxes.trim">
 <span class="sig-name descname"><span class="pre">trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correspondence_preserve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/boxes.html#Boxes.trim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.boxes.Boxes.trim" title="Permalink to this definition">#</a></dt>
 <dd><p>Trim out zero padded boxes.</p>
-<dl class="simple">
-<dt>Given box arrangements of shape <span class="math notranslate nohighlight">\((4, 4, Box)\)</span>:</dt><dd></dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><p><a class="reference internal" href="#kornia.geometry.boxes.Boxes" title="kornia.geometry.boxes.Boxes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Boxes</span></code></a></p>
-<p>–  0  –  0  –  0  –  0  –
-== === == === == === == === ==</p>
-</p>
-</dd>
-</dl>
+<p>Given box arrangements of shape <span class="math notranslate nohighlight">\((4, 4, Box)\)</span>:</p>
+<blockquote>
+<div><div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>Box</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+<td><p>0</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></blockquote>
 <p>Nothing will change if correspondence_preserve is True. Only pure zero layers will be removed, resulting in
 shape <span class="math notranslate nohighlight">\((4, 3, Box)\)</span>:</p>
 <blockquote>
@@ -733,6 +782,11 @@ shape <span class="math notranslate nohighlight">\((4, 3, Box)\)</span>:</p>
 </table>
 </div>
 </div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#kornia.geometry.boxes.Boxes" title="kornia.geometry.boxes.Boxes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Boxes</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
