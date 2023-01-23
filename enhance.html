@@ -315,11 +315,6 @@
 <dt class="sig sig-object py" id="kornia.enhance.add_weighted">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">add_weighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/core.html#add_weighted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.add_weighted" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate the weighted sum of two Tensors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/add_weighted.png" src="_images/add_weighted.png" />
 <p>The function calculates the weighted sum of two Tensors as follows:</p>
 <div class="math-wrapper docutils container">
@@ -336,8 +331,11 @@
 <li><p><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]) – scalar added to each sum as Union[float, Tensor].</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Weighted Tensor with shape equal to src1 and src2 shapes.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Weighted Tensor with shape equal to src1 and src2 shapes.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -356,11 +354,6 @@
 <dt class="sig sig-object py" id="kornia.enhance.adjust_brightness">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_brightness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_brightness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_brightness" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust the brightness of an image tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/adjust_brightness.png" src="_images/adjust_brightness.png" />
 <p>This implementation follows Szeliski’s book convention, where brightness is defined as
 an <cite>additive</cite> operation directly to raw pixel and shift its values according the applied
@@ -384,8 +377,11 @@ bound the factor by [0, 1]. 0 does not modify the input image while any other
 number modify the brightness.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -411,11 +407,6 @@ number modify the brightness.</p></li>
 <dt class="sig sig-object py" id="kornia.enhance.adjust_contrast">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_contrast" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust the contrast of an image tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png" />
 <p>This implementation follows Szeliski’s book convention, where contrast is defined as
 a <cite>multiplicative</cite> operation directly to raw pixel values. Beware that other frameworks
@@ -438,8 +429,11 @@ brightness by this factor.
 clip_output: whether to clip the output image with range of [0, 1].</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -466,11 +460,6 @@ clip_output: whether to clip the output image with range of [0, 1].</p></li>
 <dt class="sig sig-object py" id="kornia.enhance.adjust_contrast_with_mean_subtraction">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_contrast_with_mean_subtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_contrast_with_mean_subtraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_contrast_with_mean_subtraction" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust the contrast of an image tensor by subtracting the mean over channels.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>this is just a convenience function to have compatibility with Pil. For exact
@@ -486,8 +475,11 @@ the input image while any other non-negative number modify the
 brightness by this factor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -510,11 +502,6 @@ brightness by this factor.</p></li>
 <dt class="sig sig-object py" id="kornia.enhance.adjust_gamma">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_gamma" title="Permalink to this definition">#</a></dt>
 <dd><p>Perform gamma correction on an image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/adjust_contrast.png" src="_images/adjust_contrast.png" />
 <p>The input image is expected to be in the range of [0, 1].</p>
 <dl class="field-list simple">
@@ -528,8 +515,11 @@ dark regions lighter.</p></li>
 Default:  <code class="code docutils literal notranslate"><span class="pre">1.0</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -556,11 +546,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1.0<
 <dt class="sig sig-object py" id="kornia.enhance.adjust_hue">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_hue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_hue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_hue" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust hue of an image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/adjust_hue.png" src="_images/adjust_hue.png" />
 <p>The image is expected to be an RGB image in the range of [0, 1].</p>
 <dl class="field-list simple">
@@ -573,8 +558,11 @@ direction respectively. 0 means no shift. Therefore, both -PI and PI will give a
 image with complementary colors while 0 gives the original image.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -599,11 +587,6 @@ image with complementary colors while 0 gives the original image.</p></li>
 <dt class="sig sig-object py" id="kornia.enhance.adjust_saturation">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">adjust_saturation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#adjust_saturation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.adjust_saturation" title="Permalink to this definition">#</a></dt>
 <dd><p>Adjust color saturation of an image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/adjust_saturation.png" src="_images/adjust_saturation.png" />
 <p>The image is expected to be an RGB image in the range of [0, 1].</p>
 <dl class="field-list simple">
@@ -615,8 +598,11 @@ and white image, 1 will give the original image while 2 will enhance the saturat
 <li><p><strong>saturation_mode</strong> – The mode to adjust saturation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted image in the shape of <span class="math notranslate nohighlight">\((*, 3, H, W)\)</span>.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -661,11 +647,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">10</
 Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -696,11 +682,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Adjusted tensor in the shape of <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -716,11 +702,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 <dt class="sig sig-object py" id="kornia.enhance.invert">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">invert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Tensor([1.0])</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#invert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.invert" title="Permalink to this definition">#</a></dt>
 <dd><p>Invert the values of an input image tensor by its maximum value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/invert.png" src="_images/invert.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -730,6 +711,9 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 according to the input tensor shape, or at least has to work with broadcasting.
 Default:  <code class="code docutils literal notranslate"><span class="pre">Tensor([1.0])</span></code></p></li>
 </ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -754,11 +738,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Tens
 <dt class="sig sig-object py" id="kornia.enhance.posterize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">posterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#posterize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.posterize" title="Permalink to this definition">#</a></dt>
 <dd><p>Reduce the number of bits for each color channel.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/posterize.png" src="_images/posterize.png" />
 <p>Non-differentiable function, <code class="docutils literal notranslate"><span class="pre">torch.uint8</span></code> involved.</p>
 <dl class="field-list simple">
@@ -771,8 +750,11 @@ If 1-d tensor, input will be posterized element-wisely, len(bits) == input.shape
 If n-d tensor, input will be posterized element-channel-wisely, bits.shape == input.shape[:len(bits.shape)]</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Image with reduced color channels with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Image with reduced color channels with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -793,11 +775,6 @@ If n-d tensor, input will be posterized element-channel-wisely, bits.shape == in
 <dt class="sig sig-object py" id="kornia.enhance.sharpness">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">sharpness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#sharpness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.sharpness" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply sharpness to the input tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/sharpness.png" src="_images/sharpness.png" />
 <p>Implemented Sharpness function from PIL using torch ops. This implementation refers to:
 <a class="reference external" href="https://github.com/tensorflow/tpu/blob/master/models/official/efficientnet/autoaugment.py#L326">https://github.com/tensorflow/tpu/blob/master/models/official/efficientnet/autoaugment.py#L326</a></p>
@@ -810,8 +787,11 @@ If float or one element tensor, input will be sharpened by the same factor acros
 If 1-d tensor, input will be sharpened element-wisely, len(factor) == len(input).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Sharpened image or images with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Sharpened image or images with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -826,11 +806,6 @@ If 1-d tensor, input will be sharpened element-wisely, len(factor) == len(input)
 <dt class="sig sig-object py" id="kornia.enhance.solarize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">solarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#solarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.solarize" title="Permalink to this definition">#</a></dt>
 <dd><p>For each pixel in the image less than threshold.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/solarize.png" src="_images/solarize.png" />
 <p>We add ‘addition’ amount to it and then clip the pixel value to be between 0 and 1.0.
 The value of ‘addition’ is between -0.5 and 0.5.</p>
@@ -849,8 +824,11 @@ If 1-d tensor, additions will be added element-wisely, len(additions) == len(inp
 Default:  <code class="code docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The solarized images with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The solarized images with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -880,11 +858,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.enhance.equalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">equalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/adjust.html#equalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.equalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply equalize on the input tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/equalize.png" src="_images/equalize.png" />
 <p>Implements Equalize function from PIL using PyTorch ops based on uint8 format:
 <a class="reference external" href="https://github.com/tensorflow/tpu/blob/5f71c12a020403f863434e96982a840578fdd127/models/official/efficientnet/autoaugment.py#L355">https://github.com/tensorflow/tpu/blob/5f71c12a020403f863434e96982a840578fdd127/models/official/efficientnet/autoaugment.py#L355</a></p>
@@ -892,8 +865,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>input</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – image tensor to equalize with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Equalized image tensor with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Equalized image tensor with shape <span class="math notranslate nohighlight">\((*, C, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -908,11 +884,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.enhance.equalize_clahe">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">equalize_clahe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slow_and_differentiable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/equalization.html#equalize_clahe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.equalize_clahe" title="Permalink to this definition">#</a></dt>
 <dd><p>Apply clahe equalization on the input tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <img alt="_images/equalize_clahe.png" src="_images/equalize_clahe.png" />
 <p>NOTE: Lut computation uses the same approach as in OpenCV, in next versions this can change.</p>
 <dl class="field-list simple">
@@ -927,8 +898,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">(8,<
 Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Equalized image or images with shape as the input.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Equalized image or images with shape as the input.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -980,11 +954,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-10</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Computed histogram of shape <span class="math notranslate nohighlight">\((B, N_{bins})\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Computed histogram of shape <span class="math notranslate nohighlight">\((B, N_{bins})\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1012,11 +986,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-1
 <li><p><strong>epsilon</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <em>optional</em>) – A scalar, for numerical stability. Default: 1e-10.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Computed histogram of shape <span class="math notranslate nohighlight">\((B, N_{bins}), N_{bins})\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Computed histogram of shape <span class="math notranslate nohighlight">\((B, N_{bins}), N_{bins})\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1086,11 +1060,6 @@ of the histogram otherwise.</p>
 <dt class="sig sig-object py" id="kornia.enhance.normalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.normalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalize an image/video tensor with mean and standard deviation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{input[channel] = (input[channel] - mean[channel]) / std[channel]}\]</div>
@@ -1104,8 +1073,11 @@ of the histogram otherwise.</p>
 <li><p><strong>std</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – Standard deviations for each channel.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Normalised tensor with same size as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Normalised tensor with same size as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1130,11 +1102,6 @@ of the histogram otherwise.</p>
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">normalize_min_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#normalize_min_max"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.normalize_min_max" title="Permalink to this definition">#</a></dt>
 <dd><p>Normalise an image/video tensor by MinMax and re-scales the value between a range.</p>
 <p>The data is normalised using the following formulation:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[y_i = (b - a) * \frac{x_i - \text{min}(x)}{\text{max}(x) - \text{min}(x)} + a\]</div>
@@ -1152,8 +1119,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1.0<
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-06</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The normalised image tensor with same shape as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The normalised image tensor with same shape as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1171,11 +1141,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dt class="sig sig-object py" id="kornia.enhance.denormalize">
 <span class="sig-prename descclassname"><span class="pre">kornia.enhance.</span></span><span class="sig-name descname"><span class="pre">denormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/enhance/normalize.html#denormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.enhance.denormalize" title="Permalink to this definition">#</a></dt>
 <dd><p>Denormalize an image/video tensor with mean and standard deviation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{input[channel] = (input[channel] * std[channel]) + mean[channel]}\]</div>
@@ -1189,8 +1154,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <li><p><strong>std</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]) – Standard deviations for each channel.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Denormalised tensor with same size as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Denormalised tensor with same size as input <span class="math notranslate nohighlight">\((B, C, *)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1241,12 +1209,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">Fals
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A tuple containing the ZCA matrix and the mean vector. If return_inverse is set to True,
-then it returns the inverse ZCA matrix, otherwise it returns None.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]]</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing the ZCA matrix and the mean vector. If return_inverse is set to True,
+then it returns the inverse ZCA matrix, otherwise it returns None.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1280,11 +1248,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">True
 Default:  <code class="code docutils literal notranslate"><span class="pre">1e-06</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whiten Input data.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whiten Input data.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -1307,11 +1275,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">1e-0
 <dd><p>Given a transformation matrix and a mean vector, this function will flatten the input tensor along the given
 dimension and subtract the mean vector from it. Then the dot product with the transformation matrix will be
 computed and then the resulting tensor is reshaped to the original input shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\mathbf{X}_{T} = (\mathbf{X - \mu})(T)\]</div>
@@ -1336,8 +1299,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Transformed data.</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transformed data.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>

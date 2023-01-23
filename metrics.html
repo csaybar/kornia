@@ -359,12 +359,12 @@ one-hot vectors.</p></li>
 Default:  <code class="code docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a tensor containing the confusion matrix with shape
-<span class="math notranslate nohighlight">\((B, K, K)\)</span> where K is the number of classes.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a tensor containing the confusion matrix with shape
+<span class="math notranslate nohighlight">\((B, K, K)\)</span> where K is the number of classes.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -396,12 +396,12 @@ one-hot vectors.</p></li>
 <li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – total possible number of classes in target.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a tensor representing the mean intersection-over union
-with shape <span class="math notranslate nohighlight">\((B, K)\)</span> where K is the number of classes.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a tensor representing the mean intersection-over union
+with shape <span class="math notranslate nohighlight">\((B, K)\)</span> where K is the number of classes.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -435,11 +435,11 @@ Background class (0 index) is excluded.</p>
 Default:  <code class="code docutils literal notranslate"><span class="pre">0.5</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>mean average precision (mAP), list of average precisions for each class.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]]</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>mean average precision (mAP), list of average precisions for each class.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -463,12 +463,12 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0.5<
 <li><p><strong>boxes_2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – a tensor of bounding boxes in <span class="math notranslate nohighlight">\((B2, 4)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a tensor in dimensions <span class="math notranslate nohighlight">\((B1, B2)\)</span>, representing the
-intersection of each of the boxes in set 1 with respect to each of the boxes in set 2.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a tensor in dimensions <span class="math notranslate nohighlight">\((B1, B2)\)</span>, representing the
+intersection of each of the boxes in set 1 with respect to each of the boxes in set 2.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -490,11 +490,6 @@ intersection of each of the boxes in set 1 with respect to each of the boxes in 
 <dd><p>Create a function that calculates the PSNR between 2 images.</p>
 <p>PSNR is Peek Signal to Noise Ratio, which is similar to mean squared error.
 Given an m x n image, the PSNR is:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{PSNR} = 10 \log_{10} \bigg(\frac{\text{MAX}_I^2}{MSE(I,T)}\bigg)\]</div>
@@ -514,8 +509,11 @@ Given an m x n image, the PSNR is:</p>
 <li><p><strong>max_val</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) – The maximum value in the input tensor.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the computed loss as a scalar.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the computed loss as a scalar.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -536,11 +534,6 @@ Given an m x n image, the PSNR is:</p>
 <dd><p>Function that computes the Structural Similarity (SSIM) index map between two images.</p>
 <p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
 <p>The index can be described as:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
@@ -570,8 +563,11 @@ area to compute SSIM to match the MATLAB implementation of original SSIM paper.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'same'</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The ssim index map with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The ssim index map with shape <span class="math notranslate nohighlight">\((B, C, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -588,11 +584,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">'sam
 <dd><p>Function that computes the Structural Similarity (SSIM) index map between two images.</p>
 <p>Measures the (SSIM) index between each element in the input <cite>x</cite> and target <cite>y</cite>.</p>
 <p>The index can be described as:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\text{SSIM}(x, y) = \frac{(2\mu_x\mu_y+c_1)(2\sigma_{xy}+c_2)}
@@ -622,8 +613,11 @@ area to compute SSIM to match the MATLAB implementation of original SSIM paper.
 Default:  <code class="code docutils literal notranslate"><span class="pre">'same'</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The ssim index map with shape <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The ssim index map with shape <span class="math notranslate nohighlight">\((B, C, D, H, W)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>

@@ -316,11 +316,6 @@ reference transformation <span class="math notranslate nohighlight">\(T_1^{0} = 
 \mathbf{0} &amp; 1 \end{bmatrix}\)</span> to destination <span class="math notranslate nohighlight">\(T_2^{0} =
 \begin{bmatrix} R_2 &amp; t_2 \\ \mathbf{0} &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>The relative transformation is computed as follows:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[T_1^{2} = (T_0^{1})^{-1} \cdot T_0^{2}\]</div>
@@ -332,8 +327,11 @@ reference transformation <span class="math notranslate nohighlight">\(T_1^{0} = 
 <li><p><strong>trans_02</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>) – destination transformation tensor of shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the relative transformation between the transformations with shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the relative transformation between the transformations with shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p>
 </dd>
 </dl>
 <dl>
@@ -350,11 +348,6 @@ reference transformation <span class="math notranslate nohighlight">\(T_1^{0} = 
 <dt class="sig sig-object py" id="kornia.geometry.linalg.compose_transformations">
 <span class="sig-prename descclassname"><span class="pre">kornia.geometry.linalg.</span></span><span class="sig-name descname"><span class="pre">compose_transformations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans_12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/linalg.html#compose_transformations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.linalg.compose_transformations" title="Permalink to this definition">#</a></dt>
 <dd><p>Function that composes two homogeneous transformations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\begin{split}T_0^{2} = \begin{bmatrix} R_0^1 R_1^{2} &amp; R_0^{1} t_1^{2} + t_0^{1} \\
@@ -371,8 +364,11 @@ a reference frame 2 respect to a frame 1. The tensor has must have a
 shape of <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the transformation between the two frames with shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the transformation between the two frames with shape <span class="math notranslate nohighlight">\((N, 4, 4)\)</span> or <span class="math notranslate nohighlight">\((4, 4)\)</span>.</p>
 </dd>
 </dl>
 <dl>

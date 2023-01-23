@@ -528,12 +528,8 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.matrix">
 <span class="sig-name descname"><span class="pre">matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.matrix" title="Permalink to this definition">#</a></dt>
 <dd><p>Convert the quaternion to a rotation matrix of shape <span class="math notranslate nohighlight">\((B,3,3)\)</span>.</p>
-<p>The matrix is of the form:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
+<p>The matrix is of the form:
+:rtype: <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix} 1-2y^2-2z^2 &amp; 2xy-2zw &amp; 2xy+2yw \\
@@ -623,11 +619,6 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="sig sig-object py" id="kornia.geometry.liegroup.So3.vee">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">omega</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/geometry/liegroup/so3.html#So3.vee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.geometry.liegroup.So3.vee" title="Permalink to this definition">#</a></dt>
 <dd><p>Converts elements from lie algebra to vector space. Returns vector of shape <span class="math notranslate nohighlight">\((B,3)\)</span>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
-</dd>
-</dl>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\begin{split}omega = \begin{bmatrix} 0 &amp; -c &amp; b \\
@@ -637,6 +628,9 @@ c &amp; 0 &amp; -a \\
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>omega</strong> – 3x3-matrix representing lie algebra.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -779,11 +773,11 @@ See more: <a class="reference external" href="https://ingmec.ual.es/~jlblanco/pa
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>v</strong> – vector of shape <span class="math notranslate nohighlight">\((B, 6)\)</span>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>matrix of shape <span class="math notranslate nohighlight">\((B, 4, 4)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>matrix of shape <span class="math notranslate nohighlight">\((B, 4, 4)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1043,11 +1037,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>omega</strong> – 4x4-matrix representing lie algebra of shape <span class="math notranslate nohighlight">\((B,4,4)\)</span>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>vector of shape <span class="math notranslate nohighlight">\((B,6)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vector of shape <span class="math notranslate nohighlight">\((B,6)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1649,11 +1643,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">None
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>omega</strong> – 3x3-matrix representing lie algebra of shape <span class="math notranslate nohighlight">\((B, 3, 3)\)</span>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>vector of shape <span class="math notranslate nohighlight">\((B, 3)\)</span>.</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a></p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>vector of shape <span class="math notranslate nohighlight">\((B, 3)\)</span>.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
