@@ -402,7 +402,6 @@
 <span class="sd">        returns:</span>
 <span class="sd">            Returns a fitted ZCAWhiten object instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="n">T</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">T_inv</span> <span class="o">=</span> <span class="n">zca_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unbiased</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_inv</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">mean_vector</span> <span class="o">=</span> <span class="n">mean</span>
@@ -431,7 +430,6 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            The transformed data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="n">include_fit</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
@@ -451,7 +449,6 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Original data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitted</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Needs to be fitted first before running. Please call fit or set include_fit to True.&quot;</span><span class="p">)</span>
 
@@ -593,7 +590,6 @@
 <span class="sd">                [ 1.0000, -0.5773],</span>
 <span class="sd">                [-1.0000, -0.5773]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input type is not a Tensor. Got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -653,7 +649,6 @@
 <span class="sd">        &gt;&gt;&gt; print(out.shape, out.unique()) # Should a be (10,2) tensor of 2s</span>
 <span class="sd">        torch.Size([10, 2]) tensor([2.])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">inp_size</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">dim</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp_size</span><span class="p">)</span> <span class="ow">or</span> <span class="n">dim</span> <span class="o">&lt;</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">inp_size</span><span class="p">):</span>
