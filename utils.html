@@ -745,6 +745,41 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.utils.map_location_to_cpu">
+<span class="sig-prename descclassname"><span class="pre">kornia.utils.</span></span><span class="sig-name descname"><span class="pre">map_location_to_cpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/utils/helpers.html#map_location_to_cpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.utils.map_location_to_cpu" title="Permalink to this definition">#</a></dt>
+<dd><p>Map location of device to CPU, util for loading things from HUB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="automatic-mixed-precision">
+<h2>Automatic Mixed Precision<a class="headerlink" href="#automatic-mixed-precision" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="kornia.utils.is_autocast_enabled">
+<span class="sig-prename descclassname"><span class="pre">kornia.utils.</span></span><span class="sig-name descname"><span class="pre">is_autocast_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">both</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kornia/utils/helpers.html#is_autocast_enabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#kornia.utils.is_autocast_enabled" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if torch autocast is enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>both</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <em>optional</em>) – if True will consider autocast region for both types of devices
+Default:  <code class="code docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return a Bool,
+will always return False for a torch without support, otherwise will be: if both is True
+<cite>torch.is_autocast_enabled() or torch.is_autocast_cpu_enabled()</cite>. If both is Flase will return just
+<cite>torch.is_autocast_enabled()</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -833,6 +868,11 @@ Default:  <code class="code docutils literal notranslate"><span class="pre">0</s
 </li>
 <li><a class="reference internal" href="#device">Device</a><ul>
 <li><a class="reference internal" href="#kornia.utils.get_cuda_device_if_available"><code class="docutils literal notranslate"><span class="pre">get_cuda_device_if_available()</span></code></a></li>
+<li><a class="reference internal" href="#kornia.utils.map_location_to_cpu"><code class="docutils literal notranslate"><span class="pre">map_location_to_cpu()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automatic-mixed-precision">Automatic Mixed Precision</a><ul>
+<li><a class="reference internal" href="#kornia.utils.is_autocast_enabled"><code class="docutils literal notranslate"><span class="pre">is_autocast_enabled()</span></code></a></li>
 </ul>
 </li>
 </ul>
