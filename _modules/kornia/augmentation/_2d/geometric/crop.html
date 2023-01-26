@@ -447,7 +447,8 @@
         <span class="k">if</span> <span class="n">padding</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_padding</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-        <span class="nb">input</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;fill&quot;</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;padding_mode&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">padding</span><span class="p">):</span>
+            <span class="nb">input</span> <span class="o">=</span> <span class="n">pad</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;fill&quot;</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="n">flags</span><span class="p">[</span><span class="s2">&quot;padding_mode&quot;</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="nb">input</span>
 
